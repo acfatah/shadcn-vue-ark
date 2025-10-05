@@ -1,7 +1,9 @@
 {
   "name": "bun-ark-vue",
-  "module": "src/index.ts",
-  "type": "module",
+  "workspace": [
+    "./apps/*",
+    "./packages/*"
+  ],
   "devDependencies": {
     "@types/bun": "latest"
   },

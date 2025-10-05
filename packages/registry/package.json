@@ -1,0 +1,7 @@
+{
+  "name": "registry",
+  "version": "0.0.0",
+  "scripts": {
+    "registry:build": "shadcn build"
+  }
+}
