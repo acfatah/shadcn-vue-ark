@@ -1,6 +1,23 @@
 import antfu from '@antfu/eslint-config'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
+// https://github.com/eslint/markdown
+import markdown from '@eslint/markdown'
+
+/**
+ * Merge rules from the markdown plugin recommended config
+ */
+function markdownRecommendedRules() {
+  const recommended = (markdown as any).configs?.recommended
+  if (Array.isArray(recommended)) {
+    return recommended.reduce((acc: Record<string, any>, cfg: any) => {
+      return { ...acc, ...(cfg?.rules || {}) }
+    }, {})
+  }
+
+  return (recommended?.rules) || {}
+}
+
 export default antfu(
   {
     formatters: true,
@@ -48,6 +65,8 @@ export default antfu(
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,
       }],
+
+      ...markdownRecommendedRules(),
     },
 
     settings: {
