@@ -1,6 +1,6 @@
 {
   "name": "bun-ark-vue",
-  "workspace": [
+  "workspaces": [
     "./apps/*",
     "./packages/*"
   ],

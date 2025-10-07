@@ -1,5 +1,5 @@
 {
-  "name": "registry",
+  "name": "packages.registry",
   "version": "0.0.0",
   "scripts": {
     "registry:build": "shadcn build"
