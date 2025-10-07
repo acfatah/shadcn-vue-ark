@@ -88,6 +88,15 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 - Wrap commands, file paths, env vars, and code identifiers in backticks.
 - Use tables in documentation whenever helpful.
 
+## Commit Messages
+
+- Use conventional commits: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`
+- Use the imperative mood ("add", "fix", "change", "remove")
+- Always add scope based on workspace except for root. E.g. `fix(registry):`, `feat(web):`
+- Limit subject line to 60 characters.
+- Use the body to explain what and why, not how.
+- Use bullets in the body if multiple points.
+
 ## Response & Output Style
 
 - Be concise and friendly; prioritize actionable guidance.
