@@ -1,1 +1,2 @@
-@import 'tailwindcss';
+@import 'packages.registry/styles/global.css';
+@source '../../../../packages/registry/src';
