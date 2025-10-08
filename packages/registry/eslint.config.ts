@@ -1,4 +1,5 @@
 import antfu from '@antfu/eslint-config'
+import pluginVitest from '@vitest/eslint-plugin'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
 // https://github.com/eslint/markdown
@@ -21,6 +22,7 @@ function markdownRecommendedRules() {
 export default antfu(
   {
     formatters: true,
+    vue: true,
   },
 
   {
@@ -29,6 +31,8 @@ export default antfu(
     },
 
     rules: {
+      ...eslintPluginBetterTailwindcss.configs['recommended-warn']!.rules,
+      ...eslintPluginBetterTailwindcss.configs['recommended-error']!.rules,
       'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100 }],
       'better-tailwindcss/no-restricted-classes': 'off',
       'better-tailwindcss/no-unregistered-classes': 'off',
@@ -58,12 +62,16 @@ export default antfu(
         { blankLine: 'always', prev: '*', next: 'return' },
       ],
 
+      'vue/object-property-newline': ['error', {
+        allowAllPropertiesOnSameLine: true,
+      }],
+
       ...markdownRecommendedRules(),
     },
 
     settings: {
       'better-tailwindcss': {
-        entryPoint: 'src/registry/styles/global.css',
+        entryPoint: 'src/styles/global.css',
       },
     },
   },
@@ -81,6 +89,7 @@ export default antfu(
   },
 
   {
+    rules: pluginVitest.configs.recommended.rules,
     files: ['src/**/__tests__/*', 'tests/**/*'],
   },
 )
