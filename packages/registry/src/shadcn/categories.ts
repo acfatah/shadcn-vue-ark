@@ -3,38 +3,38 @@ export type CategoryName = typeof categories[number]['name']
 
 export const categories = [
   {
-    name: "Sidebar",
-    slug: "sidebar",
+    name: 'Sidebar',
+    slug: 'sidebar',
     hidden: false,
   },
   {
-    name: "Dashboard",
-    slug: "dashboard",
+    name: 'Dashboard',
+    slug: 'dashboard',
     hidden: true,
   },
   {
-    name: "Authentication",
-    slug: "authentication",
+    name: 'Authentication',
+    slug: 'authentication',
     hidden: true,
   },
   {
-    name: "Login",
-    slug: "login",
+    name: 'Login',
+    slug: 'login',
     hidden: false,
   },
   {
-    name: "Signup",
-    slug: "signup",
+    name: 'Signup',
+    slug: 'signup',
     hidden: false,
   },
   {
-    name: "OTP",
-    slug: "otp",
+    name: 'OTP',
+    slug: 'otp',
     hidden: false,
   },
   {
-    name: "Calendar",
-    slug: "calendar",
+    name: 'Calendar',
+    slug: 'calendar',
     hidden: false,
   },
 ] as const
