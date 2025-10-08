@@ -11,15 +11,18 @@ export default defineConfig({
       template: {
         compilerOptions: {
           // ...
-        }
-      }
-    })
+        },
+      },
+    }),
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+    ],
     resolve: {
       alias: {
-        '@': new URL('./src', import.meta.url).pathname,
+        '@/': new URL('./src/', import.meta.url).pathname,
+        'packages.registry/': new URL('../../packages/registry/src/', import.meta.url).pathname,
       },
     },
   },
