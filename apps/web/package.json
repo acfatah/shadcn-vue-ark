@@ -21,9 +21,11 @@
   },
   "dependencies": {
     "@ark-ui/vue": "^5.25.1",
-    "@astrojs/starlight": "^0.36.0",
+    "@astrojs/starlight": "^0.36.1",
     "@astrojs/starlight-tailwind": "^4.0.1",
     "@astrojs/vue": "^5.1.1",
+    "@fontsource-variable/geist": "^5.2.8",
+    "@fontsource-variable/geist-mono": "^5.2.7",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vue/compiler-sfc": "^3.5.22",
