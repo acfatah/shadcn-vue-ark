@@ -1,2 +1,19 @@
-@import 'packages.registry/styles/global.css';
-@source '../../../../packages/registry/src';
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  /*
+    Configure your Tailwind theme that will be used by Starlight.
+    https://starlight.astro.build/guides/css-and-tailwind/#styling-starlight-with-tailwind
+  */
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/*
+  Add additional Tailwind styles to this file:
+  https://tailwindcss.com/docs/adding-custom-styles#using-custom-css
+*/
