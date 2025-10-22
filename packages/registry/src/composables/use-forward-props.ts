@@ -10,6 +10,9 @@ interface PropOptions {
 /**
  * The `useForwardProps` function in TypeScript takes in a set of props and returns
  * a computed value that combines default props with assigned props from the current instance.
+ *
+ * Attribution: Radix Vue Team
+ * Retrieved from: https://www.radix-vue.com/utilities/use-forward-props.html
  */
 export function useForwardProps<T extends Record<string, any>>(props: MaybeRefOrGetter<T>) {
   const vm = getCurrentInstance()
