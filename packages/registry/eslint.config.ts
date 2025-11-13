@@ -27,6 +27,7 @@ export default antfu(
 
   {
     plugins: {
+      // https://github.com/schoero/eslint-plugin-better-tailwindcss
       'better-tailwindcss': eslintPluginBetterTailwindcss,
     },
 
@@ -39,13 +40,10 @@ export default antfu(
 
       // https://perfectionist.dev/rules/sort-imports.html
       'sort-imports': 'off',
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          partitionByNewLine: true,
-          newlinesBetween: 'ignore',
-        },
-      ],
+      'perfectionist/sort-imports': ['error', {
+        partitionByNewLine: true,
+        newlinesBetween: 'ignore',
+      }],
 
       // https://eslint.style/rules/space-before-function-paren
       'space-before-function-paren': ['error', {
@@ -56,11 +54,9 @@ export default antfu(
       }],
 
       // https://eslint.style/rules/padding-line-between-statements
-      'style/padding-line-between-statements': [
-        'error',
+      'style/padding-line-between-statements': ['error',
         // require blank line before all return statements
-        { blankLine: 'always', prev: '*', next: 'return' },
-      ],
+        { blankLine: 'always', prev: '*', next: 'return' }],
 
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,

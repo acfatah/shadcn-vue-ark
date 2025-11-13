@@ -2,6 +2,23 @@ import antfu from '@antfu/eslint-config'
 import pluginVitest from '@vitest/eslint-plugin'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
+// https://github.com/eslint/markdown
+import markdown from '@eslint/markdown'
+
+/**
+ * Merge rules from the markdown plugin recommended config
+ */
+function markdownRecommendedRules() {
+  const recommended = (markdown as any).configs?.recommended
+  if (Array.isArray(recommended)) {
+    return recommended.reduce((acc: Record<string, any>, cfg: any) => {
+      return { ...acc, ...(cfg?.rules || {}) }
+    }, {})
+  }
+
+  return (recommended?.rules) || {}
+}
+
 export default antfu(
   {
     formatters: true,
@@ -10,6 +27,7 @@ export default antfu(
 
   {
     plugins: {
+      // https://github.com/schoero/eslint-plugin-better-tailwindcss
       'better-tailwindcss': eslintPluginBetterTailwindcss,
     },
 
@@ -20,27 +38,31 @@ export default antfu(
       'better-tailwindcss/no-restricted-classes': 'off',
       'better-tailwindcss/no-unregistered-classes': 'off',
 
+      // https://perfectionist.dev/rules/sort-imports.html
       'sort-imports': 'off',
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          partitionByNewLine: true,
-          newlinesBetween: 'ignore',
-        },
-      ],
+      'perfectionist/sort-imports': ['error', {
+        partitionByNewLine: true,
+        newlinesBetween: 'ignore',
+      }],
 
-      'style/padding-line-between-statements': [
-        'error',
-        {
-          blankLine: 'always',
-          prev: '*',
-          next: 'return',
-        },
-      ],
+      // https://eslint.style/rules/space-before-function-paren
+      'space-before-function-paren': ['error', {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always',
+        // catch: 'never',
+      }],
+
+      // https://eslint.style/rules/padding-line-between-statements
+      'style/padding-line-between-statements': ['error',
+        // require blank line before all return statements
+        { blankLine: 'always', prev: '*', next: 'return' }],
 
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,
       }],
+
+      ...markdownRecommendedRules(),
     },
 
     settings: {
@@ -52,7 +74,13 @@ export default antfu(
 
   {
     name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**', 'logs', 'tsconfig.*'],
+    ignores: [
+      '**/dist/**',
+      '**/dist-ssr/**',
+      '**/coverage/**',
+      'logs',
+      'tsconfig.*',
+    ],
   },
 
   {
