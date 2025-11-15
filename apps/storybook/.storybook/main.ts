@@ -7,9 +7,13 @@ const config: StorybookConfig = {
   },
 
   stories: [
-    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../stories/**/*.mdx',
+    '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
 
   addons: [],
+
+  staticDirs: ['../app/public'],
 }
+
 export default config

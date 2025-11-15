@@ -5,6 +5,8 @@ import { defineConfig } from 'vite'
 import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
+  root: './app',
+
   plugins: [
     vue(),
     tailwindcss(),
