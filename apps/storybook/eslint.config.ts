@@ -2,7 +2,6 @@
 import storybook from 'eslint-plugin-storybook'
 
 import antfu from '@antfu/eslint-config'
-import pluginVitest from '@vitest/eslint-plugin'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
 // https://github.com/eslint/markdown
@@ -86,10 +85,5 @@ export default antfu(
       'logs',
       'tsconfig.*',
     ],
-  },
-
-  {
-    rules: pluginVitest.configs.recommended.rules,
-    files: ['src/**/__tests__/*', 'tests/**/*'],
   },
 )
