@@ -1,7 +1,6 @@
 {
   "name": "packages.registry",
   "type": "module",
-  "version": "0.0.0",
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*"
@@ -22,11 +21,11 @@
     "registry:build": "shadcn build"
   },
   "dependencies": {
-    "@ark-ui/vue": "^5.27.1",
+    "@ark-ui/vue": "^5.28.0",
     "@iconify/vue": "^5.0.0",
     "@vueuse/shared": "^14.0.0",
-    "@zag-js/core": "^1.27.1",
-    "@zag-js/vue": "^1.27.1",
+    "@zag-js/core": "^1.28.0",
+    "@zag-js/vue": "^1.28.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "shadcn": "^3.5.0",
@@ -46,6 +45,6 @@
     "eslint": "^9.39.1",
     "eslint-plugin-better-tailwindcss": "^3.7.10",
     "eslint-plugin-format": "^1.0.2",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.9"
   }
 }

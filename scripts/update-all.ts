@@ -19,14 +19,24 @@ const useLatest = argv.includes('--latest')
  */
 async function updateDeps(target: string | Dirent): Promise<void> {
   const path = typeof target === 'string' ? target : join(target.parentPath, target.name)
-  const versionFile = join(path, '.bun-version')
+  const versionFile = Bun.file(join(path, '.bun-version'))
   const pathName = path === '.' ? 'root' : `"${path}"`
-
-  // Update .bun-version file to follow the Bun version on the system
-  await Bun.$`bun --version > ${versionFile}`
 
   // Update packages
   console.log(`Updating "${pathName}"`)
+
+  // Update .bun-version file to follow the Bun version on the system if the file
+  // exists and the version is different.
+  if (await versionFile.exists()) {
+    const currentVersion = (await versionFile.text()).trim()
+    const result = Bun.spawnSync(['bun', '--version'])
+    const bunVersion = new TextDecoder().decode(result.stdout).trim()
+
+    if (bunVersion.length && bunVersion !== currentVersion) {
+      console.log(`Updating .bun-version to version ${bunVersion}`)
+      await Bun.write(versionFile, bunVersion)
+    }
+  }
 
   const args = ['bun', 'update'] as string[]
   if (useLatest)
