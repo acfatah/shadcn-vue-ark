@@ -1,10 +1,21 @@
 #!/usr/bin/env bun
 
+// TODO: update the ui script
+// https://ui.shadcn.com/docs/registry/getting-started
+
 import { program } from 'commander'
 import { consola } from 'consola'
 import process from 'node:process'
 
 const REGISTRY_URL = process.env.REGISTRY_URL || 'http://localhost:8080/r'
+
+function logError(error: unknown) {
+  consola.error(
+    typeof error === 'object' && error !== null && 'message' in error
+      ? (error as { message: string }).message
+      : String(error),
+  )
+}
 
 async function checkStatus() {
   try {
@@ -13,7 +24,7 @@ async function checkStatus() {
     })
   }
   catch (error) {
-    consola.error(error.message)
+    logError(error)
 
     process.exit(1)
   }
@@ -26,7 +37,7 @@ async function listComponents() {
     return await res.json()
   }
   catch (error) {
-    consola.error(error.message)
+    logError(error)
 
     process.exit(1)
   }
@@ -127,19 +138,22 @@ program.command('add')
       .filter(([_key, value]) => value)
       .map(([key]) => `-${key}`)
 
-    const proc = Bun.spawn(
-      ['bunx', '--bun', 'shadcn-vue@latest', 'add', ...opts, ...urls],
-      {
-        stdin: 'inherit',
-        stdout: 'inherit',
-        stderr: 'inherit',
-      },
-    )
+    console.log(opts)
 
-    if (!await proc.exited) {
-      process.stdout.write('\x1B[1A\x1B[K')
-      consola.success('Done!')
-    }
+    // TODO: use `bunx --bun shadcn@latest add http://localhost:3000/r/hello-world.json` command
+    // const proc = Bun.spawn(
+    //   ['bunx', '--bun', 'shadcn-vue@latest', 'add', ...opts, ...urls],
+    //   {
+    //     stdin: 'inherit',
+    //     stdout: 'inherit',
+    //     stderr: 'inherit',
+    //   },
+    // )
+
+    // if (!await proc.exited) {
+    //   process.stdout.write('\x1B[1A\x1B[K')
+    //   consola.success('Done!')
+    // }
   })
 
 program.parse()
