@@ -13,9 +13,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["../../packages/registry/src"],
+      "@app": ["./app/src"],
+      "@story":["./stories"],
     }
   },
 
