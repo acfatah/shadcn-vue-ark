@@ -1,6 +1,4 @@
-import 'packages.registry/styles/global.css'
-
-// TODO: refactor `packages/registry/src/styles` with `apps/storybook/src/styles`
+import './styles/global.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'

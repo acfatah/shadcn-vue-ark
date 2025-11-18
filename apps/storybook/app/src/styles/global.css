@@ -1,0 +1,13 @@
+/*
+  Need to use relative path for imports in CSS files. Using
+  package paths here does not work as expected.
+*/
+@import '../../../../../packages/registry/src/styles/global.css';
+
+/*
+  Need to explicitly include sources from the registry package
+  to ensure styles are properly applied in Storybook.
+*/
+@source './**/*.{html,js,ts,jsx,tsx,vue}';
+@source '../../../../../packages/registry/src/**/*.{js,ts,vue}';
+@source '../../../../../packages/registry/src/styles/global.css';
