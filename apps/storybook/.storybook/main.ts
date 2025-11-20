@@ -3,7 +3,9 @@ import type { StorybookConfig } from '@storybook/vue3-vite'
 const config: StorybookConfig = {
   framework: {
     name: '@storybook/vue3-vite',
-    options: {},
+    options: {
+      docgen: 'vue-component-meta',
+    },
   },
 
   stories: [
@@ -11,9 +13,15 @@ const config: StorybookConfig = {
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
 
-  addons: [],
+  addons: [
+    '@storybook/addon-docs',
+  ],
 
   staticDirs: ['../app/public'],
+
+  docs: {
+    docsMode: true,
+  },
 }
 
 export default config
