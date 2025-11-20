@@ -11,19 +11,19 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["../../packages/registry/src"],
-      "@app": ["./app/src"],
-      "@story":["./stories"],
+      "@/*": ["../../packages/registry/src/*"]
     }
   },
 
   "include": [
     ".storybook/**/*.ts",
-    "stries/**/*.ts",
     "app/src/**/*.ts",
-    "app/src/**/*.tsx",
     "app/src/**/*.vue",
-    ]
+    "stories/**/*.ts",
+    "stories/**/*.vue",
+
+    "../../packages/registry/src/**/*.ts",
+    "../../packages/registry/src/**/*.vue"
+  ]
 }
