@@ -1,4 +1,5 @@
-# bun-ark-vue
+# shadcn-vue-ark
 
-This project was created using `bun init` in bun v1.2.22. [Bun](https://bun.com) 
-is a fast all-in-one JavaScript runtime.
+Reimplementation of [shadcn/ui](https://ui.shadcn.com/) components registry using Vue 3 and [Ark UI](https://ark-ui.com/).
+
+Inspired by the [shadcn-vue](https://github.com/shadcn/shadcn-vue) project.
