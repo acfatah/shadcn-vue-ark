@@ -23,17 +23,4 @@ export default {
   registryDependencies: [
     'utils',
   ],
-
-  files: [
-    {
-      path: './components/DropdownAction.vue',
-      type: 'registry:page',
-      target: 'src/pages/data-table-01/components/DropdownAction.vue',
-    },
-    {
-      path: './data/users.ts',
-      type: 'registry:file',
-      target: 'src/pages/data-table-01/data/users.ts',
-    },
-  ],
 }

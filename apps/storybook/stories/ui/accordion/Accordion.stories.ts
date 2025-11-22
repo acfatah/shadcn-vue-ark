@@ -1,4 +1,6 @@
-import type { StoryObj } from '@storybook/vue3-vite'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { html } from 'common-tags'
+
 import {
   Accordion,
   AccordionContent,
@@ -10,7 +12,7 @@ import {
 import AccordionDefault from './AccordionDefault.vue'
 import AccordionDefaultSource from './AccordionDefault.vue?raw'
 
-export default {
+const meta = {
   title: 'Components/Accordion',
   subcomponents: {
     AccordionItem,
@@ -26,9 +28,12 @@ export default {
       },
     },
   },
-}
+} satisfies Meta<typeof AccordionRoot>
 
-export const Default: StoryObj = {
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
   parameters: {
     docs: {
       source: {
@@ -44,7 +49,7 @@ export const Default: StoryObj = {
       return { args }
     },
 
-    template: `
+    template: html`
       <AccordionDefault v-bind="args" />
     `,
   }),
