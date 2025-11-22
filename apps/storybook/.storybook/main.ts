@@ -15,6 +15,7 @@ const config: StorybookConfig = {
 
   addons: [
     '@storybook/addon-docs',
+    '@storybook/addon-themes',
   ],
 
   staticDirs: ['../app/public'],

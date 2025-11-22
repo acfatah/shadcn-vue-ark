@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3-vite'
+import { withThemeByClassName } from '@storybook/addon-themes'
 import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'
 
@@ -27,6 +28,15 @@ const preview: Preview = {
   },
 
   decorators: [
+    withThemeByClassName({
+      themes: {
+        light: '',
+        dark: 'dark',
+      },
+
+      defaultTheme: 'light',
+    }),
+
     // Decorator to apply bg-color to stories in dark mode
     (_story, context) => {
       const body = document.querySelector('body')
