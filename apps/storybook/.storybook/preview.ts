@@ -4,6 +4,7 @@ import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'
 
 import '../app/src/styles/global.css'
+import { tailwindViewports } from '../stories/tailwind-viewports'
 
 const pinia = createPinia()
 
@@ -14,6 +15,7 @@ setup((app) => {
 const preview: Preview = {
   parameters: {
     backgrounds: { disable: true },
+    viewport: { options: tailwindViewports },
 
     controls: {
       matchers: {
@@ -25,6 +27,10 @@ const preview: Preview = {
     themes: {
       target: 'html',
     },
+  },
+
+  initialGlobals: {
+    viewport: { value: 'lg', isRotated: false },
   },
 
   decorators: [
