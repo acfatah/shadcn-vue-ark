@@ -1,6 +1,4 @@
-export type ThemeMode = keyof typeof colorMapping
-export type ColorName = keyof typeof colors
-export type Color = typeof colors[ColorName]
+// bunx --bun gitpick shadcn-ui/ui/blob/main/apps/v4/registry/colors.ts
 
 export const colors = {
   inherit: 'inherit',
