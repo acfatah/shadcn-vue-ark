@@ -7,11 +7,7 @@ export default {
   title: 'Spinner',
 
   description: html`
-    An indicator that can be used to show a loading state.
-
-    References:
-    - Iconify: https://iconify.design/docs/icon-components
-    - shadcn/ui: https://ui.shadcn.com/docs/components/spinner
+    Displays a button or a component that looks like a button.
   `,
 
   dependencies: [
@@ -20,5 +16,13 @@ export default {
 
   registryDependencies: [
     'utils',
+  ],
+
+  files: [
+    {
+      path: '../../composables/dynamic.ts',
+      type: 'registry:file',
+      target: 'src/composables/dynamic.ts',
+    },
   ],
 } satisfies RegistryItem

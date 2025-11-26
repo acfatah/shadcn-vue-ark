@@ -1,6 +1,6 @@
 import { html } from 'common-tags'
+import type { RegistryItem } from '../../../shadcn/schema'
 
-// TODO: add types or schema to metadata
 export default {
   type: 'registry:ui',
   name: 'accordion',
@@ -23,4 +23,4 @@ export default {
   registryDependencies: [
     'utils',
   ],
-}
+} satisfies RegistryItem
