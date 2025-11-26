@@ -23,4 +23,17 @@ export default {
   registryDependencies: [
     'utils',
   ],
+
+  files: [
+    {
+      path: '../../composables/dynamic.ts',
+      type: 'registry:file',
+      target: 'src/composables/dynamic.ts',
+    },
+    {
+      path: '../../composables/use-forward-props.ts',
+      type: 'registry:file',
+      target: 'src/composables/use-forward-props.ts',
+    },
+  ],
 } satisfies RegistryItem
