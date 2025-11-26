@@ -1,5 +1,5 @@
+import type { RegistryItem } from 'shadcn/schema'
 import { html } from 'common-tags'
-import type { RegistryItem } from '../../../shadcn/schema'
 
 export default {
   type: 'registry:ui',
