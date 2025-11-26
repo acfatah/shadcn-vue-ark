@@ -5,6 +5,10 @@
     "apps/*",
     "packages/*"
   ],
+  "scripts": {
+    "storybook": "cd apps/storybook && bun run storybook dev -p 6006",
+    "storybook:build": "cd apps/storybook && bun run storybook build"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
     "@types/bun": "^1.3.3",
