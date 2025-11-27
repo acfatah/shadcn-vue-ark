@@ -1,13 +1,17 @@
 import { parseSync } from 'oxc-parser'
 import { compileScript, parse } from 'vue/compiler-sfc'
 
-// [Dependency, [...PeerDependencies]]
+/**
+ * Whitelisted dependencies and their peer dependencies
+ */
 const DEPENDENCIES = new Map<string, string[]>([
+  // [Dependency, [...PeerDependencies]]
   ['@ark-ui/vue', []],
   ['@iconify/vue', []],
   ['@tanstack/vue-table', []],
   ['@unovis/vue', ['@unovis/ts']],
   ['@vueuse/core', []],
+  ['@vueuse/components', []],
   ['clsx', []],
   ['embla-carousel-vue', []],
   ['tailwind-merge', []],

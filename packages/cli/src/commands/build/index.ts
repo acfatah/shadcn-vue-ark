@@ -8,10 +8,11 @@ import {
   rimraf,
   writeFile,
 } from '@/utils'
+
+import mainPackageJson from '../../../../../package.json'
+import { buildComponentsRegistry } from './build-components-registry'
 import { buildIndexJson } from './build-index-json'
 import { buildUIRegistry } from './build-ui-registry'
-
-import mainPackageJson from '../../../../../package.json' assert { type: 'json' }
 
 interface BuildCommandOptions {
   output: string
@@ -21,15 +22,14 @@ interface BuildCommandOptions {
   dryRun: boolean
 }
 
-const ROOT_PATH = join(__dirname, '..', '..', '..', '..', 'registry')
-export const REGISTRY_PATH = join('src')
+const ROOT_PATH = resolve(__dirname, '..', '..', '..', '..', 'registry')
+export const REGISTRY_PATH = join(ROOT_PATH, 'src')
 export const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
 export const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')
-export const BLOCKS_PATH = join(REGISTRY_PATH, 'blocks')
+export const COMPONENTS_PATH = join(REGISTRY_PATH, 'components')
 
 async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
-  const path = resolve(ROOT_PATH, UI_PATH)
-  const dir = await readDirectory(path, { recursive: true, withFileTypes: true })
+  const dir = await readDirectory(UI_PATH, { recursive: true, withFileTypes: true })
   const uiRegistry: RegistryItem[] = []
 
   for (const dirent of dir) {
@@ -44,15 +44,32 @@ async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
   return uiRegistry
 }
 
+async function crawlAndBuildComponentsRegistry(registryBaseUrl: string) {
+  const path = join(COMPONENTS_PATH, '_registry.ts')
+  const finalComponentsRegistry: RegistryItem[] = []
+  const { componentsRegistry } = await import(path) as {
+    componentsRegistry: ({ filename: string } & Partial<RegistryItem>)[]
+  }
+
+  for (const component of componentsRegistry) {
+    const registryItem = await buildComponentsRegistry(component, registryBaseUrl)
+    finalComponentsRegistry.push(registryItem)
+  }
+
+  return finalComponentsRegistry
+}
+
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
-  const [ui] = await Promise.all([
+  const [ui, components] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
+    crawlAndBuildComponentsRegistry(registryBaseUrl),
   ])
 
   registry.push(
     ...ui,
+    ...components,
   )
 
   return registry.sort(
