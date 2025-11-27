@@ -7,7 +7,7 @@ import { program } from 'commander'
 import { consola } from 'consola'
 import process from 'node:process'
 
-const REGISTRY_URL = process.env.REGISTRY_URL || 'http://localhost:8080/r'
+const REGISTRY_PATH = process.env.REGISTRY_PATH || 'http://localhost:8080/r'
 
 function logError(error: unknown) {
   consola.error(
@@ -19,7 +19,7 @@ function logError(error: unknown) {
 
 async function checkStatus() {
   try {
-    await fetch(`${REGISTRY_URL}/index.json`, {
+    await fetch(`${REGISTRY_PATH}/index.json`, {
       method: 'OPTIONS',
     })
   }
@@ -32,7 +32,7 @@ async function checkStatus() {
 
 async function listComponents() {
   try {
-    const res = await fetch(`${REGISTRY_URL}/index.json`)
+    const res = await fetch(`${REGISTRY_PATH}/index.json`)
 
     return await res.json()
   }
@@ -69,7 +69,7 @@ program.command('info')
     let res: Response
 
     try {
-      res = await fetch(`${REGISTRY_URL}/${arg}.json`)
+      res = await fetch(`${REGISTRY_PATH}/${arg}.json`)
     }
     catch (error) {
       consola.error(error)
@@ -118,7 +118,7 @@ program.command('add')
     await checkStatus()
 
     const urls: string[] = components.reduce((acc: string[], component: string) => {
-      acc.push(`${REGISTRY_URL}/${component}.json`)
+      acc.push(`${REGISTRY_PATH}/${component}.json`)
 
       return acc
     }, [])
