@@ -1,7 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import { html } from 'common-tags'
 
-export default {
+export const metadata = {
   type: 'registry:ui',
   name: 'spinner',
   title: 'Spinner',
@@ -17,8 +17,6 @@ export default {
   dependencies: [
     '@iconify/vue',
   ],
-
-  registryDependencies: [
-    'utils',
-  ],
 } satisfies RegistryItem
+
+export default metadata
