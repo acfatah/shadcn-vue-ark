@@ -27,6 +27,10 @@ const preview: Preview = {
     themes: {
       target: 'html',
     },
+
+    docs: {
+      codePanel: true,
+    },
   },
 
   initialGlobals: {
