@@ -1,5 +1,6 @@
 {
   "name": "@acfatah/shadcn-vue-ark",
+  "homepage": "https://github.com/acfatah/shadcn-vue-ark",
   "version": "0.0.0",
   "workspaces": [
     "apps/*",
