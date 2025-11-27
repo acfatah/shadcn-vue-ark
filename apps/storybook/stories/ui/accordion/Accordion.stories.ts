@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
 import {
-  Accordion,
   AccordionContent,
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { registryItem } from '@/components/ui/accordion/_registry'
 
 import AccordionDefault from './AccordionDefault.vue'
 import AccordionDefaultSource from './AccordionDefault.vue?raw'
@@ -24,7 +24,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: Accordion.description,
+        component: registryItem.description,
       },
     },
   },

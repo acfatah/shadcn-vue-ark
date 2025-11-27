@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
 import { Spinner } from '@/components/ui/spinner'
-import metadata from '@/components/ui/spinner/metadata'
+import { registryItem } from '@/components/ui/spinner/_registry'
 import SpinnerDefaultSource from './SpinnerDefault.vue?raw'
 
 const meta = {
@@ -13,7 +13,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: metadata.description,
+        component: registryItem.description,
       },
     },
   },

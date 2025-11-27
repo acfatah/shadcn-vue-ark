@@ -41,24 +41,24 @@ export async function buildUIRegistry(
     const relativePath = join(UI_PATH, componentName, dirent.name)
     const source = await readFile(filepath, { encoding: 'utf8' })
 
-    if (dirent.name === 'metadata.ts') {
-      const { metadata } = await import(filepath) as { metadata: RegistryItem }
+    if (dirent.name === '_registry.ts') {
+      const { registryItem } = await import(filepath) as { registryItem: RegistryItem }
 
-      title = metadata?.title || title
-      description = metadata?.description || description
-      cssVars = metadata?.cssVars ?? cssVars
-      css = metadata?.css ?? css
+      title = registryItem?.title || title
+      description = registryItem?.description || description
+      cssVars = registryItem?.cssVars ?? cssVars
+      css = registryItem?.css ?? css
 
-      if (metadata?.files) {
-        files.push(...metadata.files)
+      if (registryItem?.files) {
+        files.push(...registryItem.files)
       }
 
-      if (metadata?.registryDependencies) {
-        metadata.registryDependencies.forEach(dep => registryDependencies.add(dep))
+      if (registryItem?.registryDependencies) {
+        registryItem.registryDependencies.forEach(dep => registryDependencies.add(dep))
       }
 
-      if (metadata?.dependencies) {
-        metadata.dependencies.forEach(dep => dependencies.add(dep))
+      if (registryItem?.dependencies) {
+        registryItem.dependencies.forEach(dep => dependencies.add(dep))
       }
 
       continue

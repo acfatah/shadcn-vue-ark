@@ -1,7 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import { html } from 'common-tags'
 
-export const metadata = {
+export const registryItem = {
   type: 'registry:ui',
   name: 'spinner',
   title: 'Spinner',
@@ -31,4 +31,4 @@ export const metadata = {
   ],
 } satisfies RegistryItem
 
-export default metadata
+export default registryItem

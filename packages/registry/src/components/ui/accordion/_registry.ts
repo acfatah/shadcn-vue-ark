@@ -1,7 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import { html } from 'common-tags'
 
-export const metadata = {
+export const registryItem = {
   type: 'registry:ui',
   name: 'accordion',
   title: 'Accordion',
@@ -40,23 +40,23 @@ export const metadata = {
 
       '@keyframes accordion-down': {
         from: {
-          height: '0'
+          height: '0',
         },
         to: {
-          height: 'var(--height)'
+          height: 'var(--height)',
         },
       },
 
       '@keyframes accordion-up': {
         from: {
-          height: 'var(--height)'
+          height: 'var(--height)',
         },
         to: {
-          height: '0'
+          height: '0',
         },
       },
     },
   },
 } satisfies RegistryItem
 
-export default metadata
+export default registryItem
