@@ -32,6 +32,31 @@ export const metadata = {
       target: 'src/composables/use-forward-props.ts',
     },
   ],
+
+  css: {
+    '@theme inline': {
+      '--animate-accordion-down': 'accordion-down 0.25s ease-out',
+      '--animate-accordion-up': 'accordion-up 0.25s ease-out',
+
+      '@keyframes accordion-down': {
+        from: {
+          height: '0'
+        },
+        to: {
+          height: 'var(--height)'
+        },
+      },
+
+      '@keyframes accordion-up': {
+        from: {
+          height: 'var(--height)'
+        },
+        to: {
+          height: '0'
+        },
+      },
+    },
+  },
 } satisfies RegistryItem
 
 export default metadata

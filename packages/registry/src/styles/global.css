@@ -354,7 +354,9 @@
 }
 
 @theme inline {
-  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
+
   @keyframes accordion-down {
     from {
       height: 0;
@@ -364,7 +366,6 @@
     }
   }
 
-  --animate-accordion-up: accordion-up 0.2s ease-out;
   @keyframes accordion-up {
     from {
       height: var(--height);
@@ -373,12 +374,4 @@
       height: 0;
     }
   }
-}
-
-[data-scope='accordion'][data-part='item-content'][data-state='open'] {
-  animation: accordion-down 250ms ease-out;
-}
-
-[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
-  animation: accordion-up 200ms ease-out;
 }
