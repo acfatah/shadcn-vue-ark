@@ -1,7 +1,7 @@
 import type { RegistryItem } from 'shadcn/schema'
 import { join } from 'pathe'
+import { writeFile } from '@/utils'
 import { REGISTRY_OUTPUT_PATH } from '.'
-import { writeFile } from '../../utils'
 
 export async function buildIndexJson(registryItems: RegistryItem[]) {
   const sortedRegistryItems = registryItems.sort((a, b) => a.name.localeCompare(b.name))

@@ -7,7 +7,7 @@ import {
   readDirectory,
   rimraf,
   writeFile,
-} from '../../utils'
+} from '@/utils'
 import { buildIndexJson } from './build-index-json'
 import { buildUIRegistry } from './build-ui-registry'
 
@@ -25,6 +25,7 @@ const ROOT_PATH = join(__dirname, '..', '..', '..', '..', 'registry')
 export const REGISTRY_PATH = join('src')
 export const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
 export const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')
+export const BLOCKS_PATH = join(REGISTRY_PATH, 'blocks')
 
 async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
   const path = resolve(ROOT_PATH, UI_PATH)

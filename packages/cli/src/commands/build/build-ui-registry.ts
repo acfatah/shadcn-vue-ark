@@ -5,8 +5,11 @@ import type {
 } from 'shadcn/schema'
 import type { z } from 'zod'
 import { join } from 'pathe'
+import {
+  readDirectory,
+  readFile,
+} from '@/utils'
 import { UI_PATH } from '.'
-import { readDirectory, readFile } from '../../utils'
 import { getFileDependencies } from './get-file-dependecies'
 
 type RegistryItemCss = z.infer<typeof registryItemCssSchema>
