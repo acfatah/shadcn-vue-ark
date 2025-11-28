@@ -10,8 +10,8 @@ export const registryItem = {
     An indicator that can be used to show a loading state.
 
     References:
-    - Iconify: https://iconify.design/docs/icon-components
     - shadcn/ui: https://ui.shadcn.com/docs/components/spinner
+    - Iconify: https://iconify.design/docs/icon-components
   `,
 
   dependencies: [
