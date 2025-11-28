@@ -3,8 +3,8 @@ import { html } from 'common-tags'
 
 export const registryItem = {
   type: 'registry:ui',
-  name: 'spinner',
-  title: 'Spinner',
+  name: 'button',
+  title: 'Button',
 
   description: html`
     Displays a button or a component that looks like a button.
@@ -14,7 +14,7 @@ export const registryItem = {
   `,
 
   dependencies: [
-    '@iconify/vue',
+    '@vueuse/core',
   ],
 
   files: [
@@ -27,6 +27,11 @@ export const registryItem = {
       path: 'src/composables/use-forward-props.ts',
       type: 'registry:file',
       target: 'src/composables/use-forward-props.ts',
+    },
+    {
+      path: 'src/lib/utils.ts',
+      type: 'registry:file',
+      target: 'src/lib/utils.ts',
     },
   ],
 } satisfies RegistryItem
