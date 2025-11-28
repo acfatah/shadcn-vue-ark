@@ -2,9 +2,12 @@ import { parseSync } from 'oxc-parser'
 import { compileScript, parse } from 'vue/compiler-sfc'
 
 /**
- * Whitelisted dependencies and their peer dependencies
+ * Whitelisted dependencies and their peer dependencies in the form of:
+ * ```
+ * [Dependency, [...PeerDependencies]]
+ * ```
  */
-const DEPENDENCIES = new Map<string, string[]>([
+export const DEPENDENCIES: ReadonlyMap<string, readonly string[]> = new Map<string, string[]>([
   // [Dependency, [...PeerDependencies]]
   ['@ark-ui/vue', []],
   ['@iconify/vue', []],
@@ -20,7 +23,7 @@ const DEPENDENCIES = new Map<string, string[]>([
   ['vue-sonner', []],
 ])
 
-const REGISTRY_DEPENDENCY = '@/'
+export const REGISTRY_DEPENDENCY = '@/'
 
 export async function getFileDependencies(
   filename: string,
