@@ -36,7 +36,7 @@ async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
     if (!dirent.isDirectory())
       continue
 
-    const componentPath = resolve(ROOT_PATH, UI_PATH, dirent.name)
+    const componentPath = join(UI_PATH, dirent.name)
     const registryItem = await buildUIRegistry(componentPath, dirent.name, registryBaseUrl)
     uiRegistry.push(registryItem)
   }
