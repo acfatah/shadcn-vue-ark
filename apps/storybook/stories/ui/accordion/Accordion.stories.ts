@@ -14,9 +14,9 @@ import AccordionDefaultSource from './AccordionDefault.vue?raw'
 
 const meta = {
   title: 'Components/Accordion',
+  component: AccordionRoot,
   subcomponents: {
     AccordionItem,
-    AccordionRoot,
     AccordionTrigger,
     AccordionContent,
   },
