@@ -20,9 +20,14 @@ const delegatedProps = reactiveOmit(props, 'class')
         data-[state=closed]:animate-accordion-up
         data-[state=open]:animate-accordion-down
       `,
+      props.class,
     )"
   >
-    <div :class="cn('pt-0 pb-4', props.class)">
+    <div
+      data-scope="accordion"
+      data-part="content-wrapper"
+      class="pt-0 pb-4"
+    >
       <slot />
     </div>
   </Accordion.ItemContent>
