@@ -9,8 +9,8 @@ import {
 } from '@/components/ui/accordion'
 import { registryItem } from '@/components/ui/accordion/_registry'
 
-import AccordionDefault from './AccordionDefault.vue'
-import AccordionDefaultSource from './AccordionDefault.vue?raw'
+import AccordionDefault from './AccordionDefaultStory.vue'
+import AccordionDefaultSource from './AccordionDefaultStory.vue?raw'
 
 const meta = {
   title: 'Components/Accordion',

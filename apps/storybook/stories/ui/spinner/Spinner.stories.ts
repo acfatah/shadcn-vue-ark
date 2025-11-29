@@ -3,7 +3,7 @@ import { html } from 'common-tags'
 
 import { Spinner } from '@/components/ui/spinner'
 import { registryItem } from '@/components/ui/spinner/_registry'
-import SpinnerDefaultSource from './SpinnerDefault.vue?raw'
+import SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'
 
 const meta = {
   title: 'Components/Spinner',
