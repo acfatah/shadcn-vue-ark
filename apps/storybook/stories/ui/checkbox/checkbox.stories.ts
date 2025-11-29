@@ -1,0 +1,63 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { html } from 'common-tags'
+
+import type { Checkbox } from '@/components/ui/checkbox'
+import {
+  CheckboxControl,
+  CheckboxGroup,
+  CheckboxHiddenInput,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxRoot,
+  CheckboxRootProvider,
+} from '@/components/ui/checkbox'
+import { registryItem } from '@/components/ui/checkbox/_registry'
+import CheckboxDefaultStory from './CheckboxDefaultStory.vue'
+import CheckboxDefaultSource from './CheckboxDefaultStory.vue?raw'
+
+const meta = {
+  title: 'Components/Checkbox',
+  component: CheckboxRoot,
+  subcomponents: {
+    CheckboxControl,
+    CheckboxGroup,
+    CheckboxHiddenInput,
+    CheckboxIndicator,
+    CheckboxLabel,
+    CheckboxRootProvider,
+  },
+  tags: ['autodocs'],
+
+  parameters: {
+    docs: {
+      description: {
+        component: registryItem.description,
+      },
+    },
+  },
+} satisfies Meta<typeof Checkbox>
+
+export default meta
+type Story = StoryObj<typeof CheckboxRoot>
+
+export const Default: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: CheckboxDefaultSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { CheckboxDefaultStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <CheckboxDefaultStory v-bind="args" />
+    `,
+  }),
+}
