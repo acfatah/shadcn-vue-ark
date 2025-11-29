@@ -210,11 +210,18 @@ export const Spinner: Story = {
     components: { SpinnerStory },
 
     setup() {
-      return { args }
+      const { disabled, ...rest } = args
+
+      return { args, rest }
     },
 
     template: html`
-      <SpinnerStory v-bind="args" />
+      <SpinnerStory v-bind="rest" />
+
+      <pre
+        v-if="args.disabled"
+        class="mt-4 text-muted-foreground text-sm"
+      >"disabled" attribute is omitted!</pre>
     `,
   }),
 }

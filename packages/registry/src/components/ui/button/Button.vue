@@ -17,10 +17,7 @@ interface Props {
   variant?: ButtonVariants['variant']
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  asChild: false,
-})
-
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, [
   'class',
   'asChild',
@@ -31,11 +28,8 @@ const delegatedProps = reactiveOmit(props, [
 ])
 
 const forwardedProps = useForwardProps(delegatedProps)
-
-const isDisabled = computed(() => props.disabled || props.loading)
-const nativeDisabled = computed(() => (props.asChild ? undefined : isDisabled.value))
-const ariaDisabled = computed(() => (props.asChild && isDisabled.value ? true : undefined))
-const dataDisabled = computed(() => (props.asChild && isDisabled.value ? '' : undefined))
+const nativeDisabled = computed(() => props.disabled || props.loading || undefined)
+const ariaDisabled = computed(() => (nativeDisabled.value ? 'true' : undefined))
 </script>
 
 <template>
@@ -45,7 +39,6 @@ const dataDisabled = computed(() => (props.asChild && isDisabled.value ? '' : un
     v-bind="forwardedProps"
     :disabled="nativeDisabled"
     :aria-disabled="ariaDisabled"
-    :data-disabled="dataDisabled"
     :class="cn(buttonVariants({ variant, size }), props.class)"
   >
     <slot />
