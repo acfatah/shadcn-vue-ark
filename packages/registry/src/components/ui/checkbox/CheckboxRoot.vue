@@ -17,7 +17,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Checkbox.Root
     v-bind="forwardedProps"
     :class="cn(`
-      flex gap-4 group
+      group flex gap-4
       not-has-data-[part=checkbox-content]:items-center
       disabled:cursor-not-allowed disabled:opacity-50
       has-data-[part=checkbox-content]:items-start

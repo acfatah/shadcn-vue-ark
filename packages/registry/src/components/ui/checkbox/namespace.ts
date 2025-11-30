@@ -16,6 +16,8 @@ export const Checkbox = {
 
   /**
    * CheckboxContent component
+   *
+   * A flex column that groups label and description. Not required if you have no description.
    */
   Content: CheckboxContent,
 
