@@ -5,7 +5,7 @@ Use `bun` for installs and running scripts.
 
 ## Big picture and structure
 
-- Monorepo layout: `apps/` (e.g. `apps/web`) and `packages/` (e.g. `packages/registry`).
+- Multi-app monorepo layout: `apps/` (e.g. `apps/storybook`) and `packages/` (e.g. `packages/registry`).
 
 ```
 .
@@ -109,3 +109,4 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 - Provide bash-ready commands in fenced blocks when giving steps.
 - When editing code, prefer minimal diffs and preserve existing style.
 - If you create multiple files or non-trivial code, include a short run/test snippet.
+- Never use emojis and avoid en or em dashes.
