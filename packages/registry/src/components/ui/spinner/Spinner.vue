@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
   icon?: string
   class?: HTMLAttributes['class']
 }>(), {
-  icon: 'lucide:loader-2',
+  icon: 'lucide:loader-circle',
 })
 </script>
 
