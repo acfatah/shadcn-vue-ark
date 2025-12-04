@@ -13,6 +13,8 @@ import { registryItem } from '@/components/ui/field/_registry'
 
 import FieldDefaultStory from './FieldDefaultStory.vue'
 import FieldDefaultSource from './FieldDefaultStory.vue?raw'
+import FieldTextareaStory from './FieldTextareaStory.vue'
+import FieldTextareaSource from './FieldTextareaStory.vue?raw'
 
 const meta = {
   title: 'Components/Field',
@@ -68,6 +70,28 @@ export const Default: Story = {
 
     template: html`
       <FieldDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Textarea: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: FieldTextareaSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { FieldTextareaStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <FieldTextareaStory v-bind="args" />
     `,
   }),
 }
