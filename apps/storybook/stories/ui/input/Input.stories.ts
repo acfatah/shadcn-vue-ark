@@ -7,6 +7,8 @@ import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
 import TextareaInputSource from './TextareaInputStory.vue?raw'
+import TextInputDefaultStory from './TextInputDefaultStory.vue'
+import TextInputDefaultSource from './TextInputDefaultStory.vue?raw'
 
 const meta = {
   title: 'Components/Input',
@@ -60,6 +62,28 @@ export const Default: Story = {
 
     template: html`
       <InputDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const TextInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TextInputDefaultSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { TextInputDefaultStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TextInputDefaultStory v-bind="args" />
     `,
   }),
 }
