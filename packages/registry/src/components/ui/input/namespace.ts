@@ -1,3 +1,4 @@
+import CheckboxInput from './CheckboxInput.vue'
 import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
 import InputLabel from './InputLabel.vue'
@@ -19,4 +20,7 @@ export const Input = {
 
   /** File component */
   File: FileInput,
+
+  /** Checkbox component - native checkbox input */
+  Checkbox: CheckboxInput,
 }
