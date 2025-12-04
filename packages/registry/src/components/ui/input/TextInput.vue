@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<{
   defaultValue?: string | number
   modelValue?: string | number
   class?: HTMLAttributes['class']
+  invalid?: boolean
+  disabled?: boolean
 }>()
 
 const emits = defineEmits<{
@@ -17,6 +20,9 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
   defaultValue: props.defaultValue,
 })
+
+const invalid = computed(() => props.invalid ?? undefined)
+const disabled = computed(() => props.disabled ?? undefined)
 </script>
 
 <template>
@@ -25,6 +31,8 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     data-scope="input"
     data-part="text"
     type="text"
+    :disabled="disabled"
+    :aria-invalid="invalid"
     :class="cn(
       `
         h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base
