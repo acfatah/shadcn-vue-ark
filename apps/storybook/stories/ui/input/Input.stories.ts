@@ -3,6 +3,8 @@ import { html } from 'common-tags'
 
 import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
+import CheckboxInputStory from './CheckboxInputStory.vue'
+import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
@@ -29,14 +31,12 @@ const meta = {
   },
 
   args: {
-    // required: true,
-    // invalid: false,
+    invalid: false,
     disabled: false,
   },
 
   argTypes: {
-    // required: { control: 'boolean' },
-    // invalid: { control: 'boolean' },
+    invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
 } satisfies Meta<Record<string, any>>
@@ -106,6 +106,46 @@ export const Textarea: Story = {
 
     template: html`
       <TextareaInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Checkbox: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: CheckboxInputSource,
+      },
+    },
+  },
+
+  args: {
+    indeterminate: false,
+    state: 'unchecked',
+  },
+
+  argTypes: {
+    indeterminate: { control: 'boolean' },
+    state: {
+      control: { type: 'select' },
+      options: ['checked', 'unchecked', 'indeterminate'],
+      mapping: {
+        checked: true,
+        unchecked: false,
+        indeterminate: null,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { CheckboxInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <CheckboxInputStory v-bind="args" />
     `,
   }),
 }
