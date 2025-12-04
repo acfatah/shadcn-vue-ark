@@ -102,9 +102,23 @@ The project follows the standard vue project structure:
    bun preview
    ```
 
+5. **Updating dependencies:**
+
+   To check outdated dependencies and update them, run:
+
+   ```bash
+   bun outdated
+   ```
+
+   To update dependencies, run:
+
+   ```bash
+   bun update
+   ```
+
 ### Additional Commands
 
-6. **Linting:**
+1. **Linting:**
 
    ```bash
    # Run ESLint to check for linting issues
@@ -117,7 +131,7 @@ The project follows the standard vue project structure:
    bun lint:changed
    ```
 
-7. **Formatting:**
+2. **Formatting:**
 
    ```bash
    # Auto-fix formatting issues with ESLint
@@ -130,17 +144,14 @@ The project follows the standard vue project structure:
    bun format:staged
    ```
 
-8. **Type checking:**
+3. **Type checking:**
 
    ```bash
    # Run TypeScript type checking
    bun typecheck
-
-   # Run TypeScript type checking with tsgo
-   bun typecheck:tsgo
    ```
 
-9. **Testing:**
+4. **Testing:**
 
    ```bash
    # Run tests
