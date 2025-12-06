@@ -17,7 +17,7 @@ const delegatedProps = reactiveOmit(props, 'class')
     :class="cn(
       // Currently rounded-lg produces different results from rounded-[4px] here
       `
-        size-4 rounded-[4px] border border-input shadow-xs transition-shadow outline-none
+        size-4 min-w-4 rounded-[4px] border border-input shadow-xs transition-shadow outline-none
         disabled:cursor-not-allowed disabled:opacity-50
         data-disabled:cursor-not-allowed data-disabled:opacity-50
         data-[state=checked]:border-primary data-[state=checked]:bg-primary
