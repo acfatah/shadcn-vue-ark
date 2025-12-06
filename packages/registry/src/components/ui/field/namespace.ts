@@ -1,3 +1,4 @@
+import FieldCheckbox from './FieldCheckbox.vue'
 import FieldDescription from './FieldDescription.vue'
 import FieldError from './FieldError.vue'
 import FieldInput from './FieldInput.vue'
@@ -26,6 +27,13 @@ export const Field = {
 
   /** FieldTextarea component */
   Textarea: FieldTextarea,
+
+  /**
+   * Simplified Checkbox components
+   *
+   * See `Checkbox` component for more granular usage.
+   */
+  Checkbox: FieldCheckbox,
 
   /**
    * FieldTitle component

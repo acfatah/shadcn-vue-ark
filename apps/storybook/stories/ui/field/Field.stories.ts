@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/field'
 import { registryItem } from '@/components/ui/field/_registry'
 
+import FieldCheckboxStory from './FieldCheckboxStory.vue'
+import FieldCheckboxSource from './FieldCheckboxStory.vue?raw'
 import FieldDefaultStory from './FieldDefaultStory.vue'
 import FieldDefaultSource from './FieldDefaultStory.vue?raw'
 import FieldTextareaStory from './FieldTextareaStory.vue'
@@ -92,6 +94,33 @@ export const Textarea: Story = {
 
     template: html`
       <FieldTextareaStory v-bind="args" />
+    `,
+  }),
+}
+
+/**
+ * Simplified Checkbox components
+ *
+ * See `Checkbox` component for more granular usage.
+ */
+export const Checkbox: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: FieldCheckboxSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { FieldCheckboxStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <FieldCheckboxStory v-bind="args" />
     `,
   }),
 }

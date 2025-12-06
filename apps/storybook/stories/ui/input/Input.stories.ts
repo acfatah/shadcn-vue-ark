@@ -110,6 +110,11 @@ export const Textarea: Story = {
   }),
 }
 
+/**
+ * Checkbox component using native checkbox input.
+ *
+ * See `Checkbox` component for more granular usage.
+ */
 export const Checkbox: Story = {
   parameters: {
     docs: {
