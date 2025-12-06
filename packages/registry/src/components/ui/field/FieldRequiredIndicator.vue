@@ -18,7 +18,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Field.RequiredIndicator
     v-bind="forwardedProps"
-    :class="cn('text-xs font-normal text-destructive', props.class)"
+    :class="cn('text-xs leading-none font-normal text-destructive', props.class)"
   >
     <slot>*</slot>
   </Field.RequiredIndicator>
