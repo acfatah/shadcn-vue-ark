@@ -19,7 +19,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     :class="cn(
       `
         text-sm leading-none font-medium select-none
-        data-disabled:cursor-not-allowed data-disabled:opacity-50
+        data-disabled:opacity-50
       `,
       props.class,
     )"
