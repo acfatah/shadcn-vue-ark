@@ -38,7 +38,9 @@ const props = withDefaults(defineProps<{
       :required="props.required"
     >
       <Field.Checkbox id="accept-terms">
-        <Checkbox.Label>Accept terms and conditions</Checkbox.Label>
+        <Checkbox.Label>
+          Accept terms and conditions<Field.RequiredIndicator />
+        </Checkbox.Label>
         <Checkbox.Description>By clicking this checkbox, you agree to the terms and conditions.</Checkbox.Description>
       </Field.Checkbox>
       <Field.Error v-if="props.invalid">
