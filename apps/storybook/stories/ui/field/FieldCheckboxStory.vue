@@ -54,14 +54,11 @@ const props = withDefaults(defineProps<{
       <Field.Checkbox
         id="notification"
         :class="cn(
-          `
-            flex items-start gap-3 rounded-lg border p-3
-            data-[state=checked]:border-primary data-[state=checked]:bg-primary/5
-            dark:data-[state=checked]:bg-primary/10
-          `,
+          `flex items-start gap-3 rounded-lg border p-3`,
           `
             data-invalid:border-destructive/50 data-invalid:bg-destructive/5
-            data-[state=unchecked]:data-invalid:[&_[data-scope=checkbox][data-part=control]]:border-destructive/50
+            data-[state=checked]:border-primary data-[state=checked]:bg-primary/5
+            dark:data-[state=checked]:bg-primary/10
           `,
         )"
       >
