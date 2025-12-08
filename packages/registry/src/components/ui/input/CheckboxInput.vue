@@ -102,7 +102,7 @@ function onClick() {
     <div
       :disabled="disabled ? '' : undefined"
       :data-state="state"
-      :aria-invalid="disabled ? 'true' : undefined"
+      :data-invalid="invalid ? 'true' : undefined"
       :class="cn(
         // Currently rounded-lg produces different results from rounded-[4px] here
         `
@@ -117,6 +117,7 @@ function onClick() {
           data-[state=checked]:text-primary-foreground
           data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary
           data-[state=indeterminate]:text-primary-foreground
+          data-invalid:data-[state=unchecked]:border-destructive/50
         `,
       )"
     >
