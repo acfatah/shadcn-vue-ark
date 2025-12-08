@@ -60,6 +60,7 @@ const props = withDefaults(defineProps<{
           `
             data-invalid:border-destructive/50 data-invalid:bg-destructive/5
             data-[state=checked]:border-primary data-[state=checked]:bg-primary/5
+            data-disabled:data-[state=checked]:border-primary/50
             dark:data-[state=checked]:bg-primary/10
           `,
         )"
