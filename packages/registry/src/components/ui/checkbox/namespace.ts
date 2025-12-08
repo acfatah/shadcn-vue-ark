@@ -48,11 +48,15 @@ export const Checkbox = {
 
   /**
    * CheckboxRootProvider component
+   *
+   * See: https://ark-ui.com/docs/components/checkbox#root-provider
    */
   RootProvider: CheckboxRootProvider,
 
   /**
    * CheckboxGroup component
+   *
+   * Component to manage a group of checkboxes.
    */
   Group: CheckboxGroup,
 }
