@@ -2,34 +2,22 @@
 import { computed, useAttrs } from 'vue'
 import { Input } from '@/components/ui/input'
 
-const disabled = computed(() => {
-  const attrs = useAttrs()
-
-  return attrs.disabled as boolean | undefined
-})
-
-const state = computed(() => {
-  const attrs = useAttrs()
-
-  return attrs.state as boolean | null
-})
-
-const indeterminate = computed(() => {
-  const attrs = useAttrs()
-
-  return attrs.indeterminate as boolean | undefined
-})
+const disabled = computed(() => useAttrs().disabled as boolean | undefined)
+const checked = computed(() => useAttrs().modelValue as boolean | undefined)
+const indeterminate = computed(() => useAttrs().indeterminate as boolean | undefined)
+const invalid = computed(() => useAttrs().invalid as boolean | undefined)
 </script>
 
 <template>
   <div class="group flex items-center gap-2">
     <Input.Checkbox
-      id="single"
-      :model-value="state"
+      id="subscribe"
+      :model-value="checked"
       :disabled="disabled"
       :indeterminate="indeterminate"
+      :invalid="invalid"
     />
-    <Input.Label for="single">
+    <Input.Label for="subscribe">
       Subscribe to newsletter
     </Input.Label>
   </div>

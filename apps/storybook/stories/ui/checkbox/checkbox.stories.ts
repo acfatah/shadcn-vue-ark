@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
-import type { Checkbox } from '@/components/ui/checkbox'
 import {
   CheckboxControl,
   CheckboxGroup,
@@ -35,7 +34,19 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Checkbox>
+
+  args: {
+    required: true,
+    invalid: false,
+    disabled: false,
+  },
+
+  argTypes: {
+    required: { control: 'boolean' },
+    invalid: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+  },
+} satisfies Meta<typeof CheckboxRoot>
 
 export default meta
 type Story = StoryObj<typeof CheckboxRoot>
