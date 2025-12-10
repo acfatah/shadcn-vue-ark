@@ -66,8 +66,10 @@ export default antfu(
     },
 
     settings: {
+      // https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md
       'better-tailwindcss': {
         entryPoint: 'src/styles/global.css',
+        variables: ['size', 'variant'],
       },
     },
   },
