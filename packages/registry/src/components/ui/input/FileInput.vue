@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<{
+interface Props {
   defaultValue?: File[]
   modelValue?: File[]
   multiple?: boolean
@@ -11,7 +11,9 @@ const props = defineProps<{
   name?: string
   disabled?: boolean
   class?: HTMLAttributes['class']
-}>()
+}
+
+const props = defineProps<Props>()
 
 const emits = defineEmits<{
   (e: 'update:modelValue', payload: File[]): void

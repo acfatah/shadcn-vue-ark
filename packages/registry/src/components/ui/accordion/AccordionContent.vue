@@ -4,10 +4,11 @@ import { Accordion } from '@ark-ui/vue/accordion'
 import { reactiveOmit } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<{
+interface Props {
   class?: HTMLAttributes['class']
-}>(), {})
+}
 
+const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 

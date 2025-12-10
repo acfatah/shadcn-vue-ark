@@ -2,9 +2,11 @@
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
 
-defineProps<{
+interface Props {
   class?: HTMLAttributes['class']
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -21,7 +23,7 @@ defineProps<{
         [&>a:hover]:text-primary
         [[data-variant=legend]+&]:-mt-1.5
       `,
-      $props.class,
+      props.class,
     )"
   >
     <slot />

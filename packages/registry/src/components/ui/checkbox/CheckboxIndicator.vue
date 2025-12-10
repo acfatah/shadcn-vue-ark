@@ -5,10 +5,12 @@ import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 
-const props = withDefaults(defineProps<{
+interface Props {
   class?: HTMLAttributes['class']
   icon?: string
-}>(), {
+}
+
+const props = withDefaults(defineProps<Props>(), {
   icon: 'lucide:check',
 })
 

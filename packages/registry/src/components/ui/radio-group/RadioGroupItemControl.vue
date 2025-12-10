@@ -5,10 +5,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 import RadioGroupIndicator from './RadioGroupIndicator.vue'
 
-const props = withDefaults(defineProps<{
+interface Props {
   class?: HTMLAttributes['class']
-}>(), {})
+}
 
+const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 

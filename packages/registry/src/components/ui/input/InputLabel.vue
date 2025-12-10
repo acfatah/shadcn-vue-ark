@@ -2,9 +2,11 @@
 import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
 
-defineProps<{
+interface Props {
   class?: HTMLAttributes['class']
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -18,7 +20,7 @@ defineProps<{
         peer-disabled:opacity-50
         peer-data-disabled:opacity-50
       `,
-      $props.class,
+      props.class,
     )"
   >
     <slot />

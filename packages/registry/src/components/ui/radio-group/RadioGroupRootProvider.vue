@@ -3,9 +3,11 @@ import type { UseRadioGroupReturn } from '@ark-ui/vue/radio-group'
 import type { UnwrapRef } from 'vue'
 import { RadioGroup } from '@ark-ui/vue/radio-group'
 
-const props = defineProps<{
+interface Props {
   value: UnwrapRef<UseRadioGroupReturn>
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>

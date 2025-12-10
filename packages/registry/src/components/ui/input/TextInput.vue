@@ -4,13 +4,15 @@ import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<{
+interface Props {
   defaultValue?: string | number
   modelValue?: string | number
   class?: HTMLAttributes['class']
   invalid?: boolean
   disabled?: boolean
-}>()
+}
+
+const props = defineProps<Props>()
 
 const emits = defineEmits<{
   (e: 'update:modelValue', payload: string | number): void

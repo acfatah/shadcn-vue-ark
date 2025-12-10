@@ -5,11 +5,12 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps } from '@/composables/use-forward-props'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<{
+interface Props {
   value: string
   class?: HTMLAttributes['class']
-}>(), {})
+}
 
+const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 </script>

@@ -5,11 +5,13 @@ import { cn } from '@/lib/utils'
 
 type Orientation = 'horizontal' | 'vertical'
 
-const props = withDefaults(defineProps<{
+interface Props {
   orientation?: Orientation
   decorative?: boolean
   class?: HTMLAttributes['class']
-}>(), {
+}
+
+const props = withDefaults(defineProps<Props>(), {
   orientation: 'horizontal',
   decorative: true,
 })

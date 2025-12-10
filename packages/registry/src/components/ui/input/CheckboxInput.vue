@@ -5,7 +5,7 @@ import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<{
+interface Props {
   defaultValue?: boolean | null
   modelValue?: boolean | null
   value?: string | number
@@ -17,7 +17,9 @@ const props = withDefaults(defineProps<{
   icon?: string
   indeterminateIcon?: string
   class?: HTMLAttributes['class']
-}>(), {
+}
+
+const props = withDefaults(defineProps<Props>(), {
   indeterminate: false,
   icon: 'lucide:check',
   indeterminateIcon: 'lucide:minus',

@@ -3,9 +3,11 @@ import type { UseCheckboxReturn } from '@ark-ui/vue/checkbox'
 import type { UnwrapRef } from 'vue'
 import { Checkbox } from '@ark-ui/vue/checkbox'
 
-const props = defineProps<{
+interface Props {
   value: UnwrapRef<UseCheckboxReturn>
-}>()
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
