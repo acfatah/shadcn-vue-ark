@@ -27,7 +27,7 @@ import { Badge } from '@/components/ui/badge'
         "
       >
         <!-- <BadgeCheckIcon /> -->
-        <Icon icon="lucide:check" />
+        <Icon icon="lucide:badge-check" />
         Verified
       </Badge>
       <Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
