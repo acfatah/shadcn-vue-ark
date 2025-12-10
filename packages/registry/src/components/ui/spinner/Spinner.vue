@@ -3,10 +3,12 @@ import type { HTMLAttributes } from 'vue'
 import { Icon } from '@iconify/vue'
 import { cn } from '@/lib/utils'
 
-const props = withDefaults(defineProps<{
+interface Props {
   icon?: string
   class?: HTMLAttributes['class']
-}>(), {
+}
+
+const props = withDefaults(defineProps<Props>(), {
   icon: 'lucide:loader-circle',
 })
 </script>
