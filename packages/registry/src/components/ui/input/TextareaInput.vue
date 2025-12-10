@@ -12,11 +12,12 @@ interface Props {
   disabled?: boolean
 }
 
-const props = defineProps<Props>()
-
-const emits = defineEmits<{
+interface Emits {
   (e: 'update:modelValue', payload: string | number): void
-}>()
+}
+
+const props = defineProps<Props>()
+const emits = defineEmits<Emits>()
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,

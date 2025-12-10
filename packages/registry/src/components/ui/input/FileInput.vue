@@ -13,12 +13,13 @@ interface Props {
   class?: HTMLAttributes['class']
 }
 
-const props = defineProps<Props>()
-
-const emits = defineEmits<{
+interface Emits {
   (e: 'update:modelValue', payload: File[]): void
   (e: 'change', payload: File[]): void
-}>()
+}
+
+const props = defineProps<Props>()
+const emits = defineEmits<Emits>()
 
 const files = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -28,7 +29,6 @@ const files = useVModel(props, 'modelValue', emits, {
 function onChange(event: Event) {
   const target = event.target as HTMLInputElement | null
   const list = target?.files
-
   const next = list ? Array.from(list) : []
 
   files.value = next
