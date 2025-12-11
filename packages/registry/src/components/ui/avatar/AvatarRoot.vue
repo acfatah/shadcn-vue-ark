@@ -1,0 +1,27 @@
+<script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+import { Avatar } from '@ark-ui/vue/avatar'
+import { reactiveOmit } from '@vueuse/core'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { cn } from '@/lib/utils'
+
+interface Props {
+  class?: HTMLAttributes['class']
+}
+
+const props = withDefaults(defineProps<Props>(), {})
+const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
+</script>
+
+<template>
+  <Avatar.Root
+    v-bind="forwardedProps"
+    :class="cn(
+      `relative flex size-8 shrink-0 overflow-hidden rounded-full`,
+      props.class,
+    )"
+  >
+    <slot />
+  </Avatar.Root>
+</template>
