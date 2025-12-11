@@ -36,8 +36,8 @@
   "dependencies": {
     "commander": "^14.0.2",
     "consola": "^3.4.2",
-    "oxc-parser": "^0.99.0",
-    "shadcn": "^3.5.1",
+    "oxc-parser": "^0.102.0",
+    "shadcn": "^3.5.2",
     "vue": "^3.5.25",
     "zod": "^4.1.13"
   },
