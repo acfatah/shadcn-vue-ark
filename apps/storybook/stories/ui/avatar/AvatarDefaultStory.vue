@@ -14,13 +14,7 @@ import { Avatar } from '@/components/ui/avatar'
       <Avatar.Fallback>ER</Avatar.Fallback>
     </Avatar.Root>
 
-    <div
-      class="
-        flex -space-x-2
-        *:data-[scope=avatar]:ring-2 *:data-[scope=avatar]:ring-background
-        *:data-[scope=avatar]:grayscale
-      "
-    >
+    <Avatar.Group>
       <Avatar.Root>
         <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
         <Avatar.Fallback>CN</Avatar.Fallback>
@@ -38,6 +32,6 @@ import { Avatar } from '@/components/ui/avatar'
         />
         <Avatar.Fallback>ER</Avatar.Fallback>
       </Avatar.Root>
-    </div>
+    </Avatar.Group>
   </div>
 </template>

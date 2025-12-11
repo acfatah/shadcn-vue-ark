@@ -3,6 +3,7 @@ import { html } from 'common-tags'
 
 import {
   AvatarFallback,
+  AvatarGroup,
   AvatarImage,
   AvatarRoot,
 } from '@/components/ui/avatar'
@@ -16,6 +17,7 @@ const meta = {
   subcomponents: {
     AvatarImage,
     AvatarFallback,
+    AvatarGroup,
   },
   tags: ['autodocs'],
 
