@@ -66,7 +66,7 @@ const meta = {
 } satisfies Meta<typeof RadioGroupRoot>
 
 export default meta
-type Story = StoryObj<typeof RadioGroupRoot>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   parameters: {
