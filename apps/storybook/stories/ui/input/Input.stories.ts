@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
 import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
+import InlineGroupStory from './InlineGroupStory.vue'
+import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
@@ -62,6 +64,36 @@ export const Default: Story = {
 
     template: html`
       <InputDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const InlineGroup: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: InlineGroupSource,
+      },
+    },
+  },
+
+  args: {
+    inline: true,
+  },
+
+  argTypes: {
+    inline: { control: { type: 'boolean' } },
+  },
+
+  render: args => ({
+    components: { InlineGroupStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <InlineGroupStory v-bind="args" />
     `,
   }),
 }
