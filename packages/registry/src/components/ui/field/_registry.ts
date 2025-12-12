@@ -7,7 +7,8 @@ export const registryItem = {
   title: 'Field',
 
   description: html`
-    Provides a flexible container for form inputs, labels, and helper text.
+    Provides a flexible container for form inputs, labels, and helper text, based
+    on Ark UI field components.
 
     References:
     - Headless API: https://ark-ui.com/docs/components/field

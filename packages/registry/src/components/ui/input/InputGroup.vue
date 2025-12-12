@@ -1,60 +1,41 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
+import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
   class?: HTMLAttributes['class']
+  inline?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, 'class', 'inline')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
+const inline = computed(() => props.inline ? 'true' : 'false')
 </script>
 
 <template>
   <div
     v-bind="forwardedProps"
-    data-scope="input"
-    data-part="input-group"
+    data-scope="input-group"
+    :data-inline="inline"
     :class="cn(
+      'flex max-w-md flex-col gap-3',
+      `md:data-[inline=true]:grid md:data-[inline=true]:grid-cols-3`,
+      `md:data-[inline=true]:[&_[data-scope=input][data-part=label]]:col-span-1`,
+      `md:data-[inline=true]:**:data-[scope$='-input']:col-span-2`,
       `
-        group/input-group relative flex w-full items-center rounded-md border border-input shadow-xs
-        transition-[color,box-shadow] outline-none
-        dark:bg-input/30
+        md:data-[inline=true]:[&_[data-scope=input][data-part=description]]:col-span-2
+        md:data-[inline=true]:[&_[data-scope=input][data-part=description]]:col-start-2
       `,
       `
-        h-9 min-w-0
-        has-[>textarea]:h-auto
+        md:data-[inline=true]:[&_[data-scope=input][data-part=error]]:col-span-2
+        md:data-[inline=true]:[&_[data-scope=input][data-part=error]]:col-start-2
       `,
-
-      // Variants based on alignment.
-      'has-[>[data-align=inline-start]]:[&>input]:pl-2',
-      'has-[>[data-align=inline-end]]:[&>input]:pr-2',
-      `
-        has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col
-        has-[>[data-align=block-start]]:[&>input]:pb-3
-      `,
-      `
-        has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col
-        has-[>[data-align=block-end]]:[&>input]:pt-3
-      `,
-
-      // Focus state.
-      `
-        has-[[data-slot=input-group-control]:focus-visible]:border-ring
-        has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]
-        has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50
-      `,
-
-      // Error state.
-      `
-        has-[[data-slot][aria-invalid=true]]:border-destructive
-        has-[[data-slot][aria-invalid=true]]:ring-destructive/20
-        dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40
-      `,
-      props.class)"
+      props.class,
+    )"
   >
     <slot />
   </div>
