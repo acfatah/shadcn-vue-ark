@@ -1,58 +1,24 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { useVModel } from '@vueuse/core'
-import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import type {
+  Emits as PrimitiveInputEmits,
+  Props as PrimitiveInputProps,
+} from './PrimitiveInput.vue'
+import PrimitiveInput from './PrimitiveInput.vue'
 
-interface Props {
-  defaultValue?: string | number
-  modelValue?: string | number
-  class?: HTMLAttributes['class']
-  invalid?: boolean
-  disabled?: boolean
-}
-
-interface Emits {
-  (e: 'update:modelValue', payload: string | number): void
-}
+interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {}
+interface Emits extends PrimitiveInputEmits {}
 
 const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  passive: true,
-  defaultValue: props.defaultValue,
-})
-
-const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const forwardedProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <input
-    v-model="modelValue"
-    data-scope="text-input"
+  <PrimitiveInput
+    scope="text-input"
     type="text"
-    :disabled="disabled"
-    :aria-invalid="invalid"
-    :class="cn(
-      `
-        h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base
-        shadow-xs transition-[color,box-shadow] outline-none
-        selection:bg-primary selection:text-primary-foreground
-        file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium
-        file:text-foreground
-        placeholder:text-muted-foreground
-        disabled:pointer-events-none disabled:opacity-50
-        md:text-sm
-        dark:bg-input/30
-      `,
-      `focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50`,
-      `
-        aria-invalid:border-destructive aria-invalid:ring-destructive/20
-        dark:aria-invalid:ring-destructive/40
-      `,
-      props.class,
-    )"
-  >
+    :class="props.class"
+    v-bind="forwardedProps"
+  />
 </template>
