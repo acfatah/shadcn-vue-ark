@@ -53,6 +53,12 @@ export const Input = {
   /** File component */
   File: FileInput,
 
-  /** Checkbox component - native checkbox input */
+  /**
+   * Checkbox component
+   *
+   * Native checkbox input.
+   *
+   *  See `Checkbox` component for more granular usage.
+   */
   Checkbox: CheckboxInput,
 }
