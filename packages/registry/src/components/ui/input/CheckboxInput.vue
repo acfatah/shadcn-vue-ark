@@ -85,6 +85,7 @@ function onClick() {
   <div
     :data-disabled="disabled ? '' : undefined"
     :class="cn('peer relative inline-flex', props.class)"
+    data-scope="checkbox-input"
     @click="onClick"
   >
     <input
@@ -94,14 +95,15 @@ function onClick() {
       :disabled="disabled"
       :required="required"
       :aria-invalid="invalid"
-      data-scope="input"
-      data-part="checkbox"
+      data-scope="checkbox-input"
+      data-part="input"
       type="checkbox"
       class="peer sr-only"
       @change="onChange"
     >
-
     <div
+      data-scope="checkbox-input"
+      data-part="control"
       :disabled="disabled ? '' : undefined"
       :data-state="state"
       :data-invalid="invalid ? 'true' : undefined"
@@ -125,11 +127,15 @@ function onClick() {
     >
       <Icon
         v-if="state === 'checked'"
+        data-scope="checkbox-input"
+        data-part="checked-icon"
         :icon="icon "
         class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
       />
       <Icon
         v-if="state === 'indeterminate'"
+        data-scope="checkbox-input"
+        data-part="indeterminate-icon"
         :icon="indeterminateIcon "
         class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
       />

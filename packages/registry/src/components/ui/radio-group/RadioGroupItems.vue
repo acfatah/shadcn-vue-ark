@@ -16,7 +16,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <div
     data-scope="radio-group"
-    data-part="item-group"
+    data-part="items"
     v-bind="forwardedProps"
     :class="cn(
       `

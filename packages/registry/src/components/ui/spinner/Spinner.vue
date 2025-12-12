@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <Icon
+    data-scope="spinner"
     :icon="props.icon"
     role="status"
     aria-label="Loading"

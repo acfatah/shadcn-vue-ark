@@ -42,8 +42,7 @@ function onChange(event: Event) {
     :accept="accept"
     :name="name"
     :disabled="disabled"
-    data-scope="input"
-    data-part="file"
+    data-scope="file-input"
     type="file"
     :class="cn(
       `

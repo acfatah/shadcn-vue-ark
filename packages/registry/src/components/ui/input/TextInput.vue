@@ -31,8 +31,7 @@ const disabled = computed(() => props.disabled ?? undefined)
 <template>
   <input
     v-model="modelValue"
-    data-scope="input"
-    data-part="text"
+    data-scope="text-input"
     type="text"
     :disabled="disabled"
     :aria-invalid="invalid"
