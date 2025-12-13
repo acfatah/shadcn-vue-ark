@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
 import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
+import EmailInputStory from './EmailInputStory.vue'
+import EmailInputSource from './EmailInputStory.vue?raw'
 import InlineGroupStory from './InlineGroupStory.vue'
 import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
@@ -28,6 +30,7 @@ const meta = {
     TextareaInput: Input.Textarea,
     CheckboxInput: Input.Checkbox,
     SearchInput: Input.Search,
+    EmailInput: Input.Email,
   },
   tags: ['autodocs'],
 
@@ -235,6 +238,36 @@ export const SearchInput: Story = {
 
     template: html`
       <SearchInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const EmailInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: EmailInputSource,
+      },
+    },
+  },
+
+  args: {
+    ...iconControl.args,
+  },
+
+  argTypes: {
+    ...iconControl.argTypes,
+  },
+
+  render: args => ({
+    components: { EmailInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <EmailInputStory v-bind="args" />
     `,
   }),
 }
