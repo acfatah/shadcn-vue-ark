@@ -15,6 +15,8 @@ import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
 import NumberInputStory from './NumberInputStory.vue'
 import NumberInputSource from './NumberInputStory.vue?raw'
+import PasswordInputStory from './PasswordInputStory.vue'
+import PasswordInputSource from './PasswordInputStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
 import SearchInputSource from './SearchInputStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
@@ -37,6 +39,7 @@ const meta = {
     FileInput: Input.File,
     SearchInput: Input.Search,
     EmailInput: Input.Email,
+    PasswordInput: Input.Password,
   },
   tags: ['autodocs'],
 
@@ -326,6 +329,40 @@ export const EmailInput: Story = {
 
     template: html`
       <EmailInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const PasswordInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: PasswordInputSource,
+      },
+    },
+  },
+
+  args: {
+    hideIcon: false,
+    showPasswordIcon: undefined,
+    hidePasswordIcon: undefined,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+    showPasswordIcon: { control: 'text' },
+    hidePasswordIcon: { control: 'text' },
+  },
+
+  render: args => ({
+    components: { PasswordInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <PasswordInputStory v-bind="args" />
     `,
   }),
 }
