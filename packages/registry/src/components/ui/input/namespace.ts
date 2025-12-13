@@ -1,4 +1,5 @@
 import CheckboxInput from './CheckboxInput.vue'
+import EmailInput from './EmailInput.vue'
 import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
 import InputError from './InputError.vue'
@@ -77,4 +78,7 @@ export const Input = {
 
   /** Search input field */
   Search: SearchInput,
+
+  /** Email input field */
+  Email: EmailInput,
 }
