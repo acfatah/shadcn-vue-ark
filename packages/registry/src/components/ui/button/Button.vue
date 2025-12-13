@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils'
 import type { ButtonVariants } from '.'
 import { buttonVariants } from '.'
 
-interface Props {
+export interface Props {
+  scope?: string
   class?: HTMLAttributes['class']
   asChild?: boolean
   disabled?: boolean
@@ -17,7 +18,10 @@ interface Props {
   variant?: ButtonVariants['variant']
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  scope: 'button',
+})
+
 const delegatedProps = reactiveOmit(props, [
   'class',
   'asChild',
@@ -35,7 +39,7 @@ const ariaDisabled = computed(() => (nativeDisabled.value ? 'true' : undefined))
 <template>
   <component
     :is="props.asChild ? Dynamic : 'button'"
-    data-scope="button"
+    :data-scope="props.scope"
     v-bind="forwardedProps"
     :disabled="nativeDisabled"
     :aria-disabled="ariaDisabled"
