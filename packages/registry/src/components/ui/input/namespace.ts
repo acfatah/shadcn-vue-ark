@@ -5,6 +5,7 @@ import InputError from './InputError.vue'
 import InputGroup from './InputGroup.vue'
 import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
+import SearchInput from './SearchInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
 
@@ -61,4 +62,7 @@ export const Input = {
    *  See `Checkbox` component for more granular usage.
    */
   Checkbox: CheckboxInput,
+
+  /** Search input field */
+  Search: SearchInput,
 }
