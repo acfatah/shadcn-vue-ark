@@ -13,6 +13,8 @@ import InlineGroupStory from './InlineGroupStory.vue'
 import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
+import NumberInputStory from './NumberInputStory.vue'
+import NumberInputSource from './NumberInputStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
 import SearchInputSource from './SearchInputStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
@@ -30,6 +32,7 @@ const meta = {
     InputRequiredIndicator: Input.RequiredIndicator,
     TextInput: Input.Text,
     TextareaInput: Input.Textarea,
+    NumberInput: Input.Number,
     CheckboxInput: Input.Checkbox,
     FileInput: Input.File,
     SearchInput: Input.Search,
@@ -151,6 +154,36 @@ export const Textarea: Story = {
 
     template: html`
       <TextareaInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const NumberInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: NumberInputSource,
+      },
+    },
+  },
+
+  args: {
+    hideSpinner: false,
+  },
+
+  argTypes: {
+    hideSpinner: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { NumberInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <NumberInputStory v-bind="args" />
     `,
   }),
 }
