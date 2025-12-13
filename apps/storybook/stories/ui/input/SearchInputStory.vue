@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input'
 
 const props = defineProps({
   icon: String,
-  noIcon: Boolean,
+  hideIcon: Boolean,
 })
 </script>
 

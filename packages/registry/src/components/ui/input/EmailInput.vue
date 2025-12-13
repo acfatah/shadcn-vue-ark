@@ -12,7 +12,7 @@ import PrimitiveInput from './PrimitiveInput.vue'
 
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
-  noIcon?: boolean
+  hideIcon?: boolean
   icon?: string
 }
 interface Emits extends PrimitiveInputEmits {}
@@ -23,15 +23,15 @@ defineOptions({
 
 const props = withDefaults(defineProps<Props>(), {
   ariaLabel: 'Email address',
-  noIcon: false,
+  hideIcon: false,
   icon: 'lucide:mail',
 })
 
 const emits = defineEmits<Emits>()
-const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'noIcon'])
+const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'hideIcon'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
-const hasIcon = computed(() => !props.noIcon && !!props.icon)
+const hasIcon = computed(() => !props.hideIcon && !!props.icon)
 
 function handleInvalid(_event: Event) {
   nativeInvalid.value = true
@@ -57,7 +57,11 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
   </UseTemplate>
 
   <template v-if="hasIcon">
-    <div class="relative">
+    <div
+      data-scope="email-input"
+      data-part="wrapper"
+      class="relative"
+    >
       <EmailInput />
       <div
         data-scope="email-input"

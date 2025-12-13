@@ -224,12 +224,12 @@ export const FileInput: Story = {
 
 const iconControl = {
   args: {
-    noIcon: false,
+    hideIcon: false,
     icon: undefined,
   },
 
   argTypes: {
-    noIcon: {
+    hideIcon: {
       control: 'boolean',
       description: 'Use the `no-icon` attribute to suppress the search icon while keeping the layout.',
     },

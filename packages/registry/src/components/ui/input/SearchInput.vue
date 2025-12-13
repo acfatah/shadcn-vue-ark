@@ -12,7 +12,7 @@ import PrimitiveInput from './PrimitiveInput.vue'
 
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
-  noIcon?: boolean
+  hideIcon?: boolean
   icon?: string
 }
 interface Emits extends PrimitiveInputEmits {}
@@ -23,14 +23,14 @@ defineOptions({
 
 const props = withDefaults(defineProps<Props>(), {
   ariaLabel: 'Search',
-  noIcon: false,
+  hideIcon: false,
   icon: 'lucide:search',
 })
 
 const emits = defineEmits<Emits>()
-const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'noIcon'])
+const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'hideIcon'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
-const hasIcon = computed(() => !props.noIcon && !!props.icon)
+const hasIcon = computed(() => !props.hideIcon && !!props.icon)
 
 const [UseTemplate, SearchInput] = createReusableTemplate()
 </script>

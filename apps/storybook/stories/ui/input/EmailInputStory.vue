@@ -6,7 +6,7 @@ const props = defineProps({
   invalid: Boolean,
   disabled: Boolean,
   icon: String,
-  noIcon: Boolean,
+  hideIcon: Boolean,
 })
 
 const formRef = ref<HTMLFormElement | null>(null)
