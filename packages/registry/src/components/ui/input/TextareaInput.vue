@@ -5,15 +5,15 @@ import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
 interface Props {
-  defaultValue?: string | number
-  modelValue?: string | number
+  defaultValue?: string | undefined
+  modelValue?: string | undefined
   class?: HTMLAttributes['class']
   invalid?: boolean
   disabled?: boolean
 }
 
 interface Emits {
-  (e: 'update:modelValue', payload: string | number): void
+  (e: 'update:modelValue', payload: string | undefined): void
 }
 
 const props = defineProps<Props>()
