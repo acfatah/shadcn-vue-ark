@@ -14,6 +14,7 @@ import SearchInput from './SearchInput.vue'
 import SubmitInput from './SubmitInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
+import UrlInput from './UrlInput.vue'
 
 import { Button } from '../button'
 
@@ -109,4 +110,7 @@ export const Input = {
 
   /** Color input field */
   Color: ColorInput,
+
+  /** URL input field */
+  Url: UrlInput,
 }
