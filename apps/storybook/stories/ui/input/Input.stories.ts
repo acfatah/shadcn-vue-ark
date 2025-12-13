@@ -9,6 +9,8 @@ import InlineGroupStory from './InlineGroupStory.vue'
 import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
+import SearchInputStory from './SearchInputStory.vue'
+import SearchInputSource from './SearchInputStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
 import TextareaInputSource from './TextareaInputStory.vue?raw'
 import TextInputDefaultStory from './TextInputDefaultStory.vue'
@@ -183,6 +185,36 @@ export const Checkbox: Story = {
 
     template: html`
       <CheckboxInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const SearchInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: SearchInputSource,
+      },
+    },
+  },
+
+  args: {
+    icon: undefined,
+  },
+
+  argTypes: {
+    icon: { control: 'text' },
+  },
+
+  render: args => ({
+    components: { SearchInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <SearchInputStory v-bind="args" />
     `,
   }),
 }
