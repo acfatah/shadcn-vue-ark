@@ -7,6 +7,7 @@ import InputGroup from './InputGroup.vue'
 import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
 import NumberInput from './NumberInput.vue'
+import PasswordInput from './PasswordInput.vue'
 import SearchInput from './SearchInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
@@ -85,4 +86,7 @@ export const Input = {
 
   /** Email input field */
   Email: EmailInput,
+
+  /** Password input field */
+  Password: PasswordInput,
 }
