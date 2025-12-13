@@ -61,11 +61,13 @@ const meta = {
   args: {
     invalid: false,
     disabled: false,
+    loading: false,
   },
 
   argTypes: {
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    loading: { control: 'boolean' },
   },
 } satisfies Meta<Record<string, any>>
 
@@ -208,18 +210,6 @@ export const Buttons: Story = {
         code: ButtonsSource,
       },
     },
-  },
-
-  args: {
-    disabled: false,
-    invalid: false,
-    loading: false,
-  },
-
-  argTypes: {
-    disabled: { control: 'boolean' },
-    invalid: { control: 'boolean' },
-    loading: { control: 'boolean' },
   },
 
   render: args => ({
