@@ -9,6 +9,8 @@ import SearchInput from './SearchInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
 
+import { Button } from '../button'
+
 export const Input = {
   /**
    * InputGroup component
@@ -44,6 +46,16 @@ export const Input = {
    * See also `FieldError` component.
    */
   Error: InputError,
+
+  /**
+   * Alias to `Button` component
+   *
+   * Displays a button or a component that looks like a button.
+   *
+   * References:
+   * - shadcn/ui: https://ui.shadcn.com/docs/components/button
+   */
+  Button,
 
   /** TextInput component */
   Text: TextInput,
