@@ -23,6 +23,8 @@ import PasswordInputStory from './PasswordInputStory.vue'
 import PasswordInputSource from './PasswordInputStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
 import SearchInputSource from './SearchInputStory.vue?raw'
+import TelInputStory from './TelInputStory.vue'
+import TelInputSource from './TelInputStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
 import TextareaInputSource from './TextareaInputStory.vue?raw'
 import TextInputDefaultStory from './TextInputDefaultStory.vue'
@@ -50,6 +52,7 @@ const meta = {
     PasswordInput: Input.Password,
     ColorInput: Input.Color,
     UrlInput: Input.Url,
+    TelInput: Input.Tel,
   },
   tags: ['autodocs'],
 
@@ -444,6 +447,28 @@ export const UrlInput: Story = {
 
     template: html`
       <UrlInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const TelInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TelInputSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { TelInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TelInputStory v-bind="args" />
     `,
   }),
 }
