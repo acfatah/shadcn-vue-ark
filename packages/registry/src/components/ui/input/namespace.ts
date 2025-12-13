@@ -12,6 +12,7 @@ import PasswordInput from './PasswordInput.vue'
 import ResetInput from './ResetInput.vue'
 import SearchInput from './SearchInput.vue'
 import SubmitInput from './SubmitInput.vue'
+import TelInput from './TelInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
 import UrlInput from './UrlInput.vue'
@@ -113,4 +114,7 @@ export const Input = {
 
   /** URL input field */
   Url: UrlInput,
+
+  /** Telephone input field */
+  Tel: TelInput,
 }
