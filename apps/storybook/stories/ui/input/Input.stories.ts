@@ -7,6 +7,8 @@ import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import EmailInputStory from './EmailInputStory.vue'
 import EmailInputSource from './EmailInputStory.vue?raw'
+import FileInputStory from './FileInputStory.vue'
+import FileInputSource from './FileInputStory.vue?raw'
 import InlineGroupStory from './InlineGroupStory.vue'
 import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
@@ -29,6 +31,7 @@ const meta = {
     TextInput: Input.Text,
     TextareaInput: Input.Textarea,
     CheckboxInput: Input.Checkbox,
+    FileInput: Input.File,
     SearchInput: Input.Search,
     EmailInput: Input.Email,
   },
@@ -193,6 +196,28 @@ export const Checkbox: Story = {
 
     template: html`
       <CheckboxInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const FileInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: FileInputSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { FileInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <FileInputStory v-bind="args" />
     `,
   }),
 }
