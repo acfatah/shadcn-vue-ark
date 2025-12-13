@@ -8,7 +8,9 @@ import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
 import NumberInput from './NumberInput.vue'
 import PasswordInput from './PasswordInput.vue'
+import ResetInput from './ResetInput.vue'
 import SearchInput from './SearchInput.vue'
+import SubmitInput from './SubmitInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
 
@@ -59,6 +61,20 @@ export const Input = {
    * - shadcn/ui: https://ui.shadcn.com/docs/components/button
    */
   Button,
+
+  /**
+   * Submit button
+   *
+   * See `Button` component for more details.
+   */
+  Submit: SubmitInput,
+
+  /**
+   * Reset button
+   *
+   * See `Button` component for more details.
+   */
+  Reset: ResetInput,
 
   /** TextInput component */
   Text: TextInput,
