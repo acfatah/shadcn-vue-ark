@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { reactiveOmit } from '@vueuse/core'
+import { createReusableTemplate, reactiveOmit } from '@vueuse/core'
+import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 import type {
@@ -11,6 +12,7 @@ import PrimitiveInput from './PrimitiveInput.vue'
 
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
+  noIcon?: boolean
   icon?: string
 }
 interface Emits extends PrimitiveInputEmits {}
@@ -21,36 +23,53 @@ defineOptions({
 
 const props = withDefaults(defineProps<Props>(), {
   ariaLabel: 'Search',
+  noIcon: false,
   icon: 'lucide:search',
 })
 
 const emits = defineEmits<Emits>()
-const delegatedProps = reactiveOmit(props, ['ariaLabel', 'icon', 'class'])
+const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'noIcon'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
+const hasIcon = computed(() => !props.noIcon && !!props.icon)
+
+const [UseTemplate, SearchInput] = createReusableTemplate()
 </script>
 
 <template>
-  <div class="relative">
+  <UseTemplate>
     <PrimitiveInput
       scope="search-input"
       type="search"
       :aria-label="props.ariaLabel"
-      :class="cn('peer pl-9', props.class)"
+      :class="cn(
+        hasIcon && 'peer pl-9',
+        props.class)"
       v-bind="{ ...$attrs, ...forwardedProps }"
     />
-    <div
-      class="
-        pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-3
-        text-muted-foreground
-        peer-disabled:opacity-50
-      "
-    >
-      <Icon
+  </UseTemplate>
+
+  <template v-if="hasIcon">
+    <div class="relative">
+      <SearchInput />
+      <div
         data-scope="search-input"
-        data-part="icon"
-        aria-hidden="true"
-        :icon="props.icon"
-      />
+        data-part="icon-wrapper"
+        class="
+          pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-3
+          text-muted-foreground
+          peer-disabled:opacity-50
+        "
+      >
+        <Icon
+          data-scope="search-input"
+          data-part="icon"
+          aria-hidden="true"
+          :icon="props.icon"
+        />
+      </div>
     </div>
-  </div>
+  </template>
+  <template v-else>
+    <SearchInput />
+  </template>
 </template>

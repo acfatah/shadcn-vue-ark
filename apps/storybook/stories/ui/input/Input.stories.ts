@@ -199,10 +199,15 @@ export const SearchInput: Story = {
   },
 
   args: {
+    noIcon: false,
     icon: undefined,
   },
 
   argTypes: {
+    noIcon: {
+      control: 'boolean',
+      description: 'Use the `no-icon` attribute to suppress the search icon while keeping the layout.',
+    },
     icon: { control: 'text' },
   },
 
