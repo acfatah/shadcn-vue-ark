@@ -27,6 +27,8 @@ import TextareaInputStory from './TextareaInputStory.vue'
 import TextareaInputSource from './TextareaInputStory.vue?raw'
 import TextInputDefaultStory from './TextInputDefaultStory.vue'
 import TextInputDefaultSource from './TextInputDefaultStory.vue?raw'
+import UrlInputStory from './UrlInputStory.vue'
+import UrlInputSource from './UrlInputStory.vue?raw'
 
 const meta = {
   title: 'Components/Input',
@@ -47,6 +49,7 @@ const meta = {
     EmailInput: Input.Email,
     PasswordInput: Input.Password,
     ColorInput: Input.Color,
+    UrlInput: Input.Url,
   },
   tags: ['autodocs'],
 
@@ -419,6 +422,28 @@ export const ColorInput: Story = {
 
     template: html`
       <ColorInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const UrlInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: UrlInputSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { UrlInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <UrlInputStory v-bind="args" />
     `,
   }),
 }
