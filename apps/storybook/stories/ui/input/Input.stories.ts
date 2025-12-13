@@ -3,6 +3,8 @@ import { html } from 'common-tags'
 
 import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
+import ButtonsStory from './ButtonsStory.vue'
+import ButtonsSource from './ButtonsStory.vue?raw'
 import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import EmailInputStory from './EmailInputStory.vue'
@@ -32,6 +34,8 @@ const meta = {
     InputDescription: Input.Description,
     InputError: Input.Error,
     InputRequiredIndicator: Input.RequiredIndicator,
+    Submit: Input.Submit,
+    Reset: Input.Reset,
     TextInput: Input.Text,
     TextareaInput: Input.Textarea,
     NumberInput: Input.Number,
@@ -187,6 +191,43 @@ export const NumberInput: Story = {
 
     template: html`
       <NumberInputStory v-bind="args" />
+    `,
+  }),
+}
+
+/**
+ * This story includes `ButtonInput`, `SubmitInput`, and `ResetInput` components.
+ */
+export const Buttons: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: ButtonsSource,
+      },
+    },
+  },
+
+  args: {
+    disabled: false,
+    invalid: false,
+    loading: false,
+  },
+
+  argTypes: {
+    disabled: { control: 'boolean' },
+    invalid: { control: 'boolean' },
+    loading: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { ButtonsStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ButtonsStory v-bind="args" />
     `,
   }),
 }
