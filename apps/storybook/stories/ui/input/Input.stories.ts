@@ -7,6 +7,8 @@ import ButtonsStory from './ButtonsStory.vue'
 import ButtonsSource from './ButtonsStory.vue?raw'
 import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
+import ColorInputStory from './ColorInputStory.vue'
+import ColorInputSource from './ColorInputStory.vue?raw'
 import EmailInputStory from './EmailInputStory.vue'
 import EmailInputSource from './EmailInputStory.vue?raw'
 import FileInputStory from './FileInputStory.vue'
@@ -44,6 +46,7 @@ const meta = {
     SearchInput: Input.Search,
     EmailInput: Input.Email,
     PasswordInput: Input.Password,
+    ColorInput: Input.Color,
   },
   tags: ['autodocs'],
 
@@ -404,6 +407,28 @@ export const PasswordInput: Story = {
 
     template: html`
       <PasswordInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const ColorInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: ColorInputSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { ColorInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ColorInputStory v-bind="args" />
     `,
   }),
 }
