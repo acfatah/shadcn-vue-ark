@@ -1,4 +1,5 @@
 import CheckboxInput from './CheckboxInput.vue'
+import ColorInput from './ColorInput.vue'
 import EmailInput from './EmailInput.vue'
 import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
@@ -105,4 +106,7 @@ export const Input = {
 
   /** Password input field */
   Password: PasswordInput,
+
+  /** Color input field */
+  Color: ColorInput,
 }
