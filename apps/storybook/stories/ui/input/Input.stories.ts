@@ -19,10 +19,15 @@ import TextInputDefaultSource from './TextInputDefaultStory.vue?raw'
 const meta = {
   title: 'Components/Input',
   subcomponents: {
+    InputGroup: Input.Group,
     InputLabel: Input.Label,
     InputDescription: Input.Description,
+    InputError: Input.Error,
+    InputRequiredIndicator: Input.RequiredIndicator,
     TextInput: Input.Text,
     TextareaInput: Input.Textarea,
+    CheckboxInput: Input.Checkbox,
+    SearchInput: Input.Search,
   },
   tags: ['autodocs'],
 
@@ -189,15 +194,7 @@ export const Checkbox: Story = {
   }),
 }
 
-export const SearchInput: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: SearchInputSource,
-      },
-    },
-  },
-
+const iconControl = {
   args: {
     noIcon: false,
     icon: undefined,
@@ -209,6 +206,24 @@ export const SearchInput: Story = {
       description: 'Use the `no-icon` attribute to suppress the search icon while keeping the layout.',
     },
     icon: { control: 'text' },
+  },
+}
+
+export const SearchInput: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: SearchInputSource,
+      },
+    },
+  },
+
+  args: {
+    ...iconControl.args,
+  },
+
+  argTypes: {
+    ...iconControl.argTypes,
   },
 
   render: args => ({
