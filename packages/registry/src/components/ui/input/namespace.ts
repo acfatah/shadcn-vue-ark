@@ -6,6 +6,7 @@ import InputError from './InputError.vue'
 import InputGroup from './InputGroup.vue'
 import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
+import NumberInput from './NumberInput.vue'
 import SearchInput from './SearchInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
@@ -63,6 +64,9 @@ export const Input = {
 
   /** TextInput component */
   Textarea: TextareaInput,
+
+  /** Number input field */
+  Number: NumberInput,
 
   /** File component */
   File: FileInput,
