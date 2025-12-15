@@ -41,6 +41,8 @@ import TimeInputStory from './TimeInputStory.vue'
 import TimeInputSource from './TimeInputStory.vue?raw'
 import UrlInputStory from './UrlInputStory.vue'
 import UrlInputSource from './UrlInputStory.vue?raw'
+import WeekInputStory from './WeekInputStory.vue'
+import WeekInputSource from './WeekInputStory.vue?raw'
 
 const BUTTON_SIZES = Object.keys(ButtonSize)
 
@@ -413,6 +415,35 @@ export const Time: Story = {
 
     template: html`
       <TimeInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Week: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: WeekInputSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { WeekInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <WeekInputStory v-bind="args" />
     `,
   }),
 }
