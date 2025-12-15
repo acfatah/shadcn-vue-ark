@@ -16,6 +16,7 @@ import SubmitInput from './SubmitInput.vue'
 import TelInput from './TelInput.vue'
 import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
+import TimeInput from './TimeInput.vue'
 import UrlInput from './UrlInput.vue'
 
 import { Button } from '../button'
@@ -94,6 +95,9 @@ export const Input = {
 
   /** DatetimeLocal input field */
   DatetimeLocal: DatetimeLocalInput,
+
+  /** Time input field */
+  Time: TimeInput,
 
   /** File component */
   File: FileInput,
