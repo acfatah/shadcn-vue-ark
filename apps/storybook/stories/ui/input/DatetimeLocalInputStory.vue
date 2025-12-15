@@ -6,7 +6,6 @@ const props = defineProps({
   invalid: Boolean,
   disabled: Boolean,
   loading: Boolean,
-  icon: String,
   hideIcon: Boolean,
 })
 

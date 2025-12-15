@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input'
 const props = defineProps({
   invalid: Boolean,
   disabled: Boolean,
-  icon: String,
   hideIcon: Boolean,
+  icon: String,
 })
 
 const formRef = ref<HTMLFormElement | null>(null)

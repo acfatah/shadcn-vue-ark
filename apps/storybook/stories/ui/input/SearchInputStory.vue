@@ -2,8 +2,8 @@
 import { Input } from '@/components/ui/input'
 
 const props = defineProps({
-  icon: String,
   hideIcon: Boolean,
+  icon: String,
 })
 </script>
 
