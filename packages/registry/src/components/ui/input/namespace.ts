@@ -18,6 +18,7 @@ import TextareaInput from './TextareaInput.vue'
 import TextInput from './TextInput.vue'
 import TimeInput from './TimeInput.vue'
 import UrlInput from './UrlInput.vue'
+import WeekInput from './WeekInput.vue'
 
 import { Button } from '../button'
 
@@ -98,6 +99,9 @@ export const Input = {
 
   /** Time input field */
   Time: TimeInput,
+
+  /** Week input field */
+  Week: WeekInput,
 
   /** File component */
   File: FileInput,
