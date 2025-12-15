@@ -29,6 +29,8 @@ import NumberInputStory from './NumberInputStory.vue'
 import NumberInputSource from './NumberInputStory.vue?raw'
 import PasswordInputStory from './PasswordInputStory.vue'
 import PasswordInputSource from './PasswordInputStory.vue?raw'
+import RangeInputStory from './RangeInputStory.vue'
+import RangeInputSource from './RangeInputStory.vue?raw'
 import ResetStory from './ResetStory.vue'
 import ResetSource from './ResetStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
@@ -358,6 +360,36 @@ export const Checkbox: Story = {
 
     template: html`
       <CheckboxInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Range: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: RangeInputSource,
+      },
+    },
+  },
+
+  args: {
+    hideThumb: false,
+  },
+
+  argTypes: {
+    hideThumb: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { RangeInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <RangeInputStory v-bind="args" />
     `,
   }),
 }
