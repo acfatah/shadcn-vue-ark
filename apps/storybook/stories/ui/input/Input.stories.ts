@@ -334,12 +334,11 @@ export const Checkbox: Story = {
   },
 
   args: {
-    indeterminate: false,
     state: 'unchecked',
+    indeterminate: false,
   },
 
   argTypes: {
-    indeterminate: { control: 'boolean' },
     state: {
       control: { type: 'select' },
       options: ['checked', 'unchecked', 'indeterminate'],
@@ -349,6 +348,7 @@ export const Checkbox: Story = {
         indeterminate: null,
       },
     },
+    indeterminate: { control: 'boolean' },
   },
 
   render: args => ({
