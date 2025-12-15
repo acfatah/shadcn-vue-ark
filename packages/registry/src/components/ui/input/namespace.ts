@@ -9,6 +9,7 @@ import InputError from './InputError.vue'
 import InputGroup from './InputGroup.vue'
 import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
+import MonthInput from './MonthInput.vue'
 import NumberInput from './NumberInput.vue'
 import PasswordInput from './PasswordInput.vue'
 import ResetInput from './ResetInput.vue'
@@ -97,6 +98,9 @@ export const Input = {
 
   /** DatetimeLocal input field */
   DatetimeLocal: DatetimeLocalInput,
+
+  /** Month input field */
+  Month: MonthInput,
 
   /** Week input field */
   Week: WeekInput,
