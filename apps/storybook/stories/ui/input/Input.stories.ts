@@ -23,6 +23,8 @@ import InlineGroupStory from './InlineGroupStory.vue'
 import InlineGroupSource from './InlineGroupStory.vue?raw'
 import InputDefaultStory from './InputDefaultStory.vue'
 import InputDefaultSource from './InputDefaultStory.vue?raw'
+import MonthInputStory from './MonthInputStory.vue'
+import MonthInputSource from './MonthInputStory.vue?raw'
 import NumberInputStory from './NumberInputStory.vue'
 import NumberInputSource from './NumberInputStory.vue?raw'
 import PasswordInputStory from './PasswordInputStory.vue'
@@ -388,6 +390,35 @@ export const Datetime: Story = {
 
     template: html`
       <DatetimeStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Month: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: MonthInputSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { MonthInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <MonthInputStory v-bind="args" />
     `,
   }),
 }
