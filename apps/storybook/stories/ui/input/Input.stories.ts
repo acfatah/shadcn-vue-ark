@@ -11,6 +11,8 @@ import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import ColorInputStory from './ColorInputStory.vue'
 import ColorInputSource from './ColorInputStory.vue?raw'
+import DatetimeStory from './DatetimeLocalInputStory.vue'
+import DatetimeSource from './DatetimeLocalInputStory.vue?raw'
 import EmailInputStory from './EmailInputStory.vue'
 import EmailInputSource from './EmailInputStory.vue?raw'
 import FileInputStory from './FileInputStory.vue'
@@ -55,6 +57,7 @@ const meta = {
     TextareaInput: Input.Textarea,
     NumberInput: Input.Number,
     CheckboxInput: Input.Checkbox,
+    DatetimeLocalInput: Input.DatetimeLocal,
     FileInput: Input.File,
     SearchInput: Input.Search,
     EmailInput: Input.Email,
@@ -347,6 +350,38 @@ export const Checkbox: Story = {
 
     template: html`
       <CheckboxInputStory v-bind="args" />
+    `,
+  }),
+}
+
+/**
+ * Alias to `DatetimeLocal` component or input `type="datetime-local"`.
+ */
+export const Datetime: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: DatetimeSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { DatetimeStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DatetimeStory v-bind="args" />
     `,
   }),
 }
