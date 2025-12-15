@@ -1,5 +1,6 @@
 import CheckboxInput from './CheckboxInput.vue'
 import ColorInput from './ColorInput.vue'
+import DatetimeLocalInput from './DatetimeLocalInput.vue'
 import EmailInput from './EmailInput.vue'
 import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
@@ -87,6 +88,12 @@ export const Input = {
 
   /** Number input field */
   Number: NumberInput,
+
+  /** Alias to DatetimeLocal input field */
+  Datetime: DatetimeLocalInput,
+
+  /** DatetimeLocal input field */
+  DatetimeLocal: DatetimeLocalInput,
 
   /** File component */
   File: FileInput,
