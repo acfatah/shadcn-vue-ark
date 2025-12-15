@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
+import { size as ButtonSize } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
-import ButtonsStory from './ButtonsStory.vue'
-import ButtonsSource from './ButtonsStory.vue?raw'
+
+import ButtonStory from './ButtonStory.vue'
+import ButtonSource from './ButtonStory.vue?raw'
 import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import ColorInputStory from './ColorInputStory.vue'
@@ -21,8 +23,12 @@ import NumberInputStory from './NumberInputStory.vue'
 import NumberInputSource from './NumberInputStory.vue?raw'
 import PasswordInputStory from './PasswordInputStory.vue'
 import PasswordInputSource from './PasswordInputStory.vue?raw'
+import ResetStory from './ResetStory.vue'
+import ResetSource from './ResetStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
 import SearchInputSource from './SearchInputStory.vue?raw'
+import SubmitStory from './SubmitStory.vue'
+import SubmitSource from './SubmitStory.vue?raw'
 import TelInputStory from './TelInputStory.vue'
 import TelInputSource from './TelInputStory.vue?raw'
 import TextareaInputStory from './TextareaInputStory.vue'
@@ -32,6 +38,8 @@ import TextInputDefaultSource from './TextInputDefaultStory.vue?raw'
 import UrlInputStory from './UrlInputStory.vue'
 import UrlInputSource from './UrlInputStory.vue?raw'
 
+const BUTTON_SIZES = Object.keys(ButtonSize)
+
 const meta = {
   title: 'Components/Input',
   subcomponents: {
@@ -40,6 +48,7 @@ const meta = {
     InputDescription: Input.Description,
     InputError: Input.Error,
     InputRequiredIndicator: Input.RequiredIndicator,
+    Button: Input.Button,
     Submit: Input.Submit,
     Reset: Input.Reset,
     TextInput: Input.Text,
@@ -206,27 +215,93 @@ export const NumberInput: Story = {
   }),
 }
 
+const buttonSizeControl = {
+  args: {
+    hideIcon: false,
+    size: undefined,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+    size: {
+      control: { type: 'select' },
+      description: 'Button size variant.',
+      options: [...BUTTON_SIZES],
+    },
+  },
+}
+
 /**
- * This story includes `ButtonInput`, `SubmitInput`, and `ResetInput` components.
+ * Alias to `Button` component
  */
-export const Buttons: Story = {
+export const Button: Story = {
   parameters: {
     docs: {
       source: {
-        code: ButtonsSource,
+        code: ButtonSource,
       },
     },
   },
 
+  ...buttonSizeControl,
+
   render: args => ({
-    components: { ButtonsStory },
+    components: { ButtonStory },
 
     setup() {
       return { args }
     },
 
     template: html`
-      <ButtonsStory v-bind="args" />
+      <ButtonStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Submit: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: SubmitSource,
+      },
+    },
+  },
+
+  ...buttonSizeControl,
+
+  render: args => ({
+    components: { SubmitStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <SubmitStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Reset: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: ResetSource,
+      },
+    },
+  },
+
+  ...buttonSizeControl,
+
+  render: args => ({
+    components: { ResetStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ResetStory v-bind="args" />
     `,
   }),
 }
