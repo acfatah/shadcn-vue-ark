@@ -51,6 +51,27 @@ import WeekInputStory from './WeekInputStory.vue'
 import WeekInputSource from './WeekInputStory.vue?raw'
 
 const BUTTON_SIZES = Object.keys(ButtonSize)
+const defaultAttributes = {
+  args: {
+    invalid: false,
+    disabled: false,
+    loading: false,
+  },
+
+  argTypes: {
+    invalid: {
+      control: { type: 'boolean' as const },
+    },
+
+    disabled: {
+      control: { type: 'boolean' as const },
+    },
+
+    loading: {
+      control: { type: 'boolean' as const },
+    },
+  },
+}
 
 const meta = {
   title: 'Components/Input',
@@ -77,6 +98,8 @@ const meta = {
     TelInput: Input.Tel,
   },
   tags: ['autodocs'],
+  args: {},
+  argTypes: {},
 
   parameters: {
     docs: {
@@ -84,18 +107,6 @@ const meta = {
         component: registryItem.description,
       },
     },
-  },
-
-  args: {
-    invalid: false,
-    disabled: false,
-    loading: false,
-  },
-
-  argTypes: {
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    loading: { control: 'boolean' },
   },
 } satisfies Meta<Record<string, any>>
 
@@ -110,6 +121,8 @@ export const Default: Story = {
       },
     },
   },
+
+  ...defaultAttributes,
 
   render: args => ({
     components: { InputDefaultStory },
@@ -135,10 +148,12 @@ export const InlineGroup: Story = {
 
   args: {
     inline: true,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     inline: { control: { type: 'boolean' } },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -163,6 +178,8 @@ export const TextInput: Story = {
     },
   },
 
+  ...defaultAttributes,
+
   render: args => ({
     components: { TextInputDefaultStory },
 
@@ -184,6 +201,8 @@ export const Textarea: Story = {
       },
     },
   },
+
+  ...defaultAttributes,
 
   render: args => ({
     components: { TextareaInputStory },
@@ -209,10 +228,12 @@ export const NumberInput: Story = {
 
   args: {
     hideSpinner: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideSpinner: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -232,6 +253,7 @@ const buttonSizeControl = {
   args: {
     hideIcon: false,
     size: undefined,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
@@ -241,6 +263,7 @@ const buttonSizeControl = {
       description: 'Button size variant.',
       options: [...BUTTON_SIZES],
     },
+    ...defaultAttributes.argTypes,
   },
 }
 
@@ -336,6 +359,7 @@ export const Checkbox: Story = {
   args: {
     state: 'unchecked',
     indeterminate: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
@@ -349,6 +373,7 @@ export const Checkbox: Story = {
       },
     },
     indeterminate: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -375,10 +400,12 @@ export const Range: Story = {
 
   args: {
     hideThumb: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideThumb: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -407,10 +434,12 @@ export const Datetime: Story = {
   },
   args: {
     hideIcon: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -436,10 +465,12 @@ export const Month: Story = {
   },
   args: {
     hideIcon: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -465,10 +496,12 @@ export const Week: Story = {
   },
   args: {
     hideIcon: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -492,12 +525,15 @@ export const Date: Story = {
       },
     },
   },
+
   args: {
     hideIcon: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -523,10 +559,12 @@ export const Time: Story = {
   },
   args: {
     hideIcon: false,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -551,6 +589,8 @@ export const FileInput: Story = {
     },
   },
 
+  ...defaultAttributes,
+
   render: args => ({
     components: { FileInputStory },
 
@@ -568,6 +608,7 @@ const iconControl = {
   args: {
     hideIcon: false,
     icon: undefined,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
@@ -576,6 +617,7 @@ const iconControl = {
       description: 'Use the `no-icon` attribute to suppress the search icon while keeping the layout.',
     },
     icon: { control: 'text' },
+    ...defaultAttributes.argTypes,
   },
 }
 
@@ -652,12 +694,14 @@ export const PasswordInput: Story = {
     hideIcon: false,
     showPasswordIcon: undefined,
     hidePasswordIcon: undefined,
+    ...defaultAttributes.args,
   },
 
   argTypes: {
     hideIcon: { control: 'boolean' },
     showPasswordIcon: { control: 'text' },
     hidePasswordIcon: { control: 'text' },
+    ...defaultAttributes.argTypes,
   },
 
   render: args => ({
@@ -682,6 +726,8 @@ export const ColorInput: Story = {
     },
   },
 
+  ...defaultAttributes,
+
   render: args => ({
     components: { ColorInputStory },
 
@@ -704,6 +750,8 @@ export const UrlInput: Story = {
     },
   },
 
+  ...defaultAttributes,
+
   render: args => ({
     components: { UrlInputStory },
 
@@ -725,6 +773,8 @@ export const TelInput: Story = {
       },
     },
   },
+
+  ...defaultAttributes,
 
   render: args => ({
     components: { TelInputStory },
