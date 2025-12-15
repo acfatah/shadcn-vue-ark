@@ -11,6 +11,8 @@ import CheckboxInputStory from './CheckboxInputStory.vue'
 import CheckboxInputSource from './CheckboxInputStory.vue?raw'
 import ColorInputStory from './ColorInputStory.vue'
 import ColorInputSource from './ColorInputStory.vue?raw'
+import DateInputStory from './DateInputStory.vue'
+import DateInputSource from './DateInputStory.vue?raw'
 import DatetimeStory from './DatetimeLocalInputStory.vue'
 import DatetimeSource from './DatetimeLocalInputStory.vue?raw'
 import EmailInputStory from './EmailInputStory.vue'
@@ -390,35 +392,6 @@ export const Datetime: Story = {
   }),
 }
 
-export const Time: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: TimeInputSource,
-      },
-    },
-  },
-  args: {
-    hideIcon: false,
-  },
-
-  argTypes: {
-    hideIcon: { control: 'boolean' },
-  },
-
-  render: args => ({
-    components: { TimeInputStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TimeInputStory v-bind="args" />
-    `,
-  }),
-}
-
 export const Week: Story = {
   parameters: {
     docs: {
@@ -444,6 +417,64 @@ export const Week: Story = {
 
     template: html`
       <WeekInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Date: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: DateInputSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { DateInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DateInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Time: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TimeInputSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { TimeInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TimeInputStory v-bind="args" />
     `,
   }),
 }
