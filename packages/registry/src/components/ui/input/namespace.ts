@@ -12,6 +12,7 @@ import InputRequiredIndicator from './InputRequiredIndicator.vue'
 import MonthInput from './MonthInput.vue'
 import NumberInput from './NumberInput.vue'
 import PasswordInput from './PasswordInput.vue'
+import RangeInput from './RangeInput.vue'
 import ResetInput from './ResetInput.vue'
 import SearchInput from './SearchInput.vue'
 import SubmitInput from './SubmitInput.vue'
@@ -122,6 +123,9 @@ export const Input = {
    *  See `Checkbox` component for more granular usage.
    */
   Checkbox: CheckboxInput,
+
+  /** Range input field */
+  Range: RangeInput,
 
   /** Search input field */
   Search: SearchInput,
