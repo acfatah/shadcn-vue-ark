@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import type {
   Emits as PrimitiveInputEmits,
@@ -19,6 +19,7 @@ const emits = defineEmits<Emits>()
 const delegatedProps = reactiveOmit(props, 'hideIcon')
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
+const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
 
 function handleInvalid(_event: Event) {
   nativeInvalid.value = true
@@ -30,7 +31,7 @@ function handleInvalid(_event: Event) {
     scope="datetime-local-input"
     type="datetime-local"
     :data-hide-icon="props.hideIcon ?? undefined"
-    :aria-invalid="nativeInvalid"
+    :aria-invalid="ariaInvalid"
     :class="props.class"
     v-bind="forwardedProps"
     @invalid="handleInvalid"

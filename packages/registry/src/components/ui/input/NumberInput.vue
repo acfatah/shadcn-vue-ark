@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 import type {
@@ -23,6 +23,7 @@ const emits = defineEmits<Emits>()
 const delegatedProps = reactiveOmit(props, ['hideSpinner'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
+const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
 
 function handleInvalid(_event: Event) {
   nativeInvalid.value = true
@@ -38,7 +39,7 @@ function handleInvalid(_event: Event) {
       props.hideSpinner && 'no-spinner',
       props.class,
     )"
-    :aria-invalid="nativeInvalid"
+    :aria-invalid="ariaInvalid"
     v-bind="forwardedProps"
     @invalid="handleInvalid"
     @input="nativeInvalid = false"

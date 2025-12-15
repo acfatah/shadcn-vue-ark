@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
   multiple?: boolean
   accept?: string
   name?: string
+  invalid?: boolean
   disabled?: boolean
   class?: HTMLAttributes['class']
 }
@@ -34,6 +36,8 @@ function onChange(event: Event) {
   files.value = next
   emits('change', next)
 }
+
+const ariaInvalid = computed(() => props.invalid ? 'true' : undefined)
 </script>
 
 <template>
@@ -42,6 +46,7 @@ function onChange(event: Event) {
     :accept="accept"
     :name="name"
     :disabled="disabled"
+    :aria-invalid="ariaInvalid"
     data-scope="file-input"
     type="file"
     :class="cn(
