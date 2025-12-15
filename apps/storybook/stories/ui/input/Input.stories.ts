@@ -37,6 +37,8 @@ import TextareaInputStory from './TextareaInputStory.vue'
 import TextareaInputSource from './TextareaInputStory.vue?raw'
 import TextInputDefaultStory from './TextInputDefaultStory.vue'
 import TextInputDefaultSource from './TextInputDefaultStory.vue?raw'
+import TimeInputStory from './TimeInputStory.vue'
+import TimeInputSource from './TimeInputStory.vue?raw'
 import UrlInputStory from './UrlInputStory.vue'
 import UrlInputSource from './UrlInputStory.vue?raw'
 
@@ -382,6 +384,35 @@ export const Datetime: Story = {
 
     template: html`
       <DatetimeStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Time: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TimeInputSource,
+      },
+    },
+  },
+  args: {
+    hideIcon: false,
+  },
+
+  argTypes: {
+    hideIcon: { control: 'boolean' },
+  },
+
+  render: args => ({
+    components: { TimeInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TimeInputStory v-bind="args" />
     `,
   }),
 }
