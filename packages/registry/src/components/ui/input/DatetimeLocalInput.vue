@@ -44,6 +44,10 @@ input[data-scope='datetime-local-input']::-webkit-calendar-picker-indicator {
   filter: brightness(0.4);
 }
 
+html.dark input[data-scope='datetime-local-input']::-webkit-calendar-picker-indicator {
+  filter: brightness(0.7);
+}
+
 input[data-hide-icon='true'][data-scope='datetime-local-input']::-webkit-calendar-picker-indicator {
   display: none;
 }
