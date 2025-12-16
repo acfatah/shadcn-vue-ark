@@ -13,9 +13,11 @@ import { cn } from '@/lib/utils'
 
 export interface Props {
   scope: string
+
+  /** Common input types */
   type:
     | 'button'
-    | 'checkbox'
+    // | 'checkbox'
     | 'color'
     | 'date'
     | 'datetime-local'
@@ -26,7 +28,7 @@ export interface Props {
     | 'month'
     | 'number'
     | 'password'
-    | 'radio'
+    // | 'radio'
     | 'range'
     | 'reset'
     | 'search'
