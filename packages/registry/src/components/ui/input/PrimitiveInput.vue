@@ -36,6 +36,8 @@ export interface Props {
     | 'time'
     | 'url'
     | 'week'
+  id?: string | undefined
+  name?: string | undefined
   defaultValue?: string | undefined
   modelValue?: string | undefined
   class?: HTMLAttributes['class']
