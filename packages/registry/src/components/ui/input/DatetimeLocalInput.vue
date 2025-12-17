@@ -20,6 +20,7 @@ const delegatedProps = reactiveOmit(props, 'hideIcon')
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
 const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
+const hideIcon = computed(() => props.hideIcon ? '' : undefined)
 
 function handleInvalid(_event: Event) {
   nativeInvalid.value = true
@@ -30,7 +31,7 @@ function handleInvalid(_event: Event) {
   <PrimitiveInput
     scope="datetime-local-input"
     type="datetime-local"
-    :data-hide-icon="props.hideIcon ?? undefined"
+    :hide-icon="hideIcon"
     :aria-invalid="ariaInvalid"
     :class="props.class"
     v-bind="forwardedProps"
@@ -48,7 +49,7 @@ html.dark input[data-scope='datetime-local-input']::-webkit-calendar-picker-indi
   filter: brightness(0.7);
 }
 
-input[data-hide-icon='true'][data-scope='datetime-local-input']::-webkit-calendar-picker-indicator {
+input[data-scope='datetime-local-input'][hide-icon]::-webkit-calendar-picker-indicator {
   display: none;
 }
 </style>
