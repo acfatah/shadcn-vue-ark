@@ -69,8 +69,8 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
 
 <template>
   <input
-    v-model="modelValue"
     :id="props.id"
+    v-model="modelValue"
     :name="props.name"
     :data-scope="props.scope"
     :type="props.type"

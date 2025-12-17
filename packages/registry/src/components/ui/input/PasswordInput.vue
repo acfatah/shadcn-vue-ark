@@ -62,7 +62,6 @@ watch(
   },
 )
 
-
 const [UseTemplate, PasswordInput] = createReusableTemplate()
 </script>
 
