@@ -18,7 +18,7 @@ const props = defineProps<Props>()
         flex items-center text-sm leading-none font-medium select-none
         group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50
         peer-disabled:opacity-50
-        peer-data-disabled:opacity-50
+        peer-aria-disabled:opacity-50
       `,
       props.class,
     )"
