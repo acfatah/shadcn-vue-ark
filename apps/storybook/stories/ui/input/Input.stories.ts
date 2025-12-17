@@ -29,6 +29,8 @@ import NumberInputStory from './NumberInputStory.vue'
 import NumberInputSource from './NumberInputStory.vue?raw'
 import PasswordInputStory from './PasswordInputStory.vue'
 import PasswordInputSource from './PasswordInputStory.vue?raw'
+import RadioInputStory from './RadioInputStory.vue'
+import RadioInputSource from './RadioInputStory.vue?raw'
 import RangeInputStory from './RangeInputStory.vue'
 import RangeInputSource from './RangeInputStory.vue?raw'
 import ResetStory from './ResetStory.vue'
@@ -88,6 +90,7 @@ const meta = {
     TextareaInput: Input.Textarea,
     NumberInput: Input.Number,
     CheckboxInput: Input.Checkbox,
+    RadioInput: Input.Radio,
     RangeInput: Input.Range,
     DatetimeLocalInput: Input.DatetimeLocal,
     MonthInput: Input.Month,
@@ -390,6 +393,39 @@ export const Checkbox: Story = {
 
     template: html`
       <CheckboxInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Radio: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: RadioInputSource,
+      },
+    },
+  },
+
+
+  args: {
+    inline: false,
+    ...defaultAttributes.args,
+  },
+
+  argTypes: {
+    inline: { control: 'boolean' },
+    ...defaultAttributes.argTypes,
+  },
+
+  render: args => ({
+    components: { RadioInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <RadioInputStory v-bind="args" />
     `,
   }),
 }
