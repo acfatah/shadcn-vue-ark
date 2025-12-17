@@ -368,6 +368,7 @@ export const Checkbox: Story = {
     state: 'unchecked',
     indeterminate: false,
     ...defaultAttributes.args,
+    inline: false,
   },
 
   argTypes: {
@@ -382,6 +383,7 @@ export const Checkbox: Story = {
     },
     indeterminate: { control: 'boolean' },
     ...defaultAttributes.argTypes,
+    inline: { control: { type: 'boolean' } },
   },
 
   render: args => ({

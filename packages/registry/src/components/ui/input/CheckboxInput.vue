@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, WritableComputedRef } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useVModel } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -10,30 +10,30 @@ interface Props {
   modelValue?: boolean | null
   value?: string | number
   name?: string
-  disabled?: boolean
   required?: boolean
+  disabled?: boolean
   invalid?: boolean
   indeterminate?: boolean
-  icon?: string
+  checkedIcon?: string
   indeterminateIcon?: string
   class?: HTMLAttributes['class']
 }
 
 const props = withDefaults(defineProps<Props>(), {
   indeterminate: false,
-  icon: 'lucide:check',
+  checkedIcon: 'lucide:check',
   indeterminateIcon: 'lucide:minus',
 })
 
 const emits = defineEmits<{
-  (e: 'update:modelValue', payload: boolean | string | number): void
-  (e: 'change', payload: boolean): void
+  (e: 'update:modelValue', payload: boolean | null): void
+  (e: 'change', payload: boolean | null): void
 }>()
 
 const checked = useVModel(props, 'modelValue', emits, {
   passive: true,
   defaultValue: props.defaultValue ?? false,
-})
+}) as WritableComputedRef<boolean | null>
 
 const state = computed(() => {
   const values = [
@@ -45,50 +45,72 @@ const state = computed(() => {
   return values.find(([val]) => val === checked.value)?.[1] ?? 'unchecked'
 })
 
-const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const inputRef = ref<HTMLInputElement | null>(null)
 
-function onChange(event: Event) {
-  const target = event.target as HTMLInputElement
-  emits('change', target.checked)
+watch(
+  () => state.value,
+  (value) => {
+    if (inputRef.value)
+      inputRef.value.indeterminate = value === 'indeterminate'
+  },
+)
+
+const invalid = computed(() => props.invalid || undefined)
+const disabled = computed(() => props.disabled || undefined)
+const ariaChecked = computed(
+  () => state.value === 'indeterminate' ? 'mixed' : state.value === 'checked' ? 'true' : 'false',
+)
+
+function onChange() {
+  emits('change', checked.value)
 }
 
 function onClick() {
   if (props.disabled)
     return
 
+  let next: boolean | null
+
   if (props.indeterminate) {
     // Three-state cycle: unchecked -> checked -> indeterminate -> unchecked
     if (checked.value === false) {
-      checked.value = true
+      next = true
     }
     else if (checked.value === true) {
-      checked.value = null
+      next = null
     }
     else {
-      checked.value = false
+      next = false
     }
   }
   else {
-    // Two-state toggle: unchecked <-> checked
+    // Two-state toggle: unchecked / checked
     if (checked.value === null) {
-      checked.value = true
+      next = true
     }
     else {
-      checked.value = !checked.value
+      next = !checked.value
     }
   }
+
+  checked.value = next
+  emits('change', next)
 }
 </script>
 
 <template>
   <div
-    :data-disabled="disabled ? '' : undefined"
+    :data-disabled="disabled"
     :class="cn('peer relative inline-flex', props.class)"
     data-scope="checkbox-input"
+    data-part="root"
+    role="checkbox"
+    :aria-checked="ariaChecked"
+    :aria-invalid="invalid"
     @click="onClick"
   >
     <input
+      ref="inputRef"
       v-model="checked"
       :value="value"
       :name="name"
@@ -104,15 +126,19 @@ function onClick() {
     <div
       data-scope="checkbox-input"
       data-part="control"
-      :disabled="disabled ? '' : undefined"
       :data-state="state"
-      :data-invalid="invalid ? 'true' : undefined"
+      :data-invalid="invalid"
+      :data-disabled="disabled"
       :class="cn(
         // Currently rounded-lg produces different results from rounded-[4px] here
         `
           size-4 shrink-0 rounded-[4px] border border-input shadow-xs transition-shadow outline-none
-          peer-disabled:opacity-50
           disabled:pointer-events-none
+        `,
+        `
+          peer-focus-visible:border-ring peer-focus-visible:ring-[3px]
+          peer-focus-visible:ring-ring/50
+          peer-disabled:opacity-50
         `,
         `
           not-data-[state=checked]:bg-background
@@ -126,17 +152,17 @@ function onClick() {
       )"
     >
       <Icon
-        v-if="state === 'checked'"
+        v-show="state === 'checked'"
         data-scope="checkbox-input"
         data-part="checked-icon"
-        :icon="icon "
+        :icon="checkedIcon"
         class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
       />
       <Icon
-        v-if="state === 'indeterminate'"
+        v-show="state === 'indeterminate'"
         data-scope="checkbox-input"
         data-part="indeterminate-icon"
-        :icon="indeterminateIcon "
+        :icon="indeterminateIcon"
         class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
       />
     </div>
