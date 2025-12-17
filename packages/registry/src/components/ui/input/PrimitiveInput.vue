@@ -61,15 +61,17 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const invalid = computed(() => props.invalid ?? undefined)
-const loading = computed(() => props.loading ?? undefined)
-const readonly = computed(() => props.readonly ?? undefined)
-const disabled = computed(() => (props.disabled || props.loading) ?? undefined)
+const invalid = computed(() => props.invalid || undefined)
+const loading = computed(() => props.loading || undefined)
+const readonly = computed(() => props.readonly || undefined)
+const disabled = computed(() => props.disabled || props.loading || undefined)
 </script>
 
 <template>
   <input
     v-model="modelValue"
+    :id="props.id"
+    :name="props.name"
     :data-scope="props.scope"
     :type="props.type"
     :readonly="readonly"
