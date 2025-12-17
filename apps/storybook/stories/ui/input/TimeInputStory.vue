@@ -45,7 +45,10 @@ function handleSubmit(event: Event) {
     </p>
 
     <pre
-      class="overflow-x-auto rounded border bg-gray-100 p-2 text-sm"
+      class="
+        overflow-x-auto rounded border bg-neutral-100 p-2 text-sm text-foreground
+        dark:bg-neutral-900
+      "
     ><code>{{ submittedValues ? JSON.stringify(submittedValues, null, 2) : '-' }}</code></pre>
   </template>
 </template>
