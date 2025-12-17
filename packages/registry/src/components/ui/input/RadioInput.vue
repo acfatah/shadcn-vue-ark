@@ -31,8 +31,8 @@ const selectedValue = useVModel(props, 'modelValue', emits, {
 
 const isChecked = computed(() => selectedValue.value === props.value)
 const state = computed(() => (isChecked.value ? 'checked' : 'unchecked'))
-const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const invalid = computed(() => props.invalid || undefined)
+const disabled = computed(() => props.disabled || undefined)
 
 function updateSelection(newValue: string | number) {
   if (props.disabled)

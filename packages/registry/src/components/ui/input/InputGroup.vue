@@ -13,7 +13,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class', 'inline')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
-const inline = computed(() => props.inline ? 'true' : 'false')
+const inline = computed(() => props.inline || undefined)
 </script>
 
 <template>

@@ -24,8 +24,8 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const invalid = computed(() => props.invalid || undefined)
+const disabled = computed(() => props.disabled || undefined)
 </script>
 
 <template>

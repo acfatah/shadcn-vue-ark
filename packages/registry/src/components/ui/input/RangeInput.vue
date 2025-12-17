@@ -70,8 +70,8 @@ const trackStyle = computed(() => ({
   '--range-track': `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${rangePercentage.value}%, var(--border) ${rangePercentage.value}%, var(--border) 100%)`,
 }))
 
-const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const invalid = computed(() => props.invalid || undefined)
+const disabled = computed(() => props.disabled || undefined)
 const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefined) ? 'true' : undefined)
 </script>
 
