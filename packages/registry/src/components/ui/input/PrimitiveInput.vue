@@ -44,6 +44,7 @@ export interface Props {
   modelValue?: string | undefined
   class?: HTMLAttributes['class']
   invalid?: boolean
+  loading?: boolean
   disabled?: boolean
 }
 
@@ -60,7 +61,8 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const invalid = computed(() => props.invalid ?? undefined)
-const disabled = computed(() => props.disabled ?? undefined)
+const loading = computed(() => props.loading ?? undefined)
+const disabled = computed(() => (props.disabled || props.loading) ?? undefined)
 </script>
 
 <template>
@@ -70,6 +72,7 @@ const disabled = computed(() => props.disabled ?? undefined)
     :type="props.type"
     :disabled="disabled"
     :aria-invalid="invalid"
+    :aria-busy="loading"
     :class="cn(
       `
         h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base
