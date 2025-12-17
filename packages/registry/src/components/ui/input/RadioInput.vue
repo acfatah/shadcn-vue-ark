@@ -88,7 +88,7 @@ function onClick(_event: Event) {
       :required="required"
       :aria-invalid="invalid"
       type="radio"
-      class="sr-only"
+      class="peer sr-only"
       @change="onChange"
     >
     <div
@@ -98,7 +98,12 @@ function onClick(_event: Event) {
       :data-state="state"
       :data-invalid="invalid ? 'true' : undefined"
       :class="cn(
-        `relative flex w-full items-center justify-center`,
+        `relative flex w-full items-center justify-center rounded-full`,
+        `
+          peer-focus-visible:border-ring peer-focus-visible:ring-[3px]
+          peer-focus-visible:ring-ring/50
+          peer-disabled:opacity-50
+        `,
       )"
     >
       <Icon
