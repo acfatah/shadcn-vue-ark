@@ -22,7 +22,7 @@ const inline = computed(() => props.inline ? 'true' : 'false')
     data-scope="input-group"
     :data-inline="inline"
     :class="cn(
-      'flex max-w-md flex-col gap-3',
+      'flex max-w-md flex-col gap-2',
       `md:data-[inline=true]:grid md:data-[inline=true]:grid-cols-3`,
       `md:data-[inline=true]:[&_[data-scope=input][data-part=label]]:col-span-1`,
       `md:data-[inline=true]:**:data-[scope$='-input']:col-span-2`,
@@ -33,6 +33,17 @@ const inline = computed(() => props.inline ? 'true' : 'false')
       `
         md:data-[inline=true]:[&_[data-scope=input][data-part=error]]:col-span-2
         md:data-[inline=true]:[&_[data-scope=input][data-part=error]]:col-start-2
+      `,
+      // Handle flex direction for checkbox and radio inputs
+      `
+        has-data-[scope=checkbox-input]:flex-row
+        data-[inline=true]:has-data-[scope=checkbox-input]:inline-flex
+        data-[inline=true]:has-data-[scope=checkbox-input]:not-last:[&>*+*]:mr-4
+      `,
+      `
+        has-data-[scope=radio-input]:flex-row
+        data-[inline=true]:has-data-[scope=radio-input]:inline-flex
+        data-[inline=true]:has-data-[scope=radio-input]:not-last:[&>*+*]:mr-4
       `,
       props.class,
     )"
