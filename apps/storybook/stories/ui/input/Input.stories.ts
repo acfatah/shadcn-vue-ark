@@ -406,7 +406,6 @@ export const Radio: Story = {
     },
   },
 
-
   args: {
     inline: false,
     ...defaultAttributes.args,
@@ -791,7 +790,13 @@ export const UrlInput: Story = {
     },
   },
 
-  ...defaultAttributes,
+  args: {
+    ...iconControl.args,
+  },
+
+  argTypes: {
+    ...iconControl.argTypes,
+  },
 
   render: args => ({
     components: { UrlInputStory },
@@ -815,7 +820,13 @@ export const TelInput: Story = {
     },
   },
 
-  ...defaultAttributes,
+  args: {
+    ...iconControl.args,
+  },
+
+  argTypes: {
+    ...iconControl.argTypes,
+  },
 
   render: args => ({
     components: { TelInputStory },

@@ -32,6 +32,7 @@ const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'hideI
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
 const hasIcon = computed(() => !props.hideIcon && !!props.icon)
+const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
 
 function handleInvalid(_event: Event) {
   nativeInvalid.value = true
@@ -44,9 +45,10 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
   <UseTemplate>
     <PrimitiveInput
       scope="email-input"
+      data-part="input"
       type="email"
       :aria-label="props.ariaLabel"
-      :aria-invalid="nativeInvalid"
+      :aria-invalid="ariaInvalid"
       :class="cn(
         hasIcon && 'peer pl-9',
         props.class)"
@@ -59,7 +61,7 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
   <template v-if="hasIcon">
     <div
       data-scope="email-input"
-      data-part="wrapper"
+      data-part="root"
       class="relative"
     >
       <EmailInput />
@@ -70,6 +72,7 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
           pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-3
           text-muted-foreground
           peer-disabled:opacity-50
+          peer-aria-invalid:text-destructive
         "
       >
         <Icon
@@ -81,6 +84,7 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
       </div>
     </div>
   </template>
+
   <template v-else>
     <EmailInput />
   </template>
