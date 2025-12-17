@@ -17,7 +17,10 @@ interface Emits {
   (event: 'update:modelValue', payload: string | number): void
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  defaultValue: 0,
+})
+
 const emits = defineEmits<Emits>()
 const attrs = useAttrs()
 
@@ -44,11 +47,10 @@ function clampNumber(value: number, min: number, max: number) {
 }
 
 const modelValue = useVModel(props, 'modelValue', emits, {
-  passive: true,
   defaultValue: props.defaultValue,
 })
 
-const sliderValue = computed(() => toNumericValue(modelValue.value) ?? 0)
+const sliderValue = computed(() => toNumericValue(modelValue.value) ?? (toNumericValue(attrs.min) ?? 0))
 const sliderMin = computed(() => toNumericValue(attrs.min) ?? 0)
 const sliderMax = computed(() => toNumericValue(attrs.max) ?? 100)
 

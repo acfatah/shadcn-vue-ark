@@ -7,6 +7,9 @@ const props = defineProps({
   disabled: Boolean,
   loading: Boolean,
   hideThumb: Boolean,
+  min: Number,
+  max: Number,
+  step: Number,
 })
 
 const formRef = useTemplateRef<HTMLFormElement>('formRef')

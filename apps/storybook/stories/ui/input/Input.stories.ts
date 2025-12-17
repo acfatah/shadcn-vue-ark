@@ -443,11 +443,17 @@ export const Range: Story = {
   args: {
     hideThumb: false,
     ...defaultAttributes.args,
+    min: undefined,
+    max: undefined,
+    step: 1,
   },
 
   argTypes: {
     hideThumb: { control: 'boolean' },
     ...defaultAttributes.argTypes,
+    min: { control: 'number' },
+    max: { control: 'number' },
+    step: { control: 'number' },
   },
 
   render: args => ({
