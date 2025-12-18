@@ -18,7 +18,7 @@ interface Props {
 }
 
 interface Emits {
-  (event: 'update:modelValue', payload: string | boolean | number): void
+  (event: 'update:modelValue', payload: string | number): void
   (e: 'change', payload: string | number): void
 }
 
@@ -65,8 +65,10 @@ function onClick(_event: Event) {
   <div
     data-scope="radio-input"
     data-part="root"
+    role="radio"
+    :aria-checked="isChecked"
     :aria-disabled="disabled"
-    :aria-invalid="invalid "
+    :aria-invalid="invalid"
     :aria-busy="ariaBusy"
     :class="cn(
       `
