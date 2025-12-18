@@ -68,7 +68,7 @@ function onChange() {
 }
 
 function onClick() {
-  if (props.disabled)
+  if (disabled.value)
     return
 
   let next: boolean | null
