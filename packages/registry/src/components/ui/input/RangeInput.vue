@@ -8,9 +8,10 @@ interface Props {
   defaultValue?: string | number
   modelValue?: string | number
   hideThumb?: boolean
-  class?: InputHTMLAttributes['class']
-  invalid?: boolean
   disabled?: boolean
+  loading?: boolean
+  invalid?: boolean
+  class?: InputHTMLAttributes['class']
 }
 
 interface Emits {
@@ -73,7 +74,7 @@ const trackStyle = computed(() => ({
 }))
 
 const invalid = computed(() => props.invalid || undefined)
-const disabled = computed(() => props.disabled || undefined)
+const disabled = computed(() => props.disabled || props.loading || undefined)
 const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefined) ? 'true' : undefined)
 </script>
 
@@ -88,7 +89,7 @@ const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefi
     :style="trackStyle"
     :class="cn(
       'h-9 w-full rounded',
-      `focus:ring-[3px] focus:ring-ring/50 focus:outline-none`,
+      `focus:outline-none`,
       `disabled:pointer-events-none disabled:opacity-50`,
       `
         aria-invalid:border aria-invalid:border-destructive aria-invalid:p-1
@@ -147,5 +148,14 @@ input[data-scope='range-input'][data-hide-thumb='true']::-webkit-slider-thumb {
 input[data-scope='range-input'][data-hide-thumb='true']::-moz-range-thumb {
   height: 0 !important;
   width: 0 !important;
+}
+
+input[data-scope='range-input']:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
+}
+
+input[data-scope='range-input']:focus::-moz-range-thumb {
+  /* box-shadow: 0 0 0 3px var(--ring); */
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
 }
 </style>
