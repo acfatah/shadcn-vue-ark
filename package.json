@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "storybook": "cd apps/storybook && bun run storybook dev -p 6006",
-    "storybook:build": "cd apps/storybook && bun run storybook build"
+    "storybook:build": "cd apps/storybook && bun run storybook build",
+    "outdated:all": "bun scripts/outdated-all.ts",
+    "update:all": "bun scripts/update-all.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.7.1",
