@@ -12,6 +12,7 @@ interface Props {
   name?: string
   required?: boolean
   disabled?: boolean
+  loading?: boolean
   invalid?: boolean
   indeterminate?: boolean
   checkedIcon?: string
@@ -56,10 +57,11 @@ watch(
 )
 
 const invalid = computed(() => props.invalid || undefined)
-const disabled = computed(() => props.disabled || undefined)
+const disabled = computed(() => props.disabled || props.loading || undefined)
 const ariaChecked = computed(
   () => state.value === 'indeterminate' ? 'mixed' : state.value === 'checked' ? 'true' : 'false',
 )
+const ariaBusy = computed(() => props.loading || undefined)
 
 function onChange() {
   emits('change', checked.value)
@@ -100,13 +102,14 @@ function onClick() {
 
 <template>
   <div
-    :data-disabled="disabled"
     :class="cn('peer relative inline-flex', props.class)"
     data-scope="checkbox-input"
     data-part="root"
     role="checkbox"
+    :aria-disabled="disabled"
     :aria-checked="ariaChecked"
     :aria-invalid="invalid"
+    :aria-busy="ariaBusy"
     @click="onClick"
   >
     <input

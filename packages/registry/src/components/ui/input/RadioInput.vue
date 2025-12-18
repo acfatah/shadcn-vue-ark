@@ -13,6 +13,7 @@ interface Props {
   required?: boolean
   disabled?: boolean
   invalid?: boolean
+  loading?: boolean
   class?: HTMLAttributes['class']
 }
 
@@ -32,7 +33,8 @@ const selectedValue = useVModel(props, 'modelValue', emits, {
 const isChecked = computed(() => selectedValue.value === props.value)
 const state = computed(() => (isChecked.value ? 'checked' : 'unchecked'))
 const invalid = computed(() => props.invalid || undefined)
-const disabled = computed(() => props.disabled || undefined)
+const disabled = computed(() => props.disabled || props.loading || undefined)
+const ariaBusy = computed(() => props.loading || undefined)
 
 function updateSelection(newValue: string | number) {
   if (props.disabled)
@@ -65,9 +67,10 @@ function onClick(_event: Event) {
     data-part="root"
     :aria-disabled="disabled"
     :aria-invalid="invalid "
+    :aria-busy="ariaBusy"
     :class="cn(
       `
-        inline-flex aspect-square size-4 shrink-0 rounded-full border border-input text-primary
+        peer inline-flex aspect-square size-4 shrink-0 rounded-full border border-input text-primary
         shadow-xs transition-[color,box-shadow] outline-none
         focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50
         aria-disabled:cursor-not-allowed aria-disabled:opacity-50
