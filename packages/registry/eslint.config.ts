@@ -43,6 +43,13 @@ export default antfu(
       'perfectionist/sort-imports': ['error', {
         partitionByNewLine: true,
         newlinesBetween: 'ignore',
+        ignoreCase: false,
+      }],
+
+      'perfectionist/sort-exports': ['error', {
+        partitionByNewLine: true,
+        newlinesBetween: 'ignore',
+        ignoreCase: false,
       }],
 
       // https://eslint.style/rules/space-before-function-paren
