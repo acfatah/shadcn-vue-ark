@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { computed, h } from 'vue'
+import { computed } from 'vue'
 import type { size as ButtonSize } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 

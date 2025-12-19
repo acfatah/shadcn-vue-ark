@@ -29,9 +29,7 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form
-    ref="formRef" class="space-y-3" @submit="handleSubmit"
-  >
+  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native checkbox validation.
     </p>
