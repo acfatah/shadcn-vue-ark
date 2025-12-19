@@ -11,7 +11,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const delegatedProps = reactiveOmit(props, 'asChild')
+const delegatedProps = reactiveOmit(props, ['asChild', 'class'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
@@ -33,7 +33,6 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
         *:data-[slot=field]:p-4
         dark:has-data-[state=checked]:bg-primary/10
       `,
-      ``,
       props.class,
     )"
   >
