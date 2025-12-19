@@ -16,6 +16,7 @@ import RadioInput from './RadioInput.vue'
 import RangeInput from './RangeInput.vue'
 import ResetInput from './ResetInput.vue'
 import SearchInput from './SearchInput.vue'
+import SelectInput from './SelectInput.vue'
 import SubmitInput from './SubmitInput.vue'
 import TelInput from './TelInput.vue'
 import TextareaInput from './TextareaInput.vue'
@@ -117,15 +118,31 @@ export const Input = {
   File: FileInput,
 
   /**
-   * Checkbox component
+   * CheckboxInput component
    *
-   * Native checkbox input.
+   * Render native checkbox input element.
    *
-   *  See `Checkbox` component for more granular usage.
+   * See `Checkbox` component for more granular usage.
    */
   Checkbox: CheckboxInput,
 
+  /**
+   * RadioInput component
+   *
+   * Render native radio input element.
+   *
+   * See `Radio` component for more granular usage.
+   */
   Radio: RadioInput,
+
+  /**
+   * SelectInput component
+   *
+   * Render native select input element.
+   *
+   * See `Select` component for more granular usage.
+   */
+  Select: SelectInput,
 
   /** Range input field */
   Range: RangeInput,
