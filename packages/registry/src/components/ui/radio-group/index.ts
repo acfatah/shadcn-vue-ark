@@ -1,4 +1,7 @@
+export { useRadioGroup } from '@ark-ui/vue/radio-group'
+
 export { RadioGroup } from './namespace'
+
 export { default as RadioGroupDescription } from './RadioGroupDescription.vue'
 export { default as RadioGroupIndicator } from './RadioGroupIndicator.vue'
 export { default as RadioGroupItem } from './RadioGroupItem.vue'
@@ -11,5 +14,3 @@ export { default as RadioGroupItemText } from './RadioGroupItemText.vue'
 export { default as RadioGroupLabel } from './RadioGroupLabel.vue'
 export { default as RadioGroupRoot } from './RadioGroupRoot.vue'
 export { default as RadioGroupRootProvider } from './RadioGroupRootProvider.vue'
-
-export { useRadioGroup } from '@ark-ui/vue/radio-group'

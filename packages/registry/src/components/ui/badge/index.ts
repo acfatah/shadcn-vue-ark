@@ -1,6 +1,8 @@
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
+export { default as Badge } from './Badge.vue'
+
 export const variant = {
   default:
     `border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90`,
@@ -44,4 +46,3 @@ export const badgeVariants = cva(
 )
 
 export type BadgeVariants = VariantProps<typeof badgeVariants>
-export { default as Badge } from './Badge.vue'

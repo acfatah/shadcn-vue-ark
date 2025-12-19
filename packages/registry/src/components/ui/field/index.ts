@@ -1,6 +1,8 @@
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
+export { Field } from './namespace'
+
 export { default as FieldDescription } from './FieldDescription.vue'
 export { default as FieldError } from './FieldError.vue'
 export { default as FieldInput } from './FieldInput.vue'
@@ -9,8 +11,6 @@ export { default as FieldRequiredIndicator } from './FieldRequiredIndicator.vue'
 export { default as FieldRoot } from './FieldRoot.vue'
 export { default as FieldRootProvider } from './FieldRootProvider.vue'
 export { default as FieldTextarea } from './FieldTextarea.vue'
-
-export { Field } from './namespace'
 
 export const fieldRootVariants = cva(
   `
