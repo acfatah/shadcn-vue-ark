@@ -39,6 +39,7 @@ const [UseTemplate, SearchInput] = createReusableTemplate()
   <UseTemplate>
     <PrimitiveInput
       scope="search-input"
+      data-part="input"
       type="search"
       :aria-label="props.ariaLabel"
       :class="cn(
@@ -49,7 +50,11 @@ const [UseTemplate, SearchInput] = createReusableTemplate()
   </UseTemplate>
 
   <template v-if="hasIcon">
-    <div class="relative">
+    <div
+      data-scope="search-input"
+      data-part="root"
+      class="relative"
+    >
       <SearchInput />
       <div
         data-scope="search-input"
