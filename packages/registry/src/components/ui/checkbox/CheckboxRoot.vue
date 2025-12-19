@@ -10,7 +10,7 @@ type Props = CheckboxRootProps & {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const emit = defineEmits<CheckboxRootEmits>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
