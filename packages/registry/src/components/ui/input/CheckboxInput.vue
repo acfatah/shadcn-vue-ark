@@ -125,6 +125,8 @@ function onClick() {
       type="checkbox"
       class="peer sr-only"
       @change="onChange"
+      @click.stop
+      @keydown.space.prevent="onClick"
     >
     <div
       data-scope="checkbox-input"
@@ -151,6 +153,7 @@ function onClick() {
           data-[state=indeterminate]:border-primary data-[state=indeterminate]:bg-primary
           data-[state=indeterminate]:text-primary-foreground
           data-invalid:data-[state=unchecked]:border-destructive/50
+          dark:not-data-[state=checked]:not-data-[state=indeterminate]:bg-input/30
         `,
       )"
     >
