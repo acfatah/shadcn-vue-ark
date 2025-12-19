@@ -37,6 +37,8 @@ import ResetStory from './ResetStory.vue'
 import ResetSource from './ResetStory.vue?raw'
 import SearchInputStory from './SearchInputStory.vue'
 import SearchInputSource from './SearchInputStory.vue?raw'
+import SelectInputStory from './SelectInputStory.vue'
+import SelectInputSource from './SelectInputStory.vue?raw'
 import SubmitStory from './SubmitStory.vue'
 import SubmitSource from './SubmitStory.vue?raw'
 import TelInputStory from './TelInputStory.vue'
@@ -427,6 +429,30 @@ export const Radio: Story = {
 
     template: html`
       <RadioInputStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Select: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: SelectInputSource,
+      },
+    },
+  },
+
+  ...defaultAttributes,
+
+  render: args => ({
+    components: { SelectInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <SelectInputStory v-bind="args" />
     `,
   }),
 }
