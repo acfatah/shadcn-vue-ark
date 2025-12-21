@@ -8,30 +8,31 @@ import { cn } from '@/lib/utils'
 interface Props {
   class?: HTMLAttributes['class']
   asChild?: boolean
+  as?: string
 }
 
-const props = defineProps<Props>()
-const delegatedProps = reactiveOmit(props, ['asChild', 'class'])
+const props = withDefaults(defineProps<Props>(), {
+  as: 'label',
+})
+
+const delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
   <component
-    :is="props.asChild ? Dynamic : 'label'"
+    :is="props.asChild ? Dynamic : props.as"
     data-scope="label"
     v-bind="forwardedProps"
     :class="cn(
       `
-        group/field-label peer/field-label flex w-fit items-center gap-2 text-sm leading-snug
-        font-medium select-none
+        group/label peer/label flex w-fit items-center gap-2 text-sm leading-snug font-medium
+        select-none
+      `,
+      `
         group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50
-        group-data-[disabled=true]/field:opacity-50
-        peer-disabled:cursor-not-allowed peer-disabled:opacity-50
-        has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5
-        has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col
-        has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border
-        *:data-[slot=field]:p-4
-        dark:has-data-[state=checked]:bg-primary/10
+        peer-disabled:pointer-events-none peer-disabled:opacity-50
+        peer-aria-disabled:pointer-events-none peer-aria-disabled:opacity-50
       `,
       props.class,
     )"
