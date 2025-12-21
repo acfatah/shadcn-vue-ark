@@ -8,7 +8,6 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot,
-  CheckboxRootProvider,
 } from '@/components/ui/checkbox'
 import { registryItem } from '@/components/ui/checkbox/_registry'
 import CheckboxDefaultStory from './CheckboxDefaultStory.vue'
@@ -23,7 +22,6 @@ const meta = {
     CheckboxHiddenInput,
     CheckboxIndicator,
     CheckboxLabel,
-    CheckboxRootProvider,
   },
   tags: ['autodocs'],
 
