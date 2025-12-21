@@ -3,22 +3,28 @@ import type { CheckboxRootEmits, CheckboxRootProps } from '@ark-ui/vue/checkbox'
 import type { HTMLAttributes } from 'vue'
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
+import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 type Props = CheckboxRootProps & {
+  loading?: boolean
   class?: HTMLAttributes['class']
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<CheckboxRootEmits>()
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, ['class', 'loading'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
+const disabled = computed(() => props.disabled || props.loading || undefined)
+const ariaBusy = computed(() => (props.loading || undefined))
 </script>
 
 <template>
   <Checkbox.Root
     v-bind="forwardedProps"
+    :disabled="disabled"
+    :aria-busy="ariaBusy"
     :class="cn(`
       group flex gap-3
       disabled:opacity-50
