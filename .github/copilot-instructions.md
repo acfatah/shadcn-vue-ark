@@ -11,7 +11,8 @@ Use `bun` for installs and running scripts.
 .
 ├── README.md
 ├── apps
-│   └── web			# Main landing page app built with Astro
+│   ├── storybook		# Storybook app for component development and visual testing
+│   └── web	        # Main landing page app built with Astro
 ├── package.json
 ├── packages
 │   └── registry   	# The component registry
@@ -93,6 +94,7 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 - Use conventional commits: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`
 - Use the imperative mood ("add", "fix", "change", "remove")
 - Always add scope based on workspace except for root. E.g. `fix(registry):`, `feat(web):`
+- Use directory names either from `apps/` or `packages/` as scope.
 - Limit subject line to 60 characters.
 - Use the body to explain what and why, not how.
 - Use bullets in the body if multiple points.
@@ -109,4 +111,4 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 - Provide bash-ready commands in fenced blocks when giving steps.
 - When editing code, prefer minimal diffs and preserve existing style.
 - If you create multiple files or non-trivial code, include a short run/test snippet.
-- Never use emojis and avoid en or em dashes.
+- Never use emojis unless explicitly asked and avoid en or em dashes.
