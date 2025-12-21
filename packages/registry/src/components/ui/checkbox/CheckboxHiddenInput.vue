@@ -18,7 +18,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Checkbox.HiddenInput
     v-bind="forwardedProps"
     :class="cn(
-      `sr-only`,
+      `peer sr-only`,
       props.class,
     )"
   >
