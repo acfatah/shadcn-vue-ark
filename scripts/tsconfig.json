@@ -30,6 +30,7 @@
   "files": [
     "eslint.config.ts",
     "update-all.ts",
+    "outdated-all.ts",
     "utils.ts"
   ]
 }
