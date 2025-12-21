@@ -6,7 +6,8 @@ import CheckboxHiddenInput from './CheckboxHiddenInput.vue'
 import CheckboxIndicator from './CheckboxIndicator.vue'
 import CheckboxLabel from './CheckboxLabel.vue'
 import CheckboxRoot from './CheckboxRoot.vue'
-import CheckboxRootProvider from './CheckboxRootProvider.vue'
+
+import { Checkbox as ArkCheckbox } from '@ark-ui/vue/checkbox'
 
 export const Checkbox = {
   /**
@@ -49,9 +50,9 @@ export const Checkbox = {
   /**
    * CheckboxRootProvider component
    *
-   * See: https://ark-ui.com/docs/components/checkbox#root-provider
+   * See: https://ark-ui.com/docs/components/checkbox#props
    */
-  RootProvider: CheckboxRootProvider,
+  RootProvider: ArkCheckbox.RootProvider,
 
   /**
    * CheckboxGroup component
