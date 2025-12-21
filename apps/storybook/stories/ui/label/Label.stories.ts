@@ -6,7 +6,7 @@ import { registryItem } from '@/components/ui/label/_registry'
 import LabelDefaultStory from './LabelDefaultStory.vue'
 import LabelDefaultSource from './LabelDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label,
   tags: ['autodocs'],
@@ -18,7 +18,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Label>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -43,4 +43,40 @@ export const Default: Story = {
       <LabelDefaultStory v-bind="args" />
     `,
   }),
+}
+
+/**
+ * Styling when peer sibling `aria-invalid` is `true`.
+ */
+export const PeerInvalid: Story = {
+  ...Default,
+
+  args: {
+    // @ts-expect-error 2353
+    invalid: true,
+  },
+}
+
+/**
+ * Styling when peer sibling is `disabled` or `aria-disabled` is `true`.
+ */
+export const PeerDisabled: Story = {
+  ...Default,
+
+  args: {
+    // @ts-expect-error 2353
+    disabled: true,
+  },
+}
+
+/**
+ * Styling when peer sibling `aria-busy` is `true`.
+ */
+export const PeerLoading: Story = {
+  ...Default,
+
+  args: {
+    // @ts-expect-error 2353
+    loading: true,
+  },
 }
