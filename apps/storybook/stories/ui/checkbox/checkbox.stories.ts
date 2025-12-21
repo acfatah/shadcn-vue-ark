@@ -36,15 +36,15 @@ const meta = {
   },
 
   args: {
-    required: true,
     invalid: false,
     disabled: false,
+    loading: false,
   },
 
   argTypes: {
-    required: { control: 'boolean' },
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    loading: { control: 'boolean' },
   },
 } satisfies Meta<typeof CheckboxRoot>
 
