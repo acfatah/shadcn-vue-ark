@@ -80,7 +80,6 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
     :readonly="readonly"
     :disabled="disabled"
     :aria-invalid="invalid"
-    :aria-readonly="readonly"
     :aria-busy="loading"
     :class="cn(
       `
