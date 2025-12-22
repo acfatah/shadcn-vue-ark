@@ -43,6 +43,7 @@ export interface Props {
   defaultValue?: string | undefined
   modelValue?: string | undefined
   class?: HTMLAttributes['class']
+  required?: boolean
   invalid?: boolean
   loading?: boolean
   readonly?: boolean
@@ -61,6 +62,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
+const required = computed(() => props.required || undefined)
 const invalid = computed(() => props.invalid || undefined)
 const loading = computed(() => props.loading || undefined)
 const readonly = computed(() => props.readonly || undefined)
@@ -74,6 +76,7 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
     :name="props.name"
     :data-scope="props.scope"
     :type="props.type"
+    :required="required"
     :readonly="readonly"
     :disabled="disabled"
     :aria-invalid="invalid"
