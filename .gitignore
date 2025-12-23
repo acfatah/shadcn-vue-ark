@@ -40,3 +40,7 @@ templates/*/bun.lock
 *.[0-9].*
 *.[0-9][0-9].*
 *.[0-9][0-9][0-9].*
+
+# Ignore custom GitHub agents and prompts
+.github/agents/*
+.github/prompts/*
