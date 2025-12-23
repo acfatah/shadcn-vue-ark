@@ -40,10 +40,12 @@ Need to `cd` into the specific app or package to run scripts.
   ```
 
 Common scripts are:
+  - `bun run start` - start the app (if applicable)
   - `bun run dev` - start development server (if applicable)
-  - `bun run build` - build the package/app
+  - `bun run build` - build the app (if applicable)
   - `bun run preview` - preview the built app (if applicable)
   - `bun run lint` - lint the codebase (if applicable)
+  - `bun run typecheck` - run type checking (if applicable)
   - `bun run format` - fix lint issues (if applicable)
   - `bun run test` - run tests (if applicable)
 
@@ -63,10 +65,11 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 
 - Always fix lint errors as the last task, only after all other tasks are completed.
 - Use `bun run format [..file]` to format code or files.
-- We are using ESLint: `@antfu/eslint-config` via `eslint.config.js`
+- We are using ESLint with `@antfu/eslint-config` rules via `eslint.config.ts`.
+  The following is the summary of important rules:
   - two-space indent
   - single quotes
-  - alphabetised imports with `perfectionist/sort-imports`
+  - alphabetised imports (file name) with `perfectionist/sort-imports`
   - empty line before `return`
 - Naming React components/Redux
   - slices use PascalCase
@@ -101,10 +104,10 @@ Prefer to inspect a package's own `package.json` for package-specific scripts.
 
 ## Response & Output Style
 
-- Be concise and friendly; prioritize actionable guidance.
+- Be concise; prioritize actionable guidance.
 - Use what, why, and how to explain concepts.
 - Include tips, gotchas, and common pitfalls; something that need to be aware of.
-- Use bullets and short sections for scanability.
+- Use bullets and short sections for scannability.
 - Use tables whenever helpful.
 - Use markdown formatting for code snippets and commands.
 - Wrap commands, file paths, env vars, and code identifiers in backticks.
