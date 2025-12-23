@@ -11,24 +11,16 @@ import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 import { cn } from '@/lib/utils'
 
-export interface Props {
-  scope: string
-
-  /** Common input types */
-  type:
-    | 'button'
-    // | 'checkbox'
-    | 'color'
+type InputType
+  = | 'color'
     | 'date'
     | 'datetime-local'
     | 'email'
-    | 'file'
     | 'hidden'
     | 'image'
     | 'month'
     | 'number'
     | 'password'
-    // | 'radio'
     | 'range'
     | 'reset'
     | 'search'
@@ -38,6 +30,27 @@ export interface Props {
     | 'time'
     | 'url'
     | 'week'
+
+type ReadonlySupportedType = Extract<
+  InputType,
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week'
+>
+
+type ReadonlyUnsupportedType = Exclude<InputType, ReadonlySupportedType>
+
+interface CommonProps {
+  scope: string
   id?: string | undefined
   name?: string | undefined
   defaultValue?: string | undefined
@@ -46,9 +59,20 @@ export interface Props {
   required?: boolean
   invalid?: boolean
   loading?: boolean
-  readonly?: boolean
   disabled?: boolean
 }
+
+export type Props
+  = | (CommonProps & {
+    /** Input types that support readonly */
+    type: ReadonlySupportedType
+    readonly?: boolean
+  })
+  | (CommonProps & {
+    /** Input types that do not support readonly */
+    type: ReadonlyUnsupportedType
+    readonly?: never
+  })
 
 export interface Emits {
   (e: 'update:modelValue', payload: string | undefined): void
