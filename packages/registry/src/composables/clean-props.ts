@@ -7,6 +7,8 @@
  * - Symbol-keyed properties and non-enumerable properties are ignored.
  * - The operation is shallow: nested objects or arrays are copied by reference.
  * - The implementation builds a `Partial<T>` and then narrows/casts the result to `{ [K in keyof T]: T[K] }`.
+ *
+ * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/clean-props.ts
  */
 export function cleanProps<T extends object>(obj: T): { [K in keyof T]: T[K] } {
   const result: Partial<T> = {}

@@ -3,8 +3,25 @@ import { useEmitAsProps } from './use-emits-as-props'
 import { useForwardProps } from './use-forward-props'
 
 /**
- * Attribution: Radix Vue Team
- * Retrieved from: https://www.radix-vue.com/utilities/use-forward-props-emits.html
+ * The function `useForwardPropsEmits` takes in props and an optional emit function,
+ * and returns a computed object that combines the parsed props and emits as props.
+ *
+ * @param {T} props - The `props` parameter is of type `T`, which is a generic type
+ *                    that extends the parameters of the `useForwardProps` function.
+ *                    It represents the props object that is passed to the
+ *                    `useForwardProps` function.
+ * @param [emit] - The `emit` parameter is a function that can be used to emit events.
+ *                 It takes two arguments: `name`, which is the name of the event
+ *                 to be emitted, and `args`, which are the arguments to be passed
+ *                 along with the event.
+ * @returns a computed property that combines the parsed
+ *          props and emits as props.
+ *
+ * **Attribution to the Radix Vue team**
+ *
+ * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html
+ *
+ * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts
  */
 export function useForwardPropsEmits<
   T extends Parameters<typeof useForwardProps>[0],

@@ -14,6 +14,9 @@ export type UnRefElementReturn<T extends MaybeElement = MaybeElement> = T extend
   ? Exclude<MaybeElement, VueInstance>
   : T | undefined
 
+/**
+ * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/unref-element.ts
+ */
 export function unrefElement<
   T extends MaybeElement,
 >(

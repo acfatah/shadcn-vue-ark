@@ -9,10 +9,19 @@ interface PropOptions {
 
 /**
  * The `useForwardProps` function in TypeScript takes in a set of props and returns
- * a computed value that combines default props with assigned props from the current instance.
+ * a computed value that combines default props with assigned props from the
+ * current instance.
  *
- * Attribution: Radix Vue Team
- * Retrieved from: https://www.radix-vue.com/utilities/use-forward-props.html
+ * @param {T} props - The `props` parameter is an object that represents the props
+ *                    passed to a component.
+ * @returns computed value that combines the default props, preserved props, and
+ *          assigned props.
+ *
+ * **Attribution to the Radix Vue team**
+ *
+ * Docs: https://www.radix-vue.com/utilities/use-forward-props.html
+ *
+ * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardProps.ts
  */
 export function useForwardProps<T extends Record<string, any>>(props: MaybeRefOrGetter<T>) {
   const vm = getCurrentInstance()

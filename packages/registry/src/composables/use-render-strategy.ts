@@ -14,5 +14,8 @@ export interface RenderStrategyProps {
   unmountOnExit?: boolean
 }
 
+/**
+ * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/use-render-strategy.ts
+ */
 export const [RenderStrategyPropsProvider, useRenderStrategyProps]
   = createContext<ComputedRef<RenderStrategyProps>>('RenderStrategyProps')

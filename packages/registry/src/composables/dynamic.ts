@@ -6,9 +6,9 @@ import { cloneVNode, defineComponent, Fragment } from 'vue'
  * A dynamic component that renders its first child with merged props.
  * Useful for forwarding props to a single child component.
  *
- * See:
- * - https://ark-ui.com/docs/guides/composition
- * - https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts
+ * Docs: https://ark-ui.com/docs/guides/composition
+ *
+ * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts
  */
 export const Dynamic = defineComponent({
   name: 'Dynamic',

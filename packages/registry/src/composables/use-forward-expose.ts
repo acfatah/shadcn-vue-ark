@@ -1,5 +1,3 @@
-// Credit to the Radix Vue team: https://github.com/radix-vue/radix-vue/blob/main/packages/radix-vue/src/shared/useForwardExpose.ts
-
 import type { ComponentPublicInstance } from 'vue'
 import { computed, getCurrentInstance, ref } from 'vue'
 import { unrefElement } from './unref-element'
@@ -8,6 +6,15 @@ function isElement(el: any): el is Element {
   return Object.prototype.hasOwnProperty.call(el, 'nodeName') && typeof el.nodeName === 'string'
 }
 
+/**
+ * Forward component's exposed `value`, `props` and `$el`
+ *
+ * **Attribution to the Radix Vue team**
+ *
+ * Docs: https://reka-ui.com/docs/utilities/use-forward-expose#useforwardexpose
+ *
+ * Source: https://github.com/radix-vue/radix-vue/blob/main/packages/radix-vue/src/shared/useForwardExpose.ts
+ */
 export function useForwardExpose() {
   // biome-ignore lint/style/noNonNullAssertion: intentional
   const instance = getCurrentInstance()!
