@@ -5,7 +5,7 @@ import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+export interface Props {
   class?: HTMLAttributes['class']
   asChild?: boolean
   as?: string
