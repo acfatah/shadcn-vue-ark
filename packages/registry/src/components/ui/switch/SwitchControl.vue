@@ -1,14 +1,15 @@
 <script setup lang="ts">
+import type { SwitchControlProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends SwitchControlProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 

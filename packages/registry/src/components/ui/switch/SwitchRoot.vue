@@ -7,7 +7,7 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-type Props = SwitchRootProps & {
+interface Props extends SwitchRootProps {
   class?: HTMLAttributes['class']
   loading?: boolean
 }
