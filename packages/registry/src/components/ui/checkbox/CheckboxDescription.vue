@@ -17,6 +17,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
 <template>
   <Description
+    data-scope="checkbox"
+    data-part="description"
     v-bind="forwardedProps"
     :class="cn(
       `
