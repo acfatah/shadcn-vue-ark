@@ -1,20 +1,23 @@
 <script setup lang="ts">
+import type { CheckboxControlProps } from '@ark-ui/vue/checkbox'
 import type { HTMLAttributes } from 'vue'
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends CheckboxControlProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
   <Checkbox.Control
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       // Currently rounded-lg produces different results from rounded-[4px] here
       `

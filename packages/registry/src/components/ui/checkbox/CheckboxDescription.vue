@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
+import type { DescriptionProps } from '@/components/ui/description'
+import { Description } from '@/components/ui/description'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends DescriptionProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <Checkbox.Label
+  <Description
     v-bind="forwardedProps"
     :class="cn(
       `
@@ -26,5 +27,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     )"
   >
     <slot />
-  </Checkbox.Label>
+  </Description>
 </template>
