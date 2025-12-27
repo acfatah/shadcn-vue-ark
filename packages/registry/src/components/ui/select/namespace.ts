@@ -1,5 +1,6 @@
 import SelectClearTrigger from './SelectClearTrigger.vue'
 import SelectContent from './SelectContent.vue'
+import SelectControl from './SelectControl.vue'
 import SelectEmpty from './SelectEmpty.vue'
 import SelectIndicator from './SelectIndicator.vue'
 import SelectItem from './SelectItem.vue'
@@ -29,7 +30,7 @@ export const Select = {
   /**
    * SelectControl component
    */
-  Control: ArkSelect.Control,
+  Control: SelectControl,
 
   /**
    * SelectEmpty component
