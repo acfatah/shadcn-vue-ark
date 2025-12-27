@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { createListCollection, Select } from '@/components/ui/select'
 
-const props = withDefaults(defineProps<{
+const storyArgs = withDefaults(defineProps<{
   position?: 'item-aligned' | 'popper'
 }>(), {
   position: 'item-aligned',
@@ -47,7 +47,7 @@ const emptyValue = computed(() => !value.value.length)
       </Select.Trigger>
     </Select.Control>
 
-    <Select.Content :position="props.position">
+    <Select.Content :position="storyArgs.position">
       <Select.ItemGroup>
         <Select.ItemGroupLabel>Fruits</Select.ItemGroupLabel>
         <Select.Empty>No fruits found.</Select.Empty>

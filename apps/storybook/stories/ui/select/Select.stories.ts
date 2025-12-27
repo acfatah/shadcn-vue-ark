@@ -18,8 +18,11 @@ import {
   SelectValueText,
 } from '@/components/ui/select'
 import { registryItem } from '@/components/ui/select/_registry'
+
 import SelectDefaultStory from './SelectDefaultStory.vue'
 import SelectDefaultSource from './SelectDefaultStory.vue?raw'
+import SelectEmptyStory from './SelectEmptyStory.vue'
+import SelectEmptySource from './SelectEmptyStory.vue?raw'
 
 const meta = {
   title: 'Components/Select',
@@ -45,6 +48,10 @@ const meta = {
     docs: {
       description: {
         component: registryItem.description,
+      },
+      story: {
+        inline: false,
+        height: '40dvh',
       },
     },
   },
@@ -93,35 +100,23 @@ export const Default: Story = {
 
 // @ts-expect-error TS2322
 export const Empty: Story = {
-  render: args => ({
-    components: {
-      SelectRoot,
-      SelectLabel,
-      SelectControl,
-      SelectTrigger,
-      SelectValueText,
-      SelectIndicator,
-      SelectContent,
-      SelectEmpty,
+  parameters: {
+    docs: {
+      source: {
+        code: SelectEmptySource,
+      },
     },
+  },
+
+  render: args => ({
+    components: { SelectEmptyStory },
 
     setup() {
       return { args }
     },
 
     template: html`
-      <SelectRoot v-bind="args">
-        <SelectLabel>Select an option</SelectLabel>
-        <SelectControl>
-          <SelectTrigger>
-            <SelectValueText placeholder="Please select..." />
-            <SelectIndicator />
-          </SelectTrigger>
-        </SelectControl>
-        <SelectContent>
-          <SelectEmpty>No options available.</SelectEmpty>
-        </SelectContent>
-      </SelectRoot>
+      <SelectEmptyStory v-bind="args" />
     `,
   }),
 }
