@@ -1,14 +1,15 @@
 <script setup lang="ts">
+import type { AccordionItemContentProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
 import { Accordion } from '@ark-ui/vue/accordion'
 import { reactiveOmit } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends AccordionItemContentProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 </script>
 

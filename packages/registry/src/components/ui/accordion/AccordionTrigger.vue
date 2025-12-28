@@ -1,21 +1,24 @@
 <script setup lang="ts">
+import type { AccordionItemTriggerProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
 import { Accordion } from '@ark-ui/vue/accordion'
 import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends AccordionItemTriggerProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
   <Accordion.ItemTrigger
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       `
         flex w-full flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm
