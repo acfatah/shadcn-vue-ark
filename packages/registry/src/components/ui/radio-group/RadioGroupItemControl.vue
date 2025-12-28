@@ -1,26 +1,29 @@
 <script setup lang="ts">
+import type { RadioGroupItemControlProps } from '@ark-ui/vue/radio-group'
 import type { HTMLAttributes } from 'vue'
 import { RadioGroup } from '@ark-ui/vue/radio-group'
 import { reactiveOmit } from '@vueuse/core'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 import RadioGroupIndicator from './RadioGroupIndicator.vue'
 
-interface Props {
+interface Props extends RadioGroupItemControlProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
   <RadioGroup.ItemControl
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       `
         group flex aspect-square size-4 shrink-0 items-center justify-center rounded-full border
         border-input text-primary shadow-xs transition-[color,box-shadow] outline-none
-        disabled:opacity-50
+        data-disabled:opacity-50
         dark:bg-input/30
       `,
       `

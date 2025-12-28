@@ -8,7 +8,7 @@ interface Props {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
@@ -18,7 +18,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-scope="radio-group"
     data-part="item-content"
     v-bind="forwardedProps"
-    :class="cn('flex flex-col gap-2', props.class)"
+    :class="cn(
+      'flex flex-col gap-2',
+      props.class,
+    )"
   >
     <slot />
   </div>

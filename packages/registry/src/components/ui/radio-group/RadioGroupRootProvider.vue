@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import type { UseRadioGroupReturn } from '@ark-ui/vue/radio-group'
-import type { UnwrapRef } from 'vue'
+import type { RadioGroupRootProviderProps } from '@ark-ui/vue/radio-group'
 import { RadioGroup } from '@ark-ui/vue/radio-group'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 
-interface Props {
-  value: UnwrapRef<UseRadioGroupReturn>
-}
-
-const props = defineProps<Props>()
+const props = defineProps<RadioGroupRootProviderProps>()
+const forwardedProps = useForwardPropsEmits(props)
 </script>
 
 <template>
   <RadioGroup.RootProvider
     :value="props.value"
-    v-bind="$attrs"
+    v-bind="forwardedProps"
   >
     <slot />
   </RadioGroup.RootProvider>

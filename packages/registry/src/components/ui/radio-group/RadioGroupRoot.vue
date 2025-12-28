@@ -6,11 +6,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-type Props = RadioGroupRootProps & {
+interface Props extends RadioGroupRootProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const emit = defineEmits<RadioGroupRootEmits>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
@@ -22,7 +22,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     :class="cn(
       `
         group flex flex-col gap-3
-        disabled:opacity-50
+        data-disabled:opacity-50
       `,
       props.class,
     )"

@@ -8,7 +8,7 @@ interface Props {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
@@ -20,10 +20,13 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     v-bind="forwardedProps"
     :class="cn(
       `
-        flex flex-col gap-3
+        flex gap-3
         group-has-data-[orientation=vertical]:flex-col
         group-has-data-[orientation=horizontal]:md:flex-row
       `,
+
+      // Override for horizontal orientation on smaller screens
+      'group-has-data-[orientation=horizontal]:flex-col',
       props.class)"
   >
     <slot />

@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
+import type { DescriptionProps } from '@/components/ui/description'
+import { Description } from '@/components/ui/description'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
-  class?: HTMLAttributes['class']
-}
-
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<DescriptionProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <div
+  <Description
     data-scope="radio-group"
     data-part="description"
     v-bind="forwardedProps"
@@ -27,5 +24,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     )"
   >
     <slot />
-  </div>
+  </Description>
 </template>

@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { RadioGroup } from '@ark-ui/vue/radio-group'
 import { reactiveOmit } from '@vueuse/core'
+import type { LabelProps } from '@/components/ui/label'
+import { Label } from '@/components/ui/label'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
-  class?: HTMLAttributes['class']
-}
-
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<LabelProps>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <RadioGroup.Label
+  <Label
+    data-scope="radio-group"
+    data-part="label"
     v-bind="forwardedProps"
     :class="cn(
       `
@@ -26,5 +24,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     )"
   >
     <slot />
-  </RadioGroup.Label>
+  </Label>
 </template>
