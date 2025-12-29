@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { HTMLAttributes, WritableComputedRef } from 'vue'
 import { Icon } from '@iconify/vue'
-import { useVModel } from '@vueuse/core'
+import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
+  name?: string
   defaultValue?: boolean | null
   modelValue?: boolean | null
   value?: string | number
-  name?: string
   required?: boolean
   disabled?: boolean
   loading?: boolean
@@ -46,6 +47,19 @@ const state = computed(() => {
   return values.find(([val]) => val === checked.value)?.[1] ?? 'unchecked'
 })
 
+const delegatedProps = reactiveOmit(props, [
+  'checkedIcon',
+  'class',
+  'defaultValue',
+  'disabled',
+  'invalid',
+  'indeterminate',
+  'indeterminateIcon',
+  'loading',
+  'modelValue',
+  'required',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const inputRef = ref<HTMLInputElement | null>(null)
 
 watch(
@@ -54,14 +68,18 @@ watch(
     if (inputRef.value)
       inputRef.value.indeterminate = value === 'indeterminate'
   },
+  { immediate: true },
 )
 
 const invalid = computed(() => props.invalid || undefined)
+const dataInvalid = computed(() => (props.invalid ? '' : undefined))
 const disabled = computed(() => props.disabled || props.loading || undefined)
+const dataDisabled = computed(() => (disabled.value ? '' : undefined))
 const ariaChecked = computed(
   () => state.value === 'indeterminate' ? 'mixed' : state.value === 'checked' ? 'true' : 'false',
 )
 const ariaBusy = computed(() => props.loading || undefined)
+const dataLoading = computed(() => (props.loading ? '' : undefined))
 
 function onChange() {
   emits('change', checked.value)
@@ -105,21 +123,22 @@ function onClick() {
     :class="cn('peer relative inline-flex', props.class)"
     data-scope="checkbox-input"
     data-part="root"
-    role="checkbox"
-    :aria-disabled="disabled"
-    :aria-checked="ariaChecked"
-    :aria-invalid="invalid"
-    :aria-busy="ariaBusy"
+    :data-state="state"
+    :data-disabled="dataDisabled"
+    :data-invalid="dataInvalid"
+    :data-loading="dataLoading"
     @click="onClick"
   >
     <input
       ref="inputRef"
+      v-bind="forwardedProps"
       v-model="checked"
-      :value="value"
-      :name="name"
+      :value="props.value"
       :disabled="disabled"
       :required="required"
       :aria-invalid="invalid"
+      :aria-checked="ariaChecked"
+      :aria-busy="ariaBusy"
       data-scope="checkbox-input"
       data-part="input"
       type="checkbox"
@@ -132,8 +151,9 @@ function onClick() {
       data-scope="checkbox-input"
       data-part="control"
       :data-state="state"
-      :data-invalid="invalid"
-      :data-disabled="disabled"
+      :data-invalid="dataInvalid"
+      :data-disabled="dataDisabled"
+      :data-loading="dataLoading"
       :class="cn(
         // Currently rounded-lg produces different results from rounded-[4px] here
         `
