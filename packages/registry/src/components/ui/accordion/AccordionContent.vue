@@ -24,14 +24,11 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
         data-[state=closed]:animate-accordion-up
         data-[state=open]:animate-accordion-down
       `,
+      `*:data-[part=content-wrapper]:pt-0 *:data-[part=content-wrapper]:pb-4`,
       props.class,
     )"
   >
-    <div
-      data-scope="accordion"
-      data-part="content-wrapper"
-      class="pt-0 pb-4"
-    >
+    <div data-scope="accordion" data-part="content-wrapper">
       <slot />
     </div>
   </Accordion.ItemContent>
