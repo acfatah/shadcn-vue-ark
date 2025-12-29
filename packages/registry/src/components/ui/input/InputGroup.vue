@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
+import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']
   inline?: boolean
 }
@@ -17,7 +19,7 @@ const inline = computed(() => props.inline || undefined)
 </script>
 
 <template>
-  <div
+  <ark.div
     v-bind="forwardedProps"
     data-scope="input-group"
     :data-inline="inline"
@@ -49,5 +51,5 @@ const inline = computed(() => props.inline || undefined)
     )"
   >
     <slot />
-  </div>
+  </ark.div>
 </template>

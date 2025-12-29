@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
+import { ark } from '@ark-ui/vue'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']
 }
 
@@ -10,7 +12,7 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <div
+  <ark.div
     data-scope="input"
     data-part="description"
     :class="cn(
@@ -27,5 +29,5 @@ const props = defineProps<Props>()
     )"
   >
     <slot />
-  </div>
+  </ark.div>
 </template>
