@@ -20,9 +20,9 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/composables/dynamic.ts',
+      path: 'src/composables/use-forward-props-emits.ts',
       type: 'registry:file',
-      target: 'src/composables/dynamic.ts',
+      target: 'src/composables/use-forward-props-emits.ts',
     },
     {
       path: 'src/lib/utils.ts',

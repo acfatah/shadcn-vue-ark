@@ -3,6 +3,8 @@ import { html } from 'common-tags'
 
 import { Badge } from '@/components/ui/badge'
 import { registryItem } from '@/components/ui/spinner/_registry'
+import AsChildStory from './AsChildStory.vue'
+import AsChildSource from './AsChildStory.vue?raw'
 import BadgeDefaultStory from './BadgeDefaultStory.vue'
 import BadgeDefaultSource from './BadgeDefaultStory.vue?raw'
 
@@ -44,3 +46,32 @@ export const Default: Story = {
     `,
   }),
 }
+
+export const AsChild: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: AsChildSource,
+      },
+
+      description: {
+        story: html`
+          Use the \`asChild\` prop to render the badge as a different component, such as a \`RouterLink\`.
+        `,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { AsChildStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <AsChildStory v-bind="args" />
+    `,
+  }),
+}
+AsChild.storyName = '`AsChild` prop'

@@ -1,31 +1,30 @@
 <script setup lang="ts">
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
+import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
-import { Dynamic } from '@/composables/dynamic'
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 import type { BadgeVariants } from '.'
 import { badgeVariants } from '.'
 
-interface Props {
+interface Props extends PolymorphicProps {
   variant?: BadgeVariants['variant']
   class?: HTMLAttributes['class']
-  asChild?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'default',
 })
 
-const delegatedProps = reactiveOmit(props, ['asChild', 'class', 'variant'])
-const forwardedProps = useForwardProps(delegatedProps)
+const delegatedProps = reactiveOmit(props, ['class', 'variant'])
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <component
+  <ark.span
     v-bind="forwardedProps"
-    :is="props.asChild ? Dynamic : 'span'"
     data-scope="badge"
     :class="cn(
       badgeVariants({ variant: props.variant }),
@@ -33,5 +32,5 @@ const forwardedProps = useForwardProps(delegatedProps)
     )"
   >
     <slot />
-  </component>
+  </ark.span>
 </template>
