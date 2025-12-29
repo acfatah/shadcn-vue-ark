@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -7,10 +9,13 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
   <label
+    v-bind="forwardedProps"
     data-scope="input"
     data-part="label"
     :class="cn(

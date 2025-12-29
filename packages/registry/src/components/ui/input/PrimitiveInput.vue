@@ -7,8 +7,9 @@
  */
 
 import type { HTMLAttributes } from 'vue'
-import { useVModel } from '@vueuse/core'
+import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 type InputType
@@ -80,6 +81,15 @@ export interface Emits {
 
 const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'disabled',
+  'invalid',
+  'loading',
+  'readonly',
+  'required',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -95,6 +105,7 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
 
 <template>
   <input
+    v-bind="forwardedProps"
     :id="props.id"
     v-model="modelValue"
     :name="props.name"
