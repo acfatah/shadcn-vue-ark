@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 type Orientation = 'horizontal' | 'vertical'
@@ -16,6 +18,8 @@ const props = withDefaults(defineProps<Props>(), {
   decorative: true,
 })
 
+const delegatedProps = reactiveOmit(props, ['class', 'decorative', 'orientation'])
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 const role = computed(() => props.decorative ? 'none' : 'separator')
 const ariaHidden = computed(() => props.decorative ? 'true' : undefined)
 const ariaOrientation = computed(() => props.decorative ? undefined : props.orientation)
@@ -23,6 +27,7 @@ const ariaOrientation = computed(() => props.decorative ? undefined : props.orie
 
 <template>
   <div
+    v-bind="forwardedProps"
     data-scope="separator"
     :data-orientation="orientation"
     :role="role"
