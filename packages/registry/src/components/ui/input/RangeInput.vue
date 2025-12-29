@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { InputHTMLAttributes } from 'vue'
-import { useVModel } from '@vueuse/core'
-import { computed, useAttrs } from 'vue'
+import { reactiveOmit, useVModel } from '@vueuse/core'
+import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
+  name?: string
   defaultValue?: string | number
   modelValue?: string | number
   hideThumb?: boolean
@@ -12,6 +14,9 @@ interface Props {
   loading?: boolean
   invalid?: boolean
   class?: InputHTMLAttributes['class']
+  min?: string | number
+  max?: string | number
+  step?: string | number
 }
 
 interface Emits {
@@ -23,7 +28,15 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emits = defineEmits<Emits>()
-const attrs = useAttrs()
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'invalid',
+  'loading',
+  'max',
+  'modelValue',
+  'min',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 function toNumericValue(value: unknown): number | undefined {
   if (value === undefined || value === null) {
@@ -51,9 +64,9 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const sliderValue = computed(() => toNumericValue(modelValue.value) ?? (toNumericValue(attrs.min) ?? 0))
-const sliderMin = computed(() => toNumericValue(attrs.min) ?? 0)
-const sliderMax = computed(() => toNumericValue(attrs.max) ?? 100)
+const sliderValue = computed(() => toNumericValue(modelValue.value) ?? (toNumericValue(props.min) ?? 0))
+const sliderMin = computed(() => toNumericValue(props.min) ?? 0)
+const sliderMax = computed(() => toNumericValue(props.max) ?? 100)
 
 const rangePercentage = computed(() => {
   const min = sliderMin.value
@@ -75,17 +88,23 @@ const trackStyle = computed(() => ({
 
 const invalid = computed(() => props.invalid || undefined)
 const disabled = computed(() => props.disabled || props.loading || undefined)
-const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefined) ? 'true' : undefined)
+const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefined) ? '' : undefined)
+const ariaBusy = computed(() => props.loading || undefined)
 </script>
 
 <template>
   <input
     v-model="modelValue"
+    v-bind="forwardedProps"
     data-scope="range-input"
     type="range"
+    :min="props.min"
+    :max="props.max"
+    :value="modelValue"
     :data-hide-thumb="hideThumb"
     :disabled="disabled"
     :aria-invalid="invalid"
+    :aria-busy="ariaBusy"
     :style="trackStyle"
     :class="cn(
       'h-9 w-full rounded',
@@ -140,14 +159,24 @@ input[data-scope='range-input']::-moz-range-thumb {
   transition: transform 0.25s ease-in-out;
 }
 
-input[data-scope='range-input'][data-hide-thumb='true']::-webkit-slider-thumb {
-  height: 0 !important;
-  width: 0 !important;
+input[data-scope='range-input'][data-hide-thumb]:focus::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
 }
 
-input[data-scope='range-input'][data-hide-thumb='true']::-moz-range-thumb {
+input[data-scope='range-input'][data-hide-thumb]:focus::-moz-range-track {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
+}
+
+input[data-scope='range-input'][data-hide-thumb]::-webkit-slider-thumb {
   height: 0 !important;
   width: 0 !important;
+  box-shadow: none !important;
+}
+
+input[data-scope='range-input'][data-hide-thumb]::-moz-range-thumb {
+  height: 0 !important;
+  width: 0 !important;
+  box-shadow: none !important;
 }
 
 input[data-scope='range-input']:focus::-webkit-slider-thumb {
@@ -155,7 +184,6 @@ input[data-scope='range-input']:focus::-webkit-slider-thumb {
 }
 
 input[data-scope='range-input']:focus::-moz-range-thumb {
-  /* box-shadow: 0 0 0 3px var(--ring); */
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent);
 }
 </style>
