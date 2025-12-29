@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { useVModel } from '@vueuse/core'
+import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
   name?: string
   invalid?: boolean
   disabled?: boolean
+  loading?: boolean
   class?: HTMLAttributes['class']
 }
 
@@ -22,6 +24,15 @@ interface Emits {
 
 const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'defaultValue',
+  'disabled',
+  'invalid',
+  'loading',
+  'modelValue',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 const files = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -37,16 +48,17 @@ function onChange(event: Event) {
   emits('change', next)
 }
 
-const ariaInvalid = computed(() => props.invalid ? 'true' : undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
+const disabled = computed(() => props.disabled || undefined)
+const ariaBusy = computed(() => props.loading || undefined)
 </script>
 
 <template>
   <input
-    :multiple="multiple"
-    :accept="accept"
-    :name="name"
+    v-bind="forwardedProps"
     :disabled="disabled"
     :aria-invalid="ariaInvalid"
+    :aria-busy="ariaBusy"
     data-scope="file-input"
     type="file"
     :class="cn(
