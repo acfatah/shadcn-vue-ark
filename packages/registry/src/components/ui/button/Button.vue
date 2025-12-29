@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 import { Dynamic } from '@/composables/dynamic'
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 import type { ButtonVariants } from '.'
 import { buttonVariants } from '.'
@@ -31,7 +31,7 @@ const delegatedProps = reactiveOmit(props, [
   'variant',
 ])
 
-const forwardedProps = useForwardProps(delegatedProps)
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 const nativeDisabled = computed(() => props.disabled || props.loading || undefined)
 const ariaDisabled = computed(() => (nativeDisabled.value ? 'true' : undefined))
 </script>
