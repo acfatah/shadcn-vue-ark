@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
+import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']
 }
 
@@ -14,7 +16,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <div
+  <ark.div
     data-scope="radio-group"
     data-part="items"
     v-bind="forwardedProps"
@@ -27,8 +29,9 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
       // Override for horizontal orientation on smaller screens
       'group-has-data-[orientation=horizontal]:flex-col',
-      props.class)"
+      props.class,
+    )"
   >
     <slot />
-  </div>
+  </ark.div>
 </template>
