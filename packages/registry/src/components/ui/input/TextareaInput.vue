@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { useVModel } from '@vueuse/core'
+import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -18,6 +19,12 @@ interface Emits {
 
 const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'disabled',
+  'invalid',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -31,6 +38,7 @@ const disabled = computed(() => props.disabled || undefined)
 <template>
   <textarea
     v-model="modelValue"
+    v-bind="forwardedProps"
     data-scope="textarea-input"
     :disabled="disabled"
     :aria-invalid="invalid"
