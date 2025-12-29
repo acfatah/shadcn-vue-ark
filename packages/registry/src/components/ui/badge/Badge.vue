@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { Dynamic } from '@/composables/dynamic'
+import { useForwardProps } from '@/composables/use-forward-props'
 import { cn } from '@/lib/utils'
 
 import type { BadgeVariants } from '.'
@@ -17,15 +18,19 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'default',
 })
 
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, ['asChild', 'class', 'variant'])
+const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
   <component
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :is="props.asChild ? Dynamic : 'span'"
     data-scope="badge"
-    :class="cn(badgeVariants({ variant: props.variant }), props.class)"
+    :class="cn(
+      badgeVariants({ variant: props.variant }),
+      props.class,
+    )"
   >
     <slot />
   </component>
