@@ -21,11 +21,6 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/composables/use-forward-props.ts',
-      type: 'registry:file',
-      target: 'src/composables/use-forward-props.ts',
-    },
-    {
       path: 'src/composables/use-forward-props-emits.ts',
       type: 'registry:file',
       target: 'src/composables/use-forward-props-emits.ts',

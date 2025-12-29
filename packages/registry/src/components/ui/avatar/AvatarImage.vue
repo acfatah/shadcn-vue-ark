@@ -2,7 +2,7 @@
 import type { AvatarImageProps } from '@ark-ui/vue/avatar'
 import { Avatar } from '@ark-ui/vue/avatar'
 import { reactiveOmit } from '@vueuse/core'
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props extends AvatarImageProps {
@@ -11,7 +11,7 @@ interface Props extends AvatarImageProps {
 
 const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardProps(delegatedProps)
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
