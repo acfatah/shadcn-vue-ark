@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Icon } from '@iconify/vue'
-import { useVModel } from '@vueuse/core'
-import { computed, useAttrs } from 'vue'
+import { reactiveOmit, useVModel } from '@vueuse/core'
+import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 export interface Props {
@@ -26,7 +27,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emits = defineEmits<Emits>()
-const attrs = useAttrs()
+const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -58,6 +60,7 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
       :aria-invalid="invalid"
       :aria-readonly="readonly"
       :aria-busy="loading"
+      v-bind="forwardedProps"
       :class="cn(
         `
           h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2
@@ -84,7 +87,6 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
 
         props.class,
       )"
-      v-bind="attrs"
     >
       <slot />
     </select>
