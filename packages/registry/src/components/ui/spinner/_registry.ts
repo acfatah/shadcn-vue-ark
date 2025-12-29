@@ -21,11 +21,6 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/composables/dynamic.ts',
-      type: 'registry:file',
-      target: 'src/composables/dynamic.ts',
-    },
-    {
       path: 'src/lib/utils.ts',
       type: 'registry:file',
       target: 'src/lib/utils.ts',
