@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import type { AvatarRootProps } from '@ark-ui/vue/avatar'
 import type { HTMLAttributes } from 'vue'
 import { Avatar } from '@ark-ui/vue/avatar'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends AvatarRootProps {
   class?: HTMLAttributes['class']
 }
 
