@@ -3,6 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import { useSelectContext } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 const select = useSelectContext()
 const collection = computed(() => select.value.collection)
 </script>
@@ -18,7 +20,7 @@ const collection = computed(() => select.value.collection)
 <template>
   <div
     v-if="collection.size === 0"
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     data-scope="select"
     data-part="empty"
     role="presentation"

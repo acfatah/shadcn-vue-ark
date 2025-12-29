@@ -4,6 +4,7 @@ import { Select } from '@ark-ui/vue/select'
 import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardExpose } from '@/composables/use-forward-expose'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props extends SelectItemIndicatorProps {
@@ -15,12 +16,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const delegatedProps = reactiveOmit(props, ['class', 'icon'])
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
 
 <template>
   <Select.ItemIndicator
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       'pointer-events-none absolute right-2 flex size-4 items-center justify-center',
       props.class,

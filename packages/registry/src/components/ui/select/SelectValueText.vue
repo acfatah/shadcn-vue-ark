@@ -5,6 +5,7 @@ import { Select, useSelectContext } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/use-forward-expose'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props extends SelectValueTextProps {
@@ -17,10 +18,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 const select = useSelectContext()
 
-const forwardedProps = computed(() => ({
-  ...delegatedProps,
+const mergedProps = computed(() => ({
+  ...forwardedProps.value,
   ...select.value.getValueTextProps(),
 }))
 
@@ -30,7 +32,7 @@ useForwardExpose()
 
 <template>
   <Select.ValueText
-    v-bind="forwardedProps"
+    v-bind="mergedProps"
     :placeholder="props.placeholder"
     :class="cn(
       'truncate',

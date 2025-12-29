@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { useForwardExpose } from '@/composables/use-forward-expose'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 
 const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
 
@@ -17,7 +19,7 @@ useForwardExpose()
   <div
     data-scope="select"
     data-part="separator"
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       '-mx-1 my-1 h-px bg-border',
       props.class,

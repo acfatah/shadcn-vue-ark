@@ -6,6 +6,7 @@ import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/use-forward-expose'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props extends SelectIndicatorProps {
@@ -20,12 +21,13 @@ const props = withDefaults(defineProps<Props>(), {
 const delegatedProps = reactiveOmit(props, ['class', 'icon'])
 const select = useSelectContext()
 const state = computed(() => (select.value.open ? 'open' : 'closed'))
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
 
 <template>
   <Select.Indicator
-    v-bind="delegatedProps"
+    v-bind="forwardedProps"
     :class="cn(
       'absolute right-2 flex size-3.5 items-center justify-center',
       props.class,
