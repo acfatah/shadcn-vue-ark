@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Icon } from '@iconify/vue'
-import { useVModel } from '@vueuse/core'
+import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
+  name?: string
   defaultValue?: string | number | null
   modelValue?: string | number | null
   value: string | number
-  name?: string
   required?: boolean
   disabled?: boolean
   invalid?: boolean
@@ -24,6 +25,15 @@ interface Emits {
 
 const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'disabled',
+  'invalid',
+  'loading',
+  'modelValue',
+  'required',
+])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
 const selectedValue = useVModel(props, 'modelValue', emits, {
   passive: true,
@@ -33,8 +43,11 @@ const selectedValue = useVModel(props, 'modelValue', emits, {
 const isChecked = computed(() => selectedValue.value === props.value)
 const state = computed(() => (isChecked.value ? 'checked' : 'unchecked'))
 const invalid = computed(() => props.invalid || undefined)
+const dataInvalid = computed(() => (props.invalid ? '' : undefined))
 const disabled = computed(() => props.disabled || props.loading || undefined)
+const dataDisabled = computed(() => (disabled.value ? '' : undefined))
 const ariaBusy = computed(() => props.loading || undefined)
+const dataLoading = computed(() => (props.loading ? '' : undefined))
 
 function updateSelection(newValue: string | number) {
   if (props.disabled)
@@ -65,11 +78,10 @@ function onClick(_event: Event) {
   <div
     data-scope="radio-input"
     data-part="root"
-    role="radio"
-    :aria-checked="isChecked"
-    :aria-disabled="disabled"
-    :aria-invalid="invalid"
-    :aria-busy="ariaBusy"
+    :data-state="state"
+    :data-disabled="dataDisabled"
+    :data-invalid="dataInvalid"
+    :data-loading="dataLoading"
     :class="cn(
       `
         peer inline-flex aspect-square size-4 shrink-0 rounded-full border border-input text-primary
@@ -84,14 +96,16 @@ function onClick(_event: Event) {
     @click="onClick"
   >
     <input
+      v-bind="forwardedProps"
       data-scope="radio-input"
       data-part="input"
       :checked="isChecked"
-      :value="value"
+      :value="props.value"
       :name="name"
       :disabled="disabled"
       :required="required"
       :aria-invalid="invalid"
+      :aria-busy="ariaBusy"
       type="radio"
       class="peer sr-only"
       @change="onChange"
@@ -99,9 +113,10 @@ function onClick(_event: Event) {
     <div
       data-scope="radio-input"
       data-part="control"
-      :disabled="disabled ? '' : undefined"
       :data-state="state"
-      :data-invalid="invalid ? 'true' : undefined"
+      :data-disabled="dataDisabled"
+      :data-invalid="dataInvalid"
+      :data-loading="dataLoading"
       :class="cn(
         `relative flex w-full items-center justify-center rounded-full`,
         `
