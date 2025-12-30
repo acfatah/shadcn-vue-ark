@@ -137,6 +137,7 @@
         "@zag-js/vue": "^1.31.1",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "lucide-vue-next": "^0.562.0",
         "nprogress": "^0.2.0",
         "shadcn": "^3.6.2",
         "tailwind-merge": "^3.4.0",
@@ -1872,6 +1873,8 @@
     "loupe": ["loupe@3.2.1", "", {}, "sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ=="],
 
     "lru-cache": ["lru-cache@8.0.5", "", {}, "sha512-MhWWlVnuab1RG5/zMRRcVGXZLCXrZTgfwMikgzCegsPnG62yDQo5JnqKkrK4jO5iKqDAZGItAqN5CtKBCBWRUA=="],
+
+    "lucide-vue-next": ["lucide-vue-next@0.562.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-LN0BLGKMFulv0lnfK29r14DcngRUhIqdcaL0zXTt2o0oS9odlrjCGaU3/X9hIihOjjN8l8e+Y9G/famcNYaI7Q=="],
 
     "lz-string": ["lz-string@1.5.0", "", { "bin": { "lz-string": "bin/bin.js" } }, "sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ=="],
 
