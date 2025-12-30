@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 type Orientation = 'horizontal' | 'vertical'
 
-interface Props {
+export interface Props {
   orientation?: Orientation
   decorative?: boolean
   class?: HTMLAttributes['class']
