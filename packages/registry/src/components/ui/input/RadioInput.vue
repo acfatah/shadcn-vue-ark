@@ -42,7 +42,7 @@ const selectedValue = useVModel(props, 'modelValue', emits, {
 
 const isChecked = computed(() => selectedValue.value === props.value)
 const state = computed(() => (isChecked.value ? 'checked' : 'unchecked'))
-const invalid = computed(() => props.invalid || undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
 const dataInvalid = computed(() => (props.invalid ? '' : undefined))
 const disabled = computed(() => props.disabled || props.loading || undefined)
 const dataDisabled = computed(() => (disabled.value ? '' : undefined))
@@ -88,8 +88,8 @@ function onClick(_event: Event) {
         shadow-xs transition-[color,box-shadow] outline-none
         focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50
         aria-disabled:cursor-not-allowed aria-disabled:opacity-50
-        aria-invalid:border-destructive aria-invalid:ring-destructive/20
-        dark:bg-input/30 dark:aria-invalid:ring-destructive/40
+        data-invalid:border-destructive data-invalid:ring-destructive/20
+        dark:bg-input/30 dark:data-invalid:ring-destructive/40
       `,
       props.class,
     )"
@@ -104,7 +104,7 @@ function onClick(_event: Event) {
       :name="name"
       :disabled="disabled"
       :required="required"
-      :aria-invalid="invalid"
+      :aria-invalid="ariaInvalid"
       :aria-busy="ariaBusy"
       type="radio"
       class="peer sr-only"

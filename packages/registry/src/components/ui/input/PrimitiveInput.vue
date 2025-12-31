@@ -97,10 +97,10 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const required = computed(() => props.required || undefined)
-const invalid = computed(() => props.invalid || undefined)
-const loading = computed(() => props.loading || undefined)
 const readonly = computed(() => props.readonly || undefined)
 const disabled = computed(() => props.disabled || props.loading || undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
+const ariaBusy = computed(() => props.loading || undefined)
 </script>
 
 <template>
@@ -114,8 +114,8 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
     :required="required"
     :readonly="readonly"
     :disabled="disabled"
-    :aria-invalid="invalid"
-    :aria-busy="loading"
+    :aria-invalid="ariaInvalid"
+    :aria-busy="ariaBusy"
     :class="cn(
       `
         h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base

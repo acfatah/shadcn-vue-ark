@@ -35,10 +35,10 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const invalid = computed(() => props.invalid || undefined)
-const loading = computed(() => props.loading || undefined)
 const readonly = computed(() => props.readonly || undefined)
 const disabled = computed(() => props.disabled || props.loading || undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
+const ariaBusy = computed(() => props.loading || undefined)
 </script>
 
 <template>
@@ -57,9 +57,9 @@ const disabled = computed(() => props.disabled || props.loading || undefined)
       data-scope="input-select"
       data-part="input"
       :disabled="disabled"
-      :aria-invalid="invalid"
+      :aria-invalid="ariaInvalid"
       :aria-readonly="readonly"
-      :aria-busy="loading"
+      :aria-busy="ariaBusy"
       v-bind="forwardedProps"
       :class="cn(
         `

@@ -71,7 +71,7 @@ watch(
   { immediate: true },
 )
 
-const invalid = computed(() => props.invalid || undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
 const dataInvalid = computed(() => (props.invalid ? '' : undefined))
 const disabled = computed(() => props.disabled || props.loading || undefined)
 const dataDisabled = computed(() => (disabled.value ? '' : undefined))
@@ -136,7 +136,7 @@ function onClick() {
       :value="props.value"
       :disabled="disabled"
       :required="required"
-      :aria-invalid="invalid"
+      :aria-invalid="ariaInvalid"
       :aria-checked="ariaChecked"
       :aria-busy="ariaBusy"
       data-scope="checkbox-input"

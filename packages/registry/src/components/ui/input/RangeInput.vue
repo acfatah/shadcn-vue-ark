@@ -86,10 +86,10 @@ const trackStyle = computed(() => ({
   '--range-track': `linear-gradient(90deg, var(--primary) 0%, var(--primary) ${rangePercentage.value}%, var(--border) ${rangePercentage.value}%, var(--border) 100%)`,
 }))
 
-const invalid = computed(() => props.invalid || undefined)
 const disabled = computed(() => props.disabled || props.loading || undefined)
 const hideThumb = computed(() => (props.hideThumb || modelValue.value === undefined) ? '' : undefined)
 const ariaBusy = computed(() => props.loading || undefined)
+const ariaInvalid = computed(() => props.invalid || undefined)
 </script>
 
 <template>
@@ -103,7 +103,7 @@ const ariaBusy = computed(() => props.loading || undefined)
     :value="modelValue"
     :data-hide-thumb="hideThumb"
     :disabled="disabled"
-    :aria-invalid="invalid"
+    :aria-invalid="ariaInvalid"
     :aria-busy="ariaBusy"
     :style="trackStyle"
     :class="cn(
