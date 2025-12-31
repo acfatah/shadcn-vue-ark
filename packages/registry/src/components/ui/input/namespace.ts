@@ -7,7 +7,6 @@ import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
 import InputError from './InputError.vue'
 import InputGroup from './InputGroup.vue'
-import InputLabel from './InputLabel.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
 import MonthInput from './MonthInput.vue'
 import NumberInput from './NumberInput.vue'
@@ -26,6 +25,7 @@ import UrlInput from './UrlInput.vue'
 import WeekInput from './WeekInput.vue'
 
 import { Button } from '../button'
+import { Label } from '../label'
 
 export const Input = {
   /**
@@ -42,7 +42,7 @@ export const Input = {
   Group: InputGroup,
 
   /** LabelInput component */
-  Label: InputLabel,
+  Label,
 
   /**
    * InputRequiredIndicator component

@@ -81,7 +81,6 @@ const meta = {
   title: 'Components/Input',
   subcomponents: {
     InputGroup: Input.Group,
-    InputLabel: Input.Label,
     InputDescription: Input.Description,
     InputError: Input.Error,
     InputRequiredIndicator: Input.RequiredIndicator,
