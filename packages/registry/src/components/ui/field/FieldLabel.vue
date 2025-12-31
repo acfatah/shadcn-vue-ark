@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import type { FieldLabelProps } from '@ark-ui/vue/field'
-import type { HTMLAttributes } from 'vue'
-import { reactiveOmit } from '@vueuse/core'
+import type { LabelProps } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 
-type Props = FieldLabelProps & {
-  class?: HTMLAttributes['class']
-}
+interface Props extends LabelProps, FieldLabelProps {}
 
-const props = withDefaults(defineProps<Props>(), {})
-const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const props = defineProps<Props>()
+const forwardedProps = useForwardPropsEmits(props)
 </script>
 
 <template>
