@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit, useVModel } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
+  id?: string
+  name?: string
   defaultValue?: string | undefined
   modelValue?: string | undefined
   class?: HTMLAttributes['class']
+  required?: boolean
   invalid?: boolean
   disabled?: boolean
+  loading?: boolean
+  readonly?: boolean
 }
 
 interface Emits {
@@ -21,8 +26,12 @@ const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
 const delegatedProps = reactiveOmit(props, [
   'class',
+  'defaultValue',
   'disabled',
   'invalid',
+  'loading',
+  'readonly',
+  'required',
 ])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 
@@ -31,8 +40,16 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const invalid = computed(() => props.invalid || undefined)
+const required = computed(() => props.required || undefined)
 const disabled = computed(() => props.disabled || undefined)
+const readonly = computed(() => props.readonly || undefined)
+const nativeInvalid = ref(false)
+const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
+const ariaBusy = computed(() => props.loading || undefined)
+
+function handleInvalid(_event: Event) {
+  nativeInvalid.value = true
+}
 </script>
 
 <template>
@@ -41,7 +58,10 @@ const disabled = computed(() => props.disabled || undefined)
     v-bind="forwardedProps"
     data-scope="textarea-input"
     :disabled="disabled"
-    :aria-invalid="invalid"
+    :aria-invalid="ariaInvalid"
+    :aria-busy="ariaBusy"
+    :required="required"
+    :readonly="readonly"
     :class="cn(
       `
         flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3
@@ -55,5 +75,7 @@ const disabled = computed(() => props.disabled || undefined)
       `,
       props.class,
     )"
+    @invalid="handleInvalid"
+    @input="nativeInvalid = false"
   />
 </template>

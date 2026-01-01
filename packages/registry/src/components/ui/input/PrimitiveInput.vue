@@ -52,10 +52,10 @@ type ReadonlyUnsupportedType = Exclude<InputType, ReadonlySupportedType>
 
 interface CommonProps {
   scope: string
-  id?: string | undefined
-  name?: string | undefined
-  defaultValue?: string | undefined
-  modelValue?: string | undefined
+  id?: string
+  name?: string
+  defaultValue?: string
+  modelValue?: string
   class?: HTMLAttributes['class']
   required?: boolean
   invalid?: boolean
@@ -83,9 +83,11 @@ const props = defineProps<Props>()
 const emits = defineEmits<Emits>()
 const delegatedProps = reactiveOmit(props, [
   'class',
+  'defaultValue',
   'disabled',
   'invalid',
   'loading',
+  'modelValue',
   'readonly',
   'required',
 ])
@@ -97,16 +99,16 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const required = computed(() => props.required || undefined)
-const readonly = computed(() => props.readonly || undefined)
 const disabled = computed(() => props.disabled || props.loading || undefined)
+const readonly = computed(() => props.readonly || undefined)
 const ariaInvalid = computed(() => props.invalid || undefined)
 const ariaBusy = computed(() => props.loading || undefined)
 </script>
 
 <template>
   <input
-    v-bind="forwardedProps"
     :id="props.id"
+    v-bind="forwardedProps"
     v-model="modelValue"
     :name="props.name"
     :data-scope="props.scope"
