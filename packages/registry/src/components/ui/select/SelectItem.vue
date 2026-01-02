@@ -8,6 +8,9 @@ import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
+import SelectItemIndicator from './SelectItemIndicator.vue'
+import SelectItemText from './SelectItemText.vue'
+
 interface Props extends SelectItemProps {
   item: CollectionItem
   disabled?: boolean
@@ -41,6 +44,11 @@ useForwardExpose()
       props.class,
     )"
   >
-    <slot />
+    <slot>
+      <SelectItemText>
+        {{ props.item.label }}
+      </SelectItemText>
+      <SelectItemIndicator />
+    </slot>
   </Select.Item>
 </template>

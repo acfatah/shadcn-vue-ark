@@ -15,12 +15,10 @@ const collection = createListCollection<any>({
 <template>
   <Select.Root :collection="collection">
     <Select.Label>Select an option</Select.Label>
-    <Select.Control>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Please select..." />
-        <Select.Indicator />
-      </Select.Trigger>
-    </Select.Control>
+    <Select.Trigger>
+      <Select.ValueText placeholder="Please select..." />
+      <Select.Indicator />
+    </Select.Trigger>
     <Select.Content :position="storyArgs.position">
       <Select.Empty>No options available.</Select.Empty>
     </Select.Content>

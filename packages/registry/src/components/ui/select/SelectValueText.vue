@@ -19,14 +19,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
-const select = useSelectContext()
+const selectContext = useSelectContext()
 
 const mergedProps = computed(() => ({
   ...forwardedProps.value,
-  ...select.value.getValueTextProps(),
+  ...selectContext.value.getValueTextProps(),
 }))
 
-const dir = computed(() => select.value.getValueTextProps().dir)
+const dir = computed(() => selectContext.value.getValueTextProps().dir)
 useForwardExpose()
 </script>
 
@@ -40,6 +40,6 @@ useForwardExpose()
       props.class,
     )"
   >
-    <slot>{{ select.valueAsString || props.placeholder }}</slot>
+    <slot>{{ selectContext.valueAsString || props.placeholder }}</slot>
   </Select.ValueText>
 </template>

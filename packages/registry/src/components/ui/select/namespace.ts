@@ -1,7 +1,7 @@
 import SelectClearTrigger from './SelectClearTrigger.vue'
 import SelectContent from './SelectContent.vue'
-import SelectControl from './SelectControl.vue'
 import SelectEmpty from './SelectEmpty.vue'
+import SelectHiddenInput from './SelectHiddenInput.vue'
 import SelectIndicator from './SelectIndicator.vue'
 import SelectItem from './SelectItem.vue'
 import SelectItemGroup from './SelectItemGroup.vue'
@@ -28,19 +28,14 @@ export const Select = {
   Content: SelectContent,
 
   /**
-   * SelectControl component
-   */
-  Control: SelectControl,
-
-  /**
    * SelectEmpty component
    */
   Empty: SelectEmpty,
 
   /**
-   * SelectHiddenSelect component
+   * SelectHiddenInput component
    */
-  HiddenSelect: ArkSelect.HiddenSelect,
+  HiddenSelect: SelectHiddenInput,
 
   /**
    * SelectIndicator component

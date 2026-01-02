@@ -19,6 +19,8 @@ import {
 } from '@/components/ui/select'
 import { registryItem } from '@/components/ui/select/_registry'
 
+import SelectClearableStory from './SelectClearableStory.vue'
+import SelectClearableSource from './SelectClearableStory.vue?raw'
 import SelectDefaultStory from './SelectDefaultStory.vue'
 import SelectDefaultSource from './SelectDefaultStory.vue?raw'
 import SelectEmptyStory from './SelectEmptyStory.vue'
@@ -58,6 +60,7 @@ const meta = {
 
   args: {
     disabled: false,
+    invalid: false,
     // @ts-expect-error TS2353
     position: 'item-aligned',
   },
@@ -117,6 +120,29 @@ export const Empty: Story = {
 
     template: html`
       <SelectEmptyStory v-bind="args" />
+    `,
+  }),
+}
+
+// @ts-expect-error TS2322
+export const Clearable: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: SelectClearableSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { SelectClearableStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <SelectClearableStory v-bind="args" />
     `,
   }),
 }

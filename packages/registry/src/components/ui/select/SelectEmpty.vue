@@ -13,8 +13,8 @@ interface Props {
 const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
-const select = useSelectContext()
-const collection = computed(() => select.value.collection)
+const selectContext = useSelectContext()
+const collection = computed(() => selectContext.value.collection)
 </script>
 
 <template>

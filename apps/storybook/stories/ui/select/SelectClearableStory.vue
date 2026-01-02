@@ -34,11 +34,14 @@ const value = ref<string[]>(['banana'])
 </script>
 
 <template>
-  <Select.Root v-model="value" :collection="collection">
+  <Select.Root
+    v-model="value"
+    :collection="collection"
+  >
     <Select.HiddenSelect />
     <Select.Label>Fruits</Select.Label>
 
-    <Select.Trigger>
+    <Select.Trigger clearable>
       <Select.ValueText placeholder="Select a fruit" />
     </Select.Trigger>
 
@@ -48,13 +51,11 @@ const value = ref<string[]>(['banana'])
         <Select.Empty>No fruits found.</Select.Empty>
         <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
           <Select.ItemText>{{ item.label }}</Select.ItemText>
-          <Select.ItemIndicator />
         </Select.Item>
 
         <Select.Separator />
         <Select.Item :item="{}" disabled>
           <Select.ItemText>Raspberry (Disabled)</Select.ItemText>
-          <Select.ItemIndicator />
         </Select.Item>
       </Select.ItemGroup>
     </Select.Content>

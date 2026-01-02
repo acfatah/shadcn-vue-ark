@@ -20,10 +20,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <Teleport to="body">
+  <Teleport to="body" defer>
     <Select.Positioner
       class="
-        w-(--reference-width) max-w-(--reference-width)
+        -mt-1.5 w-(--reference-width) max-w-(--reference-width)
         md:w-64 md:min-w-64
       "
     >
@@ -45,7 +45,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
             data-[state=closed]:zoom-out-95
             data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95
           `,
-          position === `popper`
+          props.position === `popper`
             && `
               w-min-(--reference-width) h-min-(--available-height) h-full w-full scroll-my-1
               data-[side=bottom]:translate-y-1

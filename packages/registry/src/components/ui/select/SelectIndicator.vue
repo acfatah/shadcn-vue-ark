@@ -19,8 +19,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const delegatedProps = reactiveOmit(props, ['class', 'icon'])
-const select = useSelectContext()
-const state = computed(() => (select.value.open ? 'open' : 'closed'))
+const selectContext = useSelectContext()
+const state = computed(() => (selectContext.value.open ? 'open' : 'closed'))
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
