@@ -57,6 +57,7 @@ function handleSubmit(event: Event) {
               </Field.Label>
               <Field.Input
                 id="checkout-7j9-card-name-43j"
+                name="cardName"
                 placeholder="Evil Rabbit"
                 required
               />
@@ -67,6 +68,7 @@ function handleSubmit(event: Event) {
               </Field.Label>
               <Field.Input
                 id="checkout-7j9-card-number-uw1"
+                name="cardNumber"
                 placeholder="1234 5678 9012 3456"
                 required
               />
@@ -84,7 +86,7 @@ function handleSubmit(event: Event) {
                   :collection="months"
                   required
                 >
-                  <Select.HiddenSelect />
+                  <Select.HiddenSelect name="expMonth" />
                   <Select.Trigger>
                     <Select.ValueText placeholder="MM" />
                   </Select.Trigger>
@@ -106,7 +108,7 @@ function handleSubmit(event: Event) {
                   :collection="years"
                   required
                 >
-                  <Select.HiddenSelect />
+                  <Select.HiddenSelect name="expYear" />
                   <Select.Trigger>
                     <Select.ValueText placeholder="YYYY" />
                   </Select.Trigger>
@@ -123,7 +125,12 @@ function handleSubmit(event: Event) {
                 <Field.Label for="checkout-7j9-cvv">
                   CVV
                 </Field.Label>
-                <Field.Input id="checkout-7j9-cvv" placeholder="123" required />
+                <Field.Input
+                  id="checkout-7j9-cvv"
+                  name="cvv"
+                  placeholder="123"
+                  required
+                />
               </Field.Root>
             </div>
           </Fieldset.Group>
@@ -136,9 +143,10 @@ function handleSubmit(event: Event) {
           </Fieldset.Description>
           <Fieldset.Group>
             <Field.Root orientation="horizontal">
-              <!-- <Field.Checkbox
+              <Field.Checkbox
                 id="checkout-7j9-same-as-shipping-wgm"
-                :default-value="true"
+                name="sameAsShipping"
+                :default-checked="true"
               >
                 <Field.Label
                   for="checkout-7j9-same-as-shipping-wgm"
@@ -146,18 +154,19 @@ function handleSubmit(event: Event) {
                 >
                   Same as shipping address
                 </Field.Label>
-              </Field.Checkbox> -->
+              </Field.Checkbox>
               <!-- Or -->
-              <Input.Checkbox
+              <!-- <Input.Checkbox
                 id="checkout-7j9-same-as-shipping-wgm"
-                :default-value="true"
+                name="sameAsShipping"
+                :default-checked="true"
               />
               <Field.Label
                 for="checkout-7j9-same-as-shipping-wgm"
                 class="font-normal"
               >
                 Same as shipping address
-              </Field.Label>
+              </Field.Label> -->
             </Field.Root>
           </Fieldset.Group>
         </Fieldset.Root>
@@ -169,6 +178,7 @@ function handleSubmit(event: Event) {
               </Field.Label>
               <Field.Textarea
                 id="checkout-7j9-optional-comments"
+                name="comments"
                 placeholder="Add any additional comments"
                 class="resize-none"
               />
@@ -176,12 +186,8 @@ function handleSubmit(event: Event) {
           </Fieldset.Group>
         </Fieldset.Root>
         <Field.Root orientation="horizontal">
-          <Button type="submit">
-            Submit
-          </Button>
-          <Button variant="outline" type="button">
-            Cancel
-          </Button>
+          <Input.Submit>Submit</Input.Submit>
+          <Input.Reset>Cancel</Input.Reset>
         </Field.Root>
       </Fieldset.Group>
     </form>
