@@ -27,8 +27,8 @@ const ariaBusy = computed(() => (props.loading || undefined))
     :aria-busy="ariaBusy"
     :class="cn(`
       group flex gap-3
-      disabled:opacity-50
       has-data-[part=checkbox-content]:items-start
+      data-disabled:pointer-events-none data-disabled:opacity-50
     `, props.class)"
   >
     <slot />

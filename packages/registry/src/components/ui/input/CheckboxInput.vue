@@ -2,13 +2,13 @@
 import type { HTMLAttributes, WritableComputedRef } from 'vue'
 import { Icon } from '@iconify/vue'
 import { reactiveOmit, useVModel } from '@vueuse/core'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
 interface Props {
   name?: string
-  defaultValue?: boolean | null
+  defaultChecked?: boolean | null
   modelValue?: boolean | null
   value?: string | number
   required?: boolean
@@ -34,7 +34,7 @@ const emits = defineEmits<{
 
 const checked = useVModel(props, 'modelValue', emits, {
   passive: true,
-  defaultValue: props.defaultValue ?? false,
+  defaultValue: props.defaultChecked ?? false,
 }) as WritableComputedRef<boolean | null>
 
 const state = computed(() => {
@@ -50,7 +50,7 @@ const state = computed(() => {
 const delegatedProps = reactiveOmit(props, [
   'checkedIcon',
   'class',
-  'defaultValue',
+  'defaultChecked',
   'disabled',
   'invalid',
   'indeterminate',
@@ -116,6 +116,11 @@ function onClick() {
   checked.value = next
   emits('change', next)
 }
+
+onMounted(() => {
+  if (props.defaultChecked)
+    checked.value = props.defaultChecked
+})
 </script>
 
 <template>
@@ -135,7 +140,7 @@ function onClick() {
       v-model="checked"
       :value="props.value"
       :disabled="disabled"
-      :required="required"
+      :required="props.required"
       :aria-invalid="ariaInvalid"
       :aria-checked="ariaChecked"
       :aria-busy="ariaBusy"
