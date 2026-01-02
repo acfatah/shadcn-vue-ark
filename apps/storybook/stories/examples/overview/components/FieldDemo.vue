@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from 'vue'
-import { Button } from '@/components/ui/button'
 import { Field } from '@/components/ui/field'
 import { Fieldset } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'

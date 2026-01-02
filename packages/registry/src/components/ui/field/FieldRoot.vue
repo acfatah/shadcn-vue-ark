@@ -20,7 +20,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Field.Root
     v-bind="forwardedProps"
-    :class="cn(fieldRootVariants({ orientation: props.orientation }), props.class)"
+    :class="cn(
+      fieldRootVariants({ orientation: props.orientation }),
+      props.class,
+    )"
   >
     <slot />
   </Field.Root>
