@@ -3,8 +3,8 @@ import { cva } from 'class-variance-authority'
 
 export { Alert } from './namespace'
 
-export { default as AlertRoot } from './Alert.vue'
 export { default as AlertDescription } from './AlertDescription.vue'
+export { default as AlertRoot } from './AlertRoot.vue'
 export { default as AlertTitle } from './AlertTitle.vue'
 
 export const alertVariants = cva(

@@ -1,5 +1,5 @@
-import AlertRoot from './Alert.vue'
 import AlertDescription from './AlertDescription.vue'
+import AlertRoot from './AlertRoot.vue'
 import AlertTitle from './AlertTitle.vue'
 
 export const Alert = {
