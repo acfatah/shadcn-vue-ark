@@ -20,7 +20,7 @@ export const alertVariants = cva(
         destructive:
           `
             bg-card text-destructive
-            *:data-[slot=alert-description]:text-destructive/90
+            *:data-[part=description]:text-destructive/90
             [&>svg]:text-current
           `,
       },
