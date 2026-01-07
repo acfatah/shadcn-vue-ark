@@ -9,6 +9,10 @@ import AlertDefaultSource from './AlertDefaultStory.vue?raw'
 const meta = {
   title: 'Components/Alert',
   component: Alert.Root,
+  subcomponents: {
+    'AlertDescription': Alert.Description,
+    'AlertTitle': Alert.Title,
+  },
   tags: ['autodocs'],
 
   parameters: {
