@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { ArrowUpIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 </script>
 
@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button'
       size="icon"
       aria-label="Submit"
     >
-      <Icon icon="lucide:arrow-up" />
+      <ArrowUpIcon data-part="icon" />
     </Button>
   </div>
 </template>

@@ -2,8 +2,8 @@
 import type { AccordionItemTriggerProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
 import { Accordion } from '@ark-ui/vue/accordion'
-import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
+import { ChevronDownIcon } from 'lucide-vue-next'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -34,8 +34,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     <slot />
     <Accordion.ItemIndicator class="flex items-center">
       <slot name="indicator">
-        <Icon
-          icon="lucide-chevron-down"
+        <ChevronDownIcon
+          data-part="icon"
           :class="cn(
             `
               pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground

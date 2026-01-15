@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import type { SelectItemIndicatorProps } from '@ark-ui/vue/select'
 import { Select } from '@ark-ui/vue/select'
-import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
+import { CheckIcon } from 'lucide-vue-next'
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props extends SelectItemIndicatorProps {
-  icon?: string
-}
+interface Props extends SelectItemIndicatorProps {}
 
-const props = withDefaults(defineProps<Props>(), {
-  icon: 'lucide:check',
-})
-
-const delegatedProps = reactiveOmit(props, ['class', 'icon'])
+const props = withDefaults(defineProps<Props>(), {})
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
@@ -29,7 +24,7 @@ useForwardExpose()
     )"
   >
     <slot>
-      <Icon data-part="icon" :icon="props.icon" class="size-4" />
+      <CheckIcon data-part="icon" class="size-4" />
     </slot>
   </Select.ItemIndicator>
 </template>

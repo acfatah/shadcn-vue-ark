@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { useFullscreen } from '@vueuse/core'
+import { FullscreenIcon, MinimizeIcon } from 'lucide-vue-next'
 
 const { isFullscreen, toggle } = useFullscreen(document.querySelector('body'))
 </script>
 
 <template>
   <button
+    data-scope="fullscreen-toggle"
+    data-part="button"
     class="
       inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md text-sm font-medium
       whitespace-nowrap ring-offset-background transition-colors
@@ -19,7 +21,17 @@ const { isFullscreen, toggle } = useFullscreen(document.querySelector('body'))
     aria-label="Toggle fullscreen mode"
     @click="toggle()"
   >
-    <Icon v-if="!isFullscreen" icon="lucide:fullscreen" class="size-4 ease-out" />
-    <Icon v-if="isFullscreen" icon="lucide:minimize" class="size-4 ease-out" />
+    <FullscreenIcon
+      v-if="!isFullscreen"
+      data-scope="fullscreen-toggle"
+      data-part="icon"
+      class="ease-out"
+    />
+    <MinimizeIcon
+      v-if="isFullscreen"
+      data-scope="fullscreen-toggle"
+      data-part="icon"
+      class="ease-out"
+    />
   </button>
 </template>

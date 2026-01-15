@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Empty } from '@/components/ui/empty'
+
+import { LucidePlus } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -39,7 +40,7 @@ import { Empty } from '@/components/ui/empty'
 
     <Empty.Content>
       <Button size="sm">
-        <Icon icon="lucide:plus" />
+        <LucidePlus data-part="icon" />
         Invite Members
       </Button>
     </Empty.Content>

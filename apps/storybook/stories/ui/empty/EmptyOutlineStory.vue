@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { CloudIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Empty } from '@/components/ui/empty'
 </script>
@@ -8,7 +8,7 @@ import { Empty } from '@/components/ui/empty'
   <Empty.Root class="m-4 min-h-[calc(100dvh-2rem)] border border-dashed p-4">
     <Empty.Header>
       <Empty.Media variant="icon">
-        <Icon icon="lucide:cloud" />
+        <CloudIcon data-part="icon" />
       </Empty.Media>
 
       <Empty.Title>Cloud Storage Empty</Empty.Title>

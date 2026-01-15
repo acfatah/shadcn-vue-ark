@@ -11,12 +11,12 @@ export const registryItem = {
 
     References:
     - shadcn/ui: https://ui.shadcn.com/docs/components/spinner
-    - Iconify: https://iconify.design/docs/icon-components
+    - lucide-vue-next: https://lucide.dev/guide/packages/lucide-vue-next
   `,
 
   dependencies: [
-    '@iconify/vue',
     '@vueuse/core',
+    'lucide-vue-next',
   ],
 
   files: [

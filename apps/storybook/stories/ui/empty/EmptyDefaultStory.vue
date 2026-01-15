@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { ArrowUpRightIcon, FolderCodeIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Empty } from '@/components/ui/empty'
 </script>
@@ -8,7 +8,7 @@ import { Empty } from '@/components/ui/empty'
   <Empty.Root class="min-h-dvh">
     <Empty.Header>
       <Empty.Media variant="icon">
-        <Icon icon="lucide:folder-code" />
+        <FolderCodeIcon data-part="icon" />
       </Empty.Media>
       <Empty.Title>No Projects Yet</Empty.Title>
       <Empty.Description>
@@ -28,7 +28,7 @@ import { Empty } from '@/components/ui/empty'
 
     <Button variant="link" as-child class="text-muted-foreground" size="sm">
       <a href="#">
-        Learn More <Icon icon="lucide:arrow-up-right" />
+        Learn More <ArrowUpRightIcon data-part="icon" />
       </a>
     </Button>
   </Empty.Root>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-// import { BadgeCheckIcon } from 'lucide-vue-next'
+import { BadgeCheckIcon } from 'lucide-vue-next'
 import { Badge } from '@/components/ui/badge'
 </script>
 
@@ -26,8 +25,7 @@ import { Badge } from '@/components/ui/badge'
           dark:bg-blue-600
         "
       >
-        <!-- <BadgeCheckIcon /> -->
-        <Icon icon="lucide:badge-check" />
+        <BadgeCheckIcon data-part="icon" />
         Verified
       </Badge>
       <Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">

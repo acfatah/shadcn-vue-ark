@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { createReusableTemplate, reactiveOmit } from '@vueuse/core'
+import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -25,8 +25,6 @@ defineOptions({
 const props = withDefaults(defineProps<Props>(), {
   ariaLabel: 'Toggle password visibility',
   hideIcon: false,
-  showPasswordIcon: 'lucide:eye',
-  hidePasswordIcon: 'lucide:eye-off',
 })
 
 const emits = defineEmits<Emits>()
@@ -43,9 +41,6 @@ const revealPassword = ref(false)
 const showIcon = computed(() => !props.hideIcon)
 const inputType = computed(() => (revealPassword.value ? 'text' : 'password'))
 const hasValue = computed(() => inputValue.value.length > 0)
-const iconName = computed(() =>
-  revealPassword.value ? props.hidePasswordIcon : props.showPasswordIcon,
-)
 
 function handleModelValueUpdate(nextValue: string | undefined) {
   inputValue.value = nextValue ?? ''
@@ -100,13 +95,18 @@ const [UseTemplate, PasswordInput] = createReusableTemplate()
         :aria-label="revealPassword ? 'Hide password' : 'Show password'"
         @click.stop="revealPassword = !revealPassword"
       >
-        <Icon
-          data-scope="password-input"
-          data-part="icon"
-          aria-hidden="true"
-          :icon="iconName"
-          :class="hasValue ? 'opacity-100' : 'opacity-50'"
-        />
+        <slot name="icon">
+          <component
+            :is="revealPassword ? EyeOffIcon : EyeIcon"
+            data-scope="password-input"
+            data-part="icon"
+            aria-hidden="true"
+            :class="cn(
+              'size-4 transition-opacity',
+              hasValue ? 'opacity-100' : 'opacity-50',
+            )"
+          />
+        </slot>
       </div>
     </div>
   </template>

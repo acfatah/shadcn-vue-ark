@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import type { SelectClearTriggerProps } from '@ark-ui/vue/select'
 import { Select } from '@ark-ui/vue/select'
-import { Icon } from '@iconify/vue'
 import { reactiveOmit } from '@vueuse/core'
+import { XIcon } from 'lucide-vue-next'
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-interface Props extends SelectClearTriggerProps {
-  icon?: string
-}
+interface Props extends SelectClearTriggerProps {}
 
-const props = withDefaults(defineProps<Props>(), {
-  icon: 'lucide:x',
-})
-
-const delegatedProps = reactiveOmit(props, ['class', 'icon'])
+const props = withDefaults(defineProps<Props>(), {})
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()
 </script>
@@ -35,7 +30,7 @@ useForwardExpose()
     @keydown.stop
   >
     <slot>
-      <Icon data-part="icon" :icon="props.icon" />
+      <XIcon data-part="icon" class="size-4" />
     </slot>
   </Select.ClearTrigger>
 </template>

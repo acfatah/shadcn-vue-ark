@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { BellIcon, RefreshCcwIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Empty } from '@/components/ui/empty'
 </script>
@@ -8,7 +8,7 @@ import { Empty } from '@/components/ui/empty'
   <Empty.Root class="h-full min-h-dvh bg-linear-to-b from-muted/50 from-30% to-background">
     <Empty.Header>
       <Empty.Media variant="icon">
-        <Icon icon="lucide:bell" />
+        <BellIcon data-part="icon" />
       </Empty.Media>
       <Empty.Title>No Notifications</Empty.Title>
       <Empty.Description>
@@ -18,7 +18,7 @@ import { Empty } from '@/components/ui/empty'
 
     <Empty.Content>
       <Button variant="outline" size="sm">
-        <Icon icon="lucide:refresh-ccw" />
+        <RefreshCcwIcon data-part="icon" />
         Refresh
       </Button>
     </Empty.Content>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { CheckIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import type { size as ButtonSize } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -18,7 +18,7 @@ const isIconSize = computed(
 
 <template>
   <Input.Button v-bind="props">
-    <Icon v-if="isIconSize" icon="lucide:check" />
+    <CheckIcon v-if="isIconSize" data-part="icon" />
 
     <template v-else>
       Button

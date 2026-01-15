@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { ChevronRightIcon } from 'lucide-vue-next'
 import { Button, variant as buttonVariants } from '@/components/ui/button'
 
 const variants = Object.keys(buttonVariants) as Array<keyof typeof buttonVariants>
@@ -25,7 +25,7 @@ const variants = Object.keys(buttonVariants) as Array<keyof typeof buttonVariant
       </Button>
 
       <Button :variant="variant" size="icon">
-        <Icon icon="lucide:chevron-right" />
+        <ChevronRightIcon data-part="icon" />
       </Button>
     </div>
   </div>

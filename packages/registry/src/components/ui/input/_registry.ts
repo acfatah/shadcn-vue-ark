@@ -17,6 +17,7 @@ export const registryItem = {
 
   dependencies: [
     '@vueuse/core',
+    'lucide-vue-next',
   ],
 
   files: [

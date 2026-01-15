@@ -16,8 +16,8 @@ export const registryItem = {
 
   dependencies: [
     '@ark-ui/vue',
-    '@iconify/vue',
     '@vueuse/core',
+    'lucide-vue-next',
   ],
 
   files: [

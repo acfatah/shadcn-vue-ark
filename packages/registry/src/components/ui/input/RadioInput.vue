@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Icon } from '@iconify/vue'
 import { reactiveOmit, useVModel } from '@vueuse/core'
+import { CircleIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -126,16 +126,17 @@ function onClick(_event: Event) {
         `,
       )"
     >
-      <Icon
-        v-show="state === 'checked'"
-        data-scope="radio-input"
-        data-part="icon"
-        icon="lucide:circle"
-        class="
-          size-2
-          [&>circle]:fill-current
-        "
-      />
+      <slot name="icon">
+        <CircleIcon
+          v-show="state === 'checked'"
+          data-scope="radio-input"
+          data-part="icon"
+          class="
+            size-2
+            [&>circle]:fill-current
+          "
+        />
+      </slot>
     </div>
   </div>
 </template>

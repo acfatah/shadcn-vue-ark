@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Icon } from '@iconify/vue'
 import { reactiveOmit, useVModel } from '@vueuse/core'
+import { ChevronDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -98,12 +98,14 @@ const ariaBusy = computed(() => props.loading || undefined)
         select-none
       "
     >
-      <Icon
-        data-scope="search-input"
-        data-part="icon"
-        aria-hidden="true"
-        icon="lucide:chevron-down"
-      />
+      <slot name="icon">
+        <ChevronDownIcon
+          data-scope="input-select"
+          data-part="icon"
+          aria-hidden="true"
+          class="size-4"
+        />
+      </slot>
     </div>
   </div>
 </template>

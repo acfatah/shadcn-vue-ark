@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { UseDark } from '@vueuse/components'
+import { MoonIcon, SunIcon } from 'lucide-vue-next'
 </script>
 
 <template>
   <UseDark v-slot="{ isDark, toggleDark }">
     <button
+      data-scope="dark-mode-toggle"
+      data-part="button"
       class="
         inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md text-sm font-medium
         whitespace-nowrap ring-offset-background transition-colors
@@ -18,8 +20,16 @@ import { UseDark } from '@vueuse/components'
       aria-label="Toggle dark mode"
       @click="toggleDark()"
     >
-      <Icon v-if="!isDark" icon="lucide:moon" />
-      <Icon v-if="isDark" icon="lucide:sun" />
+      <MoonIcon
+        v-if="!isDark"
+        data-scope="dark-mode-toggle"
+        data-part="icon"
+      />
+      <SunIcon
+        v-if="isDark"
+        data-scope="dark-mode-toggle"
+        data-part="icon"
+      />
     </button>
   </UseDark>
 </template>

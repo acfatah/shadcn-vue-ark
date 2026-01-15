@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { createReusableTemplate, reactiveOmit } from '@vueuse/core'
+import { SearchIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -13,7 +13,6 @@ import PrimitiveInput from './PrimitiveInput.vue'
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
   hideIcon?: boolean
-  icon?: string
 }
 interface Emits extends PrimitiveInputEmits {}
 
@@ -24,13 +23,12 @@ defineOptions({
 const props = withDefaults(defineProps<Props>(), {
   ariaLabel: 'Search',
   hideIcon: false,
-  icon: 'lucide:search',
 })
 
 const emits = defineEmits<Emits>()
-const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'hideIcon'])
+const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'hideIcon'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
-const hasIcon = computed(() => !props.hideIcon && !!props.icon)
+const hasIcon = computed(() => !props.hideIcon)
 
 const [UseTemplate, SearchInput] = createReusableTemplate()
 </script>
@@ -65,12 +63,14 @@ const [UseTemplate, SearchInput] = createReusableTemplate()
           peer-disabled:opacity-50
         "
       >
-        <Icon
-          data-scope="search-input"
-          data-part="icon"
-          aria-hidden="true"
-          :icon="props.icon"
-        />
+        <slot name="icon">
+          <SearchIcon
+            data-scope="search-input"
+            data-part="icon"
+            aria-hidden="true"
+            class="size-4"
+          />
+        </slot>
       </div>
     </div>
   </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import { createReusableTemplate, reactiveOmit } from '@vueuse/core'
+import { LinkIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -13,7 +13,6 @@ import PrimitiveInput from './PrimitiveInput.vue'
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
   hideIcon?: boolean
-  icon?: string
 }
 interface Emits extends PrimitiveInputEmits {}
 
@@ -28,10 +27,10 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emits = defineEmits<Emits>()
-const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'icon', 'hideIcon'])
+const delegatedProps = reactiveOmit(props, ['ariaLabel', 'class', 'hideIcon'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 const nativeInvalid = ref(false)
-const hasIcon = computed(() => !props.hideIcon && !!props.icon)
+const hasIcon = computed(() => !props.hideIcon)
 const ariaInvalid = computed(() => (props.invalid || nativeInvalid.value) ? 'true' : undefined)
 
 function handleInvalid(_event: Event) {
@@ -75,12 +74,14 @@ const [UseTemplate, EmailInput] = createReusableTemplate()
           peer-aria-invalid:text-destructive
         "
       >
-        <Icon
-          data-scope="url-input"
-          data-part="icon"
-          aria-hidden="true"
-          :icon="props.icon"
-        />
+        <slot name="icon">
+          <LinkIcon
+            data-scope="url-input"
+            data-part="icon"
+            aria-hidden="true"
+            class="size-4"
+          />
+        </slot>
       </div>
     </div>
   </template>

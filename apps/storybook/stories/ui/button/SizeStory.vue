@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import { ArrowUpIcon } from 'lucide-vue-next'
 import { Button, size as sizeVariant } from '@/components/ui/button'
 
 const sizes = Object.keys(sizeVariant) as Array<keyof typeof sizeVariant>
@@ -23,7 +23,7 @@ const sizes = Object.keys(sizeVariant) as Array<keyof typeof sizeVariant>
       </template>
 
       <Button :size="size" aria-label="Submit" variant="outline">
-        <Icon icon="lucide:arrow-up" />
+        <ArrowUpIcon data-part="icon" />
       </Button>
     </div>
   </div>
