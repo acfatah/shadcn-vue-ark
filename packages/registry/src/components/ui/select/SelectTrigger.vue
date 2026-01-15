@@ -3,6 +3,7 @@ import type { SelectTriggerProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
+import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -20,6 +21,7 @@ const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, ['class', 'clearable'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 const selectContext = useSelectContext()
+const isEmpty = computed(() => selectContext.value.empty)
 useForwardExpose()
 </script>
 
@@ -50,8 +52,8 @@ useForwardExpose()
     >
       <slot />
       <template v-if="props.clearable">
-        <SelectIndicator v-show="selectContext.empty" />
-        <SelectClearTrigger v-show="!selectContext.empty" />
+        <SelectIndicator v-show="isEmpty" />
+        <SelectClearTrigger v-show="!isEmpty" />
       </template>
 
       <template v-else>

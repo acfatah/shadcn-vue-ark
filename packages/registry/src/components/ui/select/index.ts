@@ -53,13 +53,13 @@ type UseSelectReturn<T extends CollectionItem> = ComputedRef<ExtendedSelectApi<T
 
 export interface UseSelectContext<T extends CollectionItem>
   extends UseSelectReturn<T> {}
-export const [SelectProvider, useSelectContext] = createContext<UseSelectContext<CollectionItem>>('ExtendedSelectContext')
+export const [SelectProvider, useSelectContext] = createContext<UseSelectContext<CollectionItem>>('SelectContext')
 
+// Note: use for standalone composition or RootProvider usage.
 export function useSelect<T extends CollectionItem>(
   props?: UseSelectProps<T>,
 ): UseSelectReturn<T> {
-  const context = useArkSelectContext() || {}
-  const api = useArkSelect<T>(context)
+  const api = useArkSelect<T>(props ?? ({} as UseSelectProps<T>))
   const loading = ref(false)
   const nativeInvalid = ref(false)
   const disabled = computed(() => api.value.disabled || loading.value)
@@ -73,6 +73,7 @@ export function useSelect<T extends CollectionItem>(
     ...(props ?? {}),
     loading: loading.value,
     disabled: disabled.value,
+    invalid: props?.invalid || nativeInvalid.value,
     nativeInvalid: nativeInvalid.value,
     setNativeInvalid,
   }))

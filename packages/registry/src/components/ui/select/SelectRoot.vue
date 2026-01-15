@@ -7,10 +7,10 @@ import type {
 import type { HTMLAttributes } from 'vue'
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
-import { SelectProvider, useSelect } from '.'
+import SelectContextProvider from './SelectContextProvider.vue'
 
 export interface Props extends SelectRootProps<CollectionItem> {
   class?: HTMLAttributes['class']
@@ -28,13 +28,11 @@ const delegatedProps = reactiveOmit(props, [
 ])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 const disabled = computed(() => (props.loading || props.disabled) || undefined)
+const nativeInvalid = ref(false)
 
-const select = useSelect<CollectionItem>({
-  ...(forwardedProps as unknown as Record<string, any>),
-  collection: props.collection,
-  disabled: disabled.value,
-})
-SelectProvider(select)
+function setNativeInvalid(value: boolean = true) {
+  nativeInvalid.value = value
+}
 </script>
 
 <template>
@@ -42,7 +40,7 @@ SelectProvider(select)
     v-bind="forwardedProps"
     :collection="props.collection"
     :disabled="disabled"
-    :invalid="props.invalid || select.nativeInvalid"
+    :invalid="props.invalid || nativeInvalid"
     :class="cn(
       `
         group/select-control flex w-full flex-col gap-3
@@ -52,6 +50,13 @@ SelectProvider(select)
       props.class,
     )"
   >
-    <slot />
+    <SelectContextProvider
+      :invalid="props.invalid"
+      :loading="props.loading"
+      :native-invalid="nativeInvalid"
+      :set-native-invalid="setNativeInvalid"
+    >
+      <slot />
+    </SelectContextProvider>
   </Select.Root>
 </template>
