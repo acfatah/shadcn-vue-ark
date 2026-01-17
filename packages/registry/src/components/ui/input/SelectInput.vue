@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit, useVModel } from '@vueuse/core'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -99,7 +99,7 @@ const ariaBusy = computed(() => props.loading || undefined)
       "
     >
       <slot name="icon">
-        <ChevronDownIcon
+        <ChevronsUpDownIcon
           data-scope="select-input"
           data-part="icon"
           aria-hidden="true"
