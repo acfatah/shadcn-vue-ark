@@ -43,10 +43,10 @@ const ariaBusy = computed(() => props.loading || undefined)
 
 <template>
   <div
-    data-scope="input-select"
+    data-scope="select-input"
     data-part="root"
     class="
-      group/input-select relative
+      group/select-input relative w-full
       has-[select:disabled]:opacity-50
     "
   >
@@ -54,7 +54,7 @@ const ariaBusy = computed(() => props.loading || undefined)
       :id="props.id"
       v-model="modelValue"
       :name="props.name"
-      data-scope="input-select"
+      data-scope="select-input"
       data-part="input"
       :disabled="disabled"
       :aria-invalid="ariaInvalid"
@@ -100,7 +100,7 @@ const ariaBusy = computed(() => props.loading || undefined)
     >
       <slot name="icon">
         <ChevronDownIcon
-          data-scope="input-select"
+          data-scope="select-input"
           data-part="icon"
           aria-hidden="true"
           class="size-4"
