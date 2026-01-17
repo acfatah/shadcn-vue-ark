@@ -49,8 +49,8 @@ const inline = computed(() => props.inline || undefined)
       `
         md:data-[inline=true]:has-data-[scope=checkbox-input]:grid
         md:data-[inline=true]:has-data-[scope=checkbox-input]:grid-cols-3
-        md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope='checkbox-input']:col-start-2
-        md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope='checkbox-input']:inline-flex
+        md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=checkbox-input]:col-start-2
+        md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=checkbox-input]:inline-flex
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:col-span-2
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:col-start-2
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:row-start-1
@@ -58,8 +58,8 @@ const inline = computed(() => props.inline || undefined)
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:items-center
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:self-center
         md:data-[inline=true]:has-data-[scope=checkbox-input]:**:data-[scope=label]:pl-6
-        md:data-[inline=true]:has-data-[scope=checkbox-input]:[&_[data-scope='checkbox-input'][data-part='root']]:row-start-1
-        md:data-[inline=true]:has-data-[scope=checkbox-input]:[&_[data-scope='checkbox-input'][data-part='root']]:justify-self-start
+        md:data-[inline=true]:has-data-[scope=checkbox-input]:[&_[data-scope=checkbox-input][data-part=root]]:row-start-1
+        md:data-[inline=true]:has-data-[scope=checkbox-input]:[&_[data-scope=checkbox-input][data-part=root]]:justify-self-start
       `,
 
       // Handle flex direction for radio inputs
@@ -75,19 +75,19 @@ const inline = computed(() => props.inline || undefined)
       `
         md:data-[inline=true]:has-data-[scope=radio-input]:grid
         md:data-[inline=true]:has-data-[scope=radio-input]:grid-cols-3
-        md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope='radio-input']:col-start-2
-        md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope='radio-input']:inline-flex
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:col-span-2
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:col-start-2
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:inline-flex
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:items-center
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:self-center
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:pl-6
-        md:data-[inline=true]:has-data-[scope=radio-input]:[&_[data-scope='radio-input'][data-part='root']]:justify-self-start
+        md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=radio-input]:col-start-2
+        md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=radio-input]:inline-flex
+        md:data-[inline=true]:has-data-[scope=radio-input]:[&_[data-scope=radio-input][data-part=root]]:justify-self-start
       `,
       `
         md:data-[inline=true]:has-data-[scope=radio-input]:**:data-[scope=label]:row-start-1
-        md:data-[inline=true]:has-data-[scope=radio-input]:[&_[data-scope='radio-input'][data-part='root']]:row-start-1
+        md:data-[inline=true]:has-data-[scope=radio-input]:[&_[data-scope=radio-input][data-part=root]]:row-start-1
       `,
       props.class,
     )"
