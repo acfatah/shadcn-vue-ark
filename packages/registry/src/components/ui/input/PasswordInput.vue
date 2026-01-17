@@ -65,6 +65,7 @@ const [UseTemplate, PasswordInput] = createReusableTemplate()
     <PrimitiveInput
       v-bind="{ ...$attrs, ...forwardedProps }"
       scope="password-input"
+      data-part="input"
       :type="inputType"
       :aria-label="props.ariaLabel"
       :class="cn(
@@ -76,6 +77,9 @@ const [UseTemplate, PasswordInput] = createReusableTemplate()
 
   <template v-if="showIcon">
     <div
+      data-scope="password-input"
+      data-part="root"
+      class="relative"
       :class="cn(
         'relative',
         props.disabled && 'pointer-events-none',
