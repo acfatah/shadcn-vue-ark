@@ -1,8 +1,8 @@
+import type { ThemeName } from 'packages.registry/shadcn/base-colors.ts'
 import type { InjectionKey, Ref } from 'vue'
+
 import { useLocalStorage } from '@vueuse/core'
 import { inject, provide, ref, watchEffect } from 'vue'
-
-import type { ThemeName } from 'packages.registry/shadcn/base-colors.ts'
 
 const DEFAULT_THEME = 'blue'
 
