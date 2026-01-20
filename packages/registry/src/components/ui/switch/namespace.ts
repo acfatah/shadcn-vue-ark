@@ -1,11 +1,11 @@
+import { Switch as ArkSwitch } from '@ark-ui/vue/switch'
+
 import SwitchControl from './SwitchControl.vue'
 import SwitchDescription from './SwitchDescription.vue'
 import SwitchHiddenInput from './SwitchHiddenInput.vue'
 import SwitchLabel from './SwitchLabel.vue'
 import SwitchRoot from './SwitchRoot.vue'
 import SwitchThumb from './SwitchThumb.vue'
-
-import { Switch as ArkSwitch } from '@ark-ui/vue/switch'
 
 export const Switch = {
   /**

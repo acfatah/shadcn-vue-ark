@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { CheckboxRootProps } from '@ark-ui/vue/checkbox'
 import type { HTMLAttributes } from 'vue'
+
 import { useFieldContext } from '@ark-ui/vue/field'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { Checkbox } from '@/components/ui/checkbox'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 

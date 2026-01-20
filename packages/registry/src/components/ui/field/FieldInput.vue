@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { FieldInputProps } from '@ark-ui/vue/field'
 import type { HTMLAttributes } from 'vue'
+
 import { useFieldContext } from '@ark-ui/vue/field'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 

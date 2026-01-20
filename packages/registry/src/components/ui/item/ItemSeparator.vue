@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SeparatorProps } from '@/components/ui/separator'
+
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 

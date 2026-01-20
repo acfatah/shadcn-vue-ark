@@ -1,5 +1,7 @@
 import type { ComponentPublicInstance } from 'vue'
+
 import { computed, getCurrentInstance, ref } from 'vue'
+
 import { unrefElement } from './unref-element'
 
 function isElement(el: any): el is Element {

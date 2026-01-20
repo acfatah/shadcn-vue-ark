@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { SelectItemIndicatorProps } from '@ark-ui/vue/select'
+
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { CheckIcon } from 'lucide-vue-next'
+
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'

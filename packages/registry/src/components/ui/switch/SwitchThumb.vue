@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { SwitchThumbProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
+
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -23,7 +25,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
         pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform
         data-[state=checked]:translate-x-[calc(100%-2px)]
         data-[state=unchecked]:translate-x-0
-        dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground
+        dark:data-[state=checked]:bg-primary-foreground
+        dark:data-[state=unchecked]:bg-foreground
       `,
       props.class,
     )"

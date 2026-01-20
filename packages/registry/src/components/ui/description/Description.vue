@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit } from '@vueuse/core'
+
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -22,7 +24,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     v-bind="forwardedProps"
     :class="cn(
       `
-        text-sm leading-normal font-normal text-muted-foreground
+        text-sm/normal font-normal text-muted-foreground
         group-has-data-[orientation=horizontal]/field:text-balance
         last:mt-0
         nth-last-2:-mt-1

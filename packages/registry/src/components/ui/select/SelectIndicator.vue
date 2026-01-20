@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { SelectIndicatorProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
+
 import { Select, useSelectContext } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { ChevronDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
+
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'

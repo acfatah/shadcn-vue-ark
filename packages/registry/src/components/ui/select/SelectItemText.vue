@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { SelectItemTextProps } from '@ark-ui/vue/select'
+
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'

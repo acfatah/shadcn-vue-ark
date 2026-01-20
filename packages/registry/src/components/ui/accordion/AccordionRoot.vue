@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { AccordionRootProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
+
 import { Accordion } from '@ark-ui/vue/accordion'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 
 interface Props extends AccordionRootProps {

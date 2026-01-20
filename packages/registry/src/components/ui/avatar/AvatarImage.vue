@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { AvatarImageProps } from '@ark-ui/vue/avatar'
+
 import { Avatar } from '@ark-ui/vue/avatar'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 

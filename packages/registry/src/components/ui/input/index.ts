@@ -1,5 +1,3 @@
-export { Input } from './namespace'
-
 export { default as CheckboxInput } from './CheckboxInput.vue'
 export { default as ColorInput } from './ColorInput.vue'
 export { default as DateInput } from './DateInput.vue'
@@ -10,6 +8,7 @@ export { default as InputError } from './InputError.vue'
 export { default as InputGroup } from './InputGroup.vue'
 export { default as InputRequiredIndicator } from './InputRequiredIndicator.vue'
 export { default as MonthInput } from './MonthInput.vue'
+export { Input } from './namespace'
 export { default as PasswordInput } from './PasswordInput.vue'
 export { default as PrimitiveInput } from './PrimitiveInput.vue'
 export { default as RangeInput } from './RangeInput.vue'

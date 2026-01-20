@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { SwitchRootEmits, SwitchRootProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
+
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 

@@ -9,7 +9,7 @@ import { MoonIcon, SunIcon } from 'lucide-vue-next'
       data-scope="dark-mode-toggle"
       data-part="button"
       class="
-        inline-flex h-8 w-8 items-center justify-center gap-2 rounded-md text-sm font-medium
+        inline-flex size-8 items-center justify-center gap-2 rounded-md text-sm font-medium
         whitespace-nowrap ring-offset-background transition-colors
         hover:bg-accent hover:text-accent-foreground
         focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed, ref } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -71,7 +73,8 @@ function handleInvalid(_event: Event) {
         disabled:opacity-50
         aria-invalid:border-destructive aria-invalid:ring-destructive/20
         md:text-sm
-        dark:bg-input/30 dark:aria-invalid:ring-destructive/40
+        dark:bg-input/30
+        dark:aria-invalid:ring-destructive/40
       `,
       props.class,
     )"

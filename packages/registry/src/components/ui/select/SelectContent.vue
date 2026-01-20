@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { SelectContentProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
+
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 

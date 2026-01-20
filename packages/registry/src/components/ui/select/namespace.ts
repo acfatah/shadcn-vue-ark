@@ -1,3 +1,5 @@
+import { Select as ArkSelect } from '@ark-ui/vue/select'
+
 import SelectClearTrigger from './SelectClearTrigger.vue'
 import SelectContent from './SelectContent.vue'
 import SelectEmpty from './SelectEmpty.vue'
@@ -13,8 +15,6 @@ import SelectRoot from './SelectRoot.vue'
 import SelectSeparator from './SelectSeparator.vue'
 import SelectTrigger from './SelectTrigger.vue'
 import SelectValueText from './SelectValueText.vue'
-
-import { Select as ArkSelect } from '@ark-ui/vue/select'
 
 export const Select = {
   /**

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { Checkbox } from '@ark-ui/vue/checkbox'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 
 // Unable to extend CheckboxGroupProps.

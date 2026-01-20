@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit } from '@vueuse/core'
+
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -25,7 +27,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-scope="label"
     v-bind="forwardedProps"
     :class="cn(
-      `flex w-fit items-center text-sm leading-snug font-medium select-none`,
+      `flex w-fit items-center text-sm/snug font-medium select-none`,
       `group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50`,
       `
         peer-disabled:pointer-events-none peer-disabled:opacity-50

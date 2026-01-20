@@ -1,4 +1,5 @@
 import type { RegistryItem } from 'shadcn/schema'
+
 import { html } from 'common-tags'
 
 export const registryItem = {

@@ -5,11 +5,14 @@ import type {
   SelectRootProps,
 } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
+
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { computed, ref } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
+
 import SelectContextProvider from './SelectContextProvider.vue'
 
 export interface Props extends SelectRootProps<CollectionItem> {

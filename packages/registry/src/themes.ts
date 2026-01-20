@@ -1,6 +1,7 @@
 // bunx --bun gitpick shadcn-ui/ui/blob/main/apps/v4/registry/src/themes.ts
 
 import type { Registry } from 'shadcn/schema'
+
 import { baseColors } from './base-colors'
 
 // Create a theme for each color in the base colors.

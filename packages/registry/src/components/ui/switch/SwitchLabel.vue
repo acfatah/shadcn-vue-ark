@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { SwitchLabelProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
+
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
+
 import { Label } from '@/components/ui/label'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 

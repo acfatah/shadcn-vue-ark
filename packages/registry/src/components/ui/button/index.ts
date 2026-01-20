@@ -1,8 +1,8 @@
 import type { VariantProps } from 'class-variance-authority'
+
 import { cva } from 'class-variance-authority'
 
 export { default as Button } from './Button.vue'
-
 export const variant = {
   default:
     `
@@ -37,7 +37,6 @@ export const variant = {
     hover:underline
   `,
 }
-
 export const size = {
   'xs': `
     w-fit h-fit shrink-0 gap-1 rounded-sm px-2 py-0.5 text-xs
@@ -60,7 +59,6 @@ export const size = {
   'icon-sm': 'size-8',
   'icon-lg': 'size-10',
 }
-
 export const buttonVariants = cva(
   `
     inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium
@@ -72,19 +70,16 @@ export const buttonVariants = cva(
     [&_svg]:pointer-events-none [&_svg]:shrink-0
     [&_svg:not([class*='size-'])]:size-4
   `,
-
   {
     variants: {
       variant,
       size,
     },
-
     defaultVariants: {
       variant: 'default',
       size: 'md',
     },
   },
 )
-
 export type { Props as ButtonProps } from './Button.vue'
 export type ButtonVariants = VariantProps<typeof buttonVariants>

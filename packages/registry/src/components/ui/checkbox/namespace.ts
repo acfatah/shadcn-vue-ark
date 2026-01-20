@@ -1,3 +1,5 @@
+import { Checkbox as ArkCheckbox } from '@ark-ui/vue/checkbox'
+
 import CheckboxContent from './CheckboxContent.vue'
 import CheckboxControl from './CheckboxControl.vue'
 import CheckboxDescription from './CheckboxDescription.vue'
@@ -6,8 +8,6 @@ import CheckboxHiddenInput from './CheckboxHiddenInput.vue'
 import CheckboxIndicator from './CheckboxIndicator.vue'
 import CheckboxLabel from './CheckboxLabel.vue'
 import CheckboxRoot from './CheckboxRoot.vue'
-
-import { Checkbox as ArkCheckbox } from '@ark-ui/vue/checkbox'
 
 export const Checkbox = {
   /**

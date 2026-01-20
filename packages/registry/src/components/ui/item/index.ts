@@ -1,4 +1,5 @@
 import type { VariantProps } from 'class-variance-authority'
+
 import { cva } from 'class-variance-authority'
 
 export { default as ItemActions } from './ItemActions.vue'
@@ -18,7 +19,8 @@ export const itemVariants = cva(
     group/item flex flex-wrap items-center rounded-md border border-transparent text-sm
     transition-colors duration-100 outline-none
     focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50
-    [a]:transition-colors [a]:hover:bg-accent/50
+    [a]:transition-colors
+    [a]:hover:bg-accent/50
   `,
   {
     variants: {
@@ -42,8 +44,8 @@ export const itemVariants = cva(
 export const itemMediaVariants = cva(
   `
     flex shrink-0 items-center justify-center gap-2
-    group-has-[[data-slot=item-description]]/item:translate-y-0.5
-    group-has-[[data-slot=item-description]]/item:self-start
+    group-has-data-[slot=item-description]/item:translate-y-0.5
+    group-has-data-[slot=item-description]/item:self-start
     [&_svg]:pointer-events-none
   `,
   {

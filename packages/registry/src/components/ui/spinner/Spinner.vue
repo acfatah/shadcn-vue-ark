@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit } from '@vueuse/core'
 import { LoaderCircleIcon } from 'lucide-vue-next'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 

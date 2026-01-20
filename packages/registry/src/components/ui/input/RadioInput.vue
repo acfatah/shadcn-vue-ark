@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { CircleIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -89,7 +91,8 @@ function onClick(_event: Event) {
         focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50
         aria-disabled:cursor-not-allowed aria-disabled:opacity-50
         data-invalid:border-destructive data-invalid:ring-destructive/20
-        dark:bg-input/30 dark:data-invalid:ring-destructive/40
+        dark:bg-input/30
+        dark:data-invalid:ring-destructive/40
       `,
       props.class,
     )"

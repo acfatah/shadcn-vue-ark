@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
+
 import type { ButtonVariants } from '.'
+
 import { buttonVariants } from '.'
 
 export interface Props {

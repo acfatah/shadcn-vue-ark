@@ -1,3 +1,5 @@
+import { Button } from '../button'
+import { Label } from '../label'
 import CheckboxInput from './CheckboxInput.vue'
 import ColorInput from './ColorInput.vue'
 import DateInput from './DateInput.vue'
@@ -23,9 +25,6 @@ import TextInput from './TextInput.vue'
 import TimeInput from './TimeInput.vue'
 import UrlInput from './UrlInput.vue'
 import WeekInput from './WeekInput.vue'
-
-import { Button } from '../button'
-import { Label } from '../label'
 
 export const Input = {
   /**

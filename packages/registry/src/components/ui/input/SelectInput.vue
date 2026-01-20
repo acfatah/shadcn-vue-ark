@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -69,7 +71,8 @@ const ariaBusy = computed(() => props.loading || undefined)
           placeholder:text-muted-foreground
           disabled:pointer-events-none disabled:cursor-not-allowed
           data-[size=sm]:h-8 data-[size=sm]:py-1
-          dark:bg-input/30 dark:hover:bg-input/50
+          dark:bg-input/30
+          dark:hover:bg-input/50
         `,
         `focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50`,
         `

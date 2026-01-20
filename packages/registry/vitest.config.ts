@@ -1,4 +1,5 @@
 import type { PluginOption } from 'vite'
+
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'node:path'

@@ -1,11 +1,11 @@
 import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
 
-export { Alert } from './namespace'
+import { cva } from 'class-variance-authority'
 
 export { default as AlertDescription } from './AlertDescription.vue'
 export { default as AlertRoot } from './AlertRoot.vue'
 export { default as AlertTitle } from './AlertTitle.vue'
+export { Alert } from './namespace'
 
 export const alertVariants = cva(
   `

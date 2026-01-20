@@ -1,7 +1,6 @@
 import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
 
-export { Field } from './namespace'
+import { cva } from 'class-variance-authority'
 
 export { default as FieldDescription } from './FieldDescription.vue'
 export { default as FieldError } from './FieldError.vue'
@@ -11,7 +10,7 @@ export { default as FieldRequiredIndicator } from './FieldRequiredIndicator.vue'
 export { default as FieldRoot } from './FieldRoot.vue'
 export { default as FieldRootProvider } from './FieldRootProvider.vue'
 export { default as FieldTextarea } from './FieldTextarea.vue'
-
+export { Field } from './namespace'
 export const fieldRootVariants = cva(
   `
     group/field flex w-full gap-3
@@ -37,7 +36,8 @@ export const fieldRootVariants = cva(
           `
             flex-col
             *:w-full
-            @md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto
+            @md/field-group:flex-row @md/field-group:items-center
+            @md/field-group:*:w-auto
             [&>.sr-only]:w-auto
           `,
           '@md/field-group:*:data-[scope=field-label]:flex-auto',
@@ -53,6 +53,5 @@ export const fieldRootVariants = cva(
     },
   },
 )
-
 export type FieldRootVariants = VariantProps<typeof fieldRootVariants>
 export { FieldContext, useField, useFieldContext } from '@ark-ui/vue/field'

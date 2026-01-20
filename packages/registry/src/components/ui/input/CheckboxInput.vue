@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes, WritableComputedRef } from 'vue'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { CheckIcon, MinusIcon } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -194,13 +196,13 @@ onMounted(() => {
           v-show="state === 'checked'"
           data-scope="checkbox-input"
           data-part="checked-icon"
-          class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
+          class="grid size-3.5 place-content-center text-current transition-none"
         />
         <MinusIcon
           v-show="state === 'indeterminate'"
           data-scope="checkbox-input"
           data-part="indeterminate-icon"
-          class="grid h-3.5 w-3.5 place-content-center text-current transition-none"
+          class="grid size-3.5 place-content-center text-current transition-none"
         />
       </slot>
     </div>

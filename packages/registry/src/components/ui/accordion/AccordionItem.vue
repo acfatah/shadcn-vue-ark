@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { AccordionItemProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
+
 import { Accordion } from '@ark-ui/vue/accordion'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 

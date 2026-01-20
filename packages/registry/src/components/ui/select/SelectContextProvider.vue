@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSelectContext as useArkSelectContext } from '@ark-ui/vue/select'
 import { computed } from 'vue'
+
 import { SelectProvider } from '.'
 
 interface Props {

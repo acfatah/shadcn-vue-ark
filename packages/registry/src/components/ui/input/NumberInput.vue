@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core'
 import { computed, ref } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
+
 import type {
   Emits as PrimitiveInputEmits,
   Props as PrimitiveInputProps,
 } from './PrimitiveInput.vue'
+
 import PrimitiveInput from './PrimitiveInput.vue'
 
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {

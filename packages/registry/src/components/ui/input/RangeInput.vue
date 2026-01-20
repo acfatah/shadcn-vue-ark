@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { InputHTMLAttributes } from 'vue'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -107,7 +109,7 @@ const ariaInvalid = computed(() => props.invalid || undefined)
     :aria-busy="ariaBusy"
     :style="trackStyle"
     :class="cn(
-      'h-9 w-full rounded',
+      'h-9 w-full rounded-sm',
       `focus:outline-none`,
       `disabled:pointer-events-none disabled:opacity-50`,
       `

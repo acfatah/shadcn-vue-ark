@@ -4,20 +4,19 @@ import type {
   UseSelectReturn as UseArkSelectReturn,
 } from '@ark-ui/vue/select'
 import type { ComputedRef } from 'vue'
+
 import {
   Select as ArkSelect,
   useSelect as useArkSelect,
   useSelectContext as useArkSelectContext,
 } from '@ark-ui/vue/select'
 import { computed, ref } from 'vue'
+
 import { createContext } from '@/composables/create-context'
 
-export { createListCollection } from '@ark-ui/vue/select'
+export { Select } from './namespace'
 export { useArkSelectContext }
 export const SelectControl = ArkSelect.Control
-
-export { Select } from './namespace'
-
 export { default as SelectClearTrigger } from './SelectClearTrigger.vue'
 export { default as SelectContent } from './SelectContent.vue'
 export { default as SelectEmpty } from './SelectEmpty.vue'
@@ -32,6 +31,7 @@ export { default as SelectRoot } from './SelectRoot.vue'
 export { default as SelectSeparator } from './SelectSeparator.vue'
 export { default as SelectTrigger } from './SelectTrigger.vue'
 export { default as SelectValueText } from './SelectValueText.vue'
+export { createListCollection } from '@ark-ui/vue/select'
 
 interface UseSelectProps<T extends CollectionItem>
   extends UseArkSelectProps<T> {

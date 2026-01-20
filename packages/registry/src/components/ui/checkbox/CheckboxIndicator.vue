@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { CheckboxIndicatorProps } from '@ark-ui/vue/checkbox'
 import type { HTMLAttributes } from 'vue'
+
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
 import { CheckIcon } from 'lucide-vue-next'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -22,7 +24,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
       <CheckIcon
         data-part="icon"
         :class="cn(
-          `grid h-3.5 w-3.5 place-content-center text-current transition-none`,
+          `grid size-3.5 place-content-center text-current transition-none`,
           props.class,
         )"
       />

@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+
 import { computed, ref } from 'vue'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+
 import type {
   Emits as PrimitiveInputEmits,
   Props as PrimitiveInputProps,
 } from './PrimitiveInput.vue'
+
 import PrimitiveInput from './PrimitiveInput.vue'
 
 interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {

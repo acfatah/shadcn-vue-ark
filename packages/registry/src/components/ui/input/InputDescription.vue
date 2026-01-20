@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
+
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
+
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
@@ -22,7 +24,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-part="description"
     :class="cn(
       `
-        text-sm leading-normal font-normal text-muted-foreground
+        text-sm/normal font-normal text-muted-foreground
         group-has-data-[orientation=horizontal]/field:text-balance
         last:mt-0
         nth-last-2:-mt-1

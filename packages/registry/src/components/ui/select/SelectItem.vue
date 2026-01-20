@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { CollectionItem, SelectItemProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
+
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
+
 import { useForwardExpose } from '@/composables/use-forward-expose'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
@@ -38,7 +40,8 @@ useForwardExpose()
       'data-highlighted:bg-accent data-highlighted:text-accent-foreground',
       `
         [&_svg]:pointer-events-none [&_svg]:shrink-0
-        [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground
+        [&_svg:not([class*='size-'])]:size-4
+        [&_svg:not([class*='text-'])]:text-muted-foreground
         *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2
       `,
       props.class,
