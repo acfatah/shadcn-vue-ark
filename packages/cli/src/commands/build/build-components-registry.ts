@@ -4,8 +4,11 @@ import type {
   registryItemCssVarsSchema,
 } from 'shadcn/schema'
 import type { z } from 'zod'
+
 import { join } from 'pathe'
+
 import { readFile } from '@/utils'
+
 import { COMPONENTS_PATH } from '.'
 import { getFileDependencies } from './get-file-dependecies'
 

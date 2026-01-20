@@ -1,8 +1,10 @@
 import type { RegistryItem } from 'shadcn/schema'
+
 import { Command } from 'commander'
 import { consola } from 'consola'
 import process from 'node:process'
 import { join, resolve } from 'pathe'
+
 import {
   readDirectory,
   rimraf,

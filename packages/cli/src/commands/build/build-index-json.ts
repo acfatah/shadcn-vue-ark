@@ -1,6 +1,9 @@
 import type { RegistryItem } from 'shadcn/schema'
+
 import { join } from 'pathe'
+
 import { writeFile } from '@/utils'
+
 import { REGISTRY_OUTPUT_PATH } from '.'
 
 export async function buildIndexJson(registryItems: RegistryItem[]) {
