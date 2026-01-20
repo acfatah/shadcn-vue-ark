@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpIcon } from 'lucide-vue-next'
+
 import { Button, size as sizeVariant } from '@/components/ui/button'
 
 const sizes = Object.keys(sizeVariant) as Array<keyof typeof sizeVariant>

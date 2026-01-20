@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from 'vue'
+
 import { Input } from '@/components/ui/input'
 
 const props = defineProps({
@@ -80,7 +81,7 @@ function handleSubmit(event: Event) {
 
     <pre
       class="
-        overflow-x-auto rounded border bg-neutral-100 p-2 text-sm text-foreground
+        overflow-x-auto rounded-sm border bg-neutral-100 p-2 text-sm text-foreground
         dark:bg-neutral-900
       "
     ><code>{{ submittedValues ? JSON.stringify(submittedValues, null, 2) : '-' }}</code></pre>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import {
@@ -10,6 +11,7 @@ import {
   CheckboxRoot,
 } from '@/components/ui/checkbox'
 import { registryItem } from '@/components/ui/checkbox/_registry'
+
 import CheckboxDefaultStory from './CheckboxDefaultStory.vue'
 import CheckboxDefaultSource from './CheckboxDefaultStory.vue?raw'
 

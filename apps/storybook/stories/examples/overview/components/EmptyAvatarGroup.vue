@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { LucidePlus } from 'lucide-vue-next'
+
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Empty } from '@/components/ui/empty'
-
-import { LucidePlus } from 'lucide-vue-next'
 </script>
 
 <template>

@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Button } from '@/components/ui/button'
 import { registryItem } from '@/components/ui/button/_registry'
+
 import AsChildStory from './AsChildStory.vue'
 import AsChildStorySource from './AsChildStory.vue?raw'
 import DemoStory from './DemoStory.vue'

@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Item } from '@/components/ui/item'
 import { registryItem } from '@/components/ui/item/_registry'
+
 import ItemDefaultStory from './ItemDefaultStory.vue'
 import ItemDefaultSource from './ItemDefaultStory.vue?raw'
 

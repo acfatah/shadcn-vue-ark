@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { size as ButtonSize } from '@/components/ui/button'

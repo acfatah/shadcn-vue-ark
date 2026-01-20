@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Label } from '@/components/ui/label'
 import { registryItem } from '@/components/ui/label/_registry'
+
 import LabelDefaultStory from './LabelDefaultStory.vue'
 import LabelDefaultSource from './LabelDefaultStory.vue?raw'
 

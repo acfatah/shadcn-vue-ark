@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import {
@@ -8,6 +9,7 @@ import {
   AvatarRoot,
 } from '@/components/ui/avatar'
 import { registryItem } from '@/components/ui/avatar/_registry'
+
 import AvatarDefaultStory from './AvatarDefaultStory.vue'
 import AvatarDefaultSource from './AvatarDefaultStory.vue?raw'
 

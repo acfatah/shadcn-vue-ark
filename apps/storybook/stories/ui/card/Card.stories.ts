@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Card } from '@/components/ui/card'
 import { registryItem } from '@/components/ui/card/_registry'
+
 import CardDefaultStory from './CardDefaultStory.vue'
 import CardDefaultSource from './CardDefaultStory.vue?raw'
 
 const meta = {
   title: 'Components/Card',
   component: Card.Root,
-  subcomponents : {
+  subcomponents: {
     'Card.Header': Card.Header,
     'Card.Title': Card.Title,
     'Card.Description': Card.Description,

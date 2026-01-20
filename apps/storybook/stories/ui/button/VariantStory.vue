@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ChevronRightIcon } from 'lucide-vue-next'
+
 import { Button, variant as buttonVariants } from '@/components/ui/button'
 
 const variants = Object.keys(buttonVariants) as Array<keyof typeof buttonVariants>

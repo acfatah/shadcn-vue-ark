@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Accordion } from '@/components/ui/accordion'
+
 import { accordionItems } from './items'
 </script>
 

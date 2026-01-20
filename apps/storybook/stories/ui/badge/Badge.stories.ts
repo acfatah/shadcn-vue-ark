@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Badge } from '@/components/ui/badge'
 import { registryItem } from '@/components/ui/spinner/_registry'
+
 import AsChildStory from './AsChildStory.vue'
 import AsChildSource from './AsChildStory.vue?raw'
 import BadgeDefaultStory from './BadgeDefaultStory.vue'

@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Switch } from '@/components/ui/switch'
 import { registryItem } from '@/components/ui/switch/_registry'
+
 import SwitchDefaultStory from './SwitchDefaultStory.vue'
 import SwitchDefaultSource from './SwitchDefaultStory.vue?raw'
 

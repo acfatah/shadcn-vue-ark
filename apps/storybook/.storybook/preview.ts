@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3-vite'
+
 import { withThemeByClassName } from '@storybook/addon-themes'
 import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'

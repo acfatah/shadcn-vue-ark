@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
 import { html } from 'common-tags'
 
 import { Spinner } from '@/components/ui/spinner'
 import { registryItem } from '@/components/ui/spinner/_registry'
+
 import SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'
 
 const meta = {

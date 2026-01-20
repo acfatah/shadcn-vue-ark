@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { BadgeCheckIcon } from 'lucide-vue-next'
+
 import { Badge } from '@/components/ui/badge'
 </script>
 
