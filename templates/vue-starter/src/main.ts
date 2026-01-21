@@ -2,6 +2,7 @@ import './styles/global.css'
 import './styles/nprogress.css'
 
 import { createApp } from 'vue'
+
 import App from './App.vue'
 import router from './router'
 

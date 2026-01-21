@@ -117,6 +117,7 @@ program.command('add')
   .action(async (components, options) => {
     await checkStatus()
 
+    // eslint-disable-next-line unused-imports/no-unused-vars
     const urls: string[] = components.reduce((acc: string[], component: string) => {
       acc.push(`${REGISTRY_PATH}/${component}.json`)
 
