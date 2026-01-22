@@ -14,6 +14,7 @@ import {
 import mainPackageJson from '../../../../../package.json'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildIndexJson } from './build-index-json'
+import { buildStyles } from './build-styles'
 import { buildUIRegistry } from './build-ui-registry'
 
 interface BuildCommandOptions {
@@ -146,7 +147,7 @@ export const build = new Command()
       await rimraf(REGISTRY_OUTPUT_PATH)
       await buildIndexJson(items)
       // await buildThemes()
-      // await buildStyles()
+      await buildStyles()
       // await buildIcons()
       await runShadcnBuild()
       consola.success('Registry built successfully.')
