@@ -17,6 +17,7 @@ export const DEPENDENCIES: ReadonlyMap<string, readonly string[]> = new Map<stri
   ['@vueuse/components', []],
   ['clsx', []],
   ['embla-carousel-vue', []],
+  ['lucide-vue-next', []],
   ['tailwind-merge', []],
   ['vaul-vue', []],
   ['vee-validate', ['@vee-validate/zod', 'zod']],

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "description",
+  "title": "Description",
+  "description": "Provide additional information or context. Typically used to elaborate on an\ninput, title, or heading, offering users more insight into the content or\npurpose.\n\nIt is usually derived as other component such as <code>Input.Description</code>,\n<code>Select.Description</code>, etc. to maintain consistent styling across\nthe UI. The differences come from the <code>data-scope</code> and\n<code>data-part</code> attributes assigned to each component.",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/composables/dynamic.ts",
+      "content": "import type { VNode } from 'vue'\n\nimport { mergeProps } from '@zag-js/vue'\nimport { cloneVNode, defineComponent, Fragment } from 'vue'\n\n/**\n * A dynamic component that renders its first child with merged props.\n * Useful for forwarding props to a single child component.\n *\n * Docs: https://ark-ui.com/docs/guides/composition\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts\n */\nexport const Dynamic = defineComponent({\n  name: 'Dynamic',\n  inheritAttrs: false,\n  setup(_, { attrs, slots }) {\n    return () => {\n      if (!slots.default)\n        return null\n\n      const children = renderSlotFragments(slots.default())\n      const [firstChildren, ...otherChildren] = children\n\n      if (!firstChildren)\n        return children\n\n      if (Object.keys(attrs).length > 0) {\n        delete firstChildren.props?.ref\n        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})\n        const cloned = cloneVNode(firstChildren, mergedProps)\n        for (const prop in mergedProps) {\n          if (prop.startsWith('on')) {\n            cloned.props ||= {}\n            cloned.props[prop] = mergedProps[prop]\n          }\n        }\n\n        return children.length === 1 ? cloned : [cloned, ...otherChildren]\n      }\n\n      return children\n    }\n  },\n})\n\nfunction renderSlotFragments(children?: VNode[]): VNode[] {\n  if (!children)\n    return []\n\n  return children.flatMap((child) => {\n    if (child.type === Fragment)\n      return renderSlotFragments(child.children as VNode[])\n\n    return [child]\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/dynamic.ts"
+    },
+    {
+      "path": "src/composables/use-forward-props.ts",
+      "content": "import type { MaybeRefOrGetter } from 'vue'\n\nimport { camelize, computed, getCurrentInstance, toRef } from 'vue'\n\ninterface PropOptions {\n  type?: any\n  required?: boolean\n  default?: any\n}\n\n/**\n * The `useForwardProps` function in TypeScript takes in a set of props and returns\n * a computed value that combines default props with assigned props from the\n * current instance.\n *\n * @param {T} props - The `props` parameter is an object that represents the props\n *                    passed to a component.\n * @returns computed value that combines the default props, preserved props, and\n *          assigned props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardProps.ts\n */\nexport function useForwardProps<T extends Record<string, any>>(props: MaybeRefOrGetter<T>) {\n  const vm = getCurrentInstance()\n\n  // Default value for declared props\n  const defaultProps = Object.keys(vm?.type.props ?? {}).reduce((prev, curr) => {\n    const defaultValue = (vm?.type.props[curr] as PropOptions).default\n    if (defaultValue !== undefined)\n      prev[curr as keyof T] = defaultValue\n\n    return prev\n  }, {} as T)\n\n  const refProps = toRef(props)\n\n  return computed(() => {\n    const preservedProps = {} as T\n    const assignedProps = vm?.vnode.props ?? {}\n\n    Object.keys(assignedProps).forEach((key) => {\n      preservedProps[camelize(key) as keyof T] = assignedProps[key]\n    })\n\n    // Only return value from the props parameter\n    return Object.keys({ ...defaultProps, ...preservedProps }).reduce((prev, curr) => {\n      if (refProps.value[curr] !== undefined)\n        prev[curr as keyof T] = refProps.value[curr]\n\n      return prev\n    }, {} as T)\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/description/Description.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nexport interface Props {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, ['asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : 'p'\"\n    data-scope=\"description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm/normal font-normal text-muted-foreground\n        group-has-data-[orientation=horizontal]/field:text-balance\n        last:mt-0\n        nth-last-2:-mt-1\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n        [[data-variant=legend]+&]:-mt-1.5\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/description/index.ts",
+      "content": "export type { Props as DescriptionProps } from './Description.vue'\nexport { default as Description } from './Description.vue'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

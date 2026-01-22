@@ -1,0 +1,1302 @@
+[
+  {
+    "name": "accordion",
+    "type": "registry:ui",
+    "title": "Accordion",
+    "description": "A vertically stacked set of interactive headings that each reveal a section of content.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/accordion\n- shadcn/ui: https://ui.shadcn.com/docs/components/accordion",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/accordion/AccordionTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/accordion/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/accordion/AccordionRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/accordion/AccordionItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/accordion/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/accordion/AccordionContent.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "alert",
+    "type": "registry:ui",
+    "title": "Alert",
+    "description": "Displays a callout for user attention.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/alert",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/alert/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/alert/AlertRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/alert/AlertDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/alert/AlertTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/alert/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "avatar",
+    "type": "registry:ui",
+    "title": "Avatar",
+    "description": "An image element with a fallback for representing the user.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/avatar\n- shadcn/ui: https://ui.shadcn.com/docs/components/avatar",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/avatar/AvatarFallback.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/AvatarImage.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/AvatarRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/AvatarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "badge",
+    "type": "registry:ui",
+    "title": "Badge",
+    "description": "Displays a badge or a component that looks like a badge.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/badge",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/badge/Badge.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/badge/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button",
+    "type": "registry:ui",
+    "title": "Button",
+    "description": "Displays a button or a component that looks like a button.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/button",
+    "dependencies": [
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button/Button.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "button-group",
+    "type": "registry:ui",
+    "title": "Button Group",
+    "description": "A container that groups related buttons together with consistent styling.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/button-group",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/button-group/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/ButtonGroupRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/ButtonGroupText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/ButtonGroupSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "card",
+    "type": "registry:ui",
+    "title": "Card",
+    "description": "Displays a card with header, content, and footer.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/card",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/card/CardFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardAction.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/CardContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/card/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "checkbox",
+    "type": "registry:ui",
+    "title": "Checkbox",
+    "description": "A control that allows the user to toggle between checked and not checked.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/checkbox\n- shadcn/ui: https://ui.shadcn.com/docs/components/checkbox\n- Iconify: https://iconify.design/docs/icon-components",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/checkbox/CheckboxControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxHiddenInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/CheckboxContent.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dark-mode-toggle",
+    "type": "registry:component",
+    "title": "Dark Mode Toggle",
+    "description": "A button to toggle between light and dark mode.",
+    "dependencies": [
+      "@vueuse/components",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/components/DarkModeToggle.vue",
+        "type": "registry:component"
+      }
+    ]
+  },
+  {
+    "name": "description",
+    "type": "registry:ui",
+    "title": "Description",
+    "description": "Provide additional information or context. Typically used to elaborate on an\ninput, title, or heading, offering users more insight into the content or\npurpose.\n\nIt is usually derived as other component such as <code>Input.Description</code>,\n<code>Select.Description</code>, etc. to maintain consistent styling across\nthe UI. The differences come from the <code>data-scope</code> and\n<code>data-part</code> attributes assigned to each component.",
+    "dependencies": [
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/description/Description.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/description/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dropdown-menu",
+    "type": "registry:ui",
+    "title": "Dropdown Menu",
+    "description": "Displays a menu to the user with actions and submenus.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu\n- Iconify: https://iconify.design/docs/icon-components",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-expose.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuSub.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuSubContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-expose.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuShortcut.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/DropdownMenuRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/dropdown-menu/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "empty",
+    "type": "registry:ui",
+    "title": "Empty",
+    "description": "Use the Empty component to display an empty state.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/empty",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/empty/EmptyDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/EmptyHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/EmptyTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/EmptyRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/EmptyContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/EmptyMedia.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "field",
+    "type": "registry:ui",
+    "title": "Field",
+    "description": "Provides a flexible container for form inputs, labels, and helper text, based\non Ark UI field components.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/field\n- shadcn/ui: https://ui.shadcn.com/docs/components/field",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/input.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/checkbox.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/field/FieldRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldTextarea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldRequiredIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldError.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldCheckbox.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/FieldRootProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/field/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "fieldset",
+    "type": "registry:ui",
+    "title": "Fieldset",
+    "description": "A set of form controls optionally grouped to compose accessible form fields\nand grouped inputs.\n\nReferences:\n- Ark UI: https://ark-ui.com/vue/docs/components/fieldset\n- shadcn/ui: https://ui.shadcn.com/docs/components/field#fieldset-1",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/fieldset/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetLegend.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetError.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/FieldsetGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/fieldset/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "fullscreen-toggle",
+    "type": "registry:component",
+    "title": "Fullscreen Toggle",
+    "description": "A button to toggle fullscreen mode for the application.",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/components/FullscreenToggle.vue",
+        "type": "registry:component"
+      }
+    ]
+  },
+  {
+    "name": "input",
+    "type": "registry:ui",
+    "title": "Input",
+    "description": "Accessible text input field component for capturing user-entered\nvalues in forms and interactive UIs.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/input",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/input/TelInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/SearchInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/DatetimeLocalInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/PrimitiveInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/FileInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/SelectInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/CheckboxInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/UrlInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/TimeInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/NumberInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/WeekInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/SubmitInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/InputRequiredIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/InputDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/InputGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/PasswordInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/DateInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/NumberInput.1.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/TextareaInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/ColorInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/RangeInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/InputError.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/MonthInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/EmailInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/RadioInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/ResetInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/TextInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "item",
+    "type": "registry:ui",
+    "title": "Item",
+    "description": "A versatile component that you can use to display any content.\n\nThe Item component is a straightforward flex container that can house nearly\nany type of content. Use it to display a title, description, and actions.\nGroup it with the ItemGroup component to create a list of items.\n\nYou can pretty much achieve the same result with the div element and some\nclasses, but I've built this so many times that I decided to create a\ncomponent for it. Now I use it all the time.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/item",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core",
+      "class-variance-authority",
+      "reka-ui"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/item/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemMedia.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemActions.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemHeader.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/ItemFooter.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "label",
+    "type": "registry:ui",
+    "title": "Label",
+    "description": "Renders an accessible label associated with controls.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/label",
+    "dependencies": [
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/label/Label.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/label/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "radio-group",
+    "type": "registry:ui",
+    "title": "Radio Group",
+    "description": "A set of checkable buttons, known as radio buttons, where no more than one\nof the buttons can be checked at a time.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/radio-group\n- shadcn/ui: https://ui.shadcn.com/docs/components/radio-group",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/radio-group/RadioGroupRootProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItemDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItemControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItemHiddenInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItemContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupItems.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/RadioGroupDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/radio-group/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "select",
+    "type": "registry:ui",
+    "title": "Select",
+    "description": "Displays a list of options for the user to pick from.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/select\n- shadcn/ui: https://ui.shadcn.com/docs/components/select",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-expose.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/create-context.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/select/SelectClearTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectEmpty.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectItemIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectItemGroupLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectContextProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-expose.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectValueText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectHiddenInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/SelectItemGroup.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "separator",
+    "type": "registry:ui",
+    "title": "Separator",
+    "description": "Visually or semantically separates content.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/separator",
+    "dependencies": [
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/separator/Separator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/separator/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "spinner",
+    "type": "registry:ui",
+    "title": "Spinner",
+    "description": "An indicator that can be used to show a loading state.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/spinner\n- lucide-vue-next: https://lucide.dev/guide/packages/lucide-vue-next",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/spinner/Spinner.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/spinner/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "switch",
+    "type": "registry:ui",
+    "title": "Switch",
+    "description": "A control that allows the user to toggle between checked and not checked.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/switch\n- shadcn/ui: https://ui.shadcn.com/docs/components/switch",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json",
+      "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/switch/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchHiddenInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchThumb.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchLabel.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/SwitchRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/switch/index.ts",
+        "type": "registry:ui"
+      }
+    ]
+  }
+]

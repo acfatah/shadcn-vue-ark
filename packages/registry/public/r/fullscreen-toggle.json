@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fullscreen-toggle",
+  "title": "Fullscreen Toggle",
+  "description": "A button to toggle fullscreen mode for the application.",
+  "dependencies": [
+    "@vueuse/core",
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/FullscreenToggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { useFullscreen } from '@vueuse/core'\nimport { FullscreenIcon, MinimizeIcon } from 'lucide-vue-next'\n\nconst { isFullscreen, toggle } = useFullscreen(document.querySelector('body'))\n</script>\n\n<template>\n  <button\n    data-scope=\"fullscreen-toggle\"\n    data-part=\"button\"\n    class=\"\n      inline-flex size-8 items-center justify-center gap-2 rounded-md text-sm font-medium\n      whitespace-nowrap ring-offset-background transition-colors\n      hover:bg-accent hover:text-accent-foreground\n      focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\n      focus-visible:outline-none\n      disabled:pointer-events-none disabled:opacity-50\n      [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\n    \"\n    aria-label=\"Toggle fullscreen mode\"\n    @click=\"toggle()\"\n  >\n    <FullscreenIcon\n      v-if=\"!isFullscreen\"\n      data-scope=\"fullscreen-toggle\"\n      data-part=\"icon\"\n      class=\"ease-out\"\n    />\n    <MinimizeIcon\n      v-if=\"isFullscreen\"\n      data-scope=\"fullscreen-toggle\"\n      data-part=\"icon\"\n      class=\"ease-out\"\n    />\n  </button>\n</template>\n",
+      "type": "registry:file",
+      "target": "src/components/FullscreenToggle.vue"
+    }
+  ],
+  "type": "registry:component"
+}

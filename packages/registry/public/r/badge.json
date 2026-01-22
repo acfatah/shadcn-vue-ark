@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "description": "Displays a badge or a component that looks like a badge.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/badge",
+  "dependencies": [
+    "@ark-ui/vue",
+    "@vueuse/core",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/badge/Badge.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { BadgeVariants } from '.'\n\nimport { badgeVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  variant?: BadgeVariants['variant']\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.span\n    v-bind=\"forwardedProps\"\n    data-scope=\"badge\"\n    :class=\"cn(\n      badgeVariants({ variant: props.variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.span>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/badge/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as Badge } from './Badge.vue'\n\nexport const variant = {\n  default:\n    `border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90`,\n  secondary:\n    `\n      border-transparent bg-secondary text-secondary-foreground\n      [a&]:hover:bg-secondary/90\n    `,\n  destructive:\n    `\n      border-transparent bg-destructive text-white\n      focus-visible:ring-destructive/20\n      dark:bg-destructive/60 dark:focus-visible:ring-destructive/40\n      [a&]:hover:bg-destructive/90\n    `,\n  outline:\n    `\n      text-foreground\n      [a&]:hover:bg-accent [a&]:hover:text-accent-foreground\n    `,\n}\n\nexport const badgeVariants = cva(\n  `\n    inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border\n    px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] select-none\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    aria-invalid:border-destructive aria-invalid:ring-destructive/20\n    dark:aria-invalid:ring-destructive/40\n    [&>svg]:pointer-events-none [&>svg]:size-3\n  `,\n  {\n    variants: {\n      variant,\n    },\n\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n\nexport type BadgeVariants = VariantProps<typeof badgeVariants>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

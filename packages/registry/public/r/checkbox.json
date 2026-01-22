@@ -1,0 +1,88 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "description": "A control that allows the user to toggle between checked and not checked.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/checkbox\n- shadcn/ui: https://ui.shadcn.com/docs/components/checkbox\n- Iconify: https://iconify.design/docs/icon-components",
+  "dependencies": [
+    "@vueuse/core",
+    "lucide-vue-next",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/checkbox/CheckboxControl.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxControlProps } from '@ark-ui/vue/checkbox'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CheckboxControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Checkbox.Control\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      // Currently rounded-lg produces different results from rounded-[4px] here\n      `\n        mt-0.5 size-4 min-w-4 rounded-[4px] border border-input shadow-xs transition-shadow\n        outline-none\n      `,\n      `\n        data-[state=checked]:border-primary data-[state=checked]:bg-primary\n        data-[state=checked]:text-primary-foreground\n        data-[state=unchecked]:data-invalid:border-destructive/50\n      `,\n      `\n        group-focus-within:border-ring group-focus-within:ring-[3px] group-focus-within:ring-ring/50\n        data-invalid:group-focus-within:ring-destructive/20\n        dark:data-invalid:group-focus-within:ring-destructive/40\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Checkbox.Control>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxLabelProps } from '@ark-ui/vue/checkbox'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends CheckboxLabelProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <Checkbox.Label as-child>\n    <Label\n      data-scope=\"checkbox\"\n      data-part=\"label\"\n      v-bind=\"forwardedProps\"\n    >\n      <slot />\n    </Label>\n  </Checkbox.Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/namespace.ts",
+      "content": "import { Checkbox as ArkCheckbox } from '@ark-ui/vue/checkbox'\n\nimport CheckboxContent from './CheckboxContent.vue'\nimport CheckboxControl from './CheckboxControl.vue'\nimport CheckboxDescription from './CheckboxDescription.vue'\nimport CheckboxGroup from './CheckboxGroup.vue'\nimport CheckboxHiddenInput from './CheckboxHiddenInput.vue'\nimport CheckboxIndicator from './CheckboxIndicator.vue'\nimport CheckboxLabel from './CheckboxLabel.vue'\nimport CheckboxRoot from './CheckboxRoot.vue'\n\nexport const Checkbox = {\n  /**\n   * CheckboxRoot component\n   */\n  Root: CheckboxRoot,\n\n  /**\n   * CheckboxContent component\n   *\n   * A flex column that groups label and description. Not required if you have no description.\n   */\n  Content: CheckboxContent,\n\n  /**\n   * CheckboxLabel component\n   */\n  Label: CheckboxLabel,\n\n  /**\n   * CheckboxDescription component\n   */\n  Description: CheckboxDescription,\n\n  /**\n   * CheckboxControl component\n   */\n  Control: CheckboxControl,\n\n  /**\n   * CheckboxIndicator component\n   */\n  Indicator: CheckboxIndicator,\n\n  /**\n   * CheckboxHiddenInput component\n   */\n  HiddenInput: CheckboxHiddenInput,\n\n  /**\n   * CheckboxRootProvider component\n   *\n   * See: https://ark-ui.com/docs/components/checkbox#props\n   */\n  RootProvider: ArkCheckbox.RootProvider,\n\n  /**\n   * CheckboxGroup component\n   *\n   * Component to manage a group of checkboxes.\n   */\n  Group: CheckboxGroup,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxIndicatorProps } from '@ark-ui/vue/checkbox'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\nimport { reactiveOmit } from '@vueuse/core'\nimport { CheckIcon } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CheckboxIndicatorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Checkbox.Indicator v-bind=\"forwardedProps\">\n    <slot>\n      <CheckIcon\n        data-part=\"icon\"\n        :class=\"cn(\n          `grid size-3.5 place-content-center text-current transition-none`,\n          props.class,\n        )\"\n      />\n    </slot>\n  </Checkbox.Indicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxHiddenInputProps } from '@ark-ui/vue/checkbox'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CheckboxHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Checkbox.HiddenInput\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `peer sr-only`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Checkbox.HiddenInput>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CheckboxRootEmits, CheckboxRootProps } from '@ark-ui/vue/checkbox'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CheckboxRootProps {\n  loading?: boolean\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<CheckboxRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'loading'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\nconst disabled = computed(() => props.disabled || props.loading || undefined)\nconst ariaBusy = computed(() => (props.loading || undefined))\n</script>\n\n<template>\n  <Checkbox.Root\n    v-bind=\"forwardedProps\"\n    :disabled=\"disabled\"\n    :aria-busy=\"ariaBusy\"\n    :class=\"cn(`\n      group flex gap-3\n      has-data-[part=checkbox-content]:items-start\n      data-disabled:pointer-events-none data-disabled:opacity-50\n    `, props.class)\"\n  >\n    <slot />\n  </Checkbox.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/dynamic.ts",
+      "content": "import type { VNode } from 'vue'\n\nimport { mergeProps } from '@zag-js/vue'\nimport { cloneVNode, defineComponent, Fragment } from 'vue'\n\n/**\n * A dynamic component that renders its first child with merged props.\n * Useful for forwarding props to a single child component.\n *\n * Docs: https://ark-ui.com/docs/guides/composition\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts\n */\nexport const Dynamic = defineComponent({\n  name: 'Dynamic',\n  inheritAttrs: false,\n  setup(_, { attrs, slots }) {\n    return () => {\n      if (!slots.default)\n        return null\n\n      const children = renderSlotFragments(slots.default())\n      const [firstChildren, ...otherChildren] = children\n\n      if (!firstChildren)\n        return children\n\n      if (Object.keys(attrs).length > 0) {\n        delete firstChildren.props?.ref\n        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})\n        const cloned = cloneVNode(firstChildren, mergedProps)\n        for (const prop in mergedProps) {\n          if (prop.startsWith('on')) {\n            cloned.props ||= {}\n            cloned.props[prop] = mergedProps[prop]\n          }\n        }\n\n        return children.length === 1 ? cloned : [cloned, ...otherChildren]\n      }\n\n      return children\n    }\n  },\n})\n\nfunction renderSlotFragments(children?: VNode[]): VNode[] {\n  if (!children)\n    return []\n\n  return children.flatMap((child) => {\n    if (child.type === Fragment)\n      return renderSlotFragments(child.children as VNode[])\n\n    return [child]\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/dynamic.ts"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport type { DescriptionProps } from '@/components/ui/description'\n\nimport { Description } from '@/components/ui/description'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends DescriptionProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Description\n    data-scope=\"checkbox\"\n    data-part=\"description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm text-muted-foreground\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Description>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { Checkbox } from '@ark-ui/vue/checkbox'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\n// Unable to extend CheckboxGroupProps.\n// [@vue/compiler-sfc] Failed to resolve extends base type for Vue v3.3+\n// See: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/components/checkbox/checkbox-group.vue\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <Checkbox.Group v-bind=\"forwardedProps\">\n    <slot />\n  </Checkbox.Group>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/index.ts",
+      "content": "export { default as CheckboxContent } from './CheckboxContent.vue'\nexport { default as CheckboxControl } from './CheckboxControl.vue'\nexport { default as CheckboxDescription } from './CheckboxDescription.vue'\nexport { default as CheckboxGroup } from './CheckboxGroup.vue'\nexport { default as CheckboxHiddenInput } from './CheckboxHiddenInput.vue'\nexport { default as CheckboxIndicator } from './CheckboxIndicator.vue'\nexport { default as CheckboxLabel } from './CheckboxLabel.vue'\nexport { default as CheckboxRoot } from './CheckboxRoot.vue'\nexport { Checkbox } from './namespace'\nexport { useCheckbox } from '@ark-ui/vue/checkbox'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/checkbox/CheckboxContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"checkbox\"\n    data-part=\"content\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex flex-col gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

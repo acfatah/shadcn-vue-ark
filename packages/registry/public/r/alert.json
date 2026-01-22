@@ -1,0 +1,48 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Alert",
+  "description": "Displays a callout for user attention.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/alert",
+  "dependencies": [
+    "@ark-ui/vue",
+    "@vueuse/core",
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/alert/namespace.ts",
+      "content": "import AlertDescription from './AlertDescription.vue'\nimport AlertRoot from './AlertRoot.vue'\nimport AlertTitle from './AlertTitle.vue'\n\nexport const Alert = {\n  /** AlertRoot component */\n  Root: AlertRoot,\n\n  /** AlertTitle component */\n  Title: AlertTitle,\n\n  /** AlertDescription component */\n  Description: AlertDescription,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/alert/AlertRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\nimport type { AlertVariants } from '.'\n\nimport { alertVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: AlertVariants['variant']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class', 'variant')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"alert\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      alertVariants({ variant }),\n      props.class,\n    )\"\n    role=\"alert\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/alert/AlertDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"alert\"\n    data-part=\"description\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        col-start-2 grid justify-items-start gap-1 text-sm text-muted-foreground\n        [&_p]:leading-relaxed\n      `,\n      props.class,\n\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/alert/AlertTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"alert\"\n    data-part=\"title\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/alert/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as AlertDescription } from './AlertDescription.vue'\nexport { default as AlertRoot } from './AlertRoot.vue'\nexport { default as AlertTitle } from './AlertTitle.vue'\nexport { Alert } from './namespace'\n\nexport const alertVariants = cva(\n  `\n    relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm\n    has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3\n    [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-card text-card-foreground',\n        destructive:\n          `\n            bg-card text-destructive\n            *:data-[part=description]:text-destructive/90\n            [&>svg]:text-current\n          `,\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n\nexport type AlertVariants = VariantProps<typeof alertVariants>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

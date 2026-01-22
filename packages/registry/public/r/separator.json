@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "title": "Separator",
+  "description": "Visually or semantically separates content.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/separator",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/separator/Separator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ntype Orientation = 'horizontal' | 'vertical'\n\nexport interface Props {\n  orientation?: Orientation\n  decorative?: boolean\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  orientation: 'horizontal',\n  decorative: true,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'decorative', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\nconst role = computed(() => props.decorative ? 'none' : 'separator')\nconst ariaHidden = computed(() => props.decorative ? 'true' : undefined)\nconst ariaOrientation = computed(() => props.decorative ? undefined : props.orientation)\n</script>\n\n<template>\n  <div\n    v-bind=\"forwardedProps\"\n    data-scope=\"separator\"\n    :data-orientation=\"orientation\"\n    :role=\"role\"\n    :aria-hidden=\"ariaHidden\"\n    :aria-orientation=\"ariaOrientation\"\n    :class=\"cn(\n      `\n        shrink-0 bg-border\n        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full\n        data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/separator/index.ts",
+      "content": "export { default as Separator } from './Separator.vue'\nexport type { Props as SeparatorProps } from './Separator.vue'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

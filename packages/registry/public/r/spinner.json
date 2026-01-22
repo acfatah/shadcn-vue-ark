@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "An indicator that can be used to show a loading state.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/spinner\n- lucide-vue-next: https://lucide.dev/guide/packages/lucide-vue-next",
+  "dependencies": [
+    "@vueuse/core",
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/spinner/Spinner.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { LoaderCircleIcon } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <LoaderCircleIcon\n    v-bind=\"forwardedProps\"\n    data-scope=\"spinner\"\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('animate-spin', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/spinner/index.ts",
+      "content": "export { default as Spinner } from './Spinner.vue'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

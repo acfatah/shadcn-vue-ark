@@ -1,0 +1,45 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "title": "Label",
+  "description": "Renders an accessible label associated with controls.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/label",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/label/Label.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nexport interface Props {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'label',\n})\n\nconst delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    data-scope=\"label\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `flex w-fit items-center text-sm/snug font-medium select-none`,\n      `group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50`,\n      `\n        peer-disabled:pointer-events-none peer-disabled:opacity-50\n        peer-aria-disabled:pointer-events-none peer-aria-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/dynamic.ts",
+      "content": "import type { VNode } from 'vue'\n\nimport { mergeProps } from '@zag-js/vue'\nimport { cloneVNode, defineComponent, Fragment } from 'vue'\n\n/**\n * A dynamic component that renders its first child with merged props.\n * Useful for forwarding props to a single child component.\n *\n * Docs: https://ark-ui.com/docs/guides/composition\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts\n */\nexport const Dynamic = defineComponent({\n  name: 'Dynamic',\n  inheritAttrs: false,\n  setup(_, { attrs, slots }) {\n    return () => {\n      if (!slots.default)\n        return null\n\n      const children = renderSlotFragments(slots.default())\n      const [firstChildren, ...otherChildren] = children\n\n      if (!firstChildren)\n        return children\n\n      if (Object.keys(attrs).length > 0) {\n        delete firstChildren.props?.ref\n        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})\n        const cloned = cloneVNode(firstChildren, mergedProps)\n        for (const prop in mergedProps) {\n          if (prop.startsWith('on')) {\n            cloned.props ||= {}\n            cloned.props[prop] = mergedProps[prop]\n          }\n        }\n\n        return children.length === 1 ? cloned : [cloned, ...otherChildren]\n      }\n\n      return children\n    }\n  },\n})\n\nfunction renderSlotFragments(children?: VNode[]): VNode[] {\n  if (!children)\n    return []\n\n  return children.flatMap((child) => {\n    if (child.type === Fragment)\n      return renderSlotFragments(child.children as VNode[])\n\n    return [child]\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/dynamic.ts"
+    },
+    {
+      "path": "src/composables/use-forward-props.ts",
+      "content": "import type { MaybeRefOrGetter } from 'vue'\n\nimport { camelize, computed, getCurrentInstance, toRef } from 'vue'\n\ninterface PropOptions {\n  type?: any\n  required?: boolean\n  default?: any\n}\n\n/**\n * The `useForwardProps` function in TypeScript takes in a set of props and returns\n * a computed value that combines default props with assigned props from the\n * current instance.\n *\n * @param {T} props - The `props` parameter is an object that represents the props\n *                    passed to a component.\n * @returns computed value that combines the default props, preserved props, and\n *          assigned props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardProps.ts\n */\nexport function useForwardProps<T extends Record<string, any>>(props: MaybeRefOrGetter<T>) {\n  const vm = getCurrentInstance()\n\n  // Default value for declared props\n  const defaultProps = Object.keys(vm?.type.props ?? {}).reduce((prev, curr) => {\n    const defaultValue = (vm?.type.props[curr] as PropOptions).default\n    if (defaultValue !== undefined)\n      prev[curr as keyof T] = defaultValue\n\n    return prev\n  }, {} as T)\n\n  const refProps = toRef(props)\n\n  return computed(() => {\n    const preservedProps = {} as T\n    const assignedProps = vm?.vnode.props ?? {}\n\n    Object.keys(assignedProps).forEach((key) => {\n      preservedProps[camelize(key) as keyof T] = assignedProps[key]\n    })\n\n    // Only return value from the props parameter\n    return Object.keys({ ...defaultProps, ...preservedProps }).reduce((prev, curr) => {\n      if (refProps.value[curr] !== undefined)\n        prev[curr as keyof T] = refProps.value[curr]\n\n      return prev\n    }, {} as T)\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/label/index.ts",
+      "content": "export type { Props as LabelProps } from './Label.vue'\nexport { default as Label } from './Label.vue'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

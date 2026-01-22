@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "title": "Switch",
+  "description": "A control that allows the user to toggle between checked and not checked.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/switch\n- shadcn/ui: https://ui.shadcn.com/docs/components/switch",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/switch/namespace.ts",
+      "content": "import { Switch as ArkSwitch } from '@ark-ui/vue/switch'\n\nimport SwitchControl from './SwitchControl.vue'\nimport SwitchDescription from './SwitchDescription.vue'\nimport SwitchHiddenInput from './SwitchHiddenInput.vue'\nimport SwitchLabel from './SwitchLabel.vue'\nimport SwitchRoot from './SwitchRoot.vue'\nimport SwitchThumb from './SwitchThumb.vue'\n\nexport const Switch = {\n  /**\n   * SwitchRoot component\n   */\n  Root: SwitchRoot,\n\n  /**\n   * SwitchControl component\n   */\n  Control: SwitchControl,\n\n  /**\n   * SwitchThumb component\n   */\n  Thumb: SwitchThumb,\n\n  /**\n   * SwitchLabel component\n   */\n  Label: SwitchLabel,\n\n  /**\n   * SwitchDescription component\n   */\n  Description: SwitchDescription,\n\n  /**\n   * SwitchHiddenInput component\n   */\n  HiddenInput: SwitchHiddenInput,\n\n  /**\n   * SwitchRootProvider component\n   *\n   * See: https://ark-ui.com/docs/components/switch#props\n   */\n  RootProvider: ArkSwitch.RootProvider,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchHiddenInputProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.HiddenInput\n    data-scope=\"switch\"\n    data-part=\"input\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(`peer sr-only`, props.class)\"\n  >\n    <slot />\n  </Switch.HiddenInput>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchThumb.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchThumbProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchThumbProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Thumb\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform\n        data-[state=checked]:translate-x-[calc(100%-2px)]\n        data-[state=unchecked]:translate-x-0\n        dark:data-[state=checked]:bg-primary-foreground\n        dark:data-[state=unchecked]:bg-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Thumb>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DescriptionProps } from '@/components/ui/description'\n\nimport { Description } from '@/components/ui/description'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\nconst props = defineProps<DescriptionProps>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <Description\n    data-scope=\"switch\"\n    data-part=\"description\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </Description>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchLabelProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends SwitchLabelProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Label v-bind=\"forwardedProps\" as-child>\n    <Label\n      data-scope=\"switch\"\n      data-part=\"label\"\n      as=\"span\"\n      :class=\"props.class\"\n    >\n      <slot />\n    </Label>\n  </Switch.Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchControl.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchControlProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Control\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent\n        shadow-xs transition-all outline-none\n        data-[state=checked]:bg-primary\n        data-[state=unchecked]:bg-input\n        dark:data-[state=unchecked]:bg-input/80\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Control>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchRootEmits, SwitchRootProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchRootProps {\n  class?: HTMLAttributes['class']\n  loading?: boolean\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<SwitchRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'disabled', 'loading'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n\nconst ariaDisabled = computed(() => props.disabled || props.loading || undefined)\nconst ariaBusy = computed(() => (props.loading || undefined))\n</script>\n\n<template>\n  <Switch.Root\n    :disabled=\"ariaDisabled\"\n    :aria-disabled=\"ariaDisabled\"\n    :aria-busy=\"ariaBusy\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex space-x-2 bg-transparent outline-none\n        data-disabled:pointer-events-none data-disabled:opacity-50\n      `,\n\n      // Focus interaction on `data-part=control` when the `data-part=input` is\n      // focused.\n      `\n        [&:focus-within_[data-part=control]]:border-ring\n        [&:focus-within_[data-part=control]]:ring-[3px]\n        [&:focus-within_[data-part=control]]:ring-ring/50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/index.ts",
+      "content": "export { Switch } from './namespace'\nexport { default as SwitchControl } from './SwitchControl.vue'\nexport { default as SwitchDescription } from './SwitchDescription.vue'\nexport { default as SwitchHiddenInput } from './SwitchHiddenInput.vue'\nexport { default as SwitchLabel } from './SwitchLabel.vue'\nexport { default as SwitchRoot } from './SwitchRoot.vue'\nexport { default as SwitchThumb } from './SwitchThumb.vue'\nexport { useSwitch } from '@ark-ui/vue/switch'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

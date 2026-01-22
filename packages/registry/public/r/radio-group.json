@@ -1,0 +1,101 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "title": "Radio Group",
+  "description": "A set of checkable buttons, known as radio buttons, where no more than one\nof the buttons can be checked at a time.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/radio-group\n- shadcn/ui: https://ui.shadcn.com/docs/components/radio-group",
+  "dependencies": [
+    "@ark-ui/vue",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
+    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/radio-group/RadioGroupRootProvider.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupRootProviderProps } from '@ark-ui/vue/radio-group'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\nconst props = defineProps<RadioGroupRootProviderProps>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <RadioGroup.RootProvider\n    :value=\"props.value\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </RadioGroup.RootProvider>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItemDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"radio-group\"\n    data-part=\"item-description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm text-muted-foreground\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/namespace.ts",
+      "content": "import RadioGroupDescription from './RadioGroupDescription.vue'\nimport RadioGroupIndicator from './RadioGroupIndicator.vue'\nimport RadioGroupItem from './RadioGroupItem.vue'\nimport RadioGroupItemContent from './RadioGroupItemContent.vue'\nimport RadioGroupItemControl from './RadioGroupItemControl.vue'\nimport RadioGroupItemDescription from './RadioGroupItemDescription.vue'\nimport RadioGroupItemHiddenInput from './RadioGroupItemHiddenInput.vue'\nimport RadioGroupItems from './RadioGroupItems.vue'\nimport RadioGroupItemText from './RadioGroupItemText.vue'\nimport RadioGroupLabel from './RadioGroupLabel.vue'\nimport RadioGroupRoot from './RadioGroupRoot.vue'\nimport RadioGroupRootProvider from './RadioGroupRootProvider.vue'\n\nexport const RadioGroup = {\n  /**\n   * RadioGroupRoot component\n   */\n  Root: RadioGroupRoot,\n\n  /**\n   * RadioGroupLabel component\n   *\n   * Label for the radio group (use ItemText for individual item labels)\n   */\n  Label: RadioGroupLabel,\n\n  /**\n   * RadioGroupDescription component\n   *\n   * Description for the radio group\n   */\n  Description: RadioGroupDescription,\n\n  /**\n   * RadioGroupItems component\n   *\n   * A flex column used to wrap radio button items. It handles orientation and spacing.\n   */\n  Items: RadioGroupItems,\n\n  /**\n   * RadioGroupItem component\n   *\n   * Represents a single radio button item in the group\n   */\n  Item: RadioGroupItem,\n\n  /**\n   * RadioGroupItemControl component\n   *\n   * The visual control element for the radio button\n   */\n  ItemControl: RadioGroupItemControl,\n\n  /**\n   * RadioGroupIndicator component\n   *\n   * The indicator shown when the radio is checked\n   */\n  Indicator: RadioGroupIndicator,\n\n  /**\n   * RadioGroupItemContent component\n   *\n   * A flex column used to group ItemText and ItemDescription. Not required if you\n   * have no description.\n   */\n  ItemContent: RadioGroupItemContent,\n\n  /**\n   * RadioGroupItemText component\n   *\n   * Text label for individual radio items\n   */\n  ItemText: RadioGroupItemText,\n\n  /**\n   * RadioGroupItemDescription component\n   *\n   * Description for individual radio items\n   */\n  ItemDescription: RadioGroupItemDescription,\n\n  /**\n   * RadioGroupItemHiddenInput component\n   *\n   * Hidden input for form submission\n   */\n  ItemHiddenInput: RadioGroupItemHiddenInput,\n\n  /**\n   * RadioGroupRootProvider component\n   *\n   * See: https://ark-ui.com/docs/components/radio-group#using-the-root-provider\n   */\n  RootProvider: RadioGroupRootProvider,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItemControl.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupItemControlProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport RadioGroupIndicator from './RadioGroupIndicator.vue'\n\ninterface Props extends RadioGroupItemControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <RadioGroup.ItemControl\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        group flex aspect-square size-4 shrink-0 items-center justify-center rounded-full border\n        border-input text-primary shadow-xs transition-[color,box-shadow] outline-none\n        data-disabled:opacity-50\n        dark:bg-input/30\n      `,\n      `\n        data-[state=checked]:group-focus-within:border-ring\n        data-[state=checked]:group-focus-within:ring-[3px]\n        data-[state=checked]:group-focus-within:ring-ring/50\n      `,\n      props.class,\n    )\"\n  >\n    <slot>\n      <RadioGroupIndicator />\n    </slot>\n  </RadioGroup.ItemControl>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItemHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupItemHiddenInputProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends RadioGroupItemHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <RadioGroup.ItemHiddenInput\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `sr-only`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </RadioGroup.ItemHiddenInput>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItemContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"radio-group\"\n    data-part=\"item-content\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex flex-col gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\n\nimport type { LabelProps } from '@/components/ui/label'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<LabelProps>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Label\n    data-scope=\"radio-group\"\n    data-part=\"label\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm leading-none font-medium select-none\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupRootEmits, RadioGroupRootProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends RadioGroupRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<RadioGroupRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <RadioGroup.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        group flex flex-col gap-3\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </RadioGroup.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupItemProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends RadioGroupItemProps {\n  value: string\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <RadioGroup.Item\n    v-bind=\"forwardedProps\"\n    :value=\"props.value\"\n    :class=\"cn(`\n      group flex items-start gap-3\n      data-disabled:opacity-50\n    `, props.class)\"\n  >\n    <slot />\n  </RadioGroup.Item>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItemText.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupItemTextProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { RadioGroup } from '@ark-ui/vue/radio-group'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends RadioGroupItemTextProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <RadioGroup.ItemText\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm leading-none font-medium select-none\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </RadioGroup.ItemText>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupItems.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"radio-group\"\n    data-part=\"items\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex gap-3\n        group-has-data-[orientation=vertical]:flex-col\n        group-has-data-[orientation=horizontal]:md:flex-row\n      `,\n\n      // Override for horizontal orientation on smaller screens\n      'group-has-data-[orientation=horizontal]:flex-col',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { RadioGroupIndicatorProps } from '@ark-ui/vue/radio-group'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends RadioGroupIndicatorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"radio-group\"\n    data-part=\"indicator\"\n    v-bind=\"forwardedProps\"\n    class=\"transition-none!\"\n  >\n    <div\n      data-scope=\"radio-group\"\n      data-part=\"indicator-control\"\n      :class=\"cn(\n        `\n          hidden size-2 rounded-full bg-primary\n          group-has-data-disabled:opacity-50\n          group-data-[state=checked]:block\n        `,\n        props.class,\n      )\"\n    />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/RadioGroupDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\n\nimport type { DescriptionProps } from '@/components/ui/description'\n\nimport { Description } from '@/components/ui/description'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<DescriptionProps>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Description\n    data-scope=\"radio-group\"\n    data-part=\"description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm text-muted-foreground\n        data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Description>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/radio-group/index.ts",
+      "content": "export { RadioGroup } from './namespace'\nexport { default as RadioGroupDescription } from './RadioGroupDescription.vue'\nexport { default as RadioGroupIndicator } from './RadioGroupIndicator.vue'\nexport { default as RadioGroupItem } from './RadioGroupItem.vue'\nexport { default as RadioGroupItemContent } from './RadioGroupItemContent.vue'\nexport { default as RadioGroupItemControl } from './RadioGroupItemControl.vue'\nexport { default as RadioGroupItemDescription } from './RadioGroupItemDescription.vue'\nexport { default as RadioGroupItemHiddenInput } from './RadioGroupItemHiddenInput.vue'\nexport { default as RadioGroupItems } from './RadioGroupItems.vue'\nexport { default as RadioGroupItemText } from './RadioGroupItemText.vue'\nexport { default as RadioGroupLabel } from './RadioGroupLabel.vue'\nexport { default as RadioGroupRoot } from './RadioGroupRoot.vue'\nexport { default as RadioGroupRootProvider } from './RadioGroupRootProvider.vue'\nexport { useRadioGroup } from '@ark-ui/vue/radio-group'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dark-mode-toggle",
+  "title": "Dark Mode Toggle",
+  "description": "A button to toggle between light and dark mode.",
+  "dependencies": [
+    "@vueuse/components",
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/DarkModeToggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport { UseDark } from '@vueuse/components'\nimport { MoonIcon, SunIcon } from 'lucide-vue-next'\n</script>\n\n<template>\n  <UseDark v-slot=\"{ isDark, toggleDark }\">\n    <button\n      data-scope=\"dark-mode-toggle\"\n      data-part=\"button\"\n      class=\"\n        inline-flex size-8 items-center justify-center gap-2 rounded-md text-sm font-medium\n        whitespace-nowrap ring-offset-background transition-colors\n        hover:bg-accent hover:text-accent-foreground\n        focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\n        focus-visible:outline-none\n        disabled:pointer-events-none disabled:opacity-50\n        [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\n      \"\n      aria-label=\"Toggle dark mode\"\n      @click=\"toggleDark()\"\n    >\n      <MoonIcon\n        v-if=\"!isDark\"\n        data-scope=\"dark-mode-toggle\"\n        data-part=\"icon\"\n      />\n      <SunIcon\n        v-if=\"isDark\"\n        data-scope=\"dark-mode-toggle\"\n        data-part=\"icon\"\n      />\n    </button>\n  </UseDark>\n</template>\n",
+      "type": "registry:file",
+      "target": "src/components/DarkModeToggle.vue"
+    }
+  ],
+  "type": "registry:component"
+}
