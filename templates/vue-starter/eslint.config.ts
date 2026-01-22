@@ -1,9 +1,15 @@
-import { betterTailwindcssPlugin, config, preset, tailwind, vue } from '@acfatah/eslint-preset'
+import {
+  betterTailwindcssPlugin,
+  defineConfig,
+  markdown,
+  preset,
+  tailwind,
+  vue,
+} from '@acfatah/eslint-preset'
 import pluginVitest from '@vitest/eslint-plugin'
 
-export default config(
+export default defineConfig(
   {
-    formatters: true,
     vue: true,
 
     ignores: [
@@ -24,6 +30,7 @@ export default config(
       ...preset,
       ...tailwind,
       ...vue,
+      ...markdown,
 
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,
