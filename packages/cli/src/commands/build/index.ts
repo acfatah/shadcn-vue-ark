@@ -25,10 +25,10 @@ interface BuildCommandOptions {
 }
 
 const ROOT_PATH = resolve(__dirname, '..', '..', '..', '..', 'registry')
-export const REGISTRY_PATH = join(ROOT_PATH, 'src')
+export const REGISTRY_URL = join(ROOT_PATH, 'src')
 export const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
-export const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')
-export const COMPONENTS_PATH = join(REGISTRY_PATH, 'components')
+export const UI_PATH = join(REGISTRY_URL, 'components', 'ui')
+export const COMPONENTS_PATH = join(REGISTRY_URL, 'components')
 
 async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
   const dir = await readDirectory(UI_PATH, { recursive: true, withFileTypes: true })

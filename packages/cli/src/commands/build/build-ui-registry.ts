@@ -9,7 +9,7 @@ import { join, relative } from 'pathe'
 
 import { readDirectory, readFile } from '@/utils'
 
-import { REGISTRY_PATH } from '.'
+import { REGISTRY_URL } from '.'
 import { getFileDependencies } from './get-file-dependecies'
 
 type RegistryItemCss = z.infer<typeof registryItemCssSchema>
@@ -38,7 +38,7 @@ export async function buildUIRegistry(
       continue
 
     const filepath = join(componentPath, dirent.name)
-    const relativePath = join('src', relative(REGISTRY_PATH, filepath))
+    const relativePath = join('src', relative(REGISTRY_URL, filepath))
     const source = await readFile(filepath, { encoding: 'utf8' })
 
     if (dirent.name === '_registry.ts') {
