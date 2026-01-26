@@ -10,7 +10,7 @@ import { join, normalize } from 'pathe'
 import { readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
-import { COMPONENTS_PATH, REGISTRY_URL } from './paths'
+import { COMPONENTS_PATH, REGISTRY_PATH } from './paths'
 
 type RegistryItemCss = z.infer<typeof registryItemCssSchema>
 type RegistryItemCssVars = z.infer<typeof registryItemCssVarsSchema>
@@ -21,7 +21,7 @@ function resolveComponentFilePath(filePath: string) {
   const pathWithoutSrc = trimmedPath.replace(/^src[\\/]+/, '')
 
   if (pathWithoutSrc.startsWith('components/'))
-    return join(REGISTRY_URL, pathWithoutSrc)
+    return join(REGISTRY_PATH, pathWithoutSrc)
 
   return join(COMPONENTS_PATH, pathWithoutSrc)
 }

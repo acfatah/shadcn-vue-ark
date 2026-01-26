@@ -7,7 +7,7 @@ import { join, relative } from 'pathe'
 import { readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
-import { COMPOSABLES_PATH, REGISTRY_URL } from './paths'
+import { COMPOSABLES_PATH, REGISTRY_PATH } from './paths'
 
 function getKebabName(value: string) {
   return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
@@ -51,7 +51,7 @@ export async function buildHooksRegistry(registryBaseUrl: string) {
       continue
 
     const name = getKebabName(basename(filepath).replace(/\.ts$/, ''))
-    const relativePath = join('src', relative(REGISTRY_URL, filepath))
+    const relativePath = join('src', relative(REGISTRY_PATH, filepath))
     const fileSource = await readFile(filepath, { encoding: 'utf8' })
     const { dependencies, registryDependencies } = await getFileDependencies(
       filepath,
