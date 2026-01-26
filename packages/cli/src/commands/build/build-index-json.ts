@@ -4,7 +4,7 @@ import { join } from 'pathe'
 
 import { writeFile } from '@/utils'
 
-import { REGISTRY_OUTPUT_PATH } from '.'
+import { REGISTRY_OUTPUT_PATH } from './paths'
 
 export async function buildIndexJson(registryItems: RegistryItem[]) {
   const sortedRegistryItems = registryItems.sort((a, b) => a.name.localeCompare(b.name))

@@ -9,8 +9,8 @@ import { join, relative } from 'pathe'
 
 import { readDirectory, readFile } from '@/utils'
 
-import { REGISTRY_URL } from '.'
 import { getFileDependencies } from './get-file-dependecies'
+import { REGISTRY_URL } from './paths'
 
 type RegistryItemCss = z.infer<typeof registryItemCssSchema>
 type RegistryItemCssVars = z.infer<typeof registryItemCssVarsSchema>

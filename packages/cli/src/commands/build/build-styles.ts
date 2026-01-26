@@ -1,7 +1,7 @@
 import { join } from 'pathe'
 
-import { REGISTRY_OUTPUT_PATH } from '.'
 import { writeFile } from '../../utils'
+import { REGISTRY_OUTPUT_PATH } from './paths'
 
 export async function buildStyles() {
   const styles = [
