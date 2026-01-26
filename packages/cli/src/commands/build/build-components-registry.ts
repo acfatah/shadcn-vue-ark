@@ -5,23 +5,25 @@ import type {
 } from 'shadcn/schema'
 import type { z } from 'zod'
 
-import { join } from 'pathe'
+import { join, normalize } from 'pathe'
 
 import { readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
-import { COMPONENTS_PATH } from './paths'
+import { COMPONENTS_PATH, REGISTRY_URL } from './paths'
 
 type RegistryItemCss = z.infer<typeof registryItemCssSchema>
 type RegistryItemCssVars = z.infer<typeof registryItemCssVarsSchema>
 
-/**
- * Get file name from path without extension
- */
-function getFileNameFromPath(path: string) {
-  const parts = path.split('/')
+function resolveComponentFilePath(filePath: string) {
+  const normalizedPath = normalize(filePath)
+  const trimmedPath = normalizedPath.replace(/^[/\\]+/, '')
+  const pathWithoutSrc = trimmedPath.replace(/^src[\\/]+/, '')
 
-  return parts[parts.length - 1] ?? ''
+  if (pathWithoutSrc.startsWith('components/'))
+    return join(REGISTRY_URL, pathWithoutSrc)
+
+  return join(COMPONENTS_PATH, pathWithoutSrc)
 }
 
 export async function buildComponentsRegistry(
@@ -34,13 +36,11 @@ export async function buildComponentsRegistry(
     throw new Error(`Invalid component registry entry: need at least one file.`)
   }
 
-  const filename = getFileNameFromPath(firstFile?.path)
-
-  if (!filename) {
+  if (!firstFile?.path) {
     throw new Error(`Invalid component registry entry: missing path in first file.`)
   }
 
-  const filepath = join(COMPONENTS_PATH, filename)
+  const filepath = resolveComponentFilePath(firstFile.path)
   const source = await readFile(filepath, { encoding: 'utf8' })
   const { dependencies, registryDependencies } = await getFileDependencies(filepath, source, registryBaseUrl)
 
