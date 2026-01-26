@@ -142,7 +142,7 @@ export const build = new Command()
       process.exit(1)
     }
 
-    if (args.dryRun)
+    if (opts.dryRun)
       return
 
     try {
