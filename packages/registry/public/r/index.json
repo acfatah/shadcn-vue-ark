@@ -756,6 +756,18 @@
     ]
   },
   {
+    "name": "format-bytes",
+    "type": "registry:lib",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/lib/format-bytes.ts",
+        "type": "registry:lib"
+      }
+    ]
+  },
+  {
     "name": "fullscreen-toggle",
     "type": "registry:component",
     "title": "Fullscreen Toggle",
@@ -1348,6 +1360,18 @@
     ]
   },
   {
+    "name": "to-boolean-value",
+    "type": "registry:lib",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/lib/to-boolean-value.ts",
+        "type": "registry:lib"
+      }
+    ]
+  },
+  {
     "name": "unref-element",
     "type": "registry:hook",
     "dependencies": [],
@@ -1416,6 +1440,21 @@
       {
         "path": "src/composables/use-render-strategy.ts",
         "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "utils",
+    "type": "registry:lib",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:lib"
       }
     ]
   }

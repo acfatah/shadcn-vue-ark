@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "format-bytes",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/lib/format-bytes.ts",
+      "content": "/**\n * Formats a byte count into a human-readable string with units ranging from Bytes to YB.\n *\n * @param bytes The number of bytes to format. Must be a non-negative finite number.\n * @param decimals The number of decimal places to include in the formatted result.\n *                 Defaults to 2 and is clamped to a minimum of 0.\n * @returns A string representing the formatted byte value along with its unit.\n * @throws RangeError if the provided byte count is negative or not a finite number.\n */\nexport function formatBytes(bytes: number, decimals = 2) {\n  if (!Number.isFinite(bytes) || bytes < 0)\n    throw new RangeError('bytes must be a non-negative finite number')\n\n  if (bytes === 0)\n    return '0 Bytes'\n\n  const k = 1024\n  const dm = decimals < 0 ? 0 : decimals\n  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']\n  const i = Math.floor(Math.log(bytes) / Math.log(k))\n\n  return `${Number.parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}
