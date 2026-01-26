@@ -383,6 +383,30 @@
     ]
   },
   {
+    "name": "clean-props",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/clean-props.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "create-context",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/create-context.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
     "name": "dark-mode-toggle",
     "type": "registry:component",
     "title": "Dark Mode Toggle",
@@ -531,6 +555,18 @@
       {
         "path": "src/components/ui/dropdown-menu/index.ts",
         "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "dynamic",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:hook"
       }
     ]
   },
@@ -1075,6 +1111,18 @@
     ]
   },
   {
+    "name": "run-if-fn",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/run-if-fn.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
     "name": "select",
     "type": "registry:ui",
     "title": "Select",
@@ -1296,6 +1344,78 @@
       {
         "path": "src/components/ui/switch/index.ts",
         "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "unref-element",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/unref-element.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-emits-as-props",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/use-emits-as-props.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-forward-expose",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/use-forward-expose.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-forward-props",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-forward-props-emits",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-render-strategy",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/composables/use-render-strategy.ts",
+        "type": "registry:hook"
       }
     ]
   }

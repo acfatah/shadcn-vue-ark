@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "unref-element",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/composables/unref-element.ts",
+      "content": "import type {\n  ComponentPublicInstance,\n  MaybeRef,\n  MaybeRefOrGetter,\n} from 'vue'\n\nimport { toValue } from 'vue'\n\nexport type VueInstance = ComponentPublicInstance\nexport type MaybeElementRef<T extends MaybeElement = MaybeElement> = MaybeRef<T>\nexport type MaybeComputedElementRef<T extends MaybeElement = MaybeElement> = MaybeRefOrGetter<T>\nexport type MaybeElement = HTMLElement | SVGElement | VueInstance | undefined | null\n\nexport type UnRefElementReturn<T extends MaybeElement = MaybeElement> = T extends VueInstance\n  ? Exclude<MaybeElement, VueInstance>\n  : T | undefined\n\n/**\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/unref-element.ts\n */\nexport function unrefElement<\n  T extends MaybeElement,\n>(\n  elRef: MaybeComputedElementRef<T>,\n): UnRefElementReturn<T> {\n  const plain = toValue(elRef)\n\n  return (plain as VueInstance)?.$el ?? plain\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "type": "registry:hook"
+}

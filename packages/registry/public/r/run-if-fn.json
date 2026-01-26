@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "run-if-fn",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/composables/run-if-fn.ts",
+      "content": "type AnyFunction<Arg = unknown, ReturnValue = unknown> = (...args: Arg[]) => ReturnValue\n\nconst isFunction = <T = AnyFunction>(value: unknown): value is T => typeof value === 'function'\n\n/**\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/run-if-fn.ts\n */\nexport function runIfFn<MaybeReturnValue, FunctionArgs>(valueOrFn: MaybeReturnValue | ((...fnArgs: FunctionArgs[]) => MaybeReturnValue), ...args: FunctionArgs[]) {\n  return isFunction<AnyFunction<FunctionArgs, MaybeReturnValue>>(valueOrFn)\n    ? valueOrFn(...args)\n    : (valueOrFn as unknown as MaybeReturnValue)\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "type": "registry:hook"
+}

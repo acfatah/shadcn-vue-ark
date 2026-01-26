@@ -404,6 +404,30 @@
       ]
     },
     {
+      "name": "clean-props",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/clean-props.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "create-context",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/create-context.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "dark-mode-toggle",
       "type": "registry:component",
       "title": "Dark Mode Toggle",
@@ -457,6 +481,121 @@
         {
           "path": "src/components/ui/description/index.ts",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Displays a menu to the user with actions and submenus.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu\n- Iconify: https://iconify.design/docs/icon-components",
+      "dependencies": [
+        "@vueuse/core",
+        "lucide-vue-next",
+        "@ark-ui/vue"
+      ],
+      "registryDependencies": [
+        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-expose.json",
+        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
+        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
+        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/use-forward-props.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-props.ts"
+        },
+        {
+          "path": "src/composables/use-forward-props-emits.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-props-emits.ts"
+        },
+        {
+          "path": "src/composables/use-forward-expose.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-expose.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dynamic",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/dynamic.ts",
+          "type": "registry:hook"
         }
       ]
     },
@@ -1017,6 +1156,18 @@
       ]
     },
     {
+      "name": "run-if-fn",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/run-if-fn.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
@@ -1247,6 +1398,78 @@
         {
           "path": "src/components/ui/switch/index.ts",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "unref-element",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/unref-element.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-emits-as-props",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/use-emits-as-props.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-forward-expose",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/use-forward-expose.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-forward-props",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/use-forward-props.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-forward-props-emits",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/use-forward-props-emits.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-render-strategy",
+      "type": "registry:hook",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/composables/use-render-strategy.ts",
+          "type": "registry:hook"
         }
       ]
     }

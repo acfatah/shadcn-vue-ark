@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-render-strategy",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/composables/use-render-strategy.ts",
+      "content": "import type { ComputedRef } from 'vue'\n\nimport { createContext } from './create-context'\n\nexport interface RenderStrategyProps {\n  /**\n   * Whether to enable lazy mounting\n   * @default false\n   */\n  lazyMount?: boolean\n  /**\n   * Whether to unmount on exit.\n   * @default false\n   */\n  unmountOnExit?: boolean\n}\n\n/**\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/use-render-strategy.ts\n */\nexport const [RenderStrategyPropsProvider, useRenderStrategyProps]\n  = createContext<ComputedRef<RenderStrategyProps>>('RenderStrategyProps')\n",
+      "type": "registry:hook"
+    }
+  ],
+  "type": "registry:hook"
+}
