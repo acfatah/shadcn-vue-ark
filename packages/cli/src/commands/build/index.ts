@@ -3,7 +3,7 @@ import type { RegistryItem } from 'shadcn/schema'
 import { Command } from 'commander'
 import { consola } from 'consola'
 import process from 'node:process'
-import { join, resolve } from 'pathe'
+import { join } from 'pathe'
 
 import {
   readDirectory,
@@ -13,9 +13,16 @@ import {
 
 import mainPackageJson from '../../../../../package.json'
 import { buildComponentsRegistry } from './build-components-registry'
+import { buildHooksRegistry } from './build-hooks-registry'
 import { buildIndexJson } from './build-index-json'
 import { buildStyles } from './build-styles'
 import { buildUIRegistry } from './build-ui-registry'
+import {
+  COMPONENTS_PATH,
+  REGISTRY_OUTPUT_PATH,
+  ROOT_PATH,
+  UI_PATH,
+} from './paths'
 
 interface BuildCommandOptions {
   output: string
@@ -24,12 +31,6 @@ interface BuildCommandOptions {
   registryBaseUrl: string
   dryRun: boolean
 }
-
-const ROOT_PATH = resolve(__dirname, '..', '..', '..', '..', 'registry')
-export const REGISTRY_URL = join(ROOT_PATH, 'src')
-export const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
-export const UI_PATH = join(REGISTRY_URL, 'components', 'ui')
-export const COMPONENTS_PATH = join(REGISTRY_URL, 'components')
 
 async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
   const dir = await readDirectory(UI_PATH, { recursive: true, withFileTypes: true })
@@ -65,14 +66,16 @@ async function crawlAndBuildComponentsRegistry(registryBaseUrl: string) {
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
-  const [ui, components] = await Promise.all([
+  const [ui, components, hooks] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
     crawlAndBuildComponentsRegistry(registryBaseUrl),
+    buildHooksRegistry(registryBaseUrl),
   ])
 
   registry.push(
     ...ui,
     ...components,
+    ...hooks,
   )
 
   return registry.sort(
