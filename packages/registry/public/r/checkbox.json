@@ -9,10 +9,10 @@
     "@ark-ui/vue"
   ],
   "registryDependencies": [
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json"
   ],
   "files": [
     {

@@ -14,8 +14,8 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -65,7 +65,7 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -105,8 +105,8 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -156,8 +156,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -189,9 +189,9 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -230,10 +230,10 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
       ],
       "files": [
         {
@@ -283,7 +283,7 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -340,10 +340,10 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json"
       ],
       "files": [
         {
@@ -454,9 +454,9 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -495,10 +495,10 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-expose.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-expose.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props.json"
       ],
       "files": [
         {
@@ -610,8 +610,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -663,11 +663,11 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/input.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/checkbox.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/checkbox.json"
       ],
       "files": [
         {
@@ -740,9 +740,9 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
       ],
       "files": [
         {
@@ -818,8 +818,8 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -967,9 +967,9 @@
         "reka-ui"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json"
       ],
       "files": [
         {
@@ -1041,9 +1041,9 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -1081,10 +1081,10 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json"
       ],
       "files": [
         {
@@ -1178,11 +1178,11 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-expose.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/create-context.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-expose.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
       ],
       "files": [
         {
@@ -1288,8 +1288,8 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -1322,8 +1322,8 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
       ],
       "files": [
         {
@@ -1351,10 +1351,10 @@
         "@ark-ui/vue"
       ],
       "registryDependencies": [
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/description.json",
-        "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/label.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json"
       ],
       "files": [
         {

@@ -9,10 +9,10 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/utils.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/dynamic.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/use-forward-props-emits.json",
-    "https://github.com/acfatah/shadcn-vue-ark/blob/main/packages/registry/r/separator.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
   ],
   "files": [
     {
