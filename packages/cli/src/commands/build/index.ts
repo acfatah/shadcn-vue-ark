@@ -24,6 +24,9 @@ import {
   UI_PATH,
 } from './paths'
 
+const REGISTRY_URL = process.env.REGISTRY_URL
+  || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r'
+
 interface BuildCommandOptions {
   output: string
   name: string
@@ -108,7 +111,7 @@ export const build = new Command()
   .option(
     '-u, --registry-base-url <registryBaseUrl>',
     'base url for the registry assets',
-    `${mainPackageJson.homepage}/blob/main/packages/registry/r`,
+    REGISTRY_URL,
   )
   .option(
     '--dry-run',
