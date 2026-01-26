@@ -14,7 +14,7 @@ function getKebabName(value: string) {
 }
 
 function resolveComposablePath(source: string) {
-  const pathWithExt = source.endsWith('.ts') || source.endsWith('.tsx')
+  const pathWithExt = source.endsWith('.ts')
     ? source
     : `${source}.ts`
 
@@ -50,7 +50,7 @@ export async function buildHooksRegistry(registryBaseUrl: string) {
     if (!existsSync(filepath))
       continue
 
-    const name = getKebabName(basename(filepath).replace(/\.(ts|tsx)$/, ''))
+    const name = getKebabName(basename(filepath).replace(/\.ts$/, ''))
     const relativePath = join('src', relative(REGISTRY_URL, filepath))
     const fileSource = await readFile(filepath, { encoding: 'utf8' })
     const { dependencies, registryDependencies } = await getFileDependencies(
