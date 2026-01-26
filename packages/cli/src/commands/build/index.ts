@@ -15,6 +15,7 @@ import mainPackageJson from '../../../../../package.json'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildHooksRegistry } from './build-hooks-registry'
 import { buildIndexJson } from './build-index-json'
+import { buildLibRegistry } from './build-lib-registry'
 import { buildStyles } from './build-styles'
 import { buildUIRegistry } from './build-ui-registry'
 import {
@@ -69,16 +70,18 @@ async function crawlAndBuildComponentsRegistry(registryBaseUrl: string) {
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
-  const [ui, components, hooks] = await Promise.all([
+  const [ui, components, hooks, libs] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
     crawlAndBuildComponentsRegistry(registryBaseUrl),
     buildHooksRegistry(registryBaseUrl),
+    buildLibRegistry(registryBaseUrl),
   ])
 
   registry.push(
     ...ui,
     ...components,
     ...hooks,
+    ...libs,
   )
 
   return registry.sort(
