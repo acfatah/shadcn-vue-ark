@@ -10,6 +10,7 @@ export default config(
       '**/dist/**',
       '**/dist-ssr/**',
       '**/coverage/**',
+      '**/public/**',
       '**/tsconfig.*',
       'logs',
     ],
