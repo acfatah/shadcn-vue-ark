@@ -1,4 +1,4 @@
-// bunx --bun gitpick shadcn-ui/ui/blob/main/apps/v4/registry/colors.ts
+// bunx --bun gitpick shadcn-ui/ui/blob/main/apps/v4/registry/_legacy-colors.ts
 
 export const colors = {
   inherit: 'inherit',

@@ -17,6 +17,7 @@ import { buildHooksRegistry } from './build-hooks-registry'
 import { buildIndexJson } from './build-index-json'
 import { buildLibRegistry } from './build-lib-registry'
 import { buildStyles } from './build-styles'
+import { buildThemes } from './build-themes'
 import { buildUIRegistry } from './build-ui-registry'
 import {
   COMPONENTS_PATH,
@@ -155,7 +156,7 @@ export const build = new Command()
       consola.start('Building registry...')
       await rimraf(REGISTRY_OUTPUT_PATH)
       await buildIndexJson(items)
-      // await buildThemes()
+      await buildThemes()
       await buildStyles()
       // await buildIcons()
       await runShadcnBuild()
