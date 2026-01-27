@@ -7,8 +7,9 @@
     {
       "path": "src/composables/use-emits-as-props.ts",
       "content": "import { camelize, getCurrentInstance, toHandlerKey } from 'vue'\n\n// Vue doesn't have emits forwarding, in order to bind the emits we have to convert events into `onXXX` handlers\n// issue: https://github.com/vuejs/core/issues/5917\n/**\n * The `useEmitAsProps` function is a TypeScript utility that converts emitted\n * events into props for a Vue component.\n *\n * @param emit - The `emit` parameter is a function that is used to emit events\n *               from a component. It takes two parameters: `name` which is the\n *               name of the event to be emitted, and `...args` which are the\n *               arguments to be passed along with the event.\n * @returns The function `useEmitAsProps` returns an object that maps event names\n *          to functions that call the `emit` function with the corresponding\n *          event name and arguments.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-emit-as-props.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useEmitAsProps.ts\n */\nexport function useEmitAsProps<\n  Name extends string,\n>(\n  emit: (name: Name, ...args: any[]) => void,\n) {\n  const vm = getCurrentInstance()\n\n  const events = vm?.type.emits as Name[]\n  const result: Record<string, any> = {}\n\n  if (!events?.length) {\n    console.warn(`No emitted event found. Please check component: ${vm?.type.__name}`)\n  }\n\n  for (const event of events) {\n    result[toHandlerKey(camelize(event))] = (...arg: any) => emit(event, ...arg)\n  }\n\n  return result\n}\n",
-      "type": "registry:hook"
+      "type": "registry:file",
+      "target": "src/composables/use-emits-as-props.ts"
     }
   ],
-  "type": "registry:hook"
+  "type": "registry:file"
 }

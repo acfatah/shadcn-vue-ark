@@ -7,8 +7,9 @@
     {
       "path": "src/composables/dynamic.ts",
       "content": "import type { VNode } from 'vue'\n\nimport { mergeProps } from '@zag-js/vue'\nimport { cloneVNode, defineComponent, Fragment } from 'vue'\n\n/**\n * A dynamic component that renders its first child with merged props.\n * Useful for forwarding props to a single child component.\n *\n * Docs: https://ark-ui.com/docs/guides/composition\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts\n */\nexport const Dynamic = defineComponent({\n  name: 'Dynamic',\n  inheritAttrs: false,\n  setup(_, { attrs, slots }) {\n    return () => {\n      if (!slots.default)\n        return null\n\n      const children = renderSlotFragments(slots.default())\n      const [firstChildren, ...otherChildren] = children\n\n      if (!firstChildren)\n        return children\n\n      if (Object.keys(attrs).length > 0) {\n        delete firstChildren.props?.ref\n        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})\n        const cloned = cloneVNode(firstChildren, mergedProps)\n        for (const prop in mergedProps) {\n          if (prop.startsWith('on')) {\n            cloned.props ||= {}\n            cloned.props[prop] = mergedProps[prop]\n          }\n        }\n\n        return children.length === 1 ? cloned : [cloned, ...otherChildren]\n      }\n\n      return children\n    }\n  },\n})\n\nfunction renderSlotFragments(children?: VNode[]): VNode[] {\n  if (!children)\n    return []\n\n  return children.flatMap((child) => {\n    if (child.type === Fragment)\n      return renderSlotFragments(child.children as VNode[])\n\n    return [child]\n  })\n}\n",
-      "type": "registry:hook"
+      "type": "registry:file",
+      "target": "src/composables/dynamic.ts"
     }
   ],
-  "type": "registry:hook"
+  "type": "registry:file"
 }
