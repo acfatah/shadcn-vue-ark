@@ -22,8 +22,9 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-part="item"
     :class="cn(
       `
-        inline-flex items-center gap-1.5 rounded-xs outline-none
+        inline-flex items-center gap-1.5 outline-none
         focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50
+        [&_[data-scope=dropdown-menu][data-part=trigger]]:rounded-xs
       `,
       props.class,
     )"
