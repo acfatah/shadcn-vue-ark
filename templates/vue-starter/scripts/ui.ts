@@ -1,13 +1,14 @@
 #!/usr/bin/env bun
 
-// TODO: update the ui script
-// https://ui.shadcn.com/docs/registry/getting-started
-
 import { program } from 'commander'
 import { consola } from 'consola'
 import process from 'node:process'
 
-const REGISTRY_URL = process.env.REGISTRY_URL || 'http://localhost:8080/r'
+type ComponentName = string
+
+const REGISTRY_URL
+  = process.env.REGISTRY_URL
+    || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/main/packages/registry/public/r'
 
 function logError(error: unknown) {
   consola.error(
@@ -19,7 +20,7 @@ function logError(error: unknown) {
 
 async function checkStatus() {
   try {
-    await fetch(`${REGISTRY_URL}/index.json`, {
+    await fetch(`${REGISTRY_URL}/registry.json`, {
       method: 'OPTIONS',
     })
   }
@@ -88,7 +89,12 @@ program.command('info')
     consola.log(JSON.stringify({
       ...component,
       // skip the content key
-      files: component.files.map(({ type, path }) => ({ type, path })),
+      files: component.files.map(
+        (file: { type: string, path: string }) => ({
+          type: file.type,
+          path: file.path,
+        }),
+      ),
     }, null, 2))
   })
 
@@ -117,7 +123,6 @@ program.command('add')
   .action(async (components, options) => {
     await checkStatus()
 
-    // eslint-disable-next-line unused-imports/no-unused-vars
     const urls: string[] = components.reduce((acc: string[], component: string) => {
       acc.push(`${REGISTRY_URL}/${component}.json`)
 
@@ -125,7 +130,8 @@ program.command('add')
     }, [])
 
     consola.start('Adding the following components:')
-    components.forEach((component) => {
+
+    components.forEach((component: ComponentName) => {
       console.log(`- ${component}`)
     })
 
@@ -139,22 +145,19 @@ program.command('add')
       .filter(([_key, value]) => value)
       .map(([key]) => `-${key}`)
 
-    console.log(opts)
+    const proc = Bun.spawn(
+      ['bunx', '--bun', 'shadcn@latest', 'add', ...opts, ...urls],
+      {
+        stdin: 'inherit',
+        stdout: 'inherit',
+        stderr: 'inherit',
+      },
+    )
 
-    // TODO: use `bunx --bun shadcn@latest add http://localhost:3000/r/hello-world.json` command
-    // const proc = Bun.spawn(
-    //   ['bunx', '--bun', 'shadcn-vue@latest', 'add', ...opts, ...urls],
-    //   {
-    //     stdin: 'inherit',
-    //     stdout: 'inherit',
-    //     stderr: 'inherit',
-    //   },
-    // )
-
-    // if (!await proc.exited) {
-    //   process.stdout.write('\x1B[1A\x1B[K')
-    //   consola.success('Done!')
-    // }
+    if (!await proc.exited) {
+      process.stdout.write('\x1B[1A\x1B[K')
+      consola.success('Done!')
+    }
   })
 
 program.parse()
