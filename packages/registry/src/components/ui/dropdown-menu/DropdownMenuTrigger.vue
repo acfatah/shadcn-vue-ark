@@ -26,6 +26,8 @@ useForwardExpose()
     data-part="trigger"
     :class="cn(
       `
+        rounded-xs outline-none
+        focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50
         [&_svg]:pointer-events-none [&_svg]:shrink-0
         [&_svg:not([class*=\'size-\'])]:size-4
       `,
