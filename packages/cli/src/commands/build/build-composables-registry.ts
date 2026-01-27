@@ -40,7 +40,7 @@ async function getComposableExports() {
   return Array.from(exportSources)
 }
 
-export async function buildHooksRegistry(registryBaseUrl: string) {
+export async function buildComposablesRegistry(registryBaseUrl: string) {
   const exportSources = await getComposableExports()
   const hooks: RegistryItem[] = []
 
@@ -61,13 +61,14 @@ export async function buildHooksRegistry(registryBaseUrl: string) {
 
     hooks.push({
       name,
-      type: 'registry:hook',
+      type: 'registry:file',
       dependencies: Array.from(dependencies),
       registryDependencies: Array.from(registryDependencies),
       files: [
         {
           path: relativePath,
-          type: 'registry:hook',
+          target: relativePath,
+          type: 'registry:file',
         },
       ],
     })

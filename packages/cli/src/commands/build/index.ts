@@ -13,7 +13,7 @@ import {
 
 import mainPackageJson from '../../../../../package.json'
 import { buildComponentsRegistry } from './build-components-registry'
-import { buildHooksRegistry } from './build-hooks-registry'
+import { buildComposablesRegistry } from './build-composables-registry'
 import { buildIndexJson } from './build-index-json'
 import { buildLibRegistry } from './build-lib-registry'
 import { buildStyles } from './build-styles'
@@ -74,7 +74,7 @@ export async function buildRegistry(registryBaseUrl: string) {
   const [ui, components, hooks, libs] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
     crawlAndBuildComponentsRegistry(registryBaseUrl),
-    buildHooksRegistry(registryBaseUrl),
+    buildComposablesRegistry(registryBaseUrl),
     buildLibRegistry(registryBaseUrl),
   ])
 
