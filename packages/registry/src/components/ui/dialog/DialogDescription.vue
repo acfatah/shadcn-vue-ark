@@ -24,7 +24,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-part="description"
     :class="cn(
       'text-sm text-muted-foreground',
-      props.class
+      props.class,
     )"
   >
     <slot />
