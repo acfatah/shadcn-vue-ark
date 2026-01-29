@@ -1,0 +1,58 @@
+<script setup lang="ts">
+import type { ToggleGroupRootEmits, ToggleGroupRootProps } from '@ark-ui/vue/toggle-group'
+import type { HTMLAttributes } from 'vue'
+
+import { ToggleGroup } from '@ark-ui/vue/toggle-group'
+import { reactiveOmit } from '@vueuse/core'
+import { provide } from 'vue'
+
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { cn } from '@/lib/utils'
+
+import type { ToggleVariants } from '@/components/ui/toggle'
+
+interface Props extends ToggleGroupRootProps {
+  class?: HTMLAttributes['class']
+  variant?: ToggleVariants['variant']
+  size?: ToggleVariants['size']
+  spacing?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  spacing: 0,
+  variant: 'default',
+  size: 'default',
+})
+
+const emit = defineEmits<ToggleGroupRootEmits>()
+
+provide('toggleGroup', {
+  variant: props.variant,
+  size: props.size,
+  spacing: props.spacing,
+})
+
+const delegatedProps = reactiveOmit(props, ['class', 'size', 'variant', 'spacing'])
+const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
+</script>
+
+<template>
+  <ToggleGroup.Root
+    v-slot="slotProps"
+    data-slot="toggle-group"
+    :data-size="props.size"
+    :data-variant="props.variant"
+    :data-spacing="props.spacing"
+    :style="{
+      '--toggle-group-gap': `${props.spacing}px`,
+    }"
+    v-bind="forwardedProps"
+    :class="cn(
+      'group/toggle-group flex w-fit items-center rounded-md gap-(--toggle-group-gap)',
+      'data-[spacing=0]:data-[variant=outline]:shadow-xs',
+      props.class,
+    )"
+  >
+    <slot v-bind="slotProps" />
+  </ToggleGroup.Root>
+</template>
