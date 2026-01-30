@@ -44,3 +44,4 @@ templates/*/bun.lock
 # Ignore custom GitHub agents and prompts
 .github/agents/*
 .github/prompts/*
+node_modules

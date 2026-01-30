@@ -1,0 +1,26 @@
+[22:04:41.181] [INFO] storybook v10.1.10
+[22:04:41.732] [DEBUG] Getting package.json info for /home/acfatah/2026/bun-ark-vue/apps/storybook/package.json...
+[22:04:42.425] [DEBUG] Serving static files from [36mapps/storybook/app/public[39m at [36m/[39m
+[22:04:42.438] [INFO] Starting...
+[22:04:42.487] [WARN] unable to find package.json for @vueuse/components
+[22:04:42.488] [WARN] unable to find package.json for @vueuse/core
+[22:04:42.488] [WARN] unable to find package.json for @vueuse/integrations
+[22:04:42.489] [WARN] unable to find package.json for @vueuse/router
+[22:04:42.490] [WARN] unable to find package.json for packages.registry
+[22:04:42.529] [WARN] No story files found for the specified pattern: [34mstories/**/*.mdx[39m
+[22:04:42.856] [DEBUG] Starting preview..
+[22:04:43.238] [ERROR] Failed to build the preview
+[22:04:43.238] [ERROR] [38;2;241;97;97mError: Cannot find module '/home/acfatah/2026/bun-ark-vue/node_modules/.bun/enhanced-resolve@5.18.3/node_modules/tapable/lib/index.js'. Please verify that the package.json has a valid "main" entry[39m
+    at tryPackage (node:internal/modules/cjs/loader:502:19)
+    at Function._findPath (node:internal/modules/cjs/loader:764:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1369:27)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+[22:04:43.240] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[22:04:48.917] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":true}

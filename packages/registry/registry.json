@@ -1048,6 +1048,38 @@
       ]
     },
     {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Displays keyboard input shortcuts.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/kbd",
+      "dependencies": [
+        "@ark-ui/vue",
+        "@vueuse/core"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kbd/Kbd.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/kbd/KbdGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/kbd/index.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
