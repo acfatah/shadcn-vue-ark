@@ -32,7 +32,7 @@ find . -type f -name '.keep' -delete
 Then, initialize git by running:
 
 ```bash
-git init && git add -A && git commit -m "Initial commit"
+git init && git add -A && git commit -m "Initial commit" --no-verify
 ```
 
 Initialize git hook by running:
