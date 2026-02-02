@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "dev": "bunx --bun storybook dev -p 6006",
+    "build": "bunx --bun storybook build",
     "app:dev": "bunx --bun vite",
     "app:build": "bunx --bun vue-tsc -b && bunx --bun vite build",
     "preview": "bunx --bun vite preview",
