@@ -1,19 +1,14 @@
-import type {
-  RegistryItem,
-  registryItemCssSchema,
-  registryItemCssVarsSchema,
-} from 'shadcn/schema'
-import type { z } from 'zod'
+import type { RegistryItem } from 'shadcn/schema'
 
 import { join, relative } from 'pathe'
 
 import { readDirectory, readFile } from '@/utils'
 
+import type { RegistryItemCss, RegistryItemCssVars } from './build-css-from-tailwind'
+
+import { buildCssFromTailwind, mergeCss } from './build-css-from-tailwind'
 import { getFileDependencies } from './get-file-dependecies'
 import { REGISTRY_PATH } from './paths'
-
-type RegistryItemCss = z.infer<typeof registryItemCssSchema>
-type RegistryItemCssVars = z.infer<typeof registryItemCssVarsSchema>
 
 export async function buildUIRegistry(
   componentPath: string,
@@ -48,6 +43,9 @@ export async function buildUIRegistry(
       description = registryItem?.description || description
       cssVars = registryItem?.cssVars ?? cssVars
       css = registryItem?.css ?? css
+
+      const tailwindCss = buildCssFromTailwind(registryItem?.tailwind)
+      css = mergeCss(css, tailwindCss)
 
       if (registryItem?.files) {
         files.push(...registryItem.files)
