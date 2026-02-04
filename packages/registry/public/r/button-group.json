@@ -16,8 +16,28 @@
   ],
   "files": [
     {
+      "path": "src/components/ui/button-group/ButtonGroupRoot.vue",
+      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\nimport { buttonGroupVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
       "path": "src/components/ui/button-group/namespace.ts",
       "content": "import ButtonGroupRoot from './ButtonGroupRoot.vue'\nimport ButtonGroupSeparator from './ButtonGroupSeparator.vue'\nimport ButtonGroupText from './ButtonGroupText.vue'\n\nexport const ButtonGroup = {\n  /**\n   * ButtonGroupRoot component\n   */\n  Root: ButtonGroupRoot,\n\n  /**\n   * ButtonGroupText component\n   *\n   * A text wrapper that aligns content and applies button-group styles.\n   */\n  Text: ButtonGroupText,\n\n  /**\n   * ButtonGroupSeparator component\n   */\n  Separator: ButtonGroupSeparator,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/button-group/ButtonGroupText.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n  orientation?: ButtonGroupVariants['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'div',\n  orientation: 'horizontal',\n})\nconst delegatedProps = reactiveOmit(props, ['class', 'asChild', 'as', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"text\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        flex items-center gap-2 rounded-md border bg-muted px-4 text-sm font-medium shadow-xs\n        [&_svg]:pointer-events-none\n        [&_svg:not([class*=\\'size-\\'])]:size-4\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/button-group/ButtonGroupSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport type { SeparatorProps } from '@/components/ui/separator'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SeparatorProps {\n  class?: HTMLAttributes['class']\n  orientation?: SeparatorProps['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  orientation: 'vertical',\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <Separator\n    data-scope=\"button-group\"\n    data-part=\"separator\"\n    v-bind=\"delegatedProps\"\n    :orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        relative m-0! self-stretch bg-input\n        data-[orientation=vertical]:h-auto\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/button-group/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as ButtonGroupRoot } from './ButtonGroupRoot.vue'\nexport { default as ButtonGroupSeparator } from './ButtonGroupSeparator.vue'\nexport { default as ButtonGroupText } from './ButtonGroupText.vue'\nexport { ButtonGroup } from './namespace'\n\nexport const buttonGroupVariants = cva(\n  `\n    flex w-fit items-stretch\n    *:focus-visible:relative *:focus-visible:z-10\n    has-[>[data-scope=button-group]]:gap-2\n    has-[select[aria-hidden=true]:last-child]:[&>[data-scope=select]:last-of-type]:rounded-r-md\n    [&>[data-scope=select]:not([class*='w-'])]:w-fit\n    [&>input]:flex-1\n  `,\n  {\n    variants: {\n      orientation: {\n        horizontal:\n          `\n            [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0\n            [&>*:not(:last-child)]:rounded-r-none\n          `,\n        vertical:\n          `\n            flex-col\n            [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0\n            [&>*:not(:last-child)]:rounded-b-none\n          `,\n      },\n    },\n    defaultVariants: {\n      orientation: 'horizontal',\n    },\n  },\n)\n\nexport type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>\n",
       "type": "registry:ui"
     },
     {
@@ -37,26 +57,6 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
-    },
-    {
-      "path": "src/components/ui/button-group/ButtonGroupRoot.vue",
-      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\nimport { buttonGroupVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/button-group/ButtonGroupText.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n  orientation?: ButtonGroupVariants['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'div',\n  orientation: 'horizontal',\n})\nconst delegatedProps = reactiveOmit(props, ['class', 'asChild', 'as', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"text\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        flex items-center gap-2 rounded-md border bg-muted px-4 text-sm font-medium shadow-xs\n        [&_svg]:pointer-events-none\n        [&_svg:not([class*=\\'size-\\'])]:size-4\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/button-group/ButtonGroupSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport type { SeparatorProps } from '@/components/ui/separator'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SeparatorProps {\n  class?: HTMLAttributes['class']\n  orientation?: SeparatorProps['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  orientation: 'vertical',\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <Separator\n    data-scope=\"button-group\"\n    data-part=\"separator\"\n    v-bind=\"delegatedProps\"\n    :orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        relative m-0! self-stretch bg-input\n        data-[orientation=vertical]:h-auto\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/button-group/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as ButtonGroupRoot } from './ButtonGroupRoot.vue'\nexport { default as ButtonGroupSeparator } from './ButtonGroupSeparator.vue'\nexport { default as ButtonGroupText } from './ButtonGroupText.vue'\nexport { ButtonGroup } from './namespace'\n\nexport const buttonGroupVariants = cva(\n  `\n    flex w-fit items-stretch\n    *:focus-visible:relative *:focus-visible:z-10\n    has-[>[data-scope=button-group]]:gap-2\n    has-[select[aria-hidden=true]:last-child]:[&>[data-slot=select-trigger]:last-of-type]:rounded-r-md\n    [&>[data-slot=select-trigger]:not([class*='w-'])]:w-fit\n    [&>input]:flex-1\n  `,\n  {\n    variants: {\n      orientation: {\n        horizontal:\n          `\n            [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0\n            [&>*:not(:last-child)]:rounded-r-none\n          `,\n        vertical:\n          `\n            flex-col\n            [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0\n            [&>*:not(:last-child)]:rounded-b-none\n          `,\n      },\n    },\n    defaultVariants: {\n      orientation: 'horizontal',\n    },\n  },\n)\n\nexport type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>\n",
-      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

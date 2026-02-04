@@ -12,8 +12,8 @@
   ],
   "files": [
     {
-      "path": "src/components/ui/card/CardFooter.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"footer\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        flex items-center px-6\n        [.border-t]:pt-6\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "path": "src/components/ui/card/CardHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"header\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        @container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6\n        has-data-[slot=card-action]:grid-cols-[1fr_auto]\n        [.border-b]:pb-6\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -22,23 +22,23 @@
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/card/CardAction.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"action\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'col-start-2 row-span-2 row-start-1 self-start justify-self-end',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/card/CardRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
       "path": "src/components/ui/card/CardDescription.vue",
       "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.p\n    data-scope=\"card\"\n    data-part=\"description\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'text-sm text-muted-foreground',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.p>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/card/CardTitle.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.h3\n    data-scope=\"card\"\n    data-part=\"title\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'leading-none font-semibold',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.h3>\n</template>\n",
+      "path": "src/components/ui/card/CardFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"footer\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        flex items-center px-6\n        [.border-t]:pt-6\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/card/index.ts",
+      "content": "export { default as CardAction } from './CardAction.vue'\nexport { default as CardContent } from './CardContent.vue'\nexport { default as CardDescription } from './CardDescription.vue'\nexport { default as CardFooter } from './CardFooter.vue'\nexport { default as CardHeader } from './CardHeader.vue'\nexport { default as CardRoot } from './CardRoot.vue'\nexport { default as CardTitle } from './CardTitle.vue'\nexport { Card } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/card/CardAction.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"action\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'col-start-2 row-span-2 row-start-1 self-start justify-self-end',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -48,8 +48,8 @@
       "target": "src/lib/utils.ts"
     },
     {
-      "path": "src/components/ui/card/CardHeader.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"header\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        @container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6\n        has-data-[slot=card-action]:grid-cols-[1fr_auto]\n        [.border-b]:pb-6\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "path": "src/components/ui/card/CardTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.h3\n    data-scope=\"card\"\n    data-part=\"title\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'leading-none font-semibold',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.h3>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -58,8 +58,8 @@
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/card/index.ts",
-      "content": "export { default as CardAction } from './CardAction.vue'\nexport { default as CardContent } from './CardContent.vue'\nexport { default as CardDescription } from './CardDescription.vue'\nexport { default as CardFooter } from './CardFooter.vue'\nexport { default as CardHeader } from './CardHeader.vue'\nexport { default as CardRoot } from './CardRoot.vue'\nexport { default as CardTitle } from './CardTitle.vue'\nexport { Card } from './namespace'\n",
+      "path": "src/components/ui/card/CardRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"card\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"\n      cn(\n        'flex flex-col gap-6 rounded-xl border bg-card py-6 text-card-foreground shadow-sm',\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     }
   ],

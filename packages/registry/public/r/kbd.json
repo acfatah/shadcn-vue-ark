@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "title": "Kbd",
+  "description": "Displays keyboard input shortcuts.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/kbd",
+  "dependencies": [
+    "@ark-ui/vue",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/kbd/Kbd.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.kbd\n    data-scope=\"kbd\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        pointer-events-none inline-flex h-5 min-w-5 items-center justify-center gap-1 rounded-sm\n        border border-input bg-muted px-1.5 text-[10px] font-medium text-muted-foreground\n        select-none\n      `,\n      '[&_svg:not([class*=\\'size-\\'])]:size-3',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.kbd>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/kbd/index.ts",
+      "content": "export { default as Kbd } from './Kbd.vue'\nexport { default as KbdGroup } from './KbdGroup.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/kbd/KbdGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.span\n    data-scope=\"kbd\"\n    data-part=\"group\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      'inline-flex items-center gap-1',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.span>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

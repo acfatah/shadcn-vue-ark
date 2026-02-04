@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "Popover",
+  "description": "Displays rich content in a portal, triggered by a button.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/popover\n- shadcn/ui: https://ui.shadcn.com/docs/components/popover",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/popover/namespace.ts",
+      "content": "import PopoverRoot from './Popover.vue'\nimport PopoverAnchor from './PopoverAnchor.vue'\nimport PopoverContent from './PopoverContent.vue'\nimport PopoverTrigger from './PopoverTrigger.vue'\n\nexport const Popover = {\n  /** Popover root provider */\n  Root: PopoverRoot,\n\n  /** Popover trigger */\n  Trigger: PopoverTrigger,\n\n  /** Popover content */\n  Content: PopoverContent,\n\n  /** Popover anchor */\n  Anchor: PopoverAnchor,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/popover/PopoverContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverContentProps } from '@ark-ui/vue/popover'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Popover } from '@ark-ui/vue/popover'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PopoverContentProps {\n  class?: HTMLAttributes['class']\n}\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Teleport to=\"body\" defer>\n    <Popover.Positioner>\n      <Popover.Content\n        v-bind=\"{ ...$attrs, ...forwardedProps }\"\n        data-scope=\"popover\"\n        data-part=\"content\"\n        :class=\"cn(\n          `\n            z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md\n            outline-none\n            data-[side=bottom]:slide-in-from-top-2\n            data-[side=left]:slide-in-from-right-2\n            data-[side=right]:slide-in-from-left-2\n            data-[side=top]:slide-in-from-bottom-2\n            data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n            data-[state=closed]:zoom-out-95\n            data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95\n          `,\n          props.class,\n        )\"\n      >\n        <slot />\n      </Popover.Content>\n    </Popover.Positioner>\n  </Teleport>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/popover/PopoverAnchor.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverAnchorProps } from '@ark-ui/vue/popover'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Popover } from '@ark-ui/vue/popover'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends PopoverAnchorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Popover.Anchor\n    v-bind=\"forwardedProps\"\n    data-scope=\"popover\"\n    data-part=\"anchor\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </Popover.Anchor>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/popover/index.ts",
+      "content": "export { Popover } from './namespace'\nexport { default as PopoverRoot } from './Popover.vue'\nexport { default as PopoverAnchor } from './PopoverAnchor.vue'\nexport { default as PopoverContent } from './PopoverContent.vue'\nexport { default as PopoverTrigger } from './PopoverTrigger.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/popover/Popover.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverRootEmits, PopoverRootProps } from '@ark-ui/vue/popover'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Popover } from '@ark-ui/vue/popover'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends PopoverRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<PopoverRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Popover.Root\n    v-bind=\"forwardedProps\"\n    :class=\"props.class\"\n    data-scope=\"popover\"\n    data-part=\"root\"\n  >\n    <slot />\n  </Popover.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/popover/PopoverTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverTriggerProps } from '@ark-ui/vue/popover'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Popover } from '@ark-ui/vue/popover'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends PopoverTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Popover.Trigger\n    v-bind=\"forwardedProps\"\n    data-scope=\"popover\"\n    data-part=\"trigger\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </Popover.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -26,23 +26,38 @@
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/item/ItemActions.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-actions\"\n    :class=\"cn(\n      'flex items-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/item/ItemDescription.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"item-description\"\n    :class=\"cn(\n      'line-clamp-2 text-sm/normal font-normal text-balance text-muted-foreground',\n      `\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </p>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/item/ItemHeader.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-header\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "path": "src/components/ui/item/ItemTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-title\"\n    :class=\"cn(\n      'flex w-fit items-center gap-2 text-sm/snug font-medium',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemSeparator.vue",
       "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from '@/components/ui/separator'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SeparatorProps>()\n</script>\n\n<template>\n  <Separator\n    data-slot=\"item-separator\"\n    orientation=\"horizontal\"\n    :class=\"cn(\n      'my-0',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/ItemFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-footer\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/ItemContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-content\"\n    :class=\"cn(\n      `\n        flex flex-1 flex-col gap-1\n        [&+[data-slot=item-content]]:flex-none\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/ItemActions.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-actions\"\n    :class=\"cn(\n      'flex items-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as ItemActions } from './ItemActions.vue'\nexport { default as ItemContent } from './ItemContent.vue'\nexport { default as ItemDescription } from './ItemDescription.vue'\nexport { default as ItemFooter } from './ItemFooter.vue'\nexport { default as ItemGroup } from './ItemGroup.vue'\nexport { default as ItemHeader } from './ItemHeader.vue'\nexport { default as ItemMedia } from './ItemMedia.vue'\nexport { default as ItemRoot } from './ItemRoot.vue'\nexport { default as ItemSeparator } from './ItemSeparator.vue'\nexport { default as ItemTitle } from './ItemTitle.vue'\nexport { Item } from './namespace'\n\nexport const itemVariants = cva(\n  `\n    group/item flex flex-wrap items-center rounded-md border border-transparent text-sm\n    transition-colors duration-100 outline-none\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    [a]:transition-colors\n    [a]:hover:bg-accent/50\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline: 'border-border',\n        muted: 'bg-muted/50',\n      },\n      size: {\n        default: 'gap-4 p-4',\n        sm: 'gap-2.5 px-4 py-3',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n)\n\nexport const itemMediaVariants = cva(\n  `\n    flex shrink-0 items-center justify-center gap-2\n    group-has-data-[slot=item-description]/item:translate-y-0.5\n    group-has-data-[slot=item-description]/item:self-start\n    [&_svg]:pointer-events-none\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        icon: `\n          size-8 rounded-sm border bg-muted\n          [&_svg:not([class*='size-'])]:size-4\n        `,\n        image:\n          `\n            size-10 overflow-hidden rounded-sm\n            [&_img]:size-full [&_img]:object-cover\n          `,\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n\nexport type ItemVariants = VariantProps<typeof itemVariants>\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/ItemHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-header\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -58,33 +73,18 @@
       "target": "src/lib/utils.ts"
     },
     {
-      "path": "src/components/ui/item/ItemTitle.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-title\"\n    :class=\"cn(\n      'flex w-fit items-center gap-2 text-sm/snug font-medium',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/item/ItemRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemVariants } from '.'\n\nimport { itemVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/item/ItemContent.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-content\"\n    :class=\"cn(\n      `\n        flex flex-1 flex-col gap-1\n        [&+[data-slot=item-content]]:flex-none\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
       "path": "src/components/ui/item/ItemGroup.vue",
       "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    role=\"list\"\n    data-slot=\"item-group\"\n    :class=\"cn(\n      'group/item-group flex flex-col',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/item/ItemFooter.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-footer\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "path": "src/components/ui/item/ItemDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"item-description\"\n    :class=\"cn(\n      'line-clamp-2 text-sm/normal font-normal text-balance text-muted-foreground',\n      `\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </p>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/item/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as ItemActions } from './ItemActions.vue'\nexport { default as ItemContent } from './ItemContent.vue'\nexport { default as ItemDescription } from './ItemDescription.vue'\nexport { default as ItemFooter } from './ItemFooter.vue'\nexport { default as ItemGroup } from './ItemGroup.vue'\nexport { default as ItemHeader } from './ItemHeader.vue'\nexport { default as ItemMedia } from './ItemMedia.vue'\nexport { default as ItemRoot } from './ItemRoot.vue'\nexport { default as ItemSeparator } from './ItemSeparator.vue'\nexport { default as ItemTitle } from './ItemTitle.vue'\nexport { Item } from './namespace'\n\nexport const itemVariants = cva(\n  `\n    group/item flex flex-wrap items-center rounded-md border border-transparent text-sm\n    transition-colors duration-100 outline-none\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    [a]:transition-colors\n    [a]:hover:bg-accent/50\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline: 'border-border',\n        muted: 'bg-muted/50',\n      },\n      size: {\n        default: 'gap-4 p-4',\n        sm: 'gap-2.5 px-4 py-3',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n)\n\nexport const itemMediaVariants = cva(\n  `\n    flex shrink-0 items-center justify-center gap-2\n    group-has-data-[slot=item-description]/item:translate-y-0.5\n    group-has-data-[slot=item-description]/item:self-start\n    [&_svg]:pointer-events-none\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        icon: `\n          size-8 rounded-sm border bg-muted\n          [&_svg:not([class*='size-'])]:size-4\n        `,\n        image:\n          `\n            size-10 overflow-hidden rounded-sm\n            [&_img]:size-full [&_img]:object-cover\n          `,\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n\nexport type ItemVariants = VariantProps<typeof itemVariants>\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\n",
+      "path": "src/components/ui/item/ItemRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemVariants } from '.'\n\nimport { itemVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
       "type": "registry:ui"
     }
   ],

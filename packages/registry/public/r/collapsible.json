@@ -1,0 +1,70 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "title": "Collapsible",
+  "description": "An interactive component which expands/collapses a panel.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/collapsible\n- shadcn/ui: https://ui.shadcn.com/docs/components/collapsible",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/collapsible/namespace.ts",
+      "content": "import CollapsibleRoot from './Collapsible.vue'\nimport CollapsibleContent from './CollapsibleContent.vue'\nimport CollapsibleTrigger from './CollapsibleTrigger.vue'\n\nexport const Collapsible = {\n  /**\n   * CollapsibleRoot component\n   */\n  Root: CollapsibleRoot,\n\n  /**\n   * CollapsibleTrigger component\n   */\n  Trigger: CollapsibleTrigger,\n\n  /**\n   * CollapsibleContent component\n   */\n  Content: CollapsibleContent,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/collapsible/CollapsibleTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleTriggerProps } from '@ark-ui/vue/collapsible'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Collapsible } from '@ark-ui/vue/collapsible'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CollapsibleTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Collapsible.Trigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(props.class)\"\n  >\n    <slot />\n  </Collapsible.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/collapsible/Collapsible.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleRootEmits, CollapsibleRootProps } from '@ark-ui/vue/collapsible'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Collapsible } from '@ark-ui/vue/collapsible'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends CollapsibleRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<CollapsibleRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Collapsible.Root\n    v-bind=\"forwardedProps\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </Collapsible.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/collapsible/CollapsibleContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CollapsibleContentProps } from '@ark-ui/vue/collapsible'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Collapsible } from '@ark-ui/vue/collapsible'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends CollapsibleContentProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Collapsible.Content\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        overflow-hidden text-sm\n        data-[state=closed]:animate-collapsible-up\n        data-[state=open]:animate-collapsible-down\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Collapsible.Content>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/collapsible/index.ts",
+      "content": "export { default as CollapsibleRoot } from './Collapsible.vue'\nexport { default as CollapsibleContent } from './CollapsibleContent.vue'\nexport { default as CollapsibleTrigger } from './CollapsibleTrigger.vue'\nexport { Collapsible } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    }
+  ],
+  "css": {
+    "@theme inline": {
+      "--animate-collapsible-down": "collapsible-down 0.25s ease-out",
+      "--animate-collapsible-up": "collapsible-up 0.25s ease-out",
+      "@keyframes collapsible-down": {
+        "from": {
+          "height": "0"
+        },
+        "to": {
+          "height": "var(--height)"
+        }
+      },
+      "@keyframes collapsible-up": {
+        "from": {
+          "height": "var(--height)"
+        },
+        "to": {
+          "height": "0"
+        }
+      }
+    }
+  },
+  "type": "registry:ui"
+}

@@ -8,10 +8,10 @@
     "@ark-ui/vue"
   ],
   "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json",
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
   ],
   "files": [
     {
@@ -20,13 +20,23 @@
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/switch/SwitchHiddenInput.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SwitchHiddenInputProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.HiddenInput\n    data-scope=\"switch\"\n    data-part=\"input\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(`peer sr-only`, props.class)\"\n  >\n    <slot />\n  </Switch.HiddenInput>\n</template>\n",
+      "path": "src/components/ui/switch/SwitchLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchLabelProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends SwitchLabelProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Label v-bind=\"forwardedProps\" as-child>\n    <Label\n      data-scope=\"switch\"\n      data-part=\"label\"\n      as=\"span\"\n      :class=\"props.class\"\n    >\n      <slot />\n    </Label>\n  </Switch.Label>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/switch/SwitchThumb.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SwitchThumbProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchThumbProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Thumb\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform\n        data-[state=checked]:translate-x-[calc(100%-2px)]\n        data-[state=unchecked]:translate-x-0\n        dark:data-[state=checked]:bg-primary-foreground\n        dark:data-[state=unchecked]:bg-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Thumb>\n</template>\n",
+      "path": "src/components/ui/switch/SwitchDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DescriptionProps } from '@/components/ui/description'\n\nimport { Description } from '@/components/ui/description'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\nconst props = defineProps<DescriptionProps>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <Description\n    data-scope=\"switch\"\n    data-part=\"description\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </Description>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/SwitchRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchRootEmits, SwitchRootProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchRootProps {\n  class?: HTMLAttributes['class']\n  loading?: boolean\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<SwitchRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'disabled', 'loading'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n\nconst ariaDisabled = computed(() => props.disabled || props.loading || undefined)\nconst ariaBusy = computed(() => (props.loading || undefined))\n</script>\n\n<template>\n  <Switch.Root\n    :disabled=\"ariaDisabled\"\n    :aria-disabled=\"ariaDisabled\"\n    :aria-busy=\"ariaBusy\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex space-x-2 bg-transparent outline-none\n        data-disabled:pointer-events-none data-disabled:opacity-50\n      `,\n\n      // Focus interaction on `data-part=control` when the `data-part=input` is\n      // focused.\n      `\n        [&:focus-within_[data-part=control]]:border-ring\n        [&:focus-within_[data-part=control]]:ring-[3px]\n        [&:focus-within_[data-part=control]]:ring-ring/50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/switch/index.ts",
+      "content": "export { Switch } from './namespace'\nexport { default as SwitchControl } from './SwitchControl.vue'\nexport { default as SwitchDescription } from './SwitchDescription.vue'\nexport { default as SwitchHiddenInput } from './SwitchHiddenInput.vue'\nexport { default as SwitchLabel } from './SwitchLabel.vue'\nexport { default as SwitchRoot } from './SwitchRoot.vue'\nexport { default as SwitchThumb } from './SwitchThumb.vue'\nexport { useSwitch } from '@ark-ui/vue/switch'\n",
       "type": "registry:ui"
     },
     {
@@ -42,28 +52,18 @@
       "target": "src/lib/utils.ts"
     },
     {
-      "path": "src/components/ui/switch/SwitchDescription.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { DescriptionProps } from '@/components/ui/description'\n\nimport { Description } from '@/components/ui/description'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\nconst props = defineProps<DescriptionProps>()\nconst forwardedProps = useForwardPropsEmits(props)\n</script>\n\n<template>\n  <Description\n    data-scope=\"switch\"\n    data-part=\"description\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </Description>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/switch/SwitchLabel.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SwitchLabelProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends SwitchLabelProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Label v-bind=\"forwardedProps\" as-child>\n    <Label\n      data-scope=\"switch\"\n      data-part=\"label\"\n      as=\"span\"\n      :class=\"props.class\"\n    >\n      <slot />\n    </Label>\n  </Switch.Label>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
       "path": "src/components/ui/switch/SwitchControl.vue",
       "content": "<script setup lang=\"ts\">\nimport type { SwitchControlProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Control\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent\n        shadow-xs transition-all outline-none\n        data-[state=checked]:bg-primary\n        data-[state=unchecked]:bg-input\n        dark:data-[state=unchecked]:bg-input/80\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Control>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/switch/SwitchRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SwitchRootEmits, SwitchRootProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchRootProps {\n  class?: HTMLAttributes['class']\n  loading?: boolean\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<SwitchRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'disabled', 'loading'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n\nconst ariaDisabled = computed(() => props.disabled || props.loading || undefined)\nconst ariaBusy = computed(() => (props.loading || undefined))\n</script>\n\n<template>\n  <Switch.Root\n    :disabled=\"ariaDisabled\"\n    :aria-disabled=\"ariaDisabled\"\n    :aria-busy=\"ariaBusy\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex space-x-2 bg-transparent outline-none\n        data-disabled:pointer-events-none data-disabled:opacity-50\n      `,\n\n      // Focus interaction on `data-part=control` when the `data-part=input` is\n      // focused.\n      `\n        [&:focus-within_[data-part=control]]:border-ring\n        [&:focus-within_[data-part=control]]:ring-[3px]\n        [&:focus-within_[data-part=control]]:ring-ring/50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Root>\n</template>\n",
+      "path": "src/components/ui/switch/SwitchHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchHiddenInputProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.HiddenInput\n    data-scope=\"switch\"\n    data-part=\"input\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(`peer sr-only`, props.class)\"\n  >\n    <slot />\n  </Switch.HiddenInput>\n</template>\n",
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/switch/index.ts",
-      "content": "export { Switch } from './namespace'\nexport { default as SwitchControl } from './SwitchControl.vue'\nexport { default as SwitchDescription } from './SwitchDescription.vue'\nexport { default as SwitchHiddenInput } from './SwitchHiddenInput.vue'\nexport { default as SwitchLabel } from './SwitchLabel.vue'\nexport { default as SwitchRoot } from './SwitchRoot.vue'\nexport { default as SwitchThumb } from './SwitchThumb.vue'\nexport { useSwitch } from '@ark-ui/vue/switch'\n",
+      "path": "src/components/ui/switch/SwitchThumb.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { SwitchThumbProps } from '@ark-ui/vue/switch'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Switch } from '@ark-ui/vue/switch'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends SwitchThumbProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Switch.Thumb\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform\n        data-[state=checked]:translate-x-[calc(100%-2px)]\n        data-[state=unchecked]:translate-x-0\n        dark:data-[state=checked]:bg-primary-foreground\n        dark:data-[state=unchecked]:bg-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Switch.Thumb>\n</template>\n",
       "type": "registry:ui"
     }
   ],

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "title": "Toggle",
+  "description": "A two-state button that can be either on or off.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/toggle\n- shadcn/ui: https://ui.shadcn.com/docs/components/toggle",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/toggle/Toggle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ToggleRootEmits, ToggleRootProps } from '@ark-ui/vue/toggle'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Toggle } from '@ark-ui/vue/toggle'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { ToggleVariants } from '.'\n\nimport { toggleVariants } from '.'\n\ninterface Props extends ToggleRootProps {\n  class?: HTMLAttributes['class']\n  variant?: ToggleVariants['variant']\n  size?: ToggleVariants['size']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n  size: 'default',\n})\n\nconst emit = defineEmits<ToggleRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'size', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Toggle.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      toggleVariants({ variant: props.variant, size: props.size }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </Toggle.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/toggle/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as Toggle } from './Toggle.vue'\n\nexport const toggleVariants = cva(\n  `\n    inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap\n    transition-[color,box-shadow] outline-none\n    hover:bg-muted hover:text-muted-foreground\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    disabled:pointer-events-none disabled:opacity-50\n    aria-invalid:border-destructive aria-invalid:ring-destructive/20\n    data-[state=on]:bg-accent data-[state=on]:text-accent-foreground\n    dark:aria-invalid:ring-destructive/40\n    [&_svg]:pointer-events-none [&_svg]:shrink-0\n    [&_svg:not([class*=\"size-\"])]:size-4\n  `,\n  {\n    variants: {\n      variant: {\n        default: 'bg-transparent',\n        outline:\n          `\n            border border-input bg-transparent shadow-xs\n            hover:bg-accent hover:text-accent-foreground\n          `,\n      },\n      size: {\n        default: 'h-9 min-w-9 px-2',\n        sm: 'h-8 min-w-8 px-1.5',\n        lg: 'h-10 min-w-10 px-2.5',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n)\n\nexport type ToggleVariants = VariantProps<typeof toggleVariants>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

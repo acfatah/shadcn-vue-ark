@@ -1,0 +1,85 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Sheet",
+  "description": "Extends the Dialog component to display content that complements the main\ncontent of the screen.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/sheet",
+  "dependencies": [
+    "@vueuse/core",
+    "lucide-vue-next",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sheet/namespace.ts",
+      "content": "import SheetClose from './SheetClose.vue'\nimport SheetContent from './SheetContent.vue'\nimport SheetDescription from './SheetDescription.vue'\nimport SheetFooter from './SheetFooter.vue'\nimport SheetHeader from './SheetHeader.vue'\nimport SheetOverlay from './SheetOverlay.vue'\nimport SheetRoot from './SheetRoot.vue'\nimport SheetTitle from './SheetTitle.vue'\nimport SheetTrigger from './SheetTrigger.vue'\n\nexport const Sheet = {\n  /** Sheet root provider */\n  Root: SheetRoot,\n\n  /** Sheet trigger */\n  Trigger: SheetTrigger,\n\n  /** Sheet content with overlay */\n  Content: SheetContent,\n\n  /** Sheet overlay */\n  Overlay: SheetOverlay,\n\n  /** Sheet header container */\n  Header: SheetHeader,\n\n  /** Sheet footer container */\n  Footer: SheetFooter,\n\n  /** Sheet title */\n  Title: SheetTitle,\n\n  /** Sheet description */\n  Description: SheetDescription,\n\n  /** Sheet close trigger */\n  Close: SheetClose,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTriggerProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends DialogTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Dialog.Trigger\n    v-bind=\"forwardedProps\"\n    data-scope=\"sheet\"\n    data-part=\"trigger\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </Dialog.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetClose.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogCloseTriggerProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends DialogCloseTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Dialog.CloseTrigger\n    v-bind=\"forwardedProps\"\n    data-scope=\"sheet\"\n    data-part=\"close\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </Dialog.CloseTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetTitle.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogTitleProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends DialogTitleProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Dialog.Title\n    v-bind=\"forwardedProps\"\n    data-scope=\"sheet\"\n    data-part=\"title\"\n    :class=\"cn('font-semibold text-foreground', props.class)\"\n  >\n    <slot />\n  </Dialog.Title>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetFooter.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{ class?: HTMLAttributes['class'] }>()\n</script>\n\n<template>\n  <div\n    data-scope=\"sheet\"\n    data-part=\"footer\"\n    :class=\"cn('mt-auto flex flex-col gap-2 p-4', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetDescription.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogDescriptionProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends DialogDescriptionProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Dialog.Description\n    v-bind=\"forwardedProps\"\n    data-scope=\"sheet\"\n    data-part=\"description\"\n    :class=\"cn('text-sm text-muted-foreground', props.class)\"\n  >\n    <slot />\n  </Dialog.Description>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogContentProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\nimport { X } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport SheetOverlay from './SheetOverlay.vue'\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<Props>(), {\n  side: 'right',\n  showCloseButton: true,\n})\n\ninterface Props extends DialogContentProps {\n  class?: HTMLAttributes['class']\n  side?: 'top' | 'right' | 'bottom' | 'left'\n  showCloseButton?: boolean\n}\n\nconst delegatedProps = reactiveOmit(props, ['class', 'side', 'showCloseButton'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <SheetOverlay />\n  <Dialog.Positioner\n    class=\"fixed inset-0 z-50\"\n    data-scope=\"sheet\"\n    data-part=\"positioner\"\n  >\n    <Dialog.Content\n      v-bind=\"{ ...$attrs, ...forwardedProps }\"\n      data-scope=\"sheet\"\n      data-part=\"content\"\n      :class=\"cn(\n        `\n          fixed z-50 flex h-full flex-col gap-4 bg-background shadow-lg transition ease-in-out\n          data-[state=closed]:animate-out data-[state=closed]:duration-300\n          data-[state=open]:animate-in data-[state=open]:duration-500\n        `,\n        props.side === 'right'\n          && `\n            inset-y-0 right-0 w-3/4 border-l\n            data-[state=closed]:slide-out-to-right\n            data-[state=open]:slide-in-from-right\n            sm:max-w-sm\n          `,\n        props.side === 'left'\n          && `\n            inset-y-0 left-0 w-3/4 border-r\n            data-[state=closed]:slide-out-to-left\n            data-[state=open]:slide-in-from-left\n            sm:max-w-sm\n          `,\n        props.side === 'top'\n          && `\n            inset-x-0 top-0 h-auto border-b\n            data-[state=closed]:slide-out-to-top\n            data-[state=open]:slide-in-from-top\n          `,\n        props.side === 'bottom'\n          && `\n            inset-x-0 bottom-0 h-auto border-t\n            data-[state=closed]:slide-out-to-bottom\n            data-[state=open]:slide-in-from-bottom\n          `,\n        props.class,\n      )\"\n    >\n      <slot />\n\n      <Dialog.CloseTrigger\n        v-if=\"props.showCloseButton\"\n        data-scope=\"sheet\"\n        data-part=\"close\"\n        class=\"\n          absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity\n          hover:opacity-100\n          focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden\n          disabled:pointer-events-none\n          data-[state=open]:bg-secondary\n          [&_svg]:pointer-events-none [&_svg]:shrink-0\n          [&_svg:not([class*='size-'])]:size-4\n        \"\n      >\n        <X />\n        <span class=\"sr-only\">Close</span>\n      </Dialog.CloseTrigger>\n    </Dialog.Content>\n  </Dialog.Positioner>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetOverlay.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogBackdropProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends DialogBackdropProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Dialog.Backdrop\n    v-bind=\"forwardedProps\"\n    data-scope=\"sheet\"\n    data-part=\"overlay\"\n    :class=\"cn(\n      `\n        fixed inset-0 z-50 bg-black/80\n        data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n        data-[state=open]:animate-in data-[state=open]:fade-in-0\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Dialog.Backdrop>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/index.ts",
+      "content": "export { Sheet } from './namespace'\nexport { default as SheetClose } from './SheetClose.vue'\nexport { default as SheetContent } from './SheetContent.vue'\nexport { default as SheetDescription } from './SheetDescription.vue'\nexport { default as SheetFooter } from './SheetFooter.vue'\nexport { default as SheetHeader } from './SheetHeader.vue'\nexport { default as SheetOverlay } from './SheetOverlay.vue'\nexport { default as SheetRoot } from './SheetRoot.vue'\nexport { default as SheetTitle } from './SheetTitle.vue'\nexport { default as SheetTrigger } from './SheetTrigger.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\n\ninterface Props extends DialogRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<DialogRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Dialog.Root\n    v-bind=\"forwardedProps\"\n    :class=\"props.class\"\n    data-scope=\"sheet\"\n    data-part=\"root\"\n  >\n    <slot />\n  </Dialog.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/sheet/SheetHeader.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{ class?: HTMLAttributes['class'] }>()\n</script>\n\n<template>\n  <div\n    data-scope=\"sheet\"\n    data-part=\"header\"\n    :class=\"cn('flex flex-col gap-1.5 p-4', props.class)\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

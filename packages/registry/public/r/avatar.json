@@ -13,18 +13,8 @@
   ],
   "files": [
     {
-      "path": "src/components/ui/avatar/AvatarFallback.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { AvatarFallbackProps } from '@ark-ui/vue/avatar'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Avatar } from '@ark-ui/vue/avatar'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends AvatarFallbackProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Avatar.Fallback\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `flex size-full items-center justify-center rounded-full bg-muted`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Avatar.Fallback>\n</template>\n",
-      "type": "registry:ui"
-    },
-    {
       "path": "src/components/ui/avatar/namespace.ts",
       "content": "import AvatarFallback from './AvatarFallback.vue'\nimport AvatarGroup from './AvatarGroup.vue'\nimport AvatarImage from './AvatarImage.vue'\nimport AvatarRoot from './AvatarRoot.vue'\n\nexport const Avatar = {\n  /**\n   * AvatarGroup component\n   *\n   * Wraps multiple Avatar components to display them as a group with overlapping\n   * styles.\n   */\n  Group: AvatarGroup,\n\n  /** AvatarRoot component */\n  Root: AvatarRoot,\n\n  /** AvatarImage component */\n  Image: AvatarImage,\n\n  /** AvatarFallback component */\n  Fallback: AvatarFallback,\n}\n",
-      "type": "registry:ui"
-    },
-    {
-      "path": "src/components/ui/avatar/AvatarImage.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from '@ark-ui/vue/avatar'\n\nimport { Avatar } from '@ark-ui/vue/avatar'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends AvatarImageProps {\n  class?: string\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Avatar.Image\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `aspect-square size-full`,\n      props.class,\n    )\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -33,8 +23,13 @@
       "type": "registry:ui"
     },
     {
-      "path": "src/components/ui/avatar/AvatarGroup.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"avatar\"\n    data-part=\"group\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(`\n      flex -space-x-2\n      *:data-[scope=avatar]:ring-2 *:data-[scope=avatar]:ring-background\n      *:data-[scope=avatar]:grayscale\n    `, props.class)\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "path": "src/components/ui/avatar/AvatarImage.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarImageProps } from '@ark-ui/vue/avatar'\n\nimport { Avatar } from '@ark-ui/vue/avatar'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends AvatarImageProps {\n  class?: string\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Avatar.Image\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `aspect-square size-full`,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/avatar/index.ts",
+      "content": "export { default as AvatarFallback } from './AvatarFallback.vue'\nexport { default as AvatarGroup } from './AvatarGroup.vue'\nexport { default as AvatarImage } from './AvatarImage.vue'\nexport { default as AvatarRoot } from './AvatarRoot.vue'\nexport { Avatar } from './namespace'\n",
       "type": "registry:ui"
     },
     {
@@ -50,8 +45,13 @@
       "target": "src/lib/utils.ts"
     },
     {
-      "path": "src/components/ui/avatar/index.ts",
-      "content": "export { default as AvatarFallback } from './AvatarFallback.vue'\nexport { default as AvatarGroup } from './AvatarGroup.vue'\nexport { default as AvatarImage } from './AvatarImage.vue'\nexport { default as AvatarRoot } from './AvatarRoot.vue'\nexport { Avatar } from './namespace'\n",
+      "path": "src/components/ui/avatar/AvatarGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"avatar\"\n    data-part=\"group\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(`\n      flex -space-x-2\n      *:data-[scope=avatar]:ring-2 *:data-[scope=avatar]:ring-background\n      *:data-[scope=avatar]:grayscale\n    `, props.class)\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/avatar/AvatarFallback.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { AvatarFallbackProps } from '@ark-ui/vue/avatar'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Avatar } from '@ark-ui/vue/avatar'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends AvatarFallbackProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Avatar.Fallback\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `flex size-full items-center justify-center rounded-full bg-muted`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Avatar.Fallback>\n</template>\n",
       "type": "registry:ui"
     }
   ],
