@@ -3,10 +3,10 @@ import type { TooltipRootProviderProps } from '@ark-ui/vue/tooltip'
 
 import { Tooltip } from '@ark-ui/vue/tooltip'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardProps } from '@/composables/use-forward-props'
 
 const props = defineProps<TooltipRootProviderProps>()
-const forwardedProps = useForwardPropsEmits(props)
+const forwardedProps = useForwardProps<TooltipRootProviderProps>(props)
 </script>
 
 <template>

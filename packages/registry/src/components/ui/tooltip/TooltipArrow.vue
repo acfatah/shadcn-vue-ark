@@ -42,7 +42,3 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     />
   </Tooltip.Arrow>
 </template>
-
-<style lang="css">
-/*  */
-</style>

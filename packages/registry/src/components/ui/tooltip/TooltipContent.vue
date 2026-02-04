@@ -28,7 +28,6 @@ const tooltipOptions = useTooltipOptions(
     hideArrow: false,
   })),
 )
-const showArrow = computed(() => !tooltipOptions.value.hideArrow)
 </script>
 
 <template>
@@ -55,7 +54,7 @@ const showArrow = computed(() => !tooltipOptions.value.hideArrow)
           props.class,
         )"
       >
-        <TooltipArrow v-if="showArrow" />
+        <TooltipArrow v-if="!tooltipOptions.hideArrow" />
         <slot />
       </Tooltip.Content>
     </Tooltip.Positioner>
