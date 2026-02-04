@@ -1,9 +1,4 @@
-import type {
-  CollectionItem,
-  UseSelectProps as UseArkSelectProps,
-  UseSelectReturn as UseArkSelectReturn,
-} from '@ark-ui/vue/select'
-import type { ComputedRef } from 'vue'
+import type { CollectionItem } from '@ark-ui/vue/select'
 
 import {
   Select as ArkSelect,
@@ -12,11 +7,19 @@ import {
 } from '@ark-ui/vue/select'
 import { computed, ref } from 'vue'
 
-import { createContext } from '@/composables/create-context'
+import type {
+  ExtendedSelectApi,
+  UseSelectProps,
+  UseSelectReturn,
+} from './context'
 
-export { Select } from './namespace'
+import { SelectProvider } from './context'
+
+export { SelectProvider, useSelectContext } from './context'
 export { useArkSelectContext }
 export const SelectControl = ArkSelect.Control
+export type { UseSelectContext, UseSelectProps, UseSelectReturn } from './context'
+export { Select } from './namespace'
 export { default as SelectClearTrigger } from './SelectClearTrigger.vue'
 export { default as SelectContent } from './SelectContent.vue'
 export { default as SelectEmpty } from './SelectEmpty.vue'
@@ -32,28 +35,6 @@ export { default as SelectSeparator } from './SelectSeparator.vue'
 export { default as SelectTrigger } from './SelectTrigger.vue'
 export { default as SelectValueText } from './SelectValueText.vue'
 export { createListCollection } from '@ark-ui/vue/select'
-
-interface UseSelectProps<T extends CollectionItem>
-  extends UseArkSelectProps<T> {
-  loading?: boolean
-}
-
-type ArkSelectApi<T extends CollectionItem>
-  = UseArkSelectReturn<T> extends ComputedRef<infer R> ? R : never
-
-type ExtendedSelectApi<T extends CollectionItem> = ArkSelectApi<T> & {
-  loading: boolean
-  disabled: boolean
-  /** Reflects the invalid state reported by the native select element. */
-  nativeInvalid: boolean
-  setNativeInvalid: (value?: boolean) => void
-}
-
-type UseSelectReturn<T extends CollectionItem> = ComputedRef<ExtendedSelectApi<T>>
-
-export interface UseSelectContext<T extends CollectionItem>
-  extends UseSelectReturn<T> {}
-export const [SelectProvider, useSelectContext] = createContext<UseSelectContext<CollectionItem>>('SelectContext')
 
 // Note: use for standalone composition or RootProvider usage.
 export function useSelect<T extends CollectionItem>(
