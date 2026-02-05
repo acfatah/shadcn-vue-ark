@@ -4,12 +4,14 @@ import type { HTMLAttributes } from 'vue'
 
 import { ToggleGroup } from '@ark-ui/vue/toggle-group'
 import { reactiveOmit } from '@vueuse/core'
-import { provide } from 'vue'
+import { computed } from 'vue'
+
+import type { ToggleVariants } from '@/components/ui/toggle'
 
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-import type { ToggleVariants } from '@/components/ui/toggle'
+import { ToggleGroupOptionsProvider } from './context'
 
 interface Props extends ToggleGroupRootProps {
   class?: HTMLAttributes['class']
@@ -26,11 +28,13 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<ToggleGroupRootEmits>()
 
-provide('toggleGroup', {
+const options = computed(() => ({
   variant: props.variant,
   size: props.size,
   spacing: props.spacing,
-})
+}))
+
+ToggleGroupOptionsProvider(options)
 
 const delegatedProps = reactiveOmit(props, ['class', 'size', 'variant', 'spacing'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
@@ -48,7 +52,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     }"
     v-bind="forwardedProps"
     :class="cn(
-      'group/toggle-group flex w-fit items-center rounded-md gap-(--toggle-group-gap)',
+      'group/toggle-group flex w-fit items-center gap-(--toggle-group-gap) rounded-md',
       'data-[spacing=0]:data-[variant=outline]:shadow-xs',
       props.class,
     )"

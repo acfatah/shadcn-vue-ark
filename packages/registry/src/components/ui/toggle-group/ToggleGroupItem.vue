@@ -4,20 +4,15 @@ import type { HTMLAttributes } from 'vue'
 
 import { ToggleGroup } from '@ark-ui/vue/toggle-group'
 import { reactiveOmit } from '@vueuse/core'
-import { inject } from 'vue'
-
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
-import { cn } from '@/lib/utils'
+import { computed } from 'vue'
 
 import type { ToggleVariants } from '@/components/ui/toggle'
 
 import { toggleVariants } from '@/components/ui/toggle'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { cn } from '@/lib/utils'
 
-interface ToggleGroupContext {
-  variant?: ToggleVariants['variant']
-  size?: ToggleVariants['size']
-  spacing?: number
-}
+import { useToggleGroupOptions } from './context'
 
 interface Props extends ToggleGroupItemProps {
   class?: HTMLAttributes['class']
@@ -27,7 +22,13 @@ interface Props extends ToggleGroupItemProps {
 
 const props = defineProps<Props>()
 
-const context = inject<ToggleGroupContext>('toggleGroup', {})
+const options = useToggleGroupOptions(
+  computed(() => ({
+    variant: undefined,
+    size: undefined,
+    spacing: undefined,
+  })),
+)
 
 const delegatedProps = reactiveOmit(props, ['class', 'size', 'variant'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
@@ -37,18 +38,25 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <ToggleGroup.Item
     v-slot="slotProps"
     data-slot="toggle-group-item"
-    :data-variant="context.variant || props.variant"
-    :data-size="context.size || props.size"
-    :data-spacing="context.spacing"
+    :data-variant="options.variant || props.variant"
+    :data-size="options.size || props.size"
+    :data-spacing="options.spacing"
     v-bind="forwardedProps"
     :class="cn(
       toggleVariants({
-        variant: context.variant || props.variant,
-        size: context.size || props.size,
+        variant: options.variant || props.variant,
+        size: options.size || props.size,
       }),
-      'w-auto min-w-0 shrink-0 px-3 focus:z-10 focus-visible:z-10',
+      `
+        w-auto min-w-0 shrink-0 px-3
+        focus:z-10
+        focus-visible:z-10
+      `,
       'data-[spacing=0]:rounded-none data-[spacing=0]:shadow-none',
-      'data-[spacing=0]:first:rounded-l-md data-[spacing=0]:last:rounded-r-md',
+      `
+        data-[spacing=0]:first:rounded-l-md
+        data-[spacing=0]:last:rounded-r-md
+      `,
       'data-[spacing=0]:data-[variant=outline]:border-l-0',
       'data-[spacing=0]:data-[variant=outline]:first:border-l',
       props.class,
