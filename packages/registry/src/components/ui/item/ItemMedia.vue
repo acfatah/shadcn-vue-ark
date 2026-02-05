@@ -15,7 +15,8 @@ const props = defineProps<{
 
 <template>
   <div
-    data-slot="item-media"
+    data-scope="item"
+    data-part="media"
     :data-variant="props.variant"
     :class="cn(
       itemMediaVariants({ variant }),

@@ -10,7 +10,8 @@ const props = defineProps<{
 
 <template>
   <p
-    data-slot="item-description"
+    data-scope="item"
+    data-part="description"
     :class="cn(
       'line-clamp-2 text-sm/normal font-normal text-balance text-muted-foreground',
       `

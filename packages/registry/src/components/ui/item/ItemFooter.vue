@@ -10,7 +10,8 @@ const props = defineProps<{
 
 <template>
   <div
-    data-slot="item-footer"
+    data-scope="item"
+    data-part="footer"
     :class="cn(
       'flex basis-full items-center justify-between gap-2',
       props.class,

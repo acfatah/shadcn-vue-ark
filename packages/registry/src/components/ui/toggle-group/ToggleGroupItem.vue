@@ -37,10 +37,12 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <ToggleGroup.Item
     v-slot="slotProps"
-    data-slot="toggle-group-item"
+    data-scope="toggle-group"
+    data-part="item"
     :data-variant="options.variant || props.variant"
     :data-size="options.size || props.size"
     :data-spacing="options.spacing"
+    :value="props.value"
     v-bind="forwardedProps"
     :class="cn(
       toggleVariants({

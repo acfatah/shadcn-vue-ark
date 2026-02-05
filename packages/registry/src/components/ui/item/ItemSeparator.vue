@@ -9,7 +9,8 @@ const props = defineProps<SeparatorProps>()
 
 <template>
   <Separator
-    data-slot="item-separator"
+    data-scope="item"
+    data-part="separator"
     orientation="horizontal"
     :class="cn(
       'my-0',

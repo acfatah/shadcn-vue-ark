@@ -43,7 +43,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 <template>
   <ToggleGroup.Root
     v-slot="slotProps"
-    data-slot="toggle-group"
+    data-scope="toggle-group"
+    data-part="root"
     :data-size="props.size"
     :data-variant="props.variant"
     :data-spacing="props.spacing"

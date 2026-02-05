@@ -11,7 +11,8 @@ const props = defineProps<{
 <template>
   <div
     role="list"
-    data-slot="item-group"
+    data-scope="item"
+    data-part="group"
     :class="cn(
       'group/item-group flex flex-col',
       props.class,

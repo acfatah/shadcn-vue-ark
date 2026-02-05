@@ -19,7 +19,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
 <template>
   <Fieldset.Root
-    data-slot="field-set"
+    data-scope="fieldset"
+    data-part="root"
     v-bind="forwardedProps"
     :class="cn(
       `
