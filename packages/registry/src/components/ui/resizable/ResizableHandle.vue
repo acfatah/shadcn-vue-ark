@@ -23,7 +23,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
 <template>
   <Splitter.ResizeTrigger
-    data-slot="resizable-handle"
+    data-scope="resizable"
+    data-part="handle"
     v-bind="forwardedProps"
     :class="cn(
       `

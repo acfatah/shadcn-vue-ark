@@ -22,7 +22,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 <template>
   <Splitter.Root
     v-slot="slotProps"
-    data-slot="resizable-panel-group"
+    data-scope="resizable"
+    data-part="panel-group"
     v-bind="forwardedProps"
     :class="cn(
       `
