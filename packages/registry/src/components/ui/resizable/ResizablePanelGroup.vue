@@ -25,6 +25,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     data-scope="resizable"
     data-part="panel-group"
     v-bind="forwardedProps"
+    :panels="props.panels"
     :class="cn(
       `
         flex size-full

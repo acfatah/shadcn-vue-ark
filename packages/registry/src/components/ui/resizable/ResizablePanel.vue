@@ -21,6 +21,7 @@ const { forwardRef } = useForwardExpose()
 
 <template>
   <Splitter.Panel
+    :id="props.id"
     :ref="forwardRef"
     v-slot="slotProps"
     data-scope="resizable"
