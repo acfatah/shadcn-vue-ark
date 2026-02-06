@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import type { PaginationNextTriggerProps } from '@ark-ui/vue/pagination'
+import type { HTMLAttributes } from 'vue'
+
+import { Pagination } from '@ark-ui/vue/pagination'
+import { reactiveOmit } from '@vueuse/core'
+import { ChevronRightIcon } from 'lucide-vue-next'
+import { computed } from 'vue'
+
+import type { ButtonVariants } from '@/components/ui/button'
+
+import { buttonVariants } from '@/components/ui/button'
+import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { cn } from '@/lib/utils'
+
+import { usePaginationOptions } from './context'
+
+interface Props extends PaginationNextTriggerProps {
+  size?: ButtonVariants['size']
+  class?: HTMLAttributes['class']
+}
+
+const props = defineProps<Props>()
+
+const options = usePaginationOptions(computed(() => ({
+  itemSize: 'icon',
+  controlSize: 'md',
+})))
+
+const resolvedSize = computed(() => props.size ?? options.value.controlSize ?? 'md')
+
+const delegatedProps = reactiveOmit(props, ['class', 'size'])
+const forwardedProps = useForwardPropsEmits(delegatedProps)
+</script>
+
+<template>
+  <Pagination.NextTrigger
+    data-scope="pagination"
+    data-part="next-trigger"
+    :class="cn(
+      buttonVariants({
+        variant: 'ghost',
+        size: resolvedSize,
+      }),
+      `
+        gap-1 px-2.5
+        sm:pr-2.5
+      `,
+      props.class,
+    )"
+    v-bind="forwardedProps"
+  >
+    <slot>
+      <span
+        class="
+          hidden
+          sm:block
+        "
+      >Next</span>
+      <ChevronRightIcon />
+    </slot>
+  </Pagination.NextTrigger>
+</template>
