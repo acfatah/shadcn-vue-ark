@@ -1,5 +1,9 @@
+import { existsSync } from 'node:fs'
 import { parseSync } from 'oxc-parser'
+import { basename, dirname, extname, normalize, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
+
+import { COMPOSABLES_PATH, LIB_PATH } from './paths'
 
 /**
  * Whitelisted dependencies and their peer dependencies in the form of:
@@ -26,6 +30,61 @@ export const DEPENDENCIES: ReadonlyMap<string, readonly string[]> = new Map<stri
 
 export const REGISTRY_DEPENDENCY = '@/'
 
+const REGISTRY_RELATIVE_EXTENSIONS = ['.ts', '.vue']
+
+function getKebabName(value: string) {
+  return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
+}
+
+function resolveRegistryDependency(
+  importer: string,
+  source: string,
+  registryPath: string,
+) {
+  if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
+    const componentName = source.split('/').slice(-1)[0] ?? ''
+    const kebabName = getKebabName(componentName)
+
+    return `${registryPath}/${kebabName}.json`
+  }
+
+  if (!source.startsWith('./') && !source.startsWith('../'))
+    return null
+
+  const importerDir = dirname(importer)
+  const candidates: string[] = []
+  const hasExt = Boolean(extname(source))
+
+  if (hasExt) {
+    candidates.push(resolve(importerDir, source))
+  }
+  else {
+    REGISTRY_RELATIVE_EXTENSIONS.forEach((ext) => {
+      candidates.push(resolve(importerDir, `${source}${ext}`))
+      candidates.push(resolve(importerDir, source, `index${ext}`))
+    })
+  }
+
+  const resolvedPath = candidates.find(candidate => existsSync(candidate))
+  if (!resolvedPath)
+    return null
+
+  const normalizedPath = normalize(resolvedPath)
+  const normalizedComposables = normalize(COMPOSABLES_PATH)
+  const normalizedLib = normalize(LIB_PATH)
+
+  if (
+    normalizedPath.startsWith(normalizedComposables)
+    || normalizedPath.startsWith(normalizedLib)
+  ) {
+    const name = getKebabName(basename(resolvedPath).replace(/\.[^.]+$/, ''))
+
+    return `${registryPath}/${name}.json`
+  }
+
+  return null
+}
+
 export async function getFileDependencies(
   filename: string,
   sourceCode: string,
@@ -45,13 +104,9 @@ export async function getFileDependencies(
       peerDeps.forEach(dep => dependencies.add(dep))
     }
 
-    if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
-      const componentName = source.split('/').slice(-1)[0] ?? ''
-      const kebabName = componentName.replace(/\B([A-Z][a-z])/g, `-$1`).toLowerCase()
-      const registryUrl = `${registryPath}/${kebabName}.json`
-
+    const registryUrl = resolveRegistryDependency(filename, source, registryPath)
+    if (registryUrl)
       registryDependencies.add(registryUrl)
-    }
   }
 
   if (filename.endsWith('.vue')) {
