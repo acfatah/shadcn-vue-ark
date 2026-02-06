@@ -5,6 +5,8 @@ import { html } from 'common-tags'
 import { Pagination } from '@/components/ui/pagination'
 import { registryItem } from '@/components/ui/pagination/_registry'
 
+import IconsOnlyStory from './IconsOnlyStory.vue'
+import IconsOnlySource from './IconsOnlyStory.vue?raw'
 import PaginationDefaultStory from './PaginationDefaultStory.vue'
 import PaginationDefaultSource from './PaginationDefaultStory.vue?raw'
 
@@ -43,6 +45,28 @@ export const Default: Story = {
 
     template: html`
       <PaginationDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const IconsOnly: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: IconsOnlySource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { IconsOnlyStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <IconsOnlyStory v-bind="args" />
     `,
   }),
 }
