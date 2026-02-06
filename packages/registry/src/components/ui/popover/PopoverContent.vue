@@ -23,7 +23,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
 <template>
   <Teleport to="body" defer>
-    <Popover.Positioner class="w-(--reference-width)">
+    <Popover.Positioner class="-mt-1.5 w-(--reference-width)">
       <Popover.Content
         v-bind="{ ...$attrs, ...forwardedProps }"
         data-scope="popover"
