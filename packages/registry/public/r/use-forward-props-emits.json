@@ -2,7 +2,10 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-forward-props-emits",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-emits-as-props.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props.json"
+  ],
   "files": [
     {
       "path": "src/composables/use-forward-props-emits.ts",

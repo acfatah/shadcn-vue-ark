@@ -22,32 +22,32 @@
     },
     {
       "path": "src/components/ui/item/ItemMedia.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ItemMediaVariants } from '.'\n\nimport { itemMediaVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  variant?: ItemMediaVariants['variant']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-media\"\n    :data-variant=\"props.variant\"\n    :class=\"cn(\n      itemMediaVariants({ variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ItemMediaVariants } from '.'\n\nimport { itemMediaVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  variant?: ItemMediaVariants['variant']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"media\"\n    :data-variant=\"props.variant\"\n    :class=\"cn(\n      itemMediaVariants({ variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemTitle.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-title\"\n    :class=\"cn(\n      'flex w-fit items-center gap-2 text-sm/snug font-medium',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"title\"\n    :class=\"cn(\n      'flex w-fit items-center gap-2 text-sm/snug font-medium',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from '@/components/ui/separator'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SeparatorProps>()\n</script>\n\n<template>\n  <Separator\n    data-slot=\"item-separator\"\n    orientation=\"horizontal\"\n    :class=\"cn(\n      'my-0',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { SeparatorProps } from '@/components/ui/separator'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<SeparatorProps>()\n</script>\n\n<template>\n  <Separator\n    data-scope=\"item\"\n    data-part=\"separator\"\n    orientation=\"horizontal\"\n    :class=\"cn(\n      'my-0',\n      props.class,\n    )\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemFooter.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-footer\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"footer\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemContent.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-content\"\n    :class=\"cn(\n      `\n        flex flex-1 flex-col gap-1\n        [&+[data-slot=item-content]]:flex-none\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"content\"\n    :class=\"cn(\n      `\n        flex flex-1 flex-col gap-1\n        [&+[data-scope=item][data-part=content]]:flex-none\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemActions.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-actions\"\n    :class=\"cn(\n      'flex items-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"actions\"\n    :class=\"cn(\n      'flex items-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "path": "src/components/ui/item/ItemHeader.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-slot=\"item-header\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"header\"\n    :class=\"cn(\n      'flex basis-full items-center justify-between gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "path": "src/components/ui/item/ItemGroup.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    role=\"list\"\n    data-slot=\"item-group\"\n    :class=\"cn(\n      'group/item-group flex flex-col',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <div\n    role=\"list\"\n    data-scope=\"item\"\n    data-part=\"group\"\n    :class=\"cn(\n      'group/item-group flex flex-col',\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/ItemDescription.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <p\n    data-slot=\"item-description\"\n    :class=\"cn(\n      'line-clamp-2 text-sm/normal font-normal text-balance text-muted-foreground',\n      `\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </p>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <p\n    data-scope=\"item\"\n    data-part=\"description\"\n    :class=\"cn(\n      'line-clamp-2 text-sm/normal font-normal text-balance text-muted-foreground',\n      `\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </p>\n</template>\n",
       "type": "registry:ui"
     },
     {

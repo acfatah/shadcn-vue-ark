@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-forward-expose",
   "dependencies": [],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/unref-element.json"
+  ],
   "files": [
     {
       "path": "src/composables/use-forward-expose.ts",

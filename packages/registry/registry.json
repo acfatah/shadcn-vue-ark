@@ -605,6 +605,166 @@
       }
     },
     {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Autocomplete input with a list of suggestions.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/combobox\n- shadcn/ui: https://ui.shadcn.com/docs/components/combobox",
+      "dependencies": [
+        "@vueuse/core",
+        "lucide-vue-next",
+        "@ark-ui/vue"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-expose.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/combobox/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxViewport.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxItemIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxAnchor.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxGroup.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command menu for search and quick actions.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/listbox\n- shadcn/ui: https://ui.shadcn.com/docs/components/command",
+      "dependencies": [
+        "@vueuse/core",
+        "lucide-vue-next",
+        "@ark-ui/vue",
+        "reka-ui"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-expose.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dialog.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command/CommandRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandDialog.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/use-forward-props-emits.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-props-emits.ts"
+        },
+        {
+          "path": "src/composables/use-forward-expose.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-expose.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/command/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandEmpty.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "create-context",
       "type": "registry:file",
       "dependencies": [],
@@ -1516,6 +1676,59 @@
       ]
     },
     {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/splitter\n- shadcn/ui: https://ui.shadcn.com/docs/components/resizable",
+      "dependencies": [
+        "@vueuse/core",
+        "lucide-vue-next",
+        "@ark-ui/vue"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-expose.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/resizable/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/resizable/ResizablePanelGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/resizable/ResizableHandle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/resizable/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/resizable/ResizablePanel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/use-forward-expose.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-expose.ts"
+        },
+        {
+          "path": "src/composables/use-forward-props-emits.ts",
+          "type": "registry:file",
+          "target": "src/composables/use-forward-props-emits.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        }
+      ]
+    },
+    {
       "name": "run-if-fn",
       "type": "registry:file",
       "dependencies": [],
@@ -2022,9 +2235,10 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/toggle.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/toggle.json"
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
       ],
       "files": [
         {
@@ -2052,6 +2266,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/toggle-group/context.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2145,7 +2363,9 @@
       "name": "use-forward-expose",
       "type": "registry:file",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/unref-element.json"
+      ],
       "files": [
         {
           "path": "src/composables/use-forward-expose.ts",
@@ -2171,7 +2391,10 @@
       "name": "use-forward-props-emits",
       "type": "registry:file",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-emits-as-props.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props.json"
+      ],
       "files": [
         {
           "path": "src/composables/use-forward-props-emits.ts",
@@ -2184,7 +2407,9 @@
       "name": "use-render-strategy",
       "type": "registry:file",
       "dependencies": [],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
+      ],
       "files": [
         {
           "path": "src/composables/use-render-strategy.ts",
