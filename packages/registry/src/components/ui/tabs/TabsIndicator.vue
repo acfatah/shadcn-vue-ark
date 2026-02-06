@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabListProps } from '@ark-ui/vue/tabs'
+import type { TabIndicatorProps } from '@ark-ui/vue/tabs'
 import type { HTMLAttributes } from 'vue'
 
 import { Tabs } from '@ark-ui/vue/tabs'
@@ -9,10 +9,9 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
-import { tabsListVariants } from '.'
 import { useTabsOptions } from './context'
 
-interface Props extends TabListProps {
+interface Props extends TabIndicatorProps {
   class?: HTMLAttributes['class']
 }
 
@@ -27,15 +26,19 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <Tabs.List
+  <Tabs.Indicator
     data-scope="tabs"
-    data-part="list"
+    data-part="indicator"
     v-bind="forwardedProps"
     :class="cn(
-      tabsListVariants({ variant: options.variant }),
+      'pointer-events-none absolute z-0 hidden',
+      'transition-[width,height,left,top] duration-200 ease-out',
+      `data-[orientation=horizontal]:h-(--height) data-[orientation=horizontal]:w-(--width)`,
+      'data-[orientation=vertical]:h-(--height) data-[orientation=vertical]:w-(--width)',
+      options.variant === 'underline'
+        ? 'bottom-0 block h-0.5 border-b-2 border-primary'
+        : 'rounded-md bg-muted',
       props.class,
     )"
-  >
-    <slot />
-  </Tabs.List>
+  />
 </template>

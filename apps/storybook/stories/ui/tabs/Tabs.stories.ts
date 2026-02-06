@@ -7,6 +7,8 @@ import { registryItem } from '@/components/ui/tabs/_registry'
 
 import TabsDefaultStory from './TabsDefaultStory.vue'
 import TabsDefaultSource from './TabsDefaultStory.vue?raw'
+import TabsUnderlineStory from './TabsUnderlineStory.vue'
+import TabsUnderlineSource from './TabsUnderlineStory.vue?raw'
 
 const meta = {
   title: 'Components/Tabs',
@@ -43,6 +45,28 @@ export const Default: Story = {
 
     template: html`
       <TabsDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Underline: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TabsUnderlineSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { TabsUnderlineStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TabsUnderlineStory v-bind="args" />
     `,
   }),
 }

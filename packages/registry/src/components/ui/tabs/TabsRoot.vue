@@ -4,18 +4,32 @@ import type { HTMLAttributes } from 'vue'
 
 import { Tabs } from '@ark-ui/vue/tabs'
 import { reactiveOmit } from '@vueuse/core'
+import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
 import { cn } from '@/lib/utils'
 
+import type { TabsVariant } from '.'
+
+import { TabsOptionsProvider } from './context'
+
 interface Props extends TabsRootProps {
   class?: HTMLAttributes['class']
+  variant?: TabsVariant
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'pill',
+})
 const emit = defineEmits<TabsRootEmits>()
 
-const delegatedProps = reactiveOmit(props, 'class')
+const options = computed(() => ({
+  variant: props.variant,
+}))
+
+TabsOptionsProvider(options)
+
+const delegatedProps = reactiveOmit(props, ['class', 'variant'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 </script>
 
@@ -24,9 +38,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     v-slot="slotProps"
     data-scope="tabs"
     data-part="root"
+    :data-variant="props.variant"
     v-bind="forwardedProps"
     :class="cn(
-      'flex flex-col gap-2',
+      'group/tabs flex flex-col gap-2',
       props.class,
     )"
   >

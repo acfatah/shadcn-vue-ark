@@ -1,4 +1,5 @@
 import TabsContent from './TabsContent.vue'
+import TabsIndicator from './TabsIndicator.vue'
 import TabsList from './TabsList.vue'
 import TabsRoot from './TabsRoot.vue'
 import TabsTrigger from './TabsTrigger.vue'
@@ -18,6 +19,11 @@ export const Tabs = {
    * TabsTrigger component
    */
   Trigger: TabsTrigger,
+
+  /**
+   * TabsIndicator component
+   */
+  Indicator: TabsIndicator,
 
   /**
    * TabsContent component
