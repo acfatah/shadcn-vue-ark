@@ -24,14 +24,19 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 
 <template>
   <Teleport to="body" defer>
-    <Combobox.Positioner>
+    <Combobox.Positioner
+      class="
+        -mt-1.5 w-(--available-width) max-w-(--available-width)
+        md:w-64 md:min-w-64
+      "
+    >
       <Combobox.Content
         data-scope="combobox"
         data-part="content"
         v-bind="{ ...$attrs, ...forwardedProps }"
         :class="cn(
           `
-            z-50 w-[200px] origin-(--transform-origin) overflow-hidden rounded-md border bg-popover
+            z-50 w-full origin-(--transform-origin) overflow-hidden rounded-md border bg-popover
             text-popover-foreground shadow-md outline-none
           `,
           `

@@ -23,8 +23,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-part="control"
     v-bind="forwardedProps"
     :class="cn(
-      'w-[200px]',
-      props.class
+      'w-full',
+      props.class,
     )"
   >
     <slot />
