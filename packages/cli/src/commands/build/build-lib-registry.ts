@@ -3,14 +3,10 @@ import type { RegistryItem } from 'shadcn/schema'
 import { basename } from 'node:path'
 import { join, relative } from 'pathe'
 
-import { readDirectory, readFile } from '@/utils'
+import { getKebabName, readDirectory, readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { LIB_PATH, REGISTRY_PATH } from './paths'
-
-function getKebabName(value: string) {
-  return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
-}
 
 function isValidLibFile(filename: string) {
   return filename.endsWith('.ts') && !filename.endsWith('.spec.ts')

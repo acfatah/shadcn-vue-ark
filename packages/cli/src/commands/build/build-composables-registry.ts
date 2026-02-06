@@ -4,14 +4,10 @@ import { existsSync } from 'node:fs'
 import { basename } from 'node:path'
 import { join, relative } from 'pathe'
 
-import { readFile } from '@/utils'
+import { getKebabName, readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { COMPOSABLES_PATH, REGISTRY_PATH } from './paths'
-
-function getKebabName(value: string) {
-  return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
-}
 
 function resolveComposablePath(source: string) {
   const pathWithExt = source.endsWith('.ts')

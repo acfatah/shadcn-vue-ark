@@ -3,6 +3,8 @@ import { parseSync } from 'oxc-parser'
 import { basename, dirname, extname, normalize, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
 
+import { getKebabName } from '@/utils'
+
 import { COMPOSABLES_PATH, LIB_PATH } from './paths'
 
 /**
@@ -31,10 +33,6 @@ export const DEPENDENCIES: ReadonlyMap<string, readonly string[]> = new Map<stri
 export const REGISTRY_DEPENDENCY = '@/'
 
 const REGISTRY_RELATIVE_EXTENSIONS = ['.ts', '.vue']
-
-function getKebabName(value: string) {
-  return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
-}
 
 function resolveRegistryDependency(
   importer: string,

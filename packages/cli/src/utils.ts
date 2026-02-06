@@ -38,3 +38,7 @@ export async function removeFile(filename: string) {
 export async function rimraf(path: string) {
   await Bun.$`rm -rf ${path}`
 }
+
+export function getKebabName(value: string) {
+  return value.replace(/\B([A-Z][a-z])/g, '-$1').toLowerCase()
+}
