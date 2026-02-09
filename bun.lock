@@ -25,6 +25,7 @@
         "@fontsource-variable/geist": "^5.2.8",
         "@fontsource-variable/geist-mono": "^5.2.7",
         "@iconify/vue": "^5.0.0",
+        "@internationalized/date": "^3.11.0",
         "@tailwindcss/vite": "^4.1.18",
         "@vueuse/components": "^14.1.0",
         "@vueuse/core": "^14.1.0",
@@ -131,6 +132,7 @@
         "@fontsource-variable/geist": "^5.2.8",
         "@fontsource-variable/geist-mono": "^5.2.7",
         "@iconify/vue": "^5.0.0",
+        "@internationalized/date": "^3.11.0",
         "@tanstack/vue-table": "^8.21.3",
         "@vueuse/components": "^14.1.0",
         "@vueuse/core": "^14.1.0",
@@ -509,7 +511,7 @@
 
     "@inquirer/type": ["@inquirer/type@3.0.10", "", { "peerDependencies": { "@types/node": ">=18" }, "optionalPeers": ["@types/node"] }, "sha512-BvziSRxfz5Ov8ch0z/n3oijRSEcEsHnhggm4xFZe93DHcUCTlutlq9Ox4SVENAfcRD22UQq7T/atg9Wr3k09eA=="],
 
-    "@internationalized/date": ["@internationalized/date@3.10.0", "", { "dependencies": { "@swc/helpers": "^0.5.0" } }, "sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw=="],
+    "@internationalized/date": ["@internationalized/date@3.11.0", "", { "dependencies": { "@swc/helpers": "^0.5.0" } }, "sha512-BOx5huLAWhicM9/ZFs84CzP+V3gBW6vlpM02yzsdYC7TGlZJX1OJiEEHcSayF00Z+3jLlm4w79amvSt6RqKN3Q=="],
 
     "@internationalized/number": ["@internationalized/number@3.6.5", "", { "dependencies": { "@swc/helpers": "^0.5.0" } }, "sha512-6hY4Kl4HPBvtfS62asS/R22JzNNy8vi/Ssev7x6EobfCp+9QIB2hKvI2EtbdJ0VSQacxVNtqhE/NmF/NZ0gm6g=="],
 
@@ -2728,6 +2730,8 @@
     "@antfu/install-pkg/package-manager-detector": ["package-manager-detector@1.5.0", "", {}, "sha512-uBj69dVlYe/+wxj8JOpr97XfsxH/eumMt6HqjNTmJDf/6NO9s+0uxeOneIz3AsPt2m6y9PqzDzd3ATcU17MNfw=="],
 
     "@antfu/ni/package-manager-detector": ["package-manager-detector@1.5.0", "", {}, "sha512-uBj69dVlYe/+wxj8JOpr97XfsxH/eumMt6HqjNTmJDf/6NO9s+0uxeOneIz3AsPt2m6y9PqzDzd3ATcU17MNfw=="],
+
+    "@ark-ui/vue/@internationalized/date": ["@internationalized/date@3.10.0", "", { "dependencies": { "@swc/helpers": "^0.5.0" } }, "sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw=="],
 
     "@ark-ui/vue/@zag-js/core": ["@zag-js/core@1.31.1", "", { "dependencies": { "@zag-js/dom-query": "1.31.1", "@zag-js/utils": "1.31.1" } }, "sha512-RaMJeqtjxG6k7iFD3WQnlyFJVT3yfQN+pJygAHH37GsMtiNzQQJOoesjb0LV9T27jwMXeNUzrh3MSDr1/0yVcQ=="],
 
