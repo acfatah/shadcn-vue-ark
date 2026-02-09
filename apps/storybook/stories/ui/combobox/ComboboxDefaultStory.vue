@@ -30,20 +30,39 @@ const frameworks = [
 ]
 
 const value = ref<string[]>([])
+const inputValue = ref('')
 
-const collection = createListCollection({
-  items: frameworks,
+const filteredFrameworks = computed(() => {
+  const term = inputValue.value.trim().toLowerCase()
+
+  if (!term)
+    return frameworks
+
+  return frameworks.filter(framework =>
+    framework.label.toLowerCase().includes(term)
+    || framework.value.toLowerCase().includes(term),
+  )
 })
+
+const collection = computed(() => createListCollection({
+  items: filteredFrameworks.value,
+}))
 
 const selectedFramework = computed(() =>
   frameworks.find(framework => framework.value === value.value[0]),
 )
+
+function handleInputValueChange(details: { inputValue: string }) {
+  inputValue.value = details.inputValue
+}
 </script>
 
 <template>
   <Combobox.Root
     v-model="value"
+    :input-value="inputValue"
     :collection="collection"
+    @input-value-change="handleInputValueChange"
   >
     <Combobox.Anchor>
       <Combobox.Trigger as-child>
@@ -63,7 +82,7 @@ const selectedFramework = computed(() =>
         <Combobox.Empty>No framework found.</Combobox.Empty>
         <Combobox.Group>
           <Combobox.Item
-            v-for="framework in frameworks"
+            v-for="framework in collection.items"
             :key="framework.value"
             :item="framework"
           >
