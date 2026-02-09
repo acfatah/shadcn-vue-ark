@@ -24,6 +24,7 @@
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@iconify/vue": "^5.0.0",
+    "@internationalized/date": "^3.11.0",
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/components": "^14.1.0",
     "@vueuse/core": "^14.1.0",
