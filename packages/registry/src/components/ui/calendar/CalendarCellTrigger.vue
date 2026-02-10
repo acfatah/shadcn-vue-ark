@@ -6,7 +6,7 @@ import { DatePicker } from '@ark-ui/vue/date-picker'
 import { reactiveOmit } from '@vueuse/core'
 
 import { buttonVariants } from '@/components/ui/button'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props extends DatePickerTableCellTriggerProps {

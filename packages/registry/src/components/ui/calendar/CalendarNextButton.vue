@@ -7,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { ChevronRight } from 'lucide-vue-next'
 
 import { buttonVariants } from '@/components/ui/button'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props extends DatePickerNextTriggerProps {

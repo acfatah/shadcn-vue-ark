@@ -1,4 +1,3 @@
-import CalendarRoot from './CalendarRoot.vue'
 import CalendarCell from './CalendarCell.vue'
 import CalendarCellTrigger from './CalendarCellTrigger.vue'
 import CalendarGrid from './CalendarGrid.vue'
@@ -10,6 +9,7 @@ import CalendarHeader from './CalendarHeader.vue'
 import CalendarHeading from './CalendarHeading.vue'
 import CalendarNextButton from './CalendarNextButton.vue'
 import CalendarPrevButton from './CalendarPrevButton.vue'
+import CalendarRoot from './CalendarRoot.vue'
 
 export const Calendar = {
   /**
