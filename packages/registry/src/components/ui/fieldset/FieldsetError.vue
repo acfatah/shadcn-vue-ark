@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { Fieldset } from '@ark-ui/vue/fieldset'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 type Props = FieldsetErrorTextProps & {

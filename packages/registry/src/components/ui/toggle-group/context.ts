@@ -2,7 +2,7 @@ import type { ComputedRef } from 'vue'
 
 import type { ToggleVariants } from '@/components/ui/toggle'
 
-import { createContext } from '@/composables/create-context'
+import { createContext } from '@/composables/createContext'
 
 export interface ToggleGroupOptions {
   variant?: ToggleVariants['variant']

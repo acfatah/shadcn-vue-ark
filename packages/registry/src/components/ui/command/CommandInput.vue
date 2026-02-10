@@ -6,7 +6,7 @@ import { Listbox } from '@ark-ui/vue/listbox'
 import { reactiveOmit } from '@vueuse/core'
 import { Search } from 'lucide-vue-next'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import { useCommand } from './context'

@@ -5,7 +5,7 @@ import { reactiveOmit, useVModel } from '@vueuse/core'
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 export interface Props {

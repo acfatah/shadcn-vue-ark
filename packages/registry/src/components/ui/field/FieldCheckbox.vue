@@ -7,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 type Props = CheckboxRootProps & {
   class?: HTMLAttributes['class']

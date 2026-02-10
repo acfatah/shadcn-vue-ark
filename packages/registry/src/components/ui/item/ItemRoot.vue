@@ -5,7 +5,7 @@ import type { Component, HTMLAttributes } from 'vue'
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import type { ItemVariants } from '.'

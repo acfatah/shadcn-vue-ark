@@ -10,7 +10,7 @@ import { computed } from 'vue'
 import type { ButtonVariants } from '@/components/ui/button'
 
 import { buttonVariants } from '@/components/ui/button'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import { usePaginationOptions } from './context'

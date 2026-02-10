@@ -1,7 +1,7 @@
 import type { CollectionItem, ListCollection } from '@ark-ui/vue/listbox'
 import type { ComputedRef, Ref } from 'vue'
 
-import { createContext } from '@/composables/create-context'
+import { createContext } from '@/composables/createContext'
 
 export interface CommandItemData extends CollectionItem {
   value: string

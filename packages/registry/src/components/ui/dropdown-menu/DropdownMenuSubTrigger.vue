@@ -6,8 +6,8 @@ import { Menu } from '@ark-ui/vue/menu'
 import { reactiveOmit } from '@vueuse/core'
 import { ChevronRightIcon } from 'lucide-vue-next'
 
-import { useForwardExpose } from '@/composables/use-forward-expose'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardExpose } from '@/composables/useForwardExpose'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props extends MenuTriggerItemProps {

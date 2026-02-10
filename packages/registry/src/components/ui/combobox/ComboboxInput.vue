@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { Combobox } from '@ark-ui/vue/combobox'
 import { SearchIcon } from 'lucide-vue-next'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 defineOptions({

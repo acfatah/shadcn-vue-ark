@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { Toggle } from '@ark-ui/vue/toggle'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import type { ToggleVariants } from '.'

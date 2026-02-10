@@ -5,7 +5,7 @@ import type {
 } from '@ark-ui/vue/select'
 import type { ComputedRef } from 'vue'
 
-import { createContext } from '@/composables/create-context'
+import { createContext } from '@/composables/createContext'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends UseArkSelectProps<T> {

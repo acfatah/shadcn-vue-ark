@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { Checkbox } from '@ark-ui/vue/checkbox'
 
 import { Label } from '@/components/ui/label'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props extends CheckboxLabelProps {
   class?: HTMLAttributes['class']

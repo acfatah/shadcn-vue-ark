@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { Collapsible } from '@ark-ui/vue/collapsible'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props extends CollapsibleRootProps {
   class?: HTMLAttributes['class']

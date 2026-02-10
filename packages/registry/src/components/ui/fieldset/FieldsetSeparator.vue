@@ -7,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { computed, useSlots } from 'vue'
 
 import { Separator } from '@/components/ui/separator'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props extends PolymorphicProps {

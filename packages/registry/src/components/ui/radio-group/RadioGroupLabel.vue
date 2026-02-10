@@ -4,7 +4,7 @@ import { reactiveOmit } from '@vueuse/core'
 import type { LabelProps } from '@/components/ui/label'
 
 import { Label } from '@/components/ui/label'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 const props = defineProps<LabelProps>()

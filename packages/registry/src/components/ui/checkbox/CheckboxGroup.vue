@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { Checkbox } from '@ark-ui/vue/checkbox'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 // Unable to extend CheckboxGroupProps.
 // [@vue/compiler-sfc] Failed to resolve extends base type for Vue v3.3+

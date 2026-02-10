@@ -3,7 +3,7 @@ import type { MenuItemGroupProps } from '@ark-ui/vue/menu'
 
 import { Menu } from '@ark-ui/vue/menu'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props extends MenuItemGroupProps {}
 

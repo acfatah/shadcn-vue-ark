@@ -6,7 +6,7 @@ import { TagsInput } from '@ark-ui/vue/tags-input'
 import { reactiveOmit } from '@vueuse/core'
 import { X } from 'lucide-vue-next'
 
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
 
 interface Props extends TagsInputItemDeleteTriggerProps {

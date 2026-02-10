@@ -7,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { Input } from '@/components/ui/input'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 type Props = FieldTextareaProps & {
   class?: HTMLAttributes['class']

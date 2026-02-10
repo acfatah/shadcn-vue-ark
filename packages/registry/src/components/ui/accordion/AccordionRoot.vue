@@ -4,7 +4,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { Accordion } from '@ark-ui/vue/accordion'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props extends AccordionRootProps {
   class?: HTMLAttributes['class']

@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { ScrollArea } from '@ark-ui/vue/scroll-area'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import ScrollBar from './ScrollBar.vue'

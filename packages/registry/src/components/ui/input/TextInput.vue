@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { computed, ref } from 'vue'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 import type {
   Emits as PrimitiveInputEmits,

@@ -9,7 +9,7 @@ import {
 import { reactiveOmit } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import type { CommandItemData } from './context'

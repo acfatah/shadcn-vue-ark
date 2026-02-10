@@ -5,8 +5,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { Dynamic } from '@/composables/dynamic'
-import { useForwardExpose } from '@/composables/use-forward-expose'
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardExpose } from '@/composables/useForwardExpose'
+import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
 
 export interface Props {

@@ -5,7 +5,7 @@ import type { HTMLAttributes } from 'vue'
 import { TagsInput } from '@ark-ui/vue/tags-input'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardProps } from '@/composables/use-forward-props'
+import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
 
 interface Props extends TagsInputItemProps {

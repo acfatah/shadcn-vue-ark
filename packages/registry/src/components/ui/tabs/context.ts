@@ -1,6 +1,6 @@
 import type { ComputedRef } from 'vue'
 
-import { createContext } from '@/composables/create-context'
+import { createContext } from '@/composables/createContext'
 
 import type { TabsVariant } from '.'
 

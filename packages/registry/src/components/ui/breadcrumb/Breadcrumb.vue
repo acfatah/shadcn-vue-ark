@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props {
   class?: HTMLAttributes['class']

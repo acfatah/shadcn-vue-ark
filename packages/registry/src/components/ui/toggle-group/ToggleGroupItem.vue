@@ -9,7 +9,7 @@ import { computed } from 'vue'
 import type { ToggleVariants } from '@/components/ui/toggle'
 
 import { toggleVariants } from '@/components/ui/toggle'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import { useToggleGroupOptions } from './context'

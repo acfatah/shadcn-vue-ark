@@ -5,7 +5,7 @@ import { reactiveOmit, useVModel } from '@vueuse/core'
 import { CheckIcon, MinusIcon } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props {

@@ -6,7 +6,7 @@ import { Tabs } from '@ark-ui/vue/tabs'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import { useTabsOptions } from './context'

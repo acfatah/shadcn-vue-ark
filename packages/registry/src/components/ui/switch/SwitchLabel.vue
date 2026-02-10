@@ -6,7 +6,7 @@ import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
 
 import { Label } from '@/components/ui/label'
-import { useForwardPropsEmits } from '@/composables/use-forward-props-emits'
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 interface Props extends SwitchLabelProps {
   class?: HTMLAttributes['class']
