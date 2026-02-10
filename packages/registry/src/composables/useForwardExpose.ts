@@ -2,7 +2,7 @@ import type { ComponentPublicInstance } from 'vue'
 
 import { computed, getCurrentInstance, ref } from 'vue'
 
-import { unrefElement } from './unref-element'
+import { unrefElement } from './unrefElement'
 
 function isElement(el: any): el is Element {
   return Object.prototype.hasOwnProperty.call(el, 'nodeName') && typeof el.nodeName === 'string'
