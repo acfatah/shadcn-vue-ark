@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 
 import { useEmitAsProps } from './useEmitsAsProps'
-import { useForwardProps } from './use-forward-props'
+import { useForwardProps } from './useForwardProps'
 
 /**
  * The function `useForwardPropsEmits` takes in props and an optional emit function,
