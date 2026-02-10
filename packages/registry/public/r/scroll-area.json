@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "title": "Scroll Area",
+  "description": "Augments native scroll functionality for custom, cross-browser styling.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/scroll-area\n- shadcn/ui: https://ui.shadcn.com/docs/components/scroll-area",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/scroll-area/namespace.ts",
+      "content": "import ScrollAreaRoot from './ScrollArea.vue'\nimport ScrollBar from './ScrollBar.vue'\n\nexport const ScrollArea = {\n  /** ScrollArea root provider */\n  Root: ScrollAreaRoot,\n\n  /** ScrollArea scrollbar */\n  Scrollbar: ScrollBar,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/scroll-area/index.ts",
+      "content": "export { ScrollArea } from './namespace'\nexport { default as ScrollAreaRoot } from './ScrollArea.vue'\nexport { default as ScrollBar } from './ScrollBar.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/scroll-area/ScrollBar.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ScrollAreaScrollbarProps } from '@ark-ui/vue/scroll-area'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ScrollArea } from '@ark-ui/vue/scroll-area'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends ScrollAreaScrollbarProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  orientation: 'vertical',\n})\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ScrollArea.Scrollbar\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex touch-none p-px transition-colors select-none',\n      props.orientation === 'vertical'\n        && 'h-full w-2.5 border-l border-l-transparent',\n      props.orientation === 'horizontal'\n        && 'h-2.5 flex-col border-t border-t-transparent',\n      props.class,\n    )\"\n  >\n    <ScrollArea.Thumb\n      class=\"relative flex-1 rounded-full bg-border\"\n    />\n  </ScrollArea.Scrollbar>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/scroll-area/ScrollArea.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ScrollAreaRootProps } from '@ark-ui/vue/scroll-area'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ScrollArea } from '@ark-ui/vue/scroll-area'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport ScrollBar from './ScrollBar.vue'\n\ninterface Props extends ScrollAreaRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ScrollArea.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn('relative overflow-hidden', props.class)\"\n  >\n    <ScrollArea.Viewport\n      class=\"\n        no-scrollbar size-full rounded-[inherit] transition-[color,box-shadow] outline-none\n        focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1\n      \"\n    >\n      <slot />\n    </ScrollArea.Viewport>\n    <ScrollBar />\n    <ScrollArea.Corner />\n  </ScrollArea.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

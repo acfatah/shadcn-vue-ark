@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "title": "Progress",
+  "description": "Displays an indicator showing the completion progress of a task, typically\ndisplayed as a progress bar.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/progress\n- shadcn/ui: https://ui.shadcn.com/docs/components/progress",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/progress/Progress.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { ProgressRootProps } from '@ark-ui/vue/progress'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Progress } from '@ark-ui/vue/progress'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends ProgressRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Progress.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'relative h-2 w-full overflow-hidden rounded-full bg-primary/20',\n      props.class,\n    )\"\n  >\n    <Progress.Track class=\"size-full\">\n      <Progress.Range class=\"size-full flex-1 bg-primary transition-all\" />\n    </Progress.Track>\n  </Progress.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/progress/index.ts",
+      "content": "export { default as Progress } from './Progress.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "title": "Tabs",
+  "description": "A set of layered sections of content—known as tab panels—that are displayed\none at a time.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tabs\n- shadcn/ui: https://ui.shadcn.com/docs/components/tabs",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/tabs/namespace.ts",
+      "content": "import TabsContent from './TabsContent.vue'\nimport TabsIndicator from './TabsIndicator.vue'\nimport TabsList from './TabsList.vue'\nimport TabsRoot from './TabsRoot.vue'\nimport TabsTrigger from './TabsTrigger.vue'\n\nexport const Tabs = {\n  /**\n   * TabsRoot component\n   */\n  Root: TabsRoot,\n\n  /**\n   * TabsList component\n   */\n  List: TabsList,\n\n  /**\n   * TabsTrigger component\n   */\n  Trigger: TabsTrigger,\n\n  /**\n   * TabsIndicator component\n   */\n  Indicator: TabsIndicator,\n\n  /**\n   * TabsContent component\n   */\n  Content: TabsContent,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/TabsRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TabsRootEmits, TabsRootProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport type { TabsVariant } from '.'\n\nimport { TabsOptionsProvider } from './context'\n\ninterface Props extends TabsRootProps {\n  class?: HTMLAttributes['class']\n  variant?: TabsVariant\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'pill',\n})\nconst emit = defineEmits<TabsRootEmits>()\n\nconst options = computed(() => ({\n  variant: props.variant,\n}))\n\nTabsOptionsProvider(options)\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Tabs.Root\n    v-slot=\"slotProps\"\n    data-scope=\"tabs\"\n    data-part=\"root\"\n    :data-variant=\"props.variant\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'group/tabs flex flex-col gap-2',\n      props.class,\n    )\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Tabs.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/TabsTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TabTriggerProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport { tabsTriggerVariants } from '.'\nimport { useTabsOptions } from './context'\n\ninterface Props extends TabTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst options = useTabsOptions(computed(() => ({\n  variant: 'pill',\n})))\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Tabs.Trigger\n    data-scope=\"tabs\"\n    data-part=\"trigger\"\n    v-bind=\"forwardedProps\"\n    :value=\"props.value\"\n    :class=\"cn(\n      tabsTriggerVariants({ variant: options.variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </Tabs.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/index.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport const tabsListVariants = cva(\n  'inline-flex w-fit items-center justify-center text-muted-foreground',\n  {\n    variants: {\n      variant: {\n        pill: 'h-9 rounded-lg bg-muted p-[3px]',\n        underline: `\n          relative h-10 w-full justify-start gap-2 border-b border-border bg-transparent p-0\n        `,\n      },\n    },\n    defaultVariants: {\n      variant: 'pill',\n    },\n  },\n)\n\nexport const tabsTriggerVariants = cva(\n  `\n    inline-flex flex-1 items-center justify-center gap-1.5 text-sm font-medium whitespace-nowrap\n    text-foreground transition-[color,box-shadow]\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    focus-visible:outline-1 focus-visible:outline-ring\n    disabled:pointer-events-none disabled:opacity-50\n    dark:text-muted-foreground\n    [&_svg]:pointer-events-none [&_svg]:shrink-0\n    [&_svg:not([class*='size-'])]:size-4\n  `,\n  {\n    variants: {\n      variant: {\n        pill: `\n          h-[calc(100%-1px)] rounded-md border border-transparent px-2 py-1\n          data-selected:bg-background data-selected:shadow-sm\n          dark:data-selected:border-input dark:data-selected:bg-input/30\n          dark:data-selected:text-foreground\n        `,\n        underline: `\n          h-10 rounded-none px-3 py-2\n          data-selected:border-b-primary data-selected:bg-transparent data-selected:text-foreground\n          data-selected:shadow-none\n        `,\n      },\n    },\n    defaultVariants: {\n      variant: 'pill',\n    },\n  },\n)\n\nexport type TabsListVariants = VariantProps<typeof tabsListVariants>\nexport type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>\nexport type TabsVariant = NonNullable<TabsListVariants['variant']>\n\nexport { Tabs } from './namespace'\nexport { default as TabsContent } from './TabsContent.vue'\nexport { default as TabsIndicator } from './TabsIndicator.vue'\nexport { default as TabsList } from './TabsList.vue'\nexport { default as TabsRoot } from './TabsRoot.vue'\nexport { default as TabsTrigger } from './TabsTrigger.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/TabsList.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TabListProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport { tabsListVariants } from '.'\nimport { useTabsOptions } from './context'\n\ninterface Props extends TabListProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst options = useTabsOptions(computed(() => ({\n  variant: 'pill',\n})))\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Tabs.List\n    data-scope=\"tabs\"\n    data-part=\"list\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      tabsListVariants({ variant: options.variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </Tabs.List>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/use-forward-props-emits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './use-emits-as-props'\nimport { useForwardProps } from './use-forward-props'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/use-forward-props-emits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/tabs/TabsContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TabContentProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends TabContentProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Tabs.Content\n    data-scope=\"tabs\"\n    data-part=\"content\"\n    v-bind=\"forwardedProps\"\n    :value=\"props.value\"\n    :class=\"cn(\n      'flex-1 outline-none',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Tabs.Content>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/TabsIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { TabIndicatorProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\nimport { useTabsOptions } from './context'\n\ninterface Props extends TabIndicatorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst options = useTabsOptions(computed(() => ({\n  variant: 'pill',\n})))\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Tabs.Indicator\n    data-scope=\"tabs\"\n    data-part=\"indicator\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'pointer-events-none absolute z-0 hidden',\n      'transition-[width,height,left,top] duration-200 ease-out',\n      `data-[orientation=horizontal]:h-(--height) data-[orientation=horizontal]:w-(--width)`,\n      'data-[orientation=vertical]:h-(--height) data-[orientation=vertical]:w-(--width)',\n      options.variant === 'underline'\n        ? 'bottom-0 block h-0.5 border-b-2 border-primary'\n        : 'rounded-md bg-muted',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/context.ts",
+      "content": "import type { ComputedRef } from 'vue'\n\nimport { createContext } from '@/composables/create-context'\n\nimport type { TabsVariant } from '.'\n\nexport interface TabsOptions {\n  variant?: TabsVariant\n}\n\nexport const [TabsOptionsProvider, useTabsOptions]\n  = createContext<ComputedRef<TabsOptions>>('TabsOptions')\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

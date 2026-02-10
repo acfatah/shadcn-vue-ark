@@ -397,6 +397,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/calendar/CalendarRoot.vue",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/calendar/namespace.ts",
         "type": "registry:ui"
       },
@@ -410,10 +414,6 @@
       },
       {
         "path": "src/components/ui/calendar/CalendarCellTrigger.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/calendar/Calendar.vue",
         "type": "registry:ui"
       },
       {
@@ -1565,6 +1565,86 @@
     ]
   },
   {
+    "name": "pagination",
+    "type": "registry:ui",
+    "title": "Pagination",
+    "description": "Pagination with page navigation, next and previous links.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pagination\n- shadcn/ui: https://ui.shadcn.com/docs/components/pagination",
+    "dependencies": [
+      "@vueuse/core",
+      "lucide-vue-next",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/pagination/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationPrevious.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationEllipsis.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationLast.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationNext.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/create-context.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationFirst.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/context.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pagination/PaginationItem.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "popover",
     "type": "registry:ui",
     "title": "Popover",
@@ -1608,6 +1688,38 @@
       },
       {
         "path": "src/components/ui/popover/PopoverTrigger.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "progress",
+    "type": "registry:ui",
+    "title": "Progress",
+    "description": "Displays an indicator showing the completion progress of a task, typically\ndisplayed as a progress bar.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/progress\n- shadcn/ui: https://ui.shadcn.com/docs/components/progress",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/progress/Progress.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/progress/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
         "type": "registry:ui"
       }
     ]
@@ -1753,6 +1865,46 @@
       {
         "path": "src/composables/run-if-fn.ts",
         "type": "registry:file"
+      }
+    ]
+  },
+  {
+    "name": "scroll-area",
+    "type": "registry:ui",
+    "title": "Scroll Area",
+    "description": "Augments native scroll functionality for custom, cross-browser styling.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/scroll-area\n- shadcn/ui: https://ui.shadcn.com/docs/components/scroll-area",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/scroll-area/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/scroll-area/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/scroll-area/ScrollBar.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/scroll-area/ScrollArea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -1993,6 +2145,38 @@
     ]
   },
   {
+    "name": "slider",
+    "type": "registry:ui",
+    "title": "Slider",
+    "description": "An input where the user selects a value from within a given range.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/slider\n- shadcn/ui: https://ui.shadcn.com/docs/components/slider",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/slider/Slider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/slider/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "sonner",
     "type": "registry:ui",
     "title": "Sonner",
@@ -2173,6 +2357,134 @@
       },
       {
         "path": "src/components/ui/table/TableCell.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tabs",
+    "type": "registry:ui",
+    "title": "Tabs",
+    "description": "A set of layered sections of content—known as tab panels—that are displayed\none at a time.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tabs\n- shadcn/ui: https://ui.shadcn.com/docs/components/tabs",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue",
+      "class-variance-authority"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/create-context.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/tabs/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/TabsRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/TabsTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/TabsList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/TabsContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/TabsIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/context.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "tags-input",
+    "type": "registry:ui",
+    "title": "Tags Input",
+    "description": "Tag inputs render tags inside an input, followed by an actual text input.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tags-input\n- shadcn/ui: https://shadcn-vue.com/docs/components/tags-input",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/tags-input/TagsInputItemPreview.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputItemInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/use-forward-props-emits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputItemText.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tags-input/TagsInputItemDelete.vue",
         "type": "registry:ui"
       }
     ]
