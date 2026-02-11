@@ -29,7 +29,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     :class="cn(
       buttonVariants({ variant: 'ghost' }),
       `
-        size-8 cursor-default p-0 font-normal
+        size-8 cursor-default p-0 font-normal text-foreground
         aria-selected:opacity-100
       `,
       `
