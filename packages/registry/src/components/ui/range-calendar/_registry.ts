@@ -8,7 +8,7 @@ export const registryItem = {
   title: 'Range Calendar',
 
   description: html`
-    A range calendar component that lets users select start and end dates.
+    Presents a calendar view tailored for selecting date ranges.
 
     References:
     - Headless API: https://ark-ui.com/docs/components/date-picker
