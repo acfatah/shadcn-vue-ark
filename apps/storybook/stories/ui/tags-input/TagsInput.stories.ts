@@ -7,6 +7,8 @@ import { registryItem } from '@/components/ui/tags-input/_registry'
 
 import TagsInputDefaultStory from './TagsInputDefaultStory.vue'
 import TagsInputDefaultSource from './TagsInputDefaultStory.vue?raw'
+import TagsInputWithListbox from './TagsInputWithListbox.vue'
+import TagsInputWithListboxSource from './TagsInputWithListbox.vue?raw'
 
 const meta = {
   title: 'Components/TagsInput',
@@ -43,6 +45,28 @@ export const Default: Story = {
 
     template: html`
       <TagsInputDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const WithListbox: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: TagsInputWithListboxSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { TagsInputWithListbox },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <TagsInputWithListbox v-bind="args" />
     `,
   }),
 }
