@@ -1,0 +1,6 @@
+export { default as InputOTPGroup } from './InputOTPGroup.vue'
+export { default as InputOTPHiddenInput } from './InputOTPHiddenInput.vue'
+export { default as InputOTPRoot } from './InputOTPRoot.vue'
+export { default as InputOTPSeparator } from './InputOTPSeparator.vue'
+export { default as InputOTPSlot } from './InputOTPSlot.vue'
+export { InputOTP } from './namespace'
