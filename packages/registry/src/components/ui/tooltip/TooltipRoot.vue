@@ -32,8 +32,6 @@ TooltipOptionsProvider(options)
 <template>
   <Tooltip.Root
     v-bind="forwardedProps"
-    data-scope="tooltip"
-    data-part="root"
     :class="props.class"
   >
     <slot />

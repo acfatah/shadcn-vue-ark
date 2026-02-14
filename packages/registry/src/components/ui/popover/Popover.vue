@@ -21,8 +21,6 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
   <Popover.Root
     v-bind="forwardedProps"
     :class="props.class"
-    data-scope="popover"
-    data-part="root"
   >
     <slot />
   </Popover.Root>

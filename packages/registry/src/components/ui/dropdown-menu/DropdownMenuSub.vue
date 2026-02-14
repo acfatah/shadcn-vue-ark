@@ -20,8 +20,6 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 <template>
   <Menu.Root
     v-bind="forwardedProps"
-    data-scope="dropdown-menu"
-    data-part="menu-sub"
   >
     <slot />
   </Menu.Root>

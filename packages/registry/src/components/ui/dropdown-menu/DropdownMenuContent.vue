@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 
 interface Props extends MenuContentProps {
   class?: HTMLAttributes['class']
+  align?: 'start' | 'center' | 'end'
   side?: 'top' | 'right' | 'bottom' | 'left'
 }
 
