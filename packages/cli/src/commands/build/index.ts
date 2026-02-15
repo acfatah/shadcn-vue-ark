@@ -12,6 +12,7 @@ import {
 } from '@/utils'
 
 import mainPackageJson from '../../../../../package.json'
+import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildComposablesRegistry } from './build-composables-registry'
 import { buildIndexJson } from './build-index-json'
@@ -20,6 +21,7 @@ import { buildStyles } from './build-styles'
 import { buildThemes } from './build-themes'
 import { buildUIRegistry } from './build-ui-registry'
 import {
+  BLOCKS_PATH,
   COMPONENTS_PATH,
   REGISTRY_OUTPUT_PATH,
   ROOT_PATH,
@@ -68,12 +70,29 @@ async function crawlAndBuildComponentsRegistry(registryBaseUrl: string) {
   return finalComponentsRegistry
 }
 
+async function crawlAndBuildBlocksRegistry(registryBaseUrl: string) {
+  const dir = await readDirectory(BLOCKS_PATH, { withFileTypes: true })
+  const blocksRegistry: RegistryItem[] = []
+
+  for (const dirent of dir) {
+    if (!dirent.isDirectory())
+      continue
+
+    const blockPath = join(BLOCKS_PATH, dirent.name)
+    const registryItem = await buildBlocksRegistry(blockPath, dirent.name, registryBaseUrl)
+    blocksRegistry.push(registryItem)
+  }
+
+  return blocksRegistry
+}
+
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
-  const [ui, components, hooks, libs] = await Promise.all([
+  const [ui, components, blocks, hooks, libs] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
     crawlAndBuildComponentsRegistry(registryBaseUrl),
+    crawlAndBuildBlocksRegistry(registryBaseUrl),
     buildComposablesRegistry(registryBaseUrl),
     buildLibRegistry(registryBaseUrl),
   ])
@@ -81,6 +100,7 @@ export async function buildRegistry(registryBaseUrl: string) {
   registry.push(
     ...ui,
     ...components,
+    ...blocks,
     ...hooks,
     ...libs,
   )
