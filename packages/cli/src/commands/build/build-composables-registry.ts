@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs'
 import { basename } from 'node:path'
 import { join, relative } from 'pathe'
 
-import { getKebabName, readFile } from '@/utils'
+import { readFile } from '@/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { COMPOSABLES_PATH, REGISTRY_PATH } from './paths'
@@ -46,7 +46,7 @@ export async function buildComposablesRegistry(registryBaseUrl: string) {
     if (!existsSync(filepath))
       continue
 
-    const name = getKebabName(basename(filepath).replace(/\.ts$/, ''))
+    const name = basename(filepath).replace(/\.ts$/, '')
     const relativePath = join('src', relative(REGISTRY_PATH, filepath))
     const fileSource = await readFile(filepath, { encoding: 'utf8' })
     const { dependencies, registryDependencies } = await getFileDependencies(

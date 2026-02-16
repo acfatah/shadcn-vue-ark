@@ -40,10 +40,15 @@ function resolveRegistryDependency(
   registryPath: string,
 ) {
   if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
-    const componentName = source.split('/').slice(-1)[0] ?? ''
-    const kebabName = getKebabName(componentName)
+    const sourcePath = source.replace(REGISTRY_DEPENDENCY, '')
+    const segments = sourcePath.split('/')
+    const componentName = segments.slice(-1)[0] ?? ''
+    const isComposable = segments[0] === 'composables'
+    const registryName = isComposable
+      ? componentName
+      : getKebabName(componentName)
 
-    return `${registryPath}/${kebabName}.json`
+    return `${registryPath}/${registryName}.json`
   }
 
   if (!source.startsWith('./') && !source.startsWith('../'))
@@ -75,7 +80,9 @@ function resolveRegistryDependency(
     normalizedPath.startsWith(normalizedComposables)
     || normalizedPath.startsWith(normalizedLib)
   ) {
-    const name = getKebabName(basename(resolvedPath).replace(/\.[^.]+$/, ''))
+    const baseName = basename(resolvedPath).replace(/\.[^.]+$/, '')
+    const isComposable = normalizedPath.startsWith(normalizedComposables)
+    const name = isComposable ? baseName : getKebabName(baseName)
 
     return `${registryPath}/${name}.json`
   }
