@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "use-emits-as-props",
+  "name": "useEmitsAsProps",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

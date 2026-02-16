@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "run-if-fn",
+  "name": "runIfFn",
   "dependencies": [],
   "registryDependencies": [],
   "files": [
