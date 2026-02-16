@@ -23,9 +23,9 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/composables/create-context.ts',
+      path: 'src/composables/createContext.ts',
       type: 'registry:file',
-      target: 'src/composables/create-context.ts',
+      target: 'src/composables/createContext.ts',
     },
     {
       path: 'src/composables/dynamic.ts',
