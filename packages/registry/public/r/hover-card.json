@@ -1,0 +1,54 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "title": "Hover Card",
+  "description": "For sighted users to preview content available behind a link.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/hover-card\n- shadcn/ui: https://ui.shadcn.com/docs/components/hover-card",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/hover-card/HoverCardContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardContentProps } from '@ark-ui/vue/hover-card'\nimport type { HTMLAttributes } from 'vue'\n\nimport { HoverCard } from '@ark-ui/vue/hover-card'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends HoverCardContentProps {\n  class?: HTMLAttributes['class']\n}\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Teleport to=\"body\" defer>\n    <HoverCard.Positioner>\n      <HoverCard.Content\n        v-bind=\"{ ...$attrs, ...forwardedProps }\"\n        data-scope=\"hover-card\"\n        data-part=\"content\"\n        :class=\"cn(\n          `\n            z-50 w-64 rounded-md border bg-popover p-4 text-popover-foreground shadow-md\n            outline-hidden\n          `,\n          `\n            data-[side=bottom]:slide-in-from-top-2\n            data-[side=left]:slide-in-from-right-2\n            data-[side=right]:slide-in-from-left-2\n            data-[side=top]:slide-in-from-bottom-2\n            data-[state=closed]:animate-out data-[state=closed]:fade-out-0\n            data-[state=closed]:zoom-out-95\n            data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95\n          `,\n          props.class,\n        )\"\n      >\n        <slot />\n      </HoverCard.Content>\n    </HoverCard.Positioner>\n  </Teleport>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/hover-card/namespace.ts",
+      "content": "import HoverCardContent from './HoverCardContent.vue'\nimport HoverCardRoot from './HoverCardRoot.vue'\nimport HoverCardTrigger from './HoverCardTrigger.vue'\n\nexport const HoverCard = {\n  /**\n   * HoverCardRoot component\n   */\n  Root: HoverCardRoot,\n\n  /**\n   * HoverCardTrigger component\n   */\n  Trigger: HoverCardTrigger,\n\n  /**\n   * HoverCardContent component\n   */\n  Content: HoverCardContent,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/hover-card/HoverCardRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardRootEmits, HoverCardRootProps } from '@ark-ui/vue/hover-card'\nimport type { HTMLAttributes } from 'vue'\n\nimport { HoverCard } from '@ark-ui/vue/hover-card'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ninterface Props extends HoverCardRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<HoverCardRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <HoverCard.Root\n    v-bind=\"forwardedProps\"\n    data-scope=\"hover-card\"\n    data-part=\"root\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </HoverCard.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/hover-card/HoverCardTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardTriggerProps } from '@ark-ui/vue/hover-card'\nimport type { HTMLAttributes } from 'vue'\n\nimport { HoverCard } from '@ark-ui/vue/hover-card'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ninterface Props extends HoverCardTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <HoverCard.Trigger\n    v-bind=\"forwardedProps\"\n    data-scope=\"hover-card\"\n    data-part=\"trigger\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </HoverCard.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/hover-card/index.ts",
+      "content": "export { default as HoverCardContent } from './HoverCardContent.vue'\nexport { default as HoverCardRoot } from './HoverCardRoot.vue'\nexport { default as HoverCardTrigger } from './HoverCardTrigger.vue'\nexport { HoverCard } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/useForwardPropsEmits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './useEmitsAsProps'\nimport { useForwardProps } from './useForwardProps'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/useForwardPropsEmits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

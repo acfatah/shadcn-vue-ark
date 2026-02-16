@@ -1,0 +1,72 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp",
+  "title": "Input OTP",
+  "description": "Accessible one-time password component with copy paste functionality.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pin-input\n- shadcn/ui: https://ui.shadcn.com/docs/components/input-otp",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue",
+    "lucide-vue-next"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props-emits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/use-forward-props.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/input-otp/namespace.ts",
+      "content": "import InputOTPGroup from './InputOTPGroup.vue'\nimport InputOTPHiddenInput from './InputOTPHiddenInput.vue'\nimport InputOTPRoot from './InputOTPRoot.vue'\nimport InputOTPSeparator from './InputOTPSeparator.vue'\nimport InputOTPSlot from './InputOTPSlot.vue'\n\nexport const InputOTP = {\n  /**\n   * InputOTPRoot component\n   */\n  Root: InputOTPRoot,\n\n  /**\n   * InputOTPGroup component\n   */\n  Group: InputOTPGroup,\n\n  /**\n   * InputOTPSlot component\n   */\n  Slot: InputOTPSlot,\n\n  /**\n   * InputOTPHiddenInput component\n   */\n  HiddenInput: InputOTPHiddenInput,\n\n  /**\n   * InputOTPSeparator component\n   */\n  Separator: InputOTPSeparator,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/input-otp/InputOTPRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputRootEmits, PinInputRootProps } from '@ark-ui/vue/pin-input'\nimport type { HTMLAttributes } from 'vue'\n\nimport { PinInput } from '@ark-ui/vue/pin-input'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PinInputRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  otp: true,\n})\nconst emit = defineEmits<PinInputRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <PinInput.Root\n    v-slot=\"slotProps\"\n    v-bind=\"forwardedProps\"\n    data-scope=\"input-otp\"\n    data-part=\"root\"\n    :class=\"cn(\n      `\n        flex items-center gap-2\n        data-disabled:cursor-not-allowed data-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </PinInput.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/input-otp/InputOTPHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputHiddenInputProps } from '@ark-ui/vue/pin-input'\nimport type { HTMLAttributes } from 'vue'\n\nimport { PinInput } from '@ark-ui/vue/pin-input'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PinInputHiddenInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class') as Omit<Props, 'class'>\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <PinInput.HiddenInput\n    v-bind=\"forwardedProps\"\n    data-scope=\"input-otp\"\n    data-part=\"hidden-input\"\n    :class=\"cn('sr-only', props.class)\"\n  >\n    <slot />\n  </PinInput.HiddenInput>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/input-otp/index.ts",
+      "content": "export { default as InputOTPGroup } from './InputOTPGroup.vue'\nexport { default as InputOTPHiddenInput } from './InputOTPHiddenInput.vue'\nexport { default as InputOTPRoot } from './InputOTPRoot.vue'\nexport { default as InputOTPSeparator } from './InputOTPSeparator.vue'\nexport { default as InputOTPSlot } from './InputOTPSlot.vue'\nexport { InputOTP } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/useForwardProps.ts",
+      "content": "import type { MaybeRefOrGetter } from 'vue'\n\nimport { camelize, computed, getCurrentInstance, toRef } from 'vue'\n\ninterface PropOptions {\n  type?: any\n  required?: boolean\n  default?: any\n}\n\n/**\n * The `useForwardProps` function in TypeScript takes in a set of props and returns\n * a computed value that combines default props with assigned props from the\n * current instance.\n *\n * @param {T} props - The `props` parameter is an object that represents the props\n *                    passed to a component.\n * @returns computed value that combines the default props, preserved props, and\n *          assigned props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardProps.ts\n */\nexport function useForwardProps<T extends Record<string, any>>(props: MaybeRefOrGetter<T>) {\n  const vm = getCurrentInstance()\n\n  // Default value for declared props\n  const defaultProps = Object.keys(vm?.type.props ?? {}).reduce((prev, curr) => {\n    const defaultValue = (vm?.type.props[curr] as PropOptions).default\n    if (defaultValue !== undefined)\n      prev[curr as keyof T] = defaultValue\n\n    return prev\n  }, {} as T)\n\n  const refProps = toRef(props)\n\n  return computed(() => {\n    const preservedProps = {} as T\n    const assignedProps = vm?.vnode.props ?? {}\n\n    Object.keys(assignedProps).forEach((key) => {\n      preservedProps[camelize(key) as keyof T] = assignedProps[key]\n    })\n\n    // Only return value from the props parameter\n    return Object.keys({ ...defaultProps, ...preservedProps }).reduce((prev, curr) => {\n      if (refProps.value[curr] !== undefined)\n        prev[curr as keyof T] = refProps.value[curr]\n\n      return prev\n    }, {} as T)\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/useForwardProps.ts"
+    },
+    {
+      "path": "src/composables/useForwardPropsEmits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './useEmitsAsProps'\nimport { useForwardProps } from './useForwardProps'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/useForwardPropsEmits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/input-otp/InputOTPGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputControlProps } from '@ark-ui/vue/pin-input'\nimport type { HTMLAttributes } from 'vue'\n\nimport { PinInput } from '@ark-ui/vue/pin-input'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardProps } from '@/composables/useForwardProps'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PinInputControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PinInput.Control\n    v-bind=\"forwardedProps\"\n    data-scope=\"input-otp\"\n    data-part=\"group\"\n    :class=\"cn('flex items-center', props.class)\"\n  >\n    <slot />\n  </PinInput.Control>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/input-otp/InputOTPSlot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PinInputInputProps } from '@ark-ui/vue/pin-input'\nimport type { HTMLAttributes } from 'vue'\n\nimport { PinInput } from '@ark-ui/vue/pin-input'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardProps } from '@/composables/useForwardProps'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PinInputInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class') as Omit<Props, 'class'>\nconst forwardedProps = useForwardProps(delegatedProps)\n</script>\n\n<template>\n  <PinInput.Input\n    data-scope=\"input-otp\"\n    data-part=\"slot\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        relative flex size-9 items-center justify-center border-y border-r border-input text-center\n        text-sm shadow-xs transition-all outline-none\n        first:rounded-l-md first:border-l\n        last:rounded-r-md\n        focus:z-10 focus:border-ring focus:ring-[3px] focus:ring-ring/50\n        aria-invalid:border-destructive\n        focus:aria-invalid:border-destructive focus:aria-invalid:ring-destructive/20\n        dark:bg-input/30\n        dark:focus:aria-invalid:ring-destructive/40\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/input-otp/InputOTPSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\nimport { Minus } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.span\n    v-bind=\"forwardedProps\"\n    data-scope=\"input-otp\"\n    data-part=\"separator\"\n    :class=\"cn('[&>svg]:size-3.5', props.class)\"\n  >\n    <slot>\n      <Minus />\n    </slot>\n  </ark.span>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

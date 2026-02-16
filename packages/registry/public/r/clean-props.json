@@ -5,10 +5,10 @@
   "registryDependencies": [],
   "files": [
     {
-      "path": "src/composables/clean-props.ts",
+      "path": "src/composables/cleanProps.ts",
       "content": "/**\n * Remove properties with `undefined` values from an object, returning a new shallow-copied object.\n *\n * Notes:\n * - Only properties with the value `undefined` are omitted. Other falsy values such as `null`, `false`, `0`,\n *   and `\"\"` are preserved.\n * - Symbol-keyed properties and non-enumerable properties are ignored.\n * - The operation is shallow: nested objects or arrays are copied by reference.\n * - The implementation builds a `Partial<T>` and then narrows/casts the result to `{ [K in keyof T]: T[K] }`.\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/clean-props.ts\n */\nexport function cleanProps<T extends object>(obj: T): { [K in keyof T]: T[K] } {\n  const result: Partial<T> = {}\n\n  for (const [key, value] of Object.entries(obj)) {\n    if (value !== undefined) {\n      result[key as keyof T] = value\n    }\n  }\n\n  return result as { [K in keyof T]: T[K] }\n}\n",
       "type": "registry:file",
-      "target": "src/composables/clean-props.ts"
+      "target": "src/composables/cleanProps.ts"
     }
   ],
   "type": "registry:file"

@@ -19,7 +19,7 @@
     },
     {
       "path": "src/components/ui/spinner/Spinner.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { LoaderCircleIcon } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/use-forward-props-emits'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <LoaderCircleIcon\n    v-bind=\"forwardedProps\"\n    data-scope=\"spinner\"\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('animate-spin', props.class)\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { LoaderCircleIcon } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <LoaderCircleIcon\n    v-bind=\"forwardedProps\"\n    data-scope=\"spinner\"\n    role=\"status\"\n    aria-label=\"Loading\"\n    :class=\"cn('animate-spin', props.class)\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {
