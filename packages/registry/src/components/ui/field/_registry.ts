@@ -8,8 +8,8 @@ export const registryItem = {
   title: 'Field',
 
   description: html`
-    Provides a flexible container for form inputs, labels, and helper text, based
-    on Ark UI field components.
+    Combine labels, controls, and help text to compose accessible form fields
+    and grouped inputs.
 
     References:
     - Headless API: https://ark-ui.com/docs/components/field
@@ -23,9 +23,9 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/composables/use-forward-props-emits.ts',
+      path: 'src/composables/useForwardPropsEmits.ts',
       type: 'registry:file',
-      target: 'src/composables/use-forward-props-emits.ts',
+      target: 'src/composables/useForwardPropsEmits.ts',
     },
     {
       path: 'src/lib/utils.ts',
