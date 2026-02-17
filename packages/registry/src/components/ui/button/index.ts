@@ -18,7 +18,7 @@ export const variant = {
     `,
   outline:
     `
-      border bg-background shadow-xs
+      border border-solid border-border bg-background shadow-xs
       hover:bg-accent hover:text-accent-foreground
       dark:border-input dark:bg-input/30 dark:hover:bg-input/50
     `,
