@@ -1,6 +1,7 @@
 import FieldCheckbox from './FieldCheckbox.vue'
 import FieldDescription from './FieldDescription.vue'
 import FieldError from './FieldError.vue'
+import FieldGroup from './FieldGroup.vue'
 import FieldInput from './FieldInput.vue'
 import FieldLabel from './FieldLabel.vue'
 import FieldRequiredIndicator from './FieldRequiredIndicator.vue'
@@ -15,6 +16,18 @@ export const Field = {
 
   /** FieldRootProvider component */
   RootProvider: FieldRootProvider,
+
+  /**
+   * FieldGroup component
+   *
+   * Groups label, input, and description together, providing consistent spacing
+   * and layout.
+   *
+   * - See also `FormGroup` components.
+   * - See also `Field` and `Fieldset` components usage for better form field grouping
+   * and accessibility.
+   */
+  Group: FieldGroup,
 
   /** FieldLabel component */
   Label: FieldLabel,

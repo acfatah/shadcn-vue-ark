@@ -23,7 +23,7 @@ const inline = computed(() => props.inline || undefined)
 <template>
   <ark.div
     v-bind="forwardedProps"
-    data-scope="input-group"
+    data-scope="field-group"
     :data-inline="inline"
     :class="cn(
       'flex max-w-md flex-col gap-2',

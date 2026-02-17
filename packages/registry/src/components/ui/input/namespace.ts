@@ -8,7 +8,6 @@ import EmailInput from './EmailInput.vue'
 import FileInput from './FileInput.vue'
 import InputDescription from './InputDescription.vue'
 import InputError from './InputError.vue'
-import InputGroup from './InputGroup.vue'
 import InputRequiredIndicator from './InputRequiredIndicator.vue'
 import MonthInput from './MonthInput.vue'
 import NumberInput from './NumberInput.vue'
@@ -27,19 +26,6 @@ import UrlInput from './UrlInput.vue'
 import WeekInput from './WeekInput.vue'
 
 export const Input = {
-  /**
-   * InputGroup component
-   *
-   * Groups label, input, and description together, providing consistent spacing
-   * and layout.
-   *
-   * Do not confuse with the other `InputGroup` component. See `FormGroup` components.
-   *
-   * See `Field` and `Fieldset` components for better form
-   * field grouping and accessibility.
-   */
-  Group: InputGroup,
-
   /** LabelInput component */
   Label,
 

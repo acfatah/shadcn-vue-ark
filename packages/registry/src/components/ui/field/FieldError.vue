@@ -20,7 +20,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Field.ErrorText
     v-bind="forwardedProps"
-    :class="cn('text-sm font-normal text-destructive', props.class)"
+    :class="cn(
+      'w-full text-sm font-normal text-destructive',
+      props.class,
+    )"
   >
     <slot />
   </Field.ErrorText>

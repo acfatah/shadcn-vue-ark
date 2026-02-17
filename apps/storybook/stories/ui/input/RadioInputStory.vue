@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+import { Field } from '@/components/ui/field'
+import { Fieldset } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
 
 const props = defineProps<{
@@ -9,7 +11,6 @@ const props = defineProps<{
   loading?: boolean
   name?: string
   value?: string
-  inline?: boolean
 }>()
 
 const radioOptions = [
@@ -43,25 +44,28 @@ function handleSubmit(event: Event) {
       Submit the form to exercise the browser's native radio validation.
     </p>
 
-    <Input.Group
-      v-for="option in radioOptions"
-      :key="option.value"
-      :inline="props.inline"
-      :invalid="props.invalid"
-    >
-      <Input.Radio
-        v-model="selectedOption"
-        name="radio-input"
-        :value="option.value"
+    <Fieldset.Group class="gap-3">
+      <Field.Root
+        v-for="option in radioOptions"
+        :key="option.value"
         :disabled="props.disabled"
         :invalid="props.invalid"
-        :loading="props.loading"
-        :required="option.required"
-      />
-      <Input.Label>
-        {{ option.label }}
-      </Input.Label>
-    </Input.Group>
+      >
+        <Input.Radio
+          :id="`radio-${option.value}`"
+          v-model="selectedOption"
+          name="radio-input"
+          :value="option.value"
+          :disabled="props.disabled"
+          :invalid="props.invalid"
+          :loading="props.loading"
+          :required="option.required"
+        />
+        <Field.Label :for="`radio-${option.value}`">
+          {{ option.label }}
+        </Field.Label>
+      </Field.Root>
+    </Fieldset.Group>
 
     <p class="text-sm text-muted-foreground">
       Current selection: {{ selectedOption ?? 'None' }}

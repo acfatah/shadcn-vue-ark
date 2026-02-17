@@ -8,11 +8,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { fieldRootVariants } from '.'
-
 type Props = FieldRootProps & {
   class?: HTMLAttributes['class']
-  orientation?: 'vertical' | 'horizontal'
 }
 
 const props = withDefaults(defineProps<Props>(), {})
@@ -24,7 +21,22 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Field.Root
     v-bind="forwardedProps"
     :class="cn(
-      fieldRootVariants({ orientation: props.orientation }),
+      `
+        group/field flex w-full flex-col gap-3
+        data-[invalid=true]:text-destructive
+      `,
+      // Handle flex direction for checkbox inputs
+      `has-data-[scope=checkbox-input]:flex-row has-data-[scope=checkbox-input]:flex-wrap`,
+      `
+        has-data-[scope=checkbox-input]:**:data-[part=description]:flex-inline
+        has-data-[scope=checkbox-input]:**:data-[part=description]:w-full
+      `,
+      // Handle flex direction for radio inputs
+      `has-data-[scope=radio-input]:flex-row has-data-[scope=radio-input]:flex-wrap`,
+      `
+        has-data-[scope=radio-input]:**:data-[part=description]:flex-inline
+        has-data-[scope=radio-input]:**:data-[part=description]:w-full
+      `,
       props.class,
     )"
   >

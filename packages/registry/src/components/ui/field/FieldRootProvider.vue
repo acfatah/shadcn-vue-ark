@@ -8,11 +8,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { fieldRootVariants } from '.'
-
 type Props = FieldRootProviderProps & {
   class?: HTMLAttributes['class']
-  orientation?: 'vertical' | 'horizontal'
   value?: FieldRootProviderProps['value']
 }
 
@@ -24,7 +21,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Field.RootProvider
     v-bind="forwardedProps"
-    :class="cn(fieldRootVariants({ orientation: props.orientation }), props.class)"
+    :class="cn('', props.class)"
     :value="value"
   >
     <slot />
