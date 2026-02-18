@@ -164,7 +164,7 @@ const invalid = computed(() => {
       <Field.Label>
         Radio
       </Field.Label>
-      <Input.Radio name="plan" :disabled="disabled" :invalid="invalid" />
+      <Input.Radio name="plan" value="standard" :disabled="disabled" :invalid="invalid" />
       <Field.Description>Choose the standard plan.</Field.Description>
     </Field.Root>
 
