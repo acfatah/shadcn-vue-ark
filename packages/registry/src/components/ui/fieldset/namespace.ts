@@ -1,3 +1,4 @@
+import FieldsetContent from './FieldsetContent.vue'
 import FieldsetDescription from './FieldsetDescription.vue'
 import FieldsetError from './FieldsetError.vue'
 import FieldsetGroup from './FieldsetGroup.vue'
@@ -27,6 +28,13 @@ export const Fieldset = {
    * - https://ui.shadcn.com/docs/components/field#fieldlegend
    */
   Legend: FieldsetLegend,
+
+  /**
+   * FieldsetContent component
+   *
+   * Content wrapper that applies spacing between `Field` components.
+   */
+  Content: FieldsetContent,
 
   /**
    * FieldsetGroup component
