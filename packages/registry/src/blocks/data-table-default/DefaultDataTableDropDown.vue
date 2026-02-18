@@ -23,7 +23,7 @@ function copy(text: string) {
         <Ellipsis class="size-4" />
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content align="end">
+    <DropdownMenu.Content>
       <DropdownMenu.Group>
         <DropdownMenu.Label>Actions</DropdownMenu.Label>
         <DropdownMenu.Item value="copy-payment" @click="copy(props.payment.id)">
