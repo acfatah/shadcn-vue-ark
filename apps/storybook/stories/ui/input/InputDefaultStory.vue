@@ -21,7 +21,8 @@ const invalid = computed(() => {
 <template>
   <Fieldset.Group>
     <Fieldset.Description>
-      This story showcases all the different input types available in the Input component including Field components.
+      This story showcases all the different input types available in the Input
+      component including Field components.
     </Fieldset.Description>
 
     <Field.Root :disabled="disabled" :invalid="invalid">
