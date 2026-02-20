@@ -11,9 +11,7 @@ const props = defineProps({
 <template>
   <Switch.Root v-bind="props">
     <Switch.HiddenInput />
-    <Switch.Control>
-      <Switch.Thumb />
-    </Switch.Control>
+    <Switch.Control />
     <Switch.Label>Airplane Mode</Switch.Label>
   </Switch.Root>
 </template>

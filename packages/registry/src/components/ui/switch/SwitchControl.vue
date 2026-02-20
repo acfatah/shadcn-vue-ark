@@ -8,6 +8,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import SwitchThumb from './SwitchThumb.vue'
+
 interface Props extends SwitchControlProps {
   class?: HTMLAttributes['class']
 }
@@ -31,6 +33,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
       props.class,
     )"
   >
-    <slot />
+    <slot>
+      <SwitchThumb />
+    </slot>
   </Switch.Control>
 </template>
