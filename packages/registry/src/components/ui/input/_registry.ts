@@ -7,13 +7,19 @@ export const registryItem = {
   name: 'input',
   title: 'Input',
 
-  // TODO: add see also to Field and Fieldset components
   description: html`
-    Accessible text input field component for capturing user-entered
-    values in forms and interactive UIs.
+    Accessible input controls for capturing user-entered values in forms and
+    interactive UIs.
+
+    Architecture:
+    - Use \`Input.*\` as standalone control primitives.
+    - For form semantics such as labels, descriptions, errors, and required
+      indicators, pair controls with \`Field.*\`.
+    - In grouped forms, combine \`Field.*\` with \`Fieldset.*\`.
 
     References:
     - shadcn/ui: https://ui.shadcn.com/docs/components/input
+    - shadcn/ui Field: https://ui.shadcn.com/docs/components/field
   `,
 
   dependencies: [
