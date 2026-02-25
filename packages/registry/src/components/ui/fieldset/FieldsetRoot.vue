@@ -10,9 +10,13 @@ import { cn } from '@/lib/utils'
 
 type Props = FieldsetRootProps & {
   class?: HTMLAttributes['class']
+  orientation?: 'horizontal' | 'vertical'
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = withDefaults(defineProps<Props>(), {
+  orientation: 'vertical',
+})
+
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
@@ -24,9 +28,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     v-bind="forwardedProps"
     :class="cn(
       `
-        flex flex-col gap-6
+        flex gap-6
         has-[>[data-part=checkbox-group]]:gap-3
         has-[>[data-part=radio-group]]:gap-3
+        ${props.orientation === 'horizontal' ? 'flex-row justify-between' : 'flex-col'}
       `,
       props.class,
     )"
