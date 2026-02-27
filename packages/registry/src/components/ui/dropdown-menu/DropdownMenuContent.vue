@@ -10,14 +10,9 @@ import { cn } from '@/lib/utils'
 
 interface Props extends MenuContentProps {
   class?: HTMLAttributes['class']
-  align?: 'start' | 'center' | 'end'
-  side?: 'top' | 'right' | 'bottom' | 'left'
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  side: 'right',
-})
-
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
@@ -36,10 +31,10 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
             outline-none
           `,
           `
-            data-[side=bottom]:slide-in-from-top-2
-            data-[side=left]:slide-in-from-right-2
-            data-[side=right]:slide-in-from-left-2
-            data-[side=top]:slide-in-from-bottom-2
+            data-[placement^=bottom]:slide-in-from-top-1.5 data-[placement^=bottom]:-mt-1.5
+            data-[placement^=left]:-mr-1.5 data-[placement^=left]:slide-in-from-right-2
+            data-[placement^=right]:-ml-1.5 data-[placement^=right]:slide-in-from-left-2
+            data-[placement^=top]:-mb-1.5 data-[placement^=top]:slide-in-from-bottom-2
             data-[state=closed]:animate-out data-[state=closed]:fade-out-0
             data-[state=closed]:zoom-out-95
             data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95

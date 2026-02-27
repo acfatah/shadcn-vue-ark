@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
+
+interface Props {
+  align?: 'start' | 'center' | 'end'
+  side?: 'top' | 'right' | 'bottom' | 'left'
+}
+
+withDefaults(defineProps<Props>(), {
+  align: 'center',
+  side: 'right',
+})
 </script>
 
 <template>
-  <DropdownMenu.Root>
+  <DropdownMenu.Root :align="align" :side="side">
     <DropdownMenu.Trigger as-child>
       <Button variant="outline">
         Open
