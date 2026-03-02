@@ -9,7 +9,7 @@
     "@vueuse/core"
   ],
   "registryDependencies": [
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
   ],
   "files": [
     {

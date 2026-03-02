@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "data-table-default",
+  "name": "data-table-default-block",
   "title": "Data Table Default",
   "description": "Data table block using the reusable DataTable component with\nbuilt-in filtering, pagination, and row selection.\n\nReferences:\n- TanStack Table: https://tanstack.com/table/latest/docs/framework/vue/vue-table\n- shadcn/ui: https://ui.shadcn.com/docs/components/data-table",
   "dependencies": [

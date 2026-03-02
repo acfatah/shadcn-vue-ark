@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "tanstack-data-table",
+  "name": "tanstack-data-table-block",
   "title": "TanStack Data Table",
   "description": "Advanced data table block using TanStack Vue Table directly,\nincluding expandable rows and custom column controls.\n\nReferences:\n- TanStack Table: https://tanstack.com/table/latest/docs/framework/vue/vue-table\n- shadcn/ui: https://ui.shadcn.com/docs/components/data-table",
   "dependencies": [

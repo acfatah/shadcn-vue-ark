@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "data-table-custom",
+  "name": "data-table-custom-block",
   "title": "Data Table Custom",
   "description": "Data table block with custom filter and pagination slots\nfor richer table controls.\n\nReferences:\n- TanStack Table: https://tanstack.com/table/latest/docs/framework/vue/vue-table\n- shadcn/ui: https://ui.shadcn.com/docs/components/data-table",
   "dependencies": [

@@ -5,7 +5,7 @@
   "description": "Use to show a placeholder while content is loading.\n\nReferences:\n- shadcn-ui: https://ui.shadcn.com/docs/components/skeleton",
   "dependencies": [],
   "registryDependencies": [
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
   ],
   "files": [
     {
