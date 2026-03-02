@@ -24,7 +24,7 @@ export async function buildLibRegistry(registryBaseUrl: string) {
       continue
 
     const filepath = join(LIB_PATH, dirent.name)
-    const name = getKebabName(basename(dirent.name).replace(/\.ts$/, ''))
+    const name = `${getKebabName(basename(dirent.name).replace(/\.ts$/, ''))}-lib`
     const relativePath = join('src', relative(REGISTRY_PATH, filepath))
     const source = await readFile(filepath, { encoding: 'utf8' })
     const { dependencies, registryDependencies } = await getFileDependencies(

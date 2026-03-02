@@ -4,7 +4,7 @@ import { html } from 'common-tags'
 
 export const registryItem = {
   type: 'registry:block',
-  name: 'tanstack-data-table',
+  name: 'tanstack-data-table-block',
   title: 'TanStack Data Table',
 
   description: html`

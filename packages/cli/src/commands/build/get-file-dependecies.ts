@@ -44,9 +44,13 @@ function resolveRegistryDependency(
     const segments = sourcePath.split('/')
     const componentName = segments.slice(-1)[0] ?? ''
     const isComposable = segments[0] === 'composables'
-    const registryName = isComposable
+    const isLib = segments[0] === 'lib'
+    let registryName = isComposable
       ? componentName
       : getKebabName(componentName)
+
+    if (isLib)
+      registryName = `${registryName}-lib`
 
     return `${registryPath}/${registryName}.json`
   }
@@ -82,7 +86,11 @@ function resolveRegistryDependency(
   ) {
     const baseName = basename(resolvedPath).replace(/\.[^.]+$/, '')
     const isComposable = normalizedPath.startsWith(normalizedComposables)
-    const name = isComposable ? baseName : getKebabName(baseName)
+    const isLib = normalizedPath.startsWith(normalizedLib)
+    let name = isComposable ? baseName : getKebabName(baseName)
+
+    if (isLib)
+      name = `${name}-lib`
 
     return `${registryPath}/${name}.json`
   }

@@ -4,7 +4,7 @@ import { html } from 'common-tags'
 
 export const registryItem = {
   type: 'registry:block',
-  name: 'data-table-default',
+  name: 'data-table-default-block',
   title: 'Data Table Default',
 
   description: html`
