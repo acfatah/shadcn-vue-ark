@@ -10,7 +10,7 @@ import process from 'node:process'
 import { join } from 'pathe'
 import { readDir } from './utils'
 
-const TARGET_DIRS = ['apps', 'packages']
+const TARGET_DIRS = ['apps', 'packages', 'templates']
 const argv = Array.isArray((Bun as any)?.argv) ? (Bun as any).argv.slice(2) : process.argv.slice(2)
 const useLatest = argv.includes('--latest')
 
