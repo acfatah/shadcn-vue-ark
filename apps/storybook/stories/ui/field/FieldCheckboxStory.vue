@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Checkbox } from '@/components/ui/checkbox'
 import { Field } from '@/components/ui/field'
-import { cn } from '@/lib/utils'
 
 const props = withDefaults(defineProps<{
   disabled?: boolean
@@ -55,15 +54,7 @@ const props = withDefaults(defineProps<{
     >
       <Field.Checkbox
         id="notification"
-        :class="cn(
-          `flex items-start gap-3 rounded-lg border p-3`,
-          `
-            data-invalid:border-destructive/50 data-invalid:bg-destructive/5
-            data-[state=checked]:border-primary data-[state=checked]:bg-primary/5
-            data-disabled:data-[state=checked]:border-primary/50
-            dark:data-[state=checked]:bg-primary/10
-          `,
-        )"
+        variant="card"
       >
         <Checkbox.Label>Enable notifications</Checkbox.Label>
         <Checkbox.Description>You can enable or disable notifications at any time.</Checkbox.Description>

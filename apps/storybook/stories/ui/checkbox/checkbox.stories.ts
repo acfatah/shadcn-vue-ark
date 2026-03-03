@@ -9,6 +9,7 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot,
+  variant,
 } from '@/components/ui/checkbox'
 import { registryItem } from '@/components/ui/checkbox/_registry'
 
@@ -39,12 +40,17 @@ const meta = {
     invalid: false,
     disabled: false,
     loading: false,
+    variant: 'default',
   },
 
   argTypes: {
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
     loading: { control: 'boolean' },
+    variant: {
+      control: { type: 'select' },
+      options: Object.keys(variant),
+    },
   },
 } satisfies Meta<typeof CheckboxRoot>
 

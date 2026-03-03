@@ -9,14 +9,19 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import type { CheckboxVariants } from './types'
+
+import { checkboxVariants } from './variant'
+
 interface Props extends CheckboxRootProps {
   loading?: boolean
   class?: HTMLAttributes['class']
+  variant?: CheckboxVariants['variant']
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<CheckboxRootEmits>()
-const delegatedProps = reactiveOmit(props, ['class', 'loading'])
+const delegatedProps = reactiveOmit(props, ['class', 'loading', 'variant'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 const disabled = computed(() => props.disabled || props.loading || undefined)
 const ariaBusy = computed(() => (props.loading || undefined))
@@ -27,11 +32,10 @@ const ariaBusy = computed(() => (props.loading || undefined))
     v-bind="forwardedProps"
     :disabled="disabled"
     :aria-busy="ariaBusy"
-    :class="cn(`
-      group flex gap-3
-      has-data-[part=checkbox-content]:items-start
-      data-disabled:pointer-events-none data-disabled:opacity-50
-    `, props.class)"
+    :class="cn(
+      checkboxVariants({ variant: props.variant }),
+      props.class,
+    )"
   >
     <slot />
   </Checkbox.Root>

@@ -6,6 +6,8 @@ import { useFieldContext } from '@ark-ui/vue/field'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
+import type { CheckboxVariants } from '@/components/ui/checkbox'
+
 import { Checkbox } from '@/components/ui/checkbox'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
@@ -13,6 +15,7 @@ type Props = CheckboxRootProps & {
   class?: HTMLAttributes['class']
   disabled?: boolean
   invalid?: boolean
+  variant?: CheckboxVariants['variant']
 }
 
 const props = withDefaults(defineProps<Props>(), {})
@@ -20,7 +23,7 @@ const emit = defineEmits<{
   'update:checked': [value: CheckboxRootProps['checked']]
 }>()
 const fieldContext = useFieldContext()
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, ['class', 'variant'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 const disabled = computed(() => fieldContext.value.disabled || props.disabled)
 const invalid = computed(() => fieldContext.value.invalid || props.invalid)
@@ -31,6 +34,7 @@ const invalid = computed(() => fieldContext.value.invalid || props.invalid)
     v-bind="forwardedProps"
     :disabled="disabled"
     :invalid="invalid"
+    :variant="props.variant"
     :class="props.class"
   >
     <Checkbox.HiddenInput />
