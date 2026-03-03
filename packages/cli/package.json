@@ -34,21 +34,21 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "commander": "^14.0.2",
+    "commander": "^14.0.3",
     "consola": "^3.4.2",
     "lodash": "^4.17.23",
     "oxc-parser": "^0.110.0",
-    "shadcn": "^3.7.0",
-    "vue": "^3.5.27",
+    "shadcn": "^3.8.5",
+    "vue": "^3.5.29",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@acfatah/eslint-preset": "^3.1.1",
-    "@types/bun": "^1.3.6",
-    "@types/lodash": "^4.17.23",
+    "@acfatah/eslint-preset": "^3.2.0",
+    "@types/bun": "^1.3.10",
+    "@types/lodash": "^4.17.24",
     "bun-plugin-dts": "^0.3.0",
-    "eslint": "^9.39.2",
-    "eslint-plugin-format": "^1.3.1",
+    "eslint": "^9.39.3",
+    "eslint-plugin-format": "^1.5.0",
     "jiti": "^2.6.1"
   }
 }
