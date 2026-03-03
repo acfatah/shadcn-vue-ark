@@ -5,9 +5,11 @@
  */
 
 import type { Dirent } from 'node:fs'
+
 import Bun from 'bun'
 import process from 'node:process'
 import { join } from 'pathe'
+
 import { readDir } from './utils'
 
 const TARGET_DIRS = ['apps', 'packages', 'templates']
@@ -76,7 +78,7 @@ async function updateDeps(target: string | Dirent): Promise<void> {
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   // Update root directory
   await Bun.$`bun --version > .bun-version`
   await updateDeps('.')
@@ -84,18 +86,21 @@ async function main() {
   for (const targetDir of TARGET_DIRS) {
     const dir = await readDir(targetDir, {
       withFileTypes: true,
-    }) as Dirent[]
+      encoding: 'utf8',
+    })
 
     // Run sequentially to avoid backpressure and resource spikes per template set
     for (const dirent of dir) {
       if (!dirent.isDirectory())
         continue
 
+      const dirPath = join(targetDir, String(dirent.name))
+
       try {
-        await updateDeps(dirent)
+        await updateDeps(dirPath)
       }
       catch (error) {
-        console.error(`An error occurred during the update of "${join(dirent.parentPath, dirent.name)}":`, error)
+        console.error(`An error occurred during the update of "${dirPath}":`, error)
       }
     }
   }

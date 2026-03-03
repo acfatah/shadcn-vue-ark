@@ -5,18 +5,20 @@
  */
 
 import type { Dirent } from 'node:fs'
+
 import Bun from 'bun'
 import process from 'node:process'
 import { join } from 'pathe'
+
 import { readDir } from './utils'
 
-const TARGET_DIRS = ['apps', 'packages']
-const argv = Array.isArray((Bun as any)?.argv) ? (Bun as any).argv.slice(2) : process.argv.slice(2)
+const TARGET_DIRS = ['apps', 'packages', 'templates']
+const _argv = Array.isArray((Bun as any)?.argv) ? (Bun as any).argv.slice(2) : process.argv.slice(2)
 
 /**
  * Check outdated dependencies in the given directory.
  */
-async function checkDeps(target: string | Dirent): Promise<void> {
+async function checkDeps(target: string | Dirent<any>): Promise<void> {
   const path = typeof target === 'string' ? target : join(target.parentPath, target.name)
   const pathName = path === '.' ? 'root' : `"${path}"`
   const args = ['bun', 'outdated'] as string[]
@@ -56,14 +58,14 @@ async function checkDeps(target: string | Dirent): Promise<void> {
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   // Check outdated dependencies in root directory
   await checkDeps('.')
 
   for (const targetDir of TARGET_DIRS) {
     const dir = await readDir(targetDir, {
       withFileTypes: true,
-    }) as Dirent[]
+    })
 
     // Run sequentially to avoid backpressure and resource spikes per template set
     for (const dirent of dir) {
@@ -74,7 +76,7 @@ async function main() {
         await checkDeps(dirent)
       }
       catch (error) {
-        console.error(`An error occurred during the check of "${join(dirent.parentPath, dirent.name)}":`, error)
+        console.error(`An error occurred during the check of "${join(dirent.parentPath, String(dirent.name))}":`, error)
       }
     }
   }

@@ -15,7 +15,7 @@ export async function readDir(
     recursive?: boolean
     encoding?: string
   } = { withFileTypes: true },
-) {
+): ReturnType<typeof readdir> {
   if (!existsSync(path)) {
     throw new Error(`The directory "${path}" does not exist.`)
   }
@@ -27,7 +27,7 @@ export async function readDir(
 /**
  * Simple readFile as text.
  */
-export async function readFile(filepath: string, _options = {}) {
+export async function readFile(filepath: string, _options = {}): Promise<string> {
   const file = Bun.file(filepath)
 
   if (!file.exists())
@@ -58,8 +58,7 @@ export function readLine(): Promise<string> {
  */
 export async function writeFile(
   destination: string,
-  data: string | Blob | BlobPart[] | ArrayBufferLike | NodeJS.TypedArray | ArrayBufferLike,
-) {
-  // @ts-expect-error Bunfile type mismatch
-  Bun.write(destination, data)
+  data: string | Blob | ArrayBufferLike | NodeJS.TypedArray | ArrayBufferLike,
+): Promise<number> {
+  return await Bun.write(destination, data)
 }
