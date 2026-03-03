@@ -35,7 +35,10 @@ export default config(
       // https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md
       'better-tailwindcss': {
         entryPoint: 'src/styles/global.css',
-        variables: ['size', 'variant'],
+        variables: [
+          ['variant', [{ match: 'objectValues' }]],
+          ['size', [{ match: 'objectValues' }]],
+        ],
       },
     },
   },
