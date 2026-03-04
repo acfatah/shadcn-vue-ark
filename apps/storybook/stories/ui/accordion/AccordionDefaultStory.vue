@@ -6,9 +6,8 @@ import { accordionItems } from './items'
 
 <template>
   <Accordion.Root
-    type="single"
     collapsible
-    :default-value="accordionItems[0]!.value"
+    :default-value="[accordionItems[0]!.value]"
   >
     <Accordion.Item
       v-for="item in accordionItems"
