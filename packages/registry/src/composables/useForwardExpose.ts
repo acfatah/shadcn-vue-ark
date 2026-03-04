@@ -5,7 +5,7 @@ import { computed, getCurrentInstance, ref } from 'vue'
 import { unrefElement } from './unrefElement'
 
 function isElement(el: any): el is Element {
-  return Object.prototype.hasOwnProperty.call(el, 'nodeName') && typeof el.nodeName === 'string'
+  return el != null && Object.prototype.hasOwnProperty.call(el, 'nodeName') && typeof el.nodeName === 'string'
 }
 
 /**
