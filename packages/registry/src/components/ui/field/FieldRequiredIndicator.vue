@@ -12,6 +12,7 @@ type Props = FieldRequiredIndicatorProps & {
   class?: HTMLAttributes['class']
 }
 
+defineOptions({ inheritAttrs: false })
 const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
@@ -20,8 +21,14 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Field.RequiredIndicator
     v-bind="forwardedProps"
-    :class="cn('text-xs leading-none font-normal text-destructive', props.class)"
+    as-child
   >
-    <slot>*</slot>
+    <span
+      :class="cn(
+        'text-xs leading-none font-normal text-destructive',
+        props.class)"
+    >
+      <slot>*</slot>
+    </span>
   </Field.RequiredIndicator>
 </template>

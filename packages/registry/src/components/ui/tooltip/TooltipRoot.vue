@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { TooltipRootEmits, TooltipRootProps } from '@ark-ui/vue/tooltip'
-import type { HTMLAttributes } from 'vue'
 
 import { Tooltip } from '@ark-ui/vue/tooltip'
 import { reactiveOmit } from '@vueuse/core'
@@ -11,7 +10,6 @@ import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { TooltipOptionsProvider } from './context'
 
 interface Props extends TooltipRootProps {
-  class?: HTMLAttributes['class']
   hideArrow?: boolean
 }
 
@@ -19,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   hideArrow: false,
 })
 const emit = defineEmits<TooltipRootEmits>()
-const delegatedProps = reactiveOmit(props, ['class', 'hideArrow'])
+const delegatedProps = reactiveOmit(props, ['hideArrow'])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 
 const options = computed(() => ({
@@ -30,10 +28,7 @@ TooltipOptionsProvider(options)
 </script>
 
 <template>
-  <Tooltip.Root
-    v-bind="forwardedProps"
-    :class="props.class"
-  >
+  <Tooltip.Root v-bind="forwardedProps">
     <slot />
   </Tooltip.Root>
 </template>
