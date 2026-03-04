@@ -4,21 +4,14 @@ import type {
   ComboboxRootEmits,
   ComboboxRootProps,
 } from '@ark-ui/vue/combobox'
-import type { HTMLAttributes } from 'vue'
 
 import { Combobox } from '@ark-ui/vue/combobox'
-import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
-interface Props extends ComboboxRootProps<CollectionItem> {
-  class?: HTMLAttributes['class']
-}
-
-const props = defineProps<Props>()
+const props = defineProps<ComboboxRootProps<CollectionItem>>()
 const emit = defineEmits<ComboboxRootEmits<CollectionItem>>()
-const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
+const forwardedProps = useForwardPropsEmits(props, emit)
 </script>
 
 <template>
@@ -26,7 +19,6 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     v-bind="forwardedProps"
     data-scope="combobox"
     data-part="root"
-    :class="props.class"
   >
     <slot />
   </Combobox.Root>
