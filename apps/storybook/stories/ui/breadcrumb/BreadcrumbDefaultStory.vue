@@ -20,7 +20,7 @@ import { DropdownMenu } from '@/components/ui/dropdown-menu'
             <Ellipsis class="size-4" />
             <span class="sr-only">Toggle menu</span>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content align="start">
+          <DropdownMenu.Content>
             <DropdownMenu.Item value="document">
               Documentation
             </DropdownMenu.Item>

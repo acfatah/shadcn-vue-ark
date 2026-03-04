@@ -83,7 +83,7 @@ const { width: screenWidth } = useWindowSize()
           " placeholder="Quick search..."
           @update:model-value="table.setGlobalFilter(String($event))"
         />
-        <DropdownMenu.Root>
+        <DropdownMenu.Root align="end">
           <DropdownMenu.Trigger as-child>
             <Button
               variant="outline"
@@ -100,7 +100,7 @@ const { width: screenWidth } = useWindowSize()
               <ChevronsUpDownIcon v-else class="ml-2 size-4" aria-hidden="true" />
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content align="end">
+          <DropdownMenu.Content>
             <DropdownMenu.CheckboxItem
               v-for="column in table.getAllColumns().filter((column) => column.getCanHide())"
               :key="column.id"

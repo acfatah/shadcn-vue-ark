@@ -40,13 +40,13 @@ const label = ref('personal')
       <Button variant="outline" size="sm">
         Snooze
       </Button>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root align="end">
         <DropdownMenu.Trigger as-child>
           <Button variant="outline" size="icon-sm" aria-label="More Options">
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end" class="w-48 [--radius:1rem]">
+        <DropdownMenu.Content class="w-48 [--radius:1rem]">
           <DropdownMenu.Group>
             <DropdownMenu.Item value="read">
               <MailCheckIcon />

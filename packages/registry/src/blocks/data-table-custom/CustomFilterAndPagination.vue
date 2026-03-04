@@ -72,13 +72,13 @@ onMounted(async () => {
           :model-value="(table.getColumn('email')?.getFilterValue() as string)"
           @update:model-value=" table.getColumn('email')?.setFilterValue($event)"
         />
-        <DropdownMenu.Root>
+        <DropdownMenu.Root align="end">
           <DropdownMenu.Trigger as-child>
             <Button variant="outline" class="ml-1">
               <SlidersHorizontalIcon class="size-4" />
             </Button>
           </DropdownMenu.Trigger>
-          <DropdownMenu.Content align="end">
+          <DropdownMenu.Content>
             <DropdownMenu.CheckboxItem
               v-for="column in table.getAllColumns().filter((column) => column.getCanHide())"
               :key="column.id"

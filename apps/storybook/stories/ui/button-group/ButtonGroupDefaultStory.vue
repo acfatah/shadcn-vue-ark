@@ -43,13 +43,13 @@ const label = ref('personal')
       <Button variant="outline">
         Snooze
       </Button>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root align="end">
         <DropdownMenu.Trigger as-child>
           <Button variant="outline" size="icon" aria-label="More Options">
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content align="end" class="w-52">
+        <DropdownMenu.Content class="w-52">
           <DropdownMenu.Group>
             <DropdownMenu.Item value="read">
               <MailCheckIcon />

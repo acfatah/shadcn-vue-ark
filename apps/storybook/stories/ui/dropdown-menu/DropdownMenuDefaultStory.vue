@@ -20,7 +20,7 @@ withDefaults(defineProps<Props>(), {
         Open
       </Button>
     </DropdownMenu.Trigger>
-    <DropdownMenu.Content class="w-56" align="start">
+    <DropdownMenu.Content class="w-56">
       <DropdownMenu.Group>
         <DropdownMenu.Label>My Account</DropdownMenu.Label>
         <DropdownMenu.Item value="profile">
