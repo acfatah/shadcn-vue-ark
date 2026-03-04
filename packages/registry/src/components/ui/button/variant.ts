@@ -11,13 +11,15 @@ export const variant = {
       bg-destructive text-white shadow-xs
       hover:bg-destructive/90
       focus-visible:ring-destructive/20
-      dark:bg-destructive/60 dark:focus-visible:ring-destructive/40
+      dark:bg-destructive/60
+      dark:focus-visible:ring-destructive/40
     `,
   outline:
     `
       border border-solid border-border bg-background shadow-xs
       hover:bg-accent hover:text-accent-foreground
-      dark:border-input dark:bg-input/30 dark:hover:bg-input/50
+      dark:border-input dark:bg-input/30
+      dark:hover:bg-input/50
     `,
   secondary:
     `
@@ -37,7 +39,7 @@ export const variant = {
 
 export const size = {
   'xs': `
-    w-fit h-fit shrink-0 gap-1 rounded-sm px-2 py-0.5 text-xs
+    size-fit shrink-0 gap-1 rounded-sm px-2 py-0.5 text-xs
     has-[svg]:p-1
     [&_svg:not([class*='size-'])]:size-3
   `,

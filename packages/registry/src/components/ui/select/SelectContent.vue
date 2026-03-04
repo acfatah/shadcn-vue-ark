@@ -49,7 +49,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
           `,
           props.position === `popper`
             && `
-              w-min-(--reference-width) h-min-(--available-height) h-full w-full scroll-my-1
+              w-min-(--reference-width) h-min-(--available-height) size-full scroll-my-1
               data-[side=bottom]:translate-y-1
               data-[side=left]:-translate-x-1
               data-[side=right]:translate-x-1
