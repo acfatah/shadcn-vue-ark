@@ -93,6 +93,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/alert/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/lib/utils.ts",
         "type": "registry:ui"
       },
@@ -212,6 +216,10 @@
       },
       {
         "path": "src/components/ui/badge/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/badge/variant.ts",
         "type": "registry:ui"
       },
       {
@@ -368,6 +376,10 @@
       },
       {
         "path": "src/components/ui/button-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/variant.ts",
         "type": "registry:ui"
       },
       {
@@ -628,6 +640,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/checkbox/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/composables/dynamic.ts",
         "type": "registry:ui"
       },
@@ -645,6 +661,10 @@
       },
       {
         "path": "src/components/ui/checkbox/CheckboxIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/checkbox/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -1447,6 +1467,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/empty/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/empty/EmptyTitle.vue",
         "type": "registry:ui"
       },
@@ -1852,6 +1876,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/input-group/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/composables/useForwardPropsEmits.ts",
         "type": "registry:ui"
       },
@@ -1974,6 +2002,10 @@
       },
       {
         "path": "src/components/ui/item/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/variant.ts",
         "type": "registry:ui"
       },
       {
@@ -2898,6 +2930,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/sidebar/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/sidebar/SidebarMenuAction.vue",
         "type": "registry:ui"
       },
@@ -3229,6 +3265,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/tabs/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/composables/useForwardPropsEmits.ts",
         "type": "registry:ui"
       },
@@ -3386,6 +3426,10 @@
       },
       {
         "path": "src/components/ui/toggle/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/toggle/variant.ts",
         "type": "registry:ui"
       },
       {

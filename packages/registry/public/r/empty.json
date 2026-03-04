@@ -45,7 +45,12 @@
     },
     {
       "path": "src/components/ui/empty/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport { cva } from 'class-variance-authority'\n\nexport { default as EmptyContent } from './EmptyContent.vue'\nexport { default as EmptyDescription } from './EmptyDescription.vue'\nexport { default as EmptyHeader } from './EmptyHeader.vue'\nexport { default as EmptyMedia } from './EmptyMedia.vue'\nexport { default as EmptyRoot } from './EmptyRoot.vue'\nexport { default as EmptyTitle } from './EmptyTitle.vue'\nexport { Empty } from './namespace'\n\nexport const variant = {\n  default: 'bg-transparent',\n  icon:\n    `\n      flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground\n      [&_svg:not([class*='size-'])]:size-6\n    `,\n}\n\nexport const emptyMediaVariants = cva(\n  `\n    mb-2 flex shrink-0 items-center justify-center\n    [&_svg]:pointer-events-none [&_svg]:shrink-0\n  `,\n  {\n    variants: {\n      variant,\n    },\n\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n\nexport type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>\n",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { emptyMediaVariants } from './variant'\n\nexport { default as EmptyContent } from './EmptyContent.vue'\nexport { default as EmptyDescription } from './EmptyDescription.vue'\nexport { default as EmptyHeader } from './EmptyHeader.vue'\nexport { default as EmptyMedia } from './EmptyMedia.vue'\nexport { default as EmptyRoot } from './EmptyRoot.vue'\nexport { default as EmptyTitle } from './EmptyTitle.vue'\nexport { Empty } from './namespace'\nexport type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>\nexport { emptyMediaVariants, variant } from './variant'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/empty/variant.ts",
+      "content": "import { cva } from 'class-variance-authority'\n\nexport const variant = {\n  default: 'bg-transparent',\n  icon:\n    `\n      flex size-10 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground\n      [&_svg:not([class*='size-'])]:size-6\n    `,\n}\n\nexport const emptyMediaVariants = cva(\n  `\n    mb-2 flex shrink-0 items-center justify-center\n    [&_svg]:pointer-events-none [&_svg]:shrink-0\n  `,\n  {\n    variants: {\n      variant,\n    },\n\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n",
       "type": "registry:ui"
     },
     {
