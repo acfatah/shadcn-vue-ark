@@ -15,11 +15,7 @@ const forwardedProps = useForwardPropsEmits(props, emit)
 </script>
 
 <template>
-  <Combobox.Root
-    v-bind="forwardedProps"
-    data-scope="combobox"
-    data-part="root"
-  >
+  <Combobox.Root v-bind="forwardedProps">
     <slot />
   </Combobox.Root>
 </template>
