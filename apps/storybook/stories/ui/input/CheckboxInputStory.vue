@@ -5,6 +5,8 @@ import { Field } from '@/components/ui/field'
 import { Fieldset } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
 
+defineOptions({ inheritAttrs: false })
+
 const props = defineProps<{
   indeterminate?: boolean
   disabled?: boolean
@@ -16,7 +18,6 @@ const props = defineProps<{
 
 const formRef = ref<HTMLFormElement | null>(null)
 const submittedValues = ref<Record<string, FormDataEntryValue> | null>(null)
-
 const notificationsValue = ref(false)
 const agreementValue = ref(false)
 const showErrors = ref(false)

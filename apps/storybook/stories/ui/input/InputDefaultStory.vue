@@ -5,6 +5,8 @@ import { Field } from '@/components/ui/field'
 import { Fieldset } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
 
+defineOptions({ inheritAttrs: false })
+
 const disabled = computed(() => {
   const attrs = useAttrs()
 
