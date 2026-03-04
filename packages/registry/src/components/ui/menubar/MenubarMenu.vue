@@ -15,8 +15,6 @@ const forwardedProps = useForwardPropsEmits(props, emit)
 <template>
   <Menu.Root
     v-bind="forwardedProps"
-    data-scope="menubar"
-    data-part="menu"
   >
     <slot />
   </Menu.Root>
