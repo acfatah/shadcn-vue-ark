@@ -9,8 +9,8 @@
 @custom-variant fixed (&:is(.layout-fixed *));
 
 @theme inline {
-  --breakpoint-3xl: 1600px;
-  --breakpoint-4xl: 2000px;
+  --breakpoint-3xl: 1640px;
+  --breakpoint-4xl: 1920px;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
