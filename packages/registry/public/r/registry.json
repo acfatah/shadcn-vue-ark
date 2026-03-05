@@ -3688,6 +3688,20 @@
       ]
     },
     {
+      "name": "use-fetch-lib",
+      "type": "registry:lib",
+      "dependencies": [
+        "@vueuse/core"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/use-fetch.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "useEmitsAsProps",
       "type": "registry:file",
       "dependencies": [],

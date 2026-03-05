@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-fetch-lib",
+  "dependencies": [
+    "@vueuse/core"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/lib/use-fetch.ts",
+      "content": "/**\n * Extends the default `@vueuse/core` useFetch implementation.\n *\n * - Adds the base URL loaded from `VITE_API_URL`.\n *\n * Read more:\n * - https://vueuse.org/core/useFetch\n */\nimport { createFetch } from '@vueuse/core'\n\nconst API_URL = import.meta.env.VITE_API_URL\nif (!API_URL)\n  throw new Error('VITE_API_URL is not defined')\n\nexport const useFetch = createFetch({\n  baseUrl: API_URL,\n  options: {\n    onFetchError(ctx) {\n      // Optionally log the error or show a notification\n\n      return ctx\n    },\n\n    // https://vueuse.org/core/useFetch/#intercepting-a-request\n    async beforeFetch({ options }) {\n      if (!API_URL)\n        throw new Error('VITE_API_URL is not defined')\n\n      options.credentials = 'include'\n\n      options.headers = {\n        Accept: 'application/json',\n        ...options.headers,\n      }\n\n      return { options }\n    },\n\n    async afterFetch(ctx) {\n      // Optionally unwrap the response data\n      // ctx.data = ctx.data?.data\n\n      return ctx\n    },\n  },\n})\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

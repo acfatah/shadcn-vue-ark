@@ -50,7 +50,7 @@
     },
     {
       "path": "src/components/ui/dialog/Dialog.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue/dialog'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ninterface Props extends DialogRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<DialogRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Dialog.Root\n    v-bind=\"forwardedProps\"\n    :class=\"props.class\"\n    data-scope=\"dialog\"\n    data-part=\"root\"\n  >\n    <slot />\n  </Dialog.Root>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue/dialog'\n\nimport { Dialog } from '@ark-ui/vue/dialog'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ndefineOptions({ inheritAttrs: false })\nconst props = defineProps<DialogRootProps>()\nconst emit = defineEmits<DialogRootEmits>()\nconst forwardedProps = useForwardPropsEmits(props, emit)\n</script>\n\n<template>\n  <Dialog.Root v-bind=\"forwardedProps\">\n    <slot />\n  </Dialog.Root>\n</template>\n",
       "type": "registry:ui"
     },
     {

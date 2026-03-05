@@ -24,7 +24,7 @@
     },
     {
       "path": "src/components/ui/hover-card/HoverCardRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HoverCardRootEmits, HoverCardRootProps } from '@ark-ui/vue/hover-card'\nimport type { HTMLAttributes } from 'vue'\n\nimport { HoverCard } from '@ark-ui/vue/hover-card'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ninterface Props extends HoverCardRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<HoverCardRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <HoverCard.Root\n    v-bind=\"forwardedProps\"\n    data-scope=\"hover-card\"\n    data-part=\"root\"\n    :class=\"props.class\"\n  >\n    <slot />\n  </HoverCard.Root>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HoverCardRootEmits, HoverCardRootProps } from '@ark-ui/vue/hover-card'\n\nimport { HoverCard } from '@ark-ui/vue/hover-card'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\nconst props = defineProps<HoverCardRootProps>()\nconst emit = defineEmits<HoverCardRootEmits>()\nconst forwardedProps = useForwardPropsEmits(props, emit)\n</script>\n\n<template>\n  <HoverCard.Root v-bind=\"forwardedProps\">\n    <slot />\n  </HoverCard.Root>\n</template>\n",
       "type": "registry:ui"
     },
     {
