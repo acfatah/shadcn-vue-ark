@@ -7,8 +7,9 @@ import process from 'node:process'
 type ComponentName = string
 
 const REGISTRY_URL
-  = process.env.REGISTRY_URL
-    || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/main/packages/registry/public/r'
+  = (process.env.REGISTRY_URL
+    || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r')
+    .replace(/\/+$/, '')
 
 function logError(error: unknown) {
   consola.error(
