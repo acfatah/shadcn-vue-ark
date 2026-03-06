@@ -1,3 +1,4 @@
+export { default as FieldsetContent } from './FieldsetContent.vue'
 export { default as FieldsetDescription } from './FieldsetDescription.vue'
 export { default as FieldsetError } from './FieldsetError.vue'
 export { default as FieldsetGroup } from './FieldsetGroup.vue'
