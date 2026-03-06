@@ -44,15 +44,13 @@ import { Tooltip } from '@/components/ui/tooltip'
         >
           <PlusIcon class="size-4" />
         </InputGroup.Button>
-        <DropdownMenu.Root>
+        <DropdownMenu.Root side="top" align="start">
           <DropdownMenu.Trigger as-child>
             <InputGroup.Button variant="ghost">
               Auto
             </InputGroup.Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content
-            side="top"
-            align="start"
             class="[--radius:0.95rem]"
           >
             <DropdownMenu.Item value="auto">
