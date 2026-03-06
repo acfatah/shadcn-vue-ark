@@ -42,7 +42,7 @@
     },
     {
       "path": "src/components/ui/field/FieldRootProvider.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { FieldRootProviderProps } from '@ark-ui/vue/field'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Field } from '@ark-ui/vue/field'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ntype Props = FieldRootProviderProps & {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Field.RootProvider\n    v-bind=\"forwardedProps\"\n    :class=\"cn('', props.class)\"\n  >\n    <slot />\n  </Field.RootProvider>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { FieldRootProviderProps } from '@ark-ui/vue/field'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Field } from '@ark-ui/vue/field'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ntype Props = FieldRootProviderProps & {\n  class?: HTMLAttributes['class']\n  value: FieldRootProviderProps['value']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, ['class', 'value'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Field.RootProvider\n    v-bind=\"forwardedProps\"\n    :class=\"cn('', props.class)\"\n    :value=\"props.value\"\n  >\n    <slot />\n  </Field.RootProvider>\n</template>\n",
       "type": "registry:ui"
     },
     {

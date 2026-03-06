@@ -1,24 +1,23 @@
 <script setup lang="ts">
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
-import { Fieldset } from '@ark-ui/vue/fieldset'
+import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
-import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props {
+interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']
 }
 
-const props = withDefaults(defineProps<Props>(), {})
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <Fieldset.Root
-    v-bind="forwardedProps"
+  <ark.div
+    v-bind="delegatedProps"
     :class="cn(
       `
         group/field-group @container/field-group flex w-full flex-col gap-4
@@ -29,5 +28,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     )"
   >
     <slot />
-  </Fieldset.Root>
+  </ark.div>
 </template>
