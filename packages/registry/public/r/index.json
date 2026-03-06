@@ -1565,13 +1565,13 @@
     "title": "Fieldset",
     "description": "A set of form controls optionally grouped to compose accessible form fields\nand grouped inputs.\n\nReferences:\n- Ark UI: https://ark-ui.com/vue/docs/components/fieldset\n- shadcn/ui: https://ui.shadcn.com/docs/components/field#fieldset-1",
     "dependencies": [
-      "@vueuse/core",
-      "@ark-ui/vue"
+      "@ark-ui/vue",
+      "@vueuse/core"
     ],
     "registryDependencies": [
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
     ],
     "files": [
       {
@@ -2307,6 +2307,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/popover/PopoverRoot.vue",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/popover/PopoverAnchor.vue",
         "type": "registry:ui"
       },
@@ -2320,10 +2324,6 @@
       },
       {
         "path": "src/lib/utils.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/popover/PopoverRoot.vue",
         "type": "registry:ui"
       },
       {

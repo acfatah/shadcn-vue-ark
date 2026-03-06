@@ -4,13 +4,13 @@
   "title": "Fieldset",
   "description": "A set of form controls optionally grouped to compose accessible form fields\nand grouped inputs.\n\nReferences:\n- Ark UI: https://ark-ui.com/vue/docs/components/fieldset\n- shadcn/ui: https://ui.shadcn.com/docs/components/field#fieldset-1",
   "dependencies": [
-    "@vueuse/core",
-    "@ark-ui/vue"
+    "@ark-ui/vue",
+    "@vueuse/core"
   ],
   "registryDependencies": [
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
   ],
   "files": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "path": "src/components/ui/fieldset/FieldsetGroup.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { Fieldset } from '@ark-ui/vue/fieldset'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Fieldset.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        group/field-group @container/field-group flex w-full flex-col gap-4\n        data-[slot=checkbox-group]:gap-3\n        *:data-[slot=field-group]:gap-4\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Fieldset.Root>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <ark.div\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      `\n        group/field-group @container/field-group flex w-full flex-col gap-4\n        data-[slot=checkbox-group]:gap-3\n        *:data-[slot=field-group]:gap-4\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -40,7 +40,7 @@
     },
     {
       "path": "src/components/ui/fieldset/index.ts",
-      "content": "export { default as FieldsetDescription } from './FieldsetDescription.vue'\nexport { default as FieldsetError } from './FieldsetError.vue'\nexport { default as FieldsetGroup } from './FieldsetGroup.vue'\nexport { default as FieldsetLegend } from './FieldsetLegend.vue'\nexport { default as FieldsetRoot } from './FieldsetRoot.vue'\nexport { default as FieldsetSeparator } from './FieldsetSeparator.vue'\nexport { Fieldset } from './namespace'\nexport {\n  FieldsetContext,\n  useFieldset,\n  useFieldsetContext,\n} from '@ark-ui/vue/fieldset'\n",
+      "content": "export { default as FieldsetContent } from './FieldsetContent.vue'\nexport { default as FieldsetDescription } from './FieldsetDescription.vue'\nexport { default as FieldsetError } from './FieldsetError.vue'\nexport { default as FieldsetGroup } from './FieldsetGroup.vue'\nexport { default as FieldsetLegend } from './FieldsetLegend.vue'\nexport { default as FieldsetRoot } from './FieldsetRoot.vue'\nexport { default as FieldsetSeparator } from './FieldsetSeparator.vue'\nexport { Fieldset } from './namespace'\nexport {\n  FieldsetContext,\n  useFieldset,\n  useFieldsetContext,\n} from '@ark-ui/vue/fieldset'\n",
       "type": "registry:ui"
     },
     {

@@ -62,7 +62,7 @@
     },
     {
       "path": "src/components/ui/field/index.ts",
-      "content": "export { default as FieldDescription } from './FieldDescription.vue'\nexport { default as FieldError } from './FieldError.vue'\nexport { default as FieldInput } from './FieldInput.vue'\nexport { default as FieldLabel } from './FieldLabel.vue'\nexport { default as FieldRequiredIndicator } from './FieldRequiredIndicator.vue'\nexport { default as FieldRoot } from './FieldRoot.vue'\nexport { default as FieldRootProvider } from './FieldRootProvider.vue'\nexport { default as FieldTextarea } from './FieldTextarea.vue'\nexport { Field } from './namespace'\nexport { FieldContext, useField, useFieldContext } from '@ark-ui/vue/field'\n",
+      "content": "export { default as FieldCheckbox } from './FieldCheckbox.vue'\nexport { default as FieldDescription } from './FieldDescription.vue'\nexport { default as FieldError } from './FieldError.vue'\nexport { default as FieldGroup } from './FieldGroup.vue'\nexport { default as FieldInput } from './FieldInput.vue'\nexport { default as FieldLabel } from './FieldLabel.vue'\nexport { default as FieldRequiredIndicator } from './FieldRequiredIndicator.vue'\nexport { default as FieldRoot } from './FieldRoot.vue'\nexport { default as FieldRootProvider } from './FieldRootProvider.vue'\nexport { default as FieldTextarea } from './FieldTextarea.vue'\nexport { default as FieldTitle } from './FieldTitle.vue'\nexport { Field } from './namespace'\nexport { FieldContext, useField, useFieldContext } from '@ark-ui/vue/field'\n",
       "type": "registry:ui"
     },
     {
