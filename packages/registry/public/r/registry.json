@@ -2408,7 +2408,7 @@
           "target": "src/lib/utils.ts"
         },
         {
-          "path": "src/components/ui/popover/Popover.vue",
+          "path": "src/components/ui/popover/PopoverRoot.vue",
           "type": "registry:ui"
         },
         {

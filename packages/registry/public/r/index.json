@@ -2323,7 +2323,7 @@
         "type": "registry:ui"
       },
       {
-        "path": "src/components/ui/popover/Popover.vue",
+        "path": "src/components/ui/popover/PopoverRoot.vue",
         "type": "registry:ui"
       },
       {

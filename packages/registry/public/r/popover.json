@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "src/components/ui/popover/namespace.ts",
-      "content": "import PopoverRoot from './Popover.vue'\nimport PopoverAnchor from './PopoverAnchor.vue'\nimport PopoverContent from './PopoverContent.vue'\nimport PopoverTrigger from './PopoverTrigger.vue'\n\nexport const Popover = {\n  /** Popover root provider */\n  Root: PopoverRoot,\n\n  /** Popover trigger */\n  Trigger: PopoverTrigger,\n\n  /** Popover content */\n  Content: PopoverContent,\n\n  /** Popover anchor */\n  Anchor: PopoverAnchor,\n}\n",
+      "content": "import PopoverRoot from './PopoverRoot.vue'\nimport PopoverAnchor from './PopoverAnchor.vue'\nimport PopoverContent from './PopoverContent.vue'\nimport PopoverTrigger from './PopoverTrigger.vue'\n\nexport const Popover = {\n  /** Popover root provider */\n  Root: PopoverRoot,\n\n  /** Popover trigger */\n  Trigger: PopoverTrigger,\n\n  /** Popover content */\n  Content: PopoverContent,\n\n  /** Popover anchor */\n  Anchor: PopoverAnchor,\n}\n",
       "type": "registry:ui"
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "path": "src/components/ui/popover/index.ts",
-      "content": "export { Popover } from './namespace'\nexport { default as PopoverRoot } from './Popover.vue'\nexport { default as PopoverAnchor } from './PopoverAnchor.vue'\nexport { default as PopoverContent } from './PopoverContent.vue'\nexport { default as PopoverTrigger } from './PopoverTrigger.vue'\n",
+      "content": "export { Popover } from './namespace'\nexport { default as PopoverRoot } from './PopoverRoot.vue'\nexport { default as PopoverAnchor } from './PopoverAnchor.vue'\nexport { default as PopoverContent } from './PopoverContent.vue'\nexport { default as PopoverTrigger } from './PopoverTrigger.vue'\n",
       "type": "registry:ui"
     },
     {
@@ -45,8 +45,8 @@
       "target": "src/lib/utils.ts"
     },
     {
-      "path": "src/components/ui/popover/Popover.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PopoverRootEmits, PopoverRootProps } from '@ark-ui/vue/popover'\n\nimport { Popover } from '@ark-ui/vue/popover'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\nconst props = defineProps<PopoverRootProps>()\nconst emit = defineEmits<PopoverRootEmits>()\nconst forwardedProps = useForwardPropsEmits(props, emit)\n\ndefineOptions({ inheritAttrs: false })\n</script>\n\n<template>\n  <Popover.Root\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </Popover.Root>\n</template>\n",
+      "path": "src/components/ui/popover/PopoverRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { PopoverRootEmits, PopoverRootProps } from '@ark-ui/vue/popover'\n\nimport { Popover } from '@ark-ui/vue/popover'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ndefineOptions({ inheritAttrs: false })\n\nconst props = defineProps<PopoverRootProps>()\nconst emit = defineEmits<PopoverRootEmits>()\nconst forwardedProps = useForwardPropsEmits(props, emit)\n</script>\n\n<template>\n  <Popover.Root\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </Popover.Root>\n</template>\n",
       "type": "registry:ui"
     },
     {
