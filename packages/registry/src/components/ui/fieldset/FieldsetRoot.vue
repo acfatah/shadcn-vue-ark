@@ -31,8 +31,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
         flex gap-6
         has-[>[data-part=checkbox-group]]:gap-3
         has-[>[data-part=radio-group]]:gap-3
-        ${props.orientation === 'horizontal' ? 'flex-row justify-between' : 'flex-col'}
       `,
+      props.orientation === 'horizontal' ? 'flex-row justify-between' : 'flex-col',
       props.class,
     )"
   >

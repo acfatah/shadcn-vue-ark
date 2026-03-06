@@ -10,11 +10,11 @@ import { cn } from '@/lib/utils'
 
 type Props = FieldRootProviderProps & {
   class?: HTMLAttributes['class']
-  value?: FieldRootProviderProps['value']
+  value: FieldRootProviderProps['value']
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-const delegatedProps = reactiveOmit(props, 'class')
+const delegatedProps = reactiveOmit(props, ['class', 'value'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
@@ -22,7 +22,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Field.RootProvider
     v-bind="forwardedProps"
     :class="cn('', props.class)"
-    :value="value"
+    :value="props.value"
   >
     <slot />
   </Field.RootProvider>

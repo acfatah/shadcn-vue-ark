@@ -58,7 +58,7 @@ export const Fieldset = {
    * FieldsetError component
    *
    * Accessible error container that accepts children or an errors array (e.g.,
-   * from react-hook-form).
+   * from a form validation library).
    *
    * See:
    * - https://ui.shadcn.com/docs/components/field#fielderror
