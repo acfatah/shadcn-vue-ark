@@ -33,8 +33,8 @@ export const registryItem = {
       theme: {
         extend: {
           animation: {
-            '--animate-collapsible-down': 'collapsible-down 0.25s ease-out',
-            '--animate-collapsible-up': 'collapsible-up 0.25s ease-out',
+            'collapsible-down': 'collapsible-down 0.25s ease-out',
+            'collapsible-up': 'collapsible-up 0.25s ease-out',
           },
           keyframes: {
             'collapsible-down': {

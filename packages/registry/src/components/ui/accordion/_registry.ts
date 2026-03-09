@@ -39,8 +39,8 @@ export const registryItem = {
       theme: {
         extend: {
           animation: {
-            '--animate-accordion-down': 'accordion-down 0.25s ease-out',
-            '--animate-accordion-up': 'accordion-up 0.25s ease-out',
+            'accordion-down': 'accordion-down 0.25s ease-out',
+            'accordion-up': 'accordion-up 0.25s ease-out',
           },
           keyframes: {
             'accordion-down': {
