@@ -5,12 +5,16 @@ import { createListCollection, Select } from '@/components/ui/select'
 
 interface Props {
   align?: 'start' | 'center' | 'end'
+  alignOffset?: number
   side?: 'top' | 'right' | 'bottom' | 'left'
+  sideOffset?: number
 }
 
 withDefaults(defineProps<Props>(), {
   align: 'start',
+  alignOffset: 0,
   side: 'right',
+  sideOffset: 4,
 })
 
 interface Item {
@@ -35,7 +39,7 @@ const value = ref<string[]>([])
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <Select.Root v-model="value" :collection="collection" :align="align" :side="side">
+    <Select.Root v-model="value" :collection="collection" :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
       <Select.HiddenSelect />
       <Select.Label>Fruits</Select.Label>
 

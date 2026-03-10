@@ -8,12 +8,16 @@ import { Combobox } from '@/components/ui/combobox'
 
 interface Props {
   align?: 'start' | 'center' | 'end'
+  alignOffset?: number
   side?: 'top' | 'right' | 'bottom' | 'left'
+  sideOffset?: number
 }
 
 withDefaults(defineProps<Props>(), {
   align: 'start',
+  alignOffset: 0,
   side: 'right',
+  sideOffset: 4,
 })
 
 const frameworks = [
@@ -59,7 +63,9 @@ function handleInputValueChange(details: { inputValue: string }) {
       :input-value="inputValue"
       :collection="collection"
       :align="align"
+      :align-offset="alignOffset"
       :side="side"
+      :side-offset="sideOffset"
       @input-value-change="handleInputValueChange"
     >
       <Combobox.Anchor>

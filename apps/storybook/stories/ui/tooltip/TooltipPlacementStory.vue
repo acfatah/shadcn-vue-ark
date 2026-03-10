@@ -4,18 +4,22 @@ import { Tooltip } from '@/components/ui/tooltip'
 
 interface Props {
   align?: 'start' | 'center' | 'end'
+  alignOffset?: number
   side?: 'top' | 'right' | 'bottom' | 'left'
+  sideOffset?: number
 }
 
 withDefaults(defineProps<Props>(), {
   align: 'center',
+  alignOffset: 0,
   side: 'right',
+  sideOffset: 4,
 })
 </script>
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <Tooltip.Root :align="align" :side="side">
+    <Tooltip.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
       <Tooltip.Trigger as-child>
         <Button variant="outline">
           Hover

@@ -73,6 +73,7 @@ const meta = {
       control: 'select',
       options: ['start', 'center', 'end'],
     },
+    alignOffset: { control: 'number' },
     disabled: { control: 'boolean' },
     // @ts-expect-error TS2353
     position: {
@@ -84,6 +85,7 @@ const meta = {
       control: 'select',
       options: ['top', 'right', 'bottom', 'left'],
     },
+    sideOffset: { control: 'number' },
   },
 } satisfies Meta<typeof SelectRoot>
 
@@ -119,7 +121,9 @@ export const Placement: Story = {
   args: {
     // @ts-expect-error TS2353
     align: 'start',
+    alignOffset: 0,
     side: 'right',
+    sideOffset: 4,
   },
   parameters: {
     docs: {

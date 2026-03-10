@@ -4,18 +4,22 @@ import { DropdownMenu } from '@/components/ui/dropdown-menu'
 
 interface Props {
   align?: 'start' | 'center' | 'end'
+  alignOffset?: number
   side?: 'top' | 'right' | 'bottom' | 'left'
+  sideOffset?: number
 }
 
 withDefaults(defineProps<Props>(), {
   align: 'center',
+  alignOffset: 0,
   side: 'left',
+  sideOffset: 4,
 })
 </script>
 
 <template>
   <div class="flex min-h-[50vh] w-full justify-end">
-    <DropdownMenu.Root :align="align" :side="side">
+    <DropdownMenu.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
       <DropdownMenu.Trigger as-child>
         <Button variant="outline" class="m-auto">
           Open

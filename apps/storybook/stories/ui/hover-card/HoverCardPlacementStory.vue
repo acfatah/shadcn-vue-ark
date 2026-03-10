@@ -4,18 +4,22 @@ import { HoverCard } from '@/components/ui/hover-card'
 
 interface Props {
   align?: 'start' | 'center' | 'end'
+  alignOffset?: number
   side?: 'top' | 'right' | 'bottom' | 'left'
+  sideOffset?: number
 }
 
 withDefaults(defineProps<Props>(), {
   align: 'center',
+  alignOffset: 0,
   side: 'right',
+  sideOffset: 4,
 })
 </script>
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <HoverCard.Root :align="align" :side="side">
+    <HoverCard.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
       <HoverCard.Trigger as-child>
         <Button variant="link">
           @nuxt
