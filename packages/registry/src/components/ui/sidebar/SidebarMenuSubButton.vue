@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
+import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends PolymorphicProps {
+interface Props {
+  asChild?: boolean
   size?: 'sm' | 'md'
   isActive?: boolean
   class?: HTMLAttributes['class']
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  as: 'a',
   size: 'md',
 })
 
-const delegatedProps = reactiveOmit(props, ['class', 'size', 'isActive'])
+const delegatedProps = reactiveOmit(props, ['asChild', 'class', 'size', 'isActive'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <ark.a
+  <component
+    :is="props.asChild ? Dynamic : ark.a"
     v-bind="forwardedProps"
     data-scope="sidebar"
     data-part="menu-sub-button"
@@ -51,5 +52,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     )"
   >
     <slot />
-  </ark.a>
+  </component>
 </template>
