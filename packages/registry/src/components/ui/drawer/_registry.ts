@@ -18,6 +18,7 @@ export const registryItem = {
   dependencies: [
     '@ark-ui/vue',
     '@vueuse/core',
+    'tw-animate-css',
   ],
 
   files: [

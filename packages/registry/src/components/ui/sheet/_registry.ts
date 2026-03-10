@@ -20,6 +20,7 @@ export const registryItem = {
     '@ark-ui/vue',
     '@vueuse/core',
     'lucide-vue-next',
+    'tw-animate-css',
   ],
 
   files: [

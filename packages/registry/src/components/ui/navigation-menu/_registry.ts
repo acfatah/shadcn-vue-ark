@@ -20,6 +20,7 @@ export const registryItem = {
     '@vueuse/core',
     'class-variance-authority',
     'lucide-vue-next',
+    'tw-animate-css',
   ],
 
   files: [
