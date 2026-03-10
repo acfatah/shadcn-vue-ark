@@ -1,0 +1,32 @@
+import { cva } from 'class-variance-authority'
+
+export { NavigationMenuOptionsProvider, useNavigationMenuOptions } from './context'
+export { NavigationMenu } from './namespace'
+export { default as NavigationMenuContent } from './NavigationMenuContent.vue'
+export { default as NavigationMenuIndicator } from './NavigationMenuIndicator.vue'
+export { default as NavigationMenuItem } from './NavigationMenuItem.vue'
+export { default as NavigationMenuLink } from './NavigationMenuLink.vue'
+export { default as NavigationMenuList } from './NavigationMenuList.vue'
+export { default as NavigationMenuRoot } from './NavigationMenuRoot.vue'
+export { default as NavigationMenuTrigger } from './NavigationMenuTrigger.vue'
+export { default as NavigationMenuViewport } from './NavigationMenuViewport.vue'
+
+export const navigationMenuTriggerStyle = cva(
+  [
+    'group inline-flex h-9 w-max items-center justify-center px-4 py-2',
+    'rounded-md bg-background outline-none',
+    'text-sm font-medium',
+    'transition-[color,box-shadow]',
+    'hover:bg-accent hover:text-accent-foreground',
+    `
+      focus:bg-accent focus:text-accent-foreground
+      focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1
+    `,
+    'disabled:pointer-events-none disabled:opacity-50',
+    `
+      data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground
+      data-[state=open]:hover:bg-accent
+      data-[state=open]:focus:bg-accent
+    `,
+  ],
+)
