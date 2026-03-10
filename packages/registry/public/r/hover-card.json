@@ -5,7 +5,8 @@
   "description": "For sighted users to preview content available behind a link.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/hover-card\n- shadcn/ui: https://ui.shadcn.com/docs/components/hover-card",
   "dependencies": [
     "@vueuse/core",
-    "@ark-ui/vue"
+    "@ark-ui/vue",
+    "tw-animate-css"
   ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",

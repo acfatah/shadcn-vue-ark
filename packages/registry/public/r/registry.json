@@ -786,7 +786,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -946,7 +947,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
@@ -1227,7 +1229,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -1301,7 +1304,8 @@
       "description": "A drawer component for mobile devices.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/drawer",
       "dependencies": [
         "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -1372,7 +1376,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
@@ -1719,7 +1724,8 @@
       "description": "For sighted users to preview content available behind a link.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/hover-card\n- shadcn/ui: https://ui.shadcn.com/docs/components/hover-card",
       "dependencies": [
         "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -2188,7 +2194,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
@@ -2288,6 +2295,141 @@
       ]
     },
     {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/navigation-menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/navigation-menu",
+      "dependencies": [
+        "@vueuse/core",
+        "@ark-ui/vue",
+        "class-variance-authority",
+        "lucide-vue-next",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/navigation-menu/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuViewport.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/createContext.ts",
+          "type": "registry:file",
+          "target": "src/composables/createContext.ts"
+        },
+        {
+          "path": "src/composables/useForwardPropsEmits.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardPropsEmits.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuLink.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/context.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "A numeric input component with increment and decrement controls.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/number-input",
+      "dependencies": [
+        "@vueuse/core",
+        "@iconify/vue",
+        "@ark-ui/vue"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/number-input/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputIncrement.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputControl.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardPropsEmits.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardPropsEmits.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputDecrement.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputRoot.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
@@ -2378,7 +2520,8 @@
       "description": "Displays rich content in a portal, triggered by a button.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/popover\n- shadcn/ui: https://ui.shadcn.com/docs/components/popover",
       "dependencies": [
         "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -2739,7 +2882,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
@@ -2888,7 +3032,8 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -2963,6 +3108,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/tooltip.json",
@@ -3625,7 +3771,8 @@
       "description": "A popup that displays information related to an element when the element\nreceives keyboard focus or the mouse hovers over it.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tooltip\n- shadcn/ui: https://ui.shadcn.com/docs/components/tooltip",
       "dependencies": [
         "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "tw-animate-css"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",

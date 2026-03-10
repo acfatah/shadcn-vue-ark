@@ -5,7 +5,8 @@
   "description": "A popup that displays information related to an element when the element\nreceives keyboard focus or the mouse hovers over it.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tooltip\n- shadcn/ui: https://ui.shadcn.com/docs/components/tooltip",
   "dependencies": [
     "@vueuse/core",
-    "@ark-ui/vue"
+    "@ark-ui/vue",
+    "tw-animate-css"
   ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",

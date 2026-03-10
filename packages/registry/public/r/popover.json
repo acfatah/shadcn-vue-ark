@@ -5,7 +5,8 @@
   "description": "Displays rich content in a portal, triggered by a button.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/popover\n- shadcn/ui: https://ui.shadcn.com/docs/components/popover",
   "dependencies": [
     "@vueuse/core",
-    "@ark-ui/vue"
+    "@ark-ui/vue",
+    "tw-animate-css"
   ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",

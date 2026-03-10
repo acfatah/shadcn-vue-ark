@@ -5,7 +5,8 @@
   "description": "A drawer component for mobile devices.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/drawer",
   "dependencies": [
     "@vueuse/core",
-    "@ark-ui/vue"
+    "@ark-ui/vue",
+    "tw-animate-css"
   ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
