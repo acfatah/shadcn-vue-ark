@@ -16,20 +16,44 @@ import { cn } from '@/lib/utils'
 import SelectContextProvider from './SelectContextProvider.vue'
 
 export interface Props extends SelectRootProps<CollectionItem> {
+  align?: 'start' | 'center' | 'end'
   class?: HTMLAttributes['class']
   invalid?: boolean
   loading?: boolean
+  side?: 'top' | 'right' | 'bottom' | 'left'
 }
 
-const props = defineProps<Props>()
+type Placement = NonNullable<
+  NonNullable<SelectRootProps<CollectionItem>['positioning']>['placement']
+>
+
+const props = withDefaults(defineProps<Props>(), {
+  align: 'start',
+  side: 'bottom',
+})
 const emit = defineEmits<SelectRootEmits<CollectionItem>>()
 const delegatedProps = reactiveOmit(props, [
+  'align',
   'class',
   'collection',
   'disabled',
   'invalid',
+  'positioning',
+  'side',
 ])
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
+
+const positioning = computed(() => {
+  const placement = (props.align === 'center'
+    ? props.side
+    : `${props.side}-${props.align}`) as Placement
+
+  return {
+    ...props.positioning,
+    placement: props.positioning?.placement ?? placement,
+  }
+})
+
 const disabled = computed(() => (props.loading || props.disabled) || undefined)
 const nativeInvalid = ref(false)
 
@@ -43,6 +67,7 @@ function setNativeInvalid(value: boolean = true) {
     v-bind="forwardedProps"
     :collection="props.collection"
     :disabled="disabled"
+    :positioning="positioning"
     :invalid="props.invalid || nativeInvalid"
     :class="cn(
       `
