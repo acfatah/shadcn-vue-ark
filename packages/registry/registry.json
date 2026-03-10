@@ -53,25 +53,27 @@
           "type": "registry:ui"
         }
       ],
-      "css": {
-        "@theme inline": {
+      "cssVars": {
+        "theme": {
           "--animate-accordion-down": "accordion-down 0.25s ease-out",
-          "--animate-accordion-up": "accordion-up 0.25s ease-out",
-          "@keyframes accordion-down": {
-            "from": {
-              "height": "0"
-            },
-            "to": {
-              "height": "var(--height)"
-            }
+          "--animate-accordion-up": "accordion-up 0.25s ease-out"
+        }
+      },
+      "css": {
+        "@keyframes accordion-down": {
+          "from": {
+            "height": "0"
           },
-          "@keyframes accordion-up": {
-            "from": {
-              "height": "var(--height)"
-            },
-            "to": {
-              "height": "0"
-            }
+          "to": {
+            "height": "var(--height)"
+          }
+        },
+        "@keyframes accordion-up": {
+          "from": {
+            "height": "var(--height)"
+          },
+          "to": {
+            "height": "0"
           }
         }
       }
@@ -751,25 +753,27 @@
           "target": "src/composables/useForwardPropsEmits.ts"
         }
       ],
-      "css": {
-        "@theme inline": {
+      "cssVars": {
+        "theme": {
           "--animate-collapsible-down": "collapsible-down 0.25s ease-out",
-          "--animate-collapsible-up": "collapsible-up 0.25s ease-out",
-          "@keyframes collapsible-down": {
-            "from": {
-              "height": "0"
-            },
-            "to": {
-              "height": "var(--height)"
-            }
+          "--animate-collapsible-up": "collapsible-up 0.25s ease-out"
+        }
+      },
+      "css": {
+        "@keyframes collapsible-down": {
+          "from": {
+            "height": "0"
           },
-          "@keyframes collapsible-up": {
-            "from": {
-              "height": "var(--height)"
-            },
-            "to": {
-              "height": "0"
-            }
+          "to": {
+            "height": "var(--height)"
+          }
+        },
+        "@keyframes collapsible-up": {
+          "from": {
+            "height": "var(--height)"
+          },
+          "to": {
+            "height": "0"
           }
         }
       }

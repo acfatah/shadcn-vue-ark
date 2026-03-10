@@ -34,26 +34,21 @@ export const registryItem = {
     },
   ],
 
-  tailwind: {
-    config: {
-      theme: {
-        extend: {
-          animation: {
-            'accordion-down': 'accordion-down 0.25s ease-out',
-            'accordion-up': 'accordion-up 0.25s ease-out',
-          },
-          keyframes: {
-            'accordion-down': {
-              from: { height: '0' },
-              to: { height: 'var(--height)' },
-            },
-            'accordion-up': {
-              from: { height: 'var(--height)' },
-              to: { height: '0' },
-            },
-          },
-        },
-      },
+  cssVars: {
+    theme: {
+      '--animate-accordion-down': 'accordion-down 0.25s ease-out',
+      '--animate-accordion-up': 'accordion-up 0.25s ease-out',
+    },
+  },
+
+  css: {
+    '@keyframes accordion-down': {
+      from: { height: '0' },
+      to: { height: 'var(--height)' },
+    },
+    '@keyframes accordion-up': {
+      from: { height: 'var(--height)' },
+      to: { height: '0' },
     },
   },
 } satisfies RegistryItem

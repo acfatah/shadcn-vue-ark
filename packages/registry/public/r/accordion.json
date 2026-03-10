@@ -56,25 +56,27 @@
       "type": "registry:ui"
     }
   ],
+  "cssVars": {
+    "theme": {
+      "--animate-accordion-down": "accordion-down 0.25s ease-out",
+      "--animate-accordion-up": "accordion-up 0.25s ease-out"
+    }
+  },
   "css": {
-    "@theme inline": {
-      "accordion-down": "accordion-down 0.25s ease-out",
-      "accordion-up": "accordion-up 0.25s ease-out",
-      "@keyframes accordion-down": {
-        "from": {
-          "height": "0"
-        },
-        "to": {
-          "height": "var(--height)"
-        }
+    "@keyframes accordion-down": {
+      "from": {
+        "height": "0"
       },
-      "@keyframes accordion-up": {
-        "from": {
-          "height": "var(--height)"
-        },
-        "to": {
-          "height": "0"
-        }
+      "to": {
+        "height": "var(--height)"
+      }
+    },
+    "@keyframes accordion-up": {
+      "from": {
+        "height": "var(--height)"
+      },
+      "to": {
+        "height": "0"
       }
     }
   },

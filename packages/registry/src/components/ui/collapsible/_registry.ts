@@ -28,26 +28,21 @@ export const registryItem = {
     },
   ],
 
-  tailwind: {
-    config: {
-      theme: {
-        extend: {
-          animation: {
-            'collapsible-down': 'collapsible-down 0.25s ease-out',
-            'collapsible-up': 'collapsible-up 0.25s ease-out',
-          },
-          keyframes: {
-            'collapsible-down': {
-              from: { height: '0' },
-              to: { height: 'var(--height)' },
-            },
-            'collapsible-up': {
-              from: { height: 'var(--height)' },
-              to: { height: '0' },
-            },
-          },
-        },
-      },
+  cssVars: {
+    theme: {
+      '--animate-collapsible-down': 'collapsible-down 0.25s ease-out',
+      '--animate-collapsible-up': 'collapsible-up 0.25s ease-out',
+    },
+  },
+
+  css: {
+    '@keyframes collapsible-down': {
+      from: { height: '0' },
+      to: { height: 'var(--height)' },
+    },
+    '@keyframes collapsible-up': {
+      from: { height: 'var(--height)' },
+      to: { height: '0' },
     },
   },
 } satisfies RegistryItem
