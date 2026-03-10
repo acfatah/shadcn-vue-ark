@@ -26,6 +26,8 @@ import SelectDefaultStory from './SelectDefaultStory.vue'
 import SelectDefaultSource from './SelectDefaultStory.vue?raw'
 import SelectEmptyStory from './SelectEmptyStory.vue'
 import SelectEmptySource from './SelectEmptyStory.vue?raw'
+import SelectPlacementStory from './SelectPlacementStory.vue'
+import SelectPlacementSource from './SelectPlacementStory.vue?raw'
 
 const meta = {
   title: 'Components/Select',
@@ -67,11 +69,20 @@ const meta = {
   },
 
   argTypes: {
+    align: {
+      control: 'select',
+      options: ['start', 'center', 'end'],
+    },
     disabled: { control: 'boolean' },
     // @ts-expect-error TS2353
     position: {
       control: { type: 'select' },
       options: ['item-aligned', 'popper'],
+    },
+
+    side: {
+      control: 'select',
+      options: ['top', 'right', 'bottom', 'left'],
     },
   },
 } satisfies Meta<typeof SelectRoot>
@@ -98,6 +109,35 @@ export const Default: Story = {
 
     template: html`
       <SelectDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+// @ts-expect-error TS2322
+export const Placement: Story = {
+  name: 'Custom Placement',
+  args: {
+    // @ts-expect-error TS2353
+    align: 'start',
+    side: 'right',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: SelectPlacementSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { SelectPlacementStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <SelectPlacementStory v-bind="args" />
     `,
   }),
 }

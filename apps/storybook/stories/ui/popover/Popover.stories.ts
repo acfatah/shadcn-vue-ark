@@ -7,11 +7,25 @@ import { registryItem } from '@/components/ui/popover/_registry'
 
 import PopoverDefaultStory from './PopoverDefaultStory.vue'
 import PopoverDefaultSource from './PopoverDefaultStory.vue?raw'
+import PopoverPlacementStory from './PopoverPlacementStory.vue'
+import PopoverPlacementSource from './PopoverPlacementStory.vue?raw'
 
 const meta = {
   title: 'Components/Popover',
   component: Popover.Root,
   tags: ['autodocs'],
+
+  argTypes: {
+    align: {
+      control: 'select',
+      options: ['start', 'center', 'end'],
+    },
+
+    side: {
+      control: 'select',
+      options: ['top', 'right', 'bottom', 'left'],
+    },
+  },
 
   parameters: {
     docs: {
@@ -43,6 +57,33 @@ export const Default: Story = {
 
     template: html`
       <PopoverDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Placement: Story = {
+  name: 'Custom Placement',
+  args: {
+    align: 'center',
+    side: 'right',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: PopoverPlacementSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { PopoverPlacementStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <PopoverPlacementStory v-bind="args" />
     `,
   }),
 }

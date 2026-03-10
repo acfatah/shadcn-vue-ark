@@ -4,9 +4,13 @@ import { ref } from 'vue'
 import { createListCollection, Select } from '@/components/ui/select'
 
 const storyArgs = withDefaults(defineProps<{
+  align?: 'start' | 'center' | 'end'
   position?: 'item-aligned' | 'popper'
+  side?: 'top' | 'right' | 'bottom' | 'left'
 }>(), {
+  align: 'start',
   position: 'item-aligned',
+  side: 'bottom',
 })
 
 interface Item {
@@ -35,7 +39,7 @@ const value = ref<string[]>(['banana'])
 </script>
 
 <template>
-  <Select.Root v-model="value" :collection="collection">
+  <Select.Root v-model="value" :collection="collection" :align="storyArgs.align" :side="storyArgs.side">
     <Select.HiddenSelect />
     <Select.Label>Fruits</Select.Label>
 

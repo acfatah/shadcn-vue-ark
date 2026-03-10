@@ -7,8 +7,8 @@ import { registryItem } from '@/components/ui/dropdown-menu/_registry'
 
 import DropdownMenuDefaultStory from './DropdownMenuDefaultStory.vue'
 import DropdownMenuDefaultSource from './DropdownMenuDefaultStory.vue?raw'
-import LeftDropdownMenuStory from './LeftDropdownMenuStory.vue'
-import LeftDropdownMenuSource from './LeftDropdownMenuStory.vue?raw'
+import DropdownMenuPlacementStory from './DropdownMenuPlacementStory.vue'
+import DropdownMenuPlacementSource from './DropdownMenuPlacementStory.vue?raw'
 
 const meta = {
   title: 'Components/DropdownMenu',
@@ -65,8 +65,8 @@ export const Default: Story = {
   }),
 }
 
-export const Left: Story = {
-  name: 'Opens Left',
+export const Placement: Story = {
+  name: 'Custom Placement',
   args: {
     align: 'center',
     side: 'left',
@@ -74,20 +74,20 @@ export const Left: Story = {
   parameters: {
     docs: {
       source: {
-        code: LeftDropdownMenuSource,
+        code: DropdownMenuPlacementSource,
       },
     },
   },
 
   render: args => ({
-    components: { LeftDropdownMenuStory },
+    components: { DropdownMenuPlacementStory },
 
     setup() {
       return { args }
     },
 
     template: html`
-      <LeftDropdownMenuStory v-bind="args" />
+      <DropdownMenuPlacementStory v-bind="args" />
     `,
   }),
 }

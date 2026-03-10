@@ -7,6 +7,8 @@ import { registryItem } from '@/components/ui/combobox/_registry'
 
 import ComboboxDefaultStory from './ComboboxDefaultStory.vue'
 import ComboboxDefaultSource from './ComboboxDefaultStory.vue?raw'
+import ComboboxPlacementStory from './ComboboxPlacementStory.vue'
+import ComboboxPlacementSource from './ComboboxPlacementStory.vue?raw'
 import ComboboxUsingPopoverAndCommandStory from './ComboboxUsingPopoverAndCommandStory.vue'
 import ComboboxUsingPopoverAndCommandSource from './ComboboxUsingPopoverAndCommandStory.vue?raw'
 
@@ -14,6 +16,18 @@ const meta = {
   title: 'Components/Combobox',
   component: Combobox.Root,
   tags: ['autodocs'],
+
+  argTypes: {
+    align: {
+      control: 'select',
+      options: ['start', 'center', 'end'],
+    },
+
+    side: {
+      control: 'select',
+      options: ['top', 'right', 'bottom', 'left'],
+    },
+  },
 
   parameters: {
     docs: {
@@ -45,6 +59,33 @@ export const Default: Story = {
 
     template: html`
       <ComboboxDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Placement: Story = {
+  name: 'Custom Placement',
+  args: {
+    align: 'start',
+    side: 'right',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: ComboboxPlacementSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { ComboboxPlacementStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ComboboxPlacementStory v-bind="args" />
     `,
   }),
 }

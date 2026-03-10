@@ -4,10 +4,20 @@ import { CalendarDaysIcon } from 'lucide-vue-next'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { HoverCard } from '@/components/ui/hover-card'
+
+interface Props {
+  align?: 'start' | 'center' | 'end'
+  side?: 'top' | 'right' | 'bottom' | 'left'
+}
+
+withDefaults(defineProps<Props>(), {
+  align: 'center',
+  side: 'bottom',
+})
 </script>
 
 <template>
-  <HoverCard.Root>
+  <HoverCard.Root :align="align" :side="side">
     <HoverCard.Trigger as-child>
       <Button variant="link">
         @nuxt

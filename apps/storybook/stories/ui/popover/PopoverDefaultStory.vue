@@ -2,10 +2,20 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Popover } from '@/components/ui/popover'
+
+interface Props {
+  align?: 'start' | 'center' | 'end'
+  side?: 'top' | 'right' | 'bottom' | 'left'
+}
+
+withDefaults(defineProps<Props>(), {
+  align: 'center',
+  side: 'bottom',
+})
 </script>
 
 <template>
-  <Popover.Root>
+  <Popover.Root :align="align" :side="side">
     <Popover.Trigger as-child>
       <Button variant="outline">
         Open popover

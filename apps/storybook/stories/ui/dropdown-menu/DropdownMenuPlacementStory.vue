@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
     <DropdownMenu.Root :align="align" :side="side">
       <DropdownMenu.Trigger as-child>
         <Button variant="outline" class="m-auto">
-          Open Left
+          Open
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content class="w-56">

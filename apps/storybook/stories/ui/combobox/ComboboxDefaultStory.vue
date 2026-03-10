@@ -6,6 +6,16 @@ import { computed, ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Combobox } from '@/components/ui/combobox'
 
+interface Props {
+  align?: 'start' | 'center' | 'end'
+  side?: 'top' | 'right' | 'bottom' | 'left'
+}
+
+withDefaults(defineProps<Props>(), {
+  align: 'start',
+  side: 'bottom',
+})
+
 const frameworks = [
   {
     value: 'next.js',
@@ -62,6 +72,8 @@ function handleInputValueChange(details: { inputValue: string }) {
     v-model="value"
     :input-value="inputValue"
     :collection="collection"
+    :align="align"
+    :side="side"
     @input-value-change="handleInputValueChange"
   >
     <Combobox.Anchor>
