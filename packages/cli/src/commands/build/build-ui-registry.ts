@@ -32,6 +32,10 @@ export async function buildUIRegistry(
     if (!dirent.isFile())
       continue
 
+    // Skip numbered backup files (e.g. NumberInput.1.vue)
+    if (/\.\d+\./.test(dirent.name))
+      continue
+
     const filepath = join(componentPath, dirent.name)
     const relativePath = join('src', relative(REGISTRY_PATH, filepath))
     const source = await readFile(filepath, { encoding: 'utf8' })
