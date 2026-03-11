@@ -13,12 +13,12 @@
   "files": [
     {
       "path": "src/components/ui/separator/Separator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ntype Orientation = 'horizontal' | 'vertical'\n\nexport interface Props {\n  orientation?: Orientation\n  decorative?: boolean\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  orientation: 'horizontal',\n  decorative: true,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'decorative', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\nconst role = computed(() => props.decorative ? 'none' : 'separator')\nconst ariaHidden = computed(() => props.decorative ? 'true' : undefined)\nconst ariaOrientation = computed(() => props.decorative ? undefined : props.orientation)\n</script>\n\n<template>\n  <div\n    v-bind=\"forwardedProps\"\n    data-scope=\"separator\"\n    :data-orientation=\"orientation\"\n    :role=\"role\"\n    :aria-hidden=\"ariaHidden\"\n    :aria-orientation=\"ariaOrientation\"\n    :class=\"cn(\n      `\n        shrink-0 bg-border\n        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full\n        data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { SeparatorProps } from './types'\n\nconst props = withDefaults(defineProps<SeparatorProps>(), {\n  orientation: 'horizontal',\n  decorative: true,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'decorative', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\nconst role = computed(() => props.decorative ? 'none' : 'separator')\nconst ariaHidden = computed(() => props.decorative ? 'true' : undefined)\nconst ariaOrientation = computed(() => props.decorative ? undefined : props.orientation)\n</script>\n\n<template>\n  <div\n    v-bind=\"forwardedProps\"\n    data-scope=\"separator\"\n    :data-orientation=\"orientation\"\n    :role=\"role\"\n    :aria-hidden=\"ariaHidden\"\n    :aria-orientation=\"ariaOrientation\"\n    :class=\"cn(\n      `\n        shrink-0 bg-border\n        data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full\n        data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/separator/index.ts",
-      "content": "export { default as Separator } from './Separator.vue'\nexport type { Props as SeparatorProps } from './Separator.vue'\n",
+      "content": "export { default as Separator } from './Separator.vue'\nexport * from './types'\n",
       "type": "registry:ui"
     },
     {
@@ -32,6 +32,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/separator/types.ts",
+      "content": "import type { HTMLAttributes } from 'vue'\n\nexport type Orientation = 'horizontal' | 'vertical'\n\nexport interface SeparatorProps {\n  orientation?: Orientation\n  decorative?: boolean\n  class?: HTMLAttributes['class']\n}\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

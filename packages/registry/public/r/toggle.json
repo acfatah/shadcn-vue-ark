@@ -15,12 +15,12 @@
   "files": [
     {
       "path": "src/components/ui/toggle/Toggle.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { ToggleRootEmits, ToggleRootProps } from '@ark-ui/vue/toggle'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Toggle } from '@ark-ui/vue/toggle'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ToggleVariants } from '.'\n\nimport { toggleVariants } from '.'\n\ninterface Props extends ToggleRootProps {\n  class?: HTMLAttributes['class']\n  variant?: ToggleVariants['variant']\n  size?: ToggleVariants['size']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n  size: 'default',\n})\n\nconst emit = defineEmits<ToggleRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'size', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Toggle.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      toggleVariants({ variant: props.variant, size: props.size }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </Toggle.Root>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { ToggleRootEmits, ToggleRootProps } from '@ark-ui/vue/toggle'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Toggle } from '@ark-ui/vue/toggle'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ToggleVariants } from './types'\n\nimport { toggleVariants } from '.'\n\ninterface Props extends ToggleRootProps {\n  class?: HTMLAttributes['class']\n  variant?: ToggleVariants['variant']\n  size?: ToggleVariants['size']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n  size: 'default',\n})\n\nconst emit = defineEmits<ToggleRootEmits>()\nconst delegatedProps = reactiveOmit(props, ['class', 'size', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Toggle.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      toggleVariants({ variant: props.variant, size: props.size }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </Toggle.Root>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/toggle/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { toggleVariants } from './variant'\n\nexport { default as Toggle } from './Toggle.vue'\nexport type ToggleVariants = VariantProps<typeof toggleVariants>\nexport { size, toggleVariants, variant } from './variant'\n",
+      "content": "export { default as Toggle } from './Toggle.vue'\nexport * from './types'\nexport { size, toggleVariants, variant } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -39,6 +39,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/toggle/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { toggleVariants } from './variant'\n\nexport type ToggleVariants = VariantProps<typeof toggleVariants>\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

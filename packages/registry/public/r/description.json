@@ -14,12 +14,12 @@
   "files": [
     {
       "path": "src/components/ui/description/Description.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nexport interface Props {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, ['asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : 'p'\"\n    data-scope=\"description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm/normal font-normal text-muted-foreground\n        group-has-data-[orientation=horizontal]/field:text-balance\n        last:mt-0\n        nth-last-2:-mt-1\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n        [[data-variant=legend]+&]:-mt-1.5\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { DescriptionProps } from './types'\n\nconst props = defineProps<DescriptionProps>()\nconst delegatedProps = reactiveOmit(props, ['asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : 'p'\"\n    data-scope=\"description\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        text-sm/normal font-normal text-muted-foreground\n        group-has-data-[orientation=horizontal]/field:text-balance\n        last:mt-0\n        nth-last-2:-mt-1\n        [&>a]:underline [&>a]:underline-offset-4\n        [&>a:hover]:text-primary\n        [[data-variant=legend]+&]:-mt-1.5\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/description/index.ts",
-      "content": "export type { Props as DescriptionProps } from './Description.vue'\nexport { default as Description } from './Description.vue'\n",
+      "content": "export { default as Description } from './Description.vue'\nexport * from './types'\n",
       "type": "registry:ui"
     },
     {
@@ -39,6 +39,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/description/types.ts",
+      "content": "import type { HTMLAttributes } from 'vue'\n\nexport interface DescriptionProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n}\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

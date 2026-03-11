@@ -21,7 +21,7 @@
     },
     {
       "path": "src/components/ui/tabs/TabsRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { TabsRootEmits, TabsRootProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { TabsVariant } from '.'\n\nimport { TabsOptionsProvider } from './context'\n\ninterface Props extends TabsRootProps {\n  class?: HTMLAttributes['class']\n  variant?: TabsVariant\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'pill',\n})\nconst emit = defineEmits<TabsRootEmits>()\n\nconst options = computed(() => ({\n  variant: props.variant,\n}))\n\nTabsOptionsProvider(options)\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Tabs.Root\n    v-slot=\"slotProps\"\n    data-scope=\"tabs\"\n    data-part=\"root\"\n    :data-variant=\"props.variant\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'group/tabs flex flex-col gap-2',\n      props.class,\n    )\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Tabs.Root>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { TabsRootEmits, TabsRootProps } from '@ark-ui/vue/tabs'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Tabs } from '@ark-ui/vue/tabs'\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { TabsVariant } from './types'\n\nimport { TabsOptionsProvider } from './context'\n\ninterface Props extends TabsRootProps {\n  class?: HTMLAttributes['class']\n  variant?: TabsVariant\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'pill',\n})\nconst emit = defineEmits<TabsRootEmits>()\n\nconst options = computed(() => ({\n  variant: props.variant,\n}))\n\nTabsOptionsProvider(options)\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Tabs.Root\n    v-slot=\"slotProps\"\n    data-scope=\"tabs\"\n    data-part=\"root\"\n    :data-variant=\"props.variant\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'group/tabs flex flex-col gap-2',\n      props.class,\n    )\"\n  >\n    <slot v-bind=\"slotProps\" />\n  </Tabs.Root>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "path": "src/components/ui/tabs/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { tabsListVariants, tabsTriggerVariants } from './variant'\n\nexport type TabsListVariants = VariantProps<typeof tabsListVariants>\nexport type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>\nexport type TabsVariant = NonNullable<TabsListVariants['variant']>\n\nexport { Tabs } from './namespace'\nexport { default as TabsContent } from './TabsContent.vue'\nexport { default as TabsIndicator } from './TabsIndicator.vue'\nexport { default as TabsList } from './TabsList.vue'\nexport { default as TabsRoot } from './TabsRoot.vue'\nexport { default as TabsTrigger } from './TabsTrigger.vue'\nexport { listVariant, tabsListVariants, tabsTriggerVariants, triggerVariant } from './variant'\n",
+      "content": "export { Tabs } from './namespace'\nexport { default as TabsContent } from './TabsContent.vue'\nexport { default as TabsIndicator } from './TabsIndicator.vue'\nexport { default as TabsList } from './TabsList.vue'\nexport { default as TabsRoot } from './TabsRoot.vue'\nexport { default as TabsTrigger } from './TabsTrigger.vue'\nexport * from './types'\nexport { listVariant, tabsListVariants, tabsTriggerVariants, triggerVariant } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -68,7 +68,12 @@
     },
     {
       "path": "src/components/ui/tabs/context.ts",
-      "content": "import type { ComputedRef } from 'vue'\n\nimport { createContext } from '@/composables/createContext'\n\nimport type { TabsVariant } from '.'\n\nexport interface TabsOptions {\n  variant?: TabsVariant\n}\n\nexport const [TabsOptionsProvider, useTabsOptions]\n  = createContext<ComputedRef<TabsOptions>>('TabsOptions')\n",
+      "content": "import type { ComputedRef } from 'vue'\n\nimport { createContext } from '@/composables/createContext'\n\nimport type { TabsVariant } from './types'\n\nexport interface TabsOptions {\n  variant?: TabsVariant\n}\n\nexport const [TabsOptionsProvider, useTabsOptions]\n  = createContext<ComputedRef<TabsOptions>>('TabsOptions')\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/tabs/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { tabsListVariants, tabsTriggerVariants } from './variant'\n\nexport type TabsListVariants = VariantProps<typeof tabsListVariants>\nexport type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>\nexport type TabsVariant = NonNullable<TabsListVariants['variant']>\n",
       "type": "registry:ui"
     }
   ],

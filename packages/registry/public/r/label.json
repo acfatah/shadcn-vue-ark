@@ -14,12 +14,12 @@
   "files": [
     {
       "path": "src/components/ui/label/Label.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nexport interface Props {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'label',\n})\n\nconst delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    data-scope=\"label\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `flex w-fit items-center text-sm/snug font-medium select-none`,\n      `group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50`,\n      `\n        peer-disabled:pointer-events-none peer-disabled:opacity-50\n        peer-aria-disabled:pointer-events-none peer-aria-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { LabelProps } from './types'\n\nconst props = withDefaults(defineProps<LabelProps>(), {\n  as: 'label',\n})\n\nconst delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    data-scope=\"label\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `flex w-fit items-center text-sm/snug font-medium select-none`,\n      `group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50`,\n      `\n        peer-disabled:pointer-events-none peer-disabled:opacity-50\n        peer-aria-disabled:pointer-events-none peer-aria-disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </component>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/label/index.ts",
-      "content": "export type { Props as LabelProps } from './Label.vue'\nexport { default as Label } from './Label.vue'\n",
+      "content": "export { default as Label } from './Label.vue'\nexport * from './types'\n",
       "type": "registry:ui"
     },
     {
@@ -39,6 +39,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/label/types.ts",
+      "content": "import type { HTMLAttributes } from 'vue'\n\nexport interface LabelProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n}\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

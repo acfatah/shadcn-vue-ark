@@ -25,7 +25,7 @@
     },
     {
       "path": "src/components/ui/empty/EmptyMedia.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { EmptyMediaVariants } from '.'\n\nimport { emptyMediaVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: EmptyMediaVariants['variant']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    v-bind=\"forwardedProps\"\n    data-scope=\"empty\"\n    data-part=\"media\"\n    :data-variant=\"variant\"\n    :class=\"cn(emptyMediaVariants({ variant }), props.class)\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { EmptyMediaVariants } from './types'\n\nimport { emptyMediaVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: EmptyMediaVariants['variant']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    v-bind=\"forwardedProps\"\n    data-scope=\"empty\"\n    data-part=\"media\"\n    :data-variant=\"variant\"\n    :class=\"cn(emptyMediaVariants({ variant }), props.class)\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "path": "src/components/ui/empty/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { emptyMediaVariants } from './variant'\n\nexport { default as EmptyContent } from './EmptyContent.vue'\nexport { default as EmptyDescription } from './EmptyDescription.vue'\nexport { default as EmptyHeader } from './EmptyHeader.vue'\nexport { default as EmptyMedia } from './EmptyMedia.vue'\nexport { default as EmptyRoot } from './EmptyRoot.vue'\nexport { default as EmptyTitle } from './EmptyTitle.vue'\nexport { Empty } from './namespace'\nexport type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>\nexport { emptyMediaVariants, variant } from './variant'\n",
+      "content": "export { default as EmptyContent } from './EmptyContent.vue'\nexport { default as EmptyDescription } from './EmptyDescription.vue'\nexport { default as EmptyHeader } from './EmptyHeader.vue'\nexport { default as EmptyMedia } from './EmptyMedia.vue'\nexport { default as EmptyRoot } from './EmptyRoot.vue'\nexport { default as EmptyTitle } from './EmptyTitle.vue'\nexport { Empty } from './namespace'\nexport * from './types'\nexport { emptyMediaVariants, variant } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -63,6 +63,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/empty/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { emptyMediaVariants } from './variant'\n\nexport type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

@@ -19,7 +19,7 @@
     },
     {
       "path": "src/components/ui/alert/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { alertVariants } from './variant'\n\nexport { default as AlertDescription } from './AlertDescription.vue'\nexport { default as AlertRoot } from './AlertRoot.vue'\nexport { default as AlertTitle } from './AlertTitle.vue'\nexport { Alert } from './namespace'\nexport type AlertVariants = VariantProps<typeof alertVariants>\nexport { alertVariants, variant } from './variant'\n",
+      "content": "export { default as AlertDescription } from './AlertDescription.vue'\nexport { default as AlertRoot } from './AlertRoot.vue'\nexport { default as AlertTitle } from './AlertTitle.vue'\nexport { Alert } from './namespace'\nexport * from './types'\nexport { alertVariants, variant } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -45,7 +45,12 @@
     },
     {
       "path": "src/components/ui/alert/AlertRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\nimport type { AlertVariants } from '.'\n\nimport { alertVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: AlertVariants['variant']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class', 'variant')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"alert\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      alertVariants({ variant }),\n      props.class,\n    )\"\n    role=\"alert\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { cn } from '@/lib/utils'\n\nimport type { AlertVariants } from './types'\n\nimport { alertVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: AlertVariants['variant']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class', 'variant')\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"alert\"\n    data-part=\"root\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      alertVariants({ variant }),\n      props.class,\n    )\"\n    role=\"alert\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/alert/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { alertVariants } from './variant'\n\nexport type AlertVariants = VariantProps<typeof alertVariants>\n",
       "type": "registry:ui"
     }
   ],

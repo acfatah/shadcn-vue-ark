@@ -113,6 +113,10 @@
       {
         "path": "src/components/ui/alert/AlertRoot.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/alert/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -145,6 +149,10 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/aspect-ratio/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -230,6 +238,10 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/badge/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -395,6 +407,10 @@
       {
         "path": "src/lib/utils.ts",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/button-group/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -477,6 +493,10 @@
       {
         "path": "src/components/ui/calendar/CalendarNextButton.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/calendar/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -542,8 +562,8 @@
     "description": "A carousel with motion and swipe built using Embla.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/carousel\n- Embla Carousel: https://www.embla-carousel.com",
     "dependencies": [
       "lucide-vue-next",
-      "embla-carousel-vue",
-      "@vueuse/core"
+      "@vueuse/core",
+      "embla-carousel-vue"
     ],
     "registryDependencies": [
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
@@ -556,10 +576,6 @@
       },
       {
         "path": "src/components/ui/carousel/CarouselPrevious.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/carousel/interface.ts",
         "type": "registry:ui"
       },
       {
@@ -588,6 +604,10 @@
       },
       {
         "path": "src/components/ui/carousel/CarouselRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/carousel/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -1174,6 +1194,10 @@
       {
         "path": "src/lib/utils.ts",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/description/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -1486,6 +1510,10 @@
       {
         "path": "src/lib/utils.ts",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/empty/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -1751,10 +1779,6 @@
         "type": "registry:ui"
       },
       {
-        "path": "src/components/ui/input/NumberInput.1.vue",
-        "type": "registry:ui"
-      },
-      {
         "path": "src/components/ui/input/ColorInput.vue",
         "type": "registry:ui"
       },
@@ -1841,6 +1865,10 @@
       {
         "path": "src/components/ui/input/CheckboxInput.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -1858,6 +1886,7 @@
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/types.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json"
     ],
     "files": [
@@ -1903,6 +1932,10 @@
       },
       {
         "path": "src/components/ui/input-group/InputGroupTextarea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/input-group/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -2041,6 +2074,10 @@
       {
         "path": "src/components/ui/item/ItemRoot.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/item/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -2107,6 +2144,10 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/label/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -2882,6 +2923,10 @@
       {
         "path": "src/components/ui/select/SelectItem.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/select/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -2912,6 +2957,10 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/separator/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -3128,6 +3177,10 @@
       },
       {
         "path": "src/components/ui/sidebar/SidebarGroupContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/sidebar/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -3432,6 +3485,10 @@
       {
         "path": "src/components/ui/tabs/context.ts",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/tabs/types.ts",
+        "type": "registry:ui"
       }
     ]
   },
@@ -3583,6 +3640,10 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/toggle/types.ts",
         "type": "registry:ui"
       }
     ]

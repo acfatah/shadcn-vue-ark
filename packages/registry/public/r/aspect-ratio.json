@@ -15,12 +15,12 @@
   "files": [
     {
       "path": "src/components/ui/aspect-ratio/index.ts",
-      "content": "export { default as AspectRatio } from './AspectRatio.vue'\nexport type { Props as AspectRatioProps } from './AspectRatio.vue'\n",
+      "content": "export { default as AspectRatio } from './AspectRatio.vue'\nexport * from './types'\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/aspect-ratio/AspectRatio.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardExpose } from '@/composables/useForwardExpose'\nimport { useForwardProps } from '@/composables/useForwardProps'\nimport { cn } from '@/lib/utils'\n\nexport interface Props {\n  /**\n   * The desired ratio. Eg: 16/9\n   * @defaultValue 1\n   */\n  ratio?: number\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n}\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<Props>(), {\n  ratio: 1,\n  as: 'div',\n})\n\nconst delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class', 'ratio'])\nconst forwardedProps = useForwardProps(delegatedProps)\nconst { forwardRef } = useForwardExpose()\n\nconst aspect = computed(() => (1 / props.ratio) * 100)\nconst wrapperStyle = computed(() => ({\n  paddingBottom: `${aspect.value}%`,\n}))\n</script>\n\n<template>\n  <div\n    data-scope=\"aspect-ratio\"\n    :class=\"cn('relative w-full', props.class)\"\n    :style=\"wrapperStyle\"\n  >\n    <component\n      :is=\"props.asChild ? Dynamic : props.as\"\n      :ref=\"forwardRef\"\n      class=\"absolute inset-0\"\n      v-bind=\"{ ...$attrs, ...forwardedProps }\"\n    >\n      <slot :aspect=\"aspect\" />\n    </component>\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport { reactiveOmit } from '@vueuse/core'\nimport { computed } from 'vue'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardExpose } from '@/composables/useForwardExpose'\nimport { useForwardProps } from '@/composables/useForwardProps'\nimport { cn } from '@/lib/utils'\n\nimport type { AspectRatioProps } from './types'\n\ndefineOptions({\n  inheritAttrs: false,\n})\n\nconst props = withDefaults(defineProps<AspectRatioProps>(), {\n  ratio: 1,\n  as: 'div',\n})\n\nconst delegatedProps = reactiveOmit(props, ['as', 'asChild', 'class', 'ratio'])\nconst forwardedProps = useForwardProps(delegatedProps)\nconst { forwardRef } = useForwardExpose()\n\nconst aspect = computed(() => (1 / props.ratio) * 100)\nconst wrapperStyle = computed(() => ({\n  paddingBottom: `${aspect.value}%`,\n}))\n</script>\n\n<template>\n  <div\n    data-scope=\"aspect-ratio\"\n    :class=\"cn('relative w-full', props.class)\"\n    :style=\"wrapperStyle\"\n  >\n    <component\n      :is=\"props.asChild ? Dynamic : props.as\"\n      :ref=\"forwardRef\"\n      class=\"absolute inset-0\"\n      v-bind=\"{ ...$attrs, ...forwardedProps }\"\n    >\n      <slot :aspect=\"aspect\" />\n    </component>\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -34,6 +34,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/aspect-ratio/types.ts",
+      "content": "import type { HTMLAttributes } from 'vue'\n\nexport interface AspectRatioProps {\n  /**\n   * The desired ratio. Eg: 16/9\n   * @defaultValue 1\n   */\n  ratio?: number\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n}\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

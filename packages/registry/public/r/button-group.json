@@ -17,7 +17,7 @@
   "files": [
     {
       "path": "src/components/ui/button-group/ButtonGroupRoot.vue",
-      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\nimport { buttonGroupVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from './types'\n\nimport { buttonGroupVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "path": "src/components/ui/button-group/ButtonGroupText.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n  orientation?: ButtonGroupVariants['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'div',\n  orientation: 'horizontal',\n})\nconst delegatedProps = reactiveOmit(props, ['class', 'asChild', 'as', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"text\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        flex items-center gap-2 rounded-md border bg-muted px-4 text-sm font-medium shadow-xs\n        [&_svg]:pointer-events-none\n        [&_svg:not([class*=\\'size-\\'])]:size-4\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Dynamic } from '@/composables/dynamic'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from './types'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  asChild?: boolean\n  as?: string\n  orientation?: ButtonGroupVariants['orientation']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: 'div',\n  orientation: 'horizontal',\n})\nconst delegatedProps = reactiveOmit(props, ['class', 'asChild', 'as', 'orientation'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"props.asChild ? Dynamic : props.as\"\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"text\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      `\n        flex items-center gap-2 rounded-md border bg-muted px-4 text-sm font-medium shadow-xs\n        [&_svg]:pointer-events-none\n        [&_svg:not([class*=\\'size-\\'])]:size-4\n      `,\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "path": "src/components/ui/button-group/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { buttonGroupVariants } from './variant'\n\nexport { default as ButtonGroupRoot } from './ButtonGroupRoot.vue'\nexport { default as ButtonGroupSeparator } from './ButtonGroupSeparator.vue'\nexport { default as ButtonGroupText } from './ButtonGroupText.vue'\nexport { ButtonGroup } from './namespace'\nexport type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>\nexport { buttonGroupVariants, orientation } from './variant'\n",
+      "content": "export { default as ButtonGroupRoot } from './ButtonGroupRoot.vue'\nexport { default as ButtonGroupSeparator } from './ButtonGroupSeparator.vue'\nexport { default as ButtonGroupText } from './ButtonGroupText.vue'\nexport { ButtonGroup } from './namespace'\nexport * from './types'\nexport { buttonGroupVariants, orientation } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -62,6 +62,11 @@
       "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:file",
       "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/button-group/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { buttonGroupVariants } from './variant'\n\nexport type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>\n",
+      "type": "registry:ui"
     }
   ],
   "type": "registry:ui"

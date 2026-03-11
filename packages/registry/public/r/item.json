@@ -22,7 +22,7 @@
     },
     {
       "path": "src/components/ui/item/ItemMedia.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ItemMediaVariants } from '.'\n\nimport { itemMediaVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  variant?: ItemMediaVariants['variant']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"media\"\n    :data-variant=\"props.variant\"\n    :class=\"cn(\n      itemMediaVariants({ variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ItemMediaVariants } from './types'\n\nimport { itemMediaVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  variant?: ItemMediaVariants['variant']\n}>()\n</script>\n\n<template>\n  <div\n    data-scope=\"item\"\n    data-part=\"media\"\n    :data-variant=\"props.variant\"\n    :class=\"cn(\n      itemMediaVariants({ variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </div>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "path": "src/components/ui/item/index.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { itemMediaVariants, itemVariants } from './variant'\n\nexport { default as ItemActions } from './ItemActions.vue'\nexport { default as ItemContent } from './ItemContent.vue'\nexport { default as ItemDescription } from './ItemDescription.vue'\nexport { default as ItemFooter } from './ItemFooter.vue'\nexport { default as ItemGroup } from './ItemGroup.vue'\nexport { default as ItemHeader } from './ItemHeader.vue'\nexport { default as ItemMedia } from './ItemMedia.vue'\nexport { default as ItemRoot } from './ItemRoot.vue'\nexport { default as ItemSeparator } from './ItemSeparator.vue'\nexport { default as ItemTitle } from './ItemTitle.vue'\nexport { Item } from './namespace'\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\nexport type ItemVariants = VariantProps<typeof itemVariants>\nexport { itemMediaVariants, itemVariants, mediaVariant, size, variant } from './variant'\n",
+      "content": "export { default as ItemActions } from './ItemActions.vue'\nexport { default as ItemContent } from './ItemContent.vue'\nexport { default as ItemDescription } from './ItemDescription.vue'\nexport { default as ItemFooter } from './ItemFooter.vue'\nexport { default as ItemGroup } from './ItemGroup.vue'\nexport { default as ItemHeader } from './ItemHeader.vue'\nexport { default as ItemMedia } from './ItemMedia.vue'\nexport { default as ItemRoot } from './ItemRoot.vue'\nexport { default as ItemSeparator } from './ItemSeparator.vue'\nexport { default as ItemTitle } from './ItemTitle.vue'\nexport { Item } from './namespace'\nexport * from './types'\nexport { itemMediaVariants, itemVariants, mediaVariant, size, variant } from './variant'\n",
       "type": "registry:ui"
     },
     {
@@ -89,7 +89,12 @@
     },
     {
       "path": "src/components/ui/item/ItemRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemVariants } from '.'\n\nimport { itemVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemVariants } from './types'\n\nimport { itemVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/item/types.ts",
+      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { itemMediaVariants, itemVariants } from './variant'\n\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\nexport type ItemVariants = VariantProps<typeof itemVariants>\n",
       "type": "registry:ui"
     }
   ],
