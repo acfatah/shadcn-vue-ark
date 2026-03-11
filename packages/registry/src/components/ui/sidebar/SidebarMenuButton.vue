@@ -27,21 +27,28 @@ const delegatedProps = reactiveOmit(props, 'tooltip')
 </script>
 
 <template>
-  <SidebarMenuButtonChild v-if="!tooltip" v-bind="{ ...delegatedProps, ...$attrs }">
+  <SidebarMenuButtonChild
+    v-if="!tooltip"
+    v-bind="{ ...delegatedProps, ...$attrs }"
+  >
     <slot />
   </SidebarMenuButtonChild>
 
-  <TooltipRoot v-else :open-delay="0">
+  <TooltipRoot
+    v-else
+    :open-delay="0"
+    :close-delay="0"
+    :disabled="state !== 'collapsed' || isMobile"
+    :positioning="{ strategy: 'fixed' }"
+    side="right"
+    align="center"
+  >
     <TooltipTrigger as-child>
       <SidebarMenuButtonChild v-bind="{ ...delegatedProps, ...$attrs }">
         <slot />
       </SidebarMenuButtonChild>
     </TooltipTrigger>
-    <TooltipContent
-      side="right"
-      align="center"
-      :hidden="state !== 'collapsed' || isMobile"
-    >
+    <TooltipContent>
       <template v-if="typeof tooltip === 'string'">
         {{ tooltip }}
       </template>
