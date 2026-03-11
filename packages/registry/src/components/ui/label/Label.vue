@@ -1,19 +1,13 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { reactiveOmit } from '@vueuse/core'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-export interface Props {
-  class?: HTMLAttributes['class']
-  asChild?: boolean
-  as?: string
-}
+import type { LabelProps } from './types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<LabelProps>(), {
   as: 'label',
 })
 

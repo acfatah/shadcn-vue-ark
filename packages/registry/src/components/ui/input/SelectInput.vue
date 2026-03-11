@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
@@ -8,27 +6,13 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-export interface Props {
-  id?: string
-  name?: string
-  defaultValue?: string
-  modelValue?: string
-  class?: HTMLAttributes['class']
-  invalid?: boolean
-  loading?: boolean
-  readonly?: boolean
-  disabled?: boolean
-}
+import type { SelectInputEmits, SelectInputProps } from './types'
 
-export interface Emits {
-  (e: 'update:modelValue', payload: string | undefined): void
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SelectInputProps>(), {
   defaultValue: '',
 })
 
-const emits = defineEmits<Emits>()
+const emits = defineEmits<SelectInputEmits>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps, emits)
 

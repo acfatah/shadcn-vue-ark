@@ -7,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { cn } from '@/lib/utils'
 
-import type { AlertVariants } from '.'
+import type { AlertVariants } from './types'
 
 import { alertVariants } from '.'
 

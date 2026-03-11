@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
@@ -8,17 +6,9 @@ import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { SidebarMenuButtonVariants } from '.'
+import type { SidebarMenuButtonProps } from './types'
 
 import { sidebarMenuButtonVariants } from '.'
-
-export interface SidebarMenuButtonProps {
-  asChild?: boolean
-  variant?: SidebarMenuButtonVariants['variant']
-  size?: SidebarMenuButtonVariants['size']
-  isActive?: boolean
-  class?: HTMLAttributes['class']
-}
 
 const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
   variant: 'default',

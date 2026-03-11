@@ -6,7 +6,7 @@ import { ark } from '@ark-ui/vue'
 
 import { cn } from '@/lib/utils'
 
-import type { ButtonGroupVariants } from '.'
+import type { ButtonGroupVariants } from './types'
 
 import { buttonGroupVariants } from '.'
 

@@ -16,9 +16,9 @@ import type {
 import { SelectProvider } from './context'
 
 export { SelectProvider, useSelectContext } from './context'
+export type { UseSelectContext, UseSelectProps, UseSelectReturn } from './context'
 export { useArkSelectContext }
 export const SelectControl = ArkSelect.Control
-export type { UseSelectContext, UseSelectProps, UseSelectReturn } from './context'
 export { Select } from './namespace'
 export { default as SelectClearTrigger } from './SelectClearTrigger.vue'
 export { default as SelectContent } from './SelectContent.vue'
@@ -34,6 +34,7 @@ export { default as SelectRoot } from './SelectRoot.vue'
 export { default as SelectSeparator } from './SelectSeparator.vue'
 export { default as SelectTrigger } from './SelectTrigger.vue'
 export { default as SelectValueText } from './SelectValueText.vue'
+export * from './types'
 export { createListCollection } from '@ark-ui/vue/select'
 
 // Note: use for standalone composition or RootProvider usage.

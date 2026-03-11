@@ -11,5 +11,4 @@ export { default as CalendarNextButton } from './CalendarNextButton.vue'
 export { default as CalendarPrevButton } from './CalendarPrevButton.vue'
 export { default as CalendarRoot } from './CalendarRoot.vue'
 export { Calendar } from './namespace'
-
-export type LayoutTypes = 'month-and-year' | 'month-only' | 'year-only' | undefined
+export * from './types'

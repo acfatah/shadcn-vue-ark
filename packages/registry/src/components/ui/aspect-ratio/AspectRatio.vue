@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
@@ -9,22 +7,13 @@ import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
 
-export interface Props {
-  /**
-   * The desired ratio. Eg: 16/9
-   * @defaultValue 1
-   */
-  ratio?: number
-  class?: HTMLAttributes['class']
-  asChild?: boolean
-  as?: string
-}
+import type { AspectRatioProps } from './types'
 
 defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AspectRatioProps>(), {
   ratio: 1,
   as: 'div',
 })

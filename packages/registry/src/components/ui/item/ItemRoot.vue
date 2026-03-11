@@ -8,7 +8,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { ItemVariants } from '.'
+import type { ItemVariants } from './types'
 
 import { itemVariants } from '.'
 

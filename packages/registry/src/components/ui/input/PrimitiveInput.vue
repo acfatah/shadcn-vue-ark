@@ -6,83 +6,16 @@
  * common functionality and styling for various types of input fields.
  */
 
-import type { HTMLAttributes } from 'vue'
-
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-type InputType
-  = | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'hidden'
-    | 'image'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'range'
-    | 'reset'
-    | 'search'
-    | 'submit'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week'
+import type { PrimitiveInputEmits, PrimitiveInputProps } from './types'
 
-type ReadonlySupportedType = Extract<
-  InputType,
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week'
->
-
-type ReadonlyUnsupportedType = Exclude<InputType, ReadonlySupportedType>
-
-interface CommonProps {
-  scope: string
-  id?: string
-  name?: string
-  defaultValue?: string
-  modelValue?: string
-  class?: HTMLAttributes['class']
-  required?: boolean
-  invalid?: boolean
-  loading?: boolean
-  disabled?: boolean
-}
-
-export type Props
-  = | (CommonProps & {
-    /** Input types that support readonly */
-    type: ReadonlySupportedType
-    readonly?: boolean
-  })
-  | (CommonProps & {
-    /** Input types that do not support readonly */
-    type: ReadonlyUnsupportedType
-    readonly?: never
-  })
-
-export interface Emits {
-  (e: 'update:modelValue', payload: string | undefined): void
-}
-
-const props = defineProps<Props>()
-const emits = defineEmits<Emits>()
+const props = defineProps<PrimitiveInputProps>()
+const emits = defineEmits<PrimitiveInputEmits>()
 const delegatedProps = reactiveOmit(props, [
   'class',
   'defaultValue',

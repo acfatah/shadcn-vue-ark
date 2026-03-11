@@ -8,7 +8,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { EmptyMediaVariants } from '.'
+import type { EmptyMediaVariants } from './types'
 
 import { emptyMediaVariants } from '.'
 

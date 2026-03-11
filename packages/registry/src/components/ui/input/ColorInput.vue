@@ -2,9 +2,9 @@
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 import type {
-  Emits as PrimitiveInputEmits,
-  Props as PrimitiveInputProps,
-} from './PrimitiveInput.vue'
+  PrimitiveInputEmits,
+  PrimitiveInputProps,
+} from './types'
 
 import PrimitiveInput from './PrimitiveInput.vue'
 

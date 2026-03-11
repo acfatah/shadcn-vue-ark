@@ -6,7 +6,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { InputGroupVariants } from '.'
+import type { InputGroupVariants } from './types'
 
 import { inputGroupAddonVariants } from '.'
 

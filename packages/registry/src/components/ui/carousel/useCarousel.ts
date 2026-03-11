@@ -6,7 +6,7 @@ import type {
   UnwrapRefCarouselApi as CarouselApi,
   CarouselEmits,
   CarouselProps,
-} from './interface'
+} from './types'
 
 const [useProvideCarousel, useInjectCarousel] = createInjectionState(
   (props: CarouselProps, emits: CarouselEmits) => {

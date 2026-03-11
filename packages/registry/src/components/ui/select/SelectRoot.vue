@@ -2,9 +2,7 @@
 import type {
   CollectionItem,
   SelectRootEmits,
-  SelectRootProps,
 } from '@ark-ui/vue/select'
-import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -13,23 +11,11 @@ import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import type { Placement, SelectProps } from './types'
+
 import SelectContextProvider from './SelectContextProvider.vue'
 
-export interface Props extends SelectRootProps<CollectionItem> {
-  align?: 'start' | 'center' | 'end'
-  alignOffset?: number
-  class?: HTMLAttributes['class']
-  invalid?: boolean
-  loading?: boolean
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  sideOffset?: number
-}
-
-type Placement = NonNullable<
-  NonNullable<SelectRootProps<CollectionItem>['positioning']>['placement']
->
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SelectProps>(), {
   align: 'start',
   alignOffset: 0,
   side: 'bottom',

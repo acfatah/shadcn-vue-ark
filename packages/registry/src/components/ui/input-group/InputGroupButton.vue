@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { InputGroupButtonVariants } from '.'
+import type { InputGroupButtonVariants } from './types'
 
 import { inputGroupButtonVariants } from '.'
 

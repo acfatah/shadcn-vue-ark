@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { cn } from '@/lib/utils'
 
-import type { ItemMediaVariants } from '.'
+import type { ItemMediaVariants } from './types'
 
 import { itemMediaVariants } from '.'
 

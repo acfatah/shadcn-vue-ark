@@ -1,18 +1,13 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { reactiveOmit } from '@vueuse/core'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-export interface Props {
-  class?: HTMLAttributes['class']
-  asChild?: boolean
-}
+import type { DescriptionProps } from './types'
 
-const props = defineProps<Props>()
+const props = defineProps<DescriptionProps>()
 const delegatedProps = reactiveOmit(props, ['asChild', 'class'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
