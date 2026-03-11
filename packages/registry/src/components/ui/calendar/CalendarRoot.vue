@@ -49,11 +49,15 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     <DatePicker.View view="day">
       <DatePicker.Context v-slot="api">
         <CalendarHeader class="pt-0">
-          <nav class="absolute inset-x-0 top-0 flex items-center justify-between gap-1">
-            <CalendarPrevButton>
+          <nav
+            class="
+              pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between gap-1
+            "
+          >
+            <CalendarPrevButton class="pointer-events-auto">
               <slot name="calendar-prev-icon" />
             </CalendarPrevButton>
-            <CalendarNextButton>
+            <CalendarNextButton class="pointer-events-auto">
               <slot name="calendar-next-icon" />
             </CalendarNextButton>
           </nav>
@@ -162,6 +166,78 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
                 <CalendarCell v-for="(day, dayId) in week" :key="dayId" :value="day">
                   <CalendarCellTrigger>
                     {{ day.day }}
+                  </CalendarCellTrigger>
+                </CalendarCell>
+              </CalendarGridRow>
+            </CalendarGridBody>
+          </CalendarGrid>
+        </div>
+      </DatePicker.Context>
+    </DatePicker.View>
+
+    <DatePicker.View view="month">
+      <DatePicker.Context v-slot="api">
+        <CalendarHeader class="justify-between px-1 pt-0">
+          <CalendarPrevButton>
+            <slot name="calendar-prev-icon" />
+          </CalendarPrevButton>
+          <CalendarHeading />
+          <CalendarNextButton>
+            <slot name="calendar-next-icon" />
+          </CalendarNextButton>
+        </CalendarHeader>
+
+        <div class="mt-4">
+          <CalendarGrid>
+            <CalendarGridBody>
+              <CalendarGridRow
+                v-for="(months, id) in api.getMonthsGrid({ columns: 4, format: 'short' })"
+                :key="id"
+                class="mt-2 w-full"
+              >
+                <CalendarCell
+                  v-for="(month, monthId) in months"
+                  :key="monthId"
+                  :value="month.value"
+                >
+                  <CalendarCellTrigger class="h-9 w-full">
+                    {{ month.label }}
+                  </CalendarCellTrigger>
+                </CalendarCell>
+              </CalendarGridRow>
+            </CalendarGridBody>
+          </CalendarGrid>
+        </div>
+      </DatePicker.Context>
+    </DatePicker.View>
+
+    <DatePicker.View view="year">
+      <DatePicker.Context v-slot="api">
+        <CalendarHeader class="justify-between px-1 pt-0">
+          <CalendarPrevButton>
+            <slot name="calendar-prev-icon" />
+          </CalendarPrevButton>
+          <CalendarHeading />
+          <CalendarNextButton>
+            <slot name="calendar-next-icon" />
+          </CalendarNextButton>
+        </CalendarHeader>
+
+        <div class="mt-4">
+          <CalendarGrid>
+            <CalendarGridBody>
+              <CalendarGridRow
+                v-for="(years, id) in api.getYearsGrid({ columns: 4 })"
+                :key="id"
+                class="mt-2 w-full"
+              >
+                <CalendarCell
+                  v-for="(year, yearId) in years"
+                  :key="yearId"
+                  :value="year.value"
+                >
+                  <CalendarCellTrigger class="h-9 w-full">
+                    {{ year.label }}
                   </CalendarCellTrigger>
                 </CalendarCell>
               </CalendarGridRow>
