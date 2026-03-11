@@ -20,28 +20,28 @@
     "test:watch": "bun test --watch"
   },
   "dependencies": {
-    "@ark-ui/vue": "^5.34.0",
-    "@astrojs/starlight": "^0.37.6",
+    "@ark-ui/vue": "^5.34.1",
+    "@astrojs/starlight": "^0.37.7",
     "@astrojs/starlight-tailwind": "^4.0.2",
     "@astrojs/vue": "^5.1.4",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.2.1",
-    "@vue/compiler-sfc": "^3.5.29",
+    "@vue/compiler-sfc": "^3.5.30",
     "@vueuse/core": "^14.2.1",
-    "arktype": "^2.1.29",
-    "astro": "^5.18.0",
+    "arktype": "^2.2.0",
+    "astro": "^5.18.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "packages.registry": "workspace:*",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1",
-    "vue": "^3.5.29"
+    "vue": "^3.5.30"
   },
   "devDependencies": {
     "@acfatah/eslint-preset": "^3.2.0",
-    "eslint": "^9.39.3",
+    "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-format": "^1.5.0"
   }
