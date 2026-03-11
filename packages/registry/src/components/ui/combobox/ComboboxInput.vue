@@ -27,7 +27,9 @@ const forwardedProps = useForwardPropsEmits(props as Record<string, unknown>)
     data-part="input-wrapper"
     class="flex h-9 items-center gap-2 border-b px-3"
   >
-    <SearchIcon class="size-4 shrink-0 opacity-50" />
+    <slot name="icon">
+      <SearchIcon class="size-4 shrink-0 opacity-50" />
+    </slot>
     <Combobox.Input
       data-scope="combobox"
       data-part="input"

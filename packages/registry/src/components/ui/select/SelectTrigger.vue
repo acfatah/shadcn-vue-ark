@@ -56,12 +56,16 @@ useForwardExpose()
     >
       <slot />
       <template v-if="props.clearable">
-        <SelectIndicator v-show="isEmpty" />
+        <SelectIndicator v-show="isEmpty">
+          <slot name="icon" />
+        </SelectIndicator>
         <SelectClearTrigger v-show="!isEmpty" />
       </template>
 
       <template v-else>
-        <SelectIndicator />
+        <SelectIndicator>
+          <slot name="icon" />
+        </SelectIndicator>
       </template>
     </Select.Trigger>
   </Select.Control>

@@ -50,6 +50,8 @@ useForwardExpose()
     )"
   >
     <slot />
-    <ChevronRightIcon aria-hidden="true" class="ml-auto size-4" />
+    <slot name="icon">
+      <ChevronRightIcon aria-hidden="true" class="ml-auto size-4" />
+    </slot>
   </Menu.TriggerItem>
 </template>
