@@ -27,11 +27,18 @@ export function useEmitAsProps<
 ) {
   const vm = getCurrentInstance()
 
-  const events = vm?.type.emits as Name[]
+  const rawEmits = vm?.type.emits
+  const events: Name[] = Array.isArray(rawEmits)
+    ? rawEmits
+    : typeof rawEmits === 'object' && rawEmits !== null
+      ? Object.keys(rawEmits) as Name[]
+      : []
   const result: Record<string, any> = {}
 
-  if (!events?.length) {
+  if (!events.length) {
     console.warn(`No emitted event found. Please check component: ${vm?.type.__name}`)
+
+    return result
   }
 
   for (const event of events) {
