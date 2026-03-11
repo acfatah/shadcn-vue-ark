@@ -4,20 +4,20 @@ import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import type {
-  Emits as PrimitiveInputEmits,
-  Props as PrimitiveInputProps,
-} from '@/components/ui/input/PrimitiveInput.vue'
+  PrimitiveInputEmits,
+  PrimitiveInputProps,
+} from '@/components/ui/input/types'
 
 import { PrimitiveInput } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
+interface Props extends /* @vue-ignore */ Omit<PrimitiveInputProps, 'scope' | 'type'> {
   type?: PrimitiveInputProps['type']
   class?: HTMLAttributes['class']
 }
 
-interface Emits extends PrimitiveInputEmits {}
+interface Emits extends /* @vue-ignore */ PrimitiveInputEmits {}
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'text',

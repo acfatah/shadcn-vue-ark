@@ -13,11 +13,11 @@ import type {
 
 import PrimitiveInput from './PrimitiveInput.vue'
 
-interface Props extends Omit<PrimitiveInputProps, 'scope' | 'type'> {
+interface Props extends /* @vue-ignore */ Omit<PrimitiveInputProps, 'scope' | 'type'> {
   ariaLabel?: string
   hideIcon?: boolean
 }
-interface Emits extends PrimitiveInputEmits {}
+interface Emits extends /* @vue-ignore */ PrimitiveInputEmits {}
 
 defineOptions({
   inheritAttrs: false,
