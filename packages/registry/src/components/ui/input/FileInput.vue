@@ -44,7 +44,7 @@ const files = useVModel(props, 'modelValue', emits, {
 function onChange(event: Event) {
   const target = event.target as HTMLInputElement | null
   const list = target?.files
-  const next = list ? Array.from(list) : []
+  const next = list ? [...list] : []
 
   files.value = next
   emits('change', next)
