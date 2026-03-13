@@ -22,7 +22,7 @@ export const tailwindViewports = {
     styles: {
       // 48rem
       width: '768px',
-      height: '768px',
+      height: '1024px',
     },
     type: 'tablet',
   },
