@@ -44,7 +44,7 @@ export async function buildBlocksRegistry(
     const outputPath = resolveOutputPath(blockName, file.path)
     const inputPath = resolveFilePath(blockPath, file.path)
     const source = await readFile(inputPath, { encoding: 'utf8' })
-    files.push({ ...file, path: outputPath })
+    files.push({ ...file, path: outputPath, target: outputPath })
 
     const deps = await getFileDependencies(inputPath, source, registryBaseUrl)
     deps.dependencies.forEach(dep => dependencies.add(dep))
