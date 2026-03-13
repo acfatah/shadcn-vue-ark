@@ -1143,19 +1143,23 @@
       "files": [
         {
           "path": "src/blocks/data-table-custom/CustomFilterAndPagination.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-custom/CustomFilterAndPagination.vue"
         },
         {
           "path": "src/blocks/data-table-custom/DefaultDataTableDropDown.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-custom/DefaultDataTableDropDown.vue"
         },
         {
           "path": "src/blocks/data-table-custom/payment-columns.ts",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-custom/payment-columns.ts"
         },
         {
           "path": "src/blocks/data-table-custom/data/payments.ts",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-custom/data/payments.ts"
         }
       ],
       "registryDependencies": [
@@ -1180,19 +1184,23 @@
       "files": [
         {
           "path": "src/blocks/data-table-default/DefaultDataTable.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-default/DefaultDataTable.vue"
         },
         {
           "path": "src/blocks/data-table-default/DefaultDataTableDropDown.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-default/DefaultDataTableDropDown.vue"
         },
         {
           "path": "src/blocks/data-table-default/payment-columns.ts",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-default/payment-columns.ts"
         },
         {
           "path": "src/blocks/data-table-default/data/payments.ts",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/data-table-default/data/payments.ts"
         }
       ],
       "registryDependencies": [
@@ -3298,6 +3306,53 @@
       ]
     },
     {
+      "type": "registry:block",
+      "name": "sidebar-07-block",
+      "title": "Sidebar 07",
+      "description": "A sidebar that collapses to icons with team switcher,\ncollapsible navigation, projects list, and user menu.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/sidebar\n- Ark UI: https://ark-ui.com",
+      "dependencies": [
+        "lucide-vue-next"
+      ],
+      "files": [
+        {
+          "path": "src/blocks/sidebar-07/AppSidebar.vue",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/AppSidebar.vue"
+        },
+        {
+          "path": "src/blocks/sidebar-07/NavMain.vue",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/NavMain.vue"
+        },
+        {
+          "path": "src/blocks/sidebar-07/NavProjects.vue",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/NavProjects.vue"
+        },
+        {
+          "path": "src/blocks/sidebar-07/NavUser.vue",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/NavUser.vue"
+        },
+        {
+          "path": "src/blocks/sidebar-07/TeamSwitcher.vue",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/TeamSwitcher.vue"
+        },
+        {
+          "path": "src/blocks/sidebar-07/data.ts",
+          "type": "registry:block",
+          "target": "src/blocks/sidebar-07/data.ts"
+        }
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/sidebar.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/collapsible.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/avatar.json"
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
@@ -3701,15 +3756,18 @@
       "files": [
         {
           "path": "src/blocks/tanstack-data-table/TanStackTable.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/tanstack-data-table/TanStackTable.vue"
         },
         {
           "path": "src/blocks/tanstack-data-table/TanStackTableDropdown.vue",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/tanstack-data-table/TanStackTableDropdown.vue"
         },
         {
           "path": "src/blocks/tanstack-data-table/data/payments.ts",
-          "type": "registry:block"
+          "type": "registry:block",
+          "target": "src/blocks/tanstack-data-table/data/payments.ts"
         }
       ],
       "registryDependencies": [
