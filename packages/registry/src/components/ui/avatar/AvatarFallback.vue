@@ -21,7 +21,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Avatar.Fallback
     v-bind="forwardedProps"
     :class="cn(
-      `flex size-full items-center justify-center rounded-full bg-muted`,
+      `flex size-full items-center justify-center rounded-full bg-muted select-none`,
       props.class,
     )"
   >
