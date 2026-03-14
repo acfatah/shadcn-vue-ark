@@ -23,7 +23,7 @@ useForwardExpose()
     data-part="separator"
     v-bind="forwardedProps"
     :class="cn(
-      '-mx-1 my-1 h-px bg-border',
+      '-mx-1 my-1 h-px border-border',
       props.class,
     )"
   >

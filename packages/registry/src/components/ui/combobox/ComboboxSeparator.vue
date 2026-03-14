@@ -23,7 +23,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     data-part="separator"
     v-bind="forwardedProps"
     :class="cn(
-      '-mx-1 h-px bg-border',
+      '-mx-1 h-px border-border',
       props.class,
     )"
   >
