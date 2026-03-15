@@ -29,9 +29,11 @@ const ariaOrientation = computed(() => props.decorative ? undefined : props.orie
     :aria-orientation="ariaOrientation"
     :class="cn(
       `
-        shrink-0 border-border
+        border-border
         data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full
+        data-[orientation=horizontal]:border-t
         data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px
+        data-[orientation=vertical]:border-l
       `,
       props.class,
     )"
