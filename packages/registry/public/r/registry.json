@@ -1142,9 +1142,9 @@
       ],
       "files": [
         {
-          "path": "src/blocks/data-table-custom/CustomFilterAndPagination.vue",
+          "path": "src/blocks/data-table-custom/DataTableCustom.vue",
           "type": "registry:file",
-          "target": "src/blocks/data-table-custom/CustomFilterAndPagination.vue"
+          "target": "src/blocks/data-table-custom/DataTableCustom.vue"
         },
         {
           "path": "src/blocks/data-table-custom/DefaultDataTableDropDown.vue",
@@ -3307,46 +3307,57 @@
     },
     {
       "type": "registry:block",
-      "name": "sidebar-07-block",
+      "name": "sidebar-07-layout",
       "title": "Sidebar 07",
-      "description": "A sidebar that collapses to icons with team switcher,\ncollapsible navigation, projects list, and user menu.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/sidebar\n- Ark UI: https://ark-ui.com",
+      "description": "A sidebar layout that collapses to icons with team switcher,\ncollapsible navigation, projects list, and user menu.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/sidebar\n- Ark UI: https://ark-ui.com",
       "dependencies": [
         "lucide-vue-next"
       ],
       "files": [
         {
-          "path": "src/blocks/sidebar-07/AppSidebar.vue",
+          "path": "src/layouts/sidebar-07/SidebarLayout.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/AppSidebar.vue"
+          "target": "src/layouts/sidebar-07/SidebarLayout.vue"
         },
         {
-          "path": "src/blocks/sidebar-07/NavMain.vue",
+          "path": "src/layouts/sidebar-07/SidebarLeft.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/NavMain.vue"
+          "target": "src/layouts/sidebar-07/SidebarLeft.vue"
         },
         {
-          "path": "src/blocks/sidebar-07/NavProjects.vue",
+          "path": "src/layouts/sidebar-07/LayoutHeader.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/NavProjects.vue"
+          "target": "src/layouts/sidebar-07/LayoutHeader.vue"
         },
         {
-          "path": "src/blocks/sidebar-07/NavUser.vue",
+          "path": "src/layouts/sidebar-07/NavMain.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/NavUser.vue"
+          "target": "src/layouts/sidebar-07/NavMain.vue"
         },
         {
-          "path": "src/blocks/sidebar-07/TeamSwitcher.vue",
+          "path": "src/layouts/sidebar-07/NavProjects.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/TeamSwitcher.vue"
+          "target": "src/layouts/sidebar-07/NavProjects.vue"
         },
         {
-          "path": "src/blocks/sidebar-07/data.ts",
+          "path": "src/layouts/sidebar-07/NavUser.vue",
           "type": "registry:file",
-          "target": "src/blocks/sidebar-07/data.ts"
+          "target": "src/layouts/sidebar-07/NavUser.vue"
+        },
+        {
+          "path": "src/layouts/sidebar-07/TeamSwitcher.vue",
+          "type": "registry:file",
+          "target": "src/layouts/sidebar-07/TeamSwitcher.vue"
+        },
+        {
+          "path": "src/layouts/sidebar-07/data.ts",
+          "type": "registry:file",
+          "target": "src/layouts/sidebar-07/data.ts"
         }
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/sidebar.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/collapsible.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/avatar.json"
@@ -3755,14 +3766,14 @@
       ],
       "files": [
         {
-          "path": "src/blocks/tanstack-data-table/TanStackTable.vue",
+          "path": "src/blocks/tanstack-data-table/TanstackDataTable.vue",
           "type": "registry:file",
-          "target": "src/blocks/tanstack-data-table/TanStackTable.vue"
+          "target": "src/blocks/tanstack-data-table/TanstackDataTable.vue"
         },
         {
-          "path": "src/blocks/tanstack-data-table/TanStackTableDropdown.vue",
+          "path": "src/blocks/tanstack-data-table/TanstackDataTableDropdown.vue",
           "type": "registry:file",
-          "target": "src/blocks/tanstack-data-table/TanStackTableDropdown.vue"
+          "target": "src/blocks/tanstack-data-table/TanstackDataTableDropdown.vue"
         },
         {
           "path": "src/blocks/tanstack-data-table/data/payments.ts",
