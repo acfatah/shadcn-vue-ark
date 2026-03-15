@@ -2,8 +2,7 @@ import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { createRouter, createWebHistory } from 'vue-router'
 
 // import BlankLayout from '@/layouts/BlankLayout.vue'
-
-import homeRoutes from '@/pages/home/routes'
+import homeRoutes from '../pages/home/routes'
 
 if (!import.meta.env.VITE_PAGE_TITLE) {
   console.warn('VITE_PAGE_TITLE is not defined!')
@@ -36,7 +35,7 @@ const router = createRouter({
 
     {
       path: '/:pathMatch(.*)*',
-      component: () => import('@/pages/NotFound.vue'),
+      component: () => import('../pages/NotFound.vue'),
     },
   ],
 })
