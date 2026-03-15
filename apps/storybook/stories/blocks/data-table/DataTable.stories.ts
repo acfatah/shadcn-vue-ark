@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import CustomFilterAndPaginationComponent from '@/blocks/data-table-custom/CustomFilterAndPagination.vue'
-import CustomFilterAndPaginationSource from '@/blocks/data-table-custom/CustomFilterAndPagination.vue?raw'
+import DataTableCustomRegistry from '@/blocks/data-table-custom/_registry'
+import DataTableCustomComponent from '@/blocks/data-table-custom/DataTableCustom.vue'
+import DataTableCustomSource from '@/blocks/data-table-custom/DataTableCustom.vue?raw'
 import DefaultStory from '@/blocks/data-table-default/DefaultDataTable.vue'
 import DefaultSource from '@/blocks/data-table-default/DefaultDataTable.vue?raw'
-import TanStackTableComponent from '@/blocks/tanstack-data-table/TanStackTable.vue'
-import TanStackTableSource from '@/blocks/tanstack-data-table/TanStackTable.vue?raw'
+import TanstackDataTableRegistry from '@/blocks/tanstack-data-table/_registry'
+import TanstackDataTableComponent from '@/blocks/tanstack-data-table/TanstackDataTable.vue'
+import TanstackDataTableSource from '@/blocks/tanstack-data-table/TanstackDataTable.vue?raw'
 
 interface DataTableStoryArgs {
   hideFilter: boolean
@@ -53,62 +55,64 @@ export const Default: Story = {
   }),
 }
 
-/**
- * TanStack Table provides more advanced options to build more complex data tables.
- *
- * Documentation: https://www.shadcn-vue.com/docs/components/data-table<br>
- * TanStack Table API: https://tanstack.com/table/v8/docs/introduction
- */
-export const TanStackTable: Story = {
+export const TanstackDataTable: Story = {
   args: {
     hideFilter: false,
     hidePagination: false,
   },
+
   parameters: {
     docs: {
       source: {
-        code: TanStackTableSource,
+        code: TanstackDataTableSource,
+      },
+
+      description: {
+        story: TanstackDataTableRegistry.description,
       },
     },
   },
 
   render: args => ({
-    components: { TanStackTableComponent },
+    components: { TanstackDataTableComponent },
 
     setup() {
       return { args }
     },
 
     template: `
-      <TanStackTableComponent v-bind="args" />
+      <TanstackDataTableComponent v-bind="args" />
     `,
   }),
 }
 
-TanStackTable.name = 'TanStack Table'
-
-export const CustomFilterAndPagination: Story = {
+export const DataTableCustom: Story = {
   args: {
     hideFilter: false,
     hidePagination: false,
   },
+
   parameters: {
     docs: {
       source: {
-        code: CustomFilterAndPaginationSource,
+        code: DataTableCustomSource,
+      },
+
+      description: {
+        story: DataTableCustomRegistry.description,
       },
     },
   },
 
   render: args => ({
-    components: { CustomFilterAndPaginationComponent },
+    components: { DataTableCustomComponent },
 
     setup() {
       return { args }
     },
 
     template: `
-      <CustomFilterAndPaginationComponent v-bind="args" />
+      <DataTableCustomComponent v-bind="args" />
     `,
   }),
 }

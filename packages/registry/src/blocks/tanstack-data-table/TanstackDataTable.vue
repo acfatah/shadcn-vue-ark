@@ -24,7 +24,7 @@ import { Table } from '@/components/ui/table'
 import type { Payment } from './data/payments'
 
 import { data } from './data/payments'
-import DropdownAction from './TanStackTableDropdown.vue'
+import DropdownAction from './TanstackDataTableDropdown.vue'
 
 const columnHelper = createColumnHelper<Payment>()
 

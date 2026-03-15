@@ -24,24 +24,24 @@ export const registryItem = {
 
   files: [
     {
-      path: 'CustomFilterAndPagination.vue',
+      path: 'DataTableCustom.vue',
       type: 'registry:file',
-      target: 'src/blocks/data-table-custom/CustomFilterAndPagination.vue',
+      target: 'src/components/data-table-custom/DataTableCustom.vue',
     },
     {
       path: 'DefaultDataTableDropDown.vue',
       type: 'registry:file',
-      target: 'src/blocks/data-table-custom/DefaultDataTableDropDown.vue',
+      target: 'src/components/data-table-custom/DefaultDataTableDropDown.vue',
     },
     {
       path: 'payment-columns.ts',
       type: 'registry:file',
-      target: 'src/blocks/data-table-custom/payment-columns.ts',
+      target: 'src/components/data-table-custom/payment-columns.ts',
     },
     {
       path: 'data/payments.ts',
       type: 'registry:file',
-      target: 'src/blocks/data-table-custom/data/payments.ts',
+      target: 'src/components/data-table-custom/data/payments.ts',
     },
   ],
 } satisfies RegistryItem

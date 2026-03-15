@@ -24,19 +24,19 @@ export const registryItem = {
 
   files: [
     {
-      path: 'TanStackTable.vue',
+      path: 'TanstackDataTable.vue',
       type: 'registry:file',
-      target: 'src/blocks/tanstack-data-table/TanStackTable.vue',
+      target: 'src/components/tanstack-data-table/TanstackDataTable.vue',
     },
     {
-      path: 'TanStackTableDropdown.vue',
+      path: 'TanstackDataTableDropdown.vue',
       type: 'registry:file',
-      target: 'src/blocks/tanstack-data-table/TanStackTableDropdown.vue',
+      target: 'src/components/tanstack-data-table/TanstackDataTableDropdown.vue',
     },
     {
       path: 'data/payments.ts',
       type: 'registry:file',
-      target: 'src/blocks/tanstack-data-table/data/payments.ts',
+      target: 'src/components/tanstack-data-table/data/payments.ts',
     },
   ],
 } satisfies RegistryItem

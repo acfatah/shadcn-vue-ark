@@ -14,7 +14,7 @@ import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { createListCollection, Select } from '@/components/ui/select'
 
-import columns from './payment-columns'
+import columns from './payment-columns.ts'
 
 const data = ref<Record<string, any>[]>([])
 const isLoading = ref(false)
