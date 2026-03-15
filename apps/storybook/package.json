@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "bunx --bun storybook dev -p 6006",
+    "storybook": "bunx --bun storybook dev -p 6006",
+    "storybook:build": "bunx --bun storybook build",
+    "storybook:clear-cache": "rm -rf node_modules/.cache/storybook",
     "build": "bunx --bun storybook build",
     "app:dev": "bunx --bun vite",
     "app:build": "bunx --bun vue-tsc -b && bunx --bun vite build",
