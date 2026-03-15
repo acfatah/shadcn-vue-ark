@@ -17,6 +17,7 @@ import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildComposablesRegistry } from './build-composables-registry'
 import { buildIndexJson } from './build-index-json'
+import { buildLayoutsRegistry } from './build-layouts-registry'
 import { buildLibRegistry } from './build-lib-registry'
 import { buildStyles } from './build-styles'
 import { buildThemes } from './build-themes'
@@ -24,6 +25,7 @@ import { buildUIRegistry } from './build-ui-registry'
 import {
   BLOCKS_PATH,
   COMPONENTS_PATH,
+  LAYOUTS_PATH,
   REGISTRY_OUTPUT_PATH,
   ROOT_PATH,
   UI_PATH,
@@ -90,13 +92,33 @@ async function crawlAndBuildBlocksRegistry(registryBaseUrl: string) {
   return blocksRegistry
 }
 
+async function crawlAndBuildLayoutsRegistry(registryBaseUrl: string) {
+  const dir = await readDirectory(LAYOUTS_PATH, { withFileTypes: true })
+  const layoutsRegistry: RegistryItem[] = []
+
+  for (const dirent of dir) {
+    if (!dirent.isDirectory())
+      continue
+
+    const layoutPath = join(LAYOUTS_PATH, dirent.name)
+    if (!existsSync(join(layoutPath, '_registry.ts')))
+      continue
+
+    const registryItem = await buildLayoutsRegistry(layoutPath, dirent.name, registryBaseUrl)
+    layoutsRegistry.push(registryItem)
+  }
+
+  return layoutsRegistry
+}
+
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
-  const [ui, components, blocks, hooks, libs] = await Promise.all([
+  const [ui, components, blocks, layouts, hooks, libs] = await Promise.all([
     crawlAndBuildUIRegistry(registryBaseUrl),
     crawlAndBuildComponentsRegistry(registryBaseUrl),
     crawlAndBuildBlocksRegistry(registryBaseUrl),
+    crawlAndBuildLayoutsRegistry(registryBaseUrl),
     buildComposablesRegistry(registryBaseUrl),
     buildLibRegistry(registryBaseUrl),
   ])
@@ -105,6 +127,7 @@ export async function buildRegistry(registryBaseUrl: string) {
     ...ui,
     ...components,
     ...blocks,
+    ...layouts,
     ...hooks,
     ...libs,
   )
