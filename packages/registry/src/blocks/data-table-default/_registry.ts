@@ -25,19 +25,23 @@ export const registryItem = {
   files: [
     {
       path: 'DefaultDataTable.vue',
-      type: 'registry:block',
+      type: 'registry:file',
+      target: 'src/blocks/data-table-default/DefaultDataTable.vue',
     },
     {
       path: 'DefaultDataTableDropDown.vue',
-      type: 'registry:block',
+      type: 'registry:file',
+      target: 'src/blocks/data-table-default/DefaultDataTableDropDown.vue',
     },
     {
       path: 'payment-columns.ts',
-      type: 'registry:block',
+      type: 'registry:file',
+      target: 'src/blocks/data-table-default/payment-columns.ts',
     },
     {
       path: 'data/payments.ts',
-      type: 'registry:block',
+      type: 'registry:file',
+      target: 'src/blocks/data-table-default/data/payments.ts',
     },
   ],
 } satisfies RegistryItem

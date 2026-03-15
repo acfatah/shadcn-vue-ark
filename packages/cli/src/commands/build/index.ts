@@ -2,6 +2,7 @@ import type { RegistryItem } from 'shadcn/schema'
 
 import { Command } from 'commander'
 import { consola } from 'consola'
+import { existsSync } from 'node:fs'
 import process from 'node:process'
 import { join } from 'pathe'
 
@@ -79,6 +80,9 @@ async function crawlAndBuildBlocksRegistry(registryBaseUrl: string) {
       continue
 
     const blockPath = join(BLOCKS_PATH, dirent.name)
+    if (!existsSync(join(blockPath, '_registry.ts')))
+      continue
+
     const registryItem = await buildBlocksRegistry(blockPath, dirent.name, registryBaseUrl)
     blocksRegistry.push(registryItem)
   }
