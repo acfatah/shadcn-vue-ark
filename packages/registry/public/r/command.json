@@ -45,7 +45,7 @@
     },
     {
       "path": "src/components/ui/command/CommandSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <Separator\n    data-scope=\"command\"\n    data-part=\"separator\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      '-mx-1 h-px bg-border',\n      props.class,\n    )\"\n  />\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Separator } from '@/components/ui/separator'\nimport { cn } from '@/lib/utils'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\n</script>\n\n<template>\n  <Separator\n    data-scope=\"command\"\n    data-part=\"separator\"\n    v-bind=\"delegatedProps\"\n    :class=\"cn(\n      '-mx-1 h-px border-border',\n      props.class,\n    )\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {

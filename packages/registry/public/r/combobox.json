@@ -57,7 +57,7 @@
     },
     {
       "path": "src/components/ui/combobox/ComboboxSeparator.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"combobox\"\n    data-part=\"separator\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      '-mx-1 h-px bg-border',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.div\n    data-scope=\"combobox\"\n    data-part=\"separator\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      '-mx-1 h-px border-border',\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {

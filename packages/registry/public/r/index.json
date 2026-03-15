@@ -3186,6 +3186,47 @@
     ]
   },
   {
+    "type": "registry:block",
+    "name": "sidebar-07-block",
+    "title": "Sidebar 07",
+    "description": "A sidebar that collapses to icons with team switcher,\ncollapsible navigation, projects list, and user menu.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/sidebar\n- Ark UI: https://ark-ui.com",
+    "dependencies": [
+      "lucide-vue-next"
+    ],
+    "files": [
+      {
+        "path": "src/blocks/sidebar-07/AppSidebar.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/blocks/sidebar-07/NavMain.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/blocks/sidebar-07/NavProjects.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/blocks/sidebar-07/NavUser.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/blocks/sidebar-07/TeamSwitcher.vue",
+        "type": "registry:block"
+      },
+      {
+        "path": "src/blocks/sidebar-07/data.ts",
+        "type": "registry:block"
+      }
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/sidebar.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/collapsible.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/avatar.json"
+    ]
+  },
+  {
     "name": "skeleton",
     "type": "registry:ui",
     "title": "Skeleton",
