@@ -2,6 +2,7 @@
 import type { Component } from 'vue'
 
 import { reactiveOmit } from '@vueuse/core'
+import { computed, useAttrs } from 'vue'
 
 import { TooltipContent, TooltipRoot, TooltipTrigger } from '@/components/ui/tooltip'
 
@@ -24,6 +25,13 @@ const props = withDefaults(defineProps<SidebarMenuButtonProps & {
 const { isMobile, state } = useSidebar()
 
 const delegatedProps = reactiveOmit(props, 'tooltip')
+
+const attrs = useAttrs()
+const tooltipSafeAttrs = computed(() => {
+  const { id, ...rest } = attrs
+
+  return rest
+})
 </script>
 
 <template>
@@ -44,7 +52,7 @@ const delegatedProps = reactiveOmit(props, 'tooltip')
     align="center"
   >
     <TooltipTrigger as-child>
-      <SidebarMenuButtonChild v-bind="{ ...delegatedProps, ...$attrs }">
+      <SidebarMenuButtonChild v-bind="{ ...delegatedProps, ...tooltipSafeAttrs }">
         <slot />
       </SidebarMenuButtonChild>
     </TooltipTrigger>
