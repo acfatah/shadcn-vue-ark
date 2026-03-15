@@ -38,6 +38,14 @@ const preview: Preview = {
     viewport: { value: 'lg', isRotated: false },
   },
 
+  argTypes: {
+    key: { table: { disable: true } },
+    ref: { table: { disable: true } },
+    ref_for: { table: { disable: true } },
+    ref_key: { table: { disable: true } },
+    style: { table: { disable: true } },
+  },
+
   decorators: [
     withThemeByClassName({
       themes: {
