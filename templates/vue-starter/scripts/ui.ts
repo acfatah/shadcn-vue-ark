@@ -54,8 +54,28 @@ program.command('status')
 
 program.command('list')
   .description('List available blocks and components')
-  .action(async () => {
-    const components = await listComponents()
+  .option('--block', 'filter to show only blocks (*-block)')
+  .option('--component', 'filter to show only components (no suffix)')
+  .option('--layout', 'filter to show only layouts (*-layout)')
+  .option('--lib', 'filter to show only libs (*-lib)')
+  .action(async (options: { block?: boolean, component?: boolean, layout?: boolean, lib?: boolean }) => {
+    let components = await listComponents()
+
+    if (options.block) {
+      components = components.filter((c: any) => c.name.endsWith('-block'))
+    }
+
+    if (options.layout) {
+      components = components.filter((c: any) => c.name.endsWith('-layout'))
+    }
+
+    if (options.lib) {
+      components = components.filter((c: any) => c.name.endsWith('-lib'))
+    }
+
+    if (options.component) {
+      components = components.filter((c: any) => !c.name.endsWith('-block') && !c.name.endsWith('-layout') && !c.name.endsWith('-lib'))
+    }
 
     consola.log(components.reduce((acc: string, component: any) => {
       acc += `${component.name} `
