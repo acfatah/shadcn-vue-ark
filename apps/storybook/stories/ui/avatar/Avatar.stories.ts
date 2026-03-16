@@ -23,6 +23,22 @@ const meta = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    shape: {
+      control: 'inline-radio',
+      options: ['round', 'square'],
+    },
+    size: {
+      control: 'inline-radio',
+      options: ['sm', 'md', 'lg', 'xl'],
+    },
+  },
+
+  args: {
+    shape: 'round',
+    size: 'md',
+  },
+
   parameters: {
     docs: {
       description: {
