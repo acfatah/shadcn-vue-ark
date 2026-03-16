@@ -8,11 +8,16 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import { useAvatarContext } from './context'
+import { shape as shapeVariant, size as sizeVariant } from './variant'
+
+const props = defineProps<Props>()
+const { shape, size } = useAvatarContext()
+
 interface Props extends AvatarFallbackProps {
   class?: HTMLAttributes['class']
 }
 
-const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
@@ -21,7 +26,9 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Avatar.Fallback
     v-bind="forwardedProps"
     :class="cn(
-      `flex size-full items-center justify-center rounded-full bg-muted select-none`,
+      `flex size-full items-center justify-center bg-muted select-none`,
+      shape ? shapeVariant[shape] : shapeVariant.round,
+      size ? sizeVariant[size] : sizeVariant.md,
       props.class,
     )"
   >
