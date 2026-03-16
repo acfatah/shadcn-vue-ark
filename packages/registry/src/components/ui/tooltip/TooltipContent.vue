@@ -32,7 +32,7 @@ const tooltipOptions = useTooltipOptions(
 
 <template>
   <Teleport to="body" defer>
-    <Tooltip.Positioner>
+    <Tooltip.Positioner  class="pointer-events-none">
       <Tooltip.Content
         v-bind="{ ...$attrs, ...forwardedProps }"
         data-scope="tooltip"
@@ -40,7 +40,7 @@ const tooltipOptions = useTooltipOptions(
         :class="cn(
           `
             z-50 w-fit rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background
-            outline-none
+            outline-none pointer-events-auto
           `,
           `
             data-[side=bottom]:slide-in-from-top-2
