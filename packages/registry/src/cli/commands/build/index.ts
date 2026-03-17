@@ -4,15 +4,14 @@ import { Command } from 'commander'
 import { consola } from 'consola'
 import { existsSync } from 'node:fs'
 import process from 'node:process'
-import { join } from 'pathe'
+import { join, resolve } from 'pathe'
 
 import {
   readDirectory,
   rimraf,
   writeFile,
-} from '@/utils'
+} from '@/cli/utils'
 
-import mainPackageJson from '../../../../../package.json'
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildComposablesRegistry } from './build-composables-registry'
@@ -30,6 +29,8 @@ import {
   ROOT_PATH,
   UI_PATH,
 } from './paths'
+
+const mainPackageJson = await Bun.file(resolve(__dirname, '..', '..', '..', '..', '..', '..', 'package.json')).json()
 
 const REGISTRY_URL = process.env.REGISTRY_URL
   || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r'

@@ -1,10 +1,11 @@
 import template from 'lodash/template'
 import { existsSync, promises as fs } from 'node:fs'
 import path from 'node:path'
-import { baseColors, baseColorsV4 } from 'packages.registry/_legacy-base-colors'
-import { colorMapping, colors } from 'packages.registry/_legacy-colors'
 
-import { rimraf } from '../../utils'
+import { baseColors, baseColorsV4 } from '@/_legacy-base-colors'
+import { colorMapping, colors } from '@/_legacy-colors'
+import { rimraf } from '@/cli/utils'
+
 import { REGISTRY_OUTPUT_PATH } from './paths'
 
 export async function buildThemes() {

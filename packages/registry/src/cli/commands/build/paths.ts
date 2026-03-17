@@ -1,6 +1,6 @@
 import { join, resolve } from 'pathe'
 
-const ROOT_PATH = resolve(__dirname, '..', '..', '..', '..', 'registry')
+const ROOT_PATH = resolve(__dirname, '..', '..', '..', '..')
 const REGISTRY_PATH = join(ROOT_PATH, 'src')
 const REGISTRY_OUTPUT_PATH = join(ROOT_PATH, 'public', 'r')
 const UI_PATH = join(REGISTRY_PATH, 'components', 'ui')

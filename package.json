@@ -7,9 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "storybook": "cd apps/storybook && bun run storybook",
-    "storybook:build": "cd apps/storybook && bun run storybook build",
-    "registry:build": "cd packages/cli && bun run cli build",
+    "storybook": "cd apps/storybook && bun storybook",
+    "storybook:build": "cd apps/storybook && bun storybook build",
+    "registry": "cd packages/registry && bun registry",
+    "registry:build": "cd packages/registry && bun registry:build",
     "outdated:all": "bun scripts/outdated-all.ts",
     "update:all": "bun scripts/update-all.ts"
   },

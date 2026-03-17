@@ -2,7 +2,7 @@ import type { RegistryItem } from 'shadcn/schema'
 
 import { join } from 'pathe'
 
-import { writeFile } from '@/utils'
+import { writeFile } from '@/cli/utils'
 
 import { REGISTRY_OUTPUT_PATH } from './paths'
 

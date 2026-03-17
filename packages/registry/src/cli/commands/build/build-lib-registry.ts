@@ -3,7 +3,7 @@ import type { RegistryItem } from 'shadcn/schema'
 import { basename } from 'node:path'
 import { join, relative } from 'pathe'
 
-import { getKebabName, readDirectory, readFile } from '@/utils'
+import { getKebabName, readDirectory, readFile } from '@/cli/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { LIB_PATH, REGISTRY_PATH } from './paths'

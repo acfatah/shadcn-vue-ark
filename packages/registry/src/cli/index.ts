@@ -1,13 +1,15 @@
 #!/usr/bin/env bun
 
 import { Command } from 'commander'
+import { resolve } from 'pathe'
 
-import packageJson from '../package.json'
 import { build } from './commands/build'
+
+const packageJson = await Bun.file(resolve(__dirname, '..', '..', 'package.json')).json()
 
 async function main() {
   const program = new Command()
-    .name('bun cli')
+    .name('bun registry')
     .description(packageJson.description)
     .version(
       packageJson.version,

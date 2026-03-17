@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs'
 import { basename } from 'node:path'
 import { join, relative } from 'pathe'
 
-import { readFile } from '@/utils'
+import { readFile } from '@/cli/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { COMPOSABLES_PATH, REGISTRY_PATH } from './paths'

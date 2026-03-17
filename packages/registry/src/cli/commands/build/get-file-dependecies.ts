@@ -3,7 +3,7 @@ import { parseSync } from 'oxc-parser'
 import { basename, dirname, extname, normalize, resolve } from 'pathe'
 import { compileScript, parse } from 'vue/compiler-sfc'
 
-import { getKebabName } from '@/utils'
+import { getKebabName } from '@/cli/utils'
 
 import { COMPOSABLES_PATH, LIB_PATH } from './paths'
 

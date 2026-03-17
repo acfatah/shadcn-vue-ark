@@ -2,34 +2,34 @@ import type { RegistryItem } from 'shadcn/schema'
 
 import { join } from 'pathe'
 
-import { readFile } from '@/utils'
+import { readFile } from '@/cli/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { REGISTRY_PATH } from './paths'
 
-function resolveFilePath(blockPath: string, filePath: string) {
+function resolveFilePath(layoutPath: string, filePath: string) {
   if (filePath.startsWith('src/')) {
     const pathWithoutSrc = filePath.replace(/^src\//, '')
 
     return join(REGISTRY_PATH, pathWithoutSrc)
   }
 
-  return join(blockPath, filePath)
+  return join(layoutPath, filePath)
 }
 
-function resolveOutputPath(blockName: string, filePath: string) {
+function resolveOutputPath(layoutName: string, filePath: string) {
   if (filePath.startsWith('src/'))
     return filePath
 
-  return join('src', 'components', 'blocks', blockName, filePath)
+  return join('src', 'components', 'layouts', layoutName, filePath)
 }
 
-export async function buildBlocksRegistry(
-  blockPath: string,
-  blockName: string,
+export async function buildLayoutsRegistry(
+  layoutPath: string,
+  layoutName: string,
   registryBaseUrl: string,
 ) {
-  const registryFile = join(blockPath, '_registry.ts')
+  const registryFile = join(layoutPath, '_registry.ts')
   const { registryItem } = await import(registryFile) as { registryItem?: RegistryItem }
 
   if (!registryItem) {
@@ -41,8 +41,8 @@ export async function buildBlocksRegistry(
   const registryDependencies = new Set<string>(registryItem.registryDependencies ?? [])
 
   for (const file of registryItem.files ?? []) {
-    const outputPath = resolveOutputPath(blockName, file.path)
-    const inputPath = resolveFilePath(blockPath, file.path)
+    const outputPath = resolveOutputPath(layoutName, file.path)
+    const inputPath = resolveFilePath(layoutPath, file.path)
     const source = await readFile(inputPath, { encoding: 'utf8' })
     files.push({ ...file, path: outputPath, target: outputPath })
 
@@ -53,7 +53,7 @@ export async function buildBlocksRegistry(
 
   return {
     ...registryItem,
-    name: registryItem.name || blockName,
+    name: registryItem.name || layoutName,
     type: 'registry:block',
     files,
     dependencies: Array.from(dependencies),

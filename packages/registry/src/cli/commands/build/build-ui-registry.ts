@@ -2,7 +2,7 @@ import type { RegistryItem } from 'shadcn/schema'
 
 import { join, relative } from 'pathe'
 
-import { readDirectory, readFile } from '@/utils'
+import { readDirectory, readFile } from '@/cli/utils'
 
 import type { RegistryItemCss, RegistryItemCssVars } from './build-css-from-tailwind'
 

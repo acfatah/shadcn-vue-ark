@@ -7,7 +7,7 @@ import type { z } from 'zod'
 
 import { join, normalize } from 'pathe'
 
-import { readFile } from '@/utils'
+import { readFile } from '@/cli/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
 import { COMPONENTS_PATH, REGISTRY_PATH } from './paths'
