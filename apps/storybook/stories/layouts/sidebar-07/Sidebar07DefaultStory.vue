@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import SidebarLeft from '@/components/layouts/sidebar-07/SidebarLeft.vue'
 import { Separator } from '@/components/ui/separator'
 import { Sidebar } from '@/components/ui/sidebar'
-import SidebarLeft from '@/layouts/sidebar-07/SidebarLeft.vue'
 </script>
 
 <template>

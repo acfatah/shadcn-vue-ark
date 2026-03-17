@@ -21,7 +21,7 @@ function resolveOutputPath(layoutName: string, filePath: string) {
   if (filePath.startsWith('src/'))
     return filePath
 
-  return join('src', 'layouts', layoutName, filePath)
+  return join('src', 'components', 'layouts', layoutName, filePath)
 }
 
 export async function buildLayoutsRegistry(

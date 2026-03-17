@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import DataTableCustomRegistry from '@/blocks/data-table-custom/_registry'
-import DataTableCustomComponent from '@/blocks/data-table-custom/DataTableCustom.vue'
-import DataTableCustomSource from '@/blocks/data-table-custom/DataTableCustom.vue?raw'
-import DefaultStory from '@/blocks/data-table-default/DefaultDataTable.vue'
-import DefaultSource from '@/blocks/data-table-default/DefaultDataTable.vue?raw'
-import TanstackDataTableRegistry from '@/blocks/tanstack-data-table/_registry'
-import TanstackDataTableComponent from '@/blocks/tanstack-data-table/TanstackDataTable.vue'
-import TanstackDataTableSource from '@/blocks/tanstack-data-table/TanstackDataTable.vue?raw'
+import DataTableCustomRegistry from '@/components/blocks/data-table-custom/_registry'
+import DataTableCustomComponent from '@/components/blocks/data-table-custom/DataTableCustom.vue'
+import DataTableCustomSource from '@/components/blocks/data-table-custom/DataTableCustom.vue?raw'
+import DefaultStory from '@/components/blocks/data-table-default/DefaultDataTable.vue'
+import DefaultSource from '@/components/blocks/data-table-default/DefaultDataTable.vue?raw'
+import TanstackDataTableRegistry from '@/components/blocks/tanstack-data-table/_registry'
+import TanstackDataTableComponent from '@/components/blocks/tanstack-data-table/TanstackDataTable.vue'
+import TanstackDataTableSource from '@/components/blocks/tanstack-data-table/TanstackDataTable.vue?raw'
 
 interface DataTableStoryArgs {
   hideFilter: boolean

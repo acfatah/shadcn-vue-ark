@@ -21,7 +21,7 @@ function resolveOutputPath(blockName: string, filePath: string) {
   if (filePath.startsWith('src/'))
     return filePath
 
-  return join('src', 'blocks', blockName, filePath)
+  return join('src', 'components', 'blocks', blockName, filePath)
 }
 
 export async function buildBlocksRegistry(

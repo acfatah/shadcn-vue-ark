@@ -1,4 +1,4 @@
-import SidebarLayout from '@/layouts/sidebar-07/SidebarLayout.vue'
+import SidebarLayout from '@/components/layouts/sidebar-07/SidebarLayout.vue'
 
 import SampleDashboard from './SampleDashboard.vue'
 
