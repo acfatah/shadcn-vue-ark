@@ -1151,24 +1151,24 @@
       ],
       "files": [
         {
-          "path": "src/blocks/data-table-custom/DataTableCustom.vue",
+          "path": "src/components/blocks/data-table-custom/DataTableCustom.vue",
           "type": "registry:file",
-          "target": "src/blocks/data-table-custom/DataTableCustom.vue"
+          "target": "src/components/blocks/data-table-custom/DataTableCustom.vue"
         },
         {
-          "path": "src/blocks/data-table-custom/DefaultDataTableDropDown.vue",
+          "path": "src/components/blocks/data-table-custom/DefaultDataTableDropDown.vue",
           "type": "registry:file",
-          "target": "src/blocks/data-table-custom/DefaultDataTableDropDown.vue"
+          "target": "src/components/blocks/data-table-custom/DefaultDataTableDropDown.vue"
         },
         {
-          "path": "src/blocks/data-table-custom/payment-columns.ts",
+          "path": "src/components/blocks/data-table-custom/payment-columns.ts",
           "type": "registry:file",
-          "target": "src/blocks/data-table-custom/payment-columns.ts"
+          "target": "src/components/blocks/data-table-custom/payment-columns.ts"
         },
         {
-          "path": "src/blocks/data-table-custom/data/payments.ts",
+          "path": "src/components/blocks/data-table-custom/data/payments.ts",
           "type": "registry:file",
-          "target": "src/blocks/data-table-custom/data/payments.ts"
+          "target": "src/components/blocks/data-table-custom/data/payments.ts"
         }
       ],
       "registryDependencies": [
@@ -1192,24 +1192,24 @@
       ],
       "files": [
         {
-          "path": "src/blocks/data-table-default/DefaultDataTable.vue",
+          "path": "src/components/blocks/data-table-default/DefaultDataTable.vue",
           "type": "registry:file",
-          "target": "src/blocks/data-table-default/DefaultDataTable.vue"
+          "target": "src/components/blocks/data-table-default/DefaultDataTable.vue"
         },
         {
-          "path": "src/blocks/data-table-default/DefaultDataTableDropDown.vue",
+          "path": "src/components/blocks/data-table-default/DefaultDataTableDropDown.vue",
           "type": "registry:file",
-          "target": "src/blocks/data-table-default/DefaultDataTableDropDown.vue"
+          "target": "src/components/blocks/data-table-default/DefaultDataTableDropDown.vue"
         },
         {
-          "path": "src/blocks/data-table-default/payment-columns.ts",
+          "path": "src/components/blocks/data-table-default/payment-columns.ts",
           "type": "registry:file",
-          "target": "src/blocks/data-table-default/payment-columns.ts"
+          "target": "src/components/blocks/data-table-default/payment-columns.ts"
         },
         {
-          "path": "src/blocks/data-table-default/data/payments.ts",
+          "path": "src/components/blocks/data-table-default/data/payments.ts",
           "type": "registry:file",
-          "target": "src/blocks/data-table-default/data/payments.ts"
+          "target": "src/components/blocks/data-table-default/data/payments.ts"
         }
       ],
       "registryDependencies": [
@@ -3324,44 +3324,44 @@
       ],
       "files": [
         {
-          "path": "src/layouts/sidebar-07/SidebarLayout.vue",
+          "path": "src/components/layouts/sidebar-07/SidebarLayout.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/SidebarLayout.vue"
+          "target": "src/components/layouts/sidebar-07/SidebarLayout.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/SidebarLeft.vue",
+          "path": "src/components/layouts/sidebar-07/SidebarLeft.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/SidebarLeft.vue"
+          "target": "src/components/layouts/sidebar-07/SidebarLeft.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/LayoutHeader.vue",
+          "path": "src/components/layouts/sidebar-07/LayoutHeader.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/LayoutHeader.vue"
+          "target": "src/components/layouts/sidebar-07/LayoutHeader.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/NavMain.vue",
+          "path": "src/components/layouts/sidebar-07/NavMain.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/NavMain.vue"
+          "target": "src/components/layouts/sidebar-07/NavMain.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/NavProjects.vue",
+          "path": "src/components/layouts/sidebar-07/NavProjects.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/NavProjects.vue"
+          "target": "src/components/layouts/sidebar-07/NavProjects.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/NavUser.vue",
+          "path": "src/components/layouts/sidebar-07/NavUser.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/NavUser.vue"
+          "target": "src/components/layouts/sidebar-07/NavUser.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/TeamSwitcher.vue",
+          "path": "src/components/layouts/sidebar-07/TeamSwitcher.vue",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/TeamSwitcher.vue"
+          "target": "src/components/layouts/sidebar-07/TeamSwitcher.vue"
         },
         {
-          "path": "src/layouts/sidebar-07/data.ts",
+          "path": "src/components/layouts/sidebar-07/data.ts",
           "type": "registry:file",
-          "target": "src/layouts/sidebar-07/data.ts"
+          "target": "src/components/layouts/sidebar-07/data.ts"
         }
       ],
       "registryDependencies": [
@@ -3775,19 +3775,19 @@
       ],
       "files": [
         {
-          "path": "src/blocks/tanstack-data-table/TanstackDataTable.vue",
+          "path": "src/components/blocks/tanstack-data-table/TanstackDataTable.vue",
           "type": "registry:file",
-          "target": "src/blocks/tanstack-data-table/TanstackDataTable.vue"
+          "target": "src/components/blocks/tanstack-data-table/TanstackDataTable.vue"
         },
         {
-          "path": "src/blocks/tanstack-data-table/TanstackDataTableDropdown.vue",
+          "path": "src/components/blocks/tanstack-data-table/TanstackDataTableDropdown.vue",
           "type": "registry:file",
-          "target": "src/blocks/tanstack-data-table/TanstackDataTableDropdown.vue"
+          "target": "src/components/blocks/tanstack-data-table/TanstackDataTableDropdown.vue"
         },
         {
-          "path": "src/blocks/tanstack-data-table/data/payments.ts",
+          "path": "src/components/blocks/tanstack-data-table/data/payments.ts",
           "type": "registry:file",
-          "target": "src/blocks/tanstack-data-table/data/payments.ts"
+          "target": "src/components/blocks/tanstack-data-table/data/payments.ts"
         }
       ],
       "registryDependencies": [
