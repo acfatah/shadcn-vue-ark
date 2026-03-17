@@ -168,7 +168,8 @@
     ],
     "registryDependencies": [
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
     ],
     "files": [
       {
@@ -188,6 +189,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/avatar/variant.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/composables/useForwardPropsEmits.ts",
         "type": "registry:ui"
       },
@@ -197,6 +202,10 @@
       },
       {
         "path": "src/components/ui/avatar/AvatarGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/avatar/context.ts",
         "type": "registry:ui"
       },
       {
