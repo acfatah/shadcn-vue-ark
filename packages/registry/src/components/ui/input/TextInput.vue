@@ -34,6 +34,7 @@ function handleInvalid(_event: Event) {
     scope="text-input"
     type="text"
     :aria-invalid="ariaInvalid"
+    :class="props.class"
     v-bind="forwardedProps"
     @invalid="handleInvalid"
     @input="nativeInvalid = false"
