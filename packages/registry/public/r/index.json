@@ -2019,64 +2019,6 @@
     ]
   },
   {
-    "name": "input-otp",
-    "type": "registry:ui",
-    "title": "Input OTP",
-    "description": "Accessible one-time password component with copy paste functionality.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pin-input\n- shadcn/ui: https://ui.shadcn.com/docs/components/input-otp",
-    "dependencies": [
-      "@vueuse/core",
-      "@ark-ui/vue",
-      "lucide-vue-next"
-    ],
-    "registryDependencies": [
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
-    ],
-    "files": [
-      {
-        "path": "src/components/ui/input-otp/namespace.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/InputOTPRoot.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/InputOTPHiddenInput.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/composables/useForwardProps.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/composables/useForwardPropsEmits.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/lib/utils.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/InputOTPGroup.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/InputOTPSlot.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/input-otp/InputOTPSeparator.vue",
-        "type": "registry:ui"
-      }
-    ]
-  },
-  {
     "name": "item",
     "type": "registry:ui",
     "title": "Item",
@@ -2540,6 +2482,64 @@
       },
       {
         "path": "src/components/ui/pagination/PaginationItem.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "pin-input",
+    "type": "registry:ui",
+    "title": "Pin Input",
+    "description": "Accessible one-time password component with copy paste functionality.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pin-input\n- shadcn/ui: https://ui.shadcn.com/docs/components/input-otp",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue",
+      "lucide-vue-next"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/pin-input/PinInputHiddenInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/PinInputSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/PinInputSlot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/PinInputGroup.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/PinInputRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/pin-input/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/useForwardProps.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/useForwardPropsEmits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
         "type": "registry:ui"
       }
     ]
