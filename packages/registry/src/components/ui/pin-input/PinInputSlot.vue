@@ -26,6 +26,7 @@ const forwardedProps = useForwardProps(delegatedProps)
       `
         relative flex size-9 items-center justify-center border-y border-r border-input text-center
         text-sm shadow-xs transition-all outline-none
+        selection:bg-transparent
         first:rounded-l-md first:border-l
         last:rounded-r-md
         focus:z-10 focus:border-ring focus:ring-[3px] focus:ring-ring/50
