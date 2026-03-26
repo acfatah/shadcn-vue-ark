@@ -4,8 +4,8 @@ import { html } from 'common-tags'
 
 export const registryItem = {
   type: 'registry:ui',
-  name: 'input-otp',
-  title: 'Input OTP',
+  name: 'pin-input',
+  title: 'Pin Input',
 
   description: html`
     Accessible one-time password component with copy paste functionality.

@@ -20,7 +20,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 <template>
   <PinInput.Control
     v-bind="forwardedProps"
-    data-scope="input-otp"
+    data-scope="pin-input"
     data-part="group"
     :class="cn('flex items-center', props.class)"
   >

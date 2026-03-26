@@ -1,0 +1,6 @@
+export { PinInput } from './namespace'
+export { default as PinInputGroup } from './PinInputGroup.vue'
+export { default as PinInputHiddenInput } from './PinInputHiddenInput.vue'
+export { default as PinInputRoot } from './PinInputRoot.vue'
+export { default as PinInputSeparator } from './PinInputSeparator.vue'
+export { default as PinInputSlot } from './PinInputSlot.vue'

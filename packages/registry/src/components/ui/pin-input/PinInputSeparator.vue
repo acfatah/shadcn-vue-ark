@@ -1,29 +1,32 @@
 <script setup lang="ts">
-import type { PinInputHiddenInputProps } from '@ark-ui/vue/pin-input'
+import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
-import { PinInput } from '@ark-ui/vue/pin-input'
+import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
+import { Minus } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends PinInputHiddenInputProps {
+interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']
 }
 
 const props = defineProps<Props>()
-const delegatedProps = reactiveOmit(props, 'class') as Omit<Props, 'class'>
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <PinInput.HiddenInput
+  <ark.span
     v-bind="forwardedProps"
-    data-scope="input-otp"
-    data-part="hidden-input"
-    :class="cn('sr-only', props.class)"
+    data-scope="pin-input"
+    data-part="separator"
+    :class="cn('[&>svg]:size-3.5', props.class)"
   >
-    <slot />
-  </PinInput.HiddenInput>
+    <slot>
+      <Minus />
+    </slot>
+  </ark.span>
 </template>

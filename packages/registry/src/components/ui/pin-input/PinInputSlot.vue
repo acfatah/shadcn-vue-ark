@@ -19,7 +19,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 
 <template>
   <PinInput.Input
-    data-scope="input-otp"
+    data-scope="pin-input"
     data-part="slot"
     v-bind="forwardedProps"
     :class="cn(

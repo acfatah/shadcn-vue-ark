@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import { InputOTP } from '@/components/ui/input-otp'
-import { registryItem } from '@/components/ui/input-otp/_registry'
+import { PinInput } from '@/components/ui/pin-input'
+import { registryItem } from '@/components/ui/pin-input/_registry'
 
-import InputOTPDefaultStory from './InputOTPDefaultStory.vue'
-import InputOTPDefaultSource from './InputOTPDefaultStory.vue?raw'
+import PinInputDefaultStory from './PinInputDefaultStory.vue'
+import PinInputDefaultSource from './PinInputDefaultStory.vue?raw'
 
 const meta = {
-  title: 'Components/InputOTP',
-  component: InputOTP.Root,
+  title: 'Components/PinInput',
+  component: PinInput.Root,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof InputOTP.Root>
+} satisfies Meta<typeof PinInput.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -29,20 +29,20 @@ export const Default: Story = {
   parameters: {
     docs: {
       source: {
-        code: InputOTPDefaultSource,
+        code: PinInputDefaultSource,
       },
     },
   },
 
   render: args => ({
-    components: { InputOTPDefaultStory },
+    components: { PinInputDefaultStory },
 
     setup() {
       return { args }
     },
 
     template: html`
-      <InputOTPDefaultStory v-bind="args" />
+      <PinInputDefaultStory v-bind="args" />
     `,
   }),
 }

@@ -24,7 +24,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
   <PinInput.Root
     v-slot="slotProps"
     v-bind="forwardedProps"
-    data-scope="input-otp"
+    data-scope="pin-input"
     data-part="root"
     :class="cn(
       `
