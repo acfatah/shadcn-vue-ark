@@ -1466,6 +1466,75 @@
     ]
   },
   {
+    "name": "editable",
+    "type": "registry:ui",
+    "title": "Editable",
+    "description": "An inline editable text field that allows users to edit text in place.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/editable",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/editable/EditableInput.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableCancelTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableControl.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableSubmitTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableArea.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditablePreview.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/dynamic.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/useForwardPropsEmits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableEditTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/editable/EditableLabel.vue",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "empty",
     "type": "registry:ui",
     "title": "Empty",
@@ -3652,6 +3721,78 @@
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/table.json"
+    ]
+  },
+  {
+    "name": "timeline",
+    "type": "registry:ui",
+    "title": "Timeline",
+    "description": "Displays a list of events in chronological order.\nSupports vertical and horizontal orientations with size variants.\nThe reversed prop reverses the visual layout direction;\nconsumers are responsible for providing data in the desired order.",
+    "dependencies": [
+      "@ark-ui/vue",
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/timeline/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineTitle.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/createContext.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/context.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineConnector.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineDescription.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/TimelineContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/timeline/types.ts",
+        "type": "registry:ui"
+      }
     ]
   },
   {

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "editable",
+  "title": "Editable",
+  "description": "An inline editable text field that allows users to edit text in place.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/editable",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/editable/EditableInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableInputProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableInputProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class') as Omit<Props, 'class'>\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.Input\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        min-w-0 border-0 bg-transparent p-0 text-base shadow-none outline-none\n        placeholder:text-muted-foreground\n        focus-visible:border-none\n        disabled:pointer-events-none disabled:opacity-50\n        md:text-sm\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/namespace.ts",
+      "content": "import EditableArea from './EditableArea.vue'\nimport EditableCancelTrigger from './EditableCancelTrigger.vue'\nimport EditableControl from './EditableControl.vue'\nimport EditableEditTrigger from './EditableEditTrigger.vue'\nimport EditableInput from './EditableInput.vue'\nimport EditableLabel from './EditableLabel.vue'\nimport EditablePreview from './EditablePreview.vue'\nimport EditableRoot from './EditableRoot.vue'\nimport EditableSubmitTrigger from './EditableSubmitTrigger.vue'\n\nexport const Editable = {\n  /**\n   * EditableRoot component\n   */\n  Root: EditableRoot,\n\n  /**\n   * EditableArea component\n   */\n  Area: EditableArea,\n\n  /**\n   * EditableLabel component\n   */\n  Label: EditableLabel,\n\n  /**\n   * EditableInput component\n   */\n  Input: EditableInput,\n\n  /**\n   * EditablePreview component\n   */\n  Preview: EditablePreview,\n\n  /**\n   * EditableControl component\n   */\n  Control: EditableControl,\n\n  /**\n   * EditableEditTrigger component\n   */\n  EditTrigger: EditableEditTrigger,\n\n  /**\n   * EditableSubmitTrigger component\n   */\n  SubmitTrigger: EditableSubmitTrigger,\n\n  /**\n   * EditableCancelTrigger component\n   */\n  CancelTrigger: EditableCancelTrigger,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableCancelTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableCancelTriggerProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableCancelTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.CancelTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      '',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Editable.CancelTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableControl.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableControlProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableControlProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.Control\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex items-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Editable.Control>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableRootEmits, EditableRootProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst emit = defineEmits<EditableRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <Editable.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn('inline-flex flex-col gap-1.5', props.class)\"\n  >\n    <slot />\n  </Editable.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableSubmitTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableSubmitTriggerProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableSubmitTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.SubmitTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      '',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Editable.SubmitTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableArea.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableAreaProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableAreaProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.Area\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        data-focus:ring-none\n        relative inline-block\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Editable.Area>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditablePreview.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditablePreviewProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditablePreviewProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.Preview\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        min-w-0 bg-transparent text-base outline-none\n        data-placeholder-shown:text-muted-foreground\n        md:text-sm\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/index.ts",
+      "content": "export { default as EditableArea } from './EditableArea.vue'\nexport { default as EditableCancelTrigger } from './EditableCancelTrigger.vue'\nexport { default as EditableControl } from './EditableControl.vue'\nexport { default as EditableEditTrigger } from './EditableEditTrigger.vue'\nexport { default as EditableInput } from './EditableInput.vue'\nexport { default as EditableLabel } from './EditableLabel.vue'\nexport { default as EditablePreview } from './EditablePreview.vue'\nexport { default as EditableRoot } from './EditableRoot.vue'\nexport { default as EditableSubmitTrigger } from './EditableSubmitTrigger.vue'\nexport { Editable } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/dynamic.ts",
+      "content": "import type { VNode } from 'vue'\n\nimport { mergeProps } from '@zag-js/vue'\nimport { cloneVNode, defineComponent, Fragment } from 'vue'\n\n/**\n * A dynamic component that renders its first child with merged props.\n * Useful for forwarding props to a single child component.\n *\n * Docs: https://ark-ui.com/docs/guides/composition\n *\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/dynamic.ts\n */\nexport const Dynamic = defineComponent({\n  name: 'Dynamic',\n  inheritAttrs: false,\n  setup(_, { attrs, slots }) {\n    return () => {\n      if (!slots.default)\n        return null\n\n      const children = renderSlotFragments(slots.default())\n      const [firstChildren, ...otherChildren] = children\n\n      if (!firstChildren)\n        return children\n\n      if (Object.keys(attrs).length > 0) {\n        delete firstChildren.props?.ref\n        const mergedProps = mergeProps(attrs, firstChildren.props ?? {})\n        const cloned = cloneVNode(firstChildren, mergedProps)\n        for (const prop in mergedProps) {\n          if (prop.startsWith('on')) {\n            cloned.props ||= {}\n            cloned.props[prop] = mergedProps[prop]\n          }\n        }\n\n        return children.length === 1 ? cloned : [cloned, ...otherChildren]\n      }\n\n      return children\n    }\n  },\n})\n\nfunction renderSlotFragments(children?: VNode[]): VNode[] {\n  if (!children)\n    return []\n\n  return children.flatMap((child) => {\n    if (child.type === Fragment)\n      return renderSlotFragments(child.children as VNode[])\n\n    return [child]\n  })\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/dynamic.ts"
+    },
+    {
+      "path": "src/composables/useForwardPropsEmits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './useEmitsAsProps'\nimport { useForwardProps } from './useForwardProps'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/useForwardPropsEmits.ts"
+    },
+    {
+      "path": "src/components/ui/editable/EditableEditTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableEditTriggerProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends EditableEditTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.EditTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      '',\n      props.class,\n    )\"\n    as-child\n  >\n    <slot :class=\"props.class\" />\n  </Editable.EditTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/editable/EditableLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { EditableLabelProps } from '@ark-ui/vue/editable'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Editable } from '@ark-ui/vue/editable'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { Label } from '@/components/ui/label'\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\n\ninterface Props extends EditableLabelProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Editable.Label\n    v-bind=\"forwardedProps\"\n    as-child\n  >\n    <Label :class=\"props.class\">\n      <slot />\n    </Label>\n  </Editable.Label>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
