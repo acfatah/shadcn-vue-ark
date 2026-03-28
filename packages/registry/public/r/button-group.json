@@ -17,7 +17,7 @@
   "files": [
     {
       "path": "src/components/ui/button-group/ButtonGroupRoot.vue",
-      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from './types'\n\nimport { buttonGroupVariants } from '.'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\n// import type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { ButtonGroupVariants } from './types'\n\nimport { buttonGroupVariants } from './variant'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n  orientation?: ButtonGroupVariants['orientation']\n}>()\n</script>\n\n<template>\n  <ark.div\n    role=\"group\"\n    data-scope=\"button-group\"\n    data-part=\"root\"\n    :data-orientation=\"props.orientation\"\n    :class=\"cn(\n      buttonGroupVariants({ orientation: props.orientation }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.div>\n</template>\n",
       "type": "registry:ui"
     },
     {

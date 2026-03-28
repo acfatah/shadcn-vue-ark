@@ -1171,6 +1171,64 @@
     ]
   },
   {
+    "name": "date-picker",
+    "type": "registry:ui",
+    "title": "DatePicker",
+    "description": "A date picker component that combines a popover trigger with an inline\ncalendar for date selection.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/date-picker\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
+    "dependencies": [
+      "lucide-vue-next",
+      "@ark-ui/vue",
+      "@iconify/vue",
+      "@internationalized/date",
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "button",
+      "calendar",
+      "popover",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/date-picker/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/DatePickerTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/DatePickerContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/createContext.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/context.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/DatePickerRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/types.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
     "name": "description",
     "type": "registry:ui",
     "title": "Description",
@@ -2324,6 +2382,10 @@
       },
       {
         "path": "src/components/ui/navigation-menu/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/navigation-menu/variant.ts",
         "type": "registry:ui"
       },
       {

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "title": "DatePicker",
+  "description": "A date picker component that combines a popover trigger with an inline\ncalendar for date selection.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/date-picker\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
+  "dependencies": [
+    "lucide-vue-next",
+    "@ark-ui/vue",
+    "@iconify/vue",
+    "@internationalized/date",
+    "@vueuse/core"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+    "button",
+    "calendar",
+    "popover",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/date-picker/namespace.ts",
+      "content": "import DatePickerContent from './DatePickerContent.vue'\nimport DatePickerRoot from './DatePickerRoot.vue'\nimport DatePickerTrigger from './DatePickerTrigger.vue'\n\nexport const DatePicker = {\n  /**\n   * Root component that provides date picker context and popover positioning.\n   */\n  Root: DatePickerRoot,\n\n  /**\n   * Trigger button that displays the selected date and opens the calendar popover.\n   */\n  Trigger: DatePickerTrigger,\n\n  /**\n   * Popover content that renders the calendar for date selection.\n   */\n  Content: DatePickerContent,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/date-picker/DatePickerTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { DateFormatter, getLocalTimeZone } from '@internationalized/date'\nimport { CalendarIcon } from 'lucide-vue-next'\nimport { computed } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport Button from '../button/Button.vue'\nimport PopoverTrigger from '../popover/PopoverTrigger.vue'\nimport { useDatePickerContext } from './context'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst ctx = useDatePickerContext()!\n\nconst formattedDate = computed(() => {\n  if (!ctx.dateValue.value)\n    return ctx.placeholder.value\n\n  const df = new DateFormatter(ctx.locale.value, ctx.formatOptions.value)\n\n  return df.format(ctx.dateValue.value.toDate(getLocalTimeZone()))\n})\n</script>\n\n<template>\n  <PopoverTrigger as-child>\n    <Button\n      variant=\"outline\"\n      data-scope=\"date-picker\"\n      data-part=\"trigger\"\n      :disabled=\"ctx.disabled.value\"\n      :class=\"cn(\n        'w-[240px] justify-start text-left font-normal',\n        !ctx.dateValue.value && 'text-muted-foreground',\n        props.class,\n      )\"\n    >\n      <slot :date=\"ctx.dateValue.value\" :formatted=\"formattedDate\">\n        <CalendarIcon />\n        {{ formattedDate }}\n      </slot>\n    </Button>\n  </PopoverTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/date-picker/DatePickerContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\nimport type { HTMLAttributes } from 'vue'\n\nimport { computed } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport CalendarRoot from '../calendar/CalendarRoot.vue'\nimport PopoverContent from '../popover/PopoverContent.vue'\nimport { useDatePickerContext } from './context'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst ctx = useDatePickerContext()!\n\nconst calendarModelValue = computed(() => {\n  return ctx.dateValue.value ? [ctx.dateValue.value] : undefined\n})\n\nfunction onDateSelect(value: DateValue[]) {\n  ctx.setDate(value[0])\n}\n</script>\n\n<template>\n  <PopoverContent\n    data-scope=\"date-picker\"\n    data-part=\"content\"\n    :class=\"cn('w-auto p-0', props.class)\"\n  >\n    <slot>\n      <CalendarRoot\n        :model-value=\"calendarModelValue\"\n        :layout=\"ctx.layout.value\"\n        v-bind=\"ctx.calendarProps.value\"\n        @update:model-value=\"onDateSelect\"\n      />\n    </slot>\n  </PopoverContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/date-picker/index.ts",
+      "content": "export { default as DatePickerContent } from './DatePickerContent.vue'\nexport { default as DatePickerRoot } from './DatePickerRoot.vue'\nexport { default as DatePickerTrigger } from './DatePickerTrigger.vue'\nexport { DatePicker } from './namespace'\nexport * from './types'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/createContext.ts",
+      "content": "import { inject, provide } from 'vue'\n\ntype CreateContextReturn<T> = [(opts: T) => void, (fallback?: T) => T, symbol]\n\n/**\n * Source: https://github.com/chakra-ui/ark/blob/main/packages/vue/src/utils/create-context.ts\n */\nexport function createContext<T>(id: string) {\n  const contextId = Symbol(id)\n  const provider = (value: T) => provide(contextId, value)\n  const consumer = (fallback?: T) => inject(contextId, fallback)\n\n  return [provider, consumer, contextId] as CreateContextReturn<T>\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/createContext.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/date-picker/context.ts",
+      "content": "import type { DateValue } from '@internationalized/date'\nimport type { ComputedRef, Ref } from 'vue'\n\nimport { createContext } from '@/composables/createContext'\n\nimport type { LayoutTypes } from '../calendar/types'\n\nexport interface DatePickerContext {\n  dateValue: Ref<DateValue | undefined>\n  layout: ComputedRef<LayoutTypes>\n  placeholder: ComputedRef<string>\n  formatOptions: ComputedRef<Intl.DateTimeFormatOptions>\n  locale: ComputedRef<string>\n  closeOnSelect: ComputedRef<boolean>\n  disabled: ComputedRef<boolean>\n  calendarProps: ComputedRef<Record<string, any>>\n  setDate: (val: DateValue | undefined) => void\n  setOpen: (val: boolean) => void\n}\n\nexport const [DatePickerProvider, useDatePickerContext]\n  = createContext<DatePickerContext>('DatePickerContext')\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/date-picker/DatePickerRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\nimport type { HTMLAttributes } from 'vue'\n\nimport { computed, ref, watch } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nimport type { LayoutTypes } from './types'\n\nimport PopoverRoot from '../popover/PopoverRoot.vue'\nimport { DatePickerProvider } from './context'\n\ninterface Props {\n  class?: HTMLAttributes['class']\n  modelValue?: DateValue\n  defaultValue?: DateValue\n  layout?: LayoutTypes\n  placeholder?: string\n  formatOptions?: Intl.DateTimeFormatOptions\n  locale?: string\n  closeOnSelect?: boolean\n  disabled?: boolean\n  calendarProps?: Record<string, any>\n  align?: 'start' | 'center' | 'end'\n  alignOffset?: number\n  side?: 'top' | 'right' | 'bottom' | 'left'\n  sideOffset?: number\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  modelValue: undefined,\n  defaultValue: undefined,\n  layout: undefined,\n  placeholder: 'Pick a date',\n  formatOptions: () => ({ dateStyle: 'long' }),\n  locale: 'en-US',\n  closeOnSelect: true,\n  disabled: false,\n  calendarProps: () => ({}),\n  align: 'start',\n  alignOffset: 0,\n  side: 'bottom',\n  sideOffset: 4,\n})\n\nconst emit = defineEmits<{\n  'update:modelValue': [value: DateValue | undefined]\n}>()\n\nconst dateValue = ref<DateValue | undefined>(props.defaultValue)\nconst openValue = ref(false)\n\nwatch(\n  () => props.modelValue,\n  (val) => {\n    dateValue.value = val\n  },\n)\n\nfunction setDate(val: DateValue | undefined) {\n  dateValue.value = val\n  emit('update:modelValue', val)\n\n  if (props.closeOnSelect)\n    openValue.value = false\n}\n\nfunction setOpen(val: boolean) {\n  openValue.value = val\n}\n\nDatePickerProvider({\n  dateValue,\n  layout: computed(() => props.layout),\n  placeholder: computed(() => props.placeholder),\n  formatOptions: computed(() => props.formatOptions),\n  locale: computed(() => props.locale),\n  closeOnSelect: computed(() => props.closeOnSelect),\n  disabled: computed(() => props.disabled),\n  calendarProps: computed(() => props.calendarProps),\n  setDate,\n  setOpen,\n})\n</script>\n\n<template>\n  <PopoverRoot\n    v-model:open=\"openValue\"\n    data-scope=\"date-picker\"\n    data-part=\"root\"\n    :class=\"cn(props.class)\"\n    :align=\"props.align\"\n    :align-offset=\"props.alignOffset\"\n    :side=\"props.side\"\n    :side-offset=\"props.sideOffset\"\n  >\n    <slot />\n  </PopoverRoot>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/date-picker/types.ts",
+      "content": "export type { LayoutTypes } from '../calendar/types'\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
