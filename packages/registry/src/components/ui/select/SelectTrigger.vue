@@ -10,7 +10,7 @@ import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { useSelectContext } from '.'
+import { useSelectContext } from './context'
 import SelectClearTrigger from './SelectClearTrigger.vue'
 import SelectIndicator from './SelectIndicator.vue'
 

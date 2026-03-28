@@ -9,7 +9,7 @@ import { ChevronDownIcon } from 'lucide-vue-next'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { navigationMenuTriggerStyle } from '.'
+import { navigationMenuTriggerStyle } from './variant'
 
 interface Props extends NavigationMenuTriggerProps {
   class?: HTMLAttributes['class']

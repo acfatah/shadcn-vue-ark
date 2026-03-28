@@ -9,8 +9,8 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { tabsTriggerVariants } from '.'
 import { useTabsOptions } from './context'
+import { tabsTriggerVariants } from './variant'
 
 interface Props extends TabTriggerProps {
   class?: HTMLAttributes['class']

@@ -9,19 +9,17 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import {
-  RangeCalendarCell,
-  RangeCalendarCellTrigger,
-  RangeCalendarGrid,
-  RangeCalendarGridBody,
-  RangeCalendarGridHead,
-  RangeCalendarGridRow,
-  RangeCalendarHeadCell,
-  RangeCalendarHeader,
-  RangeCalendarHeading,
-  RangeCalendarNextButton,
-  RangeCalendarPrevButton,
-} from '.'
+import RangeCalendarCell from './RangeCalendarCell.vue'
+import RangeCalendarCellTrigger from './RangeCalendarCellTrigger.vue'
+import RangeCalendarGrid from './RangeCalendarGrid.vue'
+import RangeCalendarGridBody from './RangeCalendarGridBody.vue'
+import RangeCalendarGridHead from './RangeCalendarGridHead.vue'
+import RangeCalendarGridRow from './RangeCalendarGridRow.vue'
+import RangeCalendarHeadCell from './RangeCalendarHeadCell.vue'
+import RangeCalendarHeader from './RangeCalendarHeader.vue'
+import RangeCalendarHeading from './RangeCalendarHeading.vue'
+import RangeCalendarNextButton from './RangeCalendarNextButton.vue'
+import RangeCalendarPrevButton from './RangeCalendarPrevButton.vue'
 
 interface Props extends DatePickerRootProps {
   class?: HTMLAttributes['class']

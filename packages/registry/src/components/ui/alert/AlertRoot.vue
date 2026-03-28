@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 import type { AlertVariants } from './types'
 
-import { alertVariants } from '.'
+import { alertVariants } from './variant'
 
 interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']

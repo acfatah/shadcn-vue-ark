@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 
 import type { ItemVariants } from './types'
 
-import { itemVariants } from '.'
+import { itemVariants } from './variant'
 
 interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']

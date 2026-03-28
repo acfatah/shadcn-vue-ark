@@ -2,7 +2,7 @@
 import { useSelectContext as useArkSelectContext } from '@ark-ui/vue/select'
 import { computed } from 'vue'
 
-import { SelectProvider } from '.'
+import { SelectProvider } from './context'
 
 interface Props {
   invalid?: boolean

@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import type { InputGroupVariants } from './types'
 
-import { inputGroupAddonVariants } from '.'
+import { inputGroupAddonVariants } from './variant'
 
 const props = withDefaults(defineProps<{
   align?: InputGroupVariants['align']

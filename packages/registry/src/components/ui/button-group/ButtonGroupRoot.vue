@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import type { ButtonGroupVariants } from './types'
 
-import { buttonGroupVariants } from '.'
+import { buttonGroupVariants } from './variant'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

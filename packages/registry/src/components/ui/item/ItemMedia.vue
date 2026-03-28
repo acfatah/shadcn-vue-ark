@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 import type { ItemMediaVariants } from './types'
 
-import { itemMediaVariants } from '.'
+import { itemMediaVariants } from './variant'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

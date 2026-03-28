@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 
 import type { EmptyMediaVariants } from './types'
 
-import { emptyMediaVariants } from '.'
+import { emptyMediaVariants } from './variant'
 
 interface Props extends PolymorphicProps {
   class?: HTMLAttributes['class']

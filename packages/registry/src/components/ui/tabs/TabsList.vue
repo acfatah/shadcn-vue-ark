@@ -9,8 +9,8 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import { tabsListVariants } from '.'
 import { useTabsOptions } from './context'
+import { tabsListVariants } from './variant'
 
 interface Props extends TabListProps {
   class?: HTMLAttributes['class']

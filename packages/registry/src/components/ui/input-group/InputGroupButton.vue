@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 import type { InputGroupButtonVariants } from './types'
 
-import { inputGroupButtonVariants } from '.'
+import { inputGroupButtonVariants } from './variant'
 
 interface Props extends Omit<ButtonProps, 'class' | 'scope' | 'size' | 'variant'> {
   variant?: ButtonVariants['variant']

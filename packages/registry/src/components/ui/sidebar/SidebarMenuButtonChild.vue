@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import type { SidebarMenuButtonProps } from './types'
 
-import { sidebarMenuButtonVariants } from '.'
+import { sidebarMenuButtonVariants } from './variant'
 
 const props = withDefaults(defineProps<SidebarMenuButtonProps>(), {
   variant: 'default',
