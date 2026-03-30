@@ -11,6 +11,8 @@ import ComboboxPlacementStory from './ComboboxPlacementStory.vue'
 import ComboboxPlacementSource from './ComboboxPlacementStory.vue?raw'
 import ComboboxUsingPopoverAndCommandStory from './ComboboxUsingPopoverAndCommandStory.vue'
 import ComboboxUsingPopoverAndCommandSource from './ComboboxUsingPopoverAndCommandStory.vue?raw'
+import MultipleComboboxStory from './MultipleComboboxStory.vue'
+import MultipleComboboxSource from './MultipleComboboxStory.vue?raw'
 
 const meta = {
   title: 'Components/Combobox',
@@ -61,6 +63,28 @@ export const Default: Story = {
 
     template: html`
       <ComboboxDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Multiple: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: MultipleComboboxSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { MultipleComboboxStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <MultipleComboboxStory v-bind="args" />
     `,
   }),
 }
