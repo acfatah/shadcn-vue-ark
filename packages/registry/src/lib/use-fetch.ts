@@ -15,6 +15,10 @@ if (!API_URL)
 export const useFetch = createFetch({
   baseUrl: API_URL,
   options: {
+    // By default, `useFetch` does not update the data on error. Setting this to
+    // `true` ensures that the data is updated even when an error occurs.
+    updateDataOnError: true,
+
     onFetchError(ctx) {
       // Optionally log the error or show a notification
 
