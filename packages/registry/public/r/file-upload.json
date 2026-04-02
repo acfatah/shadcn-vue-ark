@@ -1,0 +1,105 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-upload",
+  "title": "File Upload",
+  "description": "A component for uploading files with drag and drop support.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/file-upload",
+  "dependencies": [
+    "@vueuse/core",
+    "lucide-vue-next",
+    "@ark-ui/vue",
+    "tw-animate-css"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/file-upload/namespace.ts",
+      "content": "import FileUploadClearTrigger from './FileUploadClearTrigger.vue'\nimport FileUploadContext from './FileUploadContext.vue'\nimport FileUploadDropzone from './FileUploadDropzone.vue'\nimport FileUploadHiddenInput from './FileUploadHiddenInput.vue'\nimport FileUploadItem from './FileUploadItem.vue'\nimport FileUploadItemDeleteTrigger from './FileUploadItemDeleteTrigger.vue'\nimport FileUploadItemGroup from './FileUploadItemGroup.vue'\nimport FileUploadItemName from './FileUploadItemName.vue'\nimport FileUploadItemPreview from './FileUploadItemPreview.vue'\nimport FileUploadItemPreviewImage from './FileUploadItemPreviewImage.vue'\nimport FileUploadItemSizeText from './FileUploadItemSizeText.vue'\nimport FileUploadLabel from './FileUploadLabel.vue'\nimport FileUploadRoot from './FileUploadRoot.vue'\nimport FileUploadTrigger from './FileUploadTrigger.vue'\n\nexport const FileUpload = {\n  /**\n   * FileUploadRoot component\n   */\n  Root: FileUploadRoot,\n\n  /**\n   * FileUploadLabel component\n   */\n  Label: FileUploadLabel,\n\n  /**\n   * FileUploadDropzone component\n   */\n  Dropzone: FileUploadDropzone,\n\n  /**\n   * FileUploadTrigger component\n   */\n  Trigger: FileUploadTrigger,\n\n  /**\n   * FileUploadItemGroup component\n   */\n  ItemGroup: FileUploadItemGroup,\n\n  /**\n   * FileUploadItem component\n   */\n  Item: FileUploadItem,\n\n  /**\n   * FileUploadItemPreview component\n   */\n  ItemPreview: FileUploadItemPreview,\n\n  /**\n   * FileUploadItemPreviewImage component\n   */\n  ItemPreviewImage: FileUploadItemPreviewImage,\n\n  /**\n   * FileUploadItemName component\n   */\n  ItemName: FileUploadItemName,\n\n  /**\n   * FileUploadItemSizeText component\n   */\n  ItemSizeText: FileUploadItemSizeText,\n\n  /**\n   * FileUploadItemDeleteTrigger component\n   */\n  ItemDeleteTrigger: FileUploadItemDeleteTrigger,\n\n  /**\n   * FileUploadClearTrigger component\n   */\n  ClearTrigger: FileUploadClearTrigger,\n\n  /**\n   * FileUploadHiddenInput component\n   */\n  HiddenInput: FileUploadHiddenInput,\n\n  /**\n   * FileUploadContext component\n   */\n  Context: FileUploadContext,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadClearTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadClearTriggerBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadClearTriggerBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ClearTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex items-center justify-center text-sm font-medium text-muted-foreground\n        transition-colors\n        hover:text-foreground\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </FileUpload.ClearTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadContext.vue",
+      "content": "<script setup lang=\"ts\">\nimport { FileUpload } from '@ark-ui/vue/file-upload'\n</script>\n\n<template>\n  <FileUpload.Context v-slot=\"context\">\n    <slot v-bind=\"context\" />\n  </FileUpload.Context>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemPreview.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemPreviewBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemPreviewBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemPreview\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md border\n        border-border\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </FileUpload.ItemPreview>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.Item\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex animate-in items-center gap-3 rounded-lg border border-border bg-background p-3\n        fade-in-0 slide-in-from-bottom-2\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </FileUpload.Item>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemGroup.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemGroupBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemGroupBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemGroup\n    v-bind=\"forwardedProps\"\n    :class=\"cn('flex flex-col gap-2', props.class)\"\n  >\n    <slot />\n  </FileUpload.ItemGroup>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemSizeText.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemSizeTextBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemSizeTextBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemSizeText\n    v-bind=\"forwardedProps\"\n    :class=\"cn('text-xs text-muted-foreground', props.class)\"\n  >\n    <slot />\n  </FileUpload.ItemSizeText>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemDeleteTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemDeleteTriggerBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\nimport { XIcon } from 'lucide-vue-next'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemDeleteTriggerBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemDeleteTrigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        ml-auto inline-flex size-7 items-center justify-center rounded-md text-muted-foreground\n        transition-colors\n      `,\n      'hover:bg-accent hover:text-foreground',\n      `focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none`,\n      props.class,\n    )\"\n  >\n    <slot>\n      <XIcon class=\"size-4\" />\n    </slot>\n  </FileUpload.ItemDeleteTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/index.ts",
+      "content": "export { default as FileUploadClearTrigger } from './FileUploadClearTrigger.vue'\nexport { default as FileUploadContext } from './FileUploadContext.vue'\nexport { default as FileUploadDropzone } from './FileUploadDropzone.vue'\nexport { default as FileUploadHiddenInput } from './FileUploadHiddenInput.vue'\nexport { default as FileUploadItem } from './FileUploadItem.vue'\nexport { default as FileUploadItemDeleteTrigger } from './FileUploadItemDeleteTrigger.vue'\nexport { default as FileUploadItemGroup } from './FileUploadItemGroup.vue'\nexport { default as FileUploadItemName } from './FileUploadItemName.vue'\nexport { default as FileUploadItemPreview } from './FileUploadItemPreview.vue'\nexport { default as FileUploadItemPreviewImage } from './FileUploadItemPreviewImage.vue'\nexport { default as FileUploadItemSizeText } from './FileUploadItemSizeText.vue'\nexport { default as FileUploadLabel } from './FileUploadLabel.vue'\nexport { default as FileUploadRoot } from './FileUploadRoot.vue'\nexport { default as FileUploadTrigger } from './FileUploadTrigger.vue'\nexport { FileUpload } from './namespace'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type {\n  FileUploadRootBaseProps,\n  FileUploadRootEmits,\n} from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadRootBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {})\nconst emit = defineEmits<FileUploadRootEmits>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps, emit)\n</script>\n\n<template>\n  <FileUpload.Root\n    v-bind=\"forwardedProps\"\n    :class=\"cn('flex flex-col gap-4', props.class)\"\n  >\n    <slot />\n  </FileUpload.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemPreviewImage.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemPreviewImageBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemPreviewImageBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemPreviewImage\n    v-bind=\"forwardedProps\"\n    :class=\"cn('aspect-square size-full object-cover', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadHiddenInput.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadHiddenInputBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadHiddenInputBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.HiddenInput\n    v-bind=\"forwardedProps\"\n    :class=\"cn('sr-only', props.class)\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadLabel.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadLabelBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadLabelBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.Label\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'text-sm leading-none font-medium',\n      'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',\n      props.class,\n    )\"\n  >\n    <slot />\n  </FileUpload.Label>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadTriggerBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadTriggerBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.Trigger\n    v-bind=\"forwardedProps\"\n    :class=\"cn('inline-flex items-center justify-center', props.class)\"\n  >\n    <slot />\n  </FileUpload.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadDropzone.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadDropzoneBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadDropzoneBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.Dropzone\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed\n        border-border bg-background p-8 text-center transition-colors\n      `,\n      'hover:border-ring/50 hover:bg-accent/50',\n      'data-dragging:border-ring data-dragging:bg-accent/50',\n      'data-disabled:pointer-events-none data-disabled:opacity-50',\n      `focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </FileUpload.Dropzone>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/file-upload/FileUploadItemName.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemNameBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemNameBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemName\n    v-bind=\"forwardedProps\"\n    :class=\"cn('truncate text-sm font-medium', props.class)\"\n  >\n    <slot />\n  </FileUpload.ItemName>\n</template>\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

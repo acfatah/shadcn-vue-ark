@@ -1864,6 +1864,93 @@
       ]
     },
     {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "File Upload",
+      "description": "A component for uploading files with drag and drop support.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/file-upload",
+      "dependencies": [
+        "@vueuse/core",
+        "lucide-vue-next",
+        "@ark-ui/vue",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/file-upload/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadClearTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadContext.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemPreview.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemSizeText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemDeleteTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemPreviewImage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadHiddenInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadDropzone.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemName.vue",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "format-bytes-lib",
       "type": "registry:lib",
       "dependencies": [],
