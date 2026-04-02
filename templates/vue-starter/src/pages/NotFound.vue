@@ -23,7 +23,7 @@ function goBack() {
           The requested page could not be found.
         </p>
       </div>
-      <btn
+      <button
         class="
           ml-auto h-min cursor-default rounded-xs p-0
           hover:underline
@@ -31,7 +31,7 @@ function goBack() {
         @click="goBack"
       >
         Go Back
-      </btn>
+      </button>
     </div>
   </main>
 </template>
