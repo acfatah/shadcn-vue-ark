@@ -1,6 +1,8 @@
 import { createContext } from '@/composables/createContext'
 
+import type { size } from './variant'
+
 export const [provideAvatarContext, useAvatarContext] = createContext<{
   shape: 'round' | 'square'
-  size: 'sm' | 'md' | 'lg' | 'xl'
+  size: keyof typeof size
 }>('Avatar')

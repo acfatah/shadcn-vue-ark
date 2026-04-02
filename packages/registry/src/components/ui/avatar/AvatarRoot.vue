@@ -8,12 +8,14 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import type { size } from './variant'
+
 import { provideAvatarContext } from './context'
 import { avatarVariants } from './variant'
 
 interface Props extends AvatarRootProps {
   shape?: 'round' | 'square'
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: keyof typeof size
   class?: HTMLAttributes['class']
 }
 
@@ -31,6 +33,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Avatar.Root
     v-bind="forwardedProps"
+    :size="props.size"
     :class="cn(
       avatarVariants({ shape: props.shape, size: props.size }),
       props.class,

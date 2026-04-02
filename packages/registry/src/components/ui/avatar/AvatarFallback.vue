@@ -11,13 +11,12 @@ import { cn } from '@/lib/utils'
 import { useAvatarContext } from './context'
 import { shape as shapeVariant, size as sizeVariant } from './variant'
 
-const props = defineProps<Props>()
-const { shape, size } = useAvatarContext()
-
 interface Props extends AvatarFallbackProps {
   class?: HTMLAttributes['class']
 }
 
+const props = defineProps<Props>()
+const { shape, size } = useAvatarContext()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
