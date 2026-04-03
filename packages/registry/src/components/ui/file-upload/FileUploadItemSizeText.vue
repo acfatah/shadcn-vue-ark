@@ -21,7 +21,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <FileUpload.ItemSizeText
     v-bind="forwardedProps"
     :class="cn('text-xs text-muted-foreground', props.class)"
-  >
-    <slot />
-  </FileUpload.ItemSizeText>
+  />
 </template>

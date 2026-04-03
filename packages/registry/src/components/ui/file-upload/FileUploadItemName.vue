@@ -21,7 +21,5 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <FileUpload.ItemName
     v-bind="forwardedProps"
     :class="cn('truncate text-sm font-medium', props.class)"
-  >
-    <slot />
-  </FileUpload.ItemName>
+  />
 </template>
