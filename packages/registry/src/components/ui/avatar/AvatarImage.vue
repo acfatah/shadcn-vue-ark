@@ -27,7 +27,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <Avatar.Image
     v-bind="forwardedProps"
     :class="cn(
-      `aspect-square size-full`,
+      `aspect-square object-cover`,
       shape ? shapeVariant[shape] : shapeVariant.round,
       size ? sizeVariant[size] : sizeVariant.md,
       props.class,

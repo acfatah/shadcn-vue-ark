@@ -33,7 +33,6 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Avatar.Root
     v-bind="forwardedProps"
-    :size="props.size"
     :class="cn(
       avatarVariants({ shape: props.shape, size: props.size }),
       props.class,
