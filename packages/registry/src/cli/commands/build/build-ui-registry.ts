@@ -8,6 +8,7 @@ import type { RegistryItemCss, RegistryItemCssVars } from './build-css-from-tail
 
 import { buildCssFromTailwind, mergeCss } from './build-css-from-tailwind'
 import { getFileDependencies } from './get-file-dependecies'
+import { normalizeRegistryDependency } from './normalize-registry-deps'
 import { REGISTRY_PATH } from './paths'
 
 export async function buildUIRegistry(
@@ -56,7 +57,7 @@ export async function buildUIRegistry(
       }
 
       if (registryItem?.registryDependencies) {
-        registryItem.registryDependencies.forEach(dep => registryDependencies.add(dep))
+        registryItem.registryDependencies.forEach(dep => registryDependencies.add(normalizeRegistryDependency(dep, registryPath)))
       }
 
       if (registryItem?.dependencies) {

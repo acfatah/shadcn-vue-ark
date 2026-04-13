@@ -5,6 +5,7 @@ import { join } from 'pathe'
 import { readFile } from '@/cli/utils'
 
 import { getFileDependencies } from './get-file-dependecies'
+import { normalizeRegistryDependency } from './normalize-registry-deps'
 import { REGISTRY_PATH } from './paths'
 
 function resolveFilePath(layoutPath: string, filePath: string) {
@@ -38,7 +39,11 @@ export async function buildLayoutsRegistry(
 
   const files: RegistryItem['files'] = []
   const dependencies = new Set<string>(registryItem.dependencies ?? [])
-  const registryDependencies = new Set<string>(registryItem.registryDependencies ?? [])
+  const registryDependencies = new Set<string>(
+    (registryItem.registryDependencies ?? []).map(dep =>
+      normalizeRegistryDependency(dep, registryBaseUrl),
+    ),
+  )
 
   for (const file of registryItem.files ?? []) {
     const outputPath = resolveOutputPath(layoutName, file.path)
