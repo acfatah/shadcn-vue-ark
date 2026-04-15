@@ -46,7 +46,7 @@
     },
     {
       "path": "src/components/ui/file-upload/FileUploadItemSizeText.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemSizeTextBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemSizeTextBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemSizeText\n    v-bind=\"forwardedProps\"\n    :class=\"cn('text-xs text-muted-foreground', props.class)\"\n  >\n    <slot />\n  </FileUpload.ItemSizeText>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemSizeTextBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemSizeTextBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemSizeText\n    v-bind=\"forwardedProps\"\n    :class=\"cn('text-xs text-muted-foreground', props.class)\"\n  />\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -97,7 +97,7 @@
     },
     {
       "path": "src/components/ui/file-upload/FileUploadItemName.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemNameBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemNameBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemName\n    v-bind=\"forwardedProps\"\n    :class=\"cn('truncate text-sm font-medium', props.class)\"\n  >\n    <slot />\n  </FileUpload.ItemName>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { FileUploadItemNameBaseProps } from '@ark-ui/vue/file-upload'\nimport type { HTMLAttributes } from 'vue'\n\nimport { FileUpload } from '@ark-ui/vue/file-upload'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends FileUploadItemNameBaseProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <FileUpload.ItemName\n    v-bind=\"forwardedProps\"\n    :class=\"cn('truncate text-sm font-medium', props.class)\"\n  />\n</template>\n",
       "type": "registry:ui"
     }
   ],
