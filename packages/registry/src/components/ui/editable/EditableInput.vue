@@ -9,6 +9,7 @@ import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 interface Props extends EditableInputProps {
+  asChild?: boolean
   class?: HTMLAttributes['class']
 }
 
@@ -30,5 +31,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
       `,
       props.class,
     )"
-  />
+  >
+    <slot />
+  </Editable.Input>
 </template>
