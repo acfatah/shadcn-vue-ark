@@ -13,6 +13,7 @@ export interface DatePickerContext {
   locale: ComputedRef<string>
   closeOnSelect: ComputedRef<boolean>
   disabled: ComputedRef<boolean>
+  invalid: ComputedRef<boolean>
   calendarProps: ComputedRef<Record<string, any>>
   setDate: (val: DateValue | undefined) => void
   setOpen: (val: boolean) => void

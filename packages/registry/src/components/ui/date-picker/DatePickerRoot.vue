@@ -21,6 +21,7 @@ interface Props {
   locale?: string
   closeOnSelect?: boolean
   disabled?: boolean
+  invalid?: boolean
   calendarProps?: Record<string, any>
   align?: 'start' | 'center' | 'end'
   alignOffset?: number
@@ -37,11 +38,12 @@ const props = withDefaults(defineProps<Props>(), {
   locale: 'en-US',
   closeOnSelect: true,
   disabled: false,
+  invalid: false,
   calendarProps: () => ({}),
   align: 'start',
   alignOffset: 0,
   side: 'bottom',
-  sideOffset: 4,
+  sideOffset: 2,
 })
 
 const emit = defineEmits<{
@@ -78,6 +80,7 @@ DatePickerProvider({
   locale: computed(() => props.locale),
   closeOnSelect: computed(() => props.closeOnSelect),
   disabled: computed(() => props.disabled),
+  invalid: computed(() => props.invalid),
   calendarProps: computed(() => props.calendarProps),
   setDate,
   setOpen,

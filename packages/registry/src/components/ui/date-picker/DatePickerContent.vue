@@ -29,9 +29,10 @@ function onDateSelect(value: DateValue[]) {
 
 <template>
   <PopoverContent
-    data-scope="date-picker"
-    data-part="content"
-    :class="cn('w-auto p-0', props.class)"
+    :class="cn(
+      'relative w-auto p-0',
+      props.class,
+    )"
   >
     <slot>
       <CalendarRoot

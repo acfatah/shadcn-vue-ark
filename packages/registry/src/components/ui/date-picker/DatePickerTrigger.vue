@@ -7,7 +7,7 @@ import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
 
-import Button from '../button/Button.vue'
+import { buttonVariants } from '../button'
 import PopoverTrigger from '../popover/PopoverTrigger.vue'
 import { useDatePickerContext } from './context'
 
@@ -16,7 +16,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
 const ctx = useDatePickerContext()!
 
 const formattedDate = computed(() => {
@@ -30,22 +29,23 @@ const formattedDate = computed(() => {
 </script>
 
 <template>
-  <PopoverTrigger as-child>
-    <Button
-      variant="outline"
-      data-scope="date-picker"
-      data-part="trigger"
-      :disabled="ctx.disabled.value"
-      :class="cn(
-        'w-[240px] justify-start text-left font-normal',
-        !ctx.dateValue.value && 'text-muted-foreground',
-        props.class,
-      )"
-    >
-      <slot :date="ctx.dateValue.value" :formatted="formattedDate">
-        <CalendarIcon />
-        {{ formattedDate }}
-      </slot>
-    </Button>
+  <PopoverTrigger
+    :disabled="ctx.disabled.value"
+    :aria-invalid="ctx.invalid.value || undefined"
+    :class="cn(
+      buttonVariants({ variant: 'outline' }),
+      'h-11 w-[240px] justify-start border-input text-left font-normal',
+      !ctx.dateValue.value && 'text-muted-foreground',
+      `
+        aria-invalid:border-destructive aria-invalid:ring-destructive/20
+        dark:aria-invalid:ring-destructive/40
+      `,
+      props.class,
+    )"
+  >
+    <slot :date="ctx.dateValue.value" :formatted="formattedDate">
+      <CalendarIcon class="text-muted-foreground" />
+      {{ formattedDate }}
+    </slot>
   </PopoverTrigger>
 </template>
