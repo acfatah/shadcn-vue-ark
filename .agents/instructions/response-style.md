@@ -1,7 +1,7 @@
 # Response and Output Style
 
 - Be concise and prioritize actionable guidance.
-- Use what, why, and how.
+- Use What, Purpose, Benefit and How (actionable steps on how it works, etc...).
 - Include tips, gotchas, and common pitfalls.
 - Use short sections and bullets for scanability.
 - Use tables when helpful.

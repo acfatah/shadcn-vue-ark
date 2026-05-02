@@ -1,4 +1,4 @@
-# Copilot Instructions
+# AGENTS.md
 
 This repository uses modular instructions. Read this file first, then load
 topic-specific files.
@@ -13,19 +13,19 @@ topic-specific files.
 ## Instruction index
 
 - Repo orientation and workflows:
-  `.github/instructions/repo-orientation.md`
+  `.agents/instructions/repo-orientation.md`
 - Agent startup checklist:
-  `.github/instructions/agent-first-steps.md`
+  `.agents/instructions/agent-first-steps.md`
 - Coding style:
-  `.github/instructions/coding-style.md`
+  `.agents/instructions/coding-style.md`
 - Testing and verification:
-  `.github/instructions/testing-verification.md`
+  `.agents/instructions/testing-verification.md`
 - Documentation and comments:
-  `.github/instructions/documentation-comments.md`
+  `.agents/instructions/documentation-comments.md`
 - Commit messages:
-  `.github/instructions/commit-messages.md`
+  `.agents/instructions/commit-messages.md`
 - Response and output style:
-  `.github/instructions/response-style.md`
+  `.agents/instructions/response-style.md`
 
 ## Conflict handling
 

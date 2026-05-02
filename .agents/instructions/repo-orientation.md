@@ -89,3 +89,6 @@ Stories live in `stories/ui/<name>/`. Each component folder has:
 - `*Story.vue` — individual story variant components
 
 The `@` alias in storybook Vite config points to `packages/registry/src`.
+
+Bun workspace, for example 'packages/registry' are resolved using 'packages.registry'
+namespace in package imports.
