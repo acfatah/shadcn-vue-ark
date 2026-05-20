@@ -9,6 +9,8 @@ import DatePickerDefaultStory from './DatePickerDefaultStory.vue'
 import DatePickerDefaultSource from './DatePickerDefaultStory.vue?raw'
 import DatePickerFormStory from './DatePickerFormStory.vue'
 import DatePickerFormSource from './DatePickerFormStory.vue?raw'
+import DatePickerInputStory from './DatePickerInputStory.vue'
+import DatePickerInputSource from './DatePickerInputStory.vue?raw'
 
 const meta = {
   title: 'Components/DatePicker',
@@ -45,6 +47,28 @@ export const Default: Story = {
 
     template: html`
       <DatePickerDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Input: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: DatePickerInputSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { DatePickerInputStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DatePickerInputStory v-bind="args" />
     `,
   }),
 }
