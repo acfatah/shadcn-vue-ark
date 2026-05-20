@@ -7,6 +7,8 @@ import { registryItem } from '@/components/ui/date-picker/_registry'
 
 import DatePickerDefaultStory from './DatePickerDefaultStory.vue'
 import DatePickerDefaultSource from './DatePickerDefaultStory.vue?raw'
+import DatePickerFormStory from './DatePickerFormStory.vue'
+import DatePickerFormSource from './DatePickerFormStory.vue?raw'
 
 const meta = {
   title: 'Components/DatePicker',
@@ -43,6 +45,28 @@ export const Default: Story = {
 
     template: html`
       <DatePickerDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const FormBridge: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: DatePickerFormSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { DatePickerFormStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DatePickerFormStory v-bind="args" />
     `,
   }),
 }

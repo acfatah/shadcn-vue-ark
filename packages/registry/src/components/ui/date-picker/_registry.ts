@@ -36,6 +36,11 @@ export const registryItem = {
       target: 'src/composables/createContext.ts',
     },
     {
+      path: 'src/lib/internationalized-date.ts',
+      type: 'registry:file',
+      target: 'src/lib/internationalized-date.ts',
+    },
+    {
       path: 'src/lib/utils.ts',
       type: 'registry:file',
       target: 'src/lib/utils.ts',

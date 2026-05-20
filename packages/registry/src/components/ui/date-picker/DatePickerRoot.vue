@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date'
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, Ref } from 'vue'
 
 import { computed, ref, watch } from 'vue'
 
@@ -50,7 +50,11 @@ const emit = defineEmits<{
   'update:modelValue': [value: DateValue | undefined]
 }>()
 
-const dateValue = ref<DateValue | undefined>(props.defaultValue)
+const dateValue = ref(props.defaultValue) as Ref<DateValue | undefined>
+
+if (props.modelValue)
+  dateValue.value = props.modelValue
+
 const openValue = ref(false)
 
 watch(
@@ -73,7 +77,7 @@ function setOpen(val: boolean) {
 }
 
 DatePickerProvider({
-  dateValue,
+  dateValue: dateValue as Ref<DateValue | undefined>,
   layout: computed(() => props.layout),
   placeholder: computed(() => props.placeholder),
   formatOptions: computed(() => props.formatOptions),
