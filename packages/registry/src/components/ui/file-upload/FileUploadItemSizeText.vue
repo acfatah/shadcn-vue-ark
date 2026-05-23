@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FileUploadItemSizeTextBaseProps } from '@ark-ui/vue/file-upload'
 import type { HTMLAttributes } from 'vue'
 
 import { FileUpload } from '@ark-ui/vue/file-upload'
@@ -8,7 +7,9 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends FileUploadItemSizeTextBaseProps {
+import type { FileUploadItemSizeTextProps } from './types'
+
+interface Props extends FileUploadItemSizeTextProps {
   class?: HTMLAttributes['class']
 }
 

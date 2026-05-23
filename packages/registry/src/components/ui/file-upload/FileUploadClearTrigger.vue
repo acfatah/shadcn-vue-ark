@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FileUploadClearTriggerBaseProps } from '@ark-ui/vue/file-upload'
 import type { HTMLAttributes } from 'vue'
 
 import { FileUpload } from '@ark-ui/vue/file-upload'
@@ -8,7 +7,9 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends FileUploadClearTriggerBaseProps {
+import type { FileUploadClearTriggerProps } from './types'
+
+interface Props extends FileUploadClearTriggerProps {
   class?: HTMLAttributes['class']
 }
 
