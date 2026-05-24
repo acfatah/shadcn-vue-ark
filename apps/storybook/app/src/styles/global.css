@@ -5,6 +5,13 @@
 @import '../../../../../packages/registry/src/styles/global.css';
 
 /*
+  Sonner's styles.css contains Tailwind @theme and @utility declarations for
+  toast variant colors (success, info, warning, error). These must be explicitly
+  @import'ed — @source scanning alone won't process them.
+*/
+@import '../../../../../packages/registry/src/components/ui/sonner/styles.css';
+
+/*
   Need to explicitly include sources from the registry package
   to ensure styles are properly applied in Storybook.
 */

@@ -8,31 +8,44 @@ export const registryItem = {
   title: 'Sonner',
 
   description: html`
-    Toast notifications powered by <code>vue-sonner</code>.
+    An opinionated toast notification component powered by <code>vue-sonner</code>.
 
-    References:
-    - shadcn/ui: https://ui.shadcn.com/docs/components/sonner
+    <h2>Manual CSS Import</h2>
+
+    This component requires an additional CSS import for toast variant styles
+    (success, info, warning, error). Add the following to your main CSS file
+    (e.g. <code>app.css</code> or <code>global.css</code>):
+
+    <code>@import "../components/ui/sonner/styles.css";</code>
+
+    <h2>References</h2>
     - vue-sonner: https://github.com/xiaoluoboding/vue-sonner
+    - shadcn/ui: https://ui.shadcn.com/docs/components/sonner
   `,
 
   dependencies: [
-    'vue-sonner',
     '@vueuse/core',
+    'class-variance-authority',
     'lucide-vue-next',
+    'vue-sonner',
   ],
 
   files: [
-    {
-      path: 'src/composables/useForwardProps.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardProps.ts',
-    },
     {
       path: 'src/lib/utils.ts',
       type: 'registry:file',
       target: 'src/lib/utils.ts',
     },
+    {
+      path: 'src/components/ui/sonner/styles.css',
+      type: 'registry:file',
+      target: 'src/components/ui/sonner/styles.css',
+    },
   ],
+
+  css: {
+    '@import: "../components/ui/sonner/styles.css"': {},
+  },
 } satisfies RegistryItem
 
 export default registryItem

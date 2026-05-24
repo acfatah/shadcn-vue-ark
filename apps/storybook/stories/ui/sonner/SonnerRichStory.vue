@@ -13,9 +13,13 @@ import { toast } from '@/components/ui/sonner'
           label: 'Undo',
           onClick: () => console.log('Undo'),
         },
+        cancel: {
+          label: 'Cancel',
+          onClick: () => console.log('Cancel'),
+        },
       })
     "
   >
-    Show Toast
+    Show Rich Toast
   </Button>
 </template>
