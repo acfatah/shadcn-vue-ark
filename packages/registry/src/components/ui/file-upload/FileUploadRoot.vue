@@ -12,6 +12,8 @@ import type {
   FileUploadRootProps,
 } from './types'
 
+import FileUploadContextProvider from './FileUploadContextProvider.vue'
+
 interface Props extends FileUploadRootProps {
   class?: HTMLAttributes['class']
 }
@@ -27,6 +29,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     v-bind="forwardedProps"
     :class="cn('flex flex-col gap-4', props.class)"
   >
-    <slot />
+    <FileUploadContextProvider>
+      <slot />
+    </FileUploadContextProvider>
   </FileUpload.Root>
 </template>

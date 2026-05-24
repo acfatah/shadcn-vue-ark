@@ -1,5 +1,5 @@
+export { useFileUploadContext } from './context'
 export { default as FileUploadClearTrigger } from './FileUploadClearTrigger.vue'
-export { default as FileUploadContext } from './FileUploadContext.vue'
 export { default as FileUploadDropzone } from './FileUploadDropzone.vue'
 export { default as FileUploadHiddenInput } from './FileUploadHiddenInput.vue'
 export { default as FileUploadItem } from './FileUploadItem.vue'

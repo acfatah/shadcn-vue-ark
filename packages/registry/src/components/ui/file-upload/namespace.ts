@@ -1,5 +1,4 @@
 import FileUploadClearTrigger from './FileUploadClearTrigger.vue'
-import FileUploadContext from './FileUploadContext.vue'
 import FileUploadDropzone from './FileUploadDropzone.vue'
 import FileUploadHiddenInput from './FileUploadHiddenInput.vue'
 import FileUploadItem from './FileUploadItem.vue'
@@ -78,9 +77,4 @@ export const FileUpload = {
    * FileUploadHiddenInput component
    */
   HiddenInput: FileUploadHiddenInput,
-
-  /**
-   * FileUploadContext component
-   */
-  Context: FileUploadContext,
 }

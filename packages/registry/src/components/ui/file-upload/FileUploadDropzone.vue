@@ -24,9 +24,9 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     :class="cn(
       `
         flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed
-        border-border bg-background p-8 text-center transition-colors
+        border-border bg-accent/50 p-8 text-center transition-colors
       `,
-      'hover:border-ring/50 hover:bg-accent/50',
+      'hover:border-ring/50',
       'data-dragging:border-ring data-dragging:bg-accent/50',
       'data-disabled:pointer-events-none data-disabled:opacity-50',
       `focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none`,

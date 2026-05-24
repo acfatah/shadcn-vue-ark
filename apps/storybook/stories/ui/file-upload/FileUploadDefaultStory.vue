@@ -4,6 +4,8 @@ import { UploadIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { FileUpload } from '@/components/ui/file-upload'
 
+import FileUploadFileList from './FileUploadFileList.vue'
+
 interface Props {
   disabled?: boolean
   maxFiles?: number
@@ -39,23 +41,6 @@ withDefaults(defineProps<Props>(), {
       </FileUpload.Trigger>
     </FileUpload.Dropzone>
 
-    <FileUpload.Context v-slot="{ acceptedFiles }">
-      <FileUpload.ItemGroup v-if="acceptedFiles.length > 0">
-        <FileUpload.Item
-          v-for="file in acceptedFiles"
-          :key="file.name"
-          :file="file"
-        >
-          <FileUpload.ItemPreview type="image/*">
-            <FileUpload.ItemPreviewImage />
-          </FileUpload.ItemPreview>
-          <div class="flex min-w-0 flex-col">
-            <FileUpload.ItemName />
-            <FileUpload.ItemSizeText />
-          </div>
-          <FileUpload.ItemDeleteTrigger />
-        </FileUpload.Item>
-      </FileUpload.ItemGroup>
-    </FileUpload.Context>
+    <FileUploadFileList />
   </FileUpload.Root>
 </template>
