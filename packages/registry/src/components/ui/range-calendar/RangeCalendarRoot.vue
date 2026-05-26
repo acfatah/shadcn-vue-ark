@@ -49,6 +49,7 @@ const monthOffsets = computed(() =>
     v-bind="forwardedProps"
     data-scope="range-calendar"
     data-part="root"
+    :inline="true"
     :class="cn('max-w-lg p-3', props.class)"
   >
     <DatePicker.View view="day">

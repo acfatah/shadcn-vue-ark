@@ -42,6 +42,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
     v-bind="forwardedProps"
     data-scope="calendar"
     data-part="root"
+    :inline="true"
     :class="cn('w-2xs p-3', props.class)"
   >
     <DatePicker.View view="day">
