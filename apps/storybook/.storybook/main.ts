@@ -18,6 +18,10 @@ const config: StorybookConfig = {
     '@storybook/addon-themes',
   ],
 
+  typescript: {
+    docgen: 'vue-component-meta',
+  },
+
   staticDirs: ['../app/public'],
 }
 
