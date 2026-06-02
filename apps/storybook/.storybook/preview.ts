@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/vue3-vite'
 
-import { withThemeByClassName } from '@storybook/addon-themes'
 import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'
 
@@ -14,6 +13,26 @@ setup((app) => {
 })
 
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Color theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'mirror',
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+
+  initialGlobals: {
+    theme: 'light',
+    viewport: { value: 'lg', isRotated: false },
+  },
+
   parameters: {
     backgrounds: { disable: true },
     viewport: { options: tailwindViewports },
@@ -34,10 +53,6 @@ const preview: Preview = {
     },
   },
 
-  initialGlobals: {
-    viewport: { value: 'lg', isRotated: false },
-  },
-
   argTypes: {
     key: { table: { disable: true } },
     ref: { table: { disable: true } },
@@ -47,30 +62,36 @@ const preview: Preview = {
   },
 
   decorators: [
-    withThemeByClassName({
-      themes: {
-        light: '',
-        dark: 'dark',
-      },
-
-      defaultTheme: 'light',
-    }),
-
     // Decorator to apply bg-color to stories in dark mode
     (_story, context) => {
-      const body = document.querySelector('body')
-      const stories = document.querySelectorAll('.docs-story')
-      const THEME_CLASS = 'bg-background'
+      let { theme } = context.globals
 
-      if (context.viewMode === 'story') {
-        body?.classList.add(THEME_CLASS)
-      }
-      else {
-        body?.classList.remove(THEME_CLASS)
+      // In docs mode, stories render in nested iframes that don't receive
+      // toolbar globals. Read the actual globals from the top-level URL.
+      if (window.parent !== window) {
+        try {
+          const params = new URL(window.top!.location.href).searchParams
+          const globalsParam = params.get('globals')
+          if (globalsParam) {
+            for (const pair of globalsParam.split(';')) {
+              const [key, value] = pair.split(':')
+              if (key === 'theme')
+                theme = value
+            }
+          }
+        }
+        catch { /* cross-origin */ }
       }
 
-      stories.forEach((element) => {
-        element.classList.add(THEME_CLASS)
+      const isDark = theme === 'dark'
+
+      document.documentElement.classList.toggle('dark', isDark)
+      document.body.classList.add('bg-background', 'text-foreground')
+
+      // Inline docs rendering: story containers sit behind opaque
+      // Storybook wrappers so the body background is hidden.
+      document.querySelectorAll<HTMLElement>('.docs-story').forEach((el) => {
+        el.classList.add('bg-background', 'text-foreground')
       })
 
       return { template: `<story/>` }

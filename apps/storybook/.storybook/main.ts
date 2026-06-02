@@ -15,7 +15,6 @@ const config: StorybookConfig = {
 
   addons: [
     '@storybook/addon-docs',
-    '@storybook/addon-themes',
   ],
 
   typescript: {

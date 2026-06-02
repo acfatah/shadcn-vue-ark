@@ -53,7 +53,6 @@
         "@commitlint/cli": "^20.5.3",
         "@commitlint/config-conventional": "^20.5.3",
         "@storybook/addon-docs": "^10.4.0",
-        "@storybook/addon-themes": "^10.4.0",
         "@storybook/vue3-vite": "^10.4.0",
         "@types/bun": "^1.3.14",
         "@types/common-tags": "^1.8.4",
@@ -788,8 +787,6 @@
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
     "@storybook/addon-docs": ["@storybook/addon-docs@10.4.0", "", { "dependencies": { "@mdx-js/react": "^3.0.0", "@storybook/csf-plugin": "10.4.0", "@storybook/icons": "^2.0.2", "@storybook/react-dom-shim": "10.4.0", "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "ts-dedent": "^2.0.0" }, "peerDependencies": { "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "storybook": "^10.4.0" }, "optionalPeers": ["@types/react"] }, "sha512-HJNvYGx/c3jjVwibnmbDgCZMYPI6xGUDjJSRi5CG0G9tpeoeijPo318f5N84RyYWK8LheHUrDN3Jv2UfVv8zwQ=="],
-
-    "@storybook/addon-themes": ["@storybook/addon-themes@10.4.0", "", { "dependencies": { "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^10.4.0" } }, "sha512-ctHlkFBaKOOj4fBkc/cFWLn5CVXDIquAh3qSuebxweQU+wbcTESoZ/jkOEbntSvSHqoCqZDdfTXYOG/EWHQzGQ=="],
 
     "@storybook/builder-vite": ["@storybook/builder-vite@10.4.0", "", { "dependencies": { "@storybook/csf-plugin": "10.4.0", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^10.4.0", "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-RCq8uzvTc0vhK2aN0y2Z48DJ9Q7oKXh8A5pdU3YAmkgMcX/+Vi3Ju1nmueLrGIO+tKwYGpYS/ccUtscNt92rCw=="],
 
