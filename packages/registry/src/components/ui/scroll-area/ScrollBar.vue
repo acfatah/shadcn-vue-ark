@@ -24,7 +24,11 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
   <ScrollArea.Scrollbar
     v-bind="forwardedProps"
     :class="cn(
-      'flex touch-none p-px transition-colors select-none',
+      'flex touch-none p-px select-none',
+      'transition-opacity',
+      'opacity-0',
+      'data-hover:opacity-100',
+      'data-scrolling:opacity-100',
       props.orientation === 'vertical'
         && 'h-full w-2.5 border-l border-l-transparent',
       props.orientation === 'horizontal'

@@ -12,10 +12,13 @@ import ScrollBar from './ScrollBar.vue'
 
 interface Props extends ScrollAreaRootProps {
   class?: HTMLAttributes['class']
+  hideScrollbar?: boolean
 }
 
-const props = defineProps<Props>()
-const delegatedProps = reactiveOmit(props, 'class')
+const props = withDefaults(defineProps<Props>(), {
+  hideScrollbar: false,
+})
+const delegatedProps = reactiveOmit(props, ['class', 'hideScrollbar'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
@@ -32,7 +35,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     >
       <slot />
     </ScrollArea.Viewport>
-    <ScrollBar />
+    <ScrollBar v-if="!props.hideScrollbar" />
     <ScrollArea.Corner />
   </ScrollArea.Root>
 </template>

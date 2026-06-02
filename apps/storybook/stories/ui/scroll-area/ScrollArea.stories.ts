@@ -7,6 +7,8 @@ import { registryItem } from '@/components/ui/scroll-area/_registry'
 
 import ScrollAreaDefaultStory from './ScrollAreaDefaultStory.vue'
 import ScrollAreaDefaultSource from './ScrollAreaDefaultStory.vue?raw'
+import ScrollAreaHideScrollbarStory from './ScrollAreaHideScrollbarStory.vue'
+import ScrollAreaHideScrollbarSource from './ScrollAreaHideScrollbarStory.vue?raw'
 
 const meta = {
   title: 'Components/ScrollArea',
@@ -17,6 +19,16 @@ const meta = {
     docs: {
       description: {
         component: registryItem.description,
+      },
+    },
+  },
+
+  argTypes: {
+    hideScrollbar: {
+      control: { type: 'boolean' },
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
   },
@@ -43,6 +55,32 @@ export const Default: Story = {
 
     template: html`
       <ScrollAreaDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const HideScrollbar: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: ScrollAreaHideScrollbarSource,
+      },
+    },
+  },
+
+  args: {
+    hideScrollbar: true,
+  },
+
+  render: args => ({
+    components: { ScrollAreaHideScrollbarStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ScrollAreaHideScrollbarStory v-bind="args" />
     `,
   }),
 }
