@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
 
+import { Description } from '@/components/ui/description'
 import { Field } from '@/components/ui/field'
 import { Fieldset } from '@/components/ui/fieldset'
 import { Input } from '@/components/ui/input'
@@ -22,10 +23,10 @@ const invalid = computed(() => {
 
 <template>
   <Fieldset.Group>
-    <Fieldset.Description>
+    <Description>
       This story showcases all the different input types available in the Input
       component including Field components.
-    </Fieldset.Description>
+    </Description>
 
     <Field.Root :disabled="disabled" :invalid="invalid">
       <Field.Label for="text">
@@ -193,7 +194,7 @@ const invalid = computed(() => {
     </Field.Root>
   </Fieldset.Group>
 
-  <Fieldset.Group class="mt-6">
+  <!-- <Fieldset.Group class="mt-6">
     <Fieldset.Legend>
       Actions
     </Fieldset.Legend>
@@ -203,5 +204,5 @@ const invalid = computed(() => {
       <Input.Submit>Submit</Input.Submit>
     </div>
     <Fieldset.Description>Use button-style inputs for actions.</Fieldset.Description>
-  </Fieldset.Group>
+  </Fieldset.Group> -->
 </template>
