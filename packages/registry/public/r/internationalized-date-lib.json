@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "internationalized-date-lib",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/lib/internationalized-date.ts",
+      "content": "import type { DateValue } from '@internationalized/date'\n\nimport { parseDate } from '@internationalized/date'\n\nexport function toDateValue(iso: string | null | undefined): DateValue | undefined {\n  if (!iso)\n    return undefined\n\n  try {\n    return parseDate(iso.slice(0, 10))\n  }\n  catch {\n    console.warn(`Unable to parse date value from ISO string: ${iso}`)\n\n    return undefined\n  }\n}\n\nexport function fromDateValue(val: DateValue | undefined): string {\n  return val ? val.toString() : ''\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

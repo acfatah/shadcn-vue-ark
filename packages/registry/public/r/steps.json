@@ -1,0 +1,94 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "steps",
+  "title": "Steps",
+  "description": "A multi-step navigation component used to guide users through a sequence\nof steps such as forms, wizards, or onboarding flows.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/steps",
+  "dependencies": [
+    "@vueuse/core",
+    "@ark-ui/vue"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+    "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/steps/StepsList.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsListProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsListProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.List\n    data-scope=\"steps\"\n    data-part=\"list\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex w-full items-start gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.List>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/namespace.ts",
+      "content": "import StepsCompletedContent from './StepsCompletedContent.vue'\nimport StepsContent from './StepsContent.vue'\nimport StepsIndicator from './StepsIndicator.vue'\nimport StepsItem from './StepsItem.vue'\nimport StepsList from './StepsList.vue'\nimport StepsNextTrigger from './StepsNextTrigger.vue'\nimport StepsPrevTrigger from './StepsPrevTrigger.vue'\nimport StepsRoot from './StepsRoot.vue'\nimport StepsSeparator from './StepsSeparator.vue'\nimport StepsTrigger from './StepsTrigger.vue'\n\nexport const Steps = {\n  /**\n   * StepsRoot component\n   */\n  Root: StepsRoot,\n\n  /**\n   * StepsList component\n   */\n  List: StepsList,\n\n  /**\n   * StepsItem component\n   */\n  Item: StepsItem,\n\n  /**\n   * StepsTrigger component\n   */\n  Trigger: StepsTrigger,\n\n  /**\n   * StepsIndicator component\n   */\n  Indicator: StepsIndicator,\n\n  /**\n   * StepsSeparator component\n   */\n  Separator: StepsSeparator,\n\n  /**\n   * StepsContent component\n   */\n  Content: StepsContent,\n\n  /**\n   * StepsCompletedContent component\n   */\n  CompletedContent: StepsCompletedContent,\n\n  /**\n   * StepsNextTrigger component\n   */\n  NextTrigger: StepsNextTrigger,\n\n  /**\n   * StepsPrevTrigger component\n   */\n  PrevTrigger: StepsPrevTrigger,\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsPrevTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsPrevTriggerProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsPrevTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.PrevTrigger\n    data-scope=\"steps\"\n    data-part=\"prev-trigger\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(props.class)\"\n  >\n    <slot />\n  </Steps.PrevTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsCompletedContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsCompletedContentProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsCompletedContentProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.CompletedContent\n    data-scope=\"steps\"\n    data-part=\"completed-content\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'mt-4 text-sm text-muted-foreground outline-none',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.CompletedContent>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsTriggerProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Trigger\n    data-scope=\"steps\"\n    data-part=\"trigger\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex flex-col items-center gap-2 bg-transparent text-sm font-medium outline-none\n        focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\n        disabled:pointer-events-none disabled:opacity-50\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.Trigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsContent.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsContentProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsContentProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Content\n    data-scope=\"steps\"\n    data-part=\"content\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'mt-4 text-sm text-muted-foreground outline-none',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.Content>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsIndicator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsIndicatorProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsIndicatorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Indicator\n    data-scope=\"steps\"\n    data-part=\"indicator\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        inline-flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-muted\n        bg-muted text-sm font-medium text-muted-foreground transition-colors\n      `,\n      'data-current:border-primary data-current:text-primary',\n      `data-complete:border-primary data-complete:bg-primary data-complete:text-primary-foreground`,\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.Indicator>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsSeparator.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsSeparatorProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsSeparatorProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Separator\n    data-scope=\"steps\"\n    data-part=\"separator\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      `\n        absolute top-5 right-[calc(-50%+24px)] left-[calc(50%+24px)] block h-0.5 shrink-0\n        rounded-full bg-muted transition-colors\n        data-complete:bg-primary\n      `,\n      props.class,\n    )\"\n  />\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsItem.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsItemProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsItemProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Item\n    data-scope=\"steps\"\n    data-part=\"item\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'group relative flex w-full flex-col items-center justify-center gap-2',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.Item>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/index.ts",
+      "content": "export { Steps } from './namespace'\nexport { default as StepsCompletedContent } from './StepsCompletedContent.vue'\nexport { default as StepsContent } from './StepsContent.vue'\nexport { default as StepsIndicator } from './StepsIndicator.vue'\nexport { default as StepsItem } from './StepsItem.vue'\nexport { default as StepsList } from './StepsList.vue'\nexport { default as StepsNextTrigger } from './StepsNextTrigger.vue'\nexport { default as StepsPrevTrigger } from './StepsPrevTrigger.vue'\nexport { default as StepsRoot } from './StepsRoot.vue'\nexport { default as StepsSeparator } from './StepsSeparator.vue'\nexport { default as StepsTrigger } from './StepsTrigger.vue'\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/composables/useForwardPropsEmits.ts",
+      "content": "import { computed } from 'vue'\n\nimport { useEmitAsProps } from './useEmitsAsProps'\nimport { useForwardProps } from './useForwardProps'\n\n/**\n * The function `useForwardPropsEmits` takes in props and an optional emit function,\n * and returns a computed object that combines the parsed props and emits as props.\n *\n * @param {T} props - The `props` parameter is of type `T`, which is a generic type\n *                    that extends the parameters of the `useForwardProps` function.\n *                    It represents the props object that is passed to the\n *                    `useForwardProps` function.\n * @param [emit] - The `emit` parameter is a function that can be used to emit events.\n *                 It takes two arguments: `name`, which is the name of the event\n *                 to be emitted, and `args`, which are the arguments to be passed\n *                 along with the event.\n * @returns a computed property that combines the parsed\n *          props and emits as props.\n *\n * **Attribution to the Radix Vue team**\n *\n * Docs: https://www.radix-vue.com/utilities/use-forward-props-emits.html\n *\n * Source: https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/useForwardPropsEmits.ts\n */\nexport function useForwardPropsEmits<\n  T extends Parameters<typeof useForwardProps>[0],\n  Name extends string,\n>(\n  props: T,\n  emit?: (name: Name, ...args: any[]) => void,\n) {\n  const parsedProps = useForwardProps(props)\n  const emitsAsProps = emit ? useEmitAsProps(emit) : {}\n\n  return computed(() => ({\n    ...parsedProps.value,\n    ...emitsAsProps,\n  }))\n}\n",
+      "type": "registry:file",
+      "target": "src/composables/useForwardPropsEmits.ts"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import type { ClassValue } from 'clsx'\n\nimport { clsx } from 'clsx'\nimport { twMerge } from 'tailwind-merge'\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:file",
+      "target": "src/lib/utils.ts"
+    },
+    {
+      "path": "src/components/ui/steps/StepsRoot.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsRootProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsRootProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.Root\n    data-scope=\"steps\"\n    data-part=\"root\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(\n      'flex w-full flex-col gap-4',\n      props.class,\n    )\"\n  >\n    <slot />\n  </Steps.Root>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/StepsNextTrigger.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { StepsNextTriggerProps } from '@ark-ui/vue/steps'\nimport type { HTMLAttributes } from 'vue'\n\nimport { Steps } from '@ark-ui/vue/steps'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\ninterface Props extends StepsNextTriggerProps {\n  class?: HTMLAttributes['class']\n}\n\nconst props = defineProps<Props>()\n\nconst delegatedProps = reactiveOmit(props, 'class')\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <Steps.NextTrigger\n    data-scope=\"steps\"\n    data-part=\"next-trigger\"\n    v-bind=\"forwardedProps\"\n    :class=\"cn(props.class)\"\n  >\n    <slot />\n  </Steps.NextTrigger>\n</template>\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/components/ui/steps/types.ts",
+      "content": "export {}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1183,6 +1183,7 @@
       "@vueuse/core"
     ],
     "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/internationalized-date-lib.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/calendar.json",
@@ -1192,6 +1193,10 @@
     "files": [
       {
         "path": "src/components/ui/date-picker/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/date-picker/DatePickerInput.vue",
         "type": "registry:ui"
       },
       {
@@ -1211,6 +1216,10 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/lib/internationalized-date.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/lib/utils.ts",
         "type": "registry:ui"
       },
@@ -1224,6 +1233,69 @@
       },
       {
         "path": "src/components/ui/date-picker/types.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "datetime-picker",
+    "type": "registry:ui",
+    "title": "DatetimePicker",
+    "description": "A datetime picker component that combines a calendar with\na scrollable time picker for selecting both date and time.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
+    "dependencies": [
+      "lucide-vue-next",
+      "@ark-ui/vue",
+      "@internationalized/date",
+      "@vueuse/core"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/calendar.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/popover.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/scroll-area.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/datetime-picker/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/DatetimePickerTimeScroll.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/DatetimePickerTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/DatetimePickerRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/createContext.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/context.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/DatetimePickerContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/datetime-picker/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -1806,7 +1878,8 @@
     ],
     "registryDependencies": [
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
     ],
     "files": [
       {
@@ -1815,10 +1888,6 @@
       },
       {
         "path": "src/components/ui/file-upload/FileUploadClearTrigger.vue",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/components/ui/file-upload/FileUploadContext.vue",
         "type": "registry:ui"
       },
       {
@@ -1866,6 +1935,14 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/file-upload/FileUploadContextProvider.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/file-upload/context.ts",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/file-upload/FileUploadTrigger.vue",
         "type": "registry:ui"
       },
@@ -1875,6 +1952,10 @@
       },
       {
         "path": "src/components/ui/file-upload/FileUploadItemName.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/file-upload/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -2159,6 +2240,18 @@
       {
         "path": "src/components/ui/input-group/types.ts",
         "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "internationalized-date-lib",
+    "type": "registry:lib",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "src/lib/internationalized-date.ts",
+        "type": "registry:lib"
       }
     ]
   },
@@ -3521,11 +3614,12 @@
     "name": "sonner",
     "type": "registry:ui",
     "title": "Sonner",
-    "description": "Toast notifications powered by <code>vue-sonner</code>.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/sonner\n- vue-sonner: https://github.com/xiaoluoboding/vue-sonner",
+    "description": "An opinionated toast notification component powered by <code>vue-sonner</code>.\n\n<h2>Manual CSS Import</h2>\n\nThis component requires an additional CSS import for toast variant styles\n(success, info, warning, error). Add the following to your main CSS file\n(e.g. <code>app.css</code> or <code>global.css</code>):\n\n<code>@import \"../components/ui/sonner/styles.css\";</code>\n\n<h2>References</h2>\n- vue-sonner: https://github.com/xiaoluoboding/vue-sonner\n- shadcn/ui: https://ui.shadcn.com/docs/components/sonner",
     "dependencies": [
-      "vue-sonner",
       "@vueuse/core",
-      "lucide-vue-next"
+      "class-variance-authority",
+      "lucide-vue-next",
+      "vue-sonner"
     ],
     "registryDependencies": [
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
@@ -3536,7 +3630,7 @@
         "type": "registry:ui"
       },
       {
-        "path": "src/composables/useForwardProps.ts",
+        "path": "src/components/ui/sonner/variant.ts",
         "type": "registry:ui"
       },
       {
@@ -3544,10 +3638,25 @@
         "type": "registry:ui"
       },
       {
+        "path": "src/components/ui/sonner/styles.css",
+        "type": "registry:ui"
+      },
+      {
         "path": "src/components/ui/sonner/Sonner.vue",
         "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/sonner/styles.css",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/sonner/types.ts",
+        "type": "registry:ui"
       }
-    ]
+    ],
+    "css": {
+      "@import: \"../components/ui/sonner/styles.css\"": {}
+    }
   },
   {
     "name": "spinner",
@@ -3573,6 +3682,82 @@
       },
       {
         "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "steps",
+    "type": "registry:ui",
+    "title": "Steps",
+    "description": "A multi-step navigation component used to guide users through a sequence\nof steps such as forms, wizards, or onboarding flows.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/steps",
+    "dependencies": [
+      "@vueuse/core",
+      "@ark-ui/vue"
+    ],
+    "registryDependencies": [
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
+      "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+    ],
+    "files": [
+      {
+        "path": "src/components/ui/steps/StepsList.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/namespace.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsPrevTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsCompletedContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsContent.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsIndicator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsSeparator.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsItem.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/composables/useForwardPropsEmits.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/lib/utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsRoot.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/StepsNextTrigger.vue",
+        "type": "registry:ui"
+      },
+      {
+        "path": "src/components/ui/steps/types.ts",
         "type": "registry:ui"
       }
     ]
@@ -3870,6 +4055,15 @@
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
       "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/table.json"
     ]
+  },
+  {
+    "name": "time-picker",
+    "type": "registry:ui",
+    "title": "",
+    "description": "",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": []
   },
   {
     "name": "timeline",
