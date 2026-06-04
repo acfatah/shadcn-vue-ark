@@ -81,7 +81,7 @@ function onToday() {
     )"
   >
     <slot>
-      <div class="flex max-h-[320px]">
+      <div class="flex">
         <div class="flex flex-col">
           <CalendarRoot
             :model-value="calendarModelValue"

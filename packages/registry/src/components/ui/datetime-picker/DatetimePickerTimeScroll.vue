@@ -514,135 +514,142 @@ onBeforeUnmount(() => {
     data-scope="datetime-picker"
     data-part="time-scroll"
     :class="cn(
-      'flex gap-0.5',
-      ctx.disabled.value && 'pointer-events-none opacity-50',
-      props.class,
+      'relative self-stretch',
+      is12h ? 'w-49' : 'w-32.5',
     )"
   >
-    <!-- Hours -->
-    <ScrollAreaRoot
-      ref="hourRef"
-      class="
-        h-[318px] w-16 rounded-md
-        focus-within:ring-[3px] focus-within:ring-ring/50
-      "
-      hide-scrollbar
-    >
-      <div
-        role="listbox"
-        aria-label="Hour"
-        aria-orientation="vertical"
-        :aria-activedescendant="activeHourId"
-        :aria-disabled="ctx.disabled.value || undefined"
-        :tabindex="ctx.disabled.value ? -1 : 0"
-        class="flex flex-col items-center gap-0.5 rounded-md p-1 outline-none"
-        @focus="onListboxFocus"
-        @keydown="onListboxKeydown('hour', $event)"
-      >
-        <div
-          v-for="hour in hours"
-          :id="hourOptionId(hour)"
-          :key="hour"
-          role="option"
-          :data-value="hour"
-          :aria-selected="selectedHour === hour"
-          :aria-disabled="ctx.disabled.value || undefined"
-          :class="cn(
-            buttonVariants({ variant: 'ghost', size: 'sm' }),
-            'w-full cursor-pointer tabular-nums',
-            selectedHour === hour
-              && 'bg-accent text-accent-foreground',
-          )"
-          @click="setHour(hour)"
-        >
-          {{ pad(hour) }}
-        </div>
-      </div>
-    </ScrollAreaRoot>
-
-    <!-- Minutes -->
-    <ScrollAreaRoot
-      ref="minuteRef"
-      class="
-        h-[318px] w-16 rounded-md
-        focus-within:ring-[3px] focus-within:ring-ring/50
-      "
-      hide-scrollbar
-    >
-      <div
-        role="listbox"
-        aria-label="Minute"
-        aria-orientation="vertical"
-        :aria-activedescendant="activeMinuteId"
-        :aria-disabled="ctx.disabled.value || undefined"
-        :tabindex="ctx.disabled.value ? -1 : 0"
-        class="flex flex-col items-center gap-0.5 rounded-md p-1 outline-none"
-        @focus="onListboxFocus"
-        @keydown="onListboxKeydown('minute', $event)"
-      >
-        <div
-          v-for="minute in minutes"
-          :id="minuteOptionId(minute)"
-          :key="minute"
-          role="option"
-          :data-value="minute"
-          :aria-selected="selectedMinute === minute"
-          :aria-disabled="ctx.disabled.value || undefined"
-          :class="cn(
-            buttonVariants({ variant: 'ghost', size: 'sm' }),
-            'w-full cursor-pointer tabular-nums',
-            selectedMinute === minute
-              && 'bg-accent text-accent-foreground',
-          )"
-          @click="setMinute(minute)"
-        >
-          {{ pad(minute) }}
-        </div>
-      </div>
-    </ScrollAreaRoot>
-
-    <!-- AM/PM (12h only) -->
     <div
-      v-if="is12h"
-      role="listbox"
-      aria-label="Period (AM/PM)"
-      aria-orientation="vertical"
-      :aria-activedescendant="activePeriodId"
-      :aria-disabled="ctx.disabled.value || undefined"
-      :tabindex="ctx.disabled.value ? -1 : 0"
-      class="
-        flex w-16 flex-col items-center gap-0.5 rounded-md p-1 outline-none
-        focus-visible:ring-[3px] focus-visible:ring-ring/50
-      "
-      @focus="onListboxFocus"
-      @keydown="onListboxKeydown('period', $event)"
+      :class="cn(
+        'absolute inset-0 flex gap-0.5',
+        ctx.disabled.value && 'pointer-events-none opacity-50',
+        props.class,
+      )"
     >
-      <div
-        v-for="period in periods"
-        :id="periodOptionId(period)"
-        :key="period"
-        role="option"
-        :aria-selected="selectedPeriod === period"
-        :aria-disabled="ctx.disabled.value || undefined"
-        :class="cn(
-          buttonVariants({ variant: 'ghost', size: 'sm' }),
-          'w-full cursor-pointer',
-          selectedPeriod === period
-            && 'bg-accent text-accent-foreground',
-        )"
-        @click="setPeriod(period)"
+      <!-- Hours -->
+      <ScrollAreaRoot
+        ref="hourRef"
+        class="
+          h-full w-16 rounded-md
+          focus-within:ring-[3px] focus-within:ring-ring/50
+        "
+        hide-scrollbar
       >
-        {{ period }}
+        <div
+          role="listbox"
+          aria-label="Hour"
+          aria-orientation="vertical"
+          :aria-activedescendant="activeHourId"
+          :aria-disabled="ctx.disabled.value || undefined"
+          :tabindex="ctx.disabled.value ? -1 : 0"
+          class="flex flex-col items-center gap-0.5 rounded-md p-1 outline-none"
+          @focus="onListboxFocus"
+          @keydown="onListboxKeydown('hour', $event)"
+        >
+          <div
+            v-for="hour in hours"
+            :id="hourOptionId(hour)"
+            :key="hour"
+            role="option"
+            :data-value="hour"
+            :aria-selected="selectedHour === hour"
+            :aria-disabled="ctx.disabled.value || undefined"
+            :class="cn(
+              buttonVariants({ variant: 'ghost', size: 'sm' }),
+              'w-full cursor-pointer tabular-nums',
+              selectedHour === hour
+                && 'bg-accent text-accent-foreground',
+            )"
+            @click="setHour(hour)"
+          >
+            {{ pad(hour) }}
+          </div>
+        </div>
+      </ScrollAreaRoot>
+
+      <!-- Minutes -->
+      <ScrollAreaRoot
+        ref="minuteRef"
+        class="
+          h-full w-16 rounded-md
+          focus-within:ring-[3px] focus-within:ring-ring/50
+        "
+        hide-scrollbar
+      >
+        <div
+          role="listbox"
+          aria-label="Minute"
+          aria-orientation="vertical"
+          :aria-activedescendant="activeMinuteId"
+          :aria-disabled="ctx.disabled.value || undefined"
+          :tabindex="ctx.disabled.value ? -1 : 0"
+          class="flex flex-col items-center gap-0.5 rounded-md p-1 outline-none"
+          @focus="onListboxFocus"
+          @keydown="onListboxKeydown('minute', $event)"
+        >
+          <div
+            v-for="minute in minutes"
+            :id="minuteOptionId(minute)"
+            :key="minute"
+            role="option"
+            :data-value="minute"
+            :aria-selected="selectedMinute === minute"
+            :aria-disabled="ctx.disabled.value || undefined"
+            :class="cn(
+              buttonVariants({ variant: 'ghost', size: 'sm' }),
+              'w-full cursor-pointer tabular-nums',
+              selectedMinute === minute
+                && 'bg-accent text-accent-foreground',
+            )"
+            @click="setMinute(minute)"
+          >
+            {{ pad(minute) }}
+          </div>
+        </div>
+      </ScrollAreaRoot>
+
+      <!-- AM/PM (12h only) -->
+      <div
+        v-if="is12h"
+        role="listbox"
+        aria-label="Period (AM/PM)"
+        aria-orientation="vertical"
+        :aria-activedescendant="activePeriodId"
+        :aria-disabled="ctx.disabled.value || undefined"
+        :tabindex="ctx.disabled.value ? -1 : 0"
+        class="
+          flex w-16 flex-col items-center gap-0.5 rounded-md p-1 outline-none
+          focus-visible:ring-[3px] focus-visible:ring-ring/50
+        "
+        @focus="onListboxFocus"
+        @keydown="onListboxKeydown('period', $event)"
+      >
+        <div
+          v-for="period in periods"
+          :id="periodOptionId(period)"
+          :key="period"
+          role="option"
+          :aria-selected="selectedPeriod === period"
+          :aria-disabled="ctx.disabled.value || undefined"
+          :class="cn(
+            buttonVariants({ variant: 'ghost', size: 'sm' }),
+            'w-full cursor-pointer',
+            selectedPeriod === period
+              && 'bg-accent text-accent-foreground',
+          )"
+          @click="setPeriod(period)"
+        >
+          {{ period }}
+        </div>
       </div>
+
+      <!-- Live region for screen reader announcements -->
+      <div
+        ref="liveRegion"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class="sr-only"
+      />
     </div>
-
-    <!-- Live region for screen reader announcements -->
-    <div
-      ref="liveRegion"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      class="sr-only"
-    />
   </div>
 </template>
