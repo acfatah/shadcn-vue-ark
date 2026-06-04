@@ -6,7 +6,7 @@ declare module 'vue-router' {
   interface RouteMeta {
     /** Title to show for the route (optional) */
     title?: string
-    /** Layout to use for the route. Default to 'BlankLayout' */
+    /** Layout component to render for the route */
     layout?: any
   }
 }

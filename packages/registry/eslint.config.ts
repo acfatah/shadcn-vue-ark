@@ -1,5 +1,6 @@
 import { betterTailwindcssPlugin, config, preset, tailwind, vue } from '@acfatah/eslint-preset'
 import pluginVitest from '@vitest/eslint-plugin'
+import storybook from 'eslint-plugin-storybook'
 
 export default config(
   {
@@ -11,6 +12,7 @@ export default config(
       '**/dist-ssr/**',
       '**/coverage/**',
       '**/public/**',
+      '**/storybook-static/**',
       '**/tsconfig.*',
       'logs',
     ],
@@ -19,6 +21,7 @@ export default config(
   {
     plugins: {
       ...betterTailwindcssPlugin,
+      storybook,
     },
 
     rules: {

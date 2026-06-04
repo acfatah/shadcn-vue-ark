@@ -4,7 +4,7 @@ import { vueRouter } from 'storybook-vue3-router'
 
 import registryItem from '@/components/layouts/sidebar-07/_registry'
 
-import App from '../../../app/src/App.vue'
+import App from './App.vue'
 import routes from './routes'
 
 const meta = {

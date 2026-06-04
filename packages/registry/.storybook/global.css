@@ -1,0 +1,16 @@
+/*
+  Storybook-local CSS entry. Re-exports the registry's global styles and the
+  sonner theme declarations, then declares the Tailwind sources to scan so that
+  utilities used in components AND stories are generated.
+*/
+@import '../src/styles/global.css';
+
+/*
+  Sonner's styles.css contains Tailwind @theme and @utility declarations for
+  toast variant colors (success, info, warning, error). These must be explicitly
+  @import'ed — @source scanning alone won't process them.
+*/
+@import '../src/components/ui/sonner/styles.css';
+
+@source '../src/**/*.{js,ts,vue}';
+@source '../stories/**/*.{html,js,ts,jsx,tsx,vue}';

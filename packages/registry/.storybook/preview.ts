@@ -3,7 +3,7 @@ import type { Preview } from '@storybook/vue3-vite'
 import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'
 
-import '../app/src/styles/global.css'
+import './global.css'
 import { tailwindViewports } from '../stories/tailwind-viewports'
 
 const pinia = createPinia()

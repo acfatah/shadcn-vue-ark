@@ -7,15 +7,18 @@
     "packages/*"
   ],
   "scripts": {
-    "storybook": "cd apps/storybook && bun storybook",
-    "storybook:build": "cd apps/storybook && bun storybook build",
+    "storybook": "cd packages/registry && bun storybook",
+    "storybook:build": "cd packages/registry && bun storybook:build",
     "registry": "cd packages/registry && bun registry",
     "registry:build": "cd packages/registry && bun registry:build",
     "outdated:all": "bun scripts/outdated-all.ts",
-    "update:all": "bun scripts/update-all.ts"
+    "update:all": "bun scripts/update-all.ts",
+    "precommit": "cd packages/registry && bun lint:staged"
   },
   "devDependencies": {
     "@acfatah/eslint-preset": "^3.2.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@types/bun": "^1.3.14",
     "@types/node": "^25.9.1",
     "eslint": "^9.39.4",
@@ -30,5 +33,14 @@
     "@tailwindcss/oxide",
     "esbuild",
     "simple-git-hooks"
-  ]
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun precommit",
+    "commit-msg": "bun commitlint --edit ${1}"
+  }
 }

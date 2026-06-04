@@ -1,7 +1,8 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
+
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.stories.tsbuildinfo",
 
     /* Linting */
     "strict": true,
@@ -12,18 +13,16 @@
     "noUncheckedSideEffectImports": true,
 
     "paths": {
-      "@/*": ["../../packages/registry/src/*"]
+      "@/*": ["./src/*"],
+      "packages.registry/*": ["./src/*"]
     }
   },
 
   "include": [
     ".storybook/**/*.ts",
-    "app/src/**/*.ts",
-    "app/src/**/*.vue",
     "stories/**/*.ts",
     "stories/**/*.vue",
-
-    "../../packages/registry/src/**/*.ts",
-    "../../packages/registry/src/**/*.vue"
+    "src/**/*.ts",
+    "src/**/*.vue"
   ]
 }

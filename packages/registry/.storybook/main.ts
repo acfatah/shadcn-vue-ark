@@ -20,8 +20,6 @@ const config: StorybookConfig = {
   typescript: {
     docgen: 'vue-component-meta',
   },
-
-  staticDirs: ['../app/public'],
 }
 
 export default config

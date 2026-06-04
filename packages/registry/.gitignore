@@ -4,7 +4,11 @@ node_modules
 # output
 out
 dist
+storybook-static
 *.tgz
+
+# storybook
+*storybook.log
 
 # code coverage
 coverage
