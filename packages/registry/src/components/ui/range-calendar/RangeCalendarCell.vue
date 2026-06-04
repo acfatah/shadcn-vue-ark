@@ -26,11 +26,11 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     :class="cn(`
       relative flex-1 p-0 text-center text-sm
       focus-within:relative focus-within:z-20
-      [&:has([data-in-range])]:bg-accent
-      first:[&:has([data-in-range])]:rounded-l-md
-      last:[&:has([data-in-range])]:rounded-r-md
-      [&:has([data-range-end])]:rounded-r-md
-      [&:has([data-range-start])]:rounded-l-md
+      has-data-in-range:bg-accent
+      first:has-data-in-range:rounded-l-md
+      last:has-data-in-range:rounded-r-md
+      has-data-range-end:rounded-r-md
+      has-data-range-start:rounded-l-md
     `, props.class)"
     :value="props.value"
     v-bind="forwardedProps"
