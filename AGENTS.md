@@ -91,14 +91,20 @@ Key patterns:
 Global styles and theming are in `src/styles/global.css` (24 color themes,
 OKLch color space, dark mode via `.dark` class).
 
-### Storybook app (`apps/storybook`)
+### Storybook (`packages/registry`)
+
+Storybook lives inside the registry package. Config is in
+`packages/registry/.storybook/`, and stories live in
+`packages/registry/stories/`, mirroring the `src/` tree.
 
 Stories live in `stories/ui/<name>/`. Each component folder has:
 
 - `<Name>.stories.ts` — story meta, argTypes, and named story exports
 - `*Story.vue` — individual story variant components
 
-The `@` alias in storybook Vite config points to `packages/registry/src`.
+The `@` alias in `packages/registry/vite.config.ts` points to
+`packages/registry/src`. Run Storybook with `bun storybook` (root) or
+`cd packages/registry && bun storybook`.
 
 Bun workspace, e.g. `packages/registry`, are resolved using `packages.registry`
 namespace in package imports.
