@@ -1,35 +1,17 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date'
-import type { HTMLAttributes, Ref } from 'vue'
+import type { Ref } from 'vue'
 
 import { computed, ref, watch } from 'vue'
 
 import { cn } from '@/lib/utils'
 
-import type { LayoutTypes } from './types'
+import type { DatePickerRootEmits, DatePickerRootProps } from './types.ts'
 
 import PopoverRoot from '../popover/PopoverRoot.vue'
-import { DatePickerProvider } from './context'
+import { DatePickerProvider } from './context.ts'
 
-interface Props {
-  class?: HTMLAttributes['class']
-  modelValue?: DateValue
-  defaultValue?: DateValue
-  layout?: LayoutTypes
-  placeholder?: string
-  formatOptions?: Intl.DateTimeFormatOptions
-  locale?: string
-  closeOnSelect?: boolean
-  disabled?: boolean
-  invalid?: boolean
-  calendarProps?: Record<string, any>
-  align?: 'start' | 'center' | 'end'
-  alignOffset?: number
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  sideOffset?: number
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DatePickerRootProps>(), {
   modelValue: undefined,
   defaultValue: undefined,
   layout: undefined,
@@ -46,9 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   sideOffset: 2,
 })
 
-const emit = defineEmits<{
-  'update:modelValue': [value: DateValue | undefined]
-}>()
+const emit = defineEmits<DatePickerRootEmits>()
 
 const dateValue = ref(props.defaultValue) as Ref<DateValue | undefined>
 

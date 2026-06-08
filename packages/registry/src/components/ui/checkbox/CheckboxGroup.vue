@@ -2,8 +2,10 @@
 import type { HTMLAttributes } from 'vue'
 
 import { Checkbox } from '@ark-ui/vue/checkbox'
+import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+import { cn } from '@/lib/utils'
 
 // Unable to extend CheckboxGroupProps.
 // [@vue/compiler-sfc] Failed to resolve extends base type for Vue v3.3+
@@ -13,11 +15,15 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const forwardedProps = useForwardPropsEmits(props)
+const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
-  <Checkbox.Group v-bind="forwardedProps">
+  <Checkbox.Group
+    v-bind="forwardedProps"
+    :class="cn(props.class)"
+  >
     <slot />
   </Checkbox.Group>
 </template>

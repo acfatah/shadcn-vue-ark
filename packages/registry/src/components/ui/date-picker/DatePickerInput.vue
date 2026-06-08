@@ -1,28 +1,14 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-
 import { computed } from 'vue'
 
 import { fromDateValue, toDateValue } from '@/lib/internationalized-date'
 import { cn } from '@/lib/utils'
 
+import type { DatePickerInputProps } from './types'
+
 import { useDatePickerContext } from './context'
 
-interface Props {
-  id?: string
-  name?: string
-  class?: HTMLAttributes['class']
-  autocomplete?: string
-  disabled?: boolean
-  invalid?: boolean
-  max?: string
-  min?: string
-  readonly?: boolean
-  required?: boolean
-  step?: number | string
-}
-
-const props = defineProps<Props>()
+const props = defineProps<DatePickerInputProps>()
 
 const ctx = useDatePickerContext()!
 

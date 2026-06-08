@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue'
+import type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue/dialog'
 
 import {
   Dialog,

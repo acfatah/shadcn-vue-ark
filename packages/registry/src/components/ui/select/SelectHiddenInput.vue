@@ -3,6 +3,7 @@ import type { SelectHiddenSelectProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
+import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
@@ -15,7 +16,8 @@ interface Props extends SelectHiddenSelectProps {
 }
 
 const props = defineProps<Props>()
-const forwardedProps = useForwardPropsEmits(props)
+const delegatedProps = reactiveOmit(props, 'class')
+const forwardedProps = useForwardPropsEmits(delegatedProps)
 const selectContext = useSelectContext()
 useForwardExpose()
 </script>

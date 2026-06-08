@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import type { DialogContentProps } from '@ark-ui/vue/dialog'
-import type { HTMLAttributes } from 'vue'
-
 import { Dialog } from '@ark-ui/vue/dialog'
 import { reactiveOmit } from '@vueuse/core'
 import { X } from 'lucide-vue-next'
@@ -9,22 +6,18 @@ import { X } from 'lucide-vue-next'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import type { SheetContentProps } from './types'
+
 import SheetOverlay from './SheetOverlay.vue'
 
 defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SheetContentProps>(), {
   side: 'right',
   showCloseButton: true,
 })
-
-interface Props extends DialogContentProps {
-  class?: HTMLAttributes['class']
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  showCloseButton?: boolean
-}
 
 const delegatedProps = reactiveOmit(props, ['class', 'side', 'showCloseButton'])
 const forwardedProps = useForwardPropsEmits(delegatedProps)

@@ -1,19 +1,13 @@
 <script setup lang="ts">
-// import type { PolymorphicProps } from '@ark-ui/vue'
-import type { HTMLAttributes } from 'vue'
-
 import { ark } from '@ark-ui/vue'
 
 import { cn } from '@/lib/utils'
 
-import type { ButtonGroupVariants } from './types'
+import type { ButtonGroupRootProps } from './types'
 
 import { buttonGroupVariants } from './variant'
 
-const props = defineProps<{
-  class?: HTMLAttributes['class']
-  orientation?: ButtonGroupVariants['orientation']
-}>()
+const props = defineProps<ButtonGroupRootProps>()
 </script>
 
 <template>

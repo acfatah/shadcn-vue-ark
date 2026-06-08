@@ -26,7 +26,6 @@ export const registryItem = {
     '@ark-ui/vue',
     '@vueuse/core',
     'class-variance-authority',
-    'reka-ui',
   ],
 
   files: [

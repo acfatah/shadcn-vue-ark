@@ -19,7 +19,6 @@ export const registryItem = {
     '@ark-ui/vue',
     '@vueuse/core',
     'lucide-vue-next',
-    'reka-ui',
   ],
 
   files: [

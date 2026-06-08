@@ -8,9 +8,9 @@ import { registryItem } from '@/components/ui/kbd/_registry'
 import KbdDefaultStory from './KbdDefaultStory.vue'
 import KbdDefaultSource from './KbdDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Kbd> = {
   title: 'Components/Kbd',
-  component: Kbd.Root,
+  component: Kbd,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Kbd.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

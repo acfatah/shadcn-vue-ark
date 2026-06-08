@@ -12,7 +12,8 @@ const props = defineProps<{
 
 <template>
   <ark.div
-    data-slot="fieldset-content"
+    data-scope="fieldset"
+    data-part="content"
     :class="cn(
       'group/fieldset-content flex flex-1 flex-col gap-1.5 leading-snug',
       props.class,

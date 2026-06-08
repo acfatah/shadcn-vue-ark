@@ -1,35 +1,17 @@
 <script setup lang="ts">
 import type { CalendarDateTime } from '@internationalized/date'
-import type { HTMLAttributes, Ref } from 'vue'
+import type { Ref } from 'vue'
 
 import { computed, ref, watch } from 'vue'
 
 import { cn } from '@/lib/utils'
 
-import type { HourCycle, LayoutTypes } from './types'
+import type { DatetimePickerRootEmits, DatetimePickerRootProps } from './types'
 
 import PopoverRoot from '../popover/PopoverRoot.vue'
 import { DatetimePickerProvider } from './context'
 
-interface Props {
-  class?: HTMLAttributes['class']
-  modelValue?: CalendarDateTime
-  defaultValue?: CalendarDateTime
-  layout?: LayoutTypes
-  placeholder?: string
-  formatOptions?: Intl.DateTimeFormatOptions
-  locale?: string
-  hourCycle?: HourCycle
-  disabled?: boolean
-  invalid?: boolean
-  calendarProps?: Record<string, any>
-  align?: 'start' | 'center' | 'end'
-  alignOffset?: number
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  sideOffset?: number
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DatetimePickerRootProps>(), {
   modelValue: undefined,
   defaultValue: undefined,
   layout: undefined,
@@ -49,9 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
   sideOffset: 2,
 })
 
-const emit = defineEmits<{
-  'update:modelValue': [value: CalendarDateTime | undefined]
-}>()
+const emit = defineEmits<DatetimePickerRootEmits>()
 
 const datetimeValue = ref(
   props.defaultValue,
