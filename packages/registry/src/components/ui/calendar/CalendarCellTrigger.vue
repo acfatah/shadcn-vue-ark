@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { DatePickerTableCellTriggerProps } from '@ark-ui/vue/date-picker'
+import type { DateValue } from '@internationalized/date'
 import type { HTMLAttributes } from 'vue'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
@@ -12,6 +13,7 @@ import { cn } from '@/lib/utils'
 interface Props extends DatePickerTableCellTriggerProps {
   asChild?: boolean
   class?: HTMLAttributes['class']
+  value?: DateValue
 }
 
 const props = withDefaults(defineProps<Props>(), {

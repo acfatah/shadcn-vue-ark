@@ -62,6 +62,7 @@ watch(
   (val) => {
     dateValue.value = val
   },
+  { immediate: true },
 )
 
 function setDate(val: DateValue | undefined) {
