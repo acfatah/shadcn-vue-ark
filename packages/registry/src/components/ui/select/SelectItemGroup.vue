@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SelectItemGroupProps } from '@ark-ui/vue/select'
+import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -8,7 +8,13 @@ import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-const props = defineProps<SelectItemGroupProps>()
+import type { SelectItemGroupProps } from './types'
+
+interface Props extends SelectItemGroupProps {
+  class?: HTMLAttributes['class']
+}
+
+const props = defineProps<Props>()
 const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardPropsEmits(delegatedProps)
 useForwardExpose()

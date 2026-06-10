@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { DatePickerNextTriggerProps } from '@ark-ui/vue/date-picker'
 import type { HTMLAttributes } from 'vue'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
@@ -9,6 +8,8 @@ import { ChevronRight } from 'lucide-vue-next'
 import { buttonVariants } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { DatePickerNextTriggerProps } from './types'
 
 interface Props extends DatePickerNextTriggerProps {
   class?: HTMLAttributes['class']

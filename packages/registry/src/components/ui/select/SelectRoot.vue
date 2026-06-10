@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import type {
-  CollectionItem,
-  SelectRootEmits,
-} from '@ark-ui/vue/select'
-
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
 import { computed, ref } from 'vue'
@@ -11,7 +6,12 @@ import { computed, ref } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { Placement, SelectProps } from './types'
+import type {
+  CollectionItem,
+  Placement,
+  SelectProps,
+  SelectRootEmits,
+} from './types'
 
 import SelectContextProvider from './SelectContextProvider.vue'
 
@@ -61,7 +61,7 @@ function setNativeInvalid(value: boolean = true) {
 <template>
   <Select.Root
     v-bind="forwardedProps"
-    :collection="props.collection"
+    :collection="(props.collection as any)"
     :disabled="disabled"
     :positioning="positioning"
     :invalid="props.invalid || nativeInvalid"

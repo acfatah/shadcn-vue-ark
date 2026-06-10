@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SelectItemIndicatorProps } from '@ark-ui/vue/select'
+import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -9,7 +9,11 @@ import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends SelectItemIndicatorProps {}
+import type { SelectItemIndicatorProps } from './types'
+
+interface Props extends SelectItemIndicatorProps {
+  class?: HTMLAttributes['class']
+}
 
 const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')

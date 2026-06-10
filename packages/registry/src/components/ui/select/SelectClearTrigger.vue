@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SelectClearTriggerProps } from '@ark-ui/vue/select'
+import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -9,7 +9,11 @@ import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends SelectClearTriggerProps {}
+import type { SelectClearTriggerProps } from './types'
+
+interface Props extends SelectClearTriggerProps {
+  class?: HTMLAttributes['class']
+}
 
 const props = withDefaults(defineProps<Props>(), {})
 const delegatedProps = reactiveOmit(props, 'class')

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ComboboxTriggerProps } from '@ark-ui/vue/combobox'
 import type { HTMLAttributes } from 'vue'
 
 import { Combobox } from '@ark-ui/vue/combobox'
@@ -8,6 +7,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { ComboboxTriggerProps } from './types'
 
 interface Props extends ComboboxTriggerProps {
   class?: HTMLAttributes['class']

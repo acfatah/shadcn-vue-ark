@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CollectionItem, SelectItemProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
 
 import { Select } from '@ark-ui/vue/select'
@@ -9,6 +8,8 @@ import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { CollectionItem, SelectItemProps } from './types'
 
 import SelectItemIndicator from './SelectItemIndicator.vue'
 import SelectItemText from './SelectItemText.vue'

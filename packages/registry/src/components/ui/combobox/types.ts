@@ -1,35 +1,8 @@
-// Types extracted from @ark-ui/vue@5.37.0 (re-exports @zag-js/select@1.x).
+// Types extracted from @ark-ui/vue@5.37.0 (re-exports @zag-js/combobox@1.x).
 // Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.
 
-import type { HTMLAttributes } from 'vue'
-
 // ── Collection primitives (inlined from @zag-js/collection) ──────────────────
-// `CollectionItem` is `any` in @zag-js/collection — keep it permissive so the
-// hand-written generics stay assignable to Ark's runtime `<Select.Root>`.
 export type CollectionItem = any
-
-export interface CollectionMethods<T extends CollectionItem = CollectionItem> {
-  /** The value of the item */
-  itemToValue: (item: T) => string
-
-  /** The label of the item */
-  itemToString: (item: T) => string
-
-  /** Whether the item is disabled */
-  isItemDisabled: (item: T) => boolean
-}
-
-export interface CollectionOptions<T extends CollectionItem = CollectionItem>
-  extends Partial<CollectionMethods<T>> {
-  /** The options of the select */
-  items: Iterable<T> | Readonly<Iterable<T>>
-
-  /** Function to group items */
-  groupBy?: ((item: T, index: number) => string) | undefined
-
-  /** Function to sort items */
-  groupSort?: ((a: string, b: string) => number) | string[] | 'asc' | 'desc' | undefined
-}
 
 export interface CollectionSearchState {
   keysSoFar: string
@@ -42,10 +15,33 @@ export interface CollectionSearchOptions {
   timeout?: number | undefined
 }
 
-// Structural copy of @zag-js/collection's `ListCollection` class. The Ark runtime
-// `<Select.Root>` binds `collection: ListCollection<T>`; this interface mirrors
-// the public members the wrappers and the runtime consume, so passing an actual
-// `createListCollection(...)` instance stays assignable.
+export interface CollectionMethods<T extends CollectionItem = CollectionItem> {
+  /** The value of the item */
+  itemToValue: (item: T) => string
+
+  /** The label of the item */
+  itemToString: (item: T) => string
+
+  /** Whether the item is disabled */
+  isItemDisabled: (item: T) => boolean
+}
+
+export interface CollectionOptions<T extends CollectionItem = CollectionItem> extends Partial<CollectionMethods<T>> {
+  /** The options of the select */
+  items: Iterable<T> | Readonly<Iterable<T>>
+
+  /** Function to group items */
+  groupBy?: ((item: T, index: number) => string) | undefined
+
+  /** Function to sort items */
+  groupSort?: ((a: string, b: string) => number) | string[] | 'asc' | 'desc' | undefined
+}
+
+/**
+ * Structural mirror of the runtime `ListCollection` class from `@zag-js/collection`.
+ * Kept faithful to its public surface so `:collection` / `v-bind` stay assignable
+ * to the runtime `<Combobox.Root>`.
+ */
 export interface ListCollection<T extends CollectionItem = CollectionItem> {
   /** The items in the collection */
   items: T[]
@@ -53,12 +49,8 @@ export interface ListCollection<T extends CollectionItem = CollectionItem> {
   /** Copy the collection */
   copy: (items?: T[]) => ListCollection<T>
 
-  /**
-   * Check if the collection is equal to another collection.
-   * Parameter widened to `any` so the contravariant position does not block the
-   * real zag `createListCollection()` class instance from being assignable here.
-   */
-  isEqual: (other: any) => boolean
+  /** Check if the collection is equal to another collection */
+  isEqual: (other: ListCollection<T>) => boolean
 
   /** Function to update the collection items */
   setItems: (items: T[]) => ListCollection<T>
@@ -352,7 +344,7 @@ export interface PositioningOptions {
   }) => void | Promise<void>) | undefined
 }
 
-// ── Outside-event details (inlined from @zag-js/interact-outside) ─────────────
+// ── Outside-event details (inlined from @zag-js/dismissable → @zag-js/interact-outside) ──
 export interface EventDetails<T> {
   originalEvent: T
   contextmenu: boolean
@@ -366,7 +358,7 @@ export type FocusOutsideEvent = CustomEvent<EventDetails<FocusEvent>>
 
 export type InteractOutsideEvent = PointerDownOutsideEvent | FocusOutsideEvent
 
-// ── Detail types (inlined from @zag-js/select) ───────────────────────────────
+// ── Detail types (inlined from @zag-js/combobox) ─────────────────────────────
 export interface ValueChangeDetails<T extends CollectionItem = CollectionItem> {
   value: string[]
   items: T[]
@@ -375,11 +367,22 @@ export interface ValueChangeDetails<T extends CollectionItem = CollectionItem> {
 export interface HighlightChangeDetails<T extends CollectionItem = CollectionItem> {
   highlightedValue: string | null
   highlightedItem: T | null
-  highlightedIndex: number
 }
+
+/** The reason for the input value change */
+export type InputValueChangeReason = 'input-change' | 'item-select' | 'clear-trigger' | 'script' | 'interact-outside'
+
+export interface InputValueChangeDetails {
+  inputValue: string
+  reason?: InputValueChangeReason | undefined
+}
+
+/** The reason for the combobox open/close state change */
+export type OpenChangeReason = 'input-click' | 'trigger-click' | 'script' | 'arrow-key' | 'input-change' | 'interact-outside' | 'escape-key' | 'item-select' | 'clear-trigger'
 
 export interface OpenChangeDetails {
   open: boolean
+  reason?: OpenChangeReason | undefined
   value: string[]
 }
 
@@ -389,121 +392,103 @@ export interface ScrollToIndexDetails {
   getElement: () => HTMLElement | null
 }
 
-export interface SelectionDetails {
+export interface NavigateDetails {
   value: string
+  node: HTMLAnchorElement
+  href: string
+}
+
+export interface SelectionDetails {
+  value: string[]
+  itemValue: string
 }
 
 export interface IntlTranslations {
+  triggerLabel?: string | undefined
   clearTriggerLabel?: string | undefined
 }
 
-export type ElementIds = Partial<{
-  root: string
-  content: string
-  control: string
-  trigger: string
-  clearTrigger: string
-  label: string
-  hiddenSelect: string
-  positioner: string
-  item: (id: string | number) => string
-  itemGroup: (id: string | number) => string
-  itemGroupLabel: (id: string | number) => string
-}>
-
-// ── Item part detail types (inlined from @zag-js/select) ─────────────────────
-export interface ItemProps<T extends CollectionItem = CollectionItem> {
-  /** The item to render */
-  item: T
-
-  /** Whether hovering outside should clear the highlighted state */
-  persistFocus?: boolean | undefined
-}
-
-export interface ItemState {
-  /** The underlying value of the item */
-  value: string
-
-  /** Whether the item is disabled */
-  disabled: boolean
-
-  /** Whether the item is selected */
-  selected: boolean
-
-  /** Whether the item is highlighted */
-  highlighted: boolean
-}
-
-export interface ItemGroupProps {
-  id: string
-}
-
-export interface ItemGroupLabelProps {
-  htmlFor: string
-}
-
 // ── Root ─────────────────────────────────────────────────────────────────────
-// Ark: SelectRootBaseProps<T> extends RootProps<T>, RenderStrategyProps,
-// PolymorphicProps. Faithful 1:1 of the merged surface, generic over `T`.
-export interface SelectRootProps<T extends CollectionItem = CollectionItem> {
-  /**
-   * The autocomplete attribute for the hidden select. Enables browser autofill (e.g. "address-level1" for state).
-   */
-  autoComplete?: string
+export interface ComboboxRootProps<T extends CollectionItem = CollectionItem> {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
 
   /**
-   * Whether the select should close after an item is selected
-   * @default true
+   * Whether to allow typing custom values in the input
+   */
+  allowCustomValue?: boolean
+
+  /**
+   * Whether to allow bypassing the default two-step behavior (Enter to close combobox, then Enter to submit form)
+   * and instead submit the form immediately on Enter press. This is useful for single-field autocomplete forms
+   * where Enter should submit the form directly.
+   */
+  alwaysSubmitOnEnter?: boolean
+
+  /**
+   * Whether to autofocus the input on mount
+   */
+  autoFocus?: boolean
+
+  /**
+   * Whether to close the combobox when an item is selected.
    */
   closeOnSelect?: boolean
 
   /**
    * The collection of items
    */
-  collection: ListCollection<T>
+  collection?: ListCollection<T>
 
   /**
-   * Whether the select is a composed with other composite widgets like tabs or combobox
+   * Whether the combobox is a composed with other composite widgets like tabs
    * @default true
    */
   composite?: boolean
 
   /**
-   * The initial value of the highlighted item when opened.
-   * Use when you don't need to control the highlighted value of the select.
+   * The initial highlighted value of the combobox when rendered.
+   * Use when you don't need to control the highlighted value of the combobox.
    */
   defaultHighlightedValue?: string
 
   /**
-   * Whether the select's open state is controlled by the user
+   * The initial value of the combobox's input when rendered.
+   * Use when you don't need to control the value of the combobox's input.
+   * @default ""
+   */
+  defaultInputValue?: string
+
+  /**
+   * The initial open state of the combobox when rendered.
+   * Use when you don't need to control the open state of the combobox.
    */
   defaultOpen?: boolean
 
   /**
-   * The initial default value of the select when rendered.
-   * Use when you don't need to control the value of the select.
+   * The initial value of the combobox's selected items when rendered.
+   * Use when you don't need to control the value of the combobox's selected items.
+   * @default []
    */
   defaultValue?: string[]
 
   /**
-   * Whether the value can be cleared by clicking the selected item.
-   *
-   * **Note:** this is only applicable for single selection
+   * Whether to disable registering this a dismissable layer
    */
-  deselectable?: boolean
+  disableLayer?: boolean
 
   /**
-   * Whether the select is disabled
+   * Whether the combobox is disabled
    */
   disabled?: boolean
 
   /**
-   * The associate form of the underlying select.
+   * The associate form of the combobox.
    */
   form?: string
 
   /**
-   * The controlled key of the highlighted item
+   * The controlled highlighted value of the combobox
    */
   highlightedValue?: string
 
@@ -513,65 +498,113 @@ export interface SelectRootProps<T extends CollectionItem = CollectionItem> {
   id?: string
 
   /**
-   * The ids of the elements in the select. Useful for composition.
+   * The ids of the elements in the combobox. Useful for composition.
    */
   ids?: Partial<{
     root: string
-    content: string
+    label: string
     control: string
+    input: string
+    content: string
     trigger: string
     clearTrigger: string
-    label: string
-    hiddenSelect: string
+    item: (id: string, index?: number) => string
     positioner: string
-    item: (id: string | number) => string
     itemGroup: (id: string | number) => string
     itemGroupLabel: (id: string | number) => string
   }>
 
   /**
-   * Whether the select is invalid
+   * Defines the auto-completion behavior of the combobox.
+   *
+   * - `autohighlight`: The first focused item is highlighted as the user types
+   * - `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated
+   *
+   * @default "none"
+   */
+  inputBehavior?: 'autohighlight' | 'autocomplete' | 'none'
+
+  /**
+   * The controlled value of the combobox's input
+   */
+  inputValue?: string
+
+  /**
+   * Whether the combobox is invalid
    */
   invalid?: boolean
 
   /**
-   * Whether to loop the keyboard navigation through the options
-   * @default false
+   * Whether to loop the keyboard navigation through the items
+   * @default true
    */
   loopFocus?: boolean
 
   /**
-   * The model value of the select
+   * The v-model value of the combobox
    */
   modelValue?: string[]
 
   /**
-   * Whether to allow multiple selection
+   * Whether to allow multiple selection.
+   *
+   * **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.
+   * It is recommended to render the selected items in a separate container.
    */
   multiple?: boolean
 
   /**
-   * The `name` attribute of the underlying select.
+   * The `name` attribute of the combobox's input. Useful for form submission
    */
   name?: string
 
   /**
-   * Whether the select menu is open
+   * Function to navigate to the selected item
+   */
+  navigate?: (details: NavigateDetails) => void
+
+  /**
+   * The controlled open state of the combobox
    */
   open?: boolean
 
   /**
-   * The positioning options of the menu.
+   * Whether to show the combobox when the input value changes
+   * @default true
+   */
+  openOnChange?: boolean | ((details: InputValueChangeDetails) => boolean)
+
+  /**
+   * Whether to open the combobox popup on initial click on the input
+   * @default false
+   */
+  openOnClick?: boolean
+
+  /**
+   * Whether to open the combobox on arrow key press
+   * @default true
+   */
+  openOnKeyPress?: boolean
+
+  /**
+   * The placeholder text of the combobox's input
+   */
+  placeholder?: string
+
+  /**
+   * The positioning options to dynamically position the menu
+   * @default { placement: "bottom-start" }
    */
   positioning?: PositioningOptions
 
   /**
-   * Whether the select is read-only
+   * Whether the combobox is readonly. This puts the combobox in a "non-editable" mode
+   * but the user can still interact with it
    */
   readOnly?: boolean
 
   /**
-   * Whether the select is required
+   * Whether the combobox is required
    */
   required?: boolean
 
@@ -579,6 +612,17 @@ export interface SelectRootProps<T extends CollectionItem = CollectionItem> {
    * Function to scroll to a specific index
    */
   scrollToIndexFn?: (details: ScrollToIndexDetails) => void
+
+  /**
+   * The behavior of the combobox input when an item is selected
+   *
+   * - `replace`: The selected item string is set as the input value
+   * - `clear`: The input value is cleared
+   * - `preserve`: The input value is preserved
+   *
+   * @default "replace"
+   */
+  selectionBehavior?: 'clear' | 'replace' | 'preserve'
 
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
@@ -596,14 +640,9 @@ export interface SelectRootProps<T extends CollectionItem = CollectionItem> {
    * @default false
    */
   unmountOnExit?: boolean
-
-  /**
-   * Use the provided child element as the default rendered element, combining their props and behavior.
-   */
-  asChild?: boolean
 }
 
-export interface SelectRootEmits<T extends CollectionItem = CollectionItem> {
+export interface ComboboxRootEmits<T extends CollectionItem = CollectionItem> {
   /**
    * Function called when the animation ends in the closed state
    */
@@ -615,9 +654,15 @@ export interface SelectRootEmits<T extends CollectionItem = CollectionItem> {
   'focusOutside': [event: FocusOutsideEvent]
 
   /**
-   * The callback fired when the highlighted item changes.
+   * Function called when an item is highlighted using the pointer
+   * or keyboard navigation.
    */
   'highlightChange': [details: HighlightChangeDetails<T>]
+
+  /**
+   * Function called when the input's value changes
+   */
+  'inputValueChange': [details: InputValueChangeDetails]
 
   /**
    * Function called when an interaction happens outside the component
@@ -635,14 +680,17 @@ export interface SelectRootEmits<T extends CollectionItem = CollectionItem> {
   'pointerDownOutside': [event: PointerDownOutsideEvent]
 
   /**
-   * Function called when an item is selected
-   */
-  'select': [details: SelectionDetails]
-
-  /**
-   * The callback fired when the selected item changes.
+   * Function called when a new item is selected
    */
   'valueChange': [details: ValueChangeDetails<T>]
+
+  /**
+   * Function called when an item is selected
+   */
+  'select': [details: {
+    value: string[]
+    itemValue: string
+  }]
 
   /**
    * The callback fired when the model value changes.
@@ -650,199 +698,91 @@ export interface SelectRootEmits<T extends CollectionItem = CollectionItem> {
   'update:modelValue': [value: string[]]
 
   /**
-   * The callback fired when the open state changes.
-   */
-  'update:open': [open: boolean]
-
-  /**
    * The callback fired when the highlighted value changes.
    */
   'update:highlightedValue': [value: string | null]
+
+  /**
+   * The callback fired when the input value changes.
+   */
+  'update:inputValue': [value: string]
+
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [value: boolean]
 }
 
 // ── Sub-parts ────────────────────────────────────────────────────────────────
-// Ark: SelectTriggerBaseProps extends PolymorphicProps
-export interface SelectTriggerProps {
+export interface ComboboxInputProps {
   /** Use the provided child element as the default rendered element, combining their props and behavior. */
   asChild?: boolean
 }
 
-// Ark: SelectContentBaseProps extends PolymorphicProps
-export interface SelectContentProps {
+export interface ComboboxTriggerProps {
   /** Use the provided child element as the default rendered element, combining their props and behavior. */
   asChild?: boolean
-}
-
-// Ark: SelectItemBaseProps extends ItemProps, PolymorphicProps
-export interface SelectItemProps<T extends CollectionItem = CollectionItem> {
-  /** The item to render */
-  item: T
-
-  /** Whether hovering outside should clear the highlighted state */
-  persistFocus?: boolean | undefined
-
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectItemTextBaseProps extends PolymorphicProps
-export interface SelectItemTextProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectItemIndicatorBaseProps extends PolymorphicProps
-export interface SelectItemIndicatorProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps
-export interface SelectItemGroupProps {
-  /** The `id` of the element that provides accessibility label to the option group */
-  id?: string
-
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectItemGroupLabelBaseProps extends PolymorphicProps
-export interface SelectItemGroupLabelProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectIndicatorBaseProps extends PolymorphicProps
-export interface SelectIndicatorProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectClearTriggerBaseProps extends PolymorphicProps
-export interface SelectClearTriggerProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectValueTextBaseProps extends PolymorphicProps, with a `placeholder`
-export interface SelectValueTextProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-
-  placeholder?: string
-}
-
-// Ark: SelectHiddenSelectBaseProps extends PolymorphicProps
-export interface SelectHiddenSelectProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// Ark: SelectLabelBaseProps extends PolymorphicProps
-export interface SelectLabelProps {
-  /** Use the provided child element as the default rendered element, combining their props and behavior. */
-  asChild?: boolean
-}
-
-// ── Imperative API surface (faithful copy of @zag-js/select `SelectApi`) ──────
-// The value returned by the `useSelect` composable / `Select.RootProvider`. The
-// element-prop getters return framework prop bags; modeled as `any` to stay
-// assignable to Ark's `PropTypes`-generic runtime without importing @zag-js.
-export interface SelectApi<V extends CollectionItem = CollectionItem> {
-  /** Whether the select is focused */
-  focused: boolean
-
-  /** Whether the select is open */
-  open: boolean
-
-  /** Whether the select value is empty */
-  empty: boolean
-
-  /** The value of the highlighted item */
-  highlightedValue: string | null
-
-  /** The highlighted item */
-  highlightedItem: V | null
-
-  /** Function to highlight a value */
-  setHighlightValue: (value: string) => void
-
-  /** Function to clear the highlighted value */
-  clearHighlightValue: VoidFunction
-
-  /** The selected items */
-  selectedItems: V[]
-
-  /** Whether there's a selected option */
-  hasSelectedItems: boolean
-
-  /** The selected item keys */
-  value: string[]
-
-  /** The string representation of the selected items */
-  valueAsString: string
-
-  /** Function to select a value */
-  selectValue: (value: string) => void
-
-  /** Function to select all values */
-  selectAll: VoidFunction
-
-  /** Function to set the value of the select */
-  setValue: (value: string[]) => void
 
   /**
-   * Function to clear the value of the select.
-   * If a value is provided, it will only clear that value, otherwise, it will clear all values.
+   * Whether the trigger is focusable
    */
-  clearValue: (value?: string) => void
-
-  /** Function to focus on the select input */
-  focus: VoidFunction
-
-  /** Returns the state of a select item */
-  getItemState: (props: ItemProps) => ItemState
-
-  /** Function to open or close the select */
-  setOpen: (open: boolean) => void
-
-  /** The item collection */
-  collection: ListCollection<V>
-
-  /** Function to set the positioning options of the select */
-  reposition: (options?: Partial<PositioningOptions>) => void
-
-  /** Whether the select allows multiple selections */
-  multiple: boolean
-
-  /** Whether the select is disabled */
-  disabled: boolean
-
-  getRootProps: () => any
-  getLabelProps: () => any
-  getControlProps: () => any
-  getTriggerProps: () => any
-  getIndicatorProps: () => any
-  getClearTriggerProps: () => any
-  getValueTextProps: () => any
-  getPositionerProps: () => any
-  getContentProps: () => any
-  getListProps: () => any
-  getItemProps: (props: ItemProps) => any
-  getItemTextProps: (props: ItemProps) => any
-  getItemIndicatorProps: (props: ItemProps) => any
-  getItemGroupProps: (props: ItemGroupProps) => any
-  getItemGroupLabelProps: (props: ItemGroupLabelProps) => any
-  getHiddenSelectProps: () => any
+  focusable?: boolean
 }
 
-// ── Wrapper props (registry component surface) ───────────────────────────────
-export interface SelectProps extends SelectRootProps<CollectionItem> {
-  align?: 'start' | 'center' | 'end'
-  alignOffset?: number
-  class?: HTMLAttributes['class']
-  invalid?: boolean
-  loading?: boolean
-  side?: 'top' | 'right' | 'bottom' | 'left'
-  sideOffset?: number
+export interface ComboboxContentProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface ComboboxListProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface ComboboxControlProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface ComboboxPositionerProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface ComboboxItemProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+
+  /**
+   * Whether hovering outside should clear the highlighted state
+   */
+  persistFocus?: boolean
+
+  /**
+   * The item to render
+   */
+  item: CollectionItem
+}
+
+export interface ComboboxItemIndicatorProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface ComboboxItemGroupProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+
+  id?: string
+}
+
+export interface ComboboxEmptyProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+// ── Separator (custom part rendered via `ark.div`; PolymorphicProps inlined) ──
+export interface ComboboxSeparatorProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
 }

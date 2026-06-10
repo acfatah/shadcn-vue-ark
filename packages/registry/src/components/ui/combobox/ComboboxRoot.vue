@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type {
-  CollectionItem,
-  ComboboxRootEmits,
-  ComboboxRootProps,
-} from '@ark-ui/vue/combobox'
-
 import { Combobox } from '@ark-ui/vue/combobox'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type {
+  CollectionItem,
+  ComboboxRootEmits,
+  ComboboxRootProps,
+} from './types'
 
 interface Props extends ComboboxRootProps<CollectionItem> {
   align?: 'start' | 'center' | 'end'

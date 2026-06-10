@@ -1,5 +1,3 @@
-import type { CollectionItem } from '@ark-ui/vue/select'
-
 import {
   Select as ArkSelect,
   useSelect as useArkSelect,
@@ -12,6 +10,7 @@ import type {
   UseSelectProps,
   UseSelectReturn,
 } from './context'
+import type { CollectionItem } from './types'
 
 import { SelectProvider } from './context'
 
@@ -41,7 +40,12 @@ export { createListCollection } from '@ark-ui/vue/select'
 export function useSelect<T extends CollectionItem>(
   props?: UseSelectProps<T>,
 ): UseSelectReturn<T> {
-  const api = useArkSelect<T>(props ?? ({} as UseSelectProps<T>))
+  // `useArkSelect` is the runtime Ark engine; bridge the locally-typed props to
+  // its parameter type (derived from the value, not an Ark type import) — the
+  // runtime `collection` value is a real `createListCollection()` instance.
+  const api = useArkSelect<T>(
+    (props ?? {}) as Parameters<typeof useArkSelect<T>>[0],
+  )
   const loading = ref(false)
   const nativeInvalid = ref(false)
   const disabled = computed(() => api.value.disabled || loading.value)

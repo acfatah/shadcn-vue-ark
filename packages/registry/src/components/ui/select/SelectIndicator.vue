@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SelectIndicatorProps } from '@ark-ui/vue/select'
 import type { HTMLAttributes } from 'vue'
 
 import { Select, useSelectContext } from '@ark-ui/vue/select'
@@ -10,6 +9,8 @@ import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SelectIndicatorProps } from './types'
 
 interface Props extends SelectIndicatorProps {
   class?: HTMLAttributes['class']

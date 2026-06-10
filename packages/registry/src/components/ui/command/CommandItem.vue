@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ListboxItemProps } from '@ark-ui/vue/listbox'
 import type { HTMLAttributes } from 'vue'
 
 import { Listbox } from '@ark-ui/vue/listbox'
@@ -11,6 +10,7 @@ import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
 import type { CommandItemData } from './context'
+import type { ListboxItemProps } from './types'
 
 import { useCommand, useCommandGroup } from './context'
 

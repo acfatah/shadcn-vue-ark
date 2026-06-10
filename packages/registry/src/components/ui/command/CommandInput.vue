@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ListboxInputProps } from '@ark-ui/vue/listbox'
 import type { HTMLAttributes } from 'vue'
 
 import { Listbox } from '@ark-ui/vue/listbox'
@@ -8,6 +7,8 @@ import { Search } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { ListboxInputProps } from './types'
 
 import { useCommand } from './context'
 

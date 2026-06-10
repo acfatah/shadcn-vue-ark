@@ -1,6 +1,6 @@
-import type { UseFileUploadContext as UseArkFileUploadContext } from '@ark-ui/vue/file-upload'
-
 import { createContext } from '@/composables/createContext'
 
+import type { UseFileUploadContext } from './types'
+
 export const [FileUploadProvider, useFileUploadContext]
-  = createContext<UseArkFileUploadContext>('FileUploadContext')
+  = createContext<UseFileUploadContext>('FileUploadContext')

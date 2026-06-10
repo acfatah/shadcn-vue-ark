@@ -1,12 +1,125 @@
-// Extracted from @ark-ui/vue@5.36.2 — re-sync when upgrading
-import type {
-  FileUploadFileAcceptDetails as FileAcceptDetails,
-  FileUploadFileChangeDetails as FileChangeDetails,
-  FileUploadFileError as FileError,
-  FileUploadFileMimeType as FileMimeType,
-  FileUploadFileRejectDetails as FileRejectDetails,
-  FileUploadFileValidateDetails as FileValidateDetails,
-} from '@ark-ui/vue/file-upload'
+// Types extracted from @ark-ui/vue@5.37.0 (re-exports @zag-js/file-upload@1.x).
+// Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.
+
+import type { ComputedRef } from 'vue'
+
+// ── Detail types (inlined from @zag-js/file-utils + @zag-js/file-upload) ───────
+type AnyString = string & {}
+
+/** Inlined from @zag-js/file-utils. */
+type FileError
+  = | 'TOO_MANY_FILES'
+    | 'FILE_INVALID_TYPE'
+    | 'FILE_TOO_LARGE'
+    | 'FILE_TOO_SMALL'
+    | 'FILE_INVALID'
+    | 'FILE_EXISTS'
+    | AnyString
+
+type ImageFileMimeType
+  = | 'image/png'
+    | 'image/gif'
+    | 'image/jpeg'
+    | 'image/svg+xml'
+    | 'image/webp'
+    | 'image/avif'
+    | 'image/heic'
+    | 'image/bmp'
+
+type ApplicationFileMimeType
+  = | 'application/pdf'
+    | 'application/zip'
+    | 'application/json'
+    | 'application/xml'
+    | 'application/msword'
+    | 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    | 'application/vnd.ms-excel'
+    | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    | 'application/vnd.ms-powerpoint'
+    | 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+    | 'application/rtf'
+    | 'application/x-rar'
+    | 'application/x-7z-compressed'
+    | 'application/x-tar'
+    | 'application/vnd.microsoft.portable-executable'
+
+type TextFileMimeType
+  = | 'text/css'
+    | 'text/csv'
+    | 'text/html'
+    | 'text/markdown'
+    | 'text/plain'
+
+type FontFileMimeType
+  = | 'font/ttf'
+    | 'font/otf'
+    | 'font/woff'
+    | 'font/woff2'
+    | 'font/eot'
+    | 'font/svg'
+
+type VideoFileMimeType
+  = | 'video/mp4'
+    | 'video/webm'
+    | 'video/ogg'
+    | 'video/quicktime'
+    | 'video/x-msvideo'
+
+type AudioFileMimeType
+  = | 'audio/mpeg'
+    | 'audio/ogg'
+    | 'audio/wav'
+    | 'audio/webm'
+    | 'audio/aac'
+    | 'audio/flac'
+    | 'audio/x-m4a'
+
+type FileMimeTypeGroup
+  = | 'image/*'
+    | 'audio/*'
+    | 'video/*'
+    | 'text/*'
+    | 'application/*'
+    | 'font/*'
+
+/** Inlined from @zag-js/file-utils. */
+type FileMimeType
+  = | ImageFileMimeType
+    | ApplicationFileMimeType
+    | TextFileMimeType
+    | FontFileMimeType
+    | VideoFileMimeType
+    | AudioFileMimeType
+    | FileMimeTypeGroup
+    | AnyString
+
+/** Inlined from @zag-js/file-upload. */
+export interface FileRejection {
+  file: File
+  errors: FileError[]
+}
+
+/** Inlined from @zag-js/file-upload. */
+export interface FileAcceptDetails {
+  files: File[]
+}
+
+/** Inlined from @zag-js/file-upload. */
+export interface FileChangeDetails {
+  acceptedFiles: File[]
+  rejectedFiles: FileRejection[]
+}
+
+/** Inlined from @zag-js/file-upload. */
+export interface FileRejectDetails {
+  files: FileRejection[]
+}
+
+/** Inlined from @zag-js/file-upload. */
+export interface FileValidateDetails {
+  acceptedFiles: File[]
+  rejectedFiles: FileRejection[]
+}
 
 interface IntlTranslations {
   dropzone?: string
@@ -193,6 +306,12 @@ export interface FileUploadItemGroupProps {
 
 export interface FileUploadItemPreviewProps {
   asChild?: boolean
+
+  /**
+   * The file type to match against. Matches all file types by default.
+   * @default '.*'
+   */
+  type?: string
 }
 
 export interface FileUploadItemPreviewImageProps {
@@ -218,3 +337,141 @@ export interface FileUploadClearTriggerProps {
 export interface FileUploadHiddenInputProps {
   asChild?: boolean
 }
+
+// ── Context API (inlined from @zag-js/file-upload FileUploadApi) ───────────────
+interface ItemTypeProps {
+  type?: ItemType | undefined
+}
+
+interface ItemProps extends ItemTypeProps {
+  file: File
+}
+
+interface ItemPreviewImageProps extends ItemProps {
+  url: string
+}
+
+interface ItemGroupProps extends ItemTypeProps {}
+
+interface DropzoneProps {
+  /**
+   * Whether to disable the click event on the dropzone
+   */
+  disableClick?: boolean | undefined
+}
+
+/**
+ * The public file-upload API surface (faithful copy of @zag-js/file-upload's
+ * `FileUploadApi`). Element/prop getters return loose records so the runtime
+ * Ark `Api<PropTypes>` (whose getters return Vue element attribute objects)
+ * stays assignable to this context.
+ */
+export interface FileUploadApi {
+  /**
+   * Whether the user is dragging something over the root element
+   */
+  dragging: boolean
+
+  /**
+   * Whether the user is focused on the dropzone element
+   */
+  focused: boolean
+
+  /**
+   * Whether the file input is disabled
+   */
+  disabled: boolean
+
+  /**
+   * Whether the file input is in read-only mode
+   */
+  readOnly: boolean
+
+  /**
+   * Whether files are currently being transformed via `transformFiles`
+   */
+  transforming: boolean
+
+  /**
+   * Whether the maximum number of files has been reached
+   */
+  maxFilesReached: boolean
+
+  /**
+   * The number of files that can still be added
+   */
+  remainingFiles: number
+
+  /**
+   * Function to open the file dialog
+   */
+  openFilePicker: () => void
+
+  /**
+   * Function to delete the file from the list
+   */
+  deleteFile: (file: File, type?: ItemType | undefined) => void
+
+  /**
+   * The accepted files that have been dropped or selected
+   */
+  acceptedFiles: File[]
+
+  /**
+   * The files that have been rejected
+   */
+  rejectedFiles: FileRejection[]
+
+  /**
+   * Sets the accepted files
+   */
+  setFiles: (files: File[]) => void
+
+  /**
+   * Clears the accepted files
+   */
+  clearFiles: () => void
+
+  /**
+   * Clears the rejected files
+   */
+  clearRejectedFiles: () => void
+
+  /**
+   * Returns the formatted file size (e.g. 1.2MB)
+   */
+  getFileSize: (file: File) => string
+
+  /**
+   * Returns the preview url of a file.
+   * Returns a function to revoke the url.
+   */
+  createFileUrl: (file: File, cb: (url: string) => void) => () => void
+
+  /**
+   * Sets the clipboard files
+   * Returns `true` if the clipboard data contains files, `false` otherwise.
+   */
+  setClipboardFiles: (dt: DataTransfer | null) => boolean
+
+  getLabelProps: () => Record<string, any>
+  getRootProps: () => Record<string, any>
+  getDropzoneProps: (props?: DropzoneProps) => Record<string, any>
+  getTriggerProps: () => Record<string, any>
+  getHiddenInputProps: () => Record<string, any>
+  getItemGroupProps: (props?: ItemGroupProps) => Record<string, any>
+  getItemProps: (props: ItemProps) => Record<string, any>
+  getItemNameProps: (props: ItemProps) => Record<string, any>
+  getItemPreviewProps: (props: ItemProps) => Record<string, any>
+  getItemPreviewImageProps: (props: ItemPreviewImageProps) => Record<string, any>
+  getItemSizeTextProps: (props: ItemProps) => Record<string, any>
+  getItemDeleteTriggerProps: (props: ItemProps) => Record<string, any>
+  getClearTriggerProps: () => Record<string, any>
+}
+
+/**
+ * The reactive context value provided by `<FileUpload.RootProvider>` /
+ * `useFileUploadContext()`. Mirrors Ark's `UseFileUploadContext`, which is a
+ * `ComputedRef<FileUploadApi>`.
+ */
+export interface UseFileUploadContext extends ComputedRef<FileUploadApi> {}

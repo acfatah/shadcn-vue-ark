@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ComboboxItemGroupProps } from '@ark-ui/vue/combobox'
 import type { HTMLAttributes } from 'vue'
 
 import { Combobox } from '@ark-ui/vue/combobox'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { ComboboxItemGroupProps } from './types'
 
 interface Props extends ComboboxItemGroupProps {
   class?: HTMLAttributes['class']

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CollectionItem, ComboboxItemProps } from '@ark-ui/vue/combobox'
 import type { HTMLAttributes } from 'vue'
 
 import { Combobox } from '@ark-ui/vue/combobox'
@@ -9,6 +8,8 @@ import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { CollectionItem, ComboboxItemProps } from './types'
 
 interface Props extends ComboboxItemProps {
   item: CollectionItem

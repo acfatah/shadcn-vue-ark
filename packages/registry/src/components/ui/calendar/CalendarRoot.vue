@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { DatePickerRootEmits, DatePickerRootProps } from '@ark-ui/vue/date-picker'
 import type { HTMLAttributes } from 'vue'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
@@ -8,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { LayoutTypes } from './types'
+import type { DatePickerRootEmits, DatePickerRootProps, LayoutTypes } from './types'
 
 import CalendarCell from './CalendarCell.vue'
 import CalendarCellTrigger from './CalendarCellTrigger.vue'

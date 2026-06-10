@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { DialogRootEmits, DialogRootProps } from '@ark-ui/vue/dialog'
-
 import {
   Dialog,
   DialogContent,
@@ -9,6 +7,8 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { DialogRootEmits, DialogRootProps } from './types'
 
 import Command from './CommandRoot.vue'
 
