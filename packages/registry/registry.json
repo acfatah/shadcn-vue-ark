@@ -51,6 +51,10 @@
         {
           "path": "src/components/ui/accordion/AccordionTrigger.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/accordion/types.ts",
+          "type": "registry:ui"
         }
       ],
       "cssVars": {
@@ -221,6 +225,10 @@
         },
         {
           "path": "src/components/ui/avatar/AvatarFallback.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/avatar/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -586,6 +594,10 @@
         {
           "path": "src/components/ui/card/CardRoot.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/card/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -780,6 +792,10 @@
           "path": "src/composables/useForwardPropsEmits.ts",
           "type": "registry:file",
           "target": "src/composables/useForwardPropsEmits.ts"
+        },
+        {
+          "path": "src/components/ui/collapsible/types.ts",
+          "type": "registry:ui"
         }
       ],
       "cssVars": {
@@ -878,6 +894,10 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/combobox/types.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/combobox/ComboboxGroup.vue",
           "type": "registry:ui"
         }
@@ -891,8 +911,7 @@
       "dependencies": [
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
-        "reka-ui"
+        "@ark-ui/vue"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
@@ -964,6 +983,10 @@
         },
         {
           "path": "src/components/ui/command/CommandEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -1072,6 +1095,10 @@
         },
         {
           "path": "src/components/ui/context-menu/ContextMenuPortal.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -1470,6 +1497,10 @@
         {
           "path": "src/components/ui/dialog/DialogTitle.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -1540,6 +1571,10 @@
         },
         {
           "path": "src/components/ui/drawer/DrawerTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/drawer/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -1645,6 +1680,10 @@
         {
           "path": "src/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -1728,6 +1767,10 @@
         },
         {
           "path": "src/components/ui/editable/EditableLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -1872,6 +1915,10 @@
         {
           "path": "src/components/ui/field/FieldDescription.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -1934,6 +1981,10 @@
         },
         {
           "path": "src/components/ui/fieldset/FieldsetLegend.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/fieldset/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -2108,6 +2159,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/hover-card/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2345,8 +2400,7 @@
       "dependencies": [
         "@ark-ui/vue",
         "@vueuse/core",
-        "class-variance-authority",
-        "reka-ui"
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
@@ -2450,6 +2504,10 @@
         },
         {
           "path": "src/components/ui/kbd/KbdGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/kbd/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -2602,6 +2660,10 @@
         {
           "path": "src/components/ui/menubar/MenubarShortcut.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2685,6 +2747,10 @@
         {
           "path": "src/components/ui/navigation-menu/context.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2740,6 +2806,10 @@
         },
         {
           "path": "src/components/ui/number-input/NumberInputRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -2825,6 +2895,10 @@
         {
           "path": "src/components/ui/pagination/PaginationItem.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2886,6 +2960,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/pin-input/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2937,6 +3015,10 @@
         {
           "path": "src/components/ui/popover/PopoverTrigger.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/popover/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -2971,6 +3053,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/progress/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -3054,6 +3140,10 @@
         },
         {
           "path": "src/components/ui/radio-group/RadioGroupRootProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/radio-group/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -3139,6 +3229,10 @@
         {
           "path": "src/components/ui/range-calendar/RangeCalendarGridBody.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -3192,6 +3286,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/resizable/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -3247,6 +3345,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/scroll-area/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -3472,6 +3574,10 @@
         },
         {
           "path": "src/components/ui/sheet/SheetRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sheet/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3746,6 +3852,10 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
+        },
+        {
+          "path": "src/components/ui/slider/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -3963,6 +4073,10 @@
         {
           "path": "src/components/ui/switch/SwitchThumb.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/switch/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -4171,6 +4285,10 @@
         },
         {
           "path": "src/components/ui/tags-input/TagsInputItemDelete.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/types.ts",
           "type": "registry:ui"
         }
       ]
@@ -4386,6 +4504,10 @@
         {
           "path": "src/components/ui/toggle-group/context.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/toggle-group/types.ts",
+          "type": "registry:ui"
         }
       ]
     },
@@ -4446,6 +4568,10 @@
         },
         {
           "path": "src/components/ui/tooltip/TooltipProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tooltip/types.ts",
           "type": "registry:ui"
         }
       ]

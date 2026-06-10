@@ -15,7 +15,7 @@
   "files": [
     {
       "path": "src/components/ui/badge/Badge.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { BadgeVariants } from './types'\n\nimport { badgeVariants } from '.'\n\ninterface Props extends PolymorphicProps {\n  variant?: BadgeVariants['variant']\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.span\n    v-bind=\"forwardedProps\"\n    data-scope=\"badge\"\n    :class=\"cn(\n      badgeVariants({ variant: props.variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.span>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { BadgeProps, BadgeVariants } from './types'\n\nimport { badgeVariants } from '.'\n\ninterface Props extends BadgeProps {\n  variant?: BadgeVariants['variant']\n  class?: HTMLAttributes['class']\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  variant: 'default',\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <ark.span\n    v-bind=\"forwardedProps\"\n    data-scope=\"badge\"\n    :class=\"cn(\n      badgeVariants({ variant: props.variant }),\n      props.class,\n    )\"\n  >\n    <slot />\n  </ark.span>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "path": "src/components/ui/badge/types.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { badgeVariants } from './variant'\n\nexport type BadgeVariants = VariantProps<typeof badgeVariants>\n",
+      "content": "// `asChild` inlined from @ark-ui/vue@5.37.0 `PolymorphicProps`.\n// Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.\n\nimport type { VariantProps } from 'class-variance-authority'\n\nimport type { badgeVariants } from './variant'\n\nexport type BadgeVariants = VariantProps<typeof badgeVariants>\n\nexport interface BadgeProps {\n  /**\n   * Use the provided child element as the default rendered element, combining\n   * their props and behavior.\n   */\n  asChild?: boolean\n}\n",
       "type": "registry:ui"
     }
   ],

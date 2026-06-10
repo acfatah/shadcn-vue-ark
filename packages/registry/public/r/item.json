@@ -6,8 +6,7 @@
   "dependencies": [
     "@ark-ui/vue",
     "@vueuse/core",
-    "class-variance-authority",
-    "reka-ui"
+    "class-variance-authority"
   ],
   "registryDependencies": [
     "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
@@ -57,7 +56,7 @@
     },
     {
       "path": "src/components/ui/item/variant.ts",
-      "content": "import { cva } from 'class-variance-authority'\n\nexport const variant = {\n  default: 'bg-transparent',\n  outline: 'border-border',\n  muted: 'bg-muted/50',\n}\n\nexport const size = {\n  default: 'gap-4 p-4',\n  sm: 'gap-2.5 px-4 py-3',\n}\n\nexport const mediaVariant = {\n  default: 'bg-transparent',\n  icon: `\n    size-8 rounded-sm border bg-muted\n    [&_svg:not([class*='size-'])]:size-4\n  `,\n  image:\n    `\n      size-10 overflow-hidden rounded-sm\n      [&_img]:size-full [&_img]:object-cover\n    `,\n}\n\nexport const itemVariants = cva(\n  `\n    group/item flex flex-wrap items-center rounded-md border border-transparent text-sm\n    transition-colors duration-100 outline-none\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    [a]:transition-colors\n    [a]:hover:bg-accent/50\n  `,\n  {\n    variants: {\n      variant,\n      size,\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n)\n\nexport const itemMediaVariants = cva(\n  `\n    flex shrink-0 items-center justify-center gap-2\n    group-has-data-[slot=item-description]/item:translate-y-0.5\n    group-has-data-[slot=item-description]/item:self-start\n    [&_svg]:pointer-events-none\n  `,\n  {\n    variants: {\n      variant: mediaVariant,\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n",
+      "content": "import { cva } from 'class-variance-authority'\n\nexport const variant = {\n  default: 'bg-transparent',\n  outline: 'border-border',\n  muted: 'bg-muted/50',\n}\n\nexport const size = {\n  default: 'gap-4 p-4',\n  sm: 'gap-2.5 px-4 py-3',\n}\n\nexport const mediaVariant = {\n  default: 'bg-transparent',\n  icon: `\n    size-8 rounded-sm border bg-muted\n    [&_svg:not([class*='size-'])]:size-4\n  `,\n  image:\n    `\n      size-10 overflow-hidden rounded-sm\n      [&_img]:size-full [&_img]:object-cover\n    `,\n}\n\nexport const itemVariants = cva(\n  `\n    group/item flex flex-wrap items-center rounded-md border border-transparent text-sm\n    transition-colors duration-100 outline-none\n    focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50\n    [a]:transition-colors\n    [a]:hover:bg-accent/50\n  `,\n  {\n    variants: {\n      variant,\n      size,\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n)\n\nexport const itemMediaVariants = cva(\n  `\n    flex shrink-0 items-center justify-center gap-2\n    group-has-data-[part=description]/item:translate-y-0.5\n    group-has-data-[part=description]/item:self-start\n    [&_svg]:pointer-events-none\n  `,\n  {\n    variants: {\n      variant: mediaVariant,\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  },\n)\n",
       "type": "registry:ui"
     },
     {
@@ -89,12 +88,12 @@
     },
     {
       "path": "src/components/ui/item/ItemRoot.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { PolymorphicProps } from '@ark-ui/vue'\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemVariants } from './types'\n\nimport { itemVariants } from './variant'\n\ninterface Props extends PolymorphicProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { Component, HTMLAttributes } from 'vue'\n\nimport { ark } from '@ark-ui/vue'\nimport { reactiveOmit } from '@vueuse/core'\n\nimport { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'\nimport { cn } from '@/lib/utils'\n\nimport type { ItemRootProps, ItemVariants } from './types'\n\nimport { itemVariants } from './variant'\n\ninterface Props extends ItemRootProps {\n  class?: HTMLAttributes['class']\n  variant?: ItemVariants['variant']\n  size?: ItemVariants['size']\n  as?: string | Component\n}\n\nconst props = withDefaults(defineProps<Props>(), {\n  as: ark.div,\n})\n\nconst delegatedProps = reactiveOmit(props, ['class', 'variant', 'size'])\nconst forwardedProps = useForwardPropsEmits(delegatedProps)\n</script>\n\n<template>\n  <component\n    :is=\"as\"\n    data-scope=\"item\"\n    :class=\"cn(\n      itemVariants({ variant, size }),\n      props.class,\n    )\"\n    v-bind=\"forwardedProps\"\n  >\n    <slot />\n  </component>\n</template>\n",
       "type": "registry:ui"
     },
     {
       "path": "src/components/ui/item/types.ts",
-      "content": "import type { VariantProps } from 'class-variance-authority'\n\nimport type { itemMediaVariants, itemVariants } from './variant'\n\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\nexport type ItemVariants = VariantProps<typeof itemVariants>\n",
+      "content": "// `asChild` inlined from @ark-ui/vue@5.37.0 `PolymorphicProps`.\n// Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.\n\nimport type { VariantProps } from 'class-variance-authority'\n\nimport type { itemMediaVariants, itemVariants } from './variant'\n\nexport type ItemMediaVariants = VariantProps<typeof itemMediaVariants>\nexport type ItemVariants = VariantProps<typeof itemVariants>\n\nexport interface ItemRootProps {\n  /**\n   * Use the provided child element as the default rendered element, combining\n   * their props and behavior.\n   */\n  asChild?: boolean\n}\n",
       "type": "registry:ui"
     }
   ],

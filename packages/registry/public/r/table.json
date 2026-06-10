@@ -38,7 +38,7 @@
     },
     {
       "path": "src/components/ui/table/TableHead.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <th\n    data-scope=\"table\"\n    data-part=\"head\"\n    :class=\"cn(\n      `\n        h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-foreground\n        [&:has([role=checkbox])]:pr-0\n        *:[[role=checkbox]]:translate-y-[2px]\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </th>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <th\n    data-scope=\"table\"\n    data-part=\"head\"\n    :class=\"cn(\n      `\n        h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-foreground\n        has-[[role=checkbox]]:pr-0\n        *:[[role=checkbox]]:translate-y-[2px]\n      `,\n      props.class,\n    )\"\n  >\n    <slot />\n  </th>\n</template>\n",
       "type": "registry:ui"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "path": "src/components/ui/table/TableCell.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <td\n    data-scope=\"table\"\n    data-part=\"cell\"\n    :class=\"\n      cn(\n        `\n          p-2 align-middle whitespace-nowrap\n          [&:has([role=checkbox])]:pr-0\n          *:[[role=checkbox]]:translate-y-[2px]\n        `,\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </td>\n</template>\n",
+      "content": "<script setup lang=\"ts\">\nimport type { HTMLAttributes } from 'vue'\n\nimport { cn } from '@/lib/utils'\n\nconst props = defineProps<{\n  class?: HTMLAttributes['class']\n}>()\n</script>\n\n<template>\n  <td\n    data-scope=\"table\"\n    data-part=\"cell\"\n    :class=\"\n      cn(\n        `\n          p-2 align-middle whitespace-nowrap\n          has-[[role=checkbox]]:pr-0\n          *:[[role=checkbox]]:translate-y-[2px]\n        `,\n        props.class,\n      )\n    \"\n  >\n    <slot />\n  </td>\n</template>\n",
       "type": "registry:ui"
     }
   ],
