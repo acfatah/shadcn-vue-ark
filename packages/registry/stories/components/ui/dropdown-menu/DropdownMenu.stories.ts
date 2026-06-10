@@ -1,0 +1,97 @@
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+
+import { html } from 'common-tags'
+
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
+import { registryItem } from '@/components/ui/dropdown-menu/_registry'
+
+import DropdownMenuDefaultStory from './DropdownMenuDefaultStory.vue'
+import DropdownMenuDefaultSource from './DropdownMenuDefaultStory.vue?raw'
+import DropdownMenuPlacementStory from './DropdownMenuPlacementStory.vue'
+import DropdownMenuPlacementSource from './DropdownMenuPlacementStory.vue?raw'
+
+const meta = {
+  title: 'Components/UI/DropdownMenu',
+  component: DropdownMenu.Root,
+  tags: ['autodocs'],
+
+  argTypes: {
+    align: {
+      control: 'select',
+      options: ['start', 'center', 'end'],
+    },
+    alignOffset: { control: 'number' },
+
+    side: {
+      control: 'select',
+      options: ['top', 'right', 'bottom', 'left'],
+    },
+    sideOffset: { control: 'number' },
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        component: registryItem.description,
+      },
+    },
+  },
+} satisfies Meta<typeof DropdownMenu.Root>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    align: 'start',
+    side: 'bottom',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: DropdownMenuDefaultSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { DropdownMenuDefaultStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DropdownMenuDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Placement: Story = {
+  name: 'Custom Placement',
+  args: {
+    align: 'center',
+    alignOffset: 0,
+    side: 'left',
+    sideOffset: 4,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: DropdownMenuPlacementSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { DropdownMenuPlacementStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DropdownMenuPlacementStory v-bind="args" />
+    `,
+  }),
+}
