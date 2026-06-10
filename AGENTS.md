@@ -102,9 +102,11 @@ OKLch color space, dark mode via `.dark` class).
 
 Storybook lives inside the registry package. Config is in
 `packages/registry/.storybook/`, and stories live in
-`packages/registry/stories/`, mirroring the `src/` tree.
+`packages/registry/stories/`.
 
-Stories live in `stories/ui/<name>/`. Each component folder has:
+Component stories live in `stories/components/<area>/<name>/` (where
+`<area>` is `ui`, `blocks`, or `layouts`), mirroring `src/components/` —
+e.g. `stories/components/ui/accordion/`. Each component folder has:
 
 - `<Name>.stories.ts` — story meta, argTypes, and named story exports
 - `*Story.vue` — individual story variant components
