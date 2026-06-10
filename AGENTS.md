@@ -87,6 +87,13 @@ Key patterns:
 - `asChild` prop pattern for rendering as a custom element
 - Use base element from `ark`. E.g. `import { ark } from '@ark-ui/vue'` and 
   `<ark.button>` for base elements.
+- **Types are decoupled from Ark**: no `.vue` / `types.ts` / `context.ts` imports a
+  *type* from `@ark-ui/vue` or `@zag-js` (runtime **value** imports stay). Each
+  `types.ts` is a faithful 1:1 hand-written copy of Ark's surface, stamped with the
+  Ark version. See [`docs/CONTEXT-component-types-definition.md`](docs/CONTEXT-component-types-definition.md);
+  when upgrading `@ark-ui/vue`, follow
+  [`docs/CONTEXT-component-types-resync.md`](docs/CONTEXT-component-types-resync.md)
+  (or run the `resync-component-types` prompt).
 
 Global styles and theming are in `src/styles/global.css` (24 color themes,
 OKLch color space, dark mode via `.dark` class).
