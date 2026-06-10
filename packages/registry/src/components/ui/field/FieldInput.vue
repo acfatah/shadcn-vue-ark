@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FieldInputProps } from '@ark-ui/vue/field'
 import type { HTMLAttributes } from 'vue'
 
 import { useFieldContext } from '@ark-ui/vue/field'
@@ -8,6 +7,8 @@ import { computed } from 'vue'
 
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { FieldInputProps } from './types'
 
 type Props = FieldInputProps & {
   class?: HTMLAttributes['class']

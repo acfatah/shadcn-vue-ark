@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TabTriggerProps } from '@ark-ui/vue/tabs'
 import type { HTMLAttributes } from 'vue'
 
 import { Tabs } from '@ark-ui/vue/tabs'
@@ -8,6 +7,8 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { TabTriggerProps } from './types'
 
 import { useTabsOptions } from './context'
 import { tabsTriggerVariants } from './variant'

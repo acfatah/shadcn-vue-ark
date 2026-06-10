@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { MenuTriggerProps } from '@ark-ui/vue/menu'
 import type { HTMLAttributes } from 'vue'
 
 import { Menu } from '@ark-ui/vue/menu'
@@ -8,6 +7,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { MenuTriggerProps } from './types'
 
 interface Props extends MenuTriggerProps {
   class?: HTMLAttributes['class']

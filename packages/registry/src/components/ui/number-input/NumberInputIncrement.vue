@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { NumberInputIncrementTriggerBaseProps } from '@ark-ui/vue/number-input'
 import type { HTMLAttributes } from 'vue'
 
 import { NumberInput } from '@ark-ui/vue/number-input'
@@ -8,6 +7,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
+
+import type { NumberInputIncrementTriggerBaseProps } from './types'
 
 interface Props extends NumberInputIncrementTriggerBaseProps {
   class?: HTMLAttributes['class']

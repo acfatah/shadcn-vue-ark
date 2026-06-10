@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SwitchRootEmits, SwitchRootProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
 
 import { Switch } from '@ark-ui/vue/switch'
@@ -8,6 +7,8 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SwitchRootEmits, SwitchRootProps } from './types'
 
 interface Props extends SwitchRootProps {
   class?: HTMLAttributes['class']

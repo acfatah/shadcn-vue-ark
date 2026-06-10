@@ -82,3 +82,21 @@ export interface SelectInputProps {
 export interface SelectInputEmits {
   (e: 'update:modelValue', payload: string | undefined): void
 }
+
+// `asChild` inlined from @ark-ui/vue@5.37.0 (`PolymorphicProps` /
+// `FieldErrorTextProps`). Faithful 1:1 copy — re-sync by hand when upgrading.
+export interface InputDescriptionProps {
+  /**
+   * Use the provided child element as the default rendered element, combining
+   * their props and behavior.
+   */
+  asChild?: boolean
+}
+
+export interface InputErrorProps {
+  /**
+   * Use the provided child element as the default rendered element, combining
+   * their props and behavior.
+   */
+  asChild?: boolean
+}

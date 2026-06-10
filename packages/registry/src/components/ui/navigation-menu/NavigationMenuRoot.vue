@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { NavigationMenuRootEmits, NavigationMenuRootProps } from '@ark-ui/vue/navigation-menu'
 import type { HTMLAttributes } from 'vue'
 
 import { NavigationMenu } from '@ark-ui/vue/navigation-menu'
@@ -8,6 +7,8 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { NavigationMenuRootEmits, NavigationMenuRootProps } from './types'
 
 import { NavigationMenuOptionsProvider } from './context'
 import NavigationMenuViewport from './NavigationMenuViewport.vue'

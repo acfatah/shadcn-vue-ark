@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -10,8 +9,9 @@ import { cn } from '@/lib/utils'
 
 import { useTimelineOptions } from './context'
 
-interface Props extends PolymorphicProps {
+interface Props {
   class?: HTMLAttributes['class']
+  asChild?: boolean
 }
 
 const props = defineProps<Props>()

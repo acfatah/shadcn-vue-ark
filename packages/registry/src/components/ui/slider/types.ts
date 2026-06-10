@@ -1,0 +1,253 @@
+// Types extracted from @ark-ui/vue@5.37.0 (re-exports @zag-js/slider@1.x).
+// Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.
+
+// ── Detail types (inlined from @zag-js/slider) ───────────────────────────────
+export interface ValueChangeDetails {
+  value: number[]
+}
+
+export interface FocusChangeDetails {
+  focusedIndex: number
+  value: number[]
+}
+
+export interface ValueTextDetails {
+  value: number
+  index: number
+}
+
+// ── Root ─────────────────────────────────────────────────────────────────────
+export interface SliderRootProps {
+  /**
+   * Use the provided child element as the default rendered element, combining their props and behavior.
+   */
+  'asChild'?: boolean
+
+  /**
+   * The aria-label of each slider thumb. Useful for providing an accessible name to the slider
+   */
+  'aria-label'?: string[]
+
+  /**
+   * The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider
+   */
+  'aria-labelledby'?: string[]
+
+  /**
+   * The initial value of the slider when rendered.
+   * Use when you don't need to control the value of the slider.
+   */
+  'defaultValue'?: number[]
+
+  /**
+   * The document's text/writing direction.
+   * @default "ltr"
+   */
+  'dir'?: 'ltr' | 'rtl'
+
+  /**
+   * Whether the slider is disabled
+   */
+  'disabled'?: boolean
+
+  /**
+   * The associate form of the underlying input element.
+   */
+  'form'?: string
+
+  /**
+   * Function that returns a human readable value for the slider thumb
+   */
+  'getAriaValueText'?: (details: ValueTextDetails) => string
+
+  /**
+   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+   */
+  'getRootNode'?: () => ShadowRoot | Document | Node
+
+  /**
+   * The unique identifier of the machine.
+   */
+  'id'?: string
+
+  /**
+   * The ids of the elements in the slider. Useful for composition.
+   */
+  'ids'?: Partial<{
+    root: string
+    thumb: (index: number) => string
+    hiddenInput: (index: number) => string
+    control: string
+    track: string
+    range: string
+    label: string
+    valueText: string
+    marker: (index: number) => string
+  }>
+
+  /**
+   * Whether the slider is invalid
+   */
+  'invalid'?: boolean
+
+  /**
+   * The maximum value of the slider
+   * @default 100
+   */
+  'max'?: number
+
+  /**
+   * The minimum value of the slider
+   * @default 0
+   */
+  'min'?: number
+
+  /**
+   * The minimum permitted steps between multiple thumbs.
+   * @default 0
+   */
+  'minStepsBetweenThumbs'?: number
+
+  /**
+   * The v-model value of the slider
+   */
+  'modelValue'?: number[]
+
+  /**
+   * The name associated with each slider thumb (when used in a form)
+   */
+  'name'?: string
+
+  /**
+   * The orientation of the slider
+   * @default "horizontal"
+   */
+  'orientation'?: 'vertical' | 'horizontal'
+
+  /**
+   * The origin of the slider range
+   * - "start": Useful when the value represents an absolute value
+   * - "center": Useful when the value represents an offset (relative)
+   *
+   * @default "start"
+   */
+  'origin'?: 'start' | 'center'
+
+  /**
+   * Whether the slider is read-only
+   */
+  'readOnly'?: boolean
+
+  /**
+   * The step value of the slider
+   * @default 1
+   */
+  'step'?: number
+
+  /**
+   * The alignment of the slider thumb relative to the track
+   * - `center`: the thumb will extend beyond the bounds of the slider track.
+   * - `contain`: the thumb will be contained within the bounds of the track.
+   *
+   * @default "contain"
+   */
+  'thumbAlignment'?: 'center' | 'contain'
+
+  /**
+   * How thumbs behave when they collide during pointer interactions
+   * - `none`: Thumbs cannot move past each other
+   * - `push`: Thumbs push each other
+   * - `swap`: Thumbs swap places
+   *
+   * @default "none"
+   */
+  'thumbCollisionBehavior'?: 'none' | 'push' | 'swap'
+
+  /**
+   * The slider thumbs dimensions
+   */
+  'thumbSize'?: {
+    width: number
+    height: number
+  }
+}
+
+export interface SliderRootEmits {
+  /**
+   * Function invoked when the slider's focused index changes
+   */
+  'focusChange': [details: FocusChangeDetails]
+
+  /**
+   * Function invoked when the value of the slider changes
+   */
+  'valueChange': [details: ValueChangeDetails]
+
+  /**
+   * Function invoked when the slider value change is done
+   */
+  'valueChangeEnd': [details: ValueChangeDetails]
+
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: number[]]
+}
+
+// ── Sub-parts ────────────────────────────────────────────────────────────────
+export interface SliderControlProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderTrackProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderRangeProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderThumbProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+
+  index: number
+  name?: string
+}
+
+export interface SliderLabelProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderValueTextProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderMarkerGroupProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}
+
+export interface SliderMarkerProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+
+  value: number
+}
+
+export interface SliderDraggingIndicatorProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+
+  index: number
+}
+
+export interface SliderHiddenInputProps {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
+}

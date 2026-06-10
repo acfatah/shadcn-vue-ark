@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { NavigationMenuTriggerProps } from '@ark-ui/vue/navigation-menu'
 import type { HTMLAttributes } from 'vue'
 
 import { NavigationMenu } from '@ark-ui/vue/navigation-menu'
@@ -8,6 +7,8 @@ import { ChevronDownIcon } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { NavigationMenuTriggerProps } from './types'
 
 import { navigationMenuTriggerStyle } from './variant'
 

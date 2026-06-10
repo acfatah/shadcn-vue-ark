@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SliderRootEmits, SliderRootProps } from '@ark-ui/vue/slider'
 import type { HTMLAttributes } from 'vue'
 
 import { Slider } from '@ark-ui/vue/slider'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SliderRootEmits, SliderRootProps } from './types'
 
 interface Props extends SliderRootProps {
   class?: HTMLAttributes['class']

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { RadioGroupItemControlProps } from '@ark-ui/vue/radio-group'
 import type { HTMLAttributes } from 'vue'
 
 import { RadioGroup } from '@ark-ui/vue/radio-group'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { RadioGroupItemControlProps } from './types'
 
 import RadioGroupIndicator from './RadioGroupIndicator.vue'
 

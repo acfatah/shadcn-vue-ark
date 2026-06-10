@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FieldsetLegendProps } from '@ark-ui/vue/fieldset'
 import type { HTMLAttributes } from 'vue'
 
 import { Fieldset } from '@ark-ui/vue/fieldset'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { FieldsetLegendProps } from './types'
 
 type Props = FieldsetLegendProps & {
   class?: HTMLAttributes['class']

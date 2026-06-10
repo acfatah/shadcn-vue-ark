@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PaginationItemProps } from '@ark-ui/vue/pagination'
 import type { HTMLAttributes } from 'vue'
 
 import { Pagination } from '@ark-ui/vue/pagination'
@@ -11,6 +10,8 @@ import type { ButtonVariants } from '@/components/ui/button'
 import { buttonVariants } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { PaginationItemProps } from './types'
 
 import { usePaginationOptions } from './context'
 

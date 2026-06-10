@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -8,11 +7,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { EmptyMediaVariants } from './types'
+import type { EmptyMediaProps, EmptyMediaVariants } from './types'
 
 import { emptyMediaVariants } from './variant'
 
-interface Props extends PolymorphicProps {
+interface Props extends EmptyMediaProps {
   class?: HTMLAttributes['class']
   variant?: EmptyMediaVariants['variant']
 }
@@ -27,8 +26,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     v-bind="forwardedProps"
     data-scope="empty"
     data-part="media"
-    :data-variant="variant"
-    :class="cn(emptyMediaVariants({ variant }), props.class)"
+    :data-variant="props.variant"
+    :class="cn(emptyMediaVariants({ variant: props.variant }), props.class)"
   >
     <slot />
   </ark.div>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TabsRootEmits, TabsRootProps } from '@ark-ui/vue/tabs'
 import type { HTMLAttributes } from 'vue'
 
 import { Tabs } from '@ark-ui/vue/tabs'
@@ -9,7 +8,7 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { TabsVariant } from './types'
+import type { TabsRootEmits, TabsRootProps, TabsVariant } from './types'
 
 import { TabsOptionsProvider } from './context'
 

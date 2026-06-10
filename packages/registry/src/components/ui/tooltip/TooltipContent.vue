@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TooltipContentProps } from '@ark-ui/vue/tooltip'
 import type { HTMLAttributes } from 'vue'
 
 import { Tooltip } from '@ark-ui/vue/tooltip'
@@ -8,6 +7,8 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { TooltipContentProps } from './types'
 
 import { useTooltipOptions } from './context'
 import TooltipArrow from './TooltipArrow.vue'

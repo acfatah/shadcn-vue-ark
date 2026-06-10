@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -12,8 +11,9 @@ import type { TimelineOrientation, TimelineSize } from './types'
 
 import { TimelineOptionsProvider } from './context'
 
-interface Props extends PolymorphicProps {
+interface Props {
   class?: HTMLAttributes['class']
+  asChild?: boolean
   size?: TimelineSize
   orientation?: TimelineOrientation
   reversed?: boolean

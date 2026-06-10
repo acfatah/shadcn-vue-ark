@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { TooltipTriggerProps } from '@ark-ui/vue/tooltip'
 import type { HTMLAttributes } from 'vue'
 
 import { Tooltip } from '@ark-ui/vue/tooltip'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { TooltipTriggerProps } from './types'
 
 interface Props extends TooltipTriggerProps {
   class?: HTMLAttributes['class']

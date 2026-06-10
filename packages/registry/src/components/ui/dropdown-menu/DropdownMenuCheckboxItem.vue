@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from '@ark-ui/vue/menu'
 import type { HTMLAttributes } from 'vue'
 
 import { Menu } from '@ark-ui/vue/menu'
@@ -9,6 +8,8 @@ import { CheckIcon } from 'lucide-vue-next'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from './types'
 
 interface Props extends MenuCheckboxItemProps {
   value: string

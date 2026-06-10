@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { AvatarRootProps } from '@ark-ui/vue/avatar'
 import type { HTMLAttributes } from 'vue'
 
 import { Avatar } from '@ark-ui/vue/avatar'
@@ -8,6 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
+import type { AvatarRootEmits, AvatarRootProps } from './types'
 import type { size } from './variant'
 
 import { provideAvatarContext } from './context'
@@ -23,11 +23,12 @@ const props = withDefaults(defineProps<Props>(), {
   shape: 'round',
   size: 'md',
 })
+const emit = defineEmits<AvatarRootEmits>()
 
 provideAvatarContext({ shape: props.shape, size: props.size })
 
 const delegatedProps = reactiveOmit(props, ['class', 'shape', 'size'])
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 </script>
 
 <template>

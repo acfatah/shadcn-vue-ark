@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ProgressRootProps } from '@ark-ui/vue/progress'
 import type { HTMLAttributes } from 'vue'
 
 import { Progress } from '@ark-ui/vue/progress'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { ProgressRootProps } from './types'
 
 interface Props extends ProgressRootProps {
   class?: HTMLAttributes['class']

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { DialogContentProps } from '@ark-ui/vue/dialog'
 import type { HTMLAttributes } from 'vue'
 
 import { Dialog } from '@ark-ui/vue/dialog'
@@ -8,6 +7,8 @@ import { X } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { DialogContentProps } from './types'
 
 import DialogOverlay from './DialogOverlay.vue'
 

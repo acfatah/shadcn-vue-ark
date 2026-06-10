@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -12,8 +11,9 @@ import { useTimelineOptions } from './context'
 
 export type TimelineStatus = 'complete' | 'current' | 'incomplete'
 
-interface Props extends PolymorphicProps {
+interface Props {
   class?: HTMLAttributes['class']
+  asChild?: boolean
   status?: TimelineStatus
 }
 

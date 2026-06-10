@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { FieldLabelProps } from '@ark-ui/vue/field'
-
 import type { LabelProps } from '@/components/ui/label'
 
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { FieldLabelProps } from './types'
 
 interface Props extends LabelProps, FieldLabelProps {}
 

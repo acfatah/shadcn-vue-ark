@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SplitterPanelProps } from '@ark-ui/vue/splitter'
 import type { HTMLAttributes } from 'vue'
 
 import { Splitter } from '@ark-ui/vue/splitter'
@@ -8,6 +7,8 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SplitterPanelProps } from './types'
 
 interface Props extends SplitterPanelProps {
   class?: HTMLAttributes['class']

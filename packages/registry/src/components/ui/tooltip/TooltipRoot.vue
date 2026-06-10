@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { TooltipRootEmits, TooltipRootProps } from '@ark-ui/vue/tooltip'
-
 import { Tooltip } from '@ark-ui/vue/tooltip'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { TooltipRootEmits, TooltipRootProps } from './types'
 
 import { TooltipOptionsProvider } from './context'
 

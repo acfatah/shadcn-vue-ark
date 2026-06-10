@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -7,11 +6,11 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { cn } from '@/lib/utils'
 
-import type { AlertVariants } from './types'
+import type { AlertRootProps, AlertVariants } from './types'
 
 import { alertVariants } from './variant'
 
-interface Props extends PolymorphicProps {
+interface Props extends AlertRootProps {
   class?: HTMLAttributes['class']
   variant?: AlertVariants['variant']
 }

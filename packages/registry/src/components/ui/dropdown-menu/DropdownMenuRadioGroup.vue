@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import type {
-  MenuRadioItemGroupEmits,
-  MenuRadioItemGroupProps,
-} from '@ark-ui/vue/menu'
 import type { HTMLAttributes } from 'vue'
 
 import { Menu } from '@ark-ui/vue/menu'
@@ -10,6 +6,11 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type {
+  MenuRadioItemGroupEmits,
+  MenuRadioItemGroupProps,
+} from './types'
 
 interface Props extends MenuRadioItemGroupProps {
   class?: HTMLAttributes['class']

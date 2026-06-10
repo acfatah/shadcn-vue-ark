@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ToggleGroupRootEmits, ToggleGroupRootProps } from '@ark-ui/vue/toggle-group'
 import type { HTMLAttributes } from 'vue'
 
 import { ToggleGroup } from '@ark-ui/vue/toggle-group'
@@ -10,6 +9,8 @@ import type { ToggleVariants } from '@/components/ui/toggle'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types'
 
 import { ToggleGroupOptionsProvider } from './context'
 

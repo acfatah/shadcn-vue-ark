@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FieldRootProviderProps } from '@ark-ui/vue/field'
 import type { HTMLAttributes } from 'vue'
 
 import { Field } from '@ark-ui/vue/field'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { FieldRootProviderProps } from './types'
 
 type Props = FieldRootProviderProps & {
   class?: HTMLAttributes['class']

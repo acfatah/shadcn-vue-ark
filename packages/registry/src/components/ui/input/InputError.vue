@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FieldErrorTextProps } from '@ark-ui/vue/field'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -8,7 +7,9 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends FieldErrorTextProps {
+import type { InputErrorProps } from './types'
+
+interface Props extends InputErrorProps {
   class?: HTMLAttributes['class']
 }
 

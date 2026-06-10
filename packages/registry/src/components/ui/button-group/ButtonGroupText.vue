@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { reactiveOmit } from '@vueuse/core'
@@ -10,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 import type { ButtonGroupVariants } from './types'
 
-interface Props extends PolymorphicProps {
+interface Props {
   class?: HTMLAttributes['class']
   asChild?: boolean
   as?: string

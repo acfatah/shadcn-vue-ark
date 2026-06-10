@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ToggleRootEmits, ToggleRootProps } from '@ark-ui/vue/toggle'
 import type { HTMLAttributes } from 'vue'
 
 import { Toggle } from '@ark-ui/vue/toggle'
@@ -8,7 +7,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { ToggleVariants } from './types'
+import type { ToggleRootEmits, ToggleRootProps, ToggleVariants } from './types'
 
 import { toggleVariants } from '.'
 

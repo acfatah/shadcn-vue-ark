@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { EditableInputProps } from '@ark-ui/vue/editable'
 import type { HTMLAttributes } from 'vue'
 
 import { Editable } from '@ark-ui/vue/editable'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { EditableInputProps } from './types'
 
 interface Props extends EditableInputProps {
   asChild?: boolean

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -8,11 +7,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { BadgeVariants } from './types'
+import type { BadgeProps, BadgeVariants } from './types'
 
 import { badgeVariants } from '.'
 
-interface Props extends PolymorphicProps {
+interface Props extends BadgeProps {
   variant?: BadgeVariants['variant']
   class?: HTMLAttributes['class']
 }

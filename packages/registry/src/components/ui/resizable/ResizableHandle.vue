@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SplitterResizeTriggerProps } from '@ark-ui/vue/splitter'
 import type { HTMLAttributes } from 'vue'
 
 import { Splitter } from '@ark-ui/vue/splitter'
@@ -8,6 +7,8 @@ import { GripVertical } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SplitterResizeTriggerProps } from './types'
 
 interface Props extends SplitterResizeTriggerProps {
   class?: HTMLAttributes['class']

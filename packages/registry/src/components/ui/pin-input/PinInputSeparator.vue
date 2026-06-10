@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -9,7 +8,9 @@ import { Minus } from 'lucide-vue-next'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends PolymorphicProps {
+import type { PinInputSeparatorProps } from './types'
+
+interface Props extends PinInputSeparatorProps {
   class?: HTMLAttributes['class']
 }
 

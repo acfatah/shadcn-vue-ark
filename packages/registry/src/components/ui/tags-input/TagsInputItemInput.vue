@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TagsInputItemInputProps } from '@ark-ui/vue/tags-input'
 import type { HTMLAttributes } from 'vue'
 
 import { TagsInput } from '@ark-ui/vue/tags-input'
@@ -8,12 +7,14 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
 
+import type { TagsInputItemInputProps } from './types'
+
 interface Props extends TagsInputItemInputProps {
   class?: HTMLAttributes['class']
 }
 
 const props = defineProps<Props>()
-const delegatedProps = reactiveOmit(props, 'class') as Omit<Props, 'class'>
+const delegatedProps = reactiveOmit(props, 'class')
 const forwardedProps = useForwardProps(delegatedProps)
 </script>
 

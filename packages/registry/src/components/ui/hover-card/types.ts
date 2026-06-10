@@ -1,0 +1,334 @@
+// Types extracted from @ark-ui/vue@5.37.0 (re-exports @zag-js/hover-card@1.x).
+// Faithful 1:1 copy — re-sync by hand when upgrading @ark-ui/vue.
+
+// ── Positioning primitives (inlined from @zag-js/popper → @floating-ui/dom) ──
+export type PlacementSide = 'top' | 'right' | 'bottom' | 'left'
+
+export type PlacementAlign = 'start' | 'end'
+
+export type Placement = PlacementSide | `${PlacementSide}-${PlacementAlign}`
+
+export interface Rect { x: number, y: number, width: number, height: number }
+
+export interface SideObject { top: number, right: number, bottom: number, left: number }
+
+export type ClientRectObject = Rect & SideObject
+
+export interface VirtualElement {
+  getBoundingClientRect: () => ClientRectObject
+  getClientRects?: () => Array<ClientRectObject> | DOMRectList
+  contextElement?: Element
+}
+
+export type Boundary = 'clippingAncestors' | Element | Element[] | Rect
+
+export interface AutoUpdateOptions {
+  ancestorScroll?: boolean
+  ancestorResize?: boolean
+  elementResize?: boolean
+  layoutShift?: boolean
+  animationFrame?: boolean
+}
+
+export interface AnchorRect {
+  x?: number | undefined
+  y?: number | undefined
+  width?: number | undefined
+  height?: number | undefined
+}
+
+export interface PositioningOptions {
+  /**
+   * Whether styles applied by the positioning utility should be restored on cleanup.
+   */
+  restoreStyles?: boolean | undefined
+
+  /**
+   * Whether the popover should be hidden when the reference element is detached
+   */
+  hideWhenDetached?: boolean | undefined
+
+  /**
+   * The strategy to use for positioning
+   */
+  strategy?: 'absolute' | 'fixed' | undefined
+
+  /**
+   * The initial placement of the floating element
+   */
+  placement?: Placement | undefined
+
+  /**
+   * The offset of the floating element
+   */
+  offset?: {
+    mainAxis?: number | undefined
+    crossAxis?: number | undefined
+  } | undefined
+
+  /**
+   * The main axis offset or gap between the reference and floating elements
+   */
+  gutter?: number | undefined
+
+  /**
+   * The secondary axis offset or gap between the reference and floating elements
+   */
+  shift?: number | undefined
+
+  /**
+   * The virtual padding around the viewport edges to check for overflow
+   */
+  overflowPadding?: number | undefined
+
+  /**
+   * The minimum padding between the arrow and the floating element's corner.
+   * @default 4
+   */
+  arrowPadding?: number | undefined
+
+  /**
+   * Whether to flip the placement
+   */
+  flip?: boolean | Placement[] | undefined
+
+  /**
+   * Whether the popover should slide when it overflows.
+   */
+  slide?: boolean | undefined
+
+  /**
+   * Whether the floating element can overlap the reference element
+   * @default false
+   */
+  overlap?: boolean | undefined
+
+  /**
+   * Whether to make the floating element same width as the reference element
+   */
+  sameWidth?: boolean | undefined
+
+  /**
+   * Whether the popover should fit the viewport.
+   */
+  fitViewport?: boolean | undefined
+
+  /**
+   * Whether to use the size middleware from Floating UI.
+   * It computes and sets CSS variables (`--reference-width`, `--reference-height`, `--available-width`, `--available-height`) used by `sameWidth` and `fitViewport`.
+   *
+   * Disabling it improves scroll performance with heavy content by avoiding layout thrashing on each update.
+   * Only applies when both `sameWidth` and `fitViewport` are false — the middleware is always used when either is enabled.
+   * @default true
+   */
+  sizeMiddleware?: boolean | undefined
+
+  /**
+   * The overflow boundary of the reference element
+   * Accepts a function returning a Boundary, a Boundary directly,
+   * or the shorthand string 'clipping-ancestors' which maps to Floating UI's 'clippingAncestors'.
+   */
+  boundary?: (() => Boundary) | Boundary | 'clipping-ancestors' | undefined
+
+  /**
+   * Options to activate auto-update listeners
+   */
+  listeners?: boolean | AutoUpdateOptions | undefined
+
+  /**
+   * Function called when the placement is computed
+   */
+  onComplete?: ((data: any) => void) | undefined
+
+  /**
+   * Function called when the floating element is positioned or not
+   */
+  onPositioned?: ((data: {
+    placed: boolean
+  }) => void) | undefined
+
+  /**
+   * Function that returns the anchor element.
+   * Useful when you want to use a different element as the anchor.
+   */
+  getAnchorElement?: (() => HTMLElement | VirtualElement | null) | undefined
+
+  /**
+   *  Function that returns the anchor rect
+   * @deprecated Use `getAnchorElement` instead
+   */
+  getAnchorRect?: ((element: HTMLElement | VirtualElement | null) => AnchorRect | null) | undefined
+
+  /**
+   * A callback that will be called when the popover needs to calculate its
+   * position.
+   */
+  updatePosition?: ((data: {
+    updatePosition: () => Promise<void>
+    floatingElement: HTMLElement | null
+  }) => void | Promise<void>) | undefined
+}
+
+// ── Outside-event details (inlined from @zag-js/dismissable → @zag-js/interact-outside) ──
+export interface EventDetails<T> {
+  originalEvent: T
+  contextmenu: boolean
+  focusable: boolean
+  target: EventTarget
+}
+
+export type PointerDownOutsideEvent = CustomEvent<EventDetails<PointerEvent>>
+
+export type FocusOutsideEvent = CustomEvent<EventDetails<FocusEvent>>
+
+export type InteractOutsideEvent = PointerDownOutsideEvent | FocusOutsideEvent
+
+// ── Detail types (inlined from @zag-js/hover-card) ───────────────────────────
+export interface OpenChangeDetails {
+  open: boolean
+}
+
+export interface TriggerValueChangeDetails {
+  /**
+   * The value of the trigger
+   */
+  value: string | null
+
+  /**
+   * The trigger element
+   */
+  triggerElement: HTMLElement | null
+}
+
+// ── Root ─────────────────────────────────────────────────────────────────────
+export interface HoverCardRootProps {
+  /**
+   * The duration from when the mouse leaves the trigger or content until the hover card closes.
+   * @default 300
+   */
+  closeDelay?: number
+
+  /**
+   * The initial open state of the hover card when rendered.
+   * Use when you don't need to control the open state of the hover card.
+   */
+  defaultOpen?: boolean
+
+  /**
+   * Whether the hover card is disabled
+   */
+  disabled?: boolean
+
+  /**
+   * The unique identifier of the machine.
+   */
+  id?: string
+
+  /**
+   * The ids of the elements in the popover. Useful for composition.
+   */
+  ids?: Partial<{
+    trigger: string
+    content: string
+    positioner: string
+    arrow: string
+  }>
+
+  /**
+   * The controlled open state of the hover card
+   */
+  open?: boolean
+
+  /**
+   * The duration from when the mouse enters the trigger until the hover card opens.
+   * @default 700
+   */
+  openDelay?: number
+
+  /**
+   * The user provided options used to position the popover content
+   */
+  positioning?: PositioningOptions
+
+  /**
+   * The value of the trigger that currently open the hover card
+   */
+  triggerValue?: string | null
+
+  /**
+   * The initial trigger value when rendered.
+   * Use when you don't need to control the trigger value.
+   */
+  defaultTriggerValue?: string | null
+
+  /**
+   * Whether to enable lazy mounting
+   * @default false
+   */
+  lazyMount?: boolean
+
+  /**
+   * Whether to unmount on exit.
+   * @default false
+   */
+  unmountOnExit?: boolean
+}
+
+export interface HoverCardRootEmits {
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  'exitComplete': []
+
+  /**
+   * Function called when the focus is moved outside the component
+   */
+  'focusOutside': [event: FocusOutsideEvent]
+
+  /**
+   * Function called when an interaction happens outside the component
+   */
+  'interactOutside': [event: InteractOutsideEvent]
+
+  /**
+   * Function called when the hover card opens or closes.
+   */
+  'openChange': [details: OpenChangeDetails]
+
+  /**
+   * Function called when the pointer is pressed down outside the component
+   */
+  'pointerDownOutside': [event: PointerDownOutsideEvent]
+
+  /**
+   * Function called when the trigger value changes
+   */
+  'triggerValueChange': [details: TriggerValueChangeDetails]
+
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [open: boolean]
+}
+
+// ── Sub-parts ────────────────────────────────────────────────────────────────
+export interface HoverCardTriggerProps {
+  /**
+   * Use the provided child element as the default rendered element, combining
+   * their props and behavior.
+   */
+  asChild?: boolean
+
+  /**
+   * The value that identifies this specific trigger
+   */
+  value?: string
+}
+
+export interface HoverCardContentProps {
+  /**
+   * Use the provided child element as the default rendered element, combining
+   * their props and behavior.
+   */
+  asChild?: boolean
+}

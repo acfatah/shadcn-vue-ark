@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CheckboxIndicatorProps } from '@ark-ui/vue/checkbox'
 import type { HTMLAttributes } from 'vue'
 
 import { Checkbox } from '@ark-ui/vue/checkbox'
@@ -8,6 +7,8 @@ import { CheckIcon } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { CheckboxIndicatorProps } from './types'
 
 interface Props extends CheckboxIndicatorProps {
   class?: HTMLAttributes['class']

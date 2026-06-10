@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { MenuRadioItemProps } from '@ark-ui/vue/menu'
 import type { HTMLAttributes } from 'vue'
 
 import { Menu } from '@ark-ui/vue/menu'
@@ -9,6 +8,8 @@ import { CircleIcon } from 'lucide-vue-next'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { MenuRadioItemProps } from './types'
 
 interface Props extends MenuRadioItemProps {
   class?: HTMLAttributes['class']

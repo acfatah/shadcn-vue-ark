@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -7,8 +6,9 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { cn } from '@/lib/utils'
 
-interface Props extends PolymorphicProps {
+interface Props {
   class?: HTMLAttributes['class']
+  asChild?: boolean
 }
 
 const props = defineProps<Props>()

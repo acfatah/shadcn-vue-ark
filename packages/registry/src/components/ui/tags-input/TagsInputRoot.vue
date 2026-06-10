@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { TagsInputRootEmits, TagsInputRootProps } from '@ark-ui/vue/tags-input'
 import type { HTMLAttributes } from 'vue'
 
 import { TagsInput } from '@ark-ui/vue/tags-input'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { TagsInputRootEmits, TagsInputRootProps } from './types'
 
 interface Props extends TagsInputRootProps {
   class?: HTMLAttributes['class']

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { MenuRootEmits, MenuRootProps } from '@ark-ui/vue/menu'
-
 import { Menu } from '@ark-ui/vue/menu'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { MenuRootEmits, MenuRootProps } from './types'
 
 interface Props extends MenuRootProps {}
 

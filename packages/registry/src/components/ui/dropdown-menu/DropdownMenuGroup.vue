@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { MenuItemGroupProps } from '@ark-ui/vue/menu'
-
 import { Menu } from '@ark-ui/vue/menu'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
+
+import type { MenuItemGroupProps } from './types'
 
 interface Props extends MenuItemGroupProps {}
 

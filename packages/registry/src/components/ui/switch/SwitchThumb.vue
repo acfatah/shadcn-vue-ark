@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { SwitchThumbProps } from '@ark-ui/vue/switch'
 import type { HTMLAttributes } from 'vue'
 
 import { Switch } from '@ark-ui/vue/switch'
@@ -7,6 +6,8 @@ import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { SwitchThumbProps } from './types'
 
 interface Props extends SwitchThumbProps {
   class?: HTMLAttributes['class']

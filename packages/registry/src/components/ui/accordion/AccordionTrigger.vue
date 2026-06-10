@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { AccordionItemTriggerProps } from '@ark-ui/vue/accordion'
 import type { HTMLAttributes } from 'vue'
 
 import { Accordion } from '@ark-ui/vue/accordion'
@@ -8,6 +7,8 @@ import { ChevronDownIcon } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
+
+import type { AccordionItemTriggerProps } from './types'
 
 interface Props extends AccordionItemTriggerProps {
   class?: HTMLAttributes['class']

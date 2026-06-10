@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { Component, HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -8,11 +7,11 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { ItemVariants } from './types'
+import type { ItemRootProps, ItemVariants } from './types'
 
 import { itemVariants } from './variant'
 
-interface Props extends PolymorphicProps {
+interface Props extends ItemRootProps {
   class?: HTMLAttributes['class']
   variant?: ItemVariants['variant']
   size?: ItemVariants['size']

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { PolymorphicProps } from '@ark-ui/vue'
 import type { HTMLAttributes } from 'vue'
 
 import { ark } from '@ark-ui/vue'
@@ -8,7 +7,9 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-interface Props extends PolymorphicProps {
+interface Props {
+  /** Use the provided child element as the default rendered element, combining their props and behavior. */
+  asChild?: boolean
   class?: HTMLAttributes['class']
 }
 

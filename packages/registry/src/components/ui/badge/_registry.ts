@@ -15,6 +15,7 @@ export const registryItem = {
   `,
 
   dependencies: [
+    '@ark-ui/vue',
     '@vueuse/core',
     'class-variance-authority',
   ],
