@@ -5,6 +5,8 @@ import { html } from 'common-tags'
 import { Pagination } from '@/components/ui/pagination'
 import { registryItem } from '@/components/ui/pagination/_registry'
 
+import DataTableFooterStory from './DataTableFooterStory.vue'
+import DataTableFooterSource from './DataTableFooterStory.vue?raw'
 import IconsOnlyStory from './IconsOnlyStory.vue'
 import IconsOnlySource from './IconsOnlyStory.vue?raw'
 import PaginationDefaultStory from './PaginationDefaultStory.vue'
@@ -67,6 +69,30 @@ export const IconsOnly: Story = {
 
     template: html`
       <IconsOnlyStory v-bind="args" />
+    `,
+  }),
+}
+
+export const DataTableFooter: Story = {
+  name: 'Data Table Footer',
+
+  parameters: {
+    docs: {
+      source: {
+        code: DataTableFooterSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { DataTableFooterStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <DataTableFooterStory v-bind="args" />
     `,
   }),
 }

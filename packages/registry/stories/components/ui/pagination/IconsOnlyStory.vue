@@ -32,12 +32,12 @@ function handlePageChange(details: { page: number }) {
 
 <template>
   <div class="flex items-center justify-between gap-4">
-    <Field.Root orientation="horizontal" class="w-fit">
+    <Field.Root class="w-fit flex-row items-center gap-2">
       <Field.Label for="select-rows-per-page" class="whitespace-nowrap">
         Rows per page
       </Field.Label>
       <Select.Root v-model="rowsPerPage" :collection="rowsPerPageCollection">
-        <Select.Trigger id="select-rows-per-page" class="w-20">
+        <Select.Trigger id="select-rows-per-page" class="h-8 w-20">
           <Select.ValueText />
         </Select.Trigger>
         <Select.Content>
