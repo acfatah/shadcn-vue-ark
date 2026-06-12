@@ -6,10 +6,10 @@ import process from 'node:process'
 
 type ComponentName = string
 
-const REGISTRY_URL
-  = (process.env.REGISTRY_URL
-    || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r')
-    .replace(/\/+$/, '')
+const REGISTRY = process.env.REGISTRY || 'acfatah/shadcn-vue-ark'
+
+const CATALOG_URL = process.env.REGISTRY_CATALOG_URL
+  || `https://raw.githubusercontent.com/${REGISTRY}/refs/heads/main/packages/registry/registry.json`
 
 function logError(error: unknown) {
   consola.error(
@@ -21,9 +21,10 @@ function logError(error: unknown) {
 
 async function checkStatus() {
   try {
-    await fetch(`${REGISTRY_URL}/registry.json`, {
-      method: 'OPTIONS',
-    })
+    const res = await fetch(CATALOG_URL)
+
+    if (!res.ok)
+      throw new Error(`Registry returned ${res.status}`)
   }
   catch (error) {
     logError(error)
@@ -34,9 +35,10 @@ async function checkStatus() {
 
 async function listComponents() {
   try {
-    const res = await fetch(`${REGISTRY_URL}/index.json`)
+    const res = await fetch(CATALOG_URL)
+    const registry = await res.json() as { items: { name: string }[] }
 
-    return await res.json()
+    return registry.items
   }
   catch (error) {
     logError(error)
@@ -88,29 +90,18 @@ program.command('info')
   .description('Display information about a block or component')
   .argument('<component>', 'the component to display information about')
   .action(async (arg: string) => {
-    let res: Response
+    const components = await listComponents()
+    const component = components.find((c: any) => c.name === arg)
 
-    try {
-      res = await fetch(`${REGISTRY_URL}/${arg}.json`)
-    }
-    catch (error) {
-      consola.error(error)
-
-      process.exit(1)
-    }
-
-    if (res.status === 404) {
+    if (!component) {
       consola.error('Component not found')
 
       process.exit(1)
     }
 
-    const component = await res.json()
-
     consola.log(JSON.stringify({
       ...component,
-      // skip the content key
-      files: component.files.map(
+      files: ((component as any).files ?? []).map(
         (file: { type: string, path: string }) => ({
           type: file.type,
           path: file.path,
@@ -144,11 +135,9 @@ program.command('add')
   .action(async (components, options) => {
     await checkStatus()
 
-    const urls: string[] = components.reduce((acc: string[], component: string) => {
-      acc.push(`${REGISTRY_URL}/${component}.json`)
-
-      return acc
-    }, [])
+    const addresses: string[] = components.map(
+      (component: string) => `${REGISTRY}/${component}`,
+    )
 
     consola.start('Adding the following components:')
 
@@ -167,7 +156,7 @@ program.command('add')
       .map(([key]) => `-${key}`)
 
     const proc = Bun.spawn(
-      ['bunx', '--bun', 'shadcn@latest', 'add', ...opts, ...urls],
+      ['bunx', '--bun', 'shadcn@latest', 'add', ...opts, ...addresses],
       {
         stdin: 'inherit',
         stdout: 'inherit',
