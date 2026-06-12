@@ -9,17 +9,21 @@
       "title": "Accordion",
       "description": "A vertically stacked set of interactive headings that each reveal a section of content.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/accordion\n- shadcn/ui: https://ui.shadcn.com/docs/components/accordion",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/accordion/namespace.ts",
+          "path": "src/components/ui/accordion/AccordionContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/accordion/AccordionItem.vue",
           "type": "registry:ui"
         },
         {
@@ -27,11 +31,19 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/accordion/AccordionContent.vue",
+          "path": "src/components/ui/accordion/AccordionTrigger.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/accordion/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/accordion/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/accordion/types.ts",
           "type": "registry:ui"
         },
         {
@@ -43,18 +55,6 @@
           "path": "src/composables/useForwardPropsEmits.ts",
           "type": "registry:file",
           "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/components/ui/accordion/AccordionItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/accordion/AccordionTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/accordion/types.ts",
-          "type": "registry:ui"
         }
       ],
       "cssVars": {
@@ -89,19 +89,35 @@
       "description": "Displays a callout for user attention.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/alert",
       "dependencies": [
         "@ark-ui/vue",
-        "lucide-vue-next",
-        "@vueuse/core"
+        "@vueuse/core",
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/alert/AlertDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/alert/AlertRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/alert/AlertTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/alert/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/alert/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/alert/index.ts",
+          "path": "src/components/ui/alert/types.ts",
           "type": "registry:ui"
         },
         {
@@ -112,22 +128,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/alert/AlertTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/alert/AlertDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/alert/AlertRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/alert/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -140,18 +140,22 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/aspect-ratio/AspectRatio.vue",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/aspect-ratio/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/aspect-ratio/AspectRatio.vue",
+          "path": "src/components/ui/aspect-ratio/types.ts",
           "type": "registry:ui"
         },
         {
@@ -163,10 +167,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/aspect-ratio/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -176,21 +176,21 @@
       "title": "Avatar",
       "description": "An image element with a fallback for representing the user.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/avatar\n- shadcn/ui: https://ui.shadcn.com/docs/components/avatar",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/avatar/namespace.ts",
+          "path": "src/components/ui/avatar/AvatarFallback.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/avatar/AvatarRoot.vue",
+          "path": "src/components/ui/avatar/AvatarGroup.vue",
           "type": "registry:ui"
         },
         {
@@ -198,7 +198,23 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/avatar/AvatarRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/avatar/context.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/avatar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/avatar/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/avatar/types.ts",
           "type": "registry:ui"
         },
         {
@@ -214,22 +230,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/avatar/AvatarGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/avatar/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/avatar/AvatarFallback.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/avatar/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -244,8 +244,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
@@ -254,6 +254,10 @@
         },
         {
           "path": "src/components/ui/badge/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/badge/types.ts",
           "type": "registry:ui"
         },
         {
@@ -269,10 +273,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/badge/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -286,17 +286,13 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/breadcrumb/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/breadcrumb/BreadcrumbPage.vue",
+          "path": "src/components/ui/breadcrumb/Breadcrumb.vue",
           "type": "registry:ui"
         },
         {
@@ -304,11 +300,31 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/breadcrumb/BreadcrumbItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/breadcrumb/BreadcrumbLink.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/breadcrumb/BreadcrumbList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/breadcrumb/BreadcrumbPage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/breadcrumb/BreadcrumbSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/breadcrumb/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/breadcrumb/BreadcrumbItem.vue",
+          "path": "src/components/ui/breadcrumb/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -325,22 +341,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/breadcrumb/BreadcrumbLink.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/breadcrumb/Breadcrumb.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/breadcrumb/BreadcrumbSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/breadcrumb/BreadcrumbList.vue",
-          "type": "registry:ui"
         }
       ]
     },
@@ -353,9 +353,9 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
@@ -364,6 +364,10 @@
         },
         {
           "path": "src/components/ui/button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/button/types.ts",
           "type": "registry:ui"
         },
         {
@@ -384,10 +388,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/button/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -402,10 +402,10 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
@@ -413,7 +413,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/button-group/namespace.ts",
+          "path": "src/components/ui/button-group/ButtonGroupSeparator.vue",
           "type": "registry:ui"
         },
         {
@@ -421,11 +421,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/button-group/ButtonGroupSeparator.vue",
+          "path": "src/components/ui/button-group/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/button-group/index.ts",
+          "path": "src/components/ui/button-group/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/button-group/types.ts",
           "type": "registry:ui"
         },
         {
@@ -446,10 +450,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/button-group/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -459,34 +459,18 @@
       "title": "Calendar",
       "description": "A date field component that allows users to enter and edit date.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/date-picker\n- shadcn/ui: https://ui.shadcn.com/docs/components/calendar",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/calendar/CalendarGridRow.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarGridBody.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarHeading.vue",
+          "path": "src/components/ui/calendar/CalendarCell.vue",
           "type": "registry:ui"
         },
         {
@@ -494,7 +478,23 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/calendar/CalendarCell.vue",
+          "path": "src/components/ui/calendar/CalendarGrid.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarGridBody.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarGridHead.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarGridRow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarHeadCell.vue",
           "type": "registry:ui"
         },
         {
@@ -502,11 +502,31 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/calendar/CalendarHeading.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarNextButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarPrevButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/CalendarRoot.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/calendar/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/calendar/CalendarGridHead.vue",
+          "path": "src/components/ui/calendar/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/calendar/types.ts",
           "type": "registry:ui"
         },
         {
@@ -518,26 +538,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarPrevButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarHeadCell.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarGrid.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/CalendarNextButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/calendar/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -551,15 +551,15 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/card/CardHeader.vue",
+          "path": "src/components/ui/card/CardAction.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/card/namespace.ts",
+          "path": "src/components/ui/card/CardContent.vue",
           "type": "registry:ui"
         },
         {
@@ -571,24 +571,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/card/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/card/CardAction.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/card/CardTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/card/CardContent.vue",
+          "path": "src/components/ui/card/CardHeader.vue",
           "type": "registry:ui"
         },
         {
@@ -596,8 +579,25 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/card/CardTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/card/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/card/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/card/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -607,29 +607,17 @@
       "title": "Carousel",
       "description": "A carousel with motion and swipe built using Embla.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/carousel\n- Embla Carousel: https://www.embla-carousel.com",
       "dependencies": [
-        "lucide-vue-next",
         "@vueuse/core",
-        "embla-carousel-vue"
+        "embla-carousel-vue",
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/carousel/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/carousel/CarouselPrevious.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/carousel/CarouselNext.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/carousel/index.ts",
+          "path": "src/components/ui/carousel/CarouselContent.vue",
           "type": "registry:ui"
         },
         {
@@ -637,16 +625,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/carousel/CarouselContent.vue",
+          "path": "src/components/ui/carousel/CarouselNext.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/carousel/useCarousel.ts",
+          "path": "src/components/ui/carousel/CarouselPrevious.vue",
           "type": "registry:ui"
         },
         {
@@ -654,8 +637,25 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/carousel/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/carousel/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/carousel/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/carousel/useCarousel.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -670,22 +670,14 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json"
+        "acfatah/shadcn-vue-ark/description",
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/checkbox/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/checkbox/CheckboxContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/checkbox/CheckboxGroup.vue",
           "type": "registry:ui"
         },
         {
@@ -693,7 +685,19 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/checkbox/CheckboxDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/checkbox/CheckboxGroup.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/checkbox/CheckboxHiddenInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/checkbox/CheckboxIndicator.vue",
           "type": "registry:ui"
         },
         {
@@ -701,11 +705,19 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/checkbox/CheckboxDescription.vue",
+          "path": "src/components/ui/checkbox/CheckboxRoot.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/checkbox/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/checkbox/types.ts",
           "type": "registry:ui"
         },
         {
@@ -726,18 +738,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/checkbox/CheckboxRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/checkbox/CheckboxIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/checkbox/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -760,22 +760,14 @@
       "title": "Collapsible",
       "description": "An interactive component which expands/collapses a panel.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/collapsible\n- shadcn/ui: https://ui.shadcn.com/docs/components/collapsible",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
-        {
-          "path": "src/components/ui/collapsible/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/collapsible/CollapsibleTrigger.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "src/components/ui/collapsible/Collapsible.vue",
           "type": "registry:ui"
@@ -785,17 +777,25 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/collapsible/CollapsibleTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/collapsible/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/collapsible/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/collapsible/types.ts",
           "type": "registry:ui"
         },
         {
           "path": "src/composables/useForwardPropsEmits.ts",
           "type": "registry:file",
           "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/components/ui/collapsible/types.ts",
-          "type": "registry:ui"
         }
       ],
       "cssVars": {
@@ -829,23 +829,27 @@
       "title": "Combobox",
       "description": "Autocomplete input with a list of suggestions.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/combobox\n- shadcn/ui: https://ui.shadcn.com/docs/components/combobox",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json"
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/combobox/namespace.ts",
+          "path": "src/components/ui/combobox/ComboboxAnchor.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/combobox/ComboboxViewport.vue",
+          "path": "src/components/ui/combobox/ComboboxEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/ComboboxGroup.vue",
           "type": "registry:ui"
         },
         {
@@ -857,15 +861,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/combobox/ComboboxTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/combobox/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/combobox/ComboboxRoot.vue",
+          "path": "src/components/ui/combobox/ComboboxItemIndicator.vue",
           "type": "registry:ui"
         },
         {
@@ -873,24 +869,27 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/combobox/ComboboxRoot.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/combobox/ComboboxSeparator.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/combobox/ComboboxEmpty.vue",
+          "path": "src/components/ui/combobox/ComboboxTrigger.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/combobox/ComboboxItemIndicator.vue",
+          "path": "src/components/ui/combobox/ComboboxViewport.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/combobox/ComboboxAnchor.vue",
+          "path": "src/components/ui/combobox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/combobox/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -898,8 +897,9 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/combobox/ComboboxGroup.vue",
-          "type": "registry:ui"
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -909,76 +909,21 @@
       "title": "Command",
       "description": "Command menu for search and quick actions.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/listbox\n- shadcn/ui: https://ui.shadcn.com/docs/components/command",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
-        "lucide-vue-next",
-        "@ark-ui/vue"
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dialog.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/dialog",
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/command/CommandRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandList.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandGroup.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/command/CommandDialog.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/command/CommandShortcut.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/command/context.ts",
           "type": "registry:ui"
         },
         {
@@ -986,8 +931,63 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/command/CommandGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/CommandShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/command/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/command/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardExpose.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardExpose.ts"
+        },
+        {
+          "path": "src/composables/useForwardPropsEmits.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardPropsEmits.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -997,20 +997,36 @@
       "title": "Context Menu",
       "description": "Displays a menu of actions triggered by a right click.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/context-menu\n- Iconify: https://iconify.design/docs/icon-components",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/context-menu/namespace.ts",
+          "path": "src/components/ui/context-menu/ContextMenu.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/ContextMenuCheckboxItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/ContextMenuContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/ContextMenuGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/ContextMenuItem.vue",
           "type": "registry:ui"
         },
         {
@@ -1018,7 +1034,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/context-menu/ContextMenuSubContent.vue",
+          "path": "src/components/ui/context-menu/ContextMenuPortal.vue",
           "type": "registry:ui"
         },
         {
@@ -1030,15 +1046,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/context-menu/ContextMenuCheckboxItem.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/context-menu/ContextMenuSeparator.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/context-menu/ContextMenuSubTrigger.vue",
+          "path": "src/components/ui/context-menu/ContextMenuShortcut.vue",
           "type": "registry:ui"
         },
         {
@@ -1046,7 +1058,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/context-menu/ContextMenuContent.vue",
+          "path": "src/components/ui/context-menu/ContextMenuSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/ContextMenuSubTrigger.vue",
           "type": "registry:ui"
         },
         {
@@ -1058,8 +1074,17 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/context-menu/ContextMenuGroup.vue",
+          "path": "src/components/ui/context-menu/namespace.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/context-menu/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardExpose.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardExpose.ts"
         },
         {
           "path": "src/composables/useForwardProps.ts",
@@ -1072,34 +1097,9 @@
           "target": "src/composables/useForwardPropsEmits.ts"
         },
         {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/context-menu/ContextMenuShortcut.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/context-menu/ContextMenuItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/context-menu/ContextMenu.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/context-menu/ContextMenuPortal.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/context-menu/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1145,11 +1145,11 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/spinner.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/table.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/dropdown-menu",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/spinner",
+        "acfatah/shadcn-vue-ark/table"
       ],
       "files": [
         {
@@ -1178,6 +1178,11 @@
       ],
       "files": [
         {
+          "path": "src/components/blocks/data-table-custom/data/payments.ts",
+          "type": "registry:file",
+          "target": "src/components/blocks/data-table-custom/data/payments.ts"
+        },
+        {
           "path": "src/components/blocks/data-table-custom/DataTableCustom.vue",
           "type": "registry:file",
           "target": "src/components/blocks/data-table-custom/DataTableCustom.vue"
@@ -1191,20 +1196,15 @@
           "path": "src/components/blocks/data-table-custom/payment-columns.ts",
           "type": "registry:file",
           "target": "src/components/blocks/data-table-custom/payment-columns.ts"
-        },
-        {
-          "path": "src/components/blocks/data-table-custom/data/payments.ts",
-          "type": "registry:file",
-          "target": "src/components/blocks/data-table-custom/data/payments.ts"
         }
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/data-table.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/select.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/checkbox.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/checkbox",
+        "acfatah/shadcn-vue-ark/data-table",
+        "acfatah/shadcn-vue-ark/dropdown-menu",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/select"
       ]
     },
     {
@@ -1219,6 +1219,11 @@
       ],
       "files": [
         {
+          "path": "src/components/blocks/data-table-default/data/payments.ts",
+          "type": "registry:file",
+          "target": "src/components/blocks/data-table-default/data/payments.ts"
+        },
+        {
           "path": "src/components/blocks/data-table-default/DefaultDataTable.vue",
           "type": "registry:file",
           "target": "src/components/blocks/data-table-default/DefaultDataTable.vue"
@@ -1232,18 +1237,13 @@
           "path": "src/components/blocks/data-table-default/payment-columns.ts",
           "type": "registry:file",
           "target": "src/components/blocks/data-table-default/payment-columns.ts"
-        },
-        {
-          "path": "src/components/blocks/data-table-default/data/payments.ts",
-          "type": "registry:file",
-          "target": "src/components/blocks/data-table-default/data/payments.ts"
         }
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/data-table.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/checkbox.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/checkbox",
+        "acfatah/shadcn-vue-ark/data-table",
+        "acfatah/shadcn-vue-ark/dropdown-menu"
       ]
     },
     {
@@ -1252,31 +1252,23 @@
       "title": "DatePicker",
       "description": "A date picker component that combines a popover trigger with an inline\ncalendar for date selection.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/date-picker\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
       "dependencies": [
-        "lucide-vue-next",
         "@ark-ui/vue",
         "@iconify/vue",
         "@internationalized/date",
-        "@vueuse/core"
+        "@vueuse/core",
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/internationalized-date-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/calendar.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/popover.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/calendar",
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/internationalized-date-lib",
+        "acfatah/shadcn-vue-ark/popover",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/date-picker/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/date-picker/DatePickerInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/date-picker/DatePickerTrigger.vue",
+          "path": "src/components/ui/date-picker/context.ts",
           "type": "registry:ui"
         },
         {
@@ -1284,7 +1276,27 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/date-picker/DatePickerInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/date-picker/DatePickerRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/date-picker/DatePickerTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/date-picker/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/date-picker/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/date-picker/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1301,18 +1313,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/date-picker/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/date-picker/DatePickerRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/date-picker/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1322,23 +1322,31 @@
       "title": "DatetimePicker",
       "description": "A datetime picker component that combines a calendar with\na scrollable time picker for selecting both date and time.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
       "dependencies": [
-        "lucide-vue-next",
         "@ark-ui/vue",
         "@internationalized/date",
-        "@vueuse/core"
+        "@vueuse/core",
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/calendar.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/popover.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/scroll-area.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/calendar",
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/popover",
+        "acfatah/shadcn-vue-ark/scroll-area",
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/datetime-picker/namespace.ts",
+          "path": "src/components/ui/datetime-picker/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/datetime-picker/DatetimePickerContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/datetime-picker/DatetimePickerRoot.vue",
           "type": "registry:ui"
         },
         {
@@ -1354,7 +1362,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/datetime-picker/DatetimePickerRoot.vue",
+          "path": "src/components/ui/datetime-picker/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/datetime-picker/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1366,18 +1378,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/datetime-picker/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/datetime-picker/DatetimePickerContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/datetime-picker/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1390,9 +1390,9 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
@@ -1401,6 +1401,10 @@
         },
         {
           "path": "src/components/ui/description/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/description/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1417,10 +1421,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/description/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1430,38 +1430,18 @@
       "title": "Dialog",
       "description": "A window overlaid on either the primary window or another dialog window,\nrendering the content underneath inert.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/dialog",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/dialog/DialogScrollContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogOverlay.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogFooter.vue",
+          "path": "src/components/ui/dialog/Dialog.vue",
           "type": "registry:ui"
         },
         {
@@ -1469,15 +1449,47 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/dialog/Dialog.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/dialog/DialogContent.vue",
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/dialog/DialogDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogOverlay.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogScrollContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/DialogTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dialog/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1489,18 +1501,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogHeader.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/DialogTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dialog/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1510,17 +1510,17 @@
       "title": "Drawer",
       "description": "A drawer component for mobile devices.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/drawer",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/drawer/namespace.ts",
+          "path": "src/components/ui/drawer/DrawerClose.vue",
           "type": "registry:ui"
         },
         {
@@ -1528,11 +1528,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/drawer/DrawerRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/drawer/DrawerHeader.vue",
+          "path": "src/components/ui/drawer/DrawerDescription.vue",
           "type": "registry:ui"
         },
         {
@@ -1540,11 +1536,23 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/drawer/DrawerDescription.vue",
+          "path": "src/components/ui/drawer/DrawerHeader.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/drawer/DrawerClose.vue",
+          "path": "src/components/ui/drawer/DrawerOverlay.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/drawer/DrawerRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/drawer/DrawerTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/drawer/DrawerTrigger.vue",
           "type": "registry:ui"
         },
         {
@@ -1552,7 +1560,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/drawer/DrawerTrigger.vue",
+          "path": "src/components/ui/drawer/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/drawer/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1564,18 +1576,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/drawer/DrawerOverlay.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/drawer/DrawerTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/drawer/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1585,50 +1585,18 @@
       "title": "Dropdown Menu",
       "description": "Displays a menu to the user with actions and submenus.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/dropdown-menu\n- Iconify: https://iconify.design/docs/icon-components",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
-        {
-          "path": "src/components/ui/dropdown-menu/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuSub.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuShortcut.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "src/components/ui/dropdown-menu/DropdownMenuCheckboxItem.vue",
           "type": "registry:ui"
@@ -1638,8 +1606,69 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuShortcut.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/DropdownMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/dropdown-menu/index.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/dropdown-menu/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardExpose.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardExpose.ts"
         },
         {
           "path": "src/composables/useForwardProps.ts",
@@ -1652,38 +1681,9 @@
           "target": "src/composables/useForwardPropsEmits.ts"
         },
         {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuSubContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/DropdownMenuRadioGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/dropdown-menu/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1706,21 +1706,17 @@
       "title": "Editable",
       "description": "An inline editable text field that allows users to edit text in place.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/editable",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json"
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/editable/EditableInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/editable/namespace.ts",
+          "path": "src/components/ui/editable/EditableArea.vue",
           "type": "registry:ui"
         },
         {
@@ -1732,6 +1728,22 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/editable/EditableEditTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/EditableInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/EditableLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/EditablePreview.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/editable/EditableRoot.vue",
           "type": "registry:ui"
         },
@@ -1740,15 +1752,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/editable/EditableArea.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/editable/EditablePreview.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/editable/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/editable/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1760,18 +1772,6 @@
           "path": "src/composables/useForwardPropsEmits.ts",
           "type": "registry:file",
           "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/components/ui/editable/EditableEditTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/editable/EditableLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/editable/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1786,28 +1786,12 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/empty/EmptyHeader.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/empty/EmptyContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/empty/EmptyMedia.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/empty/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/empty/EmptyRoot.vue",
           "type": "registry:ui"
         },
         {
@@ -1815,11 +1799,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/empty/index.ts",
+          "path": "src/components/ui/empty/EmptyHeader.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/empty/variant.ts",
+          "path": "src/components/ui/empty/EmptyMedia.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/empty/EmptyRoot.vue",
           "type": "registry:ui"
         },
         {
@@ -1827,13 +1815,25 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
+          "path": "src/components/ui/empty/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/empty/namespace.ts",
+          "type": "registry:ui"
         },
         {
           "path": "src/components/ui/empty/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/empty/variant.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1843,39 +1843,23 @@
       "title": "Field",
       "description": "Combine labels, controls, and help text to compose accessible form fields\nand grouped inputs.\n\nArchitecture:\n- Use `Field.*` for form semantics and accessibility wiring.\n- Use `Field.Label`, `Field.Description`, `Field.Error`, and\n  `Field.RequiredIndicator` for metadata and validation messaging.\n- Use `Field.Input` and `Field.Textarea` as context-aware wrappers,\n  or compose standalone controls from `Input.*` inside `Field.Root`.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/field\n- shadcn/ui: https://ui.shadcn.com/docs/components/field",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/checkbox.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/checkbox",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
-        {
-          "path": "src/components/ui/field/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/field/FieldLabel.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "src/components/ui/field/FieldCheckbox.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/field/FieldInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/field/FieldRequiredIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/field/FieldRootProvider.vue",
+          "path": "src/components/ui/field/FieldDescription.vue",
           "type": "registry:ui"
         },
         {
@@ -1883,7 +1867,19 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/field/FieldTextarea.vue",
+          "path": "src/components/ui/field/FieldGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/FieldInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/FieldLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/FieldRequiredIndicator.vue",
           "type": "registry:ui"
         },
         {
@@ -1891,7 +1887,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/field/index.ts",
+          "path": "src/components/ui/field/FieldRootProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/FieldTextarea.vue",
           "type": "registry:ui"
         },
         {
@@ -1899,7 +1899,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/field/FieldGroup.vue",
+          "path": "src/components/ui/field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/field/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1911,14 +1919,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/field/FieldDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/field/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1932,21 +1932,13 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/fieldset/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/fieldset/FieldsetGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/fieldset/FieldsetSeparator.vue",
+          "path": "src/components/ui/fieldset/FieldsetContent.vue",
           "type": "registry:ui"
         },
         {
@@ -1954,7 +1946,23 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/fieldset/FieldsetError.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/fieldset/FieldsetGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/fieldset/FieldsetLegend.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/fieldset/FieldsetRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/fieldset/FieldsetSeparator.vue",
           "type": "registry:ui"
         },
         {
@@ -1962,11 +1970,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/fieldset/FieldsetContent.vue",
+          "path": "src/components/ui/fieldset/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/fieldset/FieldsetError.vue",
+          "path": "src/components/ui/fieldset/types.ts",
           "type": "registry:ui"
         },
         {
@@ -1978,14 +1986,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/fieldset/FieldsetLegend.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/fieldset/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -1995,19 +1995,19 @@
       "title": "File Upload",
       "description": "A component for uploading files with drag and drop support.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/file-upload",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/file-upload/namespace.ts",
+          "path": "src/components/ui/file-upload/context.ts",
           "type": "registry:ui"
         },
         {
@@ -2015,60 +2015,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/file-upload/FileUploadItemPreview.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadItemGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadItemSizeText.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadItemDeleteTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadItemPreviewImage.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadHiddenInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadLabel.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/file-upload/FileUploadContextProvider.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/file-upload/FileUploadTrigger.vue",
           "type": "registry:ui"
         },
         {
@@ -2076,12 +2023,65 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/file-upload/FileUploadHiddenInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemDeleteTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemGroup.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/file-upload/FileUploadItemName.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemPreview.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemPreviewImage.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadItemSizeText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/FileUploadTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/file-upload/namespace.ts",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/file-upload/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2121,21 +2121,17 @@
       "title": "Hover Card",
       "description": "For sighted users to preview content available behind a link.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/hover-card\n- shadcn/ui: https://ui.shadcn.com/docs/components/hover-card",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
           "path": "src/components/ui/hover-card/HoverCardContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/hover-card/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -2151,6 +2147,14 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/hover-card/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/hover-card/types.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/composables/useForwardPropsEmits.ts",
           "type": "registry:file",
           "target": "src/composables/useForwardPropsEmits.ts"
@@ -2159,10 +2163,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/hover-card/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2172,45 +2172,17 @@
       "title": "Input",
       "description": "Accessible input controls for capturing user-entered values in forms and\ninteractive UIs.\n\nArchitecture:\n- Use `Input.*` as standalone control primitives.\n- For form semantics such as labels, descriptions, errors, and required\n  indicators, pair controls with `Field.*`.\n- In grouped forms, combine `Field.*` with `Fieldset.*`.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/input\n- shadcn/ui Field: https://ui.shadcn.com/docs/components/field",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/input/NumberInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/SubmitInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/PrimitiveInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/InputDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/TelInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/InputError.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/SelectInput.vue",
+          "path": "src/components/ui/input/CheckboxInput.vue",
           "type": "registry:ui"
         },
         {
@@ -2218,27 +2190,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/input/RadioInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/InputRequiredIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/TextareaInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/ResetInput.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/input/DateInput.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/input/index.ts",
+          "path": "src/components/ui/input/DatetimeLocalInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/EmailInput.vue",
           "type": "registry:ui"
         },
         {
@@ -2246,11 +2206,91 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/InputDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/InputError.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/InputRequiredIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/input/MonthInput.vue",
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/input/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/NumberInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/PasswordInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/PrimitiveInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/RadioInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/RangeInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/ResetInput.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/input/SearchInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/SelectInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/SubmitInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/TelInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/TextareaInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/TextInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/TimeInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/UrlInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input/WeekInput.vue",
           "type": "registry:ui"
         },
         {
@@ -2267,46 +2307,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/input/TimeInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/PasswordInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/TextInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/UrlInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/EmailInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/RangeInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/WeekInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/DatetimeLocalInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/CheckboxInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2321,27 +2321,14 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/types.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/input-group/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input-group/InputGroupRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input-group/InputGroupButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input-group/InputGroupText.vue",
+          "path": "src/components/ui/input-group/index.ts",
           "type": "registry:ui"
         },
         {
@@ -2349,7 +2336,31 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/input-group/index.ts",
+          "path": "src/components/ui/input-group/InputGroupButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/InputGroupInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/InputGroupRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/InputGroupText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/InputGroupTextarea.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/input-group/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2365,18 +2376,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/input-group/InputGroupInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input-group/InputGroupTextarea.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/input-group/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2403,33 +2402,13 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/item/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemMedia.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemFooter.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemContent.vue",
+          "path": "src/components/ui/item/index.ts",
           "type": "registry:ui"
         },
         {
@@ -2437,15 +2416,51 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/item/index.ts",
+          "path": "src/components/ui/item/ItemContent.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/item/variant.ts",
+          "path": "src/components/ui/item/ItemDescription.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemGroup.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/item/ItemHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemMedia.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/ItemTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/item/variant.ts",
           "type": "registry:ui"
         },
         {
@@ -2457,22 +2472,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/item/ItemGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/ItemRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/item/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2486,21 +2485,16 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
-        {
-          "path": "src/components/ui/kbd/Kbd.vue",
-          "type": "registry:ui"
-        },
         {
           "path": "src/components/ui/kbd/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
+          "path": "src/components/ui/kbd/Kbd.vue",
+          "type": "registry:ui"
         },
         {
           "path": "src/components/ui/kbd/KbdGroup.vue",
@@ -2509,6 +2503,11 @@
         {
           "path": "src/components/ui/kbd/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2521,17 +2520,21 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/label/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/label/Label.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/label/index.ts",
+          "path": "src/components/ui/label/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2548,10 +2551,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/label/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2561,20 +2560,20 @@
       "title": "Menubar",
       "description": "A visually persistent menu common in desktop applications that provides quick\naccess to a consistent set of commands.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/menubar\n- Iconify: https://iconify.design/docs/icon-components",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/menubar/namespace.ts",
+          "path": "src/components/ui/menubar/index.ts",
           "type": "registry:ui"
         },
         {
@@ -2582,15 +2581,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/menubar/MenubarTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/menubar/MenubarRadioItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/menubar/MenubarSeparator.vue",
+          "path": "src/components/ui/menubar/MenubarContent.vue",
           "type": "registry:ui"
         },
         {
@@ -2598,7 +2589,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/menubar/MenubarSubTrigger.vue",
+          "path": "src/components/ui/menubar/MenubarItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/MenubarLabel.vue",
           "type": "registry:ui"
         },
         {
@@ -2610,7 +2605,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/menubar/MenubarContent.vue",
+          "path": "src/components/ui/menubar/MenubarRadioItem.vue",
           "type": "registry:ui"
         },
         {
@@ -2618,16 +2613,41 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/menubar/MenubarSubContent.vue",
+          "path": "src/components/ui/menubar/MenubarSeparator.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/menubar/index.ts",
+          "path": "src/components/ui/menubar/MenubarShortcut.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/menubar/MenubarSub.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/MenubarSubContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/MenubarSubTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/MenubarTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/menubar/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardExpose.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardExpose.ts"
         },
         {
           "path": "src/composables/useForwardProps.ts",
@@ -2640,30 +2660,9 @@
           "target": "src/composables/useForwardPropsEmits.ts"
         },
         {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/menubar/MenubarItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/menubar/MenubarLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/menubar/MenubarShortcut.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/menubar/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2673,18 +2672,26 @@
       "title": "Navigation Menu",
       "description": "A collection of links for navigating websites.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/navigation-menu\n- shadcn/ui: https://ui.shadcn.com/docs/components/navigation-menu",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "class-variance-authority",
         "lucide-vue-next",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/navigation-menu/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/navigation-menu/namespace.ts",
           "type": "registry:ui"
@@ -2694,15 +2701,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/navigation-menu/NavigationMenuItem.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/navigation-menu/NavigationMenuIndicator.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/navigation-menu/NavigationMenuViewport.vue",
+          "path": "src/components/ui/navigation-menu/NavigationMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuLink.vue",
           "type": "registry:ui"
         },
         {
@@ -2714,7 +2721,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/navigation-menu/index.ts",
+          "path": "src/components/ui/navigation-menu/NavigationMenuTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/NavigationMenuViewport.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/navigation-menu/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2735,22 +2750,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/navigation-menu/NavigationMenuTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/navigation-menu/NavigationMenuLink.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/navigation-menu/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/navigation-menu/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2760,22 +2759,30 @@
       "title": "Number Input",
       "description": "A numeric input component with increment and decrement controls.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/number-input",
       "dependencies": [
-        "@vueuse/core",
+        "@ark-ui/vue",
         "@iconify/vue",
-        "@ark-ui/vue"
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/number-input/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/number-input/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/number-input/NumberInputInput.vue",
+          "path": "src/components/ui/number-input/NumberInputControl.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/NumberInputDecrement.vue",
           "type": "registry:ui"
         },
         {
@@ -2783,11 +2790,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/number-input/index.ts",
+          "path": "src/components/ui/number-input/NumberInputInput.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/number-input/NumberInputControl.vue",
+          "path": "src/components/ui/number-input/NumberInputRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/number-input/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2799,18 +2810,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/number-input/NumberInputDecrement.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/number-input/NumberInputRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/number-input/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2820,40 +2819,20 @@
       "title": "Pagination",
       "description": "Pagination with page navigation, next and previous links.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pagination\n- shadcn/ui: https://ui.shadcn.com/docs/components/pagination",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
-        "lucide-vue-next",
-        "@ark-ui/vue"
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/pagination/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationPrevious.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationEllipsis.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationLast.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationRoot.vue",
+          "path": "src/components/ui/pagination/context.ts",
           "type": "registry:ui"
         },
         {
@@ -2861,7 +2840,43 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/pagination/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationEllipsis.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationFirst.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationLast.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/pagination/PaginationNext.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationPrevious.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/PaginationRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pagination/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2883,22 +2898,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationFirst.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/PaginationItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pagination/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2908,22 +2907,34 @@
       "title": "Pin Input",
       "description": "Accessible one-time password component with copy paste functionality.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/pin-input\n- shadcn/ui: https://ui.shadcn.com/docs/components/input-otp",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/pin-input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pin-input/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/pin-input/PinInputGroup.vue",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/pin-input/PinInputHiddenInput.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/pin-input/namespace.ts",
+          "path": "src/components/ui/pin-input/PinInputRoot.vue",
           "type": "registry:ui"
         },
         {
@@ -2935,15 +2946,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/pin-input/PinInputGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pin-input/PinInputRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/pin-input/index.ts",
+          "path": "src/components/ui/pin-input/types.ts",
           "type": "registry:ui"
         },
         {
@@ -2960,10 +2963,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/pin-input/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -2973,17 +2972,25 @@
       "title": "Popover",
       "description": "Displays rich content in a portal, triggered by a button.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/popover\n- shadcn/ui: https://ui.shadcn.com/docs/components/popover",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
+          "path": "src/components/ui/popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/popover/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/popover/PopoverAnchor.vue",
           "type": "registry:ui"
         },
         {
@@ -2995,11 +3002,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/popover/PopoverAnchor.vue",
+          "path": "src/components/ui/popover/PopoverTrigger.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/popover/index.ts",
+          "path": "src/components/ui/popover/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3011,14 +3018,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/popover/PopoverTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/popover/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3028,20 +3027,24 @@
       "title": "Progress",
       "description": "Displays an indicator showing the completion progress of a task, typically\ndisplayed as a progress bar.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/progress\n- shadcn/ui: https://ui.shadcn.com/docs/components/progress",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/progress/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/progress/Progress.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/progress/index.ts",
+          "path": "src/components/ui/progress/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3053,10 +3056,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/progress/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3070,18 +3069,14 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json"
+        "acfatah/shadcn-vue-ark/description",
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/radio-group/RadioGroupItemContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/radio-group/RadioGroupLabel.vue",
+          "path": "src/components/ui/radio-group/index.ts",
           "type": "registry:ui"
         },
         {
@@ -3089,15 +3084,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/radio-group/RadioGroupItemDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/radio-group/RadioGroupItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/radio-group/RadioGroupItems.vue",
+          "path": "src/components/ui/radio-group/RadioGroupDescription.vue",
           "type": "registry:ui"
         },
         {
@@ -3105,29 +3092,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/radio-group/RadioGroupRoot.vue",
+          "path": "src/components/ui/radio-group/RadioGroupItem.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/radio-group/RadioGroupDescription.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/radio-group/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/radio-group/RadioGroupItemText.vue",
+          "path": "src/components/ui/radio-group/RadioGroupItemContent.vue",
           "type": "registry:ui"
         },
         {
@@ -3135,7 +3104,27 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/radio-group/RadioGroupItemDescription.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/radio-group/RadioGroupItemHiddenInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/radio-group/RadioGroupItems.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/radio-group/RadioGroupItemText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/radio-group/RadioGroupLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/radio-group/RadioGroupRoot.vue",
           "type": "registry:ui"
         },
         {
@@ -3145,6 +3134,16 @@
         {
           "path": "src/components/ui/radio-group/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardPropsEmits.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardPropsEmits.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3154,50 +3153,22 @@
       "title": "Range Calendar",
       "description": "Presents a calendar view tailored for selecting date ranges.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/date-picker\n- shadcn/ui: https://ui.shadcn.com/docs/components/calendar",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
-        "lucide-vue-next",
-        "@ark-ui/vue"
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
+          "path": "src/components/ui/range-calendar/index.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/range-calendar/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarGrid.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarPrevButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarHeader.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarHeadCell.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarNextButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarCellTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarHeading.vue",
           "type": "registry:ui"
         },
         {
@@ -3205,11 +3176,51 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/range-calendar/RangeCalendarCellTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarGrid.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarGridBody.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/range-calendar/RangeCalendarGridHead.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/range-calendar/index.ts",
+          "path": "src/components/ui/range-calendar/RangeCalendarGridRow.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarHeadCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarHeading.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarNextButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarPrevButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/RangeCalendarRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/range-calendar/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3221,18 +3232,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarGridRow.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/RangeCalendarGridBody.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/range-calendar/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3242,22 +3241,22 @@
       "title": "Resizable",
       "description": "Accessible resizable panel groups and layouts with keyboard support.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/splitter\n- shadcn/ui: https://ui.shadcn.com/docs/components/resizable",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
-        "lucide-vue-next",
-        "@ark-ui/vue"
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json"
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/resizable/namespace.ts",
+          "path": "src/components/ui/resizable/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/resizable/ResizablePanelGroup.vue",
+          "path": "src/components/ui/resizable/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -3265,11 +3264,15 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/resizable/index.ts",
+          "path": "src/components/ui/resizable/ResizablePanel.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/resizable/ResizablePanel.vue",
+          "path": "src/components/ui/resizable/ResizablePanelGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/resizable/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3286,10 +3289,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/resizable/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3312,20 +3311,24 @@
       "title": "Scroll Area",
       "description": "Augments native scroll functionality for custom, cross-browser styling.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/scroll-area\n- shadcn/ui: https://ui.shadcn.com/docs/components/scroll-area",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/scroll-area/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/scroll-area/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/scroll-area/index.ts",
+          "path": "src/components/ui/scroll-area/ScrollArea.vue",
           "type": "registry:ui"
         },
         {
@@ -3333,7 +3336,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/scroll-area/ScrollArea.vue",
+          "path": "src/components/ui/scroll-area/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3345,10 +3348,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/scroll-area/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3358,29 +3357,29 @@
       "title": "Select",
       "description": "Displays a list of options for the user to pick from.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/select\n- shadcn/ui: https://ui.shadcn.com/docs/components/select",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardExpose.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardExpose",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
+          "path": "src/components/ui/select/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/index.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/select/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectValueText.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectContent.vue",
           "type": "registry:ui"
         },
         {
@@ -3388,23 +3387,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/select/SelectIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectItemIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectTrigger.vue",
+          "path": "src/components/ui/select/SelectContent.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/select/SelectContextProvider.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/index.ts",
           "type": "registry:ui"
         },
         {
@@ -3416,12 +3403,57 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/select/SelectIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectItemGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectItemGroupLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectItemIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/select/SelectItemText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectLabel.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectRoot.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/select/SelectSeparator.vue",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/SelectValueText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/select/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/useForwardExpose.ts",
+          "type": "registry:file",
+          "target": "src/composables/useForwardExpose.ts"
         },
         {
           "path": "src/composables/useForwardProps.ts",
@@ -3434,42 +3466,9 @@
           "target": "src/composables/useForwardPropsEmits.ts"
         },
         {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/select/SelectLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectItemGroupLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectItemGroup.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/SelectItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/select/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3482,16 +3481,20 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/separator/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/separator/Separator.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/separator/index.ts",
+          "path": "src/components/ui/separator/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3503,10 +3506,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/separator/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3516,22 +3515,22 @@
       "title": "Sheet",
       "description": "Extends the Dialog component to display content that complements the main\ncontent of the screen.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/dialog\n- shadcn/ui: https://ui.shadcn.com/docs/components/sheet",
       "dependencies": [
+        "@ark-ui/vue",
         "@vueuse/core",
         "lucide-vue-next",
-        "@ark-ui/vue",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/sheet/namespace.ts",
+          "path": "src/components/ui/sheet/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sheet/SheetTrigger.vue",
+          "path": "src/components/ui/sheet/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -3539,11 +3538,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sheet/SheetTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sheet/SheetFooter.vue",
+          "path": "src/components/ui/sheet/SheetContent.vue",
           "type": "registry:ui"
         },
         {
@@ -3551,7 +3546,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sheet/SheetContent.vue",
+          "path": "src/components/ui/sheet/SheetFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sheet/SheetHeader.vue",
           "type": "registry:ui"
         },
         {
@@ -3559,7 +3558,19 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sheet/index.ts",
+          "path": "src/components/ui/sheet/SheetRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sheet/SheetTitle.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sheet/SheetTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sheet/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3571,18 +3582,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/sheet/SheetRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sheet/types.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sheet/SheetHeader.vue",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3594,24 +3593,24 @@
       "dependencies": [
         "@ark-ui/vue",
         "@vueuse/core",
-        "lucide-vue-next",
-        "class-variance-authority"
+        "class-variance-authority",
+        "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dynamic.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/tooltip.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/skeleton.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/sheet.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/dynamic",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/sheet",
+        "acfatah/shadcn-vue-ark/skeleton",
+        "acfatah/shadcn-vue-ark/tooltip",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/sidebar/SidebarMenuSubButton.vue",
+          "path": "src/components/ui/sidebar/index.ts",
           "type": "registry:ui"
         },
         {
@@ -3619,31 +3618,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sidebar/SidebarMenu.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarInset.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarProvider.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarMenuButton.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarGroupAction.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarRail.vue",
+          "path": "src/components/ui/sidebar/SidebarContent.vue",
           "type": "registry:ui"
         },
         {
@@ -3651,31 +3626,35 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/sidebar/SidebarGroup.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarGroupAction.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarGroupContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarGroupLabel.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/sidebar/SidebarHeader.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sidebar/SidebarMenuSkeleton.vue",
+          "path": "src/components/ui/sidebar/SidebarInput.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sidebar/SidebarMenuButtonChild.vue",
+          "path": "src/components/ui/sidebar/SidebarInset.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sidebar/SidebarContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/variant.ts",
+          "path": "src/components/ui/sidebar/SidebarMenu.vue",
           "type": "registry:ui"
         },
         {
@@ -3687,11 +3666,63 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sidebar/SidebarGroup.vue",
+          "path": "src/components/ui/sidebar/SidebarMenuButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuButtonChild.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuSkeleton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuSub.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuSubButton.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarMenuSubItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarRail.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/SidebarTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/types.ts",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/sidebar/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sidebar/variant.ts",
           "type": "registry:ui"
         },
         {
@@ -3703,38 +3734,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarMenuItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarGroupLabel.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarMenuSub.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarMenuSubItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/SidebarGroupContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sidebar/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3748,14 +3747,9 @@
       ],
       "files": [
         {
-          "path": "src/components/layouts/sidebar-07/SidebarLayout.vue",
+          "path": "src/components/layouts/sidebar-07/data.ts",
           "type": "registry:file",
-          "target": "src/components/layouts/sidebar-07/SidebarLayout.vue"
-        },
-        {
-          "path": "src/components/layouts/sidebar-07/SidebarLeft.vue",
-          "type": "registry:file",
-          "target": "src/components/layouts/sidebar-07/SidebarLeft.vue"
+          "target": "src/components/layouts/sidebar-07/data.ts"
         },
         {
           "path": "src/components/layouts/sidebar-07/LayoutHeader.vue",
@@ -3778,22 +3772,27 @@
           "target": "src/components/layouts/sidebar-07/NavUser.vue"
         },
         {
+          "path": "src/components/layouts/sidebar-07/SidebarLayout.vue",
+          "type": "registry:file",
+          "target": "src/components/layouts/sidebar-07/SidebarLayout.vue"
+        },
+        {
+          "path": "src/components/layouts/sidebar-07/SidebarLeft.vue",
+          "type": "registry:file",
+          "target": "src/components/layouts/sidebar-07/SidebarLeft.vue"
+        },
+        {
           "path": "src/components/layouts/sidebar-07/TeamSwitcher.vue",
           "type": "registry:file",
           "target": "src/components/layouts/sidebar-07/TeamSwitcher.vue"
-        },
-        {
-          "path": "src/components/layouts/sidebar-07/data.ts",
-          "type": "registry:file",
-          "target": "src/components/layouts/sidebar-07/data.ts"
         }
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/sidebar.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/separator.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/collapsible.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/avatar.json"
+        "acfatah/shadcn-vue-ark/avatar",
+        "acfatah/shadcn-vue-ark/collapsible",
+        "acfatah/shadcn-vue-ark/dropdown-menu",
+        "acfatah/shadcn-vue-ark/separator",
+        "acfatah/shadcn-vue-ark/sidebar"
       ]
     },
     {
@@ -3803,15 +3802,15 @@
       "description": "Use to show a placeholder while content is loading.\n\nReferences:\n- shadcn-ui: https://ui.shadcn.com/docs/components/skeleton",
       "dependencies": [],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/skeleton/Skeleton.vue",
+          "path": "src/components/ui/skeleton/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/skeleton/index.ts",
+          "path": "src/components/ui/skeleton/Skeleton.vue",
           "type": "registry:ui"
         },
         {
@@ -3827,20 +3826,24 @@
       "title": "Slider",
       "description": "An input where the user selects a value from within a given range.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/slider\n- shadcn/ui: https://ui.shadcn.com/docs/components/slider",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/slider/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/slider/Slider.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/slider/index.ts",
+          "path": "src/components/ui/slider/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3852,10 +3855,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/slider/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -3871,11 +3870,28 @@
         "vue-sonner"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
           "path": "src/components/ui/sonner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sonner/Sonner.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sonner/styles.css",
+          "type": "registry:file",
+          "target": "src/components/ui/sonner/styles.css"
+        },
+        {
+          "path": "src/components/ui/sonner/styles.css",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/sonner/types.ts",
           "type": "registry:ui"
         },
         {
@@ -3886,23 +3902,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/sonner/styles.css",
-          "type": "registry:file",
-          "target": "src/components/ui/sonner/styles.css"
-        },
-        {
-          "path": "src/components/ui/sonner/Sonner.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sonner/styles.css",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/sonner/types.ts",
-          "type": "registry:ui"
         }
       ],
       "css": {
@@ -3919,8 +3918,8 @@
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
@@ -3944,16 +3943,16 @@
       "title": "Steps",
       "description": "A multi-step navigation component used to guide users through a sequence\nof steps such as forms, wizards, or onboarding flows.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/steps",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/steps/StepsList.vue",
+          "path": "src/components/ui/steps/index.ts",
           "type": "registry:ui"
         },
         {
@@ -3961,15 +3960,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/steps/StepsPrevTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/steps/StepsCompletedContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/steps/StepsTrigger.vue",
           "type": "registry:ui"
         },
         {
@@ -3981,15 +3972,35 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/steps/StepsSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/steps/StepsItem.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/steps/index.ts",
+          "path": "src/components/ui/steps/StepsList.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/StepsNextTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/StepsPrevTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/StepsRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/StepsSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/StepsTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/steps/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4001,18 +4012,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/steps/StepsRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/steps/StepsNextTrigger.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/steps/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4022,22 +4021,26 @@
       "title": "Switch",
       "description": "A control that allows the user to toggle between checked and not checked.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/switch\n- shadcn/ui: https://ui.shadcn.com/docs/components/switch",
       "dependencies": [
-        "@vueuse/core",
-        "@ark-ui/vue"
+        "@ark-ui/vue",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/label.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/description.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/description",
+        "acfatah/shadcn-vue-ark/label",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/switch/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/switch/SwitchLabel.vue",
+          "path": "src/components/ui/switch/SwitchControl.vue",
           "type": "registry:ui"
         },
         {
@@ -4045,11 +4048,23 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/switch/SwitchHiddenInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/switch/SwitchLabel.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/switch/SwitchRoot.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/switch/index.ts",
+          "path": "src/components/ui/switch/SwitchThumb.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/switch/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4061,22 +4076,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/switch/SwitchControl.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/switch/SwitchHiddenInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/switch/SwitchThumb.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/switch/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4086,15 +4085,15 @@
       "title": "Table",
       "description": "A responsive table component.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/table",
       "dependencies": [
-        "@vueuse/core",
-        "@tanstack/vue-table"
+        "@tanstack/vue-table",
+        "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/table/TableRow.vue",
+          "path": "src/components/ui/table/index.ts",
           "type": "registry:ui"
         },
         {
@@ -4102,19 +4101,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/table/TableEmpty.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/table/TableRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/table/TableHeader.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/table/TableHead.vue",
+          "path": "src/components/ui/table/TableBody.vue",
           "type": "registry:ui"
         },
         {
@@ -4122,7 +4109,31 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/table/index.ts",
+          "path": "src/components/ui/table/TableCell.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableEmpty.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableFooter.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableHead.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableHeader.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/table/TableRow.vue",
           "type": "registry:ui"
         },
         {
@@ -4133,18 +4144,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/table/TableBody.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/table/TableFooter.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/table/TableCell.vue",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4154,18 +4153,38 @@
       "title": "Tabs",
       "description": "A set of layered sections of content—known as tab panels—that are displayed\none at a time.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tabs\n- shadcn/ui: https://ui.shadcn.com/docs/components/tabs",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
+          "path": "src/components/ui/tabs/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tabs/index.ts",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/tabs/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tabs/TabsContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tabs/TabsIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tabs/TabsList.vue",
           "type": "registry:ui"
         },
         {
@@ -4177,11 +4196,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/tabs/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tabs/TabsList.vue",
+          "path": "src/components/ui/tabs/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4197,22 +4212,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/tabs/TabsContent.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tabs/TabsIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tabs/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tabs/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4222,26 +4221,18 @@
       "title": "Tags Input",
       "description": "Tag inputs render tags inside an input, followed by an actual text input.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tags-input\n- shadcn/ui: https://shadcn-vue.com/docs/components/tags-input",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "lucide-vue-next"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json"
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/tags-input/TagsInputItemPreview.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tags-input/TagsInputItemInput.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tags-input/TagsInputInput.vue",
+          "path": "src/components/ui/tags-input/index.ts",
           "type": "registry:ui"
         },
         {
@@ -4253,11 +4244,35 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/tags-input/TagsInputInput.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/tags-input/TagsInputItem.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/tags-input/index.ts",
+          "path": "src/components/ui/tags-input/TagsInputItemDelete.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/TagsInputItemInput.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/TagsInputItemPreview.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/TagsInputItemText.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/TagsInputRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tags-input/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4274,22 +4289,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/tags-input/TagsInputItemText.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tags-input/TagsInputRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tags-input/TagsInputItemDelete.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tags-input/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4305,6 +4304,11 @@
       ],
       "files": [
         {
+          "path": "src/components/blocks/tanstack-data-table/data/payments.ts",
+          "type": "registry:file",
+          "target": "src/components/blocks/tanstack-data-table/data/payments.ts"
+        },
+        {
           "path": "src/components/blocks/tanstack-data-table/TanstackDataTable.vue",
           "type": "registry:file",
           "target": "src/components/blocks/tanstack-data-table/TanstackDataTable.vue"
@@ -4313,20 +4317,15 @@
           "path": "src/components/blocks/tanstack-data-table/TanstackDataTableDropdown.vue",
           "type": "registry:file",
           "target": "src/components/blocks/tanstack-data-table/TanstackDataTableDropdown.vue"
-        },
-        {
-          "path": "src/components/blocks/tanstack-data-table/data/payments.ts",
-          "type": "registry:file",
-          "target": "src/components/blocks/tanstack-data-table/data/payments.ts"
         }
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/button.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/checkbox.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/data-table.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/dropdown-menu.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/input.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/table.json"
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/checkbox",
+        "acfatah/shadcn-vue-ark/data-table",
+        "acfatah/shadcn-vue-ark/dropdown-menu",
+        "acfatah/shadcn-vue-ark/input",
+        "acfatah/shadcn-vue-ark/table"
       ]
     },
     {
@@ -4339,32 +4338,12 @@
         "@vueuse/core"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
         {
-          "path": "src/components/ui/timeline/namespace.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/timeline/TimelineItem.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/timeline/TimelineIndicator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/timeline/TimelineTitle.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/timeline/TimelineSeparator.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/timeline/TimelineRoot.vue",
+          "path": "src/components/ui/timeline/context.ts",
           "type": "registry:ui"
         },
         {
@@ -4372,17 +4351,7 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/components/ui/timeline/context.ts",
+          "path": "src/components/ui/timeline/namespace.ts",
           "type": "registry:ui"
         },
         {
@@ -4390,16 +4359,46 @@
           "type": "registry:ui"
         },
         {
+          "path": "src/components/ui/timeline/TimelineContent.vue",
+          "type": "registry:ui"
+        },
+        {
           "path": "src/components/ui/timeline/TimelineDescription.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/timeline/TimelineContent.vue",
+          "path": "src/components/ui/timeline/TimelineIndicator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/timeline/TimelineItem.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/timeline/TimelineRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/timeline/TimelineSeparator.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/timeline/TimelineTitle.vue",
           "type": "registry:ui"
         },
         {
           "path": "src/components/ui/timeline/types.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/composables/createContext.ts",
+          "type": "registry:file",
+          "target": "src/composables/createContext.ts"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:file",
+          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4421,21 +4420,25 @@
       "title": "Toggle",
       "description": "A two-state button that can be either on or off.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/toggle\n- shadcn/ui: https://ui.shadcn.com/docs/components/toggle",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json"
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/toggle/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/toggle/Toggle.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/toggle/index.ts",
+          "path": "src/components/ui/toggle/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4451,10 +4454,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/toggle/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4464,17 +4463,25 @@
       "title": "Toggle Group",
       "description": "A set of two-state buttons that can be toggled on or off.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/toggle-group\n- shadcn/ui: https://ui.shadcn.com/docs/components/toggle-group",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/toggle.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/toggle",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/toggle-group/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/toggle-group/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/toggle-group/namespace.ts",
           "type": "registry:ui"
@@ -4484,11 +4491,11 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/toggle-group/index.ts",
+          "path": "src/components/ui/toggle-group/ToggleGroupItem.vue",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/toggle-group/ToggleGroupItem.vue",
+          "path": "src/components/ui/toggle-group/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4500,14 +4507,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/toggle-group/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/toggle-group/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4517,23 +4516,31 @@
       "title": "Tooltip",
       "description": "A popup that displays information related to an element when the element\nreceives keyboard focus or the mouse hovers over it.\n\nReferences:\n- Headless API: https://ark-ui.com/docs/components/tooltip\n- shadcn/ui: https://ui.shadcn.com/docs/components/tooltip",
       "dependencies": [
-        "@vueuse/core",
         "@ark-ui/vue",
+        "@vueuse/core",
         "tw-animate-css"
       ],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardPropsEmits.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/utils-lib.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/useForwardProps",
+        "acfatah/shadcn-vue-ark/useForwardPropsEmits",
+        "acfatah/shadcn-vue-ark/utils-lib"
       ],
       "files": [
+        {
+          "path": "src/components/ui/tooltip/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        },
         {
           "path": "src/components/ui/tooltip/namespace.ts",
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/tooltip/TooltipTrigger.vue",
+          "path": "src/components/ui/tooltip/TooltipArrow.vue",
           "type": "registry:ui"
         },
         {
@@ -4541,7 +4548,19 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/tooltip/index.ts",
+          "path": "src/components/ui/tooltip/TooltipProvider.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tooltip/TooltipRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tooltip/TooltipTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tooltip/types.ts",
           "type": "registry:ui"
         },
         {
@@ -4553,26 +4572,6 @@
           "path": "src/lib/utils.ts",
           "type": "registry:file",
           "target": "src/lib/utils.ts"
-        },
-        {
-          "path": "src/components/ui/tooltip/TooltipRoot.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tooltip/TooltipArrow.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tooltip/context.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tooltip/TooltipProvider.vue",
-          "type": "registry:ui"
-        },
-        {
-          "path": "src/components/ui/tooltip/types.ts",
-          "type": "registry:ui"
         }
       ]
     },
@@ -4621,7 +4620,7 @@
       "type": "registry:file",
       "dependencies": [],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/unrefElement.json"
+        "acfatah/shadcn-vue-ark/unrefElement"
       ],
       "files": [
         {
@@ -4649,8 +4648,8 @@
       "type": "registry:file",
       "dependencies": [],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useEmitsAsProps.json",
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/useForwardProps.json"
+        "acfatah/shadcn-vue-ark/useEmitsAsProps",
+        "acfatah/shadcn-vue-ark/useForwardProps"
       ],
       "files": [
         {
@@ -4665,7 +4664,7 @@
       "type": "registry:file",
       "dependencies": [],
       "registryDependencies": [
-        "https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r/createContext.json"
+        "acfatah/shadcn-vue-ark/createContext"
       ],
       "files": [
         {

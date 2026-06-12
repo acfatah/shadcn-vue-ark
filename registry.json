@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "shadcn-vue-ark",
+  "homepage": "https://github.com/acfatah/shadcn-vue-ark",
+  "include": ["packages/registry/registry.json"],
+  "items": [
+    {
+      "name": "project-setup",
+      "type": "registry:item",
+      "title": "Project Setup",
+      "description": "Base shadcn config, theme styles and fonts for shadcn-vue-ark. Run this once in a fresh project before adding components.",
+      "dependencies": [
+        "tailwindcss",
+        "tw-animate-css",
+        "@fontsource-variable/geist",
+        "@fontsource-variable/geist-mono"
+      ],
+      "registryDependencies": [
+        "acfatah/shadcn-vue-ark/utils-lib"
+      ],
+      "files": [
+        {
+          "path": "templates/vue-starter/components.json",
+          "type": "registry:file",
+          "target": "~/components.json"
+        },
+        {
+          "path": "packages/registry/src/styles/global.css",
+          "type": "registry:file",
+          "target": "~/src/styles/global.css"
+        },
+        {
+          "path": "packages/registry/src/styles/fonts.css",
+          "type": "registry:file",
+          "target": "~/src/styles/fonts.css"
+        },
+        {
+          "path": "packages/registry/src/styles/nprogress.css",
+          "type": "registry:file",
+          "target": "~/src/styles/nprogress.css"
+        }
+      ]
+    },
+    {
+      "name": "agent-rules",
+      "type": "registry:file",
+      "title": "Agent Rules",
+      "description": "Project conventions and agent instructions (AGENTS.md).",
+      "files": [
+        {
+          "path": "AGENTS.md",
+          "type": "registry:file",
+          "target": "~/AGENTS.md"
+        }
+      ]
+    }
+  ]
+}

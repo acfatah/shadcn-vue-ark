@@ -8,39 +8,31 @@ import { join, resolve } from 'pathe'
 
 import {
   readDirectory,
-  rimraf,
   writeFile,
 } from '@/cli/utils'
 
 import { buildBlocksRegistry } from './build-blocks-registry'
 import { buildComponentsRegistry } from './build-components-registry'
 import { buildComposablesRegistry } from './build-composables-registry'
-import { buildIndexJson } from './build-index-json'
 import { buildLayoutsRegistry } from './build-layouts-registry'
 import { buildLibRegistry } from './build-lib-registry'
-import { buildStyles } from './build-styles'
-import { buildThemes } from './build-themes'
 import { buildUIRegistry } from './build-ui-registry'
 import {
   BLOCKS_PATH,
   COMPONENTS_PATH,
   LAYOUTS_PATH,
-  REGISTRY_OUTPUT_PATH,
   ROOT_PATH,
   UI_PATH,
 } from './paths'
 
 const mainPackageJson = await Bun.file(resolve(__dirname, '..', '..', '..', '..', '..', '..', 'package.json')).json()
 
-const REGISTRY_URL = process.env.REGISTRY_URL
-  || 'https://raw.githubusercontent.com/acfatah/shadcn-vue-ark/refs/heads/main/packages/registry/public/r'
+const REGISTRY_NAMESPACE = process.env.REGISTRY_NAMESPACE || 'acfatah/shadcn-vue-ark'
 
 interface BuildCommandOptions {
-  output: string
   name: string
   homepage: string
-  registryBaseUrl: string
-  dryRun: boolean
+  registryNamespace: string
 }
 
 async function crawlAndBuildUIRegistry(registryBaseUrl: string) {
@@ -112,6 +104,24 @@ async function crawlAndBuildLayoutsRegistry(registryBaseUrl: string) {
   return layoutsRegistry
 }
 
+// Normalize array ordering so the build is deterministic across machines
+// (filesystem readdir order varies). Order is irrelevant to installation, so
+// sorting keeps the committed registry.json stable for the CI drift check.
+function sortRegistryItem(item: RegistryItem): RegistryItem {
+  return {
+    ...item,
+    ...(item.dependencies
+      ? { dependencies: [...item.dependencies].sort() }
+      : {}),
+    ...(item.registryDependencies
+      ? { registryDependencies: [...item.registryDependencies].sort() }
+      : {}),
+    ...(item.files
+      ? { files: [...item.files].sort((a, b) => a.path.localeCompare(b.path)) }
+      : {}),
+  }
+}
+
 export async function buildRegistry(registryBaseUrl: string) {
   const registry: RegistryItem[] = []
 
@@ -133,23 +143,14 @@ export async function buildRegistry(registryBaseUrl: string) {
     ...libs,
   )
 
-  return registry.sort(
-    (a, b) => a.name.localeCompare(b.name),
-  )
-}
-
-async function runShadcnBuild() {
-  await Bun.$`bunx --bun shadcn build -c ${ROOT_PATH} -o ${REGISTRY_OUTPUT_PATH}`
+  return registry
+    .map(sortRegistryItem)
+    .sort((a, b) => a.name.localeCompare(b.name))
 }
 
 export const build = new Command()
   .name('build')
   .description('Build components registry.')
-  .option(
-    '-o, --output <path>',
-    'destination directory for json files',
-    './public/r',
-  )
   .option(
     '-n, --name <name>',
     'name of the registry',
@@ -161,22 +162,16 @@ export const build = new Command()
     mainPackageJson.homepage,
   )
   .option(
-    '-u, --registry-base-url <registryBaseUrl>',
-    'base url for the registry assets',
-    REGISTRY_URL,
-  )
-  .option(
-    '--dry-run',
-    'only generate registry.json file without building the registry',
-    false,
+    '-u, --registry-namespace <registryNamespace>',
+    'owner/repo namespace for registry dependency addresses',
+    REGISTRY_NAMESPACE,
   )
   .action(async (_cmd, args) => {
     const opts = args.opts() as BuildCommandOptions
-    let items: RegistryItem[]
 
     try {
       consola.start('Creating registry.json file...')
-      items = await buildRegistry(opts.registryBaseUrl)
+      const items = await buildRegistry(opts.registryNamespace)
 
       const registrySchema = {
         $schema: 'https://ui.shadcn.com/schema/registry.json',
@@ -191,24 +186,6 @@ export const build = new Command()
       )
 
       consola.success('Registry created successfully.')
-    }
-    catch (error) {
-      consola.error(error)
-      process.exit(1)
-    }
-
-    if (opts.dryRun)
-      return
-
-    try {
-      consola.start('Building registry...')
-      await rimraf(REGISTRY_OUTPUT_PATH)
-      await buildIndexJson(items)
-      await buildThemes()
-      await buildStyles()
-      // await buildIcons()
-      await runShadcnBuild()
-      consola.success('Registry built successfully.')
     }
     catch (error) {
       consola.error(error)

@@ -37,14 +37,20 @@ const REGISTRY_RELATIVE_EXTENSIONS = ['.ts', '.vue']
 function resolveRegistryDependency(
   importer: string,
   source: string,
-  registryPath: string,
+  namespace: string,
 ) {
   if (source?.startsWith(REGISTRY_DEPENDENCY) && !source.endsWith('.vue')) {
     const sourcePath = source.replace(REGISTRY_DEPENDENCY, '')
     const segments = sourcePath.split('/')
-    const componentName = segments.slice(-1)[0] ?? ''
     const isComposable = segments[0] === 'composables'
     const isLib = segments[0] === 'lib'
+    // For `@/components/ui/<name>/...` the registry item is the component folder
+    // (`<name>`), not the last path segment. Using the last segment broke on
+    // subpath imports like `@/components/ui/input/types` (yielded a bogus `types`).
+    const isUiComponent = segments[0] === 'components' && segments[1] === 'ui'
+    const componentName = isUiComponent
+      ? segments[2] ?? ''
+      : segments.slice(-1)[0] ?? ''
     let registryName = isComposable
       ? componentName
       : getKebabName(componentName)
@@ -52,7 +58,7 @@ function resolveRegistryDependency(
     if (isLib)
       registryName = `${registryName}-lib`
 
-    return `${registryPath}/${registryName}.json`
+    return `${namespace}/${registryName}`
   }
 
   if (!source.startsWith('./') && !source.startsWith('../'))
@@ -92,7 +98,7 @@ function resolveRegistryDependency(
     if (isLib)
       name = `${name}-lib`
 
-    return `${registryPath}/${name}.json`
+    return `${namespace}/${name}`
   }
 
   return null
@@ -101,7 +107,7 @@ function resolveRegistryDependency(
 export async function getFileDependencies(
   filename: string,
   sourceCode: string,
-  registryPath: string,
+  namespace: string,
 ) {
   const registryDependencies = new Set<string>()
   const dependencies = new Set<string>()
@@ -117,9 +123,9 @@ export async function getFileDependencies(
       peerDeps.forEach(dep => dependencies.add(dep))
     }
 
-    const registryUrl = resolveRegistryDependency(filename, source, registryPath)
-    if (registryUrl)
-      registryDependencies.add(registryUrl)
+    const registryDep = resolveRegistryDependency(filename, source, namespace)
+    if (registryDep)
+      registryDependencies.add(registryDep)
   }
 
   if (filename.endsWith('.vue')) {
