@@ -1,0 +1,21 @@
+{
+  // IDE-only config. The Vue (Volar) language server resolves a file through
+  // its nearest `tsconfig.json`; without this, story files fall back to an
+  // inferred project with no `@/*` path mapping and every `@/…` import reports
+  // "Cannot find module". Mirrors ../tsconfig.stories.json — the CLI typecheck
+  // (`typecheck:stories`) still runs against ../tsconfig.stories.json.
+  "extends": "../tsconfig.stories.json",
+
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["../src/*"],
+      "packages.registry/*": ["../src/*"]
+    },
+    "tsBuildInfoFile": "../node_modules/.tmp/tsconfig.stories-ide.tsbuildinfo"
+  },
+
+  "include": [
+    "**/*.ts",
+    "**/*.vue"
+  ]
+}
