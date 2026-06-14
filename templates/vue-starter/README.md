@@ -153,17 +153,16 @@ The project follows the standard vue project structure:
 
 4. **Testing:**
 
-   ```bash
-   # Run tests
-   bun test
+   No test runner is preconfigured. Add one (for example Vitest) before
+   running tests:
 
-   # Run tests in watch mode
-   bun test:watch
+   ```bash
+   bun add -d vitest
    ```
 
 ## Development Conventions
 
-- **Code Style:** The project uses ESLint with the `@antfu/eslint-config` configuration for consistent code formatting and quality
+- **Code Style:** The project uses ESLint with the `@acfatah/eslint-preset` configuration for consistent code formatting and quality
 - **Styling:** Tailwind CSS is used for styling with a base layer configuration in `global.css`
 - **Components:** Vue components use the `<script setup lang="ts">` syntax for simplicity
 - **Accessibility:** Ark UI components are integrated for accessible UI components
@@ -174,8 +173,8 @@ The project follows the standard vue project structure:
 - `@ark-ui/vue` - Accessible Vue UI components
 - `@tailwindcss/vite` - Tailwind CSS integration with Vite
 - `vue` - Vue.js framework
+- `vue-router` - Official Vue router
 - `tailwindcss` - Utility-first CSS framework
-- `arktype` - Type validation library
 
 ## Configuration Files
 
