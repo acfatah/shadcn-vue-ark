@@ -45,10 +45,10 @@
       "name": "agent-rules",
       "type": "registry:file",
       "title": "Agent Rules",
-      "description": "Project conventions and agent instructions (AGENTS.md).",
+      "description": "App-builder conventions for projects scaffolded from shadcn-vue-ark.",
       "files": [
         {
-          "path": "AGENTS.md",
+          "path": "templates/vue-starter/CLAUDE.md",
           "type": "registry:file",
           "target": "~/AGENTS.md"
         }
