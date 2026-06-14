@@ -287,14 +287,19 @@ this work. `vue-tsc` is the real signal.
 
 | Count | Where | Why accepted |
 |---|---|---|
-| 5 | `calendar` (2) + `range-calendar` (3) — DateValue / `VisibleRange` `TS2322` | [DateValue brand clash](#b-datevalue-brand-clash) |
-| 4 | `navigation-menu`, `steps`×2, `file-upload` — `TS2345` | [useForwardProps forwarding](#d-useforwardprops-required-prop-forwarding) |
+| 4 | `navigation-menu`, `steps`×2, `file-upload`: `TS2345` | [useForwardProps forwarding](#d-useforwardprops-required-prop-forwarding) |
 
-If `vue-tsc` shows MORE than these 9, the extra errors are real and caused by your
-re-sync — fix them (usually a runtime-binding assignability problem; see
+As of 2026-06-14 the baseline is **4**. The former 5 `calendar` (2) +
+`range-calendar` (3) DateValue / `VisibleRange` `TS2322` errors (the
+[DateValue brand clash](#b-datevalue-brand-clash)) have resolved via a dependency
+dedup. If an `@ark-ui/vue` or `@internationalized/date` bump reintroduces duplicate
+`@internationalized/date` copies in the tree, those 5 may reappear and are still
+accepted.
+
+If `vue-tsc` shows MORE than these 4, the extra errors are real and caused by your
+re-sync: fix them (usually a runtime-binding assignability problem; see
 [Landmines](#landmines--runtime-binding-assignability)). If a future Ark version
-*resolves* one of the accepted errors (e.g. the DateValue duplication goes away),
-update this baseline.
+*resolves* one of the accepted errors, update this baseline.
 
 ### 3. `registry:build` — re-embed Ark-free source
 
