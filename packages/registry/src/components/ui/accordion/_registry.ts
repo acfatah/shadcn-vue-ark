@@ -21,19 +21,6 @@ export const registryItem = {
     'lucide-vue-next',
   ],
 
-  files: [
-    {
-      path: 'src/composables/dynamic.ts',
-      type: 'registry:file',
-      target: 'src/composables/dynamic.ts',
-    },
-    {
-      path: 'src/composables/useForwardPropsEmits.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardPropsEmits.ts',
-    },
-  ],
-
   cssVars: {
     theme: {
       '--animate-accordion-down': 'accordion-down 0.25s ease-out',

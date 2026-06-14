@@ -21,29 +21,6 @@ export const registryItem = {
     'lucide-vue-next',
     'tw-animate-css',
   ],
-
-  files: [
-    {
-      path: 'src/composables/useForwardProps.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardProps.ts',
-    },
-    {
-      path: 'src/composables/useForwardPropsEmits.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardPropsEmits.ts',
-    },
-    {
-      path: 'src/composables/useForwardExpose.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardExpose.ts',
-    },
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

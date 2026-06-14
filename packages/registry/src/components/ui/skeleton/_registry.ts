@@ -15,14 +15,6 @@ export const registryItem = {
   `,
 
   dependencies: [],
-
-  files: [
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

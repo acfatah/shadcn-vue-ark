@@ -18,19 +18,6 @@ export const registryItem = {
     '@ark-ui/vue',
     '@vueuse/core',
   ],
-
-  files: [
-    {
-      path: 'src/composables/dynamic.ts',
-      type: 'registry:file',
-      target: 'src/composables/dynamic.ts',
-    },
-    {
-      path: 'src/composables/useForwardPropsEmits.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardPropsEmits.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

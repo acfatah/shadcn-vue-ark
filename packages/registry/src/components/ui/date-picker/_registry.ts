@@ -28,24 +28,6 @@ export const registryItem = {
     'calendar',
     'popover',
   ],
-
-  files: [
-    {
-      path: 'src/composables/createContext.ts',
-      type: 'registry:file',
-      target: 'src/composables/createContext.ts',
-    },
-    {
-      path: 'src/lib/internationalized-date.ts',
-      type: 'registry:file',
-      target: 'src/lib/internationalized-date.ts',
-    },
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

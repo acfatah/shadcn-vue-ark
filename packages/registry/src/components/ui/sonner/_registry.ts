@@ -32,11 +32,6 @@ export const registryItem = {
 
   files: [
     {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-    {
       path: 'src/components/ui/sonner/styles.css',
       type: 'registry:file',
       target: 'src/components/ui/sonner/styles.css',

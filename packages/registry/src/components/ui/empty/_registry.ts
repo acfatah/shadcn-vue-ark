@@ -17,14 +17,6 @@ export const registryItem = {
   dependencies: [
     'class-variance-authority',
   ],
-
-  files: [
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

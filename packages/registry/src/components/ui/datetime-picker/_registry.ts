@@ -28,19 +28,6 @@ export const registryItem = {
     'scroll-area',
     'separator',
   ],
-
-  files: [
-    {
-      path: 'src/composables/createContext.ts',
-      type: 'registry:file',
-      target: 'src/composables/createContext.ts',
-    },
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

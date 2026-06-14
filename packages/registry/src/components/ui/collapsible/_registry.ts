@@ -20,14 +20,6 @@ export const registryItem = {
     '@vueuse/core',
   ],
 
-  files: [
-    {
-      path: 'src/composables/useForwardPropsEmits.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardPropsEmits.ts',
-    },
-  ],
-
   cssVars: {
     theme: {
       '--animate-collapsible-down': 'collapsible-down 0.25s ease-out',

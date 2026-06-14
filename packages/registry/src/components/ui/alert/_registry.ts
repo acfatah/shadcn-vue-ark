@@ -19,14 +19,6 @@ export const registryItem = {
     'lucide-vue-next',
     '@vueuse/core',
   ],
-
-  files: [
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

@@ -53,6 +53,20 @@ export async function buildUIRegistry(
       css = mergeCss(css, tailwindCss)
 
       if (registryItem?.files) {
+        // Guard: composables (`src/composables/*`) and libs (`src/lib/*`) are
+        // their own registry items, auto-resolved via `registryDependencies`
+        // (see `get-file-dependecies.ts`). Listing them in `files[]` double-ships
+        // the file. Fail loud so the convention cannot drift back.
+        for (const file of registryItem.files) {
+          if (/^src\/(?:composables|lib)\//.test(file.path)) {
+            throw new Error(
+              `${componentName}/_registry.ts: '${file.path}' is auto-resolved via `
+              + `registryDependencies; remove it from files[] `
+              + `(see docs/CONTEXT-registry-packaging.md).`,
+            )
+          }
+        }
+
         files.push(...registryItem.files)
       }
 

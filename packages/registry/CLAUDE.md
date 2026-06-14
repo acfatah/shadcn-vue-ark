@@ -19,6 +19,11 @@ Components live in `src/components/ui/<name>/`. Each component folder contains:
 
 Run the `create-component` command for the full authoring walkthrough.
 
+`_registry.ts` `files[]`: never list `src/composables/*` or `src/lib/*` there.
+They are their own registry items, pulled in via auto-discovered
+`registryDependencies`; the build fails if you list them. See
+[`docs/CONTEXT-registry-packaging.md`](../../docs/CONTEXT-registry-packaging.md).
+
 ## Key patterns
 
 - Headless behavior from Ark UI (built on Zag.js state machines).

@@ -45,16 +45,6 @@
         {
           "path": "src/components/ui/accordion/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
         }
       ],
       "cssVars": {
@@ -123,11 +113,6 @@
         {
           "path": "src/components/ui/alert/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -157,16 +142,6 @@
         {
           "path": "src/components/ui/aspect-ratio/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -220,16 +195,6 @@
         {
           "path": "src/components/ui/avatar/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -263,16 +228,6 @@
         {
           "path": "src/components/ui/badge/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -326,21 +281,6 @@
         {
           "path": "src/components/ui/breadcrumb/namespace.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -373,21 +313,6 @@
         {
           "path": "src/components/ui/button/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -435,21 +360,6 @@
         {
           "path": "src/components/ui/button-group/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -528,16 +438,6 @@
         {
           "path": "src/components/ui/calendar/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -593,11 +493,6 @@
         {
           "path": "src/components/ui/card/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -651,11 +546,6 @@
         {
           "path": "src/components/ui/carousel/useCarousel.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -723,21 +613,6 @@
         {
           "path": "src/components/ui/checkbox/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -791,11 +666,6 @@
         {
           "path": "src/components/ui/collapsible/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
         }
       ],
       "cssVars": {
@@ -895,11 +765,6 @@
         {
           "path": "src/components/ui/combobox/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -973,21 +838,6 @@
         {
           "path": "src/components/ui/command/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1080,26 +930,6 @@
         {
           "path": "src/components/ui/context-menu/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1298,21 +1128,6 @@
         {
           "path": "src/components/ui/date-picker/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/lib/internationalized-date.ts",
-          "type": "registry:file",
-          "target": "src/lib/internationalized-date.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1368,16 +1183,6 @@
         {
           "path": "src/components/ui/datetime-picker/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1406,21 +1211,6 @@
         {
           "path": "src/components/ui/description/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1491,16 +1281,6 @@
         {
           "path": "src/components/ui/dialog/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1566,16 +1346,6 @@
         {
           "path": "src/components/ui/drawer/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1664,26 +1434,6 @@
         {
           "path": "src/components/ui/dropdown-menu/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1762,16 +1512,6 @@
         {
           "path": "src/components/ui/editable/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
         }
       ]
     },
@@ -1829,11 +1569,6 @@
         {
           "path": "src/components/ui/empty/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1909,16 +1644,6 @@
         {
           "path": "src/components/ui/field/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -1976,16 +1701,6 @@
         {
           "path": "src/components/ui/fieldset/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2077,11 +1792,6 @@
         {
           "path": "src/components/ui/file-upload/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2153,16 +1863,6 @@
         {
           "path": "src/components/ui/hover-card/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2292,21 +1992,6 @@
         {
           "path": "src/components/ui/input/WeekInput.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2366,16 +2051,6 @@
         {
           "path": "src/components/ui/input-group/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2462,16 +2137,6 @@
         {
           "path": "src/components/ui/item/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2503,11 +2168,6 @@
         {
           "path": "src/components/ui/kbd/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2536,21 +2196,6 @@
         {
           "path": "src/components/ui/label/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2643,26 +2288,6 @@
         {
           "path": "src/components/ui/menubar/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2735,21 +2360,6 @@
         {
           "path": "src/components/ui/navigation-menu/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2800,16 +2410,6 @@
         {
           "path": "src/components/ui/number-input/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2878,26 +2478,6 @@
         {
           "path": "src/components/ui/pagination/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/composables/dynamic.ts",
-          "type": "registry:file",
-          "target": "src/composables/dynamic.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -2948,21 +2528,6 @@
         {
           "path": "src/components/ui/pin-input/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3008,16 +2573,6 @@
         {
           "path": "src/components/ui/popover/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3046,16 +2601,6 @@
         {
           "path": "src/components/ui/progress/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3134,16 +2679,6 @@
         {
           "path": "src/components/ui/radio-group/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3222,16 +2757,6 @@
         {
           "path": "src/components/ui/range-calendar/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3274,21 +2799,6 @@
         {
           "path": "src/components/ui/resizable/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3338,16 +2848,6 @@
         {
           "path": "src/components/ui/scroll-area/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3449,26 +2949,6 @@
         {
           "path": "src/components/ui/select/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardExpose.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardExpose.ts"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3496,16 +2976,6 @@
         {
           "path": "src/components/ui/separator/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3572,16 +3042,6 @@
         {
           "path": "src/components/ui/sheet/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3724,16 +3184,6 @@
         {
           "path": "src/components/ui/sidebar/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3812,11 +3262,6 @@
         {
           "path": "src/components/ui/skeleton/Skeleton.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3845,16 +3290,6 @@
         {
           "path": "src/components/ui/slider/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -3897,11 +3332,6 @@
         {
           "path": "src/components/ui/sonner/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ],
       "css": {
@@ -3929,11 +3359,6 @@
         {
           "path": "src/components/ui/spinner/Spinner.vue",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4002,16 +3427,6 @@
         {
           "path": "src/components/ui/steps/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4066,16 +3481,6 @@
         {
           "path": "src/components/ui/switch/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4139,11 +3544,6 @@
         {
           "path": "src/components/ui/table/utils.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4202,16 +3602,6 @@
         {
           "path": "src/components/ui/tabs/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4274,21 +3664,6 @@
         {
           "path": "src/components/ui/tags-input/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardProps.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardProps.ts"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4389,16 +3764,6 @@
         {
           "path": "src/components/ui/timeline/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/createContext.ts",
-          "type": "registry:file",
-          "target": "src/composables/createContext.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4444,16 +3809,6 @@
         {
           "path": "src/components/ui/toggle/variant.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4497,16 +3852,6 @@
         {
           "path": "src/components/ui/toggle-group/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },
@@ -4562,16 +3907,6 @@
         {
           "path": "src/components/ui/tooltip/types.ts",
           "type": "registry:ui"
-        },
-        {
-          "path": "src/composables/useForwardPropsEmits.ts",
-          "type": "registry:file",
-          "target": "src/composables/useForwardPropsEmits.ts"
-        },
-        {
-          "path": "src/lib/utils.ts",
-          "type": "registry:file",
-          "target": "src/lib/utils.ts"
         }
       ]
     },

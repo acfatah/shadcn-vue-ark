@@ -20,14 +20,6 @@ export const registryItem = {
     'lucide-vue-next',
     'tw-animate-css',
   ],
-
-  files: [
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

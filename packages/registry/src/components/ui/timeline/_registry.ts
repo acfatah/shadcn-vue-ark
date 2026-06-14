@@ -18,19 +18,6 @@ export const registryItem = {
     '@ark-ui/vue',
     '@vueuse/core',
   ],
-
-  files: [
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-    {
-      path: 'src/composables/createContext.ts',
-      type: 'registry:file',
-      target: 'src/composables/createContext.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem

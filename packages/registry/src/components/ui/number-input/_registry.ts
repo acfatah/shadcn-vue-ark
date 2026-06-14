@@ -19,19 +19,6 @@ export const registryItem = {
     '@iconify/vue',
     '@vueuse/core',
   ],
-
-  files: [
-    {
-      path: 'src/composables/useForwardPropsEmits.ts',
-      type: 'registry:file',
-      target: 'src/composables/useForwardPropsEmits.ts',
-    },
-    {
-      path: 'src/lib/utils.ts',
-      type: 'registry:file',
-      target: 'src/lib/utils.ts',
-    },
-  ],
 } satisfies RegistryItem
 
 export default registryItem
