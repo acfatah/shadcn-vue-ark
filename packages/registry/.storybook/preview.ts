@@ -51,6 +51,16 @@ const preview: Preview = {
     docs: {
       codePanel: true,
     },
+
+    a11y: {
+      // Ark overlays (dialog, combobox listbox, tooltip) Teleport outside
+      // the story root, so scope axe at the document body.
+      context: 'body',
+
+      // 'off' | 'todo' | 'error'. Global default 'todo' reports violations
+      // without failing CI; promote a clean component's meta to 'error'.
+      test: 'todo',
+    },
   },
 
   argTypes: {
