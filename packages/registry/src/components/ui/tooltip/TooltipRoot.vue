@@ -13,6 +13,7 @@ interface Props extends TooltipRootProps {
   align?: 'start' | 'center' | 'end'
   alignOffset?: number
   hideArrow?: boolean
+  positioning?: TooltipRootProps['positioning']
   side?: 'top' | 'right' | 'bottom' | 'left'
   sideOffset?: number
 }
