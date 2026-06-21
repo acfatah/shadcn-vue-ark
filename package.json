@@ -2,11 +2,14 @@
   "name": "@acfatah/shadcn-vue-ark",
   "homepage": "https://github.com/acfatah/shadcn-vue-ark",
   "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
+    "prepare": "bunx simple-git-hooks",
     "storybook": "cd packages/registry && bun storybook",
     "storybook:build": "cd packages/registry && bun storybook:build",
     "registry": "cd packages/registry && bun registry",

@@ -1,6 +1,8 @@
 {
   "name": "packages.cli",
   "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
   "description": "Command line interface for shadcn-vue-ark registry.",
   "exports": {
     "types": "./dist/index.d.ts",

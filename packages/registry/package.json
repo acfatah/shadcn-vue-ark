@@ -2,7 +2,9 @@
   "name": "packages.registry",
   "type": "module",
   "version": "0.0.0",
+  "private": true,
   "description": "Component registry for shadcn-vue-ark.",
+  "license": "MIT",
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*"
@@ -11,7 +13,7 @@
   "scripts": {
     "registry": "bun src/cli/index.ts",
     "registry:build": "bun registry build",
-    "storybook": "bunx --bun storybook dev -p 6006",
+    "storybook": "bunx --bun storybook dev --port 6066",
     "storybook:build": "bunx --bun storybook build",
     "storybook:clear-cache": "rm -rf node_modules/.cache/storybook",
     "lint": "bunx --bun eslint",

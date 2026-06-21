@@ -41,6 +41,23 @@ Initialize git hook by running:
 bunx --bun simple-git-hooks
 ```
 
+## Getting UI components
+
+This template consumes the [shadcn-vue-ark][svark] registry. It already ships the
+project setup (aliases, theme styles, `cn()` util), so add components directly:
+
+```bash
+bun ui add button     # wraps: shadcn@latest add acfatah/shadcn-vue-ark/button
+bun ui list           # list available components
+bun ui info dialog    # view a component
+```
+
+Components land in `src/components/ui` per `components.json`. The `@/*` alias
+maps to `./src/*` (in `tsconfig.app.json` and `vite.config.ts`); keep it so the
+components' `@/composables/*` and `@/lib/utils` imports resolve.
+
+[svark]: https://github.com/acfatah/shadcn-vue-ark
+
 ## Project Overview
 
 The project leverages several key technologies:
@@ -191,4 +208,3 @@ The project follows the standard vue project structure:
 - Modern CSS with Tailwind and utility-first approach
 - Strict type checking with TypeScript
 - Automated linting and formatting
-- Testing capabilities with Bun test runner
