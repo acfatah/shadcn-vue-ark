@@ -7,16 +7,17 @@ import { reactiveOmit } from '@vueuse/core'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
 
-import type { ProgressRootProps } from './types'
+import type { ProgressRootEmits, ProgressRootProps } from './types'
 
 interface Props extends ProgressRootProps {
   class?: HTMLAttributes['class']
 }
 
 const props = defineProps<Props>()
+const emit = defineEmits<ProgressRootEmits>()
 
 const delegatedProps = reactiveOmit(props, 'class')
-const forwardedProps = useForwardPropsEmits(delegatedProps)
+const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
 </script>
 
 <template>
