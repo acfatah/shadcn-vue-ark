@@ -25,16 +25,13 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 <template>
   <Teleport to="body" defer>
     <Select.Positioner
-      class="
-        -mt-1.5 w-(--reference-width) max-w-(--reference-width)
-        md:w-64 md:min-w-64
-      "
+      class="-mt-1.5 max-w-(--available-width) min-w-(--reference-width)"
     >
       <Select.Content
         v-bind="forwardedProps"
         :class="cn(
           `
-            relative z-50 max-h-(--available-height) max-w-(--reference-width)
+            relative z-50 max-h-(--available-height) min-w-(--reference-width)
             origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-md border
             bg-popover text-popover-foreground shadow-md
             focus:outline-none
@@ -50,7 +47,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
           `,
           props.position === `popper`
             && `
-              w-min-(--reference-width) h-min-(--available-height) size-full scroll-my-1
+              h-(--available-height) min-w-(--reference-width) scroll-my-1
               data-[side=bottom]:translate-y-1
               data-[side=left]:-translate-x-1
               data-[side=right]:translate-x-1
