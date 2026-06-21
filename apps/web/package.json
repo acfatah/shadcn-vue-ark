@@ -2,6 +2,8 @@
   "name": "apps.web",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",

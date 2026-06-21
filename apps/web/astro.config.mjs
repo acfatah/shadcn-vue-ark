@@ -16,19 +16,15 @@ export default defineConfig({
     }),
 
     starlight({
-      title: 'Bun Ark Vue',
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+      title: 'shadcn-vue-ark',
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/acfatah/shadcn-vue-ark' }],
       sidebar: [
         {
           label: 'Guides',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
+            { label: 'Installation', slug: 'guides/installation' },
+            { label: 'Components', slug: 'guides/components' },
           ],
-        },
-        {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
         },
       ],
       customCss: ['./src/styles/global.css'],

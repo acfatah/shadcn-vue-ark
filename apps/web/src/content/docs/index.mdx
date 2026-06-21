@@ -1,46 +1,37 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: shadcn-vue-ark
+description: shadcn/ui components for Vue 3, built on Ark UI and Tailwind CSS v4.
 template: splash
 hero:
-  title: |
-    Welcome to Starlight with
-    <span
-      class="font-black text-transparent
-        bg-clip-text bg-gradient-to-b
-        from-accent-700 to-accent-400
-        dark:from-accent-500 dark:to-accent-200"
-    >
-      Tailwind
-    </span>
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: |
+    shadcn/ui components for Vue 3, built on Ark UI and Tailwind CSS v4.
+    Copy-paste, accessible, themeable, and yours to own.
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get started
+      link: /guides/installation/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: View on GitHub
+      link: https://github.com/acfatah/shadcn-vue-ark
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
-
 <CardGrid stagger>
-  <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
+  <Card title="GitHub-native registry" icon="github">
+    Install straight from the repo with
+    `shadcn add acfatah/shadcn-vue-ark/<item>`. No registry config, no auth.
   </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
+  <Card title="Headless and accessible" icon="approve-check">
+    Behavior from Ark UI (Zag.js state machines). You own the markup and styles.
   </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
+  <Card title="Tailwind CSS v4" icon="setting">
+    Styling via Tailwind v4 and class-variance-authority, themeable with OKLch
+    color tokens.
   </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
+  <Card title="Vue 3 SFCs you own" icon="puzzle">
+    Real `.vue` single-file components copied into your project, not a black-box
+    dependency.
   </Card>
 </CardGrid>
