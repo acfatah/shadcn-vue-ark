@@ -3704,6 +3704,55 @@
       ]
     },
     {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "title": "TimePicker",
+      "description": "A popover time picker with accessible hour, minute, and optional AM/PM\nlistbox columns. Supports 12-hour and 24-hour display while always emitting\na 24-hour HH:MM value.\n\nReferences:\n- shadcn/ui: https://ui.shadcn.com/docs/components/date-picker",
+      "dependencies": [
+        "lucide-vue-next"
+      ],
+      "registryDependencies": [
+        "acfatah/shadcn-vue-ark/button",
+        "acfatah/shadcn-vue-ark/createContext",
+        "acfatah/shadcn-vue-ark/popover",
+        "acfatah/shadcn-vue-ark/utils-lib"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/time-picker/context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/namespace.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/TimePickerContent.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/TimePickerRoot.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/TimePickerTrigger.vue",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/time-picker/utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "timeline",
       "type": "registry:ui",
       "title": "Timeline",
