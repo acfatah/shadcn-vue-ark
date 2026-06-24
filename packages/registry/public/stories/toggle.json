@@ -1,0 +1,18 @@
+{
+  "name": "toggle",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'toggle',\n  title: 'Toggle',\n\n  description: html`\n    A two-state button that can be either on or off.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/toggle\n    - shadcn/ui: https://ui.shadcn.com/docs/components/toggle\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'class-variance-authority',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Toggle.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Toggle } from '@/components/ui/toggle'\nimport { registryItem } from './_registry'\n\nimport ToggleDefaultStory from './ToggleDefaultStory.vue'\nimport ToggleDefaultSource from './ToggleDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Toggle',\n  component: Toggle.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Toggle.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: ToggleDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { ToggleDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <ToggleDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "ToggleDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Bold } from 'lucide-vue-next'\n\nimport { Toggle } from '@/components/ui/toggle'\n</script>\n\n<template>\n  <Toggle aria-label=\"Toggle bold\">\n    <Bold class=\"size-4\" />\n  </Toggle>\n</template>\n"
+    }
+  ]
+}

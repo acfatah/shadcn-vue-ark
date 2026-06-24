@@ -1,0 +1,18 @@
+{
+  "name": "editable",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'editable',\n  title: 'Editable',\n\n  description: html`\n    An inline editable text field that allows users to edit text in place.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/editable\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Editable.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Editable } from '@/components/ui/editable'\nimport { registryItem } from './_registry'\n\nimport EditableDefaultStory from './EditableDefaultStory.vue'\nimport EditableDefaultSource from './EditableDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Editable',\n  component: Editable.Root,\n  subcomponents: {\n    'Editable.Area': Editable.Area,\n    'Editable.CancelTrigger': Editable.CancelTrigger,\n    'Editable.Control': Editable.Control,\n    'Editable.EditTrigger': Editable.EditTrigger,\n    'Editable.Input': Editable.Input,\n    'Editable.Label': Editable.Label,\n    'Editable.Preview': Editable.Preview,\n    'Editable.SubmitTrigger': Editable.SubmitTrigger,\n  },\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Editable>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: EditableDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { EditableDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <EditableDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "EditableDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ref } from 'vue'\n\nimport { Button } from '@/components/ui/button'\nimport { Editable } from '@/components/ui/editable'\n\nconst value = ref('Click to edit')\n</script>\n\n<template>\n  <Editable.Root\n    v-model=\"value\"\n    placeholder=\"Enter text\"\n    class=\"w-full max-w-sm\"\n    activation-mode=\"dblclick\"\n  >\n    <Editable.Label>Field label</Editable.Label>\n    <Editable.Area>\n      <Editable.Input />\n      <Editable.Preview />\n    </Editable.Area>\n    <Editable.Control>\n      <Editable.EditTrigger as-child>\n        <Button variant=\"outline\" size=\"sm\">\n          Edit\n        </Button>\n      </Editable.EditTrigger>\n      <Editable.SubmitTrigger as-child>\n        <Button size=\"sm\">\n          Save\n        </Button>\n      </Editable.SubmitTrigger>\n      <Editable.CancelTrigger as-child>\n        <Button variant=\"outline\" size=\"sm\">\n          Cancel\n        </Button>\n      </Editable.CancelTrigger>\n    </Editable.Control>\n  </Editable.Root>\n</template>\n"
+    }
+  ]
+}

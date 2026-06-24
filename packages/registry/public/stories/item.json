@@ -1,0 +1,18 @@
+{
+  "name": "item",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'item',\n  title: 'Item',\n\n  description: html`\n    A versatile component that you can use to display any content.\n\n    The Item component is a straightforward flex container that can house nearly\n    any type of content. Use it to display a title, description, and actions.\n    Group it with the ItemGroup component to create a list of items.\n\n    You can pretty much achieve the same result with the div element and some\n    classes, but I've built this so many times that I decided to create a\n    component for it. Now I use it all the time.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/item\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'class-variance-authority',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Item.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Item } from '@/components/ui/item'\nimport { registryItem } from './_registry'\n\nimport ItemDefaultStory from './ItemDefaultStory.vue'\nimport ItemDefaultSource from './ItemDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Item',\n  // @ts-expect-error TS2559\n  component: Item,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Item>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: ItemDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { ItemDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <ItemDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "ItemDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { BadgeCheckIcon, ChevronRightIcon } from 'lucide-vue-next'\n\nimport { Button } from '@/components/ui/button'\nimport { Item } from '@/components/ui/item'\n</script>\n\n<template>\n  <div class=\"flex w-full max-w-md flex-col gap-6\">\n    <Item.Root variant=\"outline\">\n      <Item.Content>\n        <Item.Title>Basic Item</Item.Title>\n        <Item.Description>\n          A simple item with title and description.\n        </Item.Description>\n      </Item.Content>\n\n      <Item.Actions>\n        <Button variant=\"outline\" size=\"sm\">\n          Action\n        </Button>\n      </Item.Actions>\n    </Item.Root>\n\n    <Item.Root variant=\"outline\" size=\"sm\" as-child>\n      <a href=\"#\">\n        <Item.Media>\n          <BadgeCheckIcon class=\"size-5\" />\n        </Item.Media>\n\n        <Item.Content>\n          <Item.Title>Your profile has been verified.</Item.Title>\n        </Item.Content>\n\n        <Item.Actions>\n          <ChevronRightIcon class=\"size-4\" />\n        </Item.Actions>\n      </a>\n    </Item.Root>\n  </div>\n</template>\n"
+    }
+  ]
+}

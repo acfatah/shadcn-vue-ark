@@ -16,6 +16,7 @@ import { buildComponentsRegistry } from './build-components-registry'
 import { buildComposablesRegistry } from './build-composables-registry'
 import { buildLayoutsRegistry } from './build-layouts-registry'
 import { buildLibRegistry } from './build-lib-registry'
+import { buildStoriesBundles } from './build-stories-bundles'
 import { buildUIRegistry } from './build-ui-registry'
 import {
   BLOCKS_PATH,
@@ -186,6 +187,10 @@ export const build = new Command()
       )
 
       consola.success('Registry created successfully.')
+
+      consola.start('Building story bundles...')
+      const storyNames = await buildStoriesBundles()
+      consola.success(`Built ${storyNames.length} story bundles.`)
     }
     catch (error) {
       consola.error(error)

@@ -1,0 +1,22 @@
+{
+  "name": "file-upload",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'file-upload',\n  title: 'File Upload',\n\n  description: html`\n    A component for uploading files with drag and drop support.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/file-upload\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n    'tw-animate-css',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "FileUpload.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { FileUpload } from '@/components/ui/file-upload'\nimport { registryItem } from './_registry'\n\nimport FileUploadDefaultStory from './FileUploadDefaultStory.vue'\nimport FileUploadDefaultSource from './FileUploadDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/FileUpload',\n  component: FileUpload.Root,\n  tags: ['autodocs'],\n\n  args: {\n    disabled: false,\n    maxFiles: 5,\n  },\n\n  argTypes: {\n    disabled: { control: 'boolean' },\n    maxFiles: { control: 'number' },\n  },\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof FileUpload.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: FileUploadDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { FileUploadDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <FileUploadDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "FileUploadDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { UploadIcon } from 'lucide-vue-next'\n\nimport { Button } from '@/components/ui/button'\nimport { FileUpload } from '@/components/ui/file-upload'\n\nimport FileUploadFileList from './FileUploadFileList.vue'\n\ninterface Props {\n  disabled?: boolean\n  maxFiles?: number\n}\n\nwithDefaults(defineProps<Props>(), {\n  disabled: false,\n  maxFiles: 5,\n})\n</script>\n\n<template>\n  <FileUpload.Root\n    :max-files=\"maxFiles\"\n    :disabled=\"disabled\"\n    class=\"w-full max-w-sm\"\n  >\n    <FileUpload.HiddenInput />\n    <FileUpload.Dropzone>\n      <UploadIcon class=\"size-8 text-muted-foreground\" />\n      <div class=\"space-y-1\">\n        <p class=\"text-sm font-medium\">\n          Drag and drop files here\n        </p>\n        <p class=\"text-xs text-muted-foreground\">\n          Or click to browse\n        </p>\n      </div>\n      <FileUpload.Trigger as-child>\n        <Button variant=\"outline\" size=\"sm\">\n          Choose Files\n        </Button>\n      </FileUpload.Trigger>\n    </FileUpload.Dropzone>\n\n    <FileUploadFileList />\n  </FileUpload.Root>\n</template>\n"
+    },
+    {
+      "path": "FileUploadFileList.vue",
+      "content": "<script setup lang=\"ts\">\nimport { FileUpload, useFileUploadContext } from '@/components/ui/file-upload'\n\nconst fileUpload = useFileUploadContext()\n</script>\n\n<template>\n  <FileUpload.ItemGroup v-if=\"fileUpload.acceptedFiles.length > 0\">\n    <FileUpload.Item\n      v-for=\"file in fileUpload.acceptedFiles\"\n      :key=\"file.name\"\n      :file=\"file\"\n    >\n      <FileUpload.ItemPreview type=\"image/*\">\n        <FileUpload.ItemPreviewImage />\n      </FileUpload.ItemPreview>\n      <div class=\"flex min-w-0 flex-col\">\n        <FileUpload.ItemName />\n        <FileUpload.ItemSizeText />\n      </div>\n      <FileUpload.ItemDeleteTrigger />\n    </FileUpload.Item>\n  </FileUpload.ItemGroup>\n</template>\n"
+    }
+  ]
+}

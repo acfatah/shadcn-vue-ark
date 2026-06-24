@@ -1,0 +1,18 @@
+{
+  "name": "pin-input",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'pin-input',\n  title: 'Pin Input',\n\n  description: html`\n    Accessible one-time password component with copy paste functionality.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/pin-input\n    - shadcn/ui: https://ui.shadcn.com/docs/components/input-otp\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "PinInput.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { PinInput } from '@/components/ui/pin-input'\nimport { registryItem } from './_registry'\n\nimport PinInputDefaultStory from './PinInputDefaultStory.vue'\nimport PinInputDefaultSource from './PinInputDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/PinInput',\n  component: PinInput.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof PinInput.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: PinInputDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { PinInputDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <PinInputDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "PinInputDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { PinInput } from '@/components/ui/pin-input'\n</script>\n\n<template>\n  <PinInput.Root :maxlength=\"6\" placeholder=\"\">\n    <PinInput.Group>\n      <PinInput.Slot :index=\"0\" />\n      <PinInput.Slot :index=\"1\" />\n      <PinInput.Slot :index=\"2\" />\n    </PinInput.Group>\n    <PinInput.Separator />\n    <PinInput.Group>\n      <PinInput.Slot :index=\"3\" />\n      <PinInput.Slot :index=\"4\" />\n      <PinInput.Slot :index=\"5\" />\n    </PinInput.Group>\n  </PinInput.Root>\n</template>\n"
+    }
+  ]
+}

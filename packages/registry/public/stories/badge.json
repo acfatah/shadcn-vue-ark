@@ -1,0 +1,18 @@
+{
+  "name": "badge",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "AsChildStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Badge } from '@/components/ui/badge'\n</script>\n\n<template>\n  <Badge as-child>\n    <a href=\"#\">\n      Badge\n    </a>\n  </Badge>\n</template>\n"
+    },
+    {
+      "path": "Badge.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Badge } from '@/components/ui/badge'\nimport { registryItem } from '@/components/ui/spinner/_registry'\n\nimport AsChildStory from './AsChildStory.vue'\nimport AsChildSource from './AsChildStory.vue?raw'\nimport BadgeDefaultStory from './BadgeDefaultStory.vue'\nimport BadgeDefaultSource from './BadgeDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Badge',\n  component: Badge,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Badge>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: BadgeDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { BadgeDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <BadgeDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n\nexport const AsChild: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: AsChildSource,\n      },\n\n      description: {\n        story: html`\n          Use the \\`asChild\\` prop to render the badge as a different component, such as a \\`RouterLink\\`.\n        `,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { AsChildStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <AsChildStory v-bind=\"args\" />\n    `,\n  }),\n}\nAsChild.storyName = '`AsChild` prop'\n"
+    },
+    {
+      "path": "BadgeDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { BadgeCheckIcon } from 'lucide-vue-next'\n\nimport { Badge } from '@/components/ui/badge'\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-2\">\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge>Badge</Badge>\n      <Badge variant=\"secondary\">\n        Secondary\n      </Badge>\n      <Badge variant=\"destructive\">\n        Destructive\n      </Badge>\n      <Badge variant=\"outline\">\n        Outline\n      </Badge>\n    </div>\n    <div class=\"flex w-full flex-wrap gap-2\">\n      <Badge\n        variant=\"secondary\"\n        class=\"\n          bg-blue-500 text-white\n          dark:bg-blue-600\n        \"\n      >\n        <BadgeCheckIcon data-part=\"icon\" />\n        Verified\n      </Badge>\n      <Badge class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\">\n        8\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"destructive\"\n      >\n        99\n      </Badge>\n      <Badge\n        class=\"h-5 min-w-5 rounded-full px-1 font-mono tabular-nums\"\n        variant=\"outline\"\n      >\n        20+\n      </Badge>\n    </div>\n  </div>\n</template>\n"
+    }
+  ]
+}

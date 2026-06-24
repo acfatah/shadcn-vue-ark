@@ -1,0 +1,22 @@
+{
+  "name": "datetime-picker",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'datetime-picker',\n  title: 'DatetimePicker',\n\n  description: html`\n    A datetime picker component that combines a calendar with\n    a scrollable time picker for selecting both date and time.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/date-picker\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@internationalized/date',\n    '@vueuse/core',\n  ],\n\n  registryDependencies: [\n    'button',\n    'calendar',\n    'popover',\n    'scroll-area',\n    'separator',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "DatetimePicker.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { DatetimePicker } from '@/components/ui/datetime-picker'\nimport { registryItem } from './_registry'\n\nimport DatetimePicker24hStory from './DatetimePicker24hStory.vue'\nimport DatetimePicker24hSource from './DatetimePicker24hStory.vue?raw'\nimport DatetimePickerDefaultStory from './DatetimePickerDefaultStory.vue'\nimport DatetimePickerDefaultSource from './DatetimePickerDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/DatetimePicker',\n  component: DatetimePicker.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof DatetimePicker>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: DatetimePickerDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { DatetimePickerDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <DatetimePickerDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n\nexport const TwentyFourHour: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: DatetimePicker24hSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { DatetimePicker24hStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <DatetimePicker24hStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "DatetimePicker24hStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CalendarDateTime } from '@internationalized/date'\n\nimport { ref } from 'vue'\n\nimport { DatetimePicker } from '@/components/ui/datetime-picker'\n\nconst datetime = ref<CalendarDateTime>()\n</script>\n\n<template>\n  <DatetimePicker.Root v-model=\"datetime\" :hour-cycle=\"24\">\n    <DatetimePicker.Trigger />\n    <DatetimePicker.Content />\n  </DatetimePicker.Root>\n</template>\n"
+    },
+    {
+      "path": "DatetimePickerDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { CalendarDateTime } from '@internationalized/date'\n\nimport { ref } from 'vue'\n\nimport { DatetimePicker } from '@/components/ui/datetime-picker'\n\nconst datetime = ref<CalendarDateTime>()\n</script>\n\n<template>\n  <DatetimePicker.Root v-model=\"datetime\">\n    <DatetimePicker.Trigger />\n    <DatetimePicker.Content />\n  </DatetimePicker.Root>\n</template>\n"
+    }
+  ]
+}

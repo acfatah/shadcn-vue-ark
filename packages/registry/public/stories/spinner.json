@@ -1,0 +1,18 @@
+{
+  "name": "spinner",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'spinner',\n  title: 'Spinner',\n\n  description: html`\n    An indicator that can be used to show a loading state.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/spinner\n    - lucide-vue-next: https://lucide.dev/guide/packages/lucide-vue-next\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Spinner.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Spinner } from '@/components/ui/spinner'\nimport { registryItem } from './_registry'\n\nimport SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Spinner',\n  component: Spinner,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Spinner>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SpinnerDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { Spinner },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <Spinner v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "SpinnerDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from '@/components/ui/spinner'\n</script>\n\n<template>\n  <Spinner />\n</template>\n"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "sidebar",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'sidebar',\n  title: 'Sidebar',\n\n  description: html`\n    A composable, themeable and customizable sidebar component.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/sidebar\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'class-variance-authority',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Sidebar.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Sidebar } from '@/components/ui/sidebar'\nimport { registryItem } from './_registry'\n\nimport SidebarDefaultStory from './SidebarDefaultStory.vue'\nimport SidebarDefaultSource from './SidebarDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Sidebar',\n  component: Sidebar.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    layout: 'fullscreen',\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Sidebar.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SidebarDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { SidebarDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <SidebarDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "SidebarDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Calendar, Home, Inbox, Search, Settings } from 'lucide-vue-next'\n\nimport { Sidebar } from '@/components/ui/sidebar'\n\n// Menu items.\nconst items = [\n  {\n    title: 'Home',\n    url: '#',\n    icon: Home,\n  },\n  {\n    title: 'Inbox',\n    url: '#',\n    icon: Inbox,\n  },\n  {\n    title: 'Calendar',\n    url: '#',\n    icon: Calendar,\n  },\n  {\n    title: 'Search',\n    url: '#',\n    icon: Search,\n  },\n  {\n    title: 'Settings',\n    url: '#',\n    icon: Settings,\n  },\n]\n</script>\n\n<template>\n  <Sidebar.Provider>\n    <Sidebar.Root>\n      <Sidebar.Content>\n        <Sidebar.Group>\n          <Sidebar.GroupLabel>Application</Sidebar.GroupLabel>\n          <Sidebar.GroupContent>\n            <Sidebar.Menu>\n              <Sidebar.MenuItem v-for=\"item in items\" :key=\"item.title\">\n                <Sidebar.MenuButton as-child>\n                  <a :href=\"item.url\">\n                    <component :is=\"item.icon\" />\n                    <span>{{ item.title }}</span>\n                  </a>\n                </Sidebar.MenuButton>\n              </Sidebar.MenuItem>\n            </Sidebar.Menu>\n          </Sidebar.GroupContent>\n        </Sidebar.Group>\n      </Sidebar.Content>\n    </Sidebar.Root>\n    <Sidebar.Inset>\n      <header class=\"flex h-12 items-center justify-between px-4\">\n        <Sidebar.Trigger />\n      </header>\n    </Sidebar.Inset>\n  </Sidebar.Provider>\n</template>\n"
+    }
+  ]
+}

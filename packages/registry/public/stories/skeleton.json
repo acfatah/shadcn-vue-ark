@@ -1,0 +1,18 @@
+{
+  "name": "skeleton",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'skeleton',\n  title: 'Skeleton',\n\n  description: html`\n    Use to show a placeholder while content is loading.\n\n    References:\n    - shadcn-ui: https://ui.shadcn.com/docs/components/skeleton\n  `,\n\n  dependencies: [],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Skeleton.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Skeleton } from '@/components/ui/skeleton'\nimport { registryItem } from './_registry'\n\nimport SkeletonDefaultStory from './SkeletonDefaultStory.vue'\nimport SkeletonDefaultSource from './SkeletonDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Skeleton',\n  component: Skeleton.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Skeleton.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SkeletonDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { SkeletonDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <SkeletonDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "SkeletonDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Skeleton } from '@/components/ui/skeleton'\n</script>\n\n<template>\n  <div class=\"flex items-center space-x-4\">\n    <Skeleton class=\"size-12 rounded-full\" />\n    <div class=\"space-y-2\">\n      <Skeleton class=\"h-4 w-62\" />\n      <Skeleton class=\"h-4 w-50\" />\n    </div>\n  </div>\n</template>\n"
+    }
+  ]
+}

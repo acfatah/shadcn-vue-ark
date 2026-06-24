@@ -1,0 +1,18 @@
+{
+  "name": "dialog",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'dialog',\n  title: 'Dialog',\n\n  description: html`\n    A window overlaid on either the primary window or another dialog window,\n    rendering the content underneath inert.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/dialog\n    - shadcn/ui: https://ui.shadcn.com/docs/components/dialog\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n    'tw-animate-css',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Dialog.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Dialog } from '@/components/ui/dialog'\nimport { registryItem } from './_registry'\n\nimport DialogDefaultStory from './DialogDefaultStory.vue'\nimport DialogDefaultSource from './DialogDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Dialog',\n  component: Dialog.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Dialog>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: DialogDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { DialogDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <DialogDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "DialogDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Dialog } from '@/components/ui/dialog'\nimport { Input } from '@/components/ui/input'\n</script>\n\n<template>\n  <Dialog.Root>\n    <form>\n      <Dialog.Trigger as-child>\n        <Input.Button variant=\"outline\">\n          Open Dialog\n        </Input.Button>\n      </Dialog.Trigger>\n\n      <Dialog.Content class=\"sm:max-w-[425px]\">\n        <Dialog.Header>\n          <Dialog.Title>Edit profile</Dialog.Title>\n          <Dialog.Description>\n            Make changes to your profile here. Click save when you're\n            done.\n          </Dialog.Description>\n        </Dialog.Header>\n\n        <div class=\"grid gap-4\">\n          <div class=\"grid gap-3\">\n            <Input.Label for=\"name-1\">\n              Name\n            </Input.Label>\n            <Input.Text id=\"name-1\" name=\"name\" default-value=\"Pedro Duarte\" />\n          </div>\n          <div class=\"grid gap-3\">\n            <Input.Label for=\"username-1\">\n              Username\n            </Input.Label>\n            <Input.Text id=\"username-1\" name=\"username\" default-value=\"@peduarte\" />\n          </div>\n        </div>\n\n        <Dialog.Footer>\n          <Dialog.Close as-child>\n            <Input.Reset variant=\"outline\">\n              Cancel\n            </Input.Reset>\n          </Dialog.Close>\n          <Input.Submit>\n            Save changes\n          </Input.Submit>\n        </Dialog.Footer>\n      </Dialog.Content>\n    </form>\n  </Dialog.Root>\n</template>\n"
+    }
+  ]
+}

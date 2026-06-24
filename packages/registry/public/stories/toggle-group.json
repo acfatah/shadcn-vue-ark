@@ -1,0 +1,18 @@
+{
+  "name": "toggle-group",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'toggle-group',\n  title: 'Toggle Group',\n\n  description: html`\n    A set of two-state buttons that can be toggled on or off.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/toggle-group\n    - shadcn/ui: https://ui.shadcn.com/docs/components/toggle-group\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'class-variance-authority',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "ToggleGroup.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { ToggleGroup } from '@/components/ui/toggle-group'\nimport { registryItem } from './_registry'\n\nimport ToggleGroupDefaultStory from './ToggleGroupDefaultStory.vue'\nimport ToggleGroupDefaultSource from './ToggleGroupDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/ToggleGroup',\n  component: ToggleGroup.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof ToggleGroup.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: ToggleGroupDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { ToggleGroupDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <ToggleGroupDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "ToggleGroupDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Bold, Italic, Underline } from 'lucide-vue-next'\n\nimport { ToggleGroup } from '@/components/ui/toggle-group'\n</script>\n\n<template>\n  <ToggleGroup.Root variant=\"outline\" type=\"multiple\">\n    <ToggleGroup.Item value=\"bold\" aria-label=\"Toggle bold\">\n      <Bold class=\"size-4\" />\n    </ToggleGroup.Item>\n    <ToggleGroup.Item value=\"italic\" aria-label=\"Toggle italic\">\n      <Italic class=\"size-4\" />\n    </ToggleGroup.Item>\n    <ToggleGroup.Item value=\"underline\" aria-label=\"Toggle underline\">\n      <Underline class=\"size-4\" />\n    </ToggleGroup.Item>\n  </ToggleGroup.Root>\n</template>\n"
+    }
+  ]
+}

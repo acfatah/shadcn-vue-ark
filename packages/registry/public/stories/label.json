@@ -1,0 +1,18 @@
+{
+  "name": "label",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'label',\n  title: 'Label',\n\n  description: html`\n    Renders an accessible label associated with controls.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/label\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Label.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Label } from '@/components/ui/label'\nimport { registryItem } from './_registry'\n\nimport LabelDefaultStory from './LabelDefaultStory.vue'\nimport LabelDefaultSource from './LabelDefaultStory.vue?raw'\n\nconst meta: Meta<typeof Label> = {\n  title: 'Components/UI/Label',\n  component: Label,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n}\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: LabelDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { LabelDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <LabelDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n\n/**\n * Styling when peer sibling `aria-invalid` is `true`.\n */\nexport const PeerInvalid: Story = {\n  ...Default,\n\n  args: {\n    // @ts-expect-error 2353\n    invalid: true,\n  },\n}\n\n/**\n * Styling when peer sibling is `disabled` or `aria-disabled` is `true`.\n */\nexport const PeerDisabled: Story = {\n  ...Default,\n\n  args: {\n    // @ts-expect-error 2353\n    disabled: true,\n  },\n}\n\n/**\n * Styling when peer sibling `aria-busy` is `true`.\n */\nexport const PeerLoading: Story = {\n  ...Default,\n\n  args: {\n    // @ts-expect-error 2353\n    loading: true,\n  },\n}\n"
+    },
+    {
+      "path": "LabelDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Input } from '@/components/ui/input'\nimport { Label } from '@/components/ui/label'\n\nconst props = defineProps<{\n  invalid?: boolean\n  disabled?: boolean\n  loading?: boolean\n}>()\n</script>\n\n<template>\n  <div className=\"flex items-center space-x-2\">\n    <Input.Checkbox id=\"terms\" v-bind=\"props\" />\n    <Label html-for=\"terms\">Accept terms and conditions</Label>\n  </div>\n</template>\n"
+    }
+  ]
+}

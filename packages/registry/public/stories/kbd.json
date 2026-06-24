@@ -1,0 +1,18 @@
+{
+  "name": "kbd",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'kbd',\n  title: 'Kbd',\n\n  description: html`\n    Displays keyboard input shortcuts.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/kbd\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Kbd.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Kbd } from '@/components/ui/kbd'\nimport { registryItem } from './_registry'\n\nimport KbdDefaultStory from './KbdDefaultStory.vue'\nimport KbdDefaultSource from './KbdDefaultStory.vue?raw'\n\nconst meta: Meta<typeof Kbd> = {\n  title: 'Components/UI/Kbd',\n  component: Kbd,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n}\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: KbdDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { KbdDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <KbdDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "KbdDefaultStory.vue",
+      "content": "<script lang='ts' setup>\nimport { Kbd, KbdGroup } from '@/components/ui/kbd'\n</script>\n\n<template>\n  <div class=\"flex flex-col items-center gap-4\">\n    <KbdGroup>\n      <Kbd>⌘</Kbd>\n      <Kbd>⇧</Kbd>\n      <Kbd>⌥</Kbd>\n      <Kbd>⌃</Kbd>\n    </KbdGroup>\n\n    <KbdGroup>\n      <Kbd>Ctrl</Kbd>\n      <span>+</span>\n      <Kbd>B</Kbd>\n    </KbdGroup>\n  </div>\n</template>\n"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "description",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'description',\n  title: 'Description',\n\n  description: html`\n    Provide additional information or context. Typically used to elaborate on an\n    input, title, or heading, offering users more insight into the content or\n    purpose.\n\n    It is usually derived as other component such as <code>Input.Description</code>,\n    <code>Select.Description</code>, etc. to maintain consistent styling across\n    the UI. The differences come from the <code>data-scope</code> and\n    <code>data-part</code> attributes assigned to each component.\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Description.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Description } from '@/components/ui/description'\nimport { registryItem } from './_registry'\n\nimport DescriptionDefaultStory from './DescriptionDefaultStory.vue'\nimport DescriptionDefaultSource from './DescriptionDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Description',\n  component: Description,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Description>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: DescriptionDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { DescriptionDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <DescriptionDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "DescriptionDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Description } from '@/components/ui/description'\nimport { Field } from '@/components/ui/field'\nimport { Input } from '@/components/ui/input'\nimport { Label } from '@/components/ui/label'\n</script>\n\n<template>\n  <Field.Root>\n    <!-- or use \"Field.Label\" -->\n    <Label>Card number</Label>\n    <Input.Text placeholder=\"1234 5678 9012 3456\" />\n    <!-- or use \"Field.Description\" component -->\n    <Description>Enter your 16-digit number.</Description>\n  </Field.Root>\n</template>\n"
+    }
+  ]
+}

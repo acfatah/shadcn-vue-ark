@@ -1,0 +1,18 @@
+{
+  "name": "command",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'command',\n  title: 'Command',\n\n  description: html`\n    Command menu for search and quick actions.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/listbox\n    - shadcn/ui: https://ui.shadcn.com/docs/components/command\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Command.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Command } from '@/components/ui/command'\nimport { registryItem } from './_registry'\n\nimport CommandDefaultStory from './CommandDefaultStory.vue'\nimport CommandDefaultSource from './CommandDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Command',\n  component: Command.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Command.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: CommandDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { CommandDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <CommandDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "CommandDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { useMagicKeys, whenever } from '@vueuse/core'\nimport {\n  Calculator,\n  Calendar,\n  CreditCard,\n  Settings,\n  Smile,\n  User,\n} from 'lucide-vue-next'\nimport { ref } from 'vue'\n\nimport { Command } from '@/components/ui/command'\n\nconst open = ref(false)\n\nconst { meta_j } = useMagicKeys()\n\nwhenever(() => meta_j?.value, () => {\n  open.value = true\n})\n</script>\n\n<template>\n  <Command.Root\n    class=\"\n      rounded-lg border shadow-md\n      md:min-w-[450px]\n    \"\n  >\n    <Command.Input placeholder=\"Type a command or search...\" />\n    <Command.List>\n      <Command.Empty>No results found.</Command.Empty>\n      <Command.Group heading=\"Suggestions\">\n        <Command.Item value=\"calendar\">\n          <Calendar />\n          <span>Calendar</span>\n        </Command.Item>\n        <Command.Item value=\"emoji\">\n          <Smile />\n          <span>Search Emoji</span>\n        </Command.Item>\n        <Command.Item disabled value=\"calculator\">\n          <Calculator />\n          <span>Calculator</span>\n        </Command.Item>\n      </Command.Group>\n      <Command.Separator />\n      <Command.Group heading=\"Settings\">\n        <Command.Item value=\"profile\">\n          <User />\n          <span>Profile</span>\n          <Command.Shortcut>⌘P</Command.Shortcut>\n        </Command.Item>\n        <Command.Item value=\"billing\">\n          <CreditCard />\n          <span>Billing</span>\n          <Command.Shortcut>⌘B</Command.Shortcut>\n        </Command.Item>\n        <Command.Item value=\"settings\">\n          <Settings />\n          <span>Settings</span>\n          <Command.Shortcut>⌘S</Command.Shortcut>\n        </Command.Item>\n      </Command.Group>\n    </Command.List>\n  </Command.Root>\n</template>\n"
+    }
+  ]
+}

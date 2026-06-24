@@ -1,0 +1,18 @@
+{
+  "name": "alert",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'alert',\n  title: 'Alert',\n\n  description: html`\n    Displays a callout for user attention.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/alert\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    'lucide-vue-next',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Alert.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Alert } from '@/components/ui/alert'\nimport { registryItem } from './_registry'\n\nimport AlertDefaultStory from './AlertDefaultStory.vue'\nimport AlertDefaultSource from './AlertDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Alert',\n  component: Alert.Root,\n  subcomponents: {\n    AlertDescription: Alert.Description,\n    AlertTitle: Alert.Title,\n  },\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Alert.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: AlertDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { AlertDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <AlertDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "AlertDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from 'lucide-vue-next'\n\nimport { Alert } from '@/components/ui/alert'\n</script>\n\n<template>\n  <div class=\"grid w-full max-w-xl items-start gap-4\">\n    <Alert.Root>\n      <CheckCircle2Icon />\n      <Alert.Title>Success! Your changes have been saved</Alert.Title>\n      <Alert.Description>\n        This is an alert with icon, title and description.\n      </Alert.Description>\n    </Alert.Root>\n\n    <Alert.Root>\n      <PopcornIcon />\n      <Alert.Title>This Alert has a title and an icon. No description.</Alert.Title>\n    </Alert.Root>\n\n    <Alert.Root variant=\"destructive\">\n      <AlertCircleIcon />\n      <Alert.Title>Unable to process your payment.</Alert.Title>\n      <Alert.Description>\n        <p>Please verify your billing information and try again.</p>\n        <ul class=\"mt-2 list-inside list-disc space-y-1\">\n          <li>Check your card details</li>\n          <li>Ensure sufficient funds</li>\n          <li>Verify billing address</li>\n        </ul>\n      </Alert.Description>\n    </Alert.Root>\n  </div>\n</template>\n"
+    }
+  ]
+}

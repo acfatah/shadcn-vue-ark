@@ -1,0 +1,18 @@
+{
+  "name": "avatar",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'avatar',\n  title: 'Avatar',\n\n  description: html`\n    An image element with a fallback for representing the user.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/avatar\n    - shadcn/ui: https://ui.shadcn.com/docs/components/avatar\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Avatar.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport {\n  AvatarFallback,\n  AvatarGroup,\n  AvatarImage,\n  AvatarRoot,\n} from '@/components/ui/avatar'\nimport { registryItem } from './_registry'\n\nimport AvatarDefaultStory from './AvatarDefaultStory.vue'\nimport AvatarDefaultSource from './AvatarDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Avatar',\n  component: AvatarRoot,\n  subcomponents: {\n    AvatarImage,\n    AvatarFallback,\n    AvatarGroup,\n  },\n  tags: ['autodocs'],\n\n  argTypes: {\n    shape: {\n      control: 'inline-radio',\n      options: ['round', 'square'],\n    },\n    size: {\n      control: 'inline-radio',\n      options: ['sm', 'md', 'lg', 'xl'],\n    },\n  },\n\n  args: {\n    shape: 'round',\n    size: 'md',\n  },\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof AvatarRoot>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: AvatarDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { AvatarDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <AvatarDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "AvatarDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Avatar } from '@/components/ui/avatar'\n\nconst props = defineProps<{\n  shape?: 'round' | 'square'\n  size?: 'sm' | 'md' | 'lg' | 'xl'\n}>()\n</script>\n\n<template>\n  <div class=\"flex flex-row flex-wrap items-center gap-12\">\n    <Avatar.Root :shape=\"props.shape\" :size=\"props.size\">\n      <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <Avatar.Fallback>CN</Avatar.Fallback>\n    </Avatar.Root>\n\n    <Avatar.Root :shape=\"props.shape\" :size=\"props.size\" class=\"rounded-lg\">\n      <Avatar.Image src=\"https://github.com/evilrabbit.png\" alt=\"@evilrabbit\" />\n      <Avatar.Fallback>ER</Avatar.Fallback>\n    </Avatar.Root>\n\n    <Avatar.Group>\n      <Avatar.Root :shape=\"props.shape\" :size=\"props.size\">\n        <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n        <Avatar.Fallback>CN</Avatar.Fallback>\n      </Avatar.Root>\n\n      <Avatar.Root :shape=\"props.shape\" :size=\"props.size\">\n        <Avatar.Image src=\"https://github.com/leerob.png\" alt=\"@leerob\" />\n        <Avatar.Fallback>LR</Avatar.Fallback>\n      </Avatar.Root>\n\n      <Avatar.Root :shape=\"props.shape\" :size=\"props.size\">\n        <Avatar.Image\n          src=\"https://github.com/evilrabbit.png\"\n          alt=\"@evilrabbit\"\n        />\n        <Avatar.Fallback>ER</Avatar.Fallback>\n      </Avatar.Root>\n    </Avatar.Group>\n  </div>\n</template>\n"
+    }
+  ]
+}

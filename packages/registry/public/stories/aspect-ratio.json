@@ -1,0 +1,22 @@
+{
+  "name": "aspect-ratio",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'aspect-ratio',\n  title: 'Aspect Ratio',\n\n  description: html`\n    Displays content within a desired aspect ratio.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/aspect-ratio\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "AspectRatio.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { AspectRatio } from '@/components/ui/aspect-ratio'\nimport { registryItem } from './_registry'\n\nimport AspectRatioDefaultStory from './AspectRatioDefaultStory.vue'\nimport AspectRatioDefaultSource from './AspectRatioDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/AspectRatio',\n  component: AspectRatio,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof AspectRatio>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: AspectRatioDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { AspectRatioDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <AspectRatioDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "AspectRatioDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from '@/components/ui/aspect-ratio'\n</script>\n\n<template>\n  <AspectRatio :ratio=\"16 / 9\" class=\"rounded-lg bg-muted\">\n    <img\n      src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n      alt=\"Photo by Drew Beamer\"\n      class=\"\n        size-full rounded-lg object-cover\n        dark:brightness-[0.2] dark:grayscale\n      \"\n    >\n  </AspectRatio>\n</template>\n"
+    },
+    {
+      "path": "AspectRatioVariantStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { AspectRatio } from '@/components/ui/aspect-ratio'\n</script>\n\n<template>\n  <AspectRatio :ratio=\"1 / 1\" class=\"rounded-lg bg-muted\">\n    <img\n      src=\"https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80\"\n      alt=\"Photo by Drew Beamer\"\n      class=\"\n        size-full rounded-lg object-cover\n        dark:brightness-[0.2] dark:grayscale\n      \"\n    >\n  </AspectRatio>\n</template>\n"
+    }
+  ]
+}

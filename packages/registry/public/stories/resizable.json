@@ -1,0 +1,18 @@
+{
+  "name": "resizable",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'resizable',\n  title: 'Resizable',\n\n  description: html`\n    Accessible resizable panel groups and layouts with keyboard support.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/splitter\n    - shadcn/ui: https://ui.shadcn.com/docs/components/resizable\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Resizable.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport {\n  Resizable,\n  ResizableHandle,\n  ResizablePanel,\n  ResizablePanelGroup,\n} from '@/components/ui/resizable'\nimport { registryItem } from './_registry'\n\nimport ResizableDefaultStory from './ResizableDefaultStory.vue'\nimport ResizableDefaultSource from './ResizableDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Resizable',\n  component: Resizable.PanelGroup,\n  subcomponents: {\n    ResizableHandle,\n    ResizablePanel,\n    ResizablePanelGroup,\n  },\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Resizable.PanelGroup>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: ResizableDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { ResizableDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <ResizableDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "ResizableDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Resizable } from '@/components/ui/resizable'\n</script>\n\n<template>\n  <Resizable.PanelGroup\n    orientation=\"horizontal\"\n    :default-size=\"[50, 50]\"\n    :panels=\"[\n      { id: 'one' },\n      { id: 'two' },\n    ]\"\n    class=\"\n      max-w-md rounded-lg border\n      md:min-w-[450px]\n    \"\n  >\n    <Resizable.Panel id=\"one\">\n      <div class=\"flex h-[200px] items-center justify-center p-6\">\n        <span class=\"font-semibold\">One</span>\n      </div>\n    </Resizable.Panel>\n    <Resizable.Handle id=\"one:two\" />\n    <Resizable.Panel id=\"two\">\n      <Resizable.PanelGroup\n        orientation=\"vertical\"\n        :default-size=\"[25, 75]\"\n        :panels=\"[\n          { id: 'two-top' },\n          { id: 'two-bottom' },\n        ]\"\n      >\n        <Resizable.Panel id=\"two-top\">\n          <div class=\"flex h-full items-center justify-center p-6\">\n            <span class=\"font-semibold\">Two</span>\n          </div>\n        </Resizable.Panel>\n        <Resizable.Handle id=\"two-top:two-bottom\" />\n        <Resizable.Panel id=\"two-bottom\">\n          <div class=\"flex h-full items-center justify-center p-6\">\n            <span class=\"font-semibold\">Three</span>\n          </div>\n        </Resizable.Panel>\n      </Resizable.PanelGroup>\n    </Resizable.Panel>\n  </Resizable.PanelGroup>\n</template>\n"
+    }
+  ]
+}

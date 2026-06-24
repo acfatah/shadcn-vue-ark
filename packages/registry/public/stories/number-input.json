@@ -1,0 +1,30 @@
+{
+  "name": "number-input",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'number-input',\n  title: 'Number Input',\n\n  description: html`\n    A numeric input component with increment and decrement controls.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/number-input\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@iconify/vue',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "NumberInput.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { NumberInput } from '@/components/ui/number-input'\nimport { registryItem } from './_registry'\n\nimport NumberInputCurrencyStory from './NumberInputCurrencyStory.vue'\nimport NumberInputCurrencySource from './NumberInputCurrencyStory.vue?raw'\nimport NumberInputDecimalStory from './NumberInputDecimalStory.vue'\nimport NumberInputDecimalSource from './NumberInputDecimalStory.vue?raw'\nimport NumberInputDefaultStory from './NumberInputDefaultStory.vue'\nimport NumberInputDefaultSource from './NumberInputDefaultStory.vue?raw'\nimport NumberInputPercentageStory from './NumberInputPercentageStory.vue'\nimport NumberInputPercentageSource from './NumberInputPercentageStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/NumberInput',\n  component: NumberInput.Root,\n  subcomponents: {\n    'NumberInput.Control': NumberInput.Control,\n    'NumberInput.Input': NumberInput.Input,\n    'NumberInput.Increment': NumberInput.Increment,\n    'NumberInput.Decrement': NumberInput.Decrement,\n  },\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof NumberInput.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: NumberInputDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { NumberInputDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <NumberInputDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n\nexport const Decimal: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: NumberInputDecimalSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { NumberInputDecimalStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <NumberInputDecimalStory v-bind=\"args\" />\n    `,\n  }),\n}\n\nexport const Currency: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: NumberInputCurrencySource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { NumberInputCurrencyStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <NumberInputCurrencyStory v-bind=\"args\" />\n    `,\n  }),\n}\n\nexport const Percentage: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: NumberInputPercentageSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { NumberInputPercentageStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <NumberInputPercentageStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "NumberInputCurrencyStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root\n    id=\"balance\"\n    default-value=\"1500\"\n    :format-options=\"{\n      style: 'currency',\n      currency: 'EUR',\n      currencyDisplay: 'code',\n      currencySign: 'accounting',\n    }\"\n  >\n    <Label for=\"balance\">Balance</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
+    },
+    {
+      "path": "NumberInputDecimalStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root\n    id=\"number\"\n    default-value=\"5\"\n    :format-options=\"{\n      signDisplay: 'exceptZero',\n      minimumFractionDigits: 1,\n    }\"\n  >\n    <Label for=\"number\">Number</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
+    },
+    {
+      "path": "NumberInputDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root id=\"age\" default-value=\"18\" :min=\"0\">\n    <Label for=\"age\">Age</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
+    },
+    {
+      "path": "NumberInputPercentageStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root\n    id=\"percent\"\n    default-value=\"0.05\"\n    :step=\"0.01\"\n    :format-options=\"{\n      style: 'percent',\n    }\"\n  >\n    <Label for=\"percent\">Percent</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
+    }
+  ]
+}

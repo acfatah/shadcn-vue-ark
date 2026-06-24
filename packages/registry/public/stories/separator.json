@@ -1,0 +1,18 @@
+{
+  "name": "separator",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'separator',\n  title: 'Separator',\n\n  description: html`\n    Visually or semantically separates content.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/separator\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Separator.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Separator } from '@/components/ui/separator'\nimport { registryItem } from './_registry'\n\nimport SeparatorDefaultStory from './SeparatorDefaultStory.vue'\nimport SeparatorDefaultSource from './SeparatorDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Separator',\n  component: Separator,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n\n  args: {\n    orientation: 'horizontal',\n    decorative: true,\n  },\n\n  argTypes: {\n    orientation: {\n      control: { type: 'select' },\n      options: ['horizontal', 'vertical'],\n      table: {\n        type: { summary: 'horizontal | vertical' },\n        defaultValue: { summary: 'horizontal' },\n      },\n    },\n\n    decorative: {\n      control: { type: 'boolean' },\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: 'true' },\n      },\n    },\n\n    class: {\n      control: { type: 'text' },\n      table: {\n        type: { summary: 'string | array | object' },\n        defaultValue: { summary: 'null' },\n      },\n      description: 'HTMLAttributes[\\'class\\']',\n    },\n  },\n} satisfies Meta<typeof Separator>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SeparatorDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { SeparatorDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <SeparatorDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "SeparatorDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Separator } from '@/components/ui/separator'\n</script>\n\n<template>\n  <div>\n    <div class=\"space-y-1\">\n      <h4 class=\"text-sm leading-none font-medium\">\n        Radix Primitives\n      </h4>\n      <p class=\"text-sm text-muted-foreground\">\n        An open-source UI component library.\n      </p>\n    </div>\n    <Separator class=\"my-4\" />\n    <div class=\"flex h-5 items-center space-x-4 text-sm\">\n      <div>Blog</div>\n      <Separator orientation=\"vertical\" />\n      <div>Docs</div>\n      <Separator orientation=\"vertical\" />\n      <div>Source</div>\n    </div>\n  </div>\n</template>\n"
+    }
+  ]
+}

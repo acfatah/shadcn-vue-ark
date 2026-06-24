@@ -1,0 +1,18 @@
+{
+  "name": "collapsible",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'collapsible',\n  title: 'Collapsible',\n\n  description: html`\n    An interactive component which expands/collapses a panel.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/collapsible\n    - shadcn/ui: https://ui.shadcn.com/docs/components/collapsible\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n  ],\n\n  cssVars: {\n    theme: {\n      '--animate-collapsible-down': 'collapsible-down 0.25s ease-out',\n      '--animate-collapsible-up': 'collapsible-up 0.25s ease-out',\n    },\n  },\n\n  css: {\n    '@keyframes collapsible-down': {\n      from: { height: '0' },\n      to: { height: 'var(--height)' },\n    },\n    '@keyframes collapsible-up': {\n      from: { height: 'var(--height)' },\n      to: { height: '0' },\n    },\n  },\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Collapsible.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Collapsible } from '@/components/ui/collapsible'\nimport { registryItem } from './_registry'\n\nimport CollapsibleDefaultStory from './CollapsibleDefaultStory.vue'\nimport CollapsibleDefaultSource from './CollapsibleDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Collapsible',\n  component: Collapsible.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Collapsible.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: CollapsibleDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { CollapsibleDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <CollapsibleDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "CollapsibleDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { ChevronsUpDown } from 'lucide-vue-next'\nimport { ref } from 'vue'\n\nimport { Button } from '@/components/ui/button'\nimport { Collapsible } from '@/components/ui/collapsible'\n\nconst isOpen = ref(false)\n</script>\n\n<template>\n  <Collapsible.Root\n    v-model:open=\"isOpen\"\n    class=\"flex w-[350px] flex-col gap-2\"\n  >\n    <div class=\"flex items-center justify-between gap-4 px-4\">\n      <h4 class=\"text-sm font-semibold\">\n        @peduarte starred 3 repositories\n      </h4>\n      <Collapsible.Trigger as-child>\n        <Button variant=\"ghost\" size=\"icon\" class=\"size-8\">\n          <ChevronsUpDown />\n          <span class=\"sr-only\">Toggle</span>\n        </Button>\n      </Collapsible.Trigger>\n    </div>\n    <div class=\"rounded-md border px-4 py-2 font-mono text-sm\">\n      @radix-ui/primitives\n    </div>\n    <Collapsible.Content class=\"flex flex-col gap-2\">\n      <div class=\"rounded-md border px-4 py-2 font-mono text-sm\">\n        @radix-ui/colors\n      </div>\n      <div class=\"rounded-md border px-4 py-2 font-mono text-sm\">\n        @stitches/react\n      </div>\n    </Collapsible.Content>\n  </Collapsible.Root>\n</template>\n"
+    }
+  ]
+}

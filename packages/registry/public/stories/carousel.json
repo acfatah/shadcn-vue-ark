@@ -1,0 +1,18 @@
+{
+  "name": "carousel",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'carousel',\n  title: 'Carousel',\n\n  description: html`\n    A carousel with motion and swipe built using Embla.\n\n    References:\n    - shadcn/ui: https://ui.shadcn.com/docs/components/carousel\n    - Embla Carousel: https://www.embla-carousel.com\n  `,\n\n  dependencies: [\n    '@vueuse/core',\n    'embla-carousel-vue',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Carousel.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Carousel } from '@/components/ui/carousel'\nimport { registryItem } from './_registry'\n\nimport CarouselDefaultStory from './CarouselDefaultStory.vue'\nimport CarouselDefaultSource from './CarouselDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Carousel',\n  component: Carousel.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Carousel.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: CarouselDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { CarouselDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <div class=\"flex justify-center w-full\">\n        <CarouselDefaultStory v-bind=\"args\" />\n      </div>\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "CarouselDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Card } from '@/components/ui/card'\nimport { Carousel } from '@/components/ui/carousel'\n</script>\n\n<template>\n  <Carousel.Root class=\"w-full max-w-xs\">\n    <Carousel.Content>\n      <Carousel.Item v-for=\"i in 5\" :key=\"i\">\n        <div class=\"p-1\">\n          <Card.Root>\n            <Card.Content class=\"flex aspect-square items-center justify-center p-6\">\n              <span class=\"text-4xl font-semibold\">{{ i }}</span>\n            </Card.Content>\n          </Card.Root>\n        </div>\n      </Carousel.Item>\n    </Carousel.Content>\n    <Carousel.Previous />\n    <Carousel.Next />\n  </Carousel.Root>\n</template>\n"
+    }
+  ]
+}

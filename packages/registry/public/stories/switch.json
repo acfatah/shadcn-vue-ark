@@ -1,0 +1,18 @@
+{
+  "name": "switch",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'switch',\n  title: 'Switch',\n\n  description: html`\n    A control that allows the user to toggle between checked and not checked.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/switch\n    - shadcn/ui: https://ui.shadcn.com/docs/components/switch\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Switch.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Switch } from '@/components/ui/switch'\nimport { registryItem } from './_registry'\n\nimport SwitchDefaultStory from './SwitchDefaultStory.vue'\nimport SwitchDefaultSource from './SwitchDefaultStory.vue?raw'\n\nconst defaultAttributes = {\n  args: {\n    invalid: false,\n    disabled: false,\n    loading: false,\n  },\n\n  argTypes: {\n    invalid: {\n      control: { type: 'boolean' as const },\n    },\n\n    disabled: {\n      control: { type: 'boolean' as const },\n    },\n\n    loading: {\n      control: { type: 'boolean' as const },\n    },\n  },\n}\n\nconst meta = {\n  title: 'Components/UI/Switch',\n  component: Switch.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Switch.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SwitchDefaultSource,\n      },\n    },\n  },\n\n  ...defaultAttributes,\n\n  render: args => ({\n    components: { SwitchDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <SwitchDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "SwitchDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Switch } from '@/components/ui/switch'\n\nconst props = defineProps({\n  invalid: Boolean,\n  disabled: Boolean,\n  loading: Boolean,\n})\n</script>\n\n<template>\n  <Switch.Root v-bind=\"props\">\n    <Switch.HiddenInput />\n    <Switch.Control />\n    <Switch.Label>Airplane Mode</Switch.Label>\n  </Switch.Root>\n</template>\n"
+    }
+  ]
+}

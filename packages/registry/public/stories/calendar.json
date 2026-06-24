@@ -1,0 +1,18 @@
+{
+  "name": "calendar",
+  "type": "registry:stories",
+  "files": [
+    {
+      "path": "_registry.ts",
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'calendar',\n  title: 'Calendar',\n\n  description: html`\n    A date field component that allows users to enter and edit date.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/date-picker\n    - shadcn/ui: https://ui.shadcn.com/docs/components/calendar\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+    },
+    {
+      "path": "Calendar.stories.ts",
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Calendar } from '@/components/ui/calendar'\nimport { registryItem } from './_registry'\n\nimport CalendarDefaultStory from './CalendarDefaultStory.vue'\nimport CalendarDefaultSource from './CalendarDefaultStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Calendar',\n  component: Calendar.Root,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n} satisfies Meta<typeof Calendar.Root>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: CalendarDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { CalendarDefaultStory },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <CalendarDefaultStory v-bind=\"args\" />\n    `,\n  }),\n}\n"
+    },
+    {
+      "path": "CalendarDefaultStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\n\nimport { CalendarDate, fromDate, getLocalTimeZone } from '@internationalized/date'\nimport { ref } from 'vue'\n\nimport { Calendar } from '@/components/ui/calendar'\n\nconst date = ref<DateValue[]>([fromDate(new Date(), getLocalTimeZone())])\n</script>\n\n<template>\n  <Calendar.Root\n    v-model=\"date\"\n    class=\"rounded-md border shadow-sm\"\n    :min-value=\"new CalendarDate(1925, 1, 1)\"\n    :max-value=\"new CalendarDate(2035, 1, 1)\"\n  />\n</template>\n"
+    }
+  ]
+}
