@@ -16,12 +16,15 @@ import {
   RadioGroupRoot,
   RadioGroupRootProvider,
 } from '@/components/ui/radio-group'
-import { registryItem } from '@/components/ui/radio-group/_registry'
 
 import RadioGroupBasicStory from './RadioGroupBasicStory.vue'
 import RadioGroupBasicSource from './RadioGroupBasicStory.vue?raw'
+import RadioGroupCardsStory from './RadioGroupCardsStory.vue'
+import RadioGroupCardsSource from './RadioGroupCardsStory.vue?raw'
 import RadioGroupDefaultStory from './RadioGroupDefaultStory.vue'
 import RadioGroupDefaultSource from './RadioGroupDefaultStory.vue?raw'
+import RadioGroupWithDescriptionStory from './RadioGroupWithDescriptionStory.vue'
+import RadioGroupWithDescriptionSource from './RadioGroupWithDescriptionStory.vue?raw'
 
 const meta = {
   title: 'Components/UI/RadioGroup',
@@ -45,20 +48,22 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: registryItem.description,
+        component: 'A set of radio buttons where only one option can be selected at a time.',
       },
     },
   },
 
   args: {
-    // required: true,
     disabled: false,
+    invalid: false,
+    required: true,
     orientation: 'vertical',
   },
 
   argTypes: {
-    // required: { control: 'boolean' },
     disabled: { control: 'boolean' },
+    invalid: { control: 'boolean' },
+    required: { control: 'boolean' },
     orientation: {
       control: { type: 'radio' },
       options: ['horizontal', 'vertical'],
@@ -87,6 +92,50 @@ export const Default: Story = {
 
     template: html`
       <RadioGroupDefaultStory v-bind="args" />
+    `,
+  }),
+}
+
+export const WithDescription: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: RadioGroupWithDescriptionSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { RadioGroupWithDescriptionStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <RadioGroupWithDescriptionStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Cards: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: RadioGroupCardsSource,
+      },
+    },
+  },
+
+  render: args => ({
+    components: { RadioGroupCardsStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <RadioGroupCardsStory v-bind="args" />
     `,
   }),
 }
