@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import type { ButtonProps } from './types'
 
-import { buttonVariants } from '.'
+import { buttonVariants } from './variant'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   scope: 'button',

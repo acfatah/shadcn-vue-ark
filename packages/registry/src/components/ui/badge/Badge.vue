@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 import type { BadgeProps, BadgeVariants } from './types'
 
-import { badgeVariants } from '.'
+import { badgeVariants } from './variant'
 
 interface Props extends BadgeProps {
   variant?: BadgeVariants['variant']

@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 
 import type { ToggleRootEmits, ToggleRootProps, ToggleVariants } from './types'
 
-import { toggleVariants } from '.'
+import { toggleVariants } from './variant'
 
 interface Props extends ToggleRootProps {
   class?: HTMLAttributes['class']
