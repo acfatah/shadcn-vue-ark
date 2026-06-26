@@ -85,6 +85,47 @@ function violationsFor(unit: Unit): string[] {
   if (demoIndex !== -1 && demoIndex !== exportNames.length - 1)
     problems.push('Demo export is not last')
 
+  // Namespace (compound) convention: any story that declares `subcomponents`
+  // is a compound component, so its primary tab must read the dotted public
+  // name. Enforce the docsRoot alias and dotted subcomponent keys. Single
+  // components declare no subcomponents and are exempt (their lone tab already
+  // reads a correct standalone name).
+  const subMatch = src.match(/subcomponents:\s*\{/)
+  if (subMatch) {
+    if (!/component:\s*docsRoot\(/.test(src)) {
+      problems.push(
+        'compound story must wrap its root in docsRoot(Foo.Root, \'Foo.Root\')',
+      )
+    }
+
+    // Brace-balance the subcomponents object body, then flag any bare-identifier
+    // key (flat key with a colon, or shorthand) -- keys must be dotted string
+    // literals like 'Foo.Part'.
+    const start = subMatch.index! + subMatch[0].length
+    let depth = 1
+    let i = start
+    for (; i < src.length && depth > 0; i++) {
+      if (src[i] === '{')
+        depth++
+      else if (src[i] === '}')
+        depth--
+    }
+    const body = src.slice(start, i - 1)
+    const hasFlatKey = body.split('\n').some((line) => {
+      const t = line.trim()
+      if (!t || t.startsWith('//') || t.startsWith('...'))
+        return false
+      // Dotted string-literal key -> ok.
+      if (/^['"`][^"'.`]*\.[^"'`]*['"`]\s*:/.test(t))
+        return false
+
+      // Bare-identifier key (flat `Ident:` or shorthand `Ident,`/`Ident`).
+      return /^[A-Z_$][\w$]*\s*[:,]/i.test(t) || /^[A-Z_$][\w$]*$/i.test(t)
+    })
+    if (hasFlatKey)
+      problems.push('subcomponent keys must be dotted strings (\'Foo.Part\')')
+  }
+
   return problems
 }
 

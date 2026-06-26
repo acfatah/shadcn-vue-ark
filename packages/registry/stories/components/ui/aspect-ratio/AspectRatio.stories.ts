@@ -8,7 +8,7 @@ import { registryItem } from '@/components/ui/aspect-ratio/_registry'
 import AspectRatioDefaultStory from './AspectRatioDefaultStory.vue'
 import AspectRatioDefaultSource from './AspectRatioDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof AspectRatio> = {
   title: 'Components/UI/AspectRatio',
   component: AspectRatio,
   tags: ['autodocs'],
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof AspectRatio>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

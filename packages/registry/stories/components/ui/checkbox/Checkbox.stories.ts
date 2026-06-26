@@ -2,29 +2,25 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  CheckboxControl,
-  CheckboxGroup,
-  CheckboxHiddenInput,
-  CheckboxIndicator,
-  CheckboxLabel,
-  CheckboxRoot,
-  variant,
-} from '@/components/ui/checkbox'
+import { Checkbox, variant } from '@/components/ui/checkbox'
 import { registryItem } from '@/components/ui/checkbox/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import CheckboxDefaultStory from './CheckboxDefaultStory.vue'
 import CheckboxDefaultSource from './CheckboxDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Checkbox.Root> = {
   title: 'Components/UI/Checkbox',
-  component: CheckboxRoot,
+  component: docsRoot(Checkbox.Root, 'Checkbox.Root'),
   subcomponents: {
-    CheckboxControl,
-    CheckboxGroup,
-    CheckboxHiddenInput,
-    CheckboxIndicator,
-    CheckboxLabel,
+    'Checkbox.Content': Checkbox.Content,
+    'Checkbox.Label': Checkbox.Label,
+    'Checkbox.Description': Checkbox.Description,
+    'Checkbox.Control': Checkbox.Control,
+    'Checkbox.Indicator': Checkbox.Indicator,
+    'Checkbox.HiddenInput': Checkbox.HiddenInput,
+    'Checkbox.RootProvider': Checkbox.RootProvider,
+    'Checkbox.Group': Checkbox.Group,
   },
   tags: ['autodocs'],
 
@@ -52,7 +48,7 @@ const meta = {
       options: Object.keys(variant),
     },
   },
-} satisfies Meta<typeof CheckboxRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

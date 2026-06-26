@@ -8,7 +8,7 @@ import { registryItem } from '@/components/ui/description/_registry'
 import DescriptionDefaultStory from './DescriptionDefaultStory.vue'
 import DescriptionDefaultSource from './DescriptionDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Description> = {
   title: 'Components/UI/Description',
   component: Description,
   tags: ['autodocs'],
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Description>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -2,24 +2,10 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  SelectClearTrigger,
-  SelectContent,
-  SelectControl,
-  SelectEmpty,
-  SelectIndicator,
-  SelectItem,
-  SelectItemGroup,
-  SelectItemGroupLabel,
-  SelectItemIndicator,
-  SelectItemText,
-  SelectLabel,
-  SelectRoot,
-  SelectTrigger,
-  SelectValueText,
-} from '@/components/ui/select'
+import { Select } from '@/components/ui/select'
 import { registryItem } from '@/components/ui/select/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import SelectClearableStory from './SelectClearableStory.vue'
 import SelectClearableSource from './SelectClearableStory.vue?raw'
 import SelectDefaultStory from './SelectDefaultStory.vue'
@@ -29,23 +15,25 @@ import SelectEmptySource from './SelectEmptyStory.vue?raw'
 import SelectPlacementStory from './SelectPlacementStory.vue'
 import SelectPlacementSource from './SelectPlacementStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Select.Root> = {
   title: 'Components/UI/Select',
-  component: SelectRoot,
+  component: docsRoot(Select.Root, 'Select.Root'),
   subcomponents: {
-    SelectClearTrigger,
-    SelectContent,
-    SelectControl,
-    SelectEmpty,
-    SelectIndicator,
-    SelectItem,
-    SelectItemGroup,
-    SelectItemGroupLabel,
-    SelectItemIndicator,
-    SelectItemText,
-    SelectLabel,
-    SelectTrigger,
-    SelectValueText,
+    'Select.ClearTrigger': Select.ClearTrigger,
+    'Select.Content': Select.Content,
+    'Select.Empty': Select.Empty,
+    'Select.HiddenSelect': Select.HiddenSelect,
+    'Select.Indicator': Select.Indicator,
+    'Select.Item': Select.Item,
+    'Select.ItemGroup': Select.ItemGroup,
+    'Select.ItemGroupLabel': Select.ItemGroupLabel,
+    'Select.ItemIndicator': Select.ItemIndicator,
+    'Select.ItemText': Select.ItemText,
+    'Select.Label': Select.Label,
+    'Select.Positioner': Select.Positioner,
+    'Select.Separator': Select.Separator,
+    'Select.Trigger': Select.Trigger,
+    'Select.ValueText': Select.ValueText,
   },
   tags: ['autodocs'],
 
@@ -87,12 +75,11 @@ const meta = {
     },
     sideOffset: { control: 'number' },
   },
-} satisfies Meta<typeof SelectRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-// @ts-expect-error TS2322
 export const Default: Story = {
   parameters: {
     docs: {
@@ -115,11 +102,9 @@ export const Default: Story = {
   }),
 }
 
-// @ts-expect-error TS2322
 export const Placement: Story = {
   name: 'Custom Placement',
   args: {
-    // @ts-expect-error TS2353
     align: 'start',
     alignOffset: 0,
     side: 'right',
@@ -146,7 +131,6 @@ export const Placement: Story = {
   }),
 }
 
-// @ts-expect-error TS2322
 export const Empty: Story = {
   parameters: {
     docs: {
@@ -169,7 +153,6 @@ export const Empty: Story = {
   }),
 }
 
-// @ts-expect-error TS2322
 export const Clearable: Story = {
   parameters: {
     docs: {

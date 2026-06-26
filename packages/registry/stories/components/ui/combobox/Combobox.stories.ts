@@ -5,6 +5,7 @@ import { html } from 'common-tags'
 import { Combobox } from '@/components/ui/combobox'
 import { registryItem } from '@/components/ui/combobox/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ComboboxDefaultStory from './ComboboxDefaultStory.vue'
 import ComboboxDefaultSource from './ComboboxDefaultStory.vue?raw'
 import ComboboxPlacementStory from './ComboboxPlacementStory.vue'
@@ -14,9 +15,21 @@ import ComboboxUsingPopoverAndCommandSource from './ComboboxUsingPopoverAndComma
 import MultipleComboboxStory from './MultipleComboboxStory.vue'
 import MultipleComboboxSource from './MultipleComboboxStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Combobox.Root> = {
   title: 'Components/UI/Combobox',
-  component: Combobox.Root,
+  component: docsRoot(Combobox.Root, 'Combobox.Root'),
+  subcomponents: {
+    'Combobox.Anchor': Combobox.Anchor,
+    'Combobox.Trigger': Combobox.Trigger,
+    'Combobox.Input': Combobox.Input,
+    'Combobox.List': Combobox.List,
+    'Combobox.Viewport': Combobox.Viewport,
+    'Combobox.Empty': Combobox.Empty,
+    'Combobox.Group': Combobox.Group,
+    'Combobox.Item': Combobox.Item,
+    'Combobox.ItemIndicator': Combobox.ItemIndicator,
+    'Combobox.Separator': Combobox.Separator,
+  },
   tags: ['autodocs'],
 
   argTypes: {
@@ -40,7 +53,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Combobox.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -5,15 +5,16 @@ import { html } from 'common-tags'
 import { Alert } from '@/components/ui/alert'
 import { registryItem } from '@/components/ui/alert/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import AlertDefaultStory from './AlertDefaultStory.vue'
 import AlertDefaultSource from './AlertDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Alert.Root> = {
   title: 'Components/UI/Alert',
-  component: Alert.Root,
+  component: docsRoot(Alert.Root, 'Alert.Root'),
   subcomponents: {
-    AlertDescription: Alert.Description,
-    AlertTitle: Alert.Title,
+    'Alert.Title': Alert.Title,
+    'Alert.Description': Alert.Description,
   },
   tags: ['autodocs'],
 
@@ -24,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Alert.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -6,12 +6,17 @@ import { expect, userEvent, within } from 'storybook/test'
 import { TimePicker } from '@/components/ui/time-picker'
 import { registryItem } from '@/components/ui/time-picker/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import TimePickerDefaultStory from './TimePickerDefaultStory.vue'
 import TimePickerDefaultSource from './TimePickerDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof TimePicker.Root> = {
   title: 'Components/UI/TimePicker',
-  component: TimePicker.Root,
+  component: docsRoot(TimePicker.Root, 'TimePicker.Root'),
+  subcomponents: {
+    'TimePicker.Trigger': TimePicker.Trigger,
+    'TimePicker.Content': TimePicker.Content,
+  },
   tags: ['autodocs'],
 
   args: {
@@ -64,7 +69,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof TimePicker.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

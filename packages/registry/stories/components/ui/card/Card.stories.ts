@@ -5,12 +5,13 @@ import { html } from 'common-tags'
 import { Card } from '@/components/ui/card'
 import { registryItem } from '@/components/ui/card/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import CardDefaultStory from './CardDefaultStory.vue'
 import CardDefaultSource from './CardDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Card.Root> = {
   title: 'Components/UI/Card',
-  component: Card.Root,
+  component: docsRoot(Card.Root, 'Card.Root'),
   subcomponents: {
     'Card.Header': Card.Header,
     'Card.Title': Card.Title,
@@ -28,7 +29,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Card>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

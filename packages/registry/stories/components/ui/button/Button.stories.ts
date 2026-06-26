@@ -20,7 +20,7 @@ import VariantStorySource from './VariantStory.vue?raw'
 import WithIconStory from './WithIconStory.vue'
 import WithIconStorySource from './WithIconStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Components/UI/Button',
   component: Button,
   tags: ['autodocs'],
@@ -73,7 +73,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Button>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

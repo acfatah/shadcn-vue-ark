@@ -8,9 +8,9 @@ import { registryItem } from '@/components/ui/progress/_registry'
 import ProgressDefaultStory from './ProgressDefaultStory.vue'
 import ProgressDefaultSource from './ProgressDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Progress> = {
   title: 'Components/UI/Progress',
-  component: Progress.Root,
+  component: Progress,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Progress.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

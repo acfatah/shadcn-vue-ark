@@ -8,9 +8,9 @@ import { registryItem } from '@/components/ui/skeleton/_registry'
 import SkeletonDefaultStory from './SkeletonDefaultStory.vue'
 import SkeletonDefaultSource from './SkeletonDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Skeleton> = {
   title: 'Components/UI/Skeleton',
-  component: Skeleton.Root,
+  component: Skeleton,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Skeleton.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -7,7 +7,7 @@ import { registryItem } from '@/components/ui/spinner/_registry'
 
 import SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Spinner> = {
   title: 'Components/UI/Spinner',
   component: Spinner,
   tags: ['autodocs'],
@@ -19,7 +19,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Spinner>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

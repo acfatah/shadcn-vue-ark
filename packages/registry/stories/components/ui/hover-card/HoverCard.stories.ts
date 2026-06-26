@@ -5,14 +5,19 @@ import { html } from 'common-tags'
 import { HoverCard } from '@/components/ui/hover-card'
 import { registryItem } from '@/components/ui/hover-card/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import HoverCardDefaultStory from './HoverCardDefaultStory.vue'
 import HoverCardDefaultSource from './HoverCardDefaultStory.vue?raw'
 import HoverCardPlacementStory from './HoverCardPlacementStory.vue'
 import HoverCardPlacementSource from './HoverCardPlacementStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof HoverCard.Root> = {
   title: 'Components/UI/HoverCard',
-  component: HoverCard.Root,
+  component: docsRoot(HoverCard.Root, 'HoverCard.Root'),
+  subcomponents: {
+    'HoverCard.Trigger': HoverCard.Trigger,
+    'HoverCard.Content': HoverCard.Content,
+  },
   tags: ['autodocs'],
 
   argTypes: {
@@ -36,7 +41,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof HoverCard.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

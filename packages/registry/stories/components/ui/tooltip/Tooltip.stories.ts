@@ -5,14 +5,21 @@ import { html } from 'common-tags'
 import { Tooltip } from '@/components/ui/tooltip'
 import { registryItem } from '@/components/ui/tooltip/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import TooltipDefaultStory from './TooltipDefaultStory.vue'
 import TooltipDefaultSource from './TooltipDefaultStory.vue?raw'
 import TooltipPlacementStory from './TooltipPlacementStory.vue'
 import TooltipPlacementSource from './TooltipPlacementStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Tooltip.Root> = {
   title: 'Components/UI/Tooltip',
-  component: Tooltip.Root,
+  component: docsRoot(Tooltip.Root, 'Tooltip.Root'),
+  subcomponents: {
+    'Tooltip.Trigger': Tooltip.Trigger,
+    'Tooltip.Content': Tooltip.Content,
+    'Tooltip.Arrow': Tooltip.Arrow,
+    'Tooltip.Provider': Tooltip.Provider,
+  },
   tags: ['autodocs'],
 
   argTypes: {
@@ -36,7 +43,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Tooltip.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

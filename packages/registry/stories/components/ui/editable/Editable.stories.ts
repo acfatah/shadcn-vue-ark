@@ -5,12 +5,13 @@ import { html } from 'common-tags'
 import { Editable } from '@/components/ui/editable'
 import { registryItem } from '@/components/ui/editable/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import EditableDefaultStory from './EditableDefaultStory.vue'
 import EditableDefaultSource from './EditableDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Editable.Root> = {
   title: 'Components/UI/Editable',
-  component: Editable.Root,
+  component: docsRoot(Editable.Root, 'Editable.Root'),
   subcomponents: {
     'Editable.Area': Editable.Area,
     'Editable.CancelTrigger': Editable.CancelTrigger,
@@ -30,7 +31,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Editable>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

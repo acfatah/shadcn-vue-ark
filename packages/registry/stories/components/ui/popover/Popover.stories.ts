@@ -5,14 +5,20 @@ import { html } from 'common-tags'
 import { Popover } from '@/components/ui/popover'
 import { registryItem } from '@/components/ui/popover/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import PopoverDefaultStory from './PopoverDefaultStory.vue'
 import PopoverDefaultSource from './PopoverDefaultStory.vue?raw'
 import PopoverPlacementStory from './PopoverPlacementStory.vue'
 import PopoverPlacementSource from './PopoverPlacementStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Popover.Root> = {
   title: 'Components/UI/Popover',
-  component: Popover.Root,
+  component: docsRoot(Popover.Root, 'Popover.Root'),
+  subcomponents: {
+    'Popover.Trigger': Popover.Trigger,
+    'Popover.Content': Popover.Content,
+    'Popover.Anchor': Popover.Anchor,
+  },
   tags: ['autodocs'],
 
   argTypes: {
@@ -36,7 +42,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Popover>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

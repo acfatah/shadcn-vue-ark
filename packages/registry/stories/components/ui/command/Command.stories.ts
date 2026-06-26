@@ -5,12 +5,23 @@ import { html } from 'common-tags'
 import { Command } from '@/components/ui/command'
 import { registryItem } from '@/components/ui/command/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import CommandDefaultStory from './CommandDefaultStory.vue'
 import CommandDefaultSource from './CommandDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Command.Root> = {
   title: 'Components/UI/Command',
-  component: Command.Root,
+  component: docsRoot(Command.Root, 'Command.Root'),
+  subcomponents: {
+    'Command.Dialog': Command.Dialog,
+    'Command.Input': Command.Input,
+    'Command.List': Command.List,
+    'Command.Empty': Command.Empty,
+    'Command.Group': Command.Group,
+    'Command.Item': Command.Item,
+    'Command.Separator': Command.Separator,
+    'Command.Shortcut': Command.Shortcut,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +31,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Command.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

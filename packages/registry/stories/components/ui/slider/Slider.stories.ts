@@ -8,9 +8,9 @@ import { registryItem } from '@/components/ui/slider/_registry'
 import SliderDefaultStory from './SliderDefaultStory.vue'
 import SliderDefaultSource from './SliderDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Slider> = {
   title: 'Components/UI/Slider',
-  component: Slider.Root,
+  component: Slider,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Slider.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

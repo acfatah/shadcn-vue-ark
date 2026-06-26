@@ -5,14 +5,24 @@ import { html } from 'common-tags'
 import { TagsInput } from '@/components/ui/tags-input'
 import { registryItem } from '@/components/ui/tags-input/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import TagsInputDefaultStory from './TagsInputDefaultStory.vue'
 import TagsInputDefaultSource from './TagsInputDefaultStory.vue?raw'
 import TagsInputWithListbox from './TagsInputWithListbox.vue'
 import TagsInputWithListboxSource from './TagsInputWithListbox.vue?raw'
 
-const meta = {
+const meta: Meta<typeof TagsInput.Root> = {
   title: 'Components/UI/TagsInput',
-  component: TagsInput.Root,
+  component: docsRoot(TagsInput.Root, 'TagsInput.Root'),
+  subcomponents: {
+    'TagsInput.Input': TagsInput.Input,
+    'TagsInput.Control': TagsInput.Control,
+    'TagsInput.Item': TagsInput.Item,
+    'TagsInput.ItemText': TagsInput.ItemText,
+    'TagsInput.ItemPreview': TagsInput.ItemPreview,
+    'TagsInput.ItemInput': TagsInput.ItemInput,
+    'TagsInput.ItemDelete': TagsInput.ItemDelete,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -22,7 +32,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof TagsInput.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

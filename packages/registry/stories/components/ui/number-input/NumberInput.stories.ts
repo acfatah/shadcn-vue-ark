@@ -5,6 +5,7 @@ import { html } from 'common-tags'
 import { NumberInput } from '@/components/ui/number-input'
 import { registryItem } from '@/components/ui/number-input/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import NumberInputCurrencyStory from './NumberInputCurrencyStory.vue'
 import NumberInputCurrencySource from './NumberInputCurrencyStory.vue?raw'
 import NumberInputDecimalStory from './NumberInputDecimalStory.vue'
@@ -14,9 +15,9 @@ import NumberInputDefaultSource from './NumberInputDefaultStory.vue?raw'
 import NumberInputPercentageStory from './NumberInputPercentageStory.vue'
 import NumberInputPercentageSource from './NumberInputPercentageStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof NumberInput.Root> = {
   title: 'Components/UI/NumberInput',
-  component: NumberInput.Root,
+  component: docsRoot(NumberInput.Root, 'NumberInput.Root'),
   subcomponents: {
     'NumberInput.Control': NumberInput.Control,
     'NumberInput.Input': NumberInput.Input,
@@ -32,7 +33,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof NumberInput.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

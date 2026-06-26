@@ -5,12 +5,16 @@ import { html } from 'common-tags'
 import { ToggleGroup } from '@/components/ui/toggle-group'
 import { registryItem } from '@/components/ui/toggle-group/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ToggleGroupDefaultStory from './ToggleGroupDefaultStory.vue'
 import ToggleGroupDefaultSource from './ToggleGroupDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof ToggleGroup.Root> = {
   title: 'Components/UI/ToggleGroup',
-  component: ToggleGroup.Root,
+  component: docsRoot(ToggleGroup.Root, 'ToggleGroup.Root'),
+  subcomponents: {
+    'ToggleGroup.Item': ToggleGroup.Item,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +24,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof ToggleGroup.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

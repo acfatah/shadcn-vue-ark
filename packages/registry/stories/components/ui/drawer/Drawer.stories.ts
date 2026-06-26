@@ -5,12 +5,23 @@ import { html } from 'common-tags'
 import { Drawer } from '@/components/ui/drawer'
 import { registryItem } from '@/components/ui/drawer/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DrawerDefaultStory from './DrawerDefaultStory.vue'
 import DrawerDefaultSource from './DrawerDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Drawer.Root> = {
   title: 'Components/UI/Drawer',
-  component: Drawer.Root,
+  component: docsRoot(Drawer.Root, 'Drawer.Root'),
+  subcomponents: {
+    'Drawer.Trigger': Drawer.Trigger,
+    'Drawer.Content': Drawer.Content,
+    'Drawer.Overlay': Drawer.Overlay,
+    'Drawer.Header': Drawer.Header,
+    'Drawer.Footer': Drawer.Footer,
+    'Drawer.Title': Drawer.Title,
+    'Drawer.Description': Drawer.Description,
+    'Drawer.Close': Drawer.Close,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +31,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Drawer.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

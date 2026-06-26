@@ -5,12 +5,27 @@ import { html } from 'common-tags'
 import { FileUpload } from '@/components/ui/file-upload'
 import { registryItem } from '@/components/ui/file-upload/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import FileUploadDefaultStory from './FileUploadDefaultStory.vue'
 import FileUploadDefaultSource from './FileUploadDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof FileUpload.Root> = {
   title: 'Components/UI/FileUpload',
-  component: FileUpload.Root,
+  component: docsRoot(FileUpload.Root, 'FileUpload.Root'),
+  subcomponents: {
+    'FileUpload.Label': FileUpload.Label,
+    'FileUpload.Dropzone': FileUpload.Dropzone,
+    'FileUpload.Trigger': FileUpload.Trigger,
+    'FileUpload.ItemGroup': FileUpload.ItemGroup,
+    'FileUpload.Item': FileUpload.Item,
+    'FileUpload.ItemPreview': FileUpload.ItemPreview,
+    'FileUpload.ItemPreviewImage': FileUpload.ItemPreviewImage,
+    'FileUpload.ItemName': FileUpload.ItemName,
+    'FileUpload.ItemSizeText': FileUpload.ItemSizeText,
+    'FileUpload.ItemDeleteTrigger': FileUpload.ItemDeleteTrigger,
+    'FileUpload.ClearTrigger': FileUpload.ClearTrigger,
+    'FileUpload.HiddenInput': FileUpload.HiddenInput,
+  },
   tags: ['autodocs'],
 
   args: {
@@ -30,7 +45,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof FileUpload.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

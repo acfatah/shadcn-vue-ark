@@ -5,12 +5,19 @@ import { html } from 'common-tags'
 import { PinInput } from '@/components/ui/pin-input'
 import { registryItem } from '@/components/ui/pin-input/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import PinInputDefaultStory from './PinInputDefaultStory.vue'
 import PinInputDefaultSource from './PinInputDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof PinInput.Root> = {
   title: 'Components/UI/PinInput',
-  component: PinInput.Root,
+  component: docsRoot(PinInput.Root, 'PinInput.Root'),
+  subcomponents: {
+    'PinInput.Group': PinInput.Group,
+    'PinInput.Slot': PinInput.Slot,
+    'PinInput.HiddenInput': PinInput.HiddenInput,
+    'PinInput.Separator': PinInput.Separator,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +27,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof PinInput.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

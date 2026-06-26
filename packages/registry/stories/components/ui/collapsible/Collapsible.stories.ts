@@ -5,12 +5,17 @@ import { html } from 'common-tags'
 import { Collapsible } from '@/components/ui/collapsible'
 import { registryItem } from '@/components/ui/collapsible/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import CollapsibleDefaultStory from './CollapsibleDefaultStory.vue'
 import CollapsibleDefaultSource from './CollapsibleDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Collapsible.Root> = {
   title: 'Components/UI/Collapsible',
-  component: Collapsible.Root,
+  component: docsRoot(Collapsible.Root, 'Collapsible.Root'),
+  subcomponents: {
+    'Collapsible.Trigger': Collapsible.Trigger,
+    'Collapsible.Content': Collapsible.Content,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Collapsible.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

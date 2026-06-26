@@ -5,12 +5,17 @@ import { html } from 'common-tags'
 import { ButtonGroup } from '@/components/ui/button-group'
 import { registryItem } from '@/components/ui/button-group/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ButtonGroupDefaultStory from './ButtonGroupDefaultStory.vue'
 import ButtonGroupDefaultSource from './ButtonGroupDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof ButtonGroup.Root> = {
   title: 'Components/UI/ButtonGroup',
-  component: ButtonGroup.Root,
+  component: docsRoot(ButtonGroup.Root, 'ButtonGroup.Root'),
+  subcomponents: {
+    'ButtonGroup.Text': ButtonGroup.Text,
+    'ButtonGroup.Separator': ButtonGroup.Separator,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof ButtonGroup>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

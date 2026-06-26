@@ -5,6 +5,7 @@ import { html } from 'common-tags'
 import { Pagination } from '@/components/ui/pagination'
 import { registryItem } from '@/components/ui/pagination/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DataTableFooterStory from './DataTableFooterStory.vue'
 import DataTableFooterSource from './DataTableFooterStory.vue?raw'
 import IconsOnlyStory from './IconsOnlyStory.vue'
@@ -12,9 +13,18 @@ import IconsOnlySource from './IconsOnlyStory.vue?raw'
 import PaginationDefaultStory from './PaginationDefaultStory.vue'
 import PaginationDefaultSource from './PaginationDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Pagination.Root> = {
   title: 'Components/UI/Pagination',
-  component: Pagination.Root,
+  component: docsRoot(Pagination.Root, 'Pagination.Root'),
+  subcomponents: {
+    'Pagination.Content': Pagination.Content,
+    'Pagination.Item': Pagination.Item,
+    'Pagination.Ellipsis': Pagination.Ellipsis,
+    'Pagination.Previous': Pagination.Previous,
+    'Pagination.Next': Pagination.Next,
+    'Pagination.First': Pagination.First,
+    'Pagination.Last': Pagination.Last,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -24,7 +34,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Pagination.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

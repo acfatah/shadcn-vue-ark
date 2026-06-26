@@ -5,14 +5,18 @@ import { html } from 'common-tags'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { registryItem } from '@/components/ui/scroll-area/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ScrollAreaDefaultStory from './ScrollAreaDefaultStory.vue'
 import ScrollAreaDefaultSource from './ScrollAreaDefaultStory.vue?raw'
 import ScrollAreaHideScrollbarStory from './ScrollAreaHideScrollbarStory.vue'
 import ScrollAreaHideScrollbarSource from './ScrollAreaHideScrollbarStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof ScrollArea.Root> = {
   title: 'Components/UI/ScrollArea',
-  component: ScrollArea.Root,
+  component: docsRoot(ScrollArea.Root, 'ScrollArea.Root'),
+  subcomponents: {
+    'ScrollArea.Scrollbar': ScrollArea.Scrollbar,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -32,7 +36,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof ScrollArea.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -2,18 +2,10 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  TimelineConnector,
-  TimelineContent,
-  TimelineDescription,
-  TimelineIndicator,
-  TimelineItem,
-  TimelineRoot,
-  TimelineSeparator,
-  TimelineTitle,
-} from '@/components/ui/timeline'
+import { Timeline } from '@/components/ui/timeline'
 import { registryItem } from '@/components/ui/timeline/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import TimelineDefault from './TimelineDefaultStory.vue'
 import TimelineDefaultSource from './TimelineDefaultStory.vue?raw'
 import TimelineHorizontal from './TimelineHorizontalStory.vue'
@@ -23,17 +15,17 @@ import TimelineReversedSource from './TimelineReversedStory.vue?raw'
 import TimelineStatus from './TimelineStatusStory.vue'
 import TimelineStatusSource from './TimelineStatusStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Timeline.Root> = {
   title: 'Components/UI/Timeline',
-  component: TimelineRoot,
+  component: docsRoot(Timeline.Root, 'Timeline.Root'),
   subcomponents: {
-    TimelineItem,
-    TimelineConnector,
-    TimelineSeparator,
-    TimelineIndicator,
-    TimelineContent,
-    TimelineTitle,
-    TimelineDescription,
+    'Timeline.Item': Timeline.Item,
+    'Timeline.Connector': Timeline.Connector,
+    'Timeline.Separator': Timeline.Separator,
+    'Timeline.Indicator': Timeline.Indicator,
+    'Timeline.Content': Timeline.Content,
+    'Timeline.Title': Timeline.Title,
+    'Timeline.Description': Timeline.Description,
   },
   tags: ['autodocs'],
 
@@ -69,7 +61,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof TimelineRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

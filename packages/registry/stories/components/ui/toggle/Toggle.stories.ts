@@ -8,9 +8,9 @@ import { registryItem } from '@/components/ui/toggle/_registry'
 import ToggleDefaultStory from './ToggleDefaultStory.vue'
 import ToggleDefaultSource from './ToggleDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Toggle> = {
   title: 'Components/UI/Toggle',
-  component: Toggle.Root,
+  component: Toggle,
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +20,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Toggle.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

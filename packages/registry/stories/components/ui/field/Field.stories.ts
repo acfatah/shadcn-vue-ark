@@ -2,16 +2,10 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  FieldDescription,
-  FieldError,
-  FieldInput,
-  FieldLabel,
-  FieldRequiredIndicator,
-  FieldRoot,
-} from '@/components/ui/field'
+import { Field } from '@/components/ui/field'
 import { registryItem } from '@/components/ui/field/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import FieldCheckboxStory from './FieldCheckboxStory.vue'
 import FieldCheckboxSource from './FieldCheckboxStory.vue?raw'
 import FieldDefaultStory from './FieldDefaultStory.vue'
@@ -19,15 +13,20 @@ import FieldDefaultSource from './FieldDefaultStory.vue?raw'
 import FieldTextareaStory from './FieldTextareaStory.vue'
 import FieldTextareaSource from './FieldTextareaStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Field.Root> = {
   title: 'Components/UI/Field',
-  component: FieldRoot,
+  component: docsRoot(Field.Root, 'Field.Root'),
   subcomponents: {
-    FieldLabel,
-    FieldInput,
-    FieldDescription,
-    FieldError,
-    FieldRequiredIndicator,
+    'Field.RootProvider': Field.RootProvider,
+    'Field.Group': Field.Group,
+    'Field.Label': Field.Label,
+    'Field.RequiredIndicator': Field.RequiredIndicator,
+    'Field.Input': Field.Input,
+    'Field.Textarea': Field.Textarea,
+    'Field.Checkbox': Field.Checkbox,
+    'Field.Title': Field.Title,
+    'Field.Description': Field.Description,
+    'Field.Error': Field.Error,
   },
   tags: ['autodocs'],
 
@@ -50,7 +49,7 @@ const meta = {
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
-} satisfies Meta<typeof FieldRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

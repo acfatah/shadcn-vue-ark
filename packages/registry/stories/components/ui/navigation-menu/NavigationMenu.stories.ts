@@ -2,32 +2,24 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuRoot,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from '@/components/ui/navigation-menu'
+import { NavigationMenu } from '@/components/ui/navigation-menu'
 import { registryItem } from '@/components/ui/navigation-menu/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import NavigationMenuDefaultStory from './NavigationMenuDefaultStory.vue'
 import NavigationMenuDefaultSource from './NavigationMenuDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof NavigationMenu.Root> = {
   title: 'Components/UI/NavigationMenu',
-  component: NavigationMenuRoot,
+  component: docsRoot(NavigationMenu.Root, 'NavigationMenu.Root'),
   subcomponents: {
-    NavigationMenuList,
-    NavigationMenuItem,
-    NavigationMenuTrigger,
-    NavigationMenuContent,
-    NavigationMenuLink,
-    NavigationMenuIndicator,
-    NavigationMenuViewport,
+    'NavigationMenu.List': NavigationMenu.List,
+    'NavigationMenu.Item': NavigationMenu.Item,
+    'NavigationMenu.Trigger': NavigationMenu.Trigger,
+    'NavigationMenu.Content': NavigationMenu.Content,
+    'NavigationMenu.Link': NavigationMenu.Link,
+    'NavigationMenu.Indicator': NavigationMenu.Indicator,
+    'NavigationMenu.Viewport': NavigationMenu.Viewport,
   },
   tags: ['autodocs'],
 
@@ -42,7 +34,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof NavigationMenuRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

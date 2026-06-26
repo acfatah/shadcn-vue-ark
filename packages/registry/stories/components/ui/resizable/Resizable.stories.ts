@@ -2,24 +2,19 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  Resizable,
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from '@/components/ui/resizable'
+import { Resizable } from '@/components/ui/resizable'
 import { registryItem } from '@/components/ui/resizable/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ResizableDefaultStory from './ResizableDefaultStory.vue'
 import ResizableDefaultSource from './ResizableDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Resizable.PanelGroup> = {
   title: 'Components/UI/Resizable',
-  component: Resizable.PanelGroup,
+  component: docsRoot(Resizable.PanelGroup, 'Resizable.PanelGroup'),
   subcomponents: {
-    ResizableHandle,
-    ResizablePanel,
-    ResizablePanelGroup,
+    'Resizable.Panel': Resizable.Panel,
+    'Resizable.Handle': Resizable.Handle,
   },
   tags: ['autodocs'],
 
@@ -30,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Resizable.PanelGroup>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

@@ -5,14 +5,36 @@ import { html } from 'common-tags'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { registryItem } from '@/components/ui/dropdown-menu/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DropdownMenuDefaultStory from './DropdownMenuDefaultStory.vue'
 import DropdownMenuDefaultSource from './DropdownMenuDefaultStory.vue?raw'
 import DropdownMenuPlacementStory from './DropdownMenuPlacementStory.vue'
 import DropdownMenuPlacementSource from './DropdownMenuPlacementStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof DropdownMenu.Root> = {
   title: 'Components/UI/DropdownMenu',
-  component: DropdownMenu.Root,
+  component: docsRoot(DropdownMenu.Root, 'DropdownMenu.Root'),
+  subcomponents: {
+    'DropdownMenu.Trigger': DropdownMenu.Trigger,
+    'DropdownMenu.Content': DropdownMenu.Content,
+    'DropdownMenu.Item': DropdownMenu.Item,
+    'DropdownMenu.CheckboxItem': DropdownMenu.CheckboxItem,
+    'DropdownMenu.RadioGroup': DropdownMenu.RadioGroup,
+    'DropdownMenu.RadioItem': DropdownMenu.RadioItem,
+    'DropdownMenu.Label': DropdownMenu.Label,
+    'DropdownMenu.Separator': DropdownMenu.Separator,
+    'DropdownMenu.Group': DropdownMenu.Group,
+    'DropdownMenu.Sub': DropdownMenu.Sub,
+    'DropdownMenu.SubTrigger': DropdownMenu.SubTrigger,
+    'DropdownMenu.SubContent': DropdownMenu.SubContent,
+    'DropdownMenu.Shortcut': DropdownMenu.Shortcut,
+    'DropdownMenu.Positioner': DropdownMenu.Positioner,
+    'DropdownMenu.ItemText': DropdownMenu.ItemText,
+    'DropdownMenu.ItemIndicator': DropdownMenu.ItemIndicator,
+    'DropdownMenu.Indicator': DropdownMenu.Indicator,
+    'DropdownMenu.ContextTrigger': DropdownMenu.ContextTrigger,
+    'DropdownMenu.RootProvider': DropdownMenu.RootProvider,
+  },
   tags: ['autodocs'],
 
   argTypes: {
@@ -36,7 +58,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof DropdownMenu.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

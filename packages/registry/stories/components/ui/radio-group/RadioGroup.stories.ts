@@ -2,21 +2,9 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  RadioGroupDescription,
-  RadioGroupIndicator,
-  RadioGroupItem,
-  RadioGroupItemContent,
-  RadioGroupItemControl,
-  RadioGroupItemDescription,
-  RadioGroupItemHiddenInput,
-  RadioGroupItems,
-  RadioGroupItemText,
-  RadioGroupLabel,
-  RadioGroupRoot,
-  RadioGroupRootProvider,
-} from '@/components/ui/radio-group'
+import { RadioGroup } from '@/components/ui/radio-group'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import RadioGroupBasicStory from './RadioGroupBasicStory.vue'
 import RadioGroupBasicSource from './RadioGroupBasicStory.vue?raw'
 import RadioGroupCardsStory from './RadioGroupCardsStory.vue'
@@ -26,22 +14,21 @@ import RadioGroupDefaultSource from './RadioGroupDefaultStory.vue?raw'
 import RadioGroupWithDescriptionStory from './RadioGroupWithDescriptionStory.vue'
 import RadioGroupWithDescriptionSource from './RadioGroupWithDescriptionStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof RadioGroup.Root> = {
   title: 'Components/UI/RadioGroup',
-  component: RadioGroupRoot,
+  component: docsRoot(RadioGroup.Root, 'RadioGroup.Root'),
   subcomponents: {
-    RadioGroupRoot,
-    RadioGroupLabel,
-    RadioGroupDescription,
-    RadioGroupItems,
-    RadioGroupItem,
-    RadioGroupItemControl,
-    RadioGroupItemContent,
-    RadioGroupItemText,
-    RadioGroupItemDescription,
-    RadioGroupItemHiddenInput,
-    RadioGroupIndicator,
-    RadioGroupRootProvider,
+    'RadioGroup.Label': RadioGroup.Label,
+    'RadioGroup.Description': RadioGroup.Description,
+    'RadioGroup.Items': RadioGroup.Items,
+    'RadioGroup.Item': RadioGroup.Item,
+    'RadioGroup.ItemControl': RadioGroup.ItemControl,
+    'RadioGroup.Indicator': RadioGroup.Indicator,
+    'RadioGroup.ItemContent': RadioGroup.ItemContent,
+    'RadioGroup.ItemText': RadioGroup.ItemText,
+    'RadioGroup.ItemDescription': RadioGroup.ItemDescription,
+    'RadioGroup.ItemHiddenInput': RadioGroup.ItemHiddenInput,
+    'RadioGroup.RootProvider': RadioGroup.RootProvider,
   },
   tags: ['autodocs'],
 
@@ -69,7 +56,7 @@ const meta = {
       options: ['horizontal', 'vertical'],
     },
   },
-} satisfies Meta<typeof RadioGroupRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

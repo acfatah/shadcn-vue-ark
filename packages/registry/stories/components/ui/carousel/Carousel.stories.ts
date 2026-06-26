@@ -5,12 +5,19 @@ import { html } from 'common-tags'
 import { Carousel } from '@/components/ui/carousel'
 import { registryItem } from '@/components/ui/carousel/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import CarouselDefaultStory from './CarouselDefaultStory.vue'
 import CarouselDefaultSource from './CarouselDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Carousel.Root> = {
   title: 'Components/UI/Carousel',
-  component: Carousel.Root,
+  component: docsRoot(Carousel.Root, 'Carousel.Root'),
+  subcomponents: {
+    'Carousel.Content': Carousel.Content,
+    'Carousel.Item': Carousel.Item,
+    'Carousel.Previous': Carousel.Previous,
+    'Carousel.Next': Carousel.Next,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +27,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Carousel.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

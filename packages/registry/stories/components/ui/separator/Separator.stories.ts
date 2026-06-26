@@ -8,7 +8,7 @@ import { registryItem } from '@/components/ui/separator/_registry'
 import SeparatorDefaultStory from './SeparatorDefaultStory.vue'
 import SeparatorDefaultSource from './SeparatorDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Separator> = {
   title: 'Components/UI/Separator',
   component: Separator,
   tags: ['autodocs'],
@@ -53,7 +53,7 @@ const meta = {
       description: 'HTMLAttributes[\'class\']',
     },
   },
-} satisfies Meta<typeof Separator>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

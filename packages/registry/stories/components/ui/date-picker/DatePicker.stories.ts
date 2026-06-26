@@ -5,6 +5,7 @@ import { html } from 'common-tags'
 import { DatePicker } from '@/components/ui/date-picker'
 import { registryItem } from '@/components/ui/date-picker/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DatePickerDefaultStory from './DatePickerDefaultStory.vue'
 import DatePickerDefaultSource from './DatePickerDefaultStory.vue?raw'
 import DatePickerFormStory from './DatePickerFormStory.vue'
@@ -12,9 +13,14 @@ import DatePickerFormSource from './DatePickerFormStory.vue?raw'
 import DatePickerInputStory from './DatePickerInputStory.vue'
 import DatePickerInputSource from './DatePickerInputStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof DatePicker.Root> = {
   title: 'Components/UI/DatePicker',
-  component: DatePicker.Root,
+  component: docsRoot(DatePicker.Root, 'DatePicker.Root'),
+  subcomponents: {
+    'DatePicker.Input': DatePicker.Input,
+    'DatePicker.Trigger': DatePicker.Trigger,
+    'DatePicker.Content': DatePicker.Content,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -24,7 +30,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof DatePicker>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

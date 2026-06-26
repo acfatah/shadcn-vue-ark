@@ -2,28 +2,23 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  FieldsetDescription,
-  FieldsetError,
-  FieldsetGroup,
-  FieldsetLegend,
-  FieldsetRoot,
-  FieldsetSeparator,
-} from '@/components/ui/fieldset'
+import { Fieldset } from '@/components/ui/fieldset'
 import { registryItem } from '@/components/ui/fieldset/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import FieldsetDefaultStory from './FieldsetDefaultStory.vue'
 import FieldsetDefaultSource from './FieldsetDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Fieldset.Root> = {
   title: 'Components/UI/Fieldset',
-  component: FieldsetRoot,
+  component: docsRoot(Fieldset.Root, 'Fieldset.Root'),
   subcomponents: {
-    FieldsetLegend,
-    FieldsetGroup,
-    FieldsetDescription,
-    FieldsetError,
-    FieldsetSeparator,
+    'Fieldset.Legend': Fieldset.Legend,
+    'Fieldset.Content': Fieldset.Content,
+    'Fieldset.Group': Fieldset.Group,
+    'Fieldset.Description': Fieldset.Description,
+    'Fieldset.Error': Fieldset.Error,
+    'Fieldset.Separator': Fieldset.Separator,
   },
   tags: ['autodocs'],
 
@@ -46,7 +41,7 @@ const meta = {
     invalid: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
-} satisfies Meta<typeof FieldsetRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

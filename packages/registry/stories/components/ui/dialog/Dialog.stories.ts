@@ -5,12 +5,24 @@ import { html } from 'common-tags'
 import { Dialog } from '@/components/ui/dialog'
 import { registryItem } from '@/components/ui/dialog/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DialogDefaultStory from './DialogDefaultStory.vue'
 import DialogDefaultSource from './DialogDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Dialog.Root> = {
   title: 'Components/UI/Dialog',
-  component: Dialog.Root,
+  component: docsRoot(Dialog.Root, 'Dialog.Root'),
+  subcomponents: {
+    'Dialog.Trigger': Dialog.Trigger,
+    'Dialog.Content': Dialog.Content,
+    'Dialog.ScrollContent': Dialog.ScrollContent,
+    'Dialog.Overlay': Dialog.Overlay,
+    'Dialog.Header': Dialog.Header,
+    'Dialog.Footer': Dialog.Footer,
+    'Dialog.Title': Dialog.Title,
+    'Dialog.Description': Dialog.Description,
+    'Dialog.Close': Dialog.Close,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -20,7 +32,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Dialog>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

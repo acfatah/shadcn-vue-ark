@@ -2,24 +2,20 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
 
-import {
-  AccordionContent,
-  AccordionItem,
-  AccordionRoot,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
+import { Accordion } from '@/components/ui/accordion'
 import { registryItem } from '@/components/ui/accordion/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import AccordionDefault from './AccordionDefaultStory.vue'
 import AccordionDefaultSource from './AccordionDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Accordion.Root> = {
   title: 'Components/UI/Accordion',
-  component: AccordionRoot,
+  component: docsRoot(Accordion.Root, 'Accordion.Root'),
   subcomponents: {
-    AccordionItem,
-    AccordionTrigger,
-    AccordionContent,
+    'Accordion.Item': Accordion.Item,
+    'Accordion.Trigger': Accordion.Trigger,
+    'Accordion.Content': Accordion.Content,
   },
   tags: ['autodocs'],
   parameters: {
@@ -29,7 +25,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof AccordionRoot>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

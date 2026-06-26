@@ -3,14 +3,14 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
 import { Badge } from '@/components/ui/badge'
-import { registryItem } from '@/components/ui/spinner/_registry'
+import { registryItem } from '@/components/ui/badge/_registry'
 
 import AsChildStory from './AsChildStory.vue'
 import AsChildSource from './AsChildStory.vue?raw'
 import BadgeDefaultStory from './BadgeDefaultStory.vue'
 import BadgeDefaultSource from './BadgeDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Badge> = {
   title: 'Components/UI/Badge',
   component: Badge,
   tags: ['autodocs'],
@@ -22,7 +22,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Badge>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

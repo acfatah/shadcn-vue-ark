@@ -12,7 +12,7 @@ import SonnerRichSource from './SonnerRichStory.vue?raw'
 import SonnerVariantsStory from './SonnerVariantsStory.vue'
 import SonnerVariantsSource from './SonnerVariantsStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof Toaster> = {
   title: 'Components/UI/Sonner',
   component: Toaster,
   tags: ['autodocs'],
@@ -24,7 +24,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Toaster>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

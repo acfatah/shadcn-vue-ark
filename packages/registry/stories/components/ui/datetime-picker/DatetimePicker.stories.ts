@@ -5,14 +5,20 @@ import { html } from 'common-tags'
 import { DatetimePicker } from '@/components/ui/datetime-picker'
 import { registryItem } from '@/components/ui/datetime-picker/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import DatetimePicker24hStory from './DatetimePicker24hStory.vue'
 import DatetimePicker24hSource from './DatetimePicker24hStory.vue?raw'
 import DatetimePickerDefaultStory from './DatetimePickerDefaultStory.vue'
 import DatetimePickerDefaultSource from './DatetimePickerDefaultStory.vue?raw'
 
-const meta = {
+const meta: Meta<typeof DatetimePicker.Root> = {
   title: 'Components/UI/DatetimePicker',
-  component: DatetimePicker.Root,
+  component: docsRoot(DatetimePicker.Root, 'DatetimePicker.Root'),
+  subcomponents: {
+    'DatetimePicker.Trigger': DatetimePicker.Trigger,
+    'DatetimePicker.Content': DatetimePicker.Content,
+    'DatetimePicker.TimeScroll': DatetimePicker.TimeScroll,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -22,7 +28,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof DatetimePicker>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

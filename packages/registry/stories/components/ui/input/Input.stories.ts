@@ -6,6 +6,7 @@ import { size as ButtonSize } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import ButtonStory from './ButtonStory.vue'
 import ButtonSource from './ButtonStory.vue?raw'
 import CheckboxInputStory from './CheckboxInputStory.vue'
@@ -78,33 +79,34 @@ const defaultAttributes = {
   },
 }
 
-const meta = {
+const meta: Meta<Record<string, any>> = {
   title: 'Components/UI/Input',
+  component: docsRoot(Input.Text, 'Input.Text'),
   subcomponents: {
-    InputDescription: Input.Description,
-    InputError: Input.Error,
-    InputRequiredIndicator: Input.RequiredIndicator,
-    ButtonInput: Input.Button,
-    SubmitInput: Input.Submit,
-    ResetInput: Input.Reset,
-    TextInput: Input.Text,
-    TextareaInput: Input.Textarea,
-    NumberInput: Input.Number,
-    CheckboxInput: Input.Checkbox,
-    RadioInput: Input.Radio,
-    RangeInput: Input.Range,
-    DatetimeLocalInput: Input.DatetimeLocal,
-    MonthInput: Input.Month,
-    WeekInput: Input.Week,
-    DateInput: Input.Date,
-    TimeInput: Input.Time,
-    FileInput: Input.File,
-    SearchInput: Input.Search,
-    EmailInput: Input.Email,
-    PasswordInput: Input.Password,
-    ColorInput: Input.Color,
-    UrlInput: Input.Url,
-    TelInput: Input.Tel,
+    'Input.Description': Input.Description,
+    'Input.Error': Input.Error,
+    'Input.RequiredIndicator': Input.RequiredIndicator,
+    'Input.Button': Input.Button,
+    'Input.Submit': Input.Submit,
+    'Input.Reset': Input.Reset,
+    'Input.Text': Input.Text,
+    'Input.Textarea': Input.Textarea,
+    'Input.Number': Input.Number,
+    'Input.Checkbox': Input.Checkbox,
+    'Input.Radio': Input.Radio,
+    'Input.Range': Input.Range,
+    'Input.DatetimeLocal': Input.DatetimeLocal,
+    'Input.Month': Input.Month,
+    'Input.Week': Input.Week,
+    'Input.Date': Input.Date,
+    'Input.Time': Input.Time,
+    'Input.File': Input.File,
+    'Input.Search': Input.Search,
+    'Input.Email': Input.Email,
+    'Input.Password': Input.Password,
+    'Input.Color': Input.Color,
+    'Input.Url': Input.Url,
+    'Input.Tel': Input.Tel,
   },
   tags: ['autodocs'],
   args: {},
@@ -117,7 +119,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<Record<string, any>>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>

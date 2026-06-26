@@ -5,6 +5,7 @@ import { html } from 'common-tags'
 import { Switch } from '@/components/ui/switch'
 import { registryItem } from '@/components/ui/switch/_registry'
 
+import { docsRoot } from '../../../_helpers/docs-root'
 import SwitchDefaultStory from './SwitchDefaultStory.vue'
 import SwitchDefaultSource from './SwitchDefaultStory.vue?raw'
 
@@ -30,9 +31,17 @@ const defaultAttributes = {
   },
 }
 
-const meta = {
+const meta: Meta<typeof Switch.Root> = {
   title: 'Components/UI/Switch',
-  component: Switch.Root,
+  component: docsRoot(Switch.Root, 'Switch.Root'),
+  subcomponents: {
+    'Switch.Control': Switch.Control,
+    'Switch.Thumb': Switch.Thumb,
+    'Switch.Label': Switch.Label,
+    'Switch.Description': Switch.Description,
+    'Switch.HiddenInput': Switch.HiddenInput,
+    'Switch.RootProvider': Switch.RootProvider,
+  },
   tags: ['autodocs'],
 
   parameters: {
@@ -42,7 +51,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof Switch.Root>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
