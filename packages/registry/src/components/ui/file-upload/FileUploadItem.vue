@@ -19,6 +19,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
+  <!-- @vue-expect-error `file` is forwarded via the v-bind spread; vue-tsc can't infer it through useForwardPropsEmits -->
   <FileUpload.Item
     v-bind="forwardedProps"
     :class="cn(

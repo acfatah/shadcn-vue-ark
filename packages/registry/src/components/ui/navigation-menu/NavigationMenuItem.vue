@@ -19,6 +19,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
+  <!-- @vue-expect-error `value` is forwarded via the v-bind spread; vue-tsc can't infer it through useForwardPropsEmits -->
   <NavigationMenu.Item
     v-bind="forwardedProps"
     :class="cn('relative', props.class)"

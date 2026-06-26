@@ -20,6 +20,7 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
 </script>
 
 <template>
+  <!-- @vue-expect-error `index` is forwarded via the v-bind spread; vue-tsc can't infer it through useForwardPropsEmits -->
   <Steps.Content
     data-scope="steps"
     data-part="content"
