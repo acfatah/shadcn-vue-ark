@@ -71,7 +71,7 @@ function handleInputValueChange(details: { inputValue: string }) {
   <Combobox.Root
     v-model="value"
     :input-value="inputValue"
-    :collection="collection"
+    :collection="(collection as any)"
     :align="align"
     :side="side"
     @input-value-change="handleInputValueChange"

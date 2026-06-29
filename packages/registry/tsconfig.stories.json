@@ -6,7 +6,6 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
@@ -24,5 +23,10 @@
     "stories/**/*.vue",
     "src/**/*.ts",
     "src/**/*.vue"
+  ],
+
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
   ]
 }

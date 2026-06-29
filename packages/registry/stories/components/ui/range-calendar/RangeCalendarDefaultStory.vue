@@ -14,7 +14,7 @@ const dateRange = ref<DateValue[]>([start, end])
 
 <template>
   <RangeCalendar.Root
-    v-model="dateRange"
+    v-model="(dateRange as DateValue[])"
     class="rounded-md border shadow-sm"
     :num-of-months="2"
   />

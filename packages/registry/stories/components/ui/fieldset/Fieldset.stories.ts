@@ -9,7 +9,7 @@ import { docsRoot } from '../../../_helpers/docs-root'
 import FieldsetDefaultStory from './FieldsetDefaultStory.vue'
 import FieldsetDefaultSource from './FieldsetDefaultStory.vue?raw'
 
-const meta: Meta<typeof Fieldset.Root> = {
+const meta: Meta<{ disabled: boolean, invalid: boolean, required: boolean }> = {
   title: 'Components/UI/Fieldset',
   component: docsRoot(Fieldset.Root, 'Fieldset.Root'),
   subcomponents: {

@@ -70,7 +70,7 @@ function removeValue(val: string, event: Event) {
   <Combobox.Root
     v-model="value"
     :input-value="inputValue"
-    :collection="collection"
+    :collection="(collection as any)"
     multiple
     @input-value-change="handleInputValueChange"
     @value-change="handleValueChange"

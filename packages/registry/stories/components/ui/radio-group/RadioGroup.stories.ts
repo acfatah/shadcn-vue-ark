@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { html } from 'common-tags'
 
 import { RadioGroup } from '@/components/ui/radio-group'
+import { registryItem } from '@/components/ui/radio-group/_registry'
 
 import { docsRoot } from '../../../_helpers/docs-root'
 import RadioGroupBasicStory from './RadioGroupBasicStory.vue'
@@ -35,7 +36,7 @@ const meta: Meta<typeof RadioGroup.Root> = {
   parameters: {
     docs: {
       description: {
-        component: 'A set of radio buttons where only one option can be selected at a time.',
+        component: registryItem.description,
       },
     },
   },

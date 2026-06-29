@@ -11,7 +11,7 @@ const date = ref<DateValue[]>([fromDate(new Date(), getLocalTimeZone())])
 
 <template>
   <Calendar.Root
-    v-model="date"
+    v-model="(date as DateValue[])"
     class="rounded-md border shadow-sm"
     :min-value="new CalendarDate(1925, 1, 1)"
     :max-value="new CalendarDate(2035, 1, 1)"

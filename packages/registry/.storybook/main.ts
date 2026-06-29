@@ -18,10 +18,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-vitest',
   ],
-
-  typescript: {
-    docgen: 'vue-component-meta',
-  },
 }
 
 export default config
