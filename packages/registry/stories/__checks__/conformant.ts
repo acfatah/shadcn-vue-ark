@@ -10,4 +10,8 @@
 */
 export const CONFORMANT: string[] = [
   // Wave 1 (pilot): 'badge', 'switch', 'dialog', 'data-table'
+  'badge',
+  'switch',
+  'dialog',
+  'data-table',
 ]

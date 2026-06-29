@@ -4,18 +4,19 @@ import { Dialog } from '@/components/ui/dialog'
 </script>
 
 <template>
-  <Dialog.Root>
+  <Dialog.Root role="alertdialog">
     <Dialog.Trigger as-child>
-      <Button variant="outline">
-        Open dialog
+      <Button variant="destructive">
+        Delete account
       </Button>
     </Dialog.Trigger>
 
     <Dialog.Content class="sm:max-w-[425px]">
       <Dialog.Header>
-        <Dialog.Title>Edit profile</Dialog.Title>
+        <Dialog.Title>Are you absolutely sure?</Dialog.Title>
         <Dialog.Description>
-          Update your display name, then save your changes.
+          This permanently deletes your account and removes your data from
+          our servers. This action cannot be undone.
         </Dialog.Description>
       </Dialog.Header>
 
@@ -25,7 +26,9 @@ import { Dialog } from '@/components/ui/dialog'
             Cancel
           </Button>
         </Dialog.Close>
-        <Button>Save</Button>
+        <Button variant="destructive">
+          Delete
+        </Button>
       </Dialog.Footer>
     </Dialog.Content>
   </Dialog.Root>
