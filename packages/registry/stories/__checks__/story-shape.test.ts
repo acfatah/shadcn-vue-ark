@@ -23,15 +23,6 @@ const vuePaths = Object.keys(
   import.meta.glob('../components/ui/*/*.vue'),
 )
 
-// `defineStoryMeta` hard-codes the title + autodocs tag, but only when it
-// actually builds the default-exported meta. Detection is tied to a
-// `const meta = defineStoryMeta(` or `export default defineStoryMeta(` so a bare
-// mention in a comment or string cannot disable the title/tags checks.
-function buildsMetaWithHelper(src: string): boolean {
-  return /(?:^|\n)\s*(?:export\s+default\s+|(?:export\s+)?const\s+meta\b[^\n=]*=\s*)defineStoryMeta\s*\(/
-    .test(src)
-}
-
 function fileOf(path: string): string {
   return path.replace(/^.*\//, '')
 }
@@ -67,14 +58,13 @@ function violationsFor(unit: Unit): string[] {
   const problems: string[] = []
   const src = unit.sources.join('\n')
 
-  // A story built on `defineStoryMeta` satisfies the title + autodocs checks by
-  // construction. The helper's own contract is verified in helpers.test.ts.
-  const usesMetaHelper = buildsMetaWithHelper(src)
-
-  if (!usesMetaHelper && !/title:\s*['"`]Components\/UI\//.test(src))
+  // The meta head must be a static object literal (Storybook's CSF indexer
+  // rejects a function-wrapped default export), so the title and autodocs tag
+  // are always literal and greppable here.
+  if (!/title:\s*['"`]Components\/UI\//.test(src))
     problems.push('title is not "Components/UI/<Name>"')
 
-  if (!usesMetaHelper && !/tags:\s*\[[^\]]*['"`]autodocs['"`]/.test(src))
+  if (!/tags:\s*\[[^\]]*['"`]autodocs['"`]/.test(src))
     problems.push('meta is missing tags: [\'autodocs\']')
 
   if (!/export\s+const\s+Default\b/.test(src))
@@ -159,17 +149,4 @@ describe('story shape', () => {
       }
     })
   }
-})
-
-describe('buildsMetaWithHelper', () => {
-  it('detects a helper-built default-exported meta', () => {
-    expect(buildsMetaWithHelper('const meta = defineStoryMeta({ name: \'Badge\' })')).toBe(true)
-    expect(buildsMetaWithHelper('const meta: Meta<typeof Badge> = defineStoryMeta({})')).toBe(true)
-    expect(buildsMetaWithHelper('export default defineStoryMeta({ name: \'Badge\' })')).toBe(true)
-  })
-
-  it('ignores a bare mention in a comment or string', () => {
-    expect(buildsMetaWithHelper('// TODO: adopt defineStoryMeta() later')).toBe(false)
-    expect(buildsMetaWithHelper('const note = \'use defineStoryMeta() soon\'')).toBe(false)
-  })
 })

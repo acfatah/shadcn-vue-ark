@@ -11,10 +11,16 @@ interface RenderRawOptions {
 
   /**
    * Story-level markdown description, emitted under `docs.description.story`.
-   * Carries a per-story description alongside the pinned source so callers do
-   * not spread-then-override `parameters` (which would drop `source.code`).
    */
   description?: string
+
+  /**
+   * Extra story `parameters` (e.g. `controls.exclude`, an `a11y` override).
+   * Merged into the returned parameters with `docs` deep-merged, so a story is
+   * always a single spread and never hits the spread-then-override footgun that
+   * would drop `docs.source.code`.
+   */
+  parameters?: Record<string, unknown>
 }
 
 /**
@@ -25,6 +31,12 @@ interface RenderRawOptions {
  * ```ts
  * export const Default: Story = {
  *   ...renderRaw(BadgeDefaultStory, BadgeDefaultSource),
+ * }
+ *
+ * export const Variants: Story = {
+ *   ...renderRaw(VariantsStory, VariantsSource, {
+ *     parameters: { controls: { exclude: ['variant'] } },
+ *   }),
  * }
  * ```
  *
@@ -37,9 +49,14 @@ export function renderRaw<TMeta extends Meta = Meta>(
   rawSource: string,
   options?: RenderRawOptions,
 ): Pick<StoryObj<TMeta>, 'render' | 'parameters'> {
+  const extra = options?.parameters ?? {}
+  const extraDocs = (extra.docs as Record<string, unknown>) ?? {}
+
   return {
     parameters: {
+      ...extra,
       docs: {
+        ...extraDocs,
         source: {
           code: options?.source ?? rawSource,
         },

@@ -2,70 +2,16 @@ import { describe, expect, it } from 'vitest'
 import { defineComponent } from 'vue'
 
 import { boolArg, classArg, selectArg, stateArgs } from '../_helpers/args'
-import { defineStoryMeta } from '../_helpers/meta'
 import { renderRaw } from '../_helpers/render'
 
 /*
-  Locks the authoring-helper contracts. The story-shape check trusts
-  `defineStoryMeta` to set the title and autodocs tag, and `renderRaw` to pin
-  the ?raw source, so those guarantees are asserted here rather than inferred.
+  Locks the authoring-helper contracts: `renderRaw` pins the ?raw source and
+  merges extra parameters without dropping it, and the arg builders emit the
+  expected control shapes. (A `defineStoryMeta` helper was prototyped and
+  dropped in the pilot: a function-wrapped default export is not a static object
+  literal, so Storybook's CSF indexer rejects it -- the meta head stays a
+  literal. See PLAN section 20.)
 */
-
-describe('defineStoryMeta', () => {
-  const Dummy = defineComponent({ name: 'Dummy' })
-
-  it('builds the Components/UI title and autodocs tag', () => {
-    const meta = defineStoryMeta({ name: 'Badge', component: Dummy })
-
-    expect(meta.title).toBe('Components/UI/Badge')
-    expect(meta.tags).toContain('autodocs')
-    expect(meta.component).toBe(Dummy)
-  })
-
-  it('pins the description into docs.description.component', () => {
-    const meta = defineStoryMeta({
-      name: 'Badge',
-      component: Dummy,
-      description: 'A badge.',
-    })
-
-    expect(meta.parameters?.docs?.description?.component).toBe('A badge.')
-  })
-
-  it('passes through subcomponents, argTypes, and extra parameters', () => {
-    const Sub = defineComponent({ name: 'Sub' })
-    const Root = defineComponent({ name: 'Root', props: { disabled: Boolean } })
-    const meta = defineStoryMeta({
-      name: 'Switch',
-      component: Root,
-      subcomponents: { 'Switch.Control': Sub },
-      argTypes: { disabled: { control: 'boolean' } },
-      parameters: { layout: 'centered' },
-    })
-
-    expect(meta.subcomponents).toEqual({ 'Switch.Control': Sub })
-    expect(meta.argTypes).toHaveProperty('disabled')
-    expect(meta.parameters?.layout).toBe('centered')
-  })
-
-  it('keeps the description when the caller also passes docs.* parameters', () => {
-    const meta = defineStoryMeta({
-      name: 'Badge',
-      component: Dummy,
-      description: 'A badge.',
-      parameters: { docs: { toc: true } },
-    })
-
-    expect(meta.parameters?.docs?.description?.component).toBe('A badge.')
-    expect(meta.parameters?.docs?.toc).toBe(true)
-  })
-
-  it('omits the docs description when none is given', () => {
-    const meta = defineStoryMeta({ name: 'Badge', component: Dummy })
-
-    expect(meta.parameters?.docs).toBeUndefined()
-  })
-})
 
 describe('renderRaw', () => {
   const Dummy = defineComponent({ name: 'Dummy' })
@@ -93,6 +39,15 @@ describe('renderRaw', () => {
 
     expect(result.parameters?.docs?.source?.code).toBe('<Source />')
     expect(result.parameters?.docs?.description?.story).toBe('Use it.')
+  })
+
+  it('merges extra parameters without dropping the pinned source', () => {
+    const result = renderRaw(Dummy, '<Source />', {
+      parameters: { controls: { exclude: ['variant'] } },
+    })
+
+    expect(result.parameters?.docs?.source?.code).toBe('<Source />')
+    expect(result.parameters?.controls?.exclude).toEqual(['variant'])
   })
 
   it('renders the component with v-bind="args"', () => {
