@@ -4,6 +4,7 @@ import { setup } from '@storybook/vue3-vite'
 import { createPinia } from 'pinia'
 
 import './global.css'
+import { internalArgTypes } from '../stories/_helpers/argtypes-ignore'
 import { tailwindViewports } from '../stories/tailwind-viewports'
 
 const pinia = createPinia()
@@ -26,10 +27,24 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+
+    direction: {
+      description: 'Text direction',
+      toolbar: {
+        title: 'Direction',
+        icon: 'transfer',
+        items: [
+          { value: 'ltr', title: 'LTR' },
+          { value: 'rtl', title: 'RTL' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
 
   initialGlobals: {
     theme: 'light',
+    direction: 'ltr',
     viewport: { value: 'lg', isRotated: false },
   },
 
@@ -63,18 +78,13 @@ const preview: Preview = {
     },
   },
 
-  argTypes: {
-    key: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    ref_for: { table: { disable: true } },
-    ref_key: { table: { disable: true } },
-    style: { table: { disable: true } },
-  },
+  argTypes: internalArgTypes,
 
   decorators: [
-    // Decorator to apply bg-color to stories in dark mode
+    // Decorator to apply bg-color to stories in dark mode and the text
+    // direction for RTL stories.
     (_story, context) => {
-      let { theme } = context.globals
+      let { direction, theme } = context.globals
 
       // In docs mode, stories render in nested iframes that don't receive
       // toolbar globals. Read the actual globals from the top-level URL.
@@ -87,6 +97,8 @@ const preview: Preview = {
               const [key, value] = pair.split(':')
               if (key === 'theme')
                 theme = value
+              else if (key === 'direction')
+                direction = value
             }
           }
         }
@@ -96,6 +108,7 @@ const preview: Preview = {
       const isDark = theme === 'dark'
 
       document.documentElement.classList.toggle('dark', isDark)
+      document.documentElement.dir = direction === 'rtl' ? 'rtl' : 'ltr'
       document.body.classList.add('bg-background', 'text-foreground')
 
       // Inline docs rendering: story containers sit behind opaque

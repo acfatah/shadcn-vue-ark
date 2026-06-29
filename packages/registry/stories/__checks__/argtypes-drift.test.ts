@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { SLOT_ARGS as SLOT_ARG_NAMES, VUE_INTERNAL_ARGS } from '../_helpers/argtypes-ignore'
 import { CONFORMANT } from './conformant'
 
 /*
@@ -15,8 +16,9 @@ import { CONFORMANT } from './conformant'
 */
 
 // Vue-internal attrs disabled globally in preview.ts, plus common slot args.
-const IGNORE = new Set(['key', 'ref', 'ref_for', 'ref_key', 'style'])
-const SLOT_ARGS = new Set(['default'])
+// Sourced from the single ignore list shared with preview.ts.
+const IGNORE = new Set<string>(VUE_INTERNAL_ARGS)
+const SLOT_ARGS = new Set<string>(SLOT_ARG_NAMES)
 
 const storyModules = import.meta.glob('../components/ui/*/*.stories.ts')
 

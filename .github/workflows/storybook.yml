@@ -84,7 +84,7 @@ jobs:
           if git diff --name-only "$base"...HEAD \
             -- 'packages/registry/src/components/**' | grep -q .; then
             echo 'Story-effort PRs must not modify packages/registry/src/components.'
-            echo 'Log the defect in docs/STORY-DEFECT-LOG.md instead (file, do not fix).'
+            echo 'Log the defect in docs/story-defect-log.md instead (file, do not fix).'
             git diff --name-only "$base"...HEAD -- 'packages/registry/src/components/**'
             exit 1
           fi

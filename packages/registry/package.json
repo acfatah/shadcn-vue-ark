@@ -28,6 +28,7 @@
     "typecheck:stories": "bunx vue-tsc --noEmit -p tsconfig.stories.json",
     "test": "vitest --run --project=unit",
     "test:watch": "vitest --project=unit",
+    "check:argtypes": "vitest --run --project=unit stories/__checks__",
     "test:stories": "vitest --run --project=storybook",
     "test:stories:watch": "vitest --project=storybook"
   },
