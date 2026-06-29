@@ -12,7 +12,7 @@
     },
     {
       "path": "RangeCalendarDefaultStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\n\nimport { getLocalTimeZone, today } from '@internationalized/date'\nimport { ref } from 'vue'\n\nimport { RangeCalendar } from '@/components/ui/range-calendar'\n\nconst start = today(getLocalTimeZone())\nconst end = start.add({ days: 30 })\n\nconst dateRange = ref<DateValue[]>([start, end])\n</script>\n\n<template>\n  <RangeCalendar.Root\n    v-model=\"dateRange\"\n    class=\"rounded-md border shadow-sm\"\n    :num-of-months=\"2\"\n  />\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\n\nimport { getLocalTimeZone, today } from '@internationalized/date'\nimport { ref } from 'vue'\n\nimport { RangeCalendar } from '@/components/ui/range-calendar'\n\nconst start = today(getLocalTimeZone())\nconst end = start.add({ days: 30 })\n\nconst dateRange = ref<DateValue[]>([start, end])\n</script>\n\n<template>\n  <RangeCalendar.Root\n    v-model=\"(dateRange as DateValue[])\"\n    class=\"rounded-md border shadow-sm\"\n    :num-of-months=\"2\"\n  />\n</template>\n"
     }
   ]
 }

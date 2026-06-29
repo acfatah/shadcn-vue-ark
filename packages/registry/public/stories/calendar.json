@@ -12,7 +12,7 @@
     },
     {
       "path": "CalendarDefaultStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\n\nimport { CalendarDate, fromDate, getLocalTimeZone } from '@internationalized/date'\nimport { ref } from 'vue'\n\nimport { Calendar } from '@/components/ui/calendar'\n\nconst date = ref<DateValue[]>([fromDate(new Date(), getLocalTimeZone())])\n</script>\n\n<template>\n  <Calendar.Root\n    v-model=\"date\"\n    class=\"rounded-md border shadow-sm\"\n    :min-value=\"new CalendarDate(1925, 1, 1)\"\n    :max-value=\"new CalendarDate(2035, 1, 1)\"\n  />\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport type { DateValue } from '@internationalized/date'\n\nimport { CalendarDate, fromDate, getLocalTimeZone } from '@internationalized/date'\nimport { ref } from 'vue'\n\nimport { Calendar } from '@/components/ui/calendar'\n\nconst date = ref<DateValue[]>([fromDate(new Date(), getLocalTimeZone())])\n</script>\n\n<template>\n  <Calendar.Root\n    v-model=\"(date as DateValue[])\"\n    class=\"rounded-md border shadow-sm\"\n    :min-value=\"new CalendarDate(1925, 1, 1)\"\n    :max-value=\"new CalendarDate(2035, 1, 1)\"\n  />\n</template>\n"
     }
   ]
 }
