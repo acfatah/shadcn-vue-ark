@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Timeline } from '@/components/ui/timeline'
 import { registryItem } from '@/components/ui/timeline/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
-import TimelineDefault from './TimelineDefaultStory.vue'
+import { renderRaw } from '../../../_helpers/render'
+import TimelineDefaultStory from './TimelineDefaultStory.vue'
 import TimelineDefaultSource from './TimelineDefaultStory.vue?raw'
-import TimelineHorizontal from './TimelineHorizontalStory.vue'
+import TimelineHorizontalStory from './TimelineHorizontalStory.vue'
 import TimelineHorizontalSource from './TimelineHorizontalStory.vue?raw'
-import TimelineReversed from './TimelineReversedStory.vue'
+import TimelineReversedStory from './TimelineReversedStory.vue'
 import TimelineReversedSource from './TimelineReversedStory.vue?raw'
-import TimelineStatus from './TimelineStatusStory.vue'
+import TimelineStatusStory from './TimelineStatusStory.vue'
 import TimelineStatusSource from './TimelineStatusStory.vue?raw'
 
-const meta: Meta<typeof Timeline.Root> = {
+const meta = {
   title: 'Components/UI/Timeline',
   component: docsRoot(Timeline.Root, 'Timeline.Root'),
   subcomponents: {
@@ -35,23 +35,11 @@ const meta: Meta<typeof Timeline.Root> = {
   },
 
   argTypes: {
-    orientation: {
-      control: { type: 'select' },
-      options: ['vertical', 'horizontal'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'vertical' },
-      },
-    },
-
-    reversed: {
-      control: { type: 'boolean' },
-      description: 'Reverses the visual layout direction. The consumer is responsible for providing data in the desired order.',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
+    size: selectArg(['sm', 'md', 'lg'], 'md'),
+    orientation: selectArg(['vertical', 'horizontal'], 'vertical'),
+    reversed: boolArg('Reverses the visual layout only; provide data in the desired order.'),
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    class: classArg(),
   },
 
   parameters: {
@@ -60,112 +48,32 @@ const meta: Meta<typeof Timeline.Root> = {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Timeline.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: TimelineDefaultSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { TimelineDefault },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TimelineDefault v-bind="args" />
-    `,
-  }),
+  ...renderRaw(TimelineDefaultStory, TimelineDefaultSource),
 }
 
 export const WithStatus: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: TimelineStatusSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { TimelineStatus },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TimelineStatus v-bind="args" />
-    `,
-  }),
+  ...renderRaw(TimelineStatusStory, TimelineStatusSource),
 }
 
 export const Horizontal: Story = {
-  parameters: {
-    controls: {
-      exclude: ['orientation'],
-    },
-    docs: {
-      source: {
-        code: TimelineHorizontalSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { TimelineHorizontal },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TimelineHorizontal v-bind="args" />
-    `,
+  ...renderRaw(TimelineHorizontalStory, TimelineHorizontalSource, {
+    parameters: { controls: { exclude: ['orientation'] } },
   }),
 }
 
 export const Reversed: Story = {
-  args: {
-    reversed: true,
-  },
-
-  parameters: {
-    controls: {
-      exclude: ['reversed'],
-    },
-    docs: {
-      source: {
-        code: TimelineReversedSource,
-      },
-      description: {
-        story: `
-Items listed in reverse chronological order. The "reversed" prop, only reverses
-the visual layout direction (flex-col-reverse / flex-row-reverse), not the data
-order.`,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { TimelineReversed },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TimelineReversed v-bind="args" />
-    `,
+  args: { reversed: true },
+  ...renderRaw(TimelineReversedStory, TimelineReversedSource, {
+    description: 'Items in reverse visual order. `reversed` flips layout direction only, not data order.',
+    parameters: { controls: { exclude: ['reversed'] } },
   }),
 }

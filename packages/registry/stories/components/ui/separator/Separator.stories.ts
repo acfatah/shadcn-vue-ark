@@ -1,25 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Separator } from '@/components/ui/separator'
 import { registryItem } from '@/components/ui/separator/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
+import { renderRaw } from '../../../_helpers/render'
 import SeparatorDefaultStory from './SeparatorDefaultStory.vue'
 import SeparatorDefaultSource from './SeparatorDefaultStory.vue?raw'
+import SeparatorDemoStory from './SeparatorDemoStory.vue'
+import SeparatorDemoSource from './SeparatorDemoStory.vue?raw'
 
-const meta: Meta<typeof Separator> = {
+const meta = {
   title: 'Components/UI/Separator',
   component: Separator,
   tags: ['autodocs'],
-
-  parameters: {
-    docs: {
-      description: {
-        component: registryItem.description,
-      },
-    },
-  },
 
   args: {
     orientation: 'horizontal',
@@ -27,55 +21,29 @@ const meta: Meta<typeof Separator> = {
   },
 
   argTypes: {
-    orientation: {
-      control: { type: 'select' },
-      options: ['horizontal', 'vertical'],
-      table: {
-        type: { summary: 'horizontal | vertical' },
-        defaultValue: { summary: 'horizontal' },
-      },
-    },
-
-    decorative: {
-      control: { type: 'boolean' },
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
-      },
-    },
-
-    class: {
-      control: { type: 'text' },
-      table: {
-        type: { summary: 'string | array | object' },
-        defaultValue: { summary: 'null' },
-      },
-      description: 'HTMLAttributes[\'class\']',
-    },
+    orientation: selectArg(['horizontal', 'vertical'], 'horizontal'),
+    decorative: boolArg('Decorative separators are hidden from the a11y tree.'),
+    class: classArg(),
   },
-}
+
+  parameters: {
+    docs: {
+      description: {
+        component: registryItem.description,
+      },
+    },
+
+    a11y: { test: 'error' },
+  },
+} satisfies Meta<typeof Separator>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: SeparatorDefaultSource,
-      },
-    },
-  },
+  ...renderRaw(SeparatorDefaultStory, SeparatorDefaultSource),
+}
 
-  render: args => ({
-    components: { SeparatorDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <SeparatorDefaultStory v-bind="args" />
-    `,
-  }),
+export const Demo: Story = {
+  ...renderRaw(SeparatorDemoStory, SeparatorDemoSource),
 }

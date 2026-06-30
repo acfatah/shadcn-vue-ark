@@ -54,7 +54,10 @@ them; until then they sit in the watchlist below.
 
 | id | component | kind | severity | surfaced_by | repro | audit_ref | status |
 |---|---|---|---|---|---|---|---|
-| - | - | - | - | - | - | - | - |
+| SDL-001 | badge | drift | nit | `Badge` (pilot authoring) | `Badge.vue` redeclares the inherited `variant` prop inline instead of in `types.ts` | AUDIT badge | logged |
+| SDL-002 | kbd | a11y | minor | `Kbd > Default` and `Kbd > Demo` | `bg-muted text-muted-foreground` at 10px is 4.34:1 contrast (axe `color-contrast`, needs 4.5:1) | - | logged |
+| SDL-003 | alert | a11y | minor | `Alert > Demo` | destructive token `#ea1a23` on white is 4.49:1 (axe `color-contrast`, needs 4.5:1) | AUDIT alert | logged |
+| SDL-004 | input | a11y | minor | `Card > Demo` (via `Input.Password`) | `password-input` icon-wrapper `div` has `aria-label` with no role (axe `aria-prohibited-attr`); story uses `Input.Text` to avoid it | AUDIT #7 | logged |
 
 ## Watchlist (audit findings to confirm via stories, not yet reproduced)
 

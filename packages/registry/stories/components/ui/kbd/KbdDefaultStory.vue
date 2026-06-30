@@ -1,20 +1,7 @@
-<script lang='ts' setup>
-import { Kbd, KbdGroup } from '@/components/ui/kbd'
+<script setup lang="ts">
+import { Kbd } from '@/components/ui/kbd'
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-4">
-    <KbdGroup>
-      <Kbd>⌘</Kbd>
-      <Kbd>⇧</Kbd>
-      <Kbd>⌥</Kbd>
-      <Kbd>⌃</Kbd>
-    </KbdGroup>
-
-    <KbdGroup>
-      <Kbd>Ctrl</Kbd>
-      <span>+</span>
-      <Kbd>B</Kbd>
-    </KbdGroup>
-  </div>
+  <Kbd>⌘</Kbd>
 </template>

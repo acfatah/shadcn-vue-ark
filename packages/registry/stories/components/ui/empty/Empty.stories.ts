@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Empty } from '@/components/ui/empty'
 import { registryItem } from '@/components/ui/empty/_registry'
 
+import { boolArg, classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import EmptyBackgroundStory from './EmptyBackgroundStory.vue'
 import EmptyBackgroundSource from './EmptyBackgroundStory.vue?raw'
 import EmptyDefaultStory from './EmptyDefaultStory.vue'
@@ -13,11 +13,7 @@ import EmptyDefaultSource from './EmptyDefaultStory.vue?raw'
 import EmptyOutlineStory from './EmptyOutlineStory.vue'
 import EmptyOutlineSource from './EmptyOutlineStory.vue?raw'
 
-// TODO: AvatarStory
-// TODO: AvatarGroupStory
-// TODO: InputGroupStory
-
-const meta: Meta<typeof Empty.Root> = {
+const meta = {
   title: 'Components/UI/Empty',
   component: docsRoot(Empty.Root, 'Empty.Root'),
   subcomponents: {
@@ -29,6 +25,15 @@ const meta: Meta<typeof Empty.Root> = {
   },
   tags: ['autodocs'],
 
+  args: {
+    asChild: false,
+  },
+
+  argTypes: {
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    class: classArg(),
+  },
+
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -36,74 +41,22 @@ const meta: Meta<typeof Empty.Root> = {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Empty.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: EmptyDefaultSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { EmptyDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <EmptyDefaultStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(EmptyDefaultStory, EmptyDefaultSource),
 }
 
 export const Outline: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: EmptyOutlineSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { EmptyOutlineStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <EmptyOutlineStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(EmptyOutlineStory, EmptyOutlineSource),
 }
 
 export const Background: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: EmptyBackgroundSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { EmptyBackgroundStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <EmptyBackgroundStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(EmptyBackgroundStory, EmptyBackgroundSource),
 }

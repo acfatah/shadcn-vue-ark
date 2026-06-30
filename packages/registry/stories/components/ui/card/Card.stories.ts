@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Card } from '@/components/ui/card'
 import { registryItem } from '@/components/ui/card/_registry'
 
+import { boolArg, classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import CardDefaultStory from './CardDefaultStory.vue'
 import CardDefaultSource from './CardDefaultStory.vue?raw'
+import CardDemoStory from './CardDemoStory.vue'
+import CardDemoSource from './CardDemoStory.vue?raw'
 
-const meta: Meta<typeof Card.Root> = {
+const meta = {
   title: 'Components/UI/Card',
   component: docsRoot(Card.Root, 'Card.Root'),
   subcomponents: {
@@ -22,36 +24,33 @@ const meta: Meta<typeof Card.Root> = {
   },
   tags: ['autodocs'],
 
+  args: {
+    asChild: false,
+  },
+
+  argTypes: {
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Card.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: CardDefaultSource,
-      },
-    },
-  },
+  ...renderRaw(CardDefaultStory, CardDefaultSource),
+}
 
-  render: args => ({
-    components: { CardDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <CardDefaultStory v-bind="args" />
-    `,
-  }),
+export const Demo: Story = {
+  ...renderRaw(CardDemoStory, CardDemoSource),
 }

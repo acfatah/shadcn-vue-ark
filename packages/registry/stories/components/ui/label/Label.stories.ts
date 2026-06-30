@@ -1,17 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Label } from '@/components/ui/label'
 import { registryItem } from '@/components/ui/label/_registry'
 
+import { boolArg, classArg } from '../../../_helpers/args'
+import { renderRaw } from '../../../_helpers/render'
 import LabelDefaultStory from './LabelDefaultStory.vue'
 import LabelDefaultSource from './LabelDefaultStory.vue?raw'
+import LabelDemoStory from './LabelDemoStory.vue'
+import LabelDemoSource from './LabelDemoStory.vue?raw'
 
-const meta: Meta<typeof Label> = {
+const meta = {
   title: 'Components/UI/Label',
   component: Label,
   tags: ['autodocs'],
+
+  args: {
+    asChild: false,
+  },
+
+  argTypes: {
+    as: { control: 'text', description: 'The element to render (`label` by default).' },
+    asChild: boolArg('Render the child element as the label (polymorphic).'),
+    class: classArg(),
+  },
 
   parameters: {
     docs: {
@@ -19,66 +31,20 @@ const meta: Meta<typeof Label> = {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Label>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: LabelDefaultSource,
-      },
-    },
-  },
+  ...renderRaw(LabelDefaultStory, LabelDefaultSource),
+}
 
-  render: args => ({
-    components: { LabelDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <LabelDefaultStory v-bind="args" />
-    `,
+export const Demo: Story = {
+  ...renderRaw(LabelDemoStory, LabelDemoSource, {
+    description: 'Associate a label with a control via `for` / `id`.',
   }),
-}
-
-/**
- * Styling when peer sibling `aria-invalid` is `true`.
- */
-export const PeerInvalid: Story = {
-  ...Default,
-
-  args: {
-    // @ts-expect-error 2353
-    invalid: true,
-  },
-}
-
-/**
- * Styling when peer sibling is `disabled` or `aria-disabled` is `true`.
- */
-export const PeerDisabled: Story = {
-  ...Default,
-
-  args: {
-    // @ts-expect-error 2353
-    disabled: true,
-  },
-}
-
-/**
- * Styling when peer sibling `aria-busy` is `true`.
- */
-export const PeerLoading: Story = {
-  ...Default,
-
-  args: {
-    // @ts-expect-error 2353
-    loading: true,
-  },
 }

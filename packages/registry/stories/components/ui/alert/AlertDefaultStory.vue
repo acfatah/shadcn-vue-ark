@@ -1,35 +1,15 @@
 <script setup lang="ts">
-import { AlertCircleIcon, CheckCircle2Icon, PopcornIcon } from 'lucide-vue-next'
+import { CheckCircle2Icon } from 'lucide-vue-next'
 
 import { Alert } from '@/components/ui/alert'
 </script>
 
 <template>
-  <div class="grid w-full max-w-xl items-start gap-4">
-    <Alert.Root>
-      <CheckCircle2Icon />
-      <Alert.Title>Success! Your changes have been saved</Alert.Title>
-      <Alert.Description>
-        This is an alert with icon, title and description.
-      </Alert.Description>
-    </Alert.Root>
-
-    <Alert.Root>
-      <PopcornIcon />
-      <Alert.Title>This Alert has a title and an icon. No description.</Alert.Title>
-    </Alert.Root>
-
-    <Alert.Root variant="destructive">
-      <AlertCircleIcon />
-      <Alert.Title>Unable to process your payment.</Alert.Title>
-      <Alert.Description>
-        <p>Please verify your billing information and try again.</p>
-        <ul class="mt-2 list-inside list-disc space-y-1">
-          <li>Check your card details</li>
-          <li>Ensure sufficient funds</li>
-          <li>Verify billing address</li>
-        </ul>
-      </Alert.Description>
-    </Alert.Root>
-  </div>
+  <Alert.Root class="max-w-xl">
+    <CheckCircle2Icon />
+    <Alert.Title>Heads up!</Alert.Title>
+    <Alert.Description>
+      You can add components to your app using the CLI.
+    </Alert.Description>
+  </Alert.Root>
 </template>

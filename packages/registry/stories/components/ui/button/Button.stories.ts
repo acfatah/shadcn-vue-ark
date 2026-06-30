@@ -1,29 +1,57 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Button } from '@/components/ui/button'
 import { registryItem } from '@/components/ui/button/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
+import { renderRaw } from '../../../_helpers/render'
 import AsChildStory from './AsChildStory.vue'
-import AsChildStorySource from './AsChildStory.vue?raw'
+import AsChildSource from './AsChildStory.vue?raw'
+import ButtonDefaultStory from './ButtonDefaultStory.vue'
+import ButtonDefaultSource from './ButtonDefaultStory.vue?raw'
 import DemoStory from './DemoStory.vue'
-import DemoStorySource from './DemoStory.vue?raw'
+import DemoSource from './DemoStory.vue?raw'
 import RoundedStory from './RoundedStory.vue'
-import RoundedStorySource from './RoundedStory.vue?raw'
+import RoundedSource from './RoundedStory.vue?raw'
 import SizeStory from './SizeStory.vue'
-import SizeStorySource from './SizeStory.vue?raw'
+import SizeSource from './SizeStory.vue?raw'
 import SpinnerStory from './SpinnerStory.vue'
-import SpinnerStorySource from './SpinnerStory.vue?raw'
+import SpinnerSource from './SpinnerStory.vue?raw'
 import VariantStory from './VariantStory.vue'
-import VariantStorySource from './VariantStory.vue?raw'
+import VariantSource from './VariantStory.vue?raw'
 import WithIconStory from './WithIconStory.vue'
-import WithIconStorySource from './WithIconStory.vue?raw'
+import WithIconSource from './WithIconStory.vue?raw'
 
 const meta: Meta<typeof Button> = {
   title: 'Components/UI/Button',
   component: Button,
   tags: ['autodocs'],
+
+  // Note: asChild is intentionally not defaulted here - a meta-level
+  // `asChild: false` falls through and overrides the AsChild story's hardcoded
+  // `as-child`, producing a nested <button><a> (nested-interactive a11y error).
+  args: {
+    variant: 'default',
+    size: 'md',
+    disabled: false,
+    loading: false,
+  },
+
+  argTypes: {
+    variant: selectArg(
+      ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      'default',
+    ),
+    size: selectArg(
+      ['xs', 'sm', 'md', 'lg', 'icon', 'icon-sm', 'icon-lg'],
+      'md',
+    ),
+    disabled: boolArg(),
+    loading: boolArg('Disables the button and marks it busy.'),
+    asChild: boolArg('Render the child element as the button (polymorphic).'),
+    scope: { control: 'text', description: 'The `data-scope` attribute value.' },
+    class: classArg(),
+  },
 
   parameters: {
     docs: {
@@ -31,47 +59,8 @@ const meta: Meta<typeof Button> = {
         component: registryItem.description,
       },
     },
-  },
 
-  args: {
-    disabled: false,
-  },
-
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'default' },
-      },
-    },
-
-    size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'icon'],
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'default' },
-      },
-    },
-
-    class: {
-      type: 'string',
-      table: {
-        type: { summary: 'string | array | object' },
-        defaultValue: { summary: 'null' },
-      },
-      description: 'HTMLAttributes[\'class\']',
-    },
-
-    disabled: {
-      type: 'boolean',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },
+    a11y: { test: 'error' },
   },
 }
 
@@ -79,174 +68,41 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: DemoStorySource,
-      },
-    },
-  },
+  ...renderRaw(ButtonDefaultStory, ButtonDefaultSource),
+}
 
-  args: {
-    default: 'Button',
-  },
-
-  render: args => ({
-    components: { DemoStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <DemoStory v-bind="args" />
-    `,
+export const Variants: Story = {
+  ...renderRaw(VariantStory, VariantSource, {
+    parameters: { controls: { exclude: ['variant'] } },
   }),
 }
 
-export const SizeVariants: Story = {
-  parameters: {
-    controls: {
-      exclude: ['size'],
-    },
-
-    docs: {
-      source: {
-        code: SizeStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { SizeStory },
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <SizeStory v-bind="args" />
-    `,
+export const Sizes: Story = {
+  ...renderRaw(SizeStory, SizeSource, {
+    parameters: { controls: { exclude: ['size'] } },
   }),
 }
-
-export const VariantVariants: Story = {
-  parameters: {
-    controls: {
-      exclude: ['variant'],
-    },
-
-    docs: {
-      source: {
-        code: VariantStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { VariantStory },
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <VariantStory v-bind="args" />
-    `,
-  }),
-}
-VariantVariants.storyName = 'Variants'
 
 export const WithIcon: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: WithIconStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { WithIconStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <WithIconStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(WithIconStory, WithIconSource),
 }
 
 export const Rounded: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: RoundedStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { RoundedStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <RoundedStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(RoundedStory, RoundedSource),
 }
 
 export const Spinner: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: SpinnerStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { SpinnerStory },
-
-    setup() {
-      const { disabled, ...rest } = args
-
-      return { args, rest }
-    },
-
-    template: html`
-      <SpinnerStory v-bind="rest" />
-
-      <pre
-        v-if="args.disabled"
-        class="mt-4 text-muted-foreground text-sm"
-      >"disabled" attribute is omitted!</pre>
-    `,
+  ...renderRaw(SpinnerStory, SpinnerSource, {
+    description: 'Pass `loading` to disable the button and show a spinner.',
   }),
 }
 
 export const AsChild: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: AsChildStorySource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { AsChildStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <AsChildStory v-bind="args" />
-    `,
+  ...renderRaw(AsChildStory, AsChildSource, {
+    description: 'Use `asChild` to render a link styled as a button.',
   }),
 }
-AsChild.storyName = 'Link (asChild)'
+
+export const Demo: Story = {
+  ...renderRaw(DemoStory, DemoSource),
+}

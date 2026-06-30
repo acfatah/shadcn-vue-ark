@@ -14,4 +14,20 @@ export const CONFORMANT: string[] = [
   'switch',
   'dialog',
   'data-table',
+
+  // Wave 2 (T1 simple primitives)
+  'alert',
+  'aspect-ratio',
+  'avatar',
+  'button',
+  'card',
+  'description',
+  'empty',
+  'item',
+  'kbd',
+  'label',
+  'separator',
+  'skeleton',
+  'spinner',
+  'timeline',
 ]

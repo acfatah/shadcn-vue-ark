@@ -1,16 +1,26 @@
 <script setup lang="ts">
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+
+const ratios = [
+  { label: '1 / 1', value: 1 },
+  { label: '16 / 9', value: 16 / 9 },
+  { label: '4 / 3', value: 4 / 3 },
+]
 </script>
 
 <template>
-  <AspectRatio :ratio="1 / 1" class="rounded-lg bg-muted">
-    <img
-      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-      alt="Photo by Drew Beamer"
-      class="
-        size-full rounded-lg object-cover
-        dark:brightness-[0.2] dark:grayscale
-      "
+  <div class="grid w-[600px] grid-cols-3 gap-4">
+    <AspectRatio
+      v-for="r in ratios"
+      :key="r.label"
+      :ratio="r.value"
+      class="rounded-lg bg-muted"
     >
-  </AspectRatio>
+      <div
+        class="flex size-full items-center justify-center text-sm text-foreground"
+      >
+        {{ r.label }}
+      </div>
+    </AspectRatio>
+  </div>
 </template>

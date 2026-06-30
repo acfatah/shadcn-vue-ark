@@ -1,15 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Item } from '@/components/ui/item'
 import { registryItem } from '@/components/ui/item/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import ItemDefaultStory from './ItemDefaultStory.vue'
 import ItemDefaultSource from './ItemDefaultStory.vue?raw'
+import ItemDemoStory from './ItemDemoStory.vue'
+import ItemDemoSource from './ItemDemoStory.vue?raw'
+import ItemVariantsStory from './ItemVariantsStory.vue'
+import ItemVariantsSource from './ItemVariantsStory.vue?raw'
 
-const meta: Meta<typeof Item.Root> = {
+const meta = {
   title: 'Components/UI/Item',
   component: docsRoot(Item.Root, 'Item.Root'),
   subcomponents: {
@@ -25,36 +29,42 @@ const meta: Meta<typeof Item.Root> = {
   },
   tags: ['autodocs'],
 
+  args: {
+    asChild: false,
+  },
+
+  argTypes: {
+    variant: selectArg(['default', 'outline', 'muted'], 'default'),
+    size: selectArg(['default', 'sm'], 'default'),
+    as: { control: 'text', description: 'The element to render (`div` by default).' },
+    asChild: boolArg('Polymorphic escape hatch; prefer `as` for this component.'),
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Item.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: ItemDefaultSource,
-      },
-    },
-  },
+  ...renderRaw(ItemDefaultStory, ItemDefaultSource),
+}
 
-  render: args => ({
-    components: { ItemDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <ItemDefaultStory v-bind="args" />
-    `,
+export const Variants: Story = {
+  ...renderRaw(ItemVariantsStory, ItemVariantsSource, {
+    parameters: { controls: { exclude: ['variant'] } },
   }),
+}
+
+export const Demo: Story = {
+  ...renderRaw(ItemDemoStory, ItemDemoSource),
 }
