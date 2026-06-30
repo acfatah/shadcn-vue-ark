@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date'
 
-import { CalendarDate, fromDate, getLocalTimeZone } from '@internationalized/date'
+import { CalendarDate } from '@internationalized/date'
 import { ref } from 'vue'
 
 import { Calendar } from '@/components/ui/calendar'
 
-const date = ref<DateValue[]>([fromDate(new Date(), getLocalTimeZone())])
+// Pinned date (no Date.now()) keeps the rendered month deterministic for tests.
+const date = ref<DateValue[]>([new CalendarDate(2026, 6, 15)])
 </script>
 
 <template>

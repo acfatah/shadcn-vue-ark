@@ -64,4 +64,20 @@ export const CONFORMANT: string[] = [
   'sheet',
   'sonner',
   'tooltip',
+
+  // Wave 5 (T4 composite / heavy)
+  'calendar',
+  'carousel',
+  'date-picker',
+  'datetime-picker',
+  'editable',
+  'file-upload',
+  'input',
+  'number-input',
+  'pin-input',
+  'range-calendar',
+  'resizable',
+  'sidebar',
+  'steps',
+  'tags-input',
 ]

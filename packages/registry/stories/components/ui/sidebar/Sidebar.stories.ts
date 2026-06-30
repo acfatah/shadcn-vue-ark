@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
+import { expect, userEvent, waitFor, within } from 'storybook/test'
 
 import { Sidebar } from '@/components/ui/sidebar'
 import { registryItem } from '@/components/ui/sidebar/_registry'
 
+import { classArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import SidebarDefaultStory from './SidebarDefaultStory.vue'
 import SidebarDefaultSource from './SidebarDefaultStory.vue?raw'
 
-const meta: Meta<typeof Sidebar.Root> = {
+const meta = {
   title: 'Components/UI/Sidebar',
   component: docsRoot(Sidebar.Root, 'Sidebar.Root'),
   subcomponents: {
@@ -38,6 +40,13 @@ const meta: Meta<typeof Sidebar.Root> = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    side: selectArg(['left', 'right'], 'left'),
+    variant: selectArg(['sidebar', 'floating', 'inset'], 'sidebar'),
+    collapsible: selectArg(['offcanvas', 'icon', 'none'], 'offcanvas'),
+    class: classArg(),
+  },
+
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -45,30 +54,26 @@ const meta: Meta<typeof Sidebar.Root> = {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Sidebar.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: SidebarDefaultSource,
-      },
-    },
+  ...renderRaw(SidebarDefaultStory, SidebarDefaultSource),
+
+  // Core flow: the trigger toggles the sidebar between expanded and collapsed
+  // (reflected on the sidebar container's data-state).
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const sidebar = canvasElement.querySelector('[data-state]')!
+    const before = sidebar.getAttribute('data-state')
+
+    await userEvent.click(canvas.getByRole('button'))
+    await waitFor(() =>
+      expect(sidebar.getAttribute('data-state')).not.toBe(before))
   },
-
-  render: args => ({
-    components: { SidebarDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <SidebarDefaultStory v-bind="args" />
-    `,
-  }),
 }

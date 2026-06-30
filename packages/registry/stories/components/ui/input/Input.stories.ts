@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { html } from 'common-tags'
+import { expect, userEvent, within } from 'storybook/test'
 
 import { size as ButtonSize } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { registryItem } from '@/components/ui/input/_registry'
 
+import { classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import ButtonsStory from './ButtonsStory.vue'
+import ButtonsSource from './ButtonsStory.vue?raw'
 import ButtonStory from './ButtonStory.vue'
 import ButtonSource from './ButtonStory.vue?raw'
 import CheckboxInputStory from './CheckboxInputStory.vue'
@@ -110,12 +114,33 @@ const meta: Meta<Record<string, any>> = {
   },
   tags: ['autodocs'],
   args: {},
-  argTypes: {},
+  // The collection's many aliases (Button, Checkbox, Range, ...) carry their own
+  // story-level argTypes; the meta tracks only the base Input.Text surface, which
+  // forwards native attributes and exposes `class` as its sole declared prop.
+  argTypes: {
+    class: classArg(),
+  },
 
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
+      },
+    },
+
+    a11y: {
+      test: 'error',
+      // KNOWN-BUG: SDL-019 (label, select-name) - the collection's minimal alias
+      // demos render bare native controls (range/date/time/checkbox/radio/select
+      // ...) without an associated label; and SDL-004 (aria-prohibited-attr) -
+      // the password-input icon wrapper carries an aria-label with no role.
+      // Component/demo defects (logged, not fixed); disable only these rules.
+      config: {
+        rules: [
+          { id: 'label', enabled: false },
+          { id: 'select-name', enabled: false },
+          { id: 'aria-prohibited-attr', enabled: false },
+        ],
       },
     },
   },
@@ -146,6 +171,15 @@ export const Default: Story = {
       <InputDefaultStory v-bind="args" />
     `,
   }),
+
+  // Core flow: the labelled text field accepts typed input.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const text = canvas.getByLabelText('Text')
+
+    await userEvent.type(text, 'Ada Lovelace')
+    await expect(text).toHaveValue('Ada Lovelace')
+  },
 }
 
 export const InlineGroup: Story = {
@@ -301,6 +335,30 @@ export const Button: Story = {
 
     template: html`
       <ButtonStory v-bind="args" />
+    `,
+  }),
+}
+
+export const Buttons: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: ButtonsSource,
+      },
+    },
+  },
+
+  ...defaultAttributes,
+
+  render: args => ({
+    components: { ButtonsStory },
+
+    setup() {
+      return { args }
+    },
+
+    template: html`
+      <ButtonsStory v-bind="args" />
     `,
   }),
 }

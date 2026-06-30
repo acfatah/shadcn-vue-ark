@@ -4,12 +4,14 @@ Plan to take every `packages/registry` UI component from shallow,
 `Default`-only stories to a comprehensive, tiered, tested, and
 self-enforcing story suite.
 
-Status: Waves 0-4 complete (sections 19-23). All T1 (15), T2 (18), and
-T3 (14) components plus the data-table (T4) pilot are conformant and
-green - 48 of 62 ui components done. Wave 5 (T4 composite, 14 remaining)
-is next. Owner: registry. Scope: `packages/registry` only (additive, no
-`src/` edits). Produced from a 6-agent design workflow (4 lens proposals
-+ 2 grounding probes).
+Status: COMPLETE - Waves 0-5 done (sections 19-24). All 62 ui components
+are conformant (shape + argTypes drift) and green, with a11y promoted to
+`error` and a play on every interactive component. T1 (15) + T2 (18) +
+T3 (14) + T4 (15) = 62 of 62. Owner: registry. Scope: `packages/registry`
+only (additive, no `src/` edits). Produced from a 6-agent design workflow
+(4 lens proposals + 2 grounding probes). Remaining follow-up: the 22
+file-don't-fix component a11y defects logged in `docs/story-defect-log.md`
+(SDL-001..022) are a separate src fix pass.
 
 ---
 
@@ -1022,3 +1024,74 @@ Findings:
   component defect (SDL-010/011).
 - Deleted orphan `select/SelectDefaultStory.0.vue` and `.1.vue` stray
   save artifacts.
+
+---
+
+## 24. Wave 5 status (T4 composite / heavy, COMPLETE)
+
+All 14 remaining T4 components are authored to the bar, in `conformant.ts`,
+and green. With the `data-table` pilot, the full T4 tier (15) is done.
+This completes the plan: 62 of 62 ui components conformant.
+
+Done (a11y promoted to `error`; one `play()` per interactive component;
+dates pinned via `@internationalized/date` for determinism):
+
+- Batch A (date/calendar): `calendar` (click-day select, +`Disabled`),
+  `range-calendar` (click starts a range), `date-picker` (open, pick day,
+  commit; +`Input`/`FormBridge`), `datetime-picker` (open, calendar
+  renders; +`TwentyFourHour`). Pinned `CalendarDate(2026,6,15)` /
+  June 10-20 ranges (replaced `new Date()`/`today()`).
+- Batch B (input collections): `number-input` (increment), `pin-input`
+  (type fills slots), `tags-input` (Enter commits a tag), `editable`
+  (Edit -> type -> Submit), `input` (the 24-control collection: typed
+  text play; meta tracks the base `Input.Text` `class`-only surface while
+  aliases keep per-story argTypes; wired the orphan `ButtonsStory`).
+- Batch C (layout/composite): `carousel` (Prev disabled -> Next enables),
+  `steps` (Next advances the panel), `resizable` (separator + ArrowRight
+  resizes), `file-upload` (upload via the hidden input), `sidebar`
+  (trigger toggles `data-state`).
+
+Verified: `typecheck:stories`, `check:argtypes` (3 files / 134 tests, all
+62 components enforced), `test:stories` (Wave 5: 15 files / 47 tests),
+`storybook:build` (0 index errors), `lint` (0 errors).
+
+a11y quarantines added (file-don't-fix component defects; each maps 1:1
+to a `KNOWN-BUG: SDL-xxx` rule-disable):
+
+- `SDL-016`/`SDL-017` date-picker/datetime-picker: the internal
+  `Popover.Content` host (role=dialog) wraps the calendar unnamed
+  (aria-dialog-name).
+- `SDL-018` number-input: no `NumberInput.Label` part; the demos' visible
+  Label targets the root id, leaving the spinbutton unlabelled (label).
+- `SDL-019` input: minimal alias demos render bare native controls with
+  no label (label, select-name) and reproduce SDL-004
+  (aria-prohibited-attr).
+- `SDL-020` resizable: the resize handle has no accessible name
+  (button-name).
+- `SDL-021` file-upload: the interactive `Dropzone` wraps the trigger
+  button (nested-interactive).
+- `SDL-022` steps: `Steps.List` has children with the wrong roles
+  (aria-required-children).
+
+In-story a11y fixed (not quarantined): `tags-input` input + listbox
+trigger get `aria-label`s.
+
+Play / determinism recipes proven this wave:
+
+- Calendars: pin a `CalendarDate` (never `new Date()`/`today()`); select
+  a day by its unambiguous number and assert `data-selected`; pickers
+  open a teleported calendar (query day cells via `screen`, by the
+  date-agnostic "Choose ..." aria-label when the month is dynamic).
+- Required component props (`collection`, `panels`) force
+  `satisfies Meta` to demand `args`; use the `const meta: Meta<...> = {}`
+  annotation form (calendars use `satisfies` fine - no required props).
+- The drift gate reads only meta-level `argTypes`; a collection
+  (`input`) can keep rich per-story argTypes while the meta tracks just
+  the base component's props. `/* @vue-ignore */` on a base `extends`
+  means only locally-declared props (here `class`) are runtime props.
+- A non-`*Story.vue` helper in a story dir (e.g.
+  `file-upload/FileUploadFileList.vue`) must be referenced by the
+  `.stories.ts` or the shape gate flags it; register it in a render's
+  `components` map (it reads context, so it cannot render standalone).
+- Wired the tracked orphan `input/ButtonsStory.vue` as a `Buttons` story
+  rather than deleting it.

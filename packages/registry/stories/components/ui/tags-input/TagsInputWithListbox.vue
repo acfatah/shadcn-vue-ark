@@ -100,7 +100,12 @@ function getFrameworkLabel(value: string) {
             />
 
             <Popover.Trigger as-child>
-              <Button size="icon-sm" variant="ghost" class="order-last ml-auto self-start">
+              <Button
+                size="icon-sm"
+                variant="ghost"
+                aria-label="Show frameworks"
+                class="order-last ml-auto self-start"
+              >
                 <ChevronDown class="size-3.5" />
               </Button>
             </Popover.Trigger>

@@ -69,6 +69,13 @@ them; until then they sit in the watchlist below.
 | SDL-013 | combobox | a11y | major | `Combobox > Multiple` | the default (non `as-child`) `Combobox.Trigger` renders a `div` carrying `aria-expanded` with no supporting role (axe `aria-allowed-attr`) | AUDIT #2 | logged |
 | SDL-014 | combobox | a11y | minor | `Combobox > UsingPopoverAndCommand` | the `Popover.Content` used as a command dropdown is role=dialog with no accessible name (axe `aria-dialog-name`); the story also reproduces SDL-010 | - | logged |
 | SDL-015 | combobox | a11y | major | `Combobox > Default` | `Combobox.Input` (role=combobox) is nested inside `Combobox.List` (role=listbox), so once the list mounts the listbox has disallowed children (axe `aria-required-children`) | - | logged |
+| SDL-016 | date-picker | a11y | minor | `DatePicker > Default` | the picker's internal `Popover.Content` host (role=dialog) wraps the calendar with no accessible name (axe `aria-dialog-name`) | - | logged |
+| SDL-017 | datetime-picker | a11y | minor | `DatetimePicker > Default` | the picker's internal `Popover.Content` host (role=dialog) wraps the calendar with no accessible name (axe `aria-dialog-name`) | - | logged |
+| SDL-018 | number-input | a11y | major | `NumberInput` (all stories) | no `NumberInput.Label` part is exposed and the demos' visible `Label` targets the root id, not Ark's generated input id, so the spinbutton has no associated label (axe `label`) | - | logged |
+| SDL-019 | input | a11y | major | `Input` (alias stories: Range/Date/Time/Checkbox/Radio/Select/...) | the collection's minimal alias demos render bare native controls without an associated label (axe `label`, `select-name`); the password alias also reproduces SDL-004 (`aria-prohibited-attr`) | AUDIT #7 | logged |
+| SDL-020 | resizable | a11y | major | `Resizable > Default` | the resize handle (`Splitter.ResizeTrigger`) ships no accessible name (axe `button-name`) | - | logged |
+| SDL-021 | file-upload | a11y | major | `FileUpload > Default` | `FileUpload.Dropzone` is itself interactive (click-to-browse) and wraps the trigger button, nesting interactives (axe `nested-interactive`) | - | logged |
+| SDL-022 | steps | a11y | major | `Steps > Default` | `Steps.List` declares a role whose required children (step triggers) carry the wrong roles (axe `aria-required-children`) | - | logged |
 
 ## Watchlist (audit findings to confirm via stories, not yet reproduced)
 
