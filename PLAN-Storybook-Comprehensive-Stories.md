@@ -4,12 +4,12 @@ Plan to take every `packages/registry` UI component from shallow,
 `Default`-only stories to a comprehensive, tiered, tested, and
 self-enforcing story suite.
 
-Status: Waves 0-3 complete (sections 19-22). All T1 (15) and T2 (18)
-components plus the dialog (T3) and data-table (T4) pilots are conformant
-and green - 35 of 62 ui components done. Wave 4 (T3 overlays) is next.
-Owner: registry. Scope: `packages/registry` only (additive, no `src/`
-edits). Produced from a 6-agent design workflow (4 lens proposals + 2
-grounding probes).
+Status: Waves 0-4 complete (sections 19-23). All T1 (15), T2 (18), and
+T3 (14) components plus the data-table (T4) pilot are conformant and
+green - 48 of 62 ui components done. Wave 5 (T4 composite, 14 remaining)
+is next. Owner: registry. Scope: `packages/registry` only (additive, no
+`src/` edits). Produced from a 6-agent design workflow (4 lens proposals
++ 2 grounding probes).
 
 ---
 
@@ -931,3 +931,94 @@ Findings:
   it for naming.
 - Deleted an orphan `field/FieldDefaultStory.1.vue` (a stray save
   artifact the shape gate would flag).
+
+---
+
+## 23. Wave 4 status (T3 overlay / portal, COMPLETE)
+
+All 13 remaining T3 components are authored to the bar, in
+`conformant.ts`, and green. With the `dialog` pilot, the full T3 tier (14
+components) is done. Total conformant: 48 of 62 ui components.
+
+Done (a11y promoted to `error`; one `play()` per interactive component
+covering open/interact/dismiss; `Open` via `defaultOpen`/`defaultValue`
+and a `Side+Align` placement export where the root flattens positioning):
+
+- Batch A (floating): `tooltip` (hover, +`Demo` toolbar), `popover`
+  (click, form content), `hover-card` (hover).
+- Batch B (menu / keyboard nav): `dropdown-menu` (click + roving
+  ArrowDown), `context-menu` (`fireEvent.contextMenu` right-click),
+  `menubar` (per-menu open), `navigation-menu` (in-flow viewport, queried
+  via `canvas`).
+- Batch C (dialog-family panels): `drawer`, `sheet` (both reuse the
+  dialog 19-prop surface + portal play), `command` (typeahead filter +
+  empty state on an in-flow Listbox).
+- Batch D (typeahead): `select` (open listbox, pick option, trigger
+  reflects value; +`Disabled`/`Invalid`/`Empty`/`Clearable`), `combobox`
+  (open, type-to-filter to one option, select; +`Multiple`/`Disabled`/
+  `UsingPopoverAndCommand`).
+- Batch E (toast): `sonner` (custom render mounts `Toaster` + trigger via
+  `Teleport`; play fires a toast and asserts appearance via `screen`).
+
+Verified: `typecheck:stories`, `check:argtypes` (3 files / 120 tests,
+48 components enforced), `test:stories` (Wave 4: 13 files / 37 tests;
+full suite 65/66 with one cold-start flake that passes isolated),
+`storybook:build` (0 index errors), `lint` (0 errors).
+
+a11y quarantines added (file-don't-fix, real component defects; each maps
+1:1 to a `KNOWN-BUG: SDL-xxx` rule-disable):
+
+- `SDL-009` menubar: `role="menubar"` with non-`menuitem` trigger buttons
+  (aria-required-children).
+- `SDL-010` command: filtering `Listbox` has a dangling `aria-labelledby`
+  / no Label part (aria-input-field-name).
+- `SDL-011` select: `SelectLabel` renders a plain `Label`, not Ark's
+  `Select.Label`, so the trigger has no accessible name (button-name,
+  all stories).
+- `SDL-012` select: disabled trigger contrast (WCAG-exempt, `Disabled`
+  only).
+- `SDL-013` combobox: default (non `as-child`) `Combobox.Trigger` is a
+  `div` with `aria-expanded` (aria-allowed-attr, `Multiple` only).
+- `SDL-014` combobox: `Popover.Content` used as a command dropdown has no
+  name (aria-dialog-name, `UsingPopoverAndCommand`).
+- `SDL-015` combobox: `Combobox.Input` (role=combobox) nested inside
+  `Combobox.List` (role=listbox) - disallowed children
+  (aria-required-children, `Default`).
+
+In-story a11y fixed (not quarantined): popover `Default` wires `ids`
+title/description to real elements so the dialog is named; navigation-menu
+gets `alt=""` on its decorative logo; combobox `UsingPopoverAndCommand`
+gets `aria-label` on its `role=combobox` trigger; input-group precedent.
+
+Play / portal recipes proven this wave:
+
+- Floating: query the trigger via `canvas`, the teleported content via
+  `document.querySelector('[data-scope][data-part="content"]')`; assert
+  `data-state`, not visibility (panels animate). Zero the
+  `openDelay`/`closeDelay` on hover-driven stories for determinism.
+- Menu: open, assert `screen.findByRole('menu')`, `data-highlighted` for
+  roving focus, `Esc` closes; drop the focus-return assertion (flaky
+  under parallel browser load).
+- Typeahead: open, type a specific term, assert exactly one option
+  survives (`getAllByRole('option')` length 1), click it, the trigger
+  reflects the value.
+- Toast: a single shared `Toaster` must be mounted with the trigger
+  (custom render, not `renderRaw`); assert appearance via `screen`,
+  never disappearance.
+
+Findings:
+
+- Required component props (`collection` on `select`/`combobox`) make
+  `satisfies Meta<typeof X.Root>` force `collection` into every story's
+  `args`; use the `const meta: Meta<typeof X.Root> = {}` annotation form
+  for those (keeps drift/shape gates intact).
+- Story-level `a11y.config.rules` REPLACES (not merges) the meta array,
+  so a story that adds one disable must re-list the meta's disables too
+  (see select `Disabled`).
+- Ark auto-wires `aria-labelledby` to an `ids.*` element unconditionally;
+  when the registry exposes no matching part (popover title, select
+  label, command label) the reference dangles. Fixable in-story only when
+  a real element exists to point `ids` at (popover); otherwise it is a
+  component defect (SDL-010/011).
+- Deleted orphan `select/SelectDefaultStory.0.vue` and `.1.vue` stray
+  save artifacts.

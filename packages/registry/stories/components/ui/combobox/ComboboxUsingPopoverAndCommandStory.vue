@@ -57,6 +57,7 @@ function handleSelect(
       <Button
         variant="outline"
         role="combobox"
+        aria-label="Select framework"
         :aria-expanded="open"
         class="w-full justify-between"
       >

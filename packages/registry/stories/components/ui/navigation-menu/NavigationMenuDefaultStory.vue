@@ -70,7 +70,7 @@ const menus: MenuItem[] = [
                     "
                     href="/"
                   >
-                    <img src="https://ark-ui.com/icon.svg" class="size-6">
+                    <img src="https://ark-ui.com/icon.svg" alt="" class="size-6">
                     <div class="mt-4 mb-2 text-lg font-medium">
                       shadcn/ui
                     </div>

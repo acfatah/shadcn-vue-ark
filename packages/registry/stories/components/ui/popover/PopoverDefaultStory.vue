@@ -15,7 +15,11 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <Popover.Root :align="align" :side="side">
+  <Popover.Root
+    :align="align"
+    :side="side"
+    :ids="{ title: 'popover-dimensions-title', description: 'popover-dimensions-desc' }"
+  >
     <Popover.Trigger as-child>
       <Button variant="outline">
         Open popover
@@ -25,10 +29,10 @@ withDefaults(defineProps<Props>(), {
     <Popover.Content class="w-80">
       <div class="grid gap-4">
         <div class="space-y-2">
-          <h4 class="leading-none font-medium">
+          <h4 id="popover-dimensions-title" class="leading-none font-medium">
             Dimensions
           </h4>
-          <p class="text-sm text-muted-foreground">
+          <p id="popover-dimensions-desc" class="text-sm text-muted-foreground">
             Set the dimensions for the layer.
           </p>
         </div>

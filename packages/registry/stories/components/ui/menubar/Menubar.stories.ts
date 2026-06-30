@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test'
 
 import { Menubar } from '@/components/ui/menubar'
 import { registryItem } from '@/components/ui/menubar/_registry'
 
+import { boolArg, classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import MenubarDefaultStory from './MenubarDefaultStory.vue'
 import MenubarDefaultSource from './MenubarDefaultStory.vue?raw'
 
-const meta: Meta<typeof Menubar.Root> = {
+const meta = {
   title: 'Components/UI/Menubar',
   component: docsRoot(Menubar.Root, 'Menubar.Root'),
   subcomponents: {
@@ -36,36 +38,46 @@ const meta: Meta<typeof Menubar.Root> = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: {
+      test: 'error',
+      // KNOWN-BUG: SDL-009 - MenubarRoot hardcodes role="menubar" but its
+      // trigger buttons are not role="menuitem", so the bar reports disallowed
+      // children. Component defect (logged, not fixed); disable only this rule.
+      config: { rules: [{ id: 'aria-required-children', enabled: false }] },
+    },
   },
-}
+} satisfies Meta<typeof Menubar.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: MenubarDefaultSource,
-      },
-    },
+  ...renderRaw(MenubarDefaultStory, MenubarDefaultSource),
+
+  // Core flow: clicking a top-level trigger opens its teleported menu (queried
+  // via `screen`); Esc dismisses it. Each menu is its own Ark machine, so the
+  // bar holds no open state of its own.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const fileTrigger = canvas.getByText('File')
+
+    await userEvent.click(fileTrigger)
+    const menu = await screen.findByRole('menu')
+    await expect(within(menu).getByText(/New Tab/)).toBeInTheDocument()
+
+    await userEvent.keyboard('{Escape}')
+    await waitFor(() => expect(screen.queryByRole('menu')).toBeNull())
   },
-
-  render: args => ({
-    components: { MenubarDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <MenubarDefaultStory v-bind="args" />
-    `,
-  }),
 }

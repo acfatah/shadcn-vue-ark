@@ -49,4 +49,19 @@ export const CONFORMANT: string[] = [
   'tabs',
   'toggle',
   'toggle-group',
+
+  // Wave 4 (T3 overlay / portal)
+  'combobox',
+  'command',
+  'context-menu',
+  'drawer',
+  'dropdown-menu',
+  'hover-card',
+  'menubar',
+  'navigation-menu',
+  'popover',
+  'select',
+  'sheet',
+  'sonner',
+  'tooltip',
 ]

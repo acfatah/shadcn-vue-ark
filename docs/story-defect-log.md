@@ -62,6 +62,13 @@ them; until then they sit in the watchlist below.
 | SDL-006 | slider | a11y | major | `Slider` (all stories) | thumbs render a dangling `aria-labelledby` (no `Slider.Label` part) and the `aria-label` prop never reaches the thumb, so thumbs have no accessible name (axe `aria-input-field-name`) | - | logged |
 | SDL-007 | scroll-area | a11y | minor | `ScrollArea` (all stories) | viewport has `overflow:auto` but no `tabindex`, so a text-only scrollable region lacks keyboard access (axe `scrollable-region-focusable`) | - | logged |
 | SDL-008 | pagination | a11y | major | `Pagination` (all stories) | icon-only control parts (First/Last/Previous/Next) and the page-size Select trigger ship no accessible name (axe `button-name`) | - | logged |
+| SDL-009 | menubar | a11y | major | `Menubar > Default` | `MenubarRoot` hardcodes `role="menubar"` but the trigger buttons are not `role="menuitem"`, so the bar has disallowed children (axe `aria-required-children`) | - | logged |
+| SDL-010 | command | a11y | minor | `Command > Default` | the filtering `Listbox` (role=listbox) ships a dangling `aria-labelledby` (no `Command`/`Listbox.Label` part is exposed), so it has no accessible name (axe `aria-input-field-name`) | - | logged |
+| SDL-011 | select | a11y | major | `Select` (all stories) | `SelectLabel` renders a plain `Label`, not Ark's `Select.Label` part, so the trigger's auto-wired `aria-labelledby` dangles and the trigger has no accessible name (axe `button-name`) | - | logged |
+| SDL-012 | select | a11y | nit | `Select > Disabled` | the disabled trigger's dimmed text falls below 4.5:1 (axe `color-contrast`); disabled controls are WCAG-exempt from contrast | - | logged |
+| SDL-013 | combobox | a11y | major | `Combobox > Multiple` | the default (non `as-child`) `Combobox.Trigger` renders a `div` carrying `aria-expanded` with no supporting role (axe `aria-allowed-attr`) | AUDIT #2 | logged |
+| SDL-014 | combobox | a11y | minor | `Combobox > UsingPopoverAndCommand` | the `Popover.Content` used as a command dropdown is role=dialog with no accessible name (axe `aria-dialog-name`); the story also reproduces SDL-010 | - | logged |
+| SDL-015 | combobox | a11y | major | `Combobox > Default` | `Combobox.Input` (role=combobox) is nested inside `Combobox.List` (role=listbox), so once the list mounts the listbox has disallowed children (axe `aria-required-children`) | - | logged |
 
 ## Watchlist (audit findings to confirm via stories, not yet reproduced)
 

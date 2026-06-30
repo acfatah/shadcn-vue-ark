@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test'
 
 import { Combobox } from '@/components/ui/combobox'
 import { registryItem } from '@/components/ui/combobox/_registry'
 
+import { boolArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import ComboboxDefaultStory from './ComboboxDefaultStory.vue'
 import ComboboxDefaultSource from './ComboboxDefaultStory.vue?raw'
 import ComboboxPlacementStory from './ComboboxPlacementStory.vue'
@@ -33,16 +35,47 @@ const meta: Meta<typeof Combobox.Root> = {
   tags: ['autodocs'],
 
   argTypes: {
-    align: {
-      control: 'select',
-      options: ['start', 'center', 'end'],
-    },
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    allowCustomValue: boolArg(),
+    alwaysSubmitOnEnter: boolArg(),
+    autoFocus: boolArg(),
+    closeOnSelect: boolArg(),
+    collection: { control: false },
+    composite: boolArg(),
+    defaultHighlightedValue: { control: 'text' },
+    defaultInputValue: { control: 'text' },
+    defaultOpen: boolArg('Initial open state (uncontrolled).'),
+    defaultValue: { control: 'object' },
+    disableLayer: boolArg(),
+    disabled: boolArg(),
+    form: { control: 'text' },
+    highlightedValue: { control: 'text' },
+    id: { control: 'text' },
+    ids: { control: 'object' },
+    inputBehavior: { control: 'text' },
+    inputValue: { control: 'text' },
+    invalid: boolArg(),
+    loopFocus: boolArg('Loop keyboard navigation at the list ends.'),
+    modelValue: { control: 'object' },
+    multiple: boolArg(),
+    name: { control: 'text' },
+    navigate: { control: false },
+    open: boolArg('Controlled open state.'),
+    openOnChange: boolArg(),
+    openOnClick: boolArg(),
+    openOnKeyPress: boolArg(),
+    placeholder: { control: 'text' },
+    positioning: { control: 'object' },
+    readOnly: boolArg(),
+    required: boolArg(),
+    scrollToIndexFn: { control: false },
+    selectionBehavior: { control: 'text' },
+    translations: { control: 'object' },
+    lazyMount: boolArg(),
+    unmountOnExit: boolArg(),
+    align: selectArg(['start', 'center', 'end'], 'start'),
     alignOffset: { control: 'number' },
-
-    side: {
-      control: 'select',
-      options: ['top', 'right', 'bottom', 'left'],
-    },
+    side: selectArg(['top', 'right', 'bottom', 'left'], 'bottom'),
     sideOffset: { control: 'number' },
   },
 
@@ -52,6 +85,8 @@ const meta: Meta<typeof Combobox.Root> = {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
 }
 
@@ -59,46 +94,64 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: ComboboxDefaultSource,
+  ...renderRaw(ComboboxDefaultStory, ComboboxDefaultSource, {
+    parameters: {
+      a11y: {
+        config: {
+          // KNOWN-BUG: SDL-015 - Combobox.Input (role=combobox) is nested
+          // inside Combobox.List (role=listbox), so once the play mounts the
+          // list the listbox has disallowed children. Component defect (logged,
+          // not fixed); disable only this rule.
+          rules: [{ id: 'aria-required-children', enabled: false }],
+        },
       },
     },
+  }),
+
+  // Core typeahead flow: open, type to filter the teleported listbox (queried
+  // via `screen`), pick the surviving option, the trigger reflects the value.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    // Ark labels the toggle button "Toggle suggestions" (overrides the visible
+    // text); the selected value still shows in its text content.
+    const trigger = canvas.getByRole('button', { name: /toggle suggestions/i })
+
+    await userEvent.click(trigger)
+    const input = await screen.findByPlaceholderText(/search framework/i)
+    await userEvent.type(input, 'svelte')
+
+    // Typing filters the list down to the single match.
+    await waitFor(() => {
+      const options = screen.getAllByRole('option')
+      expect(options).toHaveLength(1)
+      expect(options[0]).toHaveTextContent('SvelteKit')
+    })
+
+    await userEvent.click(screen.getByRole('option', { name: /sveltekit/i }))
+    await waitFor(() => expect(trigger).toHaveTextContent('SvelteKit'))
   },
+}
 
-  render: args => ({
-    components: { ComboboxDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <ComboboxDefaultStory v-bind="args" />
-    `,
+export const Disabled: Story = {
+  args: { disabled: true },
+  ...renderRaw(ComboboxDefaultStory, ComboboxDefaultSource, {
+    description: 'Disable the whole control with `disabled`.',
   }),
 }
 
 export const Multiple: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: MultipleComboboxSource,
+  ...renderRaw(MultipleComboboxStory, MultipleComboboxSource, {
+    description: 'Select several values at once with `multiple`.',
+    parameters: {
+      a11y: {
+        config: {
+          // KNOWN-BUG: SDL-013 - the default (non as-child) Combobox.Trigger
+          // renders a div carrying aria-expanded with no supporting role.
+          // Component defect (logged, not fixed); disable only this rule.
+          rules: [{ id: 'aria-allowed-attr', enabled: false }],
+        },
       },
     },
-  },
-
-  render: args => ({
-    components: { MultipleComboboxStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <MultipleComboboxStory v-bind="args" />
-    `,
   }),
 }
 
@@ -110,45 +163,27 @@ export const Placement: Story = {
     side: 'right',
     sideOffset: 4,
   },
-  parameters: {
-    docs: {
-      source: {
-        code: ComboboxPlacementSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { ComboboxPlacementStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <ComboboxPlacementStory v-bind="args" />
-    `,
+  ...renderRaw(ComboboxPlacementStory, ComboboxPlacementSource, {
+    description: 'Position the content with `side`/`align` (mapped to the Ark `positioning` placement).',
   }),
 }
 
 export const UsingPopoverAndCommand: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: ComboboxUsingPopoverAndCommandSource,
+  ...renderRaw(ComboboxUsingPopoverAndCommandStory, ComboboxUsingPopoverAndCommandSource, {
+    description: 'Compose the same pattern from `Popover` + `Command` instead of the Ark combobox.',
+    parameters: {
+      a11y: {
+        config: {
+          // This composition embeds Command and a popover-as-dropdown, so it
+          // reproduces SDL-010 (command listbox has no accessible name) and
+          // SDL-014 (the Popover.Content used as a dropdown is role=dialog with
+          // no name). Both are component defects (logged, not fixed).
+          rules: [
+            { id: 'aria-input-field-name', enabled: false },
+            { id: 'aria-dialog-name', enabled: false },
+          ],
+        },
       },
     },
-  },
-
-  render: args => ({
-    components: { ComboboxUsingPopoverAndCommandStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <ComboboxUsingPopoverAndCommandStory v-bind="args" />
-    `,
   }),
 }
