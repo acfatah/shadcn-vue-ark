@@ -30,4 +30,10 @@ export const CONFORMANT: string[] = [
   'skeleton',
   'spinner',
   'timeline',
+
+  // Wave 3 (T2 compound in-flow)
+  'checkbox',
+  'radio-group',
+  'toggle',
+  'toggle-group',
 ]

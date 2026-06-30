@@ -58,6 +58,7 @@ them; until then they sit in the watchlist below.
 | SDL-002 | kbd | a11y | minor | `Kbd > Default` and `Kbd > Demo` | `bg-muted text-muted-foreground` at 10px is 4.34:1 contrast (axe `color-contrast`, needs 4.5:1) | - | logged |
 | SDL-003 | alert | a11y | minor | `Alert > Demo` | destructive token `#ea1a23` on white is 4.49:1 (axe `color-contrast`, needs 4.5:1) | AUDIT alert | logged |
 | SDL-004 | input | a11y | minor | `Card > Demo` (via `Input.Password`) | `password-input` icon-wrapper `div` has `aria-label` with no role (axe `aria-prohibited-attr`); story uses `Input.Text` to avoid it | AUDIT #7 | logged |
+| SDL-005 | radio-group | a11y | minor | `RadioGroup > Cards` | `ItemDescription` (text-muted-foreground) on a tinted `bg-primary/5` selected card is 4.27:1 (axe `color-contrast`) | - | logged |
 
 ## Watchlist (audit findings to confirm via stories, not yet reproduced)
 

@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
+import { expect, userEvent, within } from 'storybook/test'
 
 import { RadioGroup } from '@/components/ui/radio-group'
 import { registryItem } from '@/components/ui/radio-group/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import RadioGroupBasicStory from './RadioGroupBasicStory.vue'
 import RadioGroupBasicSource from './RadioGroupBasicStory.vue?raw'
 import RadioGroupCardsStory from './RadioGroupCardsStory.vue'
@@ -15,7 +17,7 @@ import RadioGroupDefaultSource from './RadioGroupDefaultStory.vue?raw'
 import RadioGroupWithDescriptionStory from './RadioGroupWithDescriptionStory.vue'
 import RadioGroupWithDescriptionSource from './RadioGroupWithDescriptionStory.vue?raw'
 
-const meta: Meta<typeof RadioGroup.Root> = {
+const meta = {
   title: 'Components/UI/RadioGroup',
   component: docsRoot(RadioGroup.Root, 'RadioGroup.Root'),
   subcomponents: {
@@ -33,14 +35,6 @@ const meta: Meta<typeof RadioGroup.Root> = {
   },
   tags: ['autodocs'],
 
-  parameters: {
-    docs: {
-      description: {
-        component: registryItem.description,
-      },
-    },
-  },
-
   args: {
     disabled: false,
     invalid: false,
@@ -49,103 +43,64 @@ const meta: Meta<typeof RadioGroup.Root> = {
   },
 
   argTypes: {
-    disabled: { control: 'boolean' },
-    invalid: { control: 'boolean' },
-    required: { control: 'boolean' },
-    orientation: {
-      control: { type: 'radio' },
-      options: ['horizontal', 'vertical'],
-    },
+    disabled: boolArg(),
+    invalid: boolArg(),
+    required: boolArg(),
+    readOnly: boolArg(),
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    orientation: selectArg(['horizontal', 'vertical'], 'vertical'),
+    defaultValue: { control: 'text' },
+    modelValue: { control: 'text' },
+    name: { control: 'text' },
+    form: { control: 'text' },
+    id: { control: 'text' },
+    ids: { control: 'object' },
+    class: classArg(),
   },
-}
+
+  parameters: {
+    docs: {
+      description: {
+        component: registryItem.description,
+      },
+    },
+
+    a11y: { test: 'error' },
+  },
+} satisfies Meta<typeof RadioGroup.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: RadioGroupDefaultSource,
-      },
-    },
+  ...renderRaw(RadioGroupDefaultStory, RadioGroupDefaultSource),
+
+  // Core flow: clicking an option checks its radio input.
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const radios = canvas.getAllByRole('radio', { hidden: true }) as HTMLInputElement[]
+    const target = radios.find(radio => radio.value === 'default')
+
+    await expect(target).toBeDefined()
+    await expect(target!).not.toBeChecked()
+    await userEvent.click(canvas.getByText('default'))
+    await expect(target!).toBeChecked()
   },
-
-  render: args => ({
-    components: { RadioGroupDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <RadioGroupDefaultStory v-bind="args" />
-    `,
-  }),
 }
 
 export const WithDescription: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: RadioGroupWithDescriptionSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { RadioGroupWithDescriptionStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <RadioGroupWithDescriptionStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(RadioGroupWithDescriptionStory, RadioGroupWithDescriptionSource),
 }
 
 export const Cards: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: RadioGroupCardsSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { RadioGroupCardsStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <RadioGroupCardsStory v-bind="args" />
-    `,
+  // KNOWN-BUG: SDL-005 - ItemDescription (text-muted-foreground) on the tinted
+  // (bg-primary/5) selected card is 4.27:1. Component-token defect; disable only
+  // color-contrast on this story so other rules still guard.
+  ...renderRaw(RadioGroupCardsStory, RadioGroupCardsSource, {
+    parameters: { a11y: { config: { rules: [{ id: 'color-contrast', enabled: false }] } } },
   }),
 }
 
 export const Basic: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: RadioGroupBasicSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { RadioGroupBasicStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <RadioGroupBasicStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(RadioGroupBasicStory, RadioGroupBasicSource),
 }
