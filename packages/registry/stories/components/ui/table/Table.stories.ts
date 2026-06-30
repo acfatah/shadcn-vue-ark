@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Table } from '@/components/ui/table'
 import { registryItem } from '@/components/ui/table/_registry'
 
+import { classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import TableDefaultStory from './TableDefaultStory.vue'
 import TableDefaultSource from './TableDefaultStory.vue?raw'
 
-const meta: Meta<typeof Table.Root> = {
+const meta = {
   title: 'Components/UI/Table',
   component: docsRoot(Table.Root, 'Table.Root'),
   subcomponents: {
@@ -24,36 +24,25 @@ const meta: Meta<typeof Table.Root> = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Table.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+// Non-interactive layout, so no play; matrix + a11y only.
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: TableDefaultSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { TableDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <TableDefaultStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(TableDefaultStory, TableDefaultSource),
 }

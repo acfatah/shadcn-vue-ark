@@ -59,6 +59,9 @@ them; until then they sit in the watchlist below.
 | SDL-003 | alert | a11y | minor | `Alert > Demo` | destructive token `#ea1a23` on white is 4.49:1 (axe `color-contrast`, needs 4.5:1) | AUDIT alert | logged |
 | SDL-004 | input | a11y | minor | `Card > Demo` (via `Input.Password`) | `password-input` icon-wrapper `div` has `aria-label` with no role (axe `aria-prohibited-attr`); story uses `Input.Text` to avoid it | AUDIT #7 | logged |
 | SDL-005 | radio-group | a11y | minor | `RadioGroup > Cards` | `ItemDescription` (text-muted-foreground) on a tinted `bg-primary/5` selected card is 4.27:1 (axe `color-contrast`) | - | logged |
+| SDL-006 | slider | a11y | major | `Slider` (all stories) | thumbs render a dangling `aria-labelledby` (no `Slider.Label` part) and the `aria-label` prop never reaches the thumb, so thumbs have no accessible name (axe `aria-input-field-name`) | - | logged |
+| SDL-007 | scroll-area | a11y | minor | `ScrollArea` (all stories) | viewport has `overflow:auto` but no `tabindex`, so a text-only scrollable region lacks keyboard access (axe `scrollable-region-focusable`) | - | logged |
+| SDL-008 | pagination | a11y | major | `Pagination` (all stories) | icon-only control parts (First/Last/Previous/Next) and the page-size Select trigger ship no accessible name (axe `button-name`) | - | logged |
 
 ## Watchlist (audit findings to confirm via stories, not yet reproduced)
 

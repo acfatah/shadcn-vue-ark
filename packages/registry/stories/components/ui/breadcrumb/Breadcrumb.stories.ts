@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Breadcrumb } from '@/components/ui/breadcrumb'
 import { registryItem } from '@/components/ui/breadcrumb/_registry'
 
+import { classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import BreadcrumbDefaultStory from './BreadcrumbDefaultStory.vue'
 import BreadcrumbDefaultSource from './BreadcrumbDefaultStory.vue?raw'
+import BreadcrumbDemoStory from './BreadcrumbDemoStory.vue'
+import BreadcrumbDemoSource from './BreadcrumbDemoStory.vue?raw'
 
-const meta: Meta<typeof Breadcrumb.Root> = {
+const meta = {
   title: 'Components/UI/Breadcrumb',
   component: docsRoot(Breadcrumb.Root, 'Breadcrumb.Root'),
   subcomponents: {
@@ -22,36 +24,31 @@ const meta: Meta<typeof Breadcrumb.Root> = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof Breadcrumb.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+// Non-interactive navigation, so no play; matrix + a11y only.
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: BreadcrumbDefaultSource,
-      },
-    },
-  },
+  ...renderRaw(BreadcrumbDefaultStory, BreadcrumbDefaultSource),
+}
 
-  render: args => ({
-    components: { BreadcrumbDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <BreadcrumbDefaultStory v-bind="args" />
-    `,
+export const Demo: Story = {
+  ...renderRaw(BreadcrumbDemoStory, BreadcrumbDemoSource, {
+    description: 'Collapse middle items behind a dropdown menu.',
   }),
 }

@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { InputGroup } from '@/components/ui/input-group'
 import { registryItem } from '@/components/ui/input-group/_registry'
 
+import { boolArg, classArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import InputGroupDefaultStory from './InputGroupDefaultStory.vue'
 import InputGroupDefaultSource from './InputGroupDefaultStory.vue?raw'
 
-const meta: Meta<typeof InputGroup.Root> = {
+const meta = {
   title: 'Components/UI/InputGroup',
   component: docsRoot(InputGroup.Root, 'InputGroup.Root'),
   subcomponents: {
@@ -21,36 +21,26 @@ const meta: Meta<typeof InputGroup.Root> = {
   },
   tags: ['autodocs'],
 
+  argTypes: {
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
+
+    a11y: { test: 'error' },
   },
-}
+} satisfies Meta<typeof InputGroup.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+// Non-interactive layout, so no play; matrix + a11y only.
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: InputGroupDefaultSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { InputGroupDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <InputGroupDefaultStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(InputGroupDefaultStory, InputGroupDefaultSource),
 }

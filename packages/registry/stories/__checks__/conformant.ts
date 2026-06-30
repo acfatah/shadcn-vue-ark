@@ -32,8 +32,21 @@ export const CONFORMANT: string[] = [
   'timeline',
 
   // Wave 3 (T2 compound in-flow)
+  'accordion',
+  'breadcrumb',
+  'button-group',
   'checkbox',
+  'collapsible',
+  'field',
+  'fieldset',
+  'input-group',
+  'pagination',
+  'progress',
   'radio-group',
+  'scroll-area',
+  'slider',
+  'table',
+  'tabs',
   'toggle',
   'toggle-group',
 ]

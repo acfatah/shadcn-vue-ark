@@ -52,11 +52,11 @@ import { Tabs } from '@/components/ui/tabs'
           <Card.Content class="grid gap-6">
             <div class="grid gap-3">
               <Label for="tabs-demo-current">Current password</Label>
-              <Input.Password id="tabs-demo-current" />
+              <Input.Text id="tabs-demo-current" type="password" />
             </div>
             <div class="grid gap-3">
               <Label for="tabs-demo-new">New password</Label>
-              <Input.Password id="tabs-demo-new" />
+              <Input.Text id="tabs-demo-new" type="password" />
             </div>
           </Card.Content>
           <Card.Footer>

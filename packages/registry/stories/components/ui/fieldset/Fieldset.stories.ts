@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { html } from 'common-tags'
-
 import { Fieldset } from '@/components/ui/fieldset'
 import { registryItem } from '@/components/ui/fieldset/_registry'
 
+import { boolArg, classArg, selectArg } from '../../../_helpers/args'
 import { docsRoot } from '../../../_helpers/docs-root'
+import { renderRaw } from '../../../_helpers/render'
 import FieldsetDefaultStory from './FieldsetDefaultStory.vue'
 import FieldsetDefaultSource from './FieldsetDefaultStory.vue?raw'
 
-const meta: Meta<{ disabled: boolean, invalid: boolean, required: boolean }> = {
+const meta = {
   title: 'Components/UI/Fieldset',
   component: docsRoot(Fieldset.Root, 'Fieldset.Root'),
   subcomponents: {
@@ -22,48 +22,36 @@ const meta: Meta<{ disabled: boolean, invalid: boolean, required: boolean }> = {
   },
   tags: ['autodocs'],
 
+  args: {
+    disabled: false,
+    invalid: false,
+    orientation: 'vertical',
+  },
+
+  argTypes: {
+    disabled: boolArg(),
+    invalid: boolArg(),
+    asChild: boolArg('Render the child element as the root (polymorphic).'),
+    orientation: selectArg(['vertical', 'horizontal'], 'vertical'),
+    id: { control: 'text' },
+    class: classArg(),
+  },
+
   parameters: {
     docs: {
       description: {
         component: registryItem.description,
       },
     },
-  },
 
-  args: {
-    required: true,
-    invalid: false,
-    disabled: false,
+    a11y: { test: 'error' },
   },
-
-  argTypes: {
-    required: { control: 'boolean' },
-    invalid: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-  },
-}
+} satisfies Meta<typeof Fieldset.Root>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+// Non-interactive layout, so no play; matrix + a11y only.
 export const Default: Story = {
-  parameters: {
-    docs: {
-      source: {
-        code: FieldsetDefaultSource,
-      },
-    },
-  },
-
-  render: args => ({
-    components: { FieldsetDefaultStory },
-
-    setup() {
-      return { args }
-    },
-
-    template: html`
-      <FieldsetDefaultStory v-bind="args" />
-    `,
-  }),
+  ...renderRaw(FieldsetDefaultStory, FieldsetDefaultSource),
 }

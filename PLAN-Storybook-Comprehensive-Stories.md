@@ -4,12 +4,12 @@ Plan to take every `packages/registry` UI component from shallow,
 `Default`-only stories to a comprehensive, tiered, tested, and
 self-enforcing story suite.
 
-Status: Wave 0 complete (section 19); Wave 1 pilot complete
-(section 20); Wave 2 (T1, 14 components) complete (section 21) - all 15
-T1 components now conformant and green. Wave 3 (T2) is next. Owner:
-registry. Scope: `packages/registry` only (additive, no `src/` edits).
-Produced from a 6-agent design workflow (4 lens proposals + 2 grounding
-probes).
+Status: Waves 0-3 complete (sections 19-22). All T1 (15) and T2 (18)
+components plus the dialog (T3) and data-table (T4) pilots are conformant
+and green - 35 of 62 ui components done. Wave 4 (T3 overlays) is next.
+Owner: registry. Scope: `packages/registry` only (additive, no `src/`
+edits). Produced from a 6-agent design workflow (4 lens proposals + 2
+grounding probes).
 
 ---
 
@@ -862,3 +862,72 @@ Findings worth carrying into later waves:
   with a `KNOWN-BUG: SDL-xxx` rule disable and logged.
 - `text-muted-foreground` on `bg-muted` (4.34:1) fails, but on white
   `bg-card`/`bg-background` (4.74:1) passes - watch muted-on-muted.
+
+---
+
+## 22. Wave 3 status (T2 compound in-flow, COMPLETE)
+
+All 17 remaining T2 components are authored to the bar, in
+`conformant.ts`, and green. With the `switch` pilot, the full T2 tier (18
+components) is done. Total conformant: 35 of 62 ui components.
+
+Done (a11y promoted to `error`; play on each interactive component,
+matrix + a11y only for the non-interactive ones):
+
+- Batch A (toggle/selection): `checkbox`, `toggle`, `toggle-group`,
+  `radio-group`.
+- Batch B (expand/navigate): `accordion`, `collapsible`, `tabs`.
+- Batch C (range/progress/scroll): `slider` (play), `progress`
+  (non-interactive), `scroll-area` (non-interactive).
+- Batch D (nav): `pagination` (play), `breadcrumb` (non-interactive).
+- Batch E (form/layout): `field` (play), `fieldset`, `table`,
+  `input-group`, `button-group` (non-interactive).
+
+Verified: `typecheck:stories`, `check:argtypes` (3 files / 107 tests,
+35 components enforced), `test:stories` (66 files / 182 tests),
+`storybook:build` (0 index errors), `lint` (0 errors; 1 pre-existing
+report-only warning on `sonner`).
+
+a11y quarantines added (file-don't-fix, real component defects; each maps
+1:1 to a `KNOWN-BUG: SDL-xxx` rule-disable, `grep -rn KNOWN-BUG stories/`):
+
+- `SDL-005` radio-group: `Cards` description muted-on-tint 4.27:1
+  (color-contrast, that story only).
+- `SDL-006` slider: thumbs have no accessible name - dangling
+  `aria-labelledby`, `aria-label` prop never reaches the thumb
+  (aria-input-field-name).
+- `SDL-007` scroll-area: viewport `overflow:auto` with no `tabindex`
+  (scrollable-region-focusable).
+- `SDL-008` pagination: icon-only First/Last/Prev/Next + page-size Select
+  trigger have no accessible name (button-name).
+
+`SDL-004` (input password-input) was also surfaced via the tabs demo and
+avoided by using `Input.Text`.
+
+Play recipes proven this wave (folded into the skill's archetype list):
+
+- Toggle/checkbox: Ark exposes a hidden input + `data-state` on the
+  control; click the control (not the aria-labelledby label), assert the
+  hidden input `toBeChecked`.
+- Radio: match the hidden input by `getAllByRole('radio', {hidden:true})`
+  + `.value`.
+- Expand (accordion/collapsible): assert the trigger `data-state`
+  off/on.
+- Tabs: triggers expose `aria-selected` (not `data-state`); `waitFor`
+  the async change.
+- Slider: focus the `role=slider` thumb, `keyboard('{ArrowRight}')`,
+  assert `aria-valuenow`.
+- Pagination: click Next, `waitFor` the `[aria-current="page"]` text to
+  change (robust to the initial page).
+
+Findings:
+
+- Drift gate cost scales with surface: `slider` needed 25 argTypes keys,
+  `checkbox`/`toggle-group` 15, `pagination` 15. `check:argtypes` lists
+  the exact phantom/missing set, so it stays mechanical.
+- A hyphenated Ark prop (`aria-label` on slider) does not register as a
+  Vue prop cleanly and never reaches the inner thumb (root cause of
+  SDL-006); keep using it in argTypes for drift parity but do not rely on
+  it for naming.
+- Deleted an orphan `field/FieldDefaultStory.1.vue` (a stray save
+  artifact the shape gate would flag).
