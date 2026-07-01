@@ -1,6 +1,6 @@
 ---
 name: create-component-story
-description: Author a comprehensive Storybook story for a packages/registry UI component to the proven registry bar (static CSF3 meta, renderRaw helper, exhaustive argTypes, per-archetype play tests, a11y gate). Use when creating or upgrading a *.stories.ts under stories/components/ui/. Encodes the full playbook from authoring all 62 components (Waves 0-5).
+description: Author or extend a Storybook story for a packages/registry UI component to the proven registry bar (static CSF3 meta, renderRaw helper, exhaustive argTypes, per-archetype play tests, a11y gate). Use when creating or upgrading a *.stories.ts under stories/components/ui/, adding a named story variant, or adding a real-world Demo story. Encodes the full playbook from authoring all 62 components (Waves 0-5).
 ---
 
 # Create a component story (registry bar)
@@ -186,3 +186,35 @@ roles -> `aria-required-children`.
 4. `bun run test:stories <kebab>`   (render + play + a11y; re-run once if a cold flake)
 5. `bun run storybook:build`   (0 index errors)
 6. `bun run format <files>`   (lint last; no redundant `name:` on stories)
+
+## Add a single variant to an existing story
+
+Add one or more named story variants to an existing component story folder in
+`stories/components/ui/{component-name}/`.
+
+- Create a new `{Description}{ComponentName}Story.vue` (it IS the `?raw` source).
+- Wire it as a named export in the existing `{ComponentName}.stories.ts` with
+  `...renderRaw(VariantStory, VariantSource, { description })` - do NOT hand-roll
+  the old `html` `render`/`parameters` block.
+- Pick the export name from the per-tier checklist above (`Variants`,
+  `Disabled`, `Open`, `Placement`, ...); a `Demo` export must sort last
+  (`story-shape` gate).
+- If the component is in `conformant.ts`, import the new `*Story.vue` with `?raw`
+  and re-run `bun run test:stories <component>` so it passes render + a11y.
+
+## Demo stories
+
+A `Demo{ComponentName}Story.vue` shows the component in a realistic, real-world
+context (not isolated prop variations) and is wired as the `Demo` named export,
+which MUST sort last (`story-shape` gate).
+
+- A demo answers "what does this look like in actual use?" - a UI fragment from
+  a real product. Compose with sibling components (Card, Field, Button, ...),
+  realistic copy, and a sensible layout.
+- Wire it with `...renderRaw(DemoStory, DemoSource)` - not the old `html` render
+  block.
+- Keep it deterministic: no `Date.now()`/`Math.random()`; pin dates via
+  `@internationalized/date`.
+- Fix demo-only a11y issues in the story (labels, `alt`, contrast); log
+  component-source defects to `docs/story-defect-log.md` instead.
+- Re-run `bun run test:stories <component>` (render + a11y) after adding it.

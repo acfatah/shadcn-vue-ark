@@ -17,7 +17,7 @@ Components live in `src/components/ui/<name>/`. Each component folder contains:
 - `_registry.ts` - metadata for the shadcn CLI (`registryItem`)
 - `index.ts` - re-exports
 
-Run the `create-component` command for the full authoring walkthrough.
+Use the `create-component` skill for the full authoring walkthrough.
 
 `_registry.ts` `files[]`: never list `src/composables/*` or `src/lib/*` there.
 They are their own registry items, pulled in via auto-discovered
@@ -45,13 +45,13 @@ from.
 
 - Definition rules: `docs/CONTEXT-component-types-definition.md`
 - Resync after an `@ark-ui/vue` upgrade: `docs/CONTEXT-component-types-resync.md`
-  (or run the `resync-component-types` command).
+  (or use the `resync-component-types` skill).
 
 ## Composables
 
 - Live in `src/composables/`, named in camelCase (`useForwardProps.ts`,
   `createContext.ts`). `lib/` utilities use kebab-case instead.
-- Run the `create-composable` command for the pattern and the existing list.
+- Use the `create-composable` skill for the pattern and the existing list.
 
 ## Storybook
 
