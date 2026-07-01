@@ -6,10 +6,15 @@ import process from 'node:process'
 
 type ComponentName = string
 
-const REGISTRY = process.env.REGISTRY || 'acfatah/shadcn-vue-ark'
+// shadcn GitHub-native registry address (`<owner>/<repo>`) plus the ref
+// (branch/tag/sha) to resolve. `add` installs via
+// `shadcn add <owner>/<repo>/<item>`; `list`/`find`/`info` read the generated
+// `registry.json` catalog directly. Override any of these via env.
+const REGISTRY = (process.env.REGISTRY || 'acfatah/shadcn-vue-ark').replace(/^\/+|\/+$/g, '')
+const REGISTRY_REF = process.env.REGISTRY_REF || 'main'
 
-const CATALOG_URL = process.env.REGISTRY_CATALOG_URL
-  || `https://raw.githubusercontent.com/${REGISTRY}/refs/heads/main/packages/registry/registry.json`
+const CATALOG_URL = (process.env.REGISTRY_CATALOG_URL
+  || `https://raw.githubusercontent.com/${REGISTRY}/refs/heads/${REGISTRY_REF}/packages/registry/registry.json`).replace(/\/+$/, '')
 
 function logError(error: unknown) {
   consola.error(
@@ -19,12 +24,23 @@ function logError(error: unknown) {
   )
 }
 
-async function checkStatus() {
-  try {
-    const res = await fetch(CATALOG_URL)
+// Fetch the registry catalog and return its `items[]`. Tolerates the legacy
+// top-level-array shape. Throws a clear error on any non-OK response so a 404
+// never surfaces as a confusing "Failed to parse JSON".
+async function fetchCatalog(): Promise<any> {
+  const res = await fetch(CATALOG_URL)
 
-    if (!res.ok)
-      throw new Error(`Registry returned ${res.status}`)
+  if (!res.ok)
+    throw new Error(`Registry catalog unreachable (HTTP ${res.status}) at ${CATALOG_URL}`)
+
+  const data = await res.json() as { items?: any[] } | any[]
+
+  return Array.isArray(data) ? data : (data.items ?? [])
+}
+
+async function loadCatalogOrExit() {
+  try {
+    return await fetchCatalog()
   }
   catch (error) {
     logError(error)
@@ -33,12 +49,12 @@ async function checkStatus() {
   }
 }
 
-async function listComponents() {
+async function checkStatus() {
   try {
     const res = await fetch(CATALOG_URL)
-    const registry = await res.json() as { items: { name: string }[] }
 
-    return registry.items
+    if (!res.ok)
+      throw new Error(`Registry unreachable (HTTP ${res.status}) at ${CATALOG_URL}`)
   }
   catch (error) {
     logError(error)
@@ -61,7 +77,7 @@ program.command('list')
   .option('--layout', 'filter to show only layouts (*-layout)')
   .option('--lib', 'filter to show only libs (*-lib)')
   .action(async (options: { block?: boolean, component?: boolean, layout?: boolean, lib?: boolean }) => {
-    let components = await listComponents()
+    let components = await loadCatalogOrExit()
 
     if (options.block) {
       components = components.filter((c: any) => c.name.endsWith('-block'))
@@ -90,7 +106,7 @@ program.command('info')
   .description('Display information about a block or component')
   .argument('<component>', 'the component to display information about')
   .action(async (arg: string) => {
-    const components = await listComponents()
+    const components = await loadCatalogOrExit()
     const component = components.find((c: any) => c.name === arg)
 
     if (!component) {
@@ -101,6 +117,7 @@ program.command('info')
 
     consola.log(JSON.stringify({
       ...component,
+      // skip the content key
       files: ((component as any).files ?? []).map(
         (file: { type: string, path: string }) => ({
           type: file.type,
@@ -114,7 +131,7 @@ program.command('find')
   .description('Find matching components')
   .argument('<query>', 'the query to search for')
   .action(async (arg: string) => {
-    const components = await listComponents()
+    const components = await loadCatalogOrExit()
 
     consola.log(components.reduce((acc: string, component: any) => {
       if (component.name.includes(arg)) {
@@ -135,8 +152,11 @@ program.command('add')
   .action(async (components, options) => {
     await checkStatus()
 
+    // GitHub-native install addresses: `<owner>/<repo>/<item>` (optionally
+    // pinned with `#<ref>` when REGISTRY_REF is explicitly set).
+    const pin = process.env.REGISTRY_REF ? `#${REGISTRY_REF}` : ''
     const addresses: string[] = components.map(
-      (component: string) => `${REGISTRY}/${component}`,
+      (component: string) => `${REGISTRY}/${component}${pin}`,
     )
 
     consola.start('Adding the following components:')

@@ -63,6 +63,8 @@ Copy `.env.example` to `.env`. The app expects:
 
 - `VITE_PAGE_TITLE`
 - `VITE_API_URL`
+- `REGISTRY` - shadcn registry address `<owner>/<repo>` for `bun ui`
+  (optional overrides: `REGISTRY_REF`, `REGISTRY_CATALOG_URL`)
 
 ## First-run setup (fresh scaffold)
 
