@@ -21,8 +21,8 @@ component yet imports **zero** Ark types).
 ## Why this refactor exists
 
 The shadcn registry **ships raw component source**. When a consumer runs
-`shadcn add accordion`, the built `public/r/accordion.json` embeds the literal
-`.vue` text — including any `import type { AccordionRootProps } from '@ark-ui/vue/accordion'`.
+`shadcn add accordion`, they receive the component's literal `.vue` source verbatim,
+including any `import type { AccordionRootProps } from '@ark-ui/vue/accordion'`.
 
 That single import drags in a deep generic chain:
 
@@ -415,8 +415,9 @@ Stamp the top of every hand-written `types.ts`:
 A component is complete only when **all** pass:
 
 1. **typecheck** — `cd packages/registry && bun run typecheck` (vue-tsc) clean.
-2. **registry rebuilt** — `bun run registry:build` so `public/r/*.json` re-embeds
-   the new Ark-free source; review the diff. Update `_registry.ts` `files`/
+2. **registry rebuilt** — `bun run registry:build` regenerates `registry.json`
+   (the manifest of file paths and dependencies; raw `.vue` source is served
+   from GitHub, not embedded). Review the diff. Update `_registry.ts` `files`/
    `dependencies` only if imports actually changed (Ark stays a runtime dep).
 3. **lint/format** — `bun run format packages/registry/src/components/ui/<name>`
    (antfu config: import order, single quotes, 2-space indent).
