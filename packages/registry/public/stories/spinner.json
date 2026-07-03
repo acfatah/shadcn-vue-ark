@@ -8,11 +8,15 @@
     },
     {
       "path": "Spinner.stories.ts",
-      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { html } from 'common-tags'\n\nimport { Spinner } from '@/components/ui/spinner'\nimport { registryItem } from './_registry'\n\nimport SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'\n\nconst meta: Meta<typeof Spinner> = {\n  title: 'Components/UI/Spinner',\n  component: Spinner,\n  tags: ['autodocs'],\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n  },\n}\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  parameters: {\n    docs: {\n      source: {\n        code: SpinnerDefaultSource,\n      },\n    },\n  },\n\n  render: args => ({\n    components: { Spinner },\n\n    setup() {\n      return { args }\n    },\n\n    template: html`\n      <Spinner v-bind=\"args\" />\n    `,\n  }),\n}\n"
+      "content": "import type { Meta, StoryObj } from '@storybook/vue3-vite'\n\nimport { Spinner } from '@/components/ui/spinner'\nimport { registryItem } from './_registry'\n\nimport { classArg } from '../../../_helpers/args'\nimport { renderRaw } from '../../../_helpers/render'\nimport SpinnerDefaultStory from './SpinnerDefaultStory.vue'\nimport SpinnerDefaultSource from './SpinnerDefaultStory.vue?raw'\nimport SpinnerDemoStory from './SpinnerDemoStory.vue'\nimport SpinnerDemoSource from './SpinnerDemoStory.vue?raw'\n\nconst meta = {\n  title: 'Components/UI/Spinner',\n  component: Spinner,\n  tags: ['autodocs'],\n\n  argTypes: {\n    class: classArg('Size the spinner via utility classes (e.g. `size-6`).'),\n  },\n\n  parameters: {\n    docs: {\n      description: {\n        component: registryItem.description,\n      },\n    },\n\n    a11y: { test: 'error' },\n  },\n} satisfies Meta<typeof Spinner>\n\nexport default meta\ntype Story = StoryObj<typeof meta>\n\nexport const Default: Story = {\n  ...renderRaw(SpinnerDefaultStory, SpinnerDefaultSource),\n}\n\nexport const Demo: Story = {\n  ...renderRaw(SpinnerDemoStory, SpinnerDemoSource),\n}\n"
     },
     {
       "path": "SpinnerDefaultStory.vue",
       "content": "<script setup lang=\"ts\">\nimport { Spinner } from '@/components/ui/spinner'\n</script>\n\n<template>\n  <Spinner />\n</template>\n"
+    },
+    {
+      "path": "SpinnerDemoStory.vue",
+      "content": "<script setup lang=\"ts\">\nimport { Spinner } from '@/components/ui/spinner'\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <Spinner class=\"size-4\" />\n    <Spinner class=\"size-6\" />\n    <Spinner class=\"size-8\" />\n  </div>\n</template>\n"
     }
   ]
 }

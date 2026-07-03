@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "_registry.ts",
-      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'time-picker',\n  title: 'TimePicker',\n\n  description: html`\n    A popover time picker with accessible hour, minute, and optional AM/PM\n    listbox columns. Supports 12-hour and 24-hour display while always emitting\n    a 24-hour HH:MM value.\n  `,\n\n  registryDependencies: [\n    'button',\n    'popover',\n  ],\n}\n\nexport default registryItem\n"
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'time-picker',\n  title: 'TimePicker',\n\n  description: html`\n    A popover time picker with accessible hour, minute, and optional AM/PM\n    listbox columns. Supports 12-hour and 24-hour display while always emitting\n    a 24-hour HH:MM value.\n  `,\n\n  registryDependencies: [\n    'button',\n    'popover',\n  ],\n\n  css: {\n    '@utility no-scrollbar': {\n      '-ms-overflow-style': 'none',\n      'scrollbar-width': 'none',\n      '&::-webkit-scrollbar': {\n        display: 'none',\n      },\n    },\n  },\n}\n\nexport default registryItem\n"
     },
     {
       "path": "TimePicker.stories.ts",
