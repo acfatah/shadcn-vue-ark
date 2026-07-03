@@ -12,5 +12,20 @@
 */
 @import '../src/components/ui/sonner/styles.css';
 
+/*
+  `no-scrollbar` is owned by the components that use it (scroll-area,
+  time-picker) and shipped to consumers via their `_registry.ts` `css` field.
+  It is re-declared here (Storybook-only) so those stories keep hidden
+  scrollbars without re-adding it to the shipped `src/styles/global.css`.
+*/
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @source '../src/**/*.{js,ts,vue}';
 @source '../stories/**/*.{html,js,ts,jsx,tsx,vue}';

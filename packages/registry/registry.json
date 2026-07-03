@@ -2849,7 +2849,16 @@
           "path": "src/components/ui/scroll-area/types.ts",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "css": {
+        "@utility no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            "display": "none"
+          }
+        }
+      }
     },
     {
       "name": "select",
@@ -3750,7 +3759,16 @@
           "path": "src/components/ui/time-picker/utils.ts",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "css": {
+        "@utility no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            "display": "none"
+          }
+        }
+      }
     },
     {
       "name": "timeline",

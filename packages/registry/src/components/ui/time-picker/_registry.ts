@@ -17,6 +17,16 @@ export const registryItem = {
     'button',
     'popover',
   ],
+
+  css: {
+    '@utility no-scrollbar': {
+      '-ms-overflow-style': 'none',
+      'scrollbar-width': 'none',
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
+    },
+  },
 } satisfies RegistryItem
 
 export default registryItem
