@@ -19,18 +19,18 @@
     "precommit": "cd packages/registry && bun lint:staged"
   },
   "devDependencies": {
-    "@acfatah/eslint-preset": "^3.2.0",
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
+    "@acfatah/eslint-preset": "^5.0.0",
+    "@commitlint/cli": "^21.2.0",
+    "@commitlint/config-conventional": "^21.2.0",
     "@types/bun": "^1.3.14",
-    "@types/node": "^25.9.3",
-    "eslint": "^9.39.4",
-    "eslint-plugin-format": "^1.5.0",
+    "@types/node": "^26.1.0",
+    "eslint": "^10.6.0",
+    "eslint-plugin-format": "^2.0.1",
     "pathe": "^2.0.3",
     "simple-git-hooks": "^2.13.1"
   },
   "peerDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
