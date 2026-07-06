@@ -29,17 +29,17 @@
     "@fontsource-variable/geist": "^5.2.9",
     "@fontsource-variable/geist-mono": "^5.2.8",
     "@iconify/vue": "^5.0.1",
-    "@tailwindcss/vite": "^4.3.0",
-    "@vue/compiler-sfc": "^3.5.35",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vue/compiler-sfc": "^3.5.39",
     "@vueuse/core": "^14.3.0",
-    "arktype": "^2.2.0",
+    "arktype": "^2.2.2",
     "astro": "^5.18.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "packages.registry": "workspace:*",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.0",
-    "vue": "^3.5.35"
+    "tailwindcss": "^4.3.2",
+    "vue": "^3.5.39"
   },
   "devDependencies": {
     "@acfatah/eslint-preset": "^3.2.0",
