@@ -40,43 +40,12 @@
 }
 
 /*
-  `border-ghost` and the `step` / `.steps` numbered-list markers are generic,
-  documentation-flavored utilities kept for Storybook demos only. They do NOT
-  ship in the base `src/styles/global.css`; their demo stories live under
-  `stories/` (aspect-ratio ghost border, numbered-steps example).
+  `border-ghost` is a generic, documentation-flavored utility kept for a
+  Storybook demo only. It does NOT ship in the base `src/styles/global.css`;
+  its demo story lives under `stories/` (aspect-ratio ghost border).
 */
 @utility border-ghost {
   @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
-}
-
-@utility step {
-  counter-increment: step;
-  @apply relative;
-
-  &:before {
-    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
-    content: counter(step);
-  }
-}
-
-@layer components {
-  .steps {
-    &:first-child {
-      @apply mt-0!;
-    }
-
-    &:first-child > h3:first-child {
-      @apply mt-0!;
-    }
-
-    > h3 {
-      @apply mt-16!;
-    }
-
-    > h3 + p {
-      @apply mt-2!;
-    }
-  }
 }
 
 @source '../src/**/*.{js,ts,vue}';

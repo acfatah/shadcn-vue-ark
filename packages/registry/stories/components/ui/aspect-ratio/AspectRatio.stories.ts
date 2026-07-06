@@ -7,6 +7,8 @@ import { boolArg, classArg } from '../../../_helpers/args'
 import { renderRaw } from '../../../_helpers/render'
 import AspectRatioDefaultStory from './AspectRatioDefaultStory.vue'
 import AspectRatioDefaultSource from './AspectRatioDefaultStory.vue?raw'
+import AspectRatioGhostBorderStory from './AspectRatioGhostBorderStory.vue'
+import AspectRatioGhostBorderSource from './AspectRatioGhostBorderStory.vue?raw'
 import AspectRatioVariantStory from './AspectRatioVariantStory.vue'
 import AspectRatioVariantSource from './AspectRatioVariantStory.vue?raw'
 
@@ -46,4 +48,12 @@ export const Default: Story = {
 
 export const Ratios: Story = {
   ...renderRaw(AspectRatioVariantStory, AspectRatioVariantSource),
+}
+
+export const GhostBorder: Story = {
+  ...renderRaw(AspectRatioGhostBorderStory, AspectRatioGhostBorderSource, {
+    description:
+      'Frames an image with the `border-ghost` utility: a crisp 1px edge that '
+      + 'stays legible over any content via `mix-blend` in light and dark.',
+  }),
 }
