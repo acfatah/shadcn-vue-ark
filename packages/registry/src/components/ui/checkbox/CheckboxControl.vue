@@ -24,8 +24,8 @@ const forwardedProps = useForwardPropsEmits(delegatedProps)
     :class="cn(
       // Currently rounded-lg produces different results from rounded-[4px] here
       `
-        mt-0.5 size-4 min-w-4 rounded-[4px] border border-input shadow-xs transition-shadow
-        outline-none
+        extend-touch-target mt-0.5 size-4 min-w-4 rounded-[4px] border border-input shadow-xs
+        transition-shadow outline-none
       `,
       ``,
       `

@@ -27,5 +27,57 @@
   }
 }
 
+/*
+  `extend-touch-target` is owned by `checkbox` (via its `_registry.ts` `css`
+  field) and shipped to consumers with that component. It is re-declared here
+  (Storybook-only) so the checkbox story renders it without re-adding it to the
+  shipped `src/styles/global.css`.
+*/
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+/*
+  `border-ghost` and the `step` / `.steps` numbered-list markers are generic,
+  documentation-flavored utilities kept for Storybook demos only. They do NOT
+  ship in the base `src/styles/global.css`; their demo stories live under
+  `stories/` (aspect-ratio ghost border, numbered-steps example).
+*/
+@utility border-ghost {
+  @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
+}
+
+@utility step {
+  counter-increment: step;
+  @apply relative;
+
+  &:before {
+    @apply text-muted-foreground right-0 mr-2 hidden size-7 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute;
+    content: counter(step);
+  }
+}
+
+@layer components {
+  .steps {
+    &:first-child {
+      @apply mt-0!;
+    }
+
+    &:first-child > h3:first-child {
+      @apply mt-0!;
+    }
+
+    > h3 {
+      @apply mt-16!;
+    }
+
+    > h3 + p {
+      @apply mt-2!;
+    }
+  }
+}
+
 @source '../src/**/*.{js,ts,vue}';
 @source '../stories/**/*.{html,js,ts,jsx,tsx,vue}';

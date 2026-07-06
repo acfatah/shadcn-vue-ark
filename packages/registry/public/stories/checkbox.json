@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "_registry.ts",
-      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'checkbox',\n  title: 'Checkbox',\n\n  description: html`\n    A control that allows the user to toggle between checked and not checked.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/checkbox\n    - shadcn/ui: https://ui.shadcn.com/docs/components/checkbox\n    - Iconify: https://iconify.design/docs/icon-components\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n}\n\nexport default registryItem\n"
+      "content": "import { html } from 'common-tags'\n\nexport const registryItem = {\n  type: 'registry:ui',\n  name: 'checkbox',\n  title: 'Checkbox',\n\n  description: html`\n    A control that allows the user to toggle between checked and not checked.\n\n    References:\n    - Headless API: https://ark-ui.com/docs/components/checkbox\n    - shadcn/ui: https://ui.shadcn.com/docs/components/checkbox\n    - Iconify: https://iconify.design/docs/icon-components\n  `,\n\n  dependencies: [\n    '@ark-ui/vue',\n    '@vueuse/core',\n    'lucide-vue-next',\n  ],\n\n  css: {\n    '@utility extend-touch-target': {\n      '@media (pointer: coarse)': {\n        'position': 'relative',\n        'touch-action': 'manipulation',\n        '&::after': {\n          content: '\"\"',\n          position: 'absolute',\n          inset: 'calc(var(--spacing) * -2)',\n        },\n      },\n    },\n  },\n}\n\nexport default registryItem\n"
     },
     {
       "path": "Checkbox.stories.ts",

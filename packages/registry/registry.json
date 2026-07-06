@@ -614,7 +614,20 @@
           "path": "src/components/ui/checkbox/variant.ts",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "css": {
+        "@utility extend-touch-target": {
+          "@media (pointer: coarse)": {
+            "position": "relative",
+            "touch-action": "manipulation",
+            "&::after": {
+              "content": "\"\"",
+              "position": "absolute",
+              "inset": "calc(var(--spacing) * -2)"
+            }
+          }
+        }
+      }
     },
     {
       "name": "cleanProps",
