@@ -176,8 +176,11 @@ re-export it from `index.ts`. Full RadioGroup template: `references/namespace.md
 
 Each component has a metadata-only manifest. Files and `import`-derived
 dependencies are scanned automatically. NEVER list `src/composables/*` or
-`src/lib/*` in `files[]` (the build throws). Animations use `cssVars` + `css`,
-not a `tailwind.config` block. Full pattern: `references/registry.md` and
+`src/lib/*` in `files[]` (the build throws). Any custom CSS the component needs
+(a `@utility` class, `@keyframes`, or a `--animate-*` / theme token) ships via
+`cssVars` + `css` so it installs with the component - never hardcode it in
+`src/styles/global.css`. Full pattern (including the self-sufficiency and
+Storybook-parity rules): `references/registry.md` and
 `docs/CONTEXT-registry-packaging.md`.
 
 ## 8. Import conventions
