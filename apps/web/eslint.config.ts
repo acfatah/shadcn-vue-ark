@@ -1,12 +1,12 @@
 import {
   betterTailwindcssPlugin,
-  config,
-  preset,
+  defineConfig,
   tailwind,
+  typescript,
   vue,
 } from '@acfatah/eslint-preset'
 
-export default config(
+export default defineConfig(
   {
     formatters: true,
     astro: true,
@@ -21,15 +21,13 @@ export default config(
     ],
   },
 
+  typescript,
+  vue,
+  tailwind,
+
   {
     plugins: {
       ...betterTailwindcssPlugin,
-    },
-
-    rules: {
-      ...preset,
-      ...tailwind,
-      ...vue,
     },
 
     settings: {

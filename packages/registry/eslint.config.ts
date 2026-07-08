@@ -1,8 +1,8 @@
-import { betterTailwindcssPlugin, config, preset, tailwind, vue } from '@acfatah/eslint-preset'
+import { betterTailwindcssPlugin, defineConfig, tailwind, typescript, vue } from '@acfatah/eslint-preset'
 import pluginVitest from '@vitest/eslint-plugin'
 import storybook from 'eslint-plugin-storybook'
 
-export default config(
+export default defineConfig(
   {
     formatters: true,
     vue: true,
@@ -18,19 +18,13 @@ export default config(
     ],
   },
 
+  typescript,
+  vue,
+  tailwind,
+
   {
     plugins: {
       ...betterTailwindcssPlugin,
-    },
-
-    rules: {
-      ...preset,
-      ...tailwind,
-      ...vue,
-
-      'vue/object-property-newline': ['error', {
-        allowAllPropertiesOnSameLine: true,
-      }],
     },
 
     settings: {

@@ -2,9 +2,9 @@
  * ESLint configuration for scripts.
  */
 
-import { config, preset } from '@acfatah/eslint-preset'
+import { defineConfig, typescript } from '@acfatah/eslint-preset'
 
-export default config(
+export default defineConfig(
   {
     formatters: true,
     type: 'lib',
@@ -14,10 +14,11 @@ export default config(
     ],
   },
 
+  typescript,
+
   {
     rules: {
       'no-console': 'off',
-      ...preset,
     },
   },
 )
