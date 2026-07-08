@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 
 import { Switch } from '@/components/ui/switch'
 
 import type { CustomizerConfig } from './lib/config'
 
+import ExportPanel from './ExportPanel.vue'
 import { DEFAULT_CONFIG, resolveTheme } from './lib/config'
-import { encodePreset } from './lib/preset'
 import BaseColorPicker from './pickers/BaseColorPicker.vue'
 import RadiusPicker from './pickers/RadiusPicker.vue'
 import ThemePicker from './pickers/ThemePicker.vue'
@@ -34,7 +34,13 @@ watch(
   },
 )
 
-const presetCode = computed(() => encodePreset(config))
+// Apply a whole config (from a loaded preset code or shuffle), normalizing the
+// theme so a mismatched combo cannot desync the controls from the preview.
+function applyConfig(next: CustomizerConfig) {
+  config.baseColor = next.baseColor
+  config.radius = next.radius
+  config.theme = resolveTheme(next.baseColor, next.theme)
+}
 </script>
 
 <template>
@@ -82,11 +88,7 @@ const presetCode = computed(() => encodePreset(config))
         </Switch.Root>
       </section>
 
-      <!-- Export panel placeholder; copy / load / shuffle arrive in Phase 3. -->
-      <section class="mt-auto flex flex-col gap-1.5">
-        <span class="text-sm font-medium">Preset</span>
-        <code class="rounded-md border bg-muted px-2 py-1 font-mono text-xs text-muted-foreground">--preset {{ presetCode }}</code>
-      </section>
+      <ExportPanel class="mt-auto" :config="config" @apply="applyConfig" />
     </aside>
 
     <main class="min-h-0 flex-1 overflow-auto rounded-xl border p-6">

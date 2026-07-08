@@ -46,4 +46,45 @@ describe('customizer', () => {
       'true',
     )
   })
+
+  it('normalizes the theme when a loaded preset has a mismatched combo', async () => {
+    const wrapper = mountCustomizer({
+      baseColor: 'neutral',
+      theme: 'blue',
+      radius: 'default',
+    })
+    // A code that decodes to the invalid combo stone + zinc.
+    const code = encodePreset({
+      baseColor: 'stone',
+      theme: 'zinc',
+      radius: 'default',
+    })
+
+    await wrapper.get('#load-preset').setValue(code)
+    await wrapper.get('form').trigger('submit')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.get('[aria-label="stone"]').attributes('aria-pressed')).toBe(
+      'true',
+    )
+    expect(wrapper.find('[aria-label="zinc"]').exists()).toBe(false)
+  })
+
+  it('keeps exactly one theme selected after shuffle', async () => {
+    const wrapper = mountCustomizer({
+      baseColor: 'neutral',
+      theme: 'blue',
+      radius: 'default',
+    })
+    const shuffle = wrapper.findAll('button').find(b => b.text() === 'Shuffle')!
+
+    await shuffle.trigger('click')
+    await wrapper.vm.$nextTick()
+
+    const pressed = wrapper
+      .get('[aria-label="Theme"]')
+      .findAll('button')
+      .filter(b => b.attributes('aria-pressed') === 'true')
+    expect(pressed).toHaveLength(1)
+  })
 })

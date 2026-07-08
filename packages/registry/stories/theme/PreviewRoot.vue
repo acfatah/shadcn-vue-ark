@@ -4,6 +4,7 @@ import { computed, onBeforeUnmount, onMounted, ref, useId, watchEffect } from 'v
 import type { CustomizerConfig } from './lib/config'
 
 import { buildThemeVars } from './lib/build-theme-vars'
+import { toCssRule } from './lib/theme-export'
 
 const props = withDefaults(
   defineProps<{
@@ -35,8 +36,8 @@ const css = computed(() => {
   // Radius lives only in the light set; the base rule sets it and the .dark
   // rule (colors only) leaves it untouched, so it cascades to both modes.
   return [
-    rule(selector, lightVars),
-    rule(`${selector}.dark`, darkVars),
+    toCssRule(selector, lightVars),
+    toCssRule(`${selector}.dark`, darkVars),
   ]
     .filter(Boolean)
     .join('\n')
@@ -60,18 +61,6 @@ onBeforeUnmount(() => {
   styleEl?.remove()
   styleEl = null
 })
-
-function rule(selector: string, tokens: Record<string, string>): string {
-  const body = Object.entries(tokens)
-    .filter(([, value]) => value !== '')
-    .map(([key, value]) => `  --${key}: ${value};`)
-    .join('\n')
-
-  if (!body)
-    return ''
-
-  return `${selector} {\n${body}\n}`
-}
 </script>
 
 <template>
