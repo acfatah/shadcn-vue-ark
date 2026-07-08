@@ -94,6 +94,18 @@ export function getThemesForBaseColor(baseColor: BaseColorName): ThemeName[] {
   })
 }
 
+/**
+ * Keep a theme if it is offered for the base color, otherwise fall back to the
+ * base color itself. Used when the base color changes: a theme that equals a
+ * different base color is no longer available and must be reset.
+ */
+export function resolveTheme(
+  baseColor: BaseColorName,
+  theme: ThemeName,
+): ThemeName {
+  return getThemesForBaseColor(baseColor).includes(theme) ? theme : baseColor
+}
+
 /** Look up the full theme registry item (light/dark cssVars) by name. */
 export function getTheme(name: string): RegistryItem | undefined {
   return THEMES.find(theme => theme.name === name)
