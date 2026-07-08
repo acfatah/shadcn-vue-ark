@@ -69,8 +69,8 @@
     "@types/common-tags": "^1.8.4",
     "@types/lodash": "^4.17.24",
     "@vitejs/plugin-vue": "^6.0.7",
-    "@vitest/browser": "^4.1.9",
-    "@vitest/browser-playwright": "^4.1.9",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/browser-playwright": "^4.1.10",
     "@vitest/eslint-plugin": "^1.6.21",
     "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.8.1",
@@ -94,10 +94,10 @@
     "typescript": "~5.9.3",
     "vite": "^7.3.6",
     "vite-svg-loader": "^5.1.1",
-    "vitest": "^4.1.9",
-    "vue-component-meta": "^3.3.6",
+    "vitest": "^4.1.10",
+    "vue-component-meta": "^3.3.7",
     "vue-router": "^4.6.4",
-    "vue-tsc": "^3.3.6",
+    "vue-tsc": "^3.3.7",
     "zod": "^4.4.3"
   }
 }

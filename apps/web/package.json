@@ -32,7 +32,7 @@
     "@tailwindcss/vite": "^4.3.2",
     "@vue/compiler-sfc": "^3.5.39",
     "@vueuse/core": "^14.3.0",
-    "arktype": "^2.2.2",
+    "arktype": "^2.2.3",
     "astro": "^5.18.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
