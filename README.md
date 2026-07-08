@@ -143,7 +143,7 @@ packages/registry/
       _registry.ts        # declares the 2 top-level components
     composables/          # 10 camelCase composables + index.ts barrel
     lib/                  # 5 kebab-case utilities (cn, format-bytes, ...)
-    styles/               # global.css + fonts/nprogress (+ v4 variant)
+    styles/               # global.css + fonts/nprogress
     themes.ts             # 21 shadcn themes (data asset)
     base-colors.ts        # 4 grayscale base colors derived from themes
     index.ts              # intentionally EMPTY (0 bytes)
@@ -371,9 +371,6 @@ failing CI. Rebuild before committing.
   mapped to Tailwind `--color-*` via `@theme inline`. It is wired into
   Storybook through `.storybook/global.css` (which also imports the sonner
   variant styles).
-- `src/styles/v4.global.css` is an alternate variant (different breakpoints,
-  extra `--destructive-foreground` token). It has no importer; `global.css` is
-  the active one.
 - `src/themes.ts` exports `THEMES` (21 shadcn themes, each with
   `cssVars.light`/`cssVars.dark` in OKLch). `src/base-colors.ts` derives
   `BASE_COLORS` (the 4 grayscale bases: `neutral`, `stone`, `zinc`, `gray`).

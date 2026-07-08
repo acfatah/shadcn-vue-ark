@@ -17,7 +17,7 @@ import SpinnerEmpty from './components/SpinnerEmpty.vue'
 <template>
   <div
     class="
-      mx-auto grid gap-8 py-1 theme-container
+      mx-auto grid gap-8 py-1 font-sans
       md:grid-cols-2
       lg:grid-cols-3
       xl:grid-cols-4 xl:gap-6
