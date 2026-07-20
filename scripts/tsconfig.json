@@ -1,18 +1,25 @@
 {
+  // IDE-only config for the Bun scripts in this folder. Not part of the root
+  // `tsc -b` graph and not run in CI; the editor's TS server resolves these
+  // files through this nearest tsconfig. Ambient globals come from the root
+  // `@types/bun` + `@types/node` dev deps.
   "compilerOptions": {
-    // Environment setup & latest features
+    // Environment & latest features
     "lib": ["ESNext"],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
 
-    // Bundler mode
+    // Bun executes these files directly (no bundler, no emit)
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
+
+    // Pin ambient globals: setTimeout, Response, TextDecoder, NodeJS.*
+    "types": [
+      "bun",
+      "node"
+    ],
 
     // Best practices
     "strict": true,
@@ -21,10 +28,9 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    // Some stricter flags (disabled by default)
+    // Intentionally not enforced (scripts keep _-prefixed unused vars)
     "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noUnusedParameters": false
   },
 
   "include": [
