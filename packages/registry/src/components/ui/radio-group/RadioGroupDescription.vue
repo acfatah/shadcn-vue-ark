@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core'
-
 import type { DescriptionProps } from '@/components/ui/description'
+
+import { reactiveOmit } from '@vueuse/core'
 
 import { Description } from '@/components/ui/description'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'

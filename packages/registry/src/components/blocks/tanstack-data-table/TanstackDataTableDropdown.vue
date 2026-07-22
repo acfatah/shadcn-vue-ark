@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import type { Payment } from './data/payments'
+
 import { Ellipsis } from 'lucide-vue-next'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
-
-import type { Payment } from './data/payments'
 
 const props = defineProps<{
   payment: Payment

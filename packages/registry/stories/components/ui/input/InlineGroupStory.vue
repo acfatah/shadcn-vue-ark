@@ -50,7 +50,11 @@ const radioOptions = [
       <Field.Label for="email">
         Email<Field.RequiredIndicator />
       </Field.Label>
-      <Input.Email id="email" placeholder="Email" v-bind="inputProps" />
+      <Input.Email
+        id="email"
+        placeholder="Email"
+        v-bind="inputProps"
+      />
       <Field.Description>Your email will not be shared.</Field.Description>
       <Field.Error v-if="props.invalid">
         Email is invalid.
@@ -92,7 +96,11 @@ const radioOptions = [
       <Field.Label for="password">
         Password
       </Field.Label>
-      <Input.Password id="password" placeholder="Enter a password" v-bind="inputProps" />
+      <Input.Password
+        id="password"
+        placeholder="Enter a password"
+        v-bind="inputProps"
+      />
       <Field.Description>Use at least 8 characters.</Field.Description>
     </Field.Root>
 
@@ -104,7 +112,11 @@ const radioOptions = [
       <Field.Label for="search">
         Search
       </Field.Label>
-      <Input.Search id="search" placeholder="Search messages" v-bind="inputProps" />
+      <Input.Search
+        id="search"
+        placeholder="Search messages"
+        v-bind="inputProps"
+      />
       <Field.Description>Try searching for "invoice".</Field.Description>
     </Field.Root>
 
@@ -116,7 +128,13 @@ const radioOptions = [
       <Field.Label for="number">
         Seats
       </Field.Label>
-      <Input.Number id="number" placeholder="0" min="1" max="50" v-bind="inputProps" />
+      <Input.Number
+        id="number"
+        placeholder="0"
+        min="1"
+        max="50"
+        v-bind="inputProps"
+      />
       <Field.Description>Max 50 seats per team.</Field.Description>
     </Field.Root>
 
@@ -128,7 +146,11 @@ const radioOptions = [
       <Field.Label for="tel">
         Phone
       </Field.Label>
-      <Input.Tel id="tel" placeholder="+1 (555) 000-0000" v-bind="inputProps" />
+      <Input.Tel
+        id="tel"
+        placeholder="+1 (555) 000-0000"
+        v-bind="inputProps"
+      />
       <Field.Description>Include your country code.</Field.Description>
     </Field.Root>
 
@@ -140,7 +162,11 @@ const radioOptions = [
       <Field.Label for="url">
         Website
       </Field.Label>
-      <Input.Url id="url" placeholder="https://example.com" v-bind="inputProps" />
+      <Input.Url
+        id="url"
+        placeholder="https://example.com"
+        v-bind="inputProps"
+      />
       <Field.Description>Include the full URL.</Field.Description>
     </Field.Root>
 
@@ -255,11 +281,23 @@ const radioOptions = [
       <Field.Label for="status">
         Status
       </Field.Label>
-      <Input.Select id="status" v-model="selectValue" v-bind="inputProps">
-        <option data-part="placeholder" value="" disabled>
+      <Input.Select
+        id="status"
+        v-model="selectValue"
+        v-bind="inputProps"
+      >
+        <option
+          data-part="placeholder"
+          value=""
+          disabled
+        >
           Select status
         </option>
-        <option v-for="option in selectOptions" :key="option.value" :value="option.value">
+        <option
+          v-for="option in selectOptions"
+          :key="option.value"
+          :value="option.value"
+        >
           {{ option.label }}
         </option>
       </Input.Select>

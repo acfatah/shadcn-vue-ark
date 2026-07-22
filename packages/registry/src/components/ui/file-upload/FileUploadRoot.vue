@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type {
+  FileUploadRootEmits,
+  FileUploadRootProps,
+} from './types'
 
 import { FileUpload } from '@ark-ui/vue/file-upload'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type {
-  FileUploadRootEmits,
-  FileUploadRootProps,
-} from './types'
 
 import FileUploadContextProvider from './FileUploadContextProvider.vue'
 

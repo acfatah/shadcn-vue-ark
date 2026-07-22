@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { FileUploadItemDeleteTriggerProps } from './types'
 
 import { FileUpload } from '@ark-ui/vue/file-upload'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { XIcon } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { FileUploadItemDeleteTriggerProps } from './types'
 
 interface Props extends FileUploadItemDeleteTriggerProps {
   class?: HTMLAttributes['class']

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { DateValue } from '@internationalized/date'
 import type { HTMLAttributes } from 'vue'
+import type { DatePickerTableCellTriggerProps } from './types'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
 import { reactiveOmit } from '@vueuse/core'
@@ -8,8 +9,6 @@ import { reactiveOmit } from '@vueuse/core'
 import { buttonVariants } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { DatePickerTableCellTriggerProps } from './types'
 
 interface Props extends DatePickerTableCellTriggerProps {
   asChild?: boolean

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { RadioGroupItemContentProps } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { RadioGroupItemContentProps } from './types'
 
 interface Props extends RadioGroupItemContentProps {
   class?: HTMLAttributes['class']

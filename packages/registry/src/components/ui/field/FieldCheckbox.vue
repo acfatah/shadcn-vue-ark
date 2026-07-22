@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CheckboxVariants } from '@/components/ui/checkbox'
+import type { CheckboxRootProps } from './types'
 
 import { useFieldContext } from '@ark-ui/vue/field'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
-import type { CheckboxVariants } from '@/components/ui/checkbox'
-
 import { Checkbox } from '@/components/ui/checkbox'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { CheckboxRootProps } from './types'
 
 type Props = CheckboxRootProps & {
   class?: HTMLAttributes['class']

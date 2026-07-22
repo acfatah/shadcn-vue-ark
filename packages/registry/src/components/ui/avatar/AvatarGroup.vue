@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { AvatarGroupProps } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { AvatarGroupProps } from './types'
 
 interface Props extends AvatarGroupProps {
   class?: HTMLAttributes['class']

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { RadioGroupRootProviderProps } from './types'
+
 import { RadioGroup } from '@ark-ui/vue/radio-group'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { RadioGroupRootProviderProps } from './types'
 
 const props = defineProps<RadioGroupRootProviderProps>()
 const forwardedProps = useForwardPropsEmits(props)

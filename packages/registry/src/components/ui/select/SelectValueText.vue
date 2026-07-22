@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SelectValueTextProps } from './types'
 
 import { Select, useSelectContext } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -8,8 +9,6 @@ import { computed } from 'vue'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SelectValueTextProps } from './types'
 
 interface Props extends SelectValueTextProps {
   placeholder?: string

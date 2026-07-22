@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { EmptyHeaderProps } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { EmptyHeaderProps } from './types'
 
 interface Props extends EmptyHeaderProps {
   class?: HTMLAttributes['class']

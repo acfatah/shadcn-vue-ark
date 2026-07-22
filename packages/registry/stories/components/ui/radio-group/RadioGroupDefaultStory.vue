@@ -30,7 +30,11 @@ const spacings = ['default', 'comfortable', 'compact']
     <RadioGroup.Label>Spacing</RadioGroup.Label>
     <RadioGroup.Description>Select the spacing between items.</RadioGroup.Description>
     <RadioGroup.Items>
-      <RadioGroup.Item v-for="value in spacings" :key="value" :value="value">
+      <RadioGroup.Item
+        v-for="value in spacings"
+        :key="value"
+        :value="value"
+      >
         <RadioGroup.ItemControl />
         <RadioGroup.ItemText>{{ value }}</RadioGroup.ItemText>
         <RadioGroup.ItemHiddenInput />

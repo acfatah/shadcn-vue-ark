@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CommandItemData } from './context'
+import type { ListboxItemProps } from './types'
 
 import { Listbox } from '@ark-ui/vue/listbox'
 import { reactiveOmit, useCurrentElement } from '@vueuse/core'
@@ -8,9 +10,6 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { CommandItemData } from './context'
-import type { ListboxItemProps } from './types'
 
 import { useCommand, useCommandGroup } from './context'
 

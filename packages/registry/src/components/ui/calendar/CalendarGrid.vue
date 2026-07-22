@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
+import type { DatePickerTableProps } from './types'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { DatePickerTableProps } from './types'
 
 interface Props extends DatePickerTableProps {
   class?: HTMLAttributes['class']

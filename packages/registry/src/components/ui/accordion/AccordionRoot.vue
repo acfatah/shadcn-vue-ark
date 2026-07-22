@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { AccordionRootEmits, AccordionRootProps } from './types'
 
 import { Accordion } from '@ark-ui/vue/accordion'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { AccordionRootEmits, AccordionRootProps } from './types'
 
 interface Props extends AccordionRootProps {
   class?: HTMLAttributes['class']

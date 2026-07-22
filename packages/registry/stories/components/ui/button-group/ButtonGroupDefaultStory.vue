@@ -27,7 +27,11 @@ const label = ref('personal')
         sm:flex
       "
     >
-      <Button variant="outline" size="icon" aria-label="Go Back">
+      <Button
+        variant="outline"
+        size="icon"
+        aria-label="Go Back"
+      >
         <ArrowLeftIcon />
       </Button>
     </ButtonGroup.Root>
@@ -45,7 +49,11 @@ const label = ref('personal')
       </Button>
       <DropdownMenu.Root align="end">
         <DropdownMenu.Trigger as-child>
-          <Button variant="outline" size="icon" aria-label="More Options">
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label="More Options"
+          >
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenu.Trigger>

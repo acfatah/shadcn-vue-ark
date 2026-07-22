@@ -27,7 +27,12 @@ import { Empty } from '@/components/ui/empty'
       </div>
     </Empty.Content>
 
-    <Button variant="link" as-child class="text-muted-foreground" size="sm">
+    <Button
+      variant="link"
+      as-child
+      class="text-muted-foreground"
+      size="sm"
+    >
       <a href="#">
         Learn More <ArrowUpRightIcon data-part="icon" />
       </a>

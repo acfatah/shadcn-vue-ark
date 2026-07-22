@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { Placement, PopoverRootEmits, PopoverRootProps } from './types'
+
 import { Popover } from '@ark-ui/vue/popover'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { Placement, PopoverRootEmits, PopoverRootProps } from './types'
 
 interface Props extends PopoverRootProps {
   align?: 'start' | 'center' | 'end'

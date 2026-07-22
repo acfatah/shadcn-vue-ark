@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { TimelineOrientation, TimelineSize } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { TimelineOrientation, TimelineSize } from './types'
 
 import { TimelineOptionsProvider } from './context'
 

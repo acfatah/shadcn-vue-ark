@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { Component, HTMLAttributes } from 'vue'
+import type { ItemRootProps, ItemVariants } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ItemRootProps, ItemVariants } from './types'
 
 import { itemVariants } from './variant'
 

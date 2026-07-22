@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ButtonProps, ButtonVariants } from '@/components/ui/button'
+import type { InputGroupButtonVariants } from './types'
 
 import { reactiveOmit } from '@vueuse/core'
-
-import type { ButtonProps, ButtonVariants } from '@/components/ui/button'
 
 import { Button } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { InputGroupButtonVariants } from './types'
 
 import { inputGroupButtonVariants } from './variant'
 

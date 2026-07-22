@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CardDescriptionProps } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { cn } from '@/lib/utils'
-
-import type { CardDescriptionProps } from './types'
 
 interface Props extends CardDescriptionProps {
   class?: HTMLAttributes['class']

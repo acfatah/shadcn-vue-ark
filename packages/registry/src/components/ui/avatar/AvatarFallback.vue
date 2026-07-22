@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { AvatarFallbackProps } from './types'
 
 import { Avatar } from '@ark-ui/vue/avatar'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { AvatarFallbackProps } from './types'
 
 import { useAvatarContext } from './context'
 import { shape as shapeVariant, size as sizeVariant } from './variant'

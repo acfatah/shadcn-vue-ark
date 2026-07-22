@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ItemMediaVariants } from './types'
 
 import { cn } from '@/lib/utils'
-
-import type { ItemMediaVariants } from './types'
 
 import { itemMediaVariants } from './variant'
 

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ComboboxInputProps } from './types'
 
 import { Combobox } from '@ark-ui/vue/combobox'
 import { SearchIcon } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ComboboxInputProps } from './types'
 
 defineOptions({
   inheritAttrs: false,

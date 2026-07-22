@@ -23,7 +23,11 @@ import { Label } from '@/components/ui/label'
         <div class="grid w-full items-center gap-4">
           <div class="flex flex-col space-y-1.5">
             <Label for="email">Email</Label>
-            <Input.Text id="email" type="email" placeholder="m@example.com" />
+            <Input.Text
+              id="email"
+              type="email"
+              placeholder="m@example.com"
+            />
           </div>
           <div class="flex flex-col space-y-1.5">
             <div class="flex items-center">

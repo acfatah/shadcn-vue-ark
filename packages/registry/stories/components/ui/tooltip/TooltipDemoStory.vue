@@ -15,7 +15,11 @@ const actions = [
   <div class="flex items-center gap-1 rounded-md border p-1">
     <Tooltip.Root v-for="action in actions" :key="action.label">
       <Tooltip.Trigger as-child>
-        <Button variant="ghost" size="icon" :aria-label="action.label">
+        <Button
+          variant="ghost"
+          size="icon"
+          :aria-label="action.label"
+        >
           <component :is="action.icon" class="size-4" />
         </Button>
       </Tooltip.Trigger>

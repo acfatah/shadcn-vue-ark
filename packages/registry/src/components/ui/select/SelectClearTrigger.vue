@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SelectClearTriggerProps } from './types'
 
 import { Select } from '@ark-ui/vue/select'
 import { reactiveOmit } from '@vueuse/core'
@@ -8,8 +9,6 @@ import { XIcon } from 'lucide-vue-next'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SelectClearTriggerProps } from './types'
 
 interface Props extends SelectClearTriggerProps {
   class?: HTMLAttributes['class']

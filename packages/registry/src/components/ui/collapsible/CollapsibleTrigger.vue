@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CollapsibleTriggerProps } from './types'
 
 import { Collapsible } from '@ark-ui/vue/collapsible'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { CollapsibleTriggerProps } from './types'
 
 interface Props extends CollapsibleTriggerProps {
   class?: HTMLAttributes['class']

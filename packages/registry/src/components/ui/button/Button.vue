@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { ButtonProps } from './types'
+
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ButtonProps } from './types'
 
 import { buttonVariants } from './variant'
 

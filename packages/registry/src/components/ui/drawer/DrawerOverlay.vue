@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { DialogBackdropProps } from './types'
 
 import { Dialog } from '@ark-ui/vue/dialog'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { DialogBackdropProps } from './types'
 
 interface Props extends DialogBackdropProps {
   class?: HTMLAttributes['class']

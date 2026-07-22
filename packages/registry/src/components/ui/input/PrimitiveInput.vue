@@ -6,13 +6,13 @@
  * common functionality and styling for various types of input fields.
  */
 
+import type { PrimitiveInputEmits, PrimitiveInputProps } from './types'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PrimitiveInputEmits, PrimitiveInputProps } from './types'
 
 const props = defineProps<PrimitiveInputProps>()
 const emits = defineEmits<PrimitiveInputEmits>()

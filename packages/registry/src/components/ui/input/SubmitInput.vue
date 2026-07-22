@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
 import type { ButtonProps } from '../button'
+
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 import { Button } from '../button'
 

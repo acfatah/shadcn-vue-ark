@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { ButtonGroupRootProps } from './types'
+
 import { ark } from '@ark-ui/vue'
 
 import { cn } from '@/lib/utils'
-
-import type { ButtonGroupRootProps } from './types'
 
 import { buttonGroupVariants } from './variant'
 

@@ -90,7 +90,11 @@ import { Menubar } from '@/components/ui/menubar'
         <Menubar.Item value="reload" inset>
           Reload <Menubar.Shortcut>⌘R</Menubar.Shortcut>
         </Menubar.Item>
-        <Menubar.Item value="force-reload" disabled inset>
+        <Menubar.Item
+          value="force-reload"
+          disabled
+          inset
+        >
           Force Reload <Menubar.Shortcut>⇧⌘R</Menubar.Shortcut>
         </Menubar.Item>
         <Menubar.Separator />

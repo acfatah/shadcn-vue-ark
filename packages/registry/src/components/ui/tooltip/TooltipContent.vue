@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { TooltipContentProps } from './types'
 
 import { Tooltip } from '@ark-ui/vue/tooltip'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { TooltipContentProps } from './types'
 
 import { useTooltipOptions } from './context'
 import TooltipArrow from './TooltipArrow.vue'

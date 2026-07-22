@@ -24,7 +24,12 @@ defineProps<{
 <template>
   <Sidebar.Menu>
     <Sidebar.MenuItem>
-      <DropdownMenu.Root side="bottom" align="end" :side-offset="4" :positioning="{ strategy: 'fixed' }">
+      <DropdownMenu.Root
+        side="bottom"
+        align="end"
+        :side-offset="4"
+        :positioning="{ strategy: 'fixed' }"
+      >
         <DropdownMenu.Trigger as-child class="hover:cursor-pointer">
           <Sidebar.MenuButton
             size="lg"

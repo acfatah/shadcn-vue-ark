@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ListboxContentProps } from './types'
 
 import { Listbox } from '@ark-ui/vue/listbox'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ListboxContentProps } from './types'
 
 interface Props extends ListboxContentProps {
   class?: HTMLAttributes['class']

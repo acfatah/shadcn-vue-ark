@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PopoverContentProps } from './types'
 
 import { Popover } from '@ark-ui/vue/popover'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PopoverContentProps } from './types'
 
 interface Props extends PopoverContentProps {
   class?: HTMLAttributes['class']

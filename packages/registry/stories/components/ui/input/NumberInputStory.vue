@@ -19,13 +19,23 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
+  >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native number validation.
       Valid numbers are between 0 and 100.
     </p>
 
-    <Input.Number required placeholder="000" min="0" max="100" v-bind="props" />
+    <Input.Number
+      required
+      placeholder="000"
+      min="0"
+      max="100"
+      v-bind="props"
+    />
 
     <Input.Button type="submit" :disabled="props.disabled">
       Validate

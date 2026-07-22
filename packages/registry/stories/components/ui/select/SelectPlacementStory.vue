@@ -39,7 +39,14 @@ const value = ref<string[]>([])
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <Select.Root v-model="value" :collection="collection" :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
+    <Select.Root
+      v-model="value"
+      :collection="collection"
+      :align="align"
+      :align-offset="alignOffset"
+      :side="side"
+      :side-offset="sideOffset"
+    >
       <Select.HiddenSelect />
       <Select.Label>Fruits</Select.Label>
 
@@ -50,7 +57,11 @@ const value = ref<string[]>([])
       <Select.Content>
         <Select.ItemGroup>
           <Select.ItemGroupLabel>Fruits</Select.ItemGroupLabel>
-          <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Select.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             <Select.ItemText>{{ item.label }}</Select.ItemText>
             <Select.ItemIndicator />
           </Select.Item>

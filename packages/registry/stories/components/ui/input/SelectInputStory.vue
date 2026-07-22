@@ -37,7 +37,11 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
+  >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native select validation.
     </p>
@@ -52,7 +56,11 @@ function handleSubmit(event: Event) {
         Use data-part="placeholder", value="" and disabled attributes for the
         placeholder option
       -->
-      <option data-part="placeholder" value="" disabled>
+      <option
+        data-part="placeholder"
+        value=""
+        disabled
+      >
         Select status
       </option>
       <option

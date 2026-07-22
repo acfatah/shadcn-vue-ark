@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { SheetContentProps } from './types'
+
 import { Dialog } from '@ark-ui/vue/dialog'
 import { reactiveOmit } from '@vueuse/core'
 import { X } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SheetContentProps } from './types'
 
 import SheetOverlay from './SheetOverlay.vue'
 

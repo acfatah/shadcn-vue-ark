@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { NavigationMenuContentProps } from './types'
 
 import { NavigationMenu } from '@ark-ui/vue/navigation-menu'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { NavigationMenuContentProps } from './types'
 
 import { useNavigationMenuOptions } from './context'
 

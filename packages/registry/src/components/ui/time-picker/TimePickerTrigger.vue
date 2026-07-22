@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import type { TimePickerTriggerProps } from './types'
+
 import { Clock } from 'lucide-vue-next'
 import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { TimePickerTriggerProps } from './types'
 
 import { buttonVariants } from '../button'
 import PopoverTrigger from '../popover/PopoverTrigger.vue'

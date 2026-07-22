@@ -23,7 +23,11 @@ const props = withDefaults(defineProps<{
       <Field.Label for="message">
         Your Message<Field.RequiredIndicator />
       </Field.Label>
-      <Field.Textarea id="message" type="text" placeholder="Type your message here." />
+      <Field.Textarea
+        id="message"
+        type="text"
+        placeholder="Type your message here."
+      />
       <Field.Description>
         Your message will be copied to the support team.
       </Field.Description>

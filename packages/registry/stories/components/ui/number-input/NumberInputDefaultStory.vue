@@ -4,7 +4,11 @@ import { NumberInput } from '@/components/ui/number-input'
 </script>
 
 <template>
-  <NumberInput.Root id="age" default-value="18" :min="0">
+  <NumberInput.Root
+    id="age"
+    default-value="18"
+    :min="0"
+  >
     <Label for="age">Age</Label>
     <NumberInput.Control>
       <NumberInput.Decrement />

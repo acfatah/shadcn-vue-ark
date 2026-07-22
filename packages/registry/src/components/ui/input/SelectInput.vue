@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { SelectInputEmits, SelectInputProps } from './types'
+
 import { reactiveOmit, useVModel } from '@vueuse/core'
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SelectInputEmits, SelectInputProps } from './types'
 
 const props = withDefaults(defineProps<SelectInputProps>(), {
   defaultValue: '',

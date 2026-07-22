@@ -23,7 +23,11 @@ const props = withDefaults(defineProps<{
       <Field.Label for="username">
         Username<Field.RequiredIndicator />
       </Field.Label>
-      <Field.Input id="username" type="text" placeholder="Max Leiter" />
+      <Field.Input
+        id="username"
+        type="text"
+        placeholder="Max Leiter"
+      />
       <Field.Description>
         Choose a unique username for your account.
       </Field.Description>
@@ -43,7 +47,11 @@ const props = withDefaults(defineProps<{
       <Field.Description>
         Must be at least 8 characters long.
       </Field.Description>
-      <Field.Input id="password" type="password" placeholder="********" />
+      <Field.Input
+        id="password"
+        type="password"
+        placeholder="********"
+      />
       <Field.Error v-if="props.invalid">
         Password must be at least 8 characters.
       </Field.Error>

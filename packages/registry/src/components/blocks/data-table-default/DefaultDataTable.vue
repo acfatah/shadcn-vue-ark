@@ -25,5 +25,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <DataTable :columns="columns" :data="data" :loading="isLoading" />
+  <DataTable
+    :columns="columns"
+    :data="data"
+    :loading="isLoading"
+  />
 </template>

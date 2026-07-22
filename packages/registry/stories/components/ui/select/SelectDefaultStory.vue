@@ -39,7 +39,12 @@ const value = ref<string[]>(['banana'])
 </script>
 
 <template>
-  <Select.Root v-model="value" :collection="collection" :align="storyArgs.align" :side="storyArgs.side">
+  <Select.Root
+    v-model="value"
+    :collection="collection"
+    :align="storyArgs.align"
+    :side="storyArgs.side"
+  >
     <Select.HiddenSelect />
     <Select.Label>Fruits</Select.Label>
 
@@ -51,7 +56,11 @@ const value = ref<string[]>(['banana'])
       <Select.ItemGroup>
         <Select.ItemGroupLabel>Fruits</Select.ItemGroupLabel>
         <Select.Empty>No fruits found.</Select.Empty>
-        <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Select.Item
+          v-for="item in collection.items"
+          :key="item.value"
+          :item="item"
+        >
           <Select.ItemText>{{ item.label }}</Select.ItemText>
           <Select.ItemIndicator />
         </Select.Item>

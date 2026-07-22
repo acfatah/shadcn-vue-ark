@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { FileUploadItemProps } from './types'
 
 import { FileUpload } from '@ark-ui/vue/file-upload'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { FileUploadItemProps } from './types'
 
 interface Props extends FileUploadItemProps {
   class?: HTMLAttributes['class']

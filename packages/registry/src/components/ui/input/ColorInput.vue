@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
 import type {
   PrimitiveInputEmits,
   PrimitiveInputProps,
 } from './types'
+
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 import PrimitiveInput from './PrimitiveInput.vue'
 

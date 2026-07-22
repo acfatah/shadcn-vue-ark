@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import type { Payment } from './data/payments'
 
 import {
   createColumnHelper,
@@ -20,8 +21,6 @@ import { valueUpdater } from '@/components/ui/data-table'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Table } from '@/components/ui/table'
-
-import type { Payment } from './data/payments'
 
 import { data } from './data/payments'
 import DropdownAction from './TanstackDataTableDropdown.vue'
@@ -172,7 +171,11 @@ const table = useVueTable({
         <Table.Header>
           <Table.Row v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
             <Table.Head v-for="header in headerGroup.headers" :key="header.id">
-              <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header" :props="header.getContext()" />
+              <FlexRender
+                v-if="!header.isPlaceholder"
+                :render="header.column.columnDef.header"
+                :props="header.getContext()"
+              />
             </Table.Head>
           </Table.Row>
         </Table.Header>

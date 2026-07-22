@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-
-import { reactiveOmit } from '@vueuse/core'
-
 import type {
   PrimitiveInputEmits,
   PrimitiveInputProps,
 } from '@/components/ui/input/types'
+
+import { reactiveOmit } from '@vueuse/core'
 
 import { PrimitiveInput } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'

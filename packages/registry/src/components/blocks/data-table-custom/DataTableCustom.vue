@@ -64,11 +64,16 @@ onMounted(async () => {
 </script>
 
 <template>
-  <DataTable :columns="columns" :data="data" :loading="isLoading">
+  <DataTable
+    :columns="columns"
+    :data="data"
+    :loading="isLoading"
+  >
     <template #filter="{ table }">
       <div class="flex items-center justify-end py-4">
         <Input.Text
-          class="ml-auto max-w-sm" placeholder="Filter emails..."
+          class="ml-auto max-w-sm"
+          placeholder="Filter emails..."
           :model-value="(table.getColumn('email')?.getFilterValue() as string)"
           @update:model-value=" table.getColumn('email')?.setFilterValue($event)"
         />

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PopoverAnchorProps } from './types'
 
 import { Popover } from '@ark-ui/vue/popover'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { PopoverAnchorProps } from './types'
 
 interface Props extends PopoverAnchorProps {
   class?: HTMLAttributes['class']

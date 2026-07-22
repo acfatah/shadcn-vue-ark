@@ -26,7 +26,11 @@ import { Item } from '@/components/ui/item'
         </Button>
       </Item.Actions>
     </Item.Root>
-    <Item.Root variant="outline" size="sm" as-child>
+    <Item.Root
+      variant="outline"
+      size="sm"
+      as-child
+    >
       <a href="#">
         <Item.Media>
           <BadgeCheckIcon class="size-5" />

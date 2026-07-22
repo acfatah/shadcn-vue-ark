@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { TimePickerRootEmits, TimePickerRootProps } from './types'
+
 import { computed, ref, watch } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { TimePickerRootEmits, TimePickerRootProps } from './types'
 
 import PopoverRoot from '../popover/PopoverRoot.vue'
 import { TimePickerProvider } from './context'

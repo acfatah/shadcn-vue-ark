@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { NumberInputRootEmits, NumberInputRootProps } from './types'
 
 import { NumberInput } from '@ark-ui/vue/number-input'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { NumberInputRootEmits, NumberInputRootProps } from './types'
 
 interface Props extends NumberInputRootProps {
   class?: HTMLAttributes['class']

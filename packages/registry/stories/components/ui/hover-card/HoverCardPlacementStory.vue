@@ -19,7 +19,12 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <HoverCard.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
+    <HoverCard.Root
+      :align="align"
+      :align-offset="alignOffset"
+      :side="side"
+      :side-offset="sideOffset"
+    >
       <HoverCard.Trigger as-child>
         <Button variant="link">
           @nuxt

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ToggleRootEmits, ToggleRootProps, ToggleVariants } from './types'
 
 import { Toggle } from '@ark-ui/vue/toggle'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ToggleRootEmits, ToggleRootProps, ToggleVariants } from './types'
 
 import { toggleVariants } from './variant'
 

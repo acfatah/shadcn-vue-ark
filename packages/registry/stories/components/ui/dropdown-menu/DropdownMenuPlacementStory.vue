@@ -19,7 +19,12 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="flex min-h-[50vh] w-full justify-end">
-    <DropdownMenu.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
+    <DropdownMenu.Root
+      :align="align"
+      :align-offset="alignOffset"
+      :side="side"
+      :side-offset="sideOffset"
+    >
       <DropdownMenu.Trigger as-child>
         <Button variant="outline" class="m-auto">
           Open

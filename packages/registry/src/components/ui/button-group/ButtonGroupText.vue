@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ButtonGroupVariants } from './types'
 
 import { reactiveOmit } from '@vueuse/core'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ButtonGroupVariants } from './types'
 
 interface Props {
   class?: HTMLAttributes['class']

@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PinInputRootEmits, PinInputRootProps } from './types'
 
 import { PinInput } from '@ark-ui/vue/pin-input'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PinInputRootEmits, PinInputRootProps } from './types'
 
 interface Props extends PinInputRootProps {
   class?: HTMLAttributes['class']

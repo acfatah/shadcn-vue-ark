@@ -40,7 +40,11 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
+  >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native checkbox validation.
     </p>
@@ -102,7 +106,11 @@ function handleSubmit(event: Event) {
       </Field.Root>
     </Fieldset.Group>
 
-    <Input.Button type="submit" class="block" :disabled="props.disabled">
+    <Input.Button
+      type="submit"
+      class="block"
+      :disabled="props.disabled"
+    >
       Validate
     </Input.Button>
   </form>

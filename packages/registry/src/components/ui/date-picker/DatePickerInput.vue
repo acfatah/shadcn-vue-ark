@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import type { DatePickerInputProps } from './types'
+
 import { computed } from 'vue'
 
 import { fromDateValue, toDateValue } from '@/lib/internationalized-date'
 import { cn } from '@/lib/utils'
-
-import type { DatePickerInputProps } from './types'
 
 import { useDatePickerContext } from './context'
 

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { DialogCloseTriggerProps } from './types'
 
 import { Dialog } from '@ark-ui/vue/dialog'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { DialogCloseTriggerProps } from './types'
 
 interface Props extends DialogCloseTriggerProps {
   class?: HTMLAttributes['class']

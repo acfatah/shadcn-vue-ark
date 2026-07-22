@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date'
 import type { Ref } from 'vue'
+import type { DatePickerRootEmits, DatePickerRootProps } from './types.ts'
 
 import { computed, ref, watch } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { DatePickerRootEmits, DatePickerRootProps } from './types.ts'
 
 import PopoverRoot from '../popover/PopoverRoot.vue'
 import { DatePickerProvider } from './context.ts'

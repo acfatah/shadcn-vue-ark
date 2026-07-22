@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SwitchControlProps } from './types'
 
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SwitchControlProps } from './types'
 
 import SwitchThumb from './SwitchThumb.vue'
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { size as ButtonSize } from '@/components/ui/button'
+
 import { RotateCcwIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
-
-import type { size as ButtonSize } from '@/components/ui/button'
 
 import { Input } from '@/components/ui/input'
 

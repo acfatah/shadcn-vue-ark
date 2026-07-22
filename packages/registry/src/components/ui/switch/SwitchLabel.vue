@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SwitchLabelProps } from './types'
 
 import { Switch } from '@ark-ui/vue/switch'
 import { reactiveOmit } from '@vueuse/core'
 
 import { Label } from '@/components/ui/label'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { SwitchLabelProps } from './types'
 
 interface Props extends SwitchLabelProps {
   class?: HTMLAttributes['class']

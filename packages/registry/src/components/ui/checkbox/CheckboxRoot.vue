@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CheckboxRootEmits, CheckboxRootProps, CheckboxVariants } from './types'
 
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { CheckboxRootEmits, CheckboxRootProps, CheckboxVariants } from './types'
 
 import { checkboxVariants } from './variant'
 

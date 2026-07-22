@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 import type { HourCycle } from '@/components/ui/time-picker'
+
+import { ref } from 'vue'
 
 import { TimePicker } from '@/components/ui/time-picker'
 

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SeparatorProps } from '@/components/ui/separator'
 
 import { reactiveOmit } from '@vueuse/core'
-
-import type { SeparatorProps } from '@/components/ui/separator'
 
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'

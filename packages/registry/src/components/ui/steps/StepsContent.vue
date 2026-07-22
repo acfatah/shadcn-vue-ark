@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { StepsContentProps } from './types'
 
 import { Steps } from '@ark-ui/vue/steps'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { StepsContentProps } from './types'
 
 interface Props extends StepsContentProps {
   class?: HTMLAttributes['class']

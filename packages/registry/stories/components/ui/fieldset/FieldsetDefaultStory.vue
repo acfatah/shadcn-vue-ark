@@ -45,14 +45,22 @@ const props = withDefaults(defineProps<{
             <Field.Label for="city">
               City<Field.RequiredIndicator />
             </Field.Label>
-            <Field.Input id="city" type="text" placeholder="New York" />
+            <Field.Input
+              id="city"
+              type="text"
+              placeholder="New York"
+            />
           </Field.Root>
 
           <Field.Root>
             <Field.Label for="zip">
               Postal Code<Field.RequiredIndicator />
             </Field.Label>
-            <Field.Input id="zip" type="text" placeholder="90502" />
+            <Field.Input
+              id="zip"
+              type="text"
+              placeholder="90502"
+            />
           </Field.Root>
         </div>
       </Fieldset.Group>

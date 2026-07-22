@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { FieldsetRootProps } from './types'
 
 import { Fieldset } from '@ark-ui/vue/fieldset'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { FieldsetRootProps } from './types'
 
 type Props = FieldsetRootProps & {
   class?: HTMLAttributes['class']

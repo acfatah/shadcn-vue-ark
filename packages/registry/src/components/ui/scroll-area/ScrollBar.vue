@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ScrollAreaScrollbarProps } from './types'
 
 import { ScrollArea } from '@ark-ui/vue/scroll-area'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ScrollAreaScrollbarProps } from './types'
 
 interface Props extends ScrollAreaScrollbarProps {
   class?: HTMLAttributes['class']

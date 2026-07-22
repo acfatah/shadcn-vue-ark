@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { AspectRatioProps } from './types'
+
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
@@ -6,8 +8,6 @@ import { Dynamic } from '@/composables/dynamic'
 import { useForwardExpose } from '@/composables/useForwardExpose'
 import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
-
-import type { AspectRatioProps } from './types'
 
 defineOptions({
   inheritAttrs: false,

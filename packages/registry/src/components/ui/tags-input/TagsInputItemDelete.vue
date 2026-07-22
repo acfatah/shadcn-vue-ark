@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { TagsInputItemDeleteTriggerProps } from './types'
 
 import { TagsInput } from '@ark-ui/vue/tags-input'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { X } from 'lucide-vue-next'
 
 import { useForwardProps } from '@/composables/useForwardProps'
 import { cn } from '@/lib/utils'
-
-import type { TagsInputItemDeleteTriggerProps } from './types'
 
 interface Props extends TagsInputItemDeleteTriggerProps {
   class?: HTMLAttributes['class']

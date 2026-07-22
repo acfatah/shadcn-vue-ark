@@ -40,7 +40,9 @@ function handleSubmit(event: Event) {
 
 <template>
   <form
-    ref="formRef" class="space-y-3" @submit="handleSubmit"
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
   >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native radio validation.
@@ -73,7 +75,11 @@ function handleSubmit(event: Event) {
       Current selection: {{ selectedOption ?? 'None' }}
     </p>
 
-    <Input.Button type="submit" class="block" :disabled="props.disabled">
+    <Input.Button
+      type="submit"
+      class="block"
+      :disabled="props.disabled"
+    >
       Validate
     </Input.Button>
   </form>

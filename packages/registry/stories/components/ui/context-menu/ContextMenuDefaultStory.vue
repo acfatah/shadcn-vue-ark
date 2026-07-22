@@ -18,7 +18,11 @@ import { ContextMenu } from '@/components/ui/context-menu'
         Back
         <ContextMenu.Shortcut>⌘[</ContextMenu.Shortcut>
       </ContextMenu.Item>
-      <ContextMenu.Item inset disabled value="forward">
+      <ContextMenu.Item
+        inset
+        disabled
+        value="forward"
+      >
         Forward
         <ContextMenu.Shortcut>⌘]</ContextMenu.Shortcut>
       </ContextMenu.Item>

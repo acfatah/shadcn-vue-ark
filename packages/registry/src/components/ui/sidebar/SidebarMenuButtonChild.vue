@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { SidebarMenuButtonProps } from './types'
+
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SidebarMenuButtonProps } from './types'
 
 import { sidebarMenuButtonVariants } from './variant'
 

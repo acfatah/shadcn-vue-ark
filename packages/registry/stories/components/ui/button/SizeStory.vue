@@ -13,7 +13,11 @@ const sizes = Object.keys(sizeVariant) as Array<keyof typeof sizeVariant>
       sm:flex-row
     "
   >
-    <div v-for="size in sizes" :key="size" class="flex items-start gap-2">
+    <div
+      v-for="size in sizes"
+      :key="size"
+      class="flex items-start gap-2"
+    >
       <template v-if="size.startsWith('icon')">
         {{ size }}:&nbsp;
       </template>
@@ -23,7 +27,11 @@ const sizes = Object.keys(sizeVariant) as Array<keyof typeof sizeVariant>
         </Button>
       </template>
 
-      <Button :size="size" aria-label="Submit" variant="outline">
+      <Button
+        :size="size"
+        aria-label="Submit"
+        variant="outline"
+      >
         <ArrowUpIcon data-part="icon" />
       </Button>
     </div>

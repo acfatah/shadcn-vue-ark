@@ -13,7 +13,11 @@ const voiceEnabled = ref(false)
 <template>
   <ButtonGroup.Root class="[--radius:9999rem]">
     <ButtonGroup.Root>
-      <Button variant="outline" size="icon" aria-label="Add">
+      <Button
+        variant="outline"
+        size="icon"
+        aria-label="Add"
+      >
         <PlusIcon />
       </Button>
     </ButtonGroup.Root>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { SeparatorProps } from './types'
+
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SeparatorProps } from './types'
 
 const props = withDefaults(defineProps<SeparatorProps>(), {
   orientation: 'horizontal',

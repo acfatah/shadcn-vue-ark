@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ComboboxEmptyProps } from './types'
 
 import { Combobox } from '@ark-ui/vue/combobox'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { ComboboxEmptyProps } from './types'
 
 interface Props extends ComboboxEmptyProps {
   class?: HTMLAttributes['class']

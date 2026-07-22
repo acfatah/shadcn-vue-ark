@@ -74,13 +74,18 @@ const { width: screenWidth } = useWindowSize()
 
 <template>
   <div>
-    <slot v-if="!props.hideFilter" name="filter" :table="table">
+    <slot
+      v-if="!props.hideFilter"
+      name="filter"
+      :table="table"
+    >
       <div class="flex w-full items-center gap-x-2 py-4">
         <Input.Search
           class="
             w-min max-w-sm
             sm:w-sm
-          " placeholder="Quick search..."
+          "
+          placeholder="Quick search..."
           @update:model-value="table.setGlobalFilter(String($event))"
         />
         <DropdownMenu.Root align="end">
@@ -96,8 +101,16 @@ const { width: screenWidth } = useWindowSize()
                   sm:inline
                 "
               >Columns</span>
-              <Columns3Icon v-if="screenWidth < 640" class="size-4" aria-hidden="true" />
-              <ChevronsUpDownIcon v-else class="ml-2 size-4" aria-hidden="true" />
+              <Columns3Icon
+                v-if="screenWidth < 640"
+                class="size-4"
+                aria-hidden="true"
+              />
+              <ChevronsUpDownIcon
+                v-else
+                class="ml-2 size-4"
+                aria-hidden="true"
+              />
             </Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
@@ -123,7 +136,8 @@ const { width: screenWidth } = useWindowSize()
           <Table.Row v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
             <Table.Head v-for="header in headerGroup.headers" :key="header.id">
               <FlexRender
-                v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
+                v-if="!header.isPlaceholder"
+                :render="header.column.columnDef.header"
                 :props="header.getContext()"
               />
             </Table.Head>
@@ -137,7 +151,8 @@ const { width: screenWidth } = useWindowSize()
           </template>
           <template v-else-if="table.getRowModel().rows?.length">
             <Table.Row
-              v-for="row in table.getRowModel().rows" :key="row.id"
+              v-for="row in table.getRowModel().rows"
+              :key="row.id"
               :data-state="row.getIsSelected() ? 'selected' : undefined"
             >
               <Table.Cell v-for="cell in row.getVisibleCells()" :key="cell.id">
@@ -155,7 +170,11 @@ const { width: screenWidth } = useWindowSize()
         </Table.Body>
       </Table.Root>
     </div>
-    <slot v-if="!props.hidePagination" name="pagination" :table="table">
+    <slot
+      v-if="!props.hidePagination"
+      name="pagination"
+      :table="table"
+    >
       <div v-if="pagination" class="flex items-center justify-end space-x-2 py-4">
         <div
           class="

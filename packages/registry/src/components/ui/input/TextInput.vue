@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-
-import { computed, ref } from 'vue'
-
-import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
 import type {
   PrimitiveInputEmits,
   PrimitiveInputProps,
 } from './types'
+
+import { computed, ref } from 'vue'
+
+import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 
 import PrimitiveInput from './PrimitiveInput.vue'
 

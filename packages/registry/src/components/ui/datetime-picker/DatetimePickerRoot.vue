@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { CalendarDateTime } from '@internationalized/date'
 import type { Ref } from 'vue'
+import type { DatetimePickerRootEmits, DatetimePickerRootProps } from './types'
 
 import { computed, ref, watch } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { DatetimePickerRootEmits, DatetimePickerRootProps } from './types'
 
 import PopoverRoot from '../popover/PopoverRoot.vue'
 import { DatetimePickerProvider } from './context'

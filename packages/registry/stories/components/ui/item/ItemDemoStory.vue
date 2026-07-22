@@ -22,7 +22,12 @@ import { Item } from '@/components/ui/item'
       </Item.Actions>
     </Item.Root>
 
-    <Item.Root variant="outline" size="sm" as="a" href="#">
+    <Item.Root
+      variant="outline"
+      size="sm"
+      as="a"
+      href="#"
+    >
       <Item.Media>
         <BadgeCheckIcon class="size-5" />
       </Item.Media>

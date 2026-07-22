@@ -1,10 +1,10 @@
 <script setup lang="ts">
+// Previous import line:
+import { createListCollection, Listbox } from '@ark-ui/vue/listbox'
 import { CheckIcon, ChevronDown } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
 import { Button } from '@/components/ui/button'
-// Previous import line:
-import { createListCollection, Listbox } from '@ark-ui/vue/listbox'
 // import { createListCollection, Listbox } from '@/components/ui/listbox'
 import { Popover } from '@/components/ui/popover'
 import { TagsInput } from '@/components/ui/tags-input'

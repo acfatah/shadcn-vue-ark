@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ListboxItemGroupProps } from './types'
 
 import { Listbox } from '@ark-ui/vue/listbox'
 import { reactiveOmit } from '@vueuse/core'
 import { computed, onMounted, onUnmounted, useId } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { ListboxItemGroupProps } from './types'
 
 import { CommandGroupProvider, useCommand } from './context'
 

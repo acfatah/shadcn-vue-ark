@@ -18,7 +18,11 @@ const isOpen = ref(false)
         @peduarte starred 3 repositories
       </h4>
       <Collapsible.Trigger as-child>
-        <Button variant="ghost" size="icon" class="size-8">
+        <Button
+          variant="ghost"
+          size="icon"
+          class="size-8"
+        >
           <ChevronsUpDown />
           <span class="sr-only">Toggle</span>
         </Button>

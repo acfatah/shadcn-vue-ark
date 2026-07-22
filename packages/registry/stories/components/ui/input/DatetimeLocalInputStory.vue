@@ -28,12 +28,20 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
+  >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native datetime-local validation.
     </p>
 
-    <Input.Datetime required v-bind="props" name="datetime-input" />
+    <Input.Datetime
+      required
+      v-bind="props"
+      name="datetime-input"
+    />
 
     <Input.Button type="submit" :disabled="props.disabled">
       Validate

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ButtonVariants } from '@/components/ui/button'
 
 import { Pagination } from '@ark-ui/vue/pagination'
 import { reactiveOmit } from '@vueuse/core'
 import { ChevronRightIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
-
-import type { ButtonVariants } from '@/components/ui/button'
 
 import { buttonVariants } from '@/components/ui/button'
 import { Dynamic } from '@/composables/dynamic'

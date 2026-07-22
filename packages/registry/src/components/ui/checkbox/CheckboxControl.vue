@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CheckboxControlProps } from './types'
 
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { CheckboxControlProps } from './types'
 
 interface Props extends CheckboxControlProps {
   class?: HTMLAttributes['class']

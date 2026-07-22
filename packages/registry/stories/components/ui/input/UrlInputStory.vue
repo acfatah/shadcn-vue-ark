@@ -21,12 +21,20 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-3" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-3"
+    @submit="handleSubmit"
+  >
     <p class="text-sm text-muted-foreground">
       Submit the form to exercise the browser's native url validation.
     </p>
 
-    <Input.Url required placeholder="https://example.com" v-bind="props" />
+    <Input.Url
+      required
+      placeholder="https://example.com"
+      v-bind="props"
+    />
 
     <Input.Button type="submit" :disabled="props.disabled">
       Validate

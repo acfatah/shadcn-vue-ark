@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { TabContentProps } from './types'
 
 import { Tabs } from '@ark-ui/vue/tabs'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { TabContentProps } from './types'
 
 interface Props extends TabContentProps {
   class?: HTMLAttributes['class']

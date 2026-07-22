@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { DialogTitleProps } from './types'
 
 import { Dialog } from '@ark-ui/vue/dialog'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { DialogTitleProps } from './types'
 
 interface Props extends DialogTitleProps {
   class?: HTMLAttributes['class']

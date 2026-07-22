@@ -28,7 +28,11 @@ const spacings = ['default', 'comfortable', 'compact']
       :required="props.required"
       :orientation="props.orientation"
     >
-      <RadioGroup.Item v-for="value in spacings" :key="value" :value="value">
+      <RadioGroup.Item
+        v-for="value in spacings"
+        :key="value"
+        :value="value"
+      >
         <RadioGroup.ItemControl />
         <RadioGroup.ItemText>{{ value }}</RadioGroup.ItemText>
         <RadioGroup.ItemHiddenInput />
@@ -45,7 +49,11 @@ const spacings = ['default', 'comfortable', 'compact']
       :required="props.required"
       :orientation="props.orientation"
     >
-      <RadioGroup.Item v-for="value in spacings" :key="value" :value="value">
+      <RadioGroup.Item
+        v-for="value in spacings"
+        :key="value"
+        :value="value"
+      >
         <RadioGroup.ItemText>{{ value }}</RadioGroup.ItemText>
         <RadioGroup.ItemControl />
         <RadioGroup.ItemHiddenInput />

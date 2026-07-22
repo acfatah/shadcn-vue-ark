@@ -23,7 +23,11 @@ function handleSubmit(event: Event) {
 </script>
 
 <template>
-  <form ref="formRef" class="space-y-4" @submit="handleSubmit">
+  <form
+    ref="formRef"
+    class="space-y-4"
+    @submit="handleSubmit"
+  >
     <Field.Root>
       <Field.Label for="delivery-date-4mz">
         Delivery date

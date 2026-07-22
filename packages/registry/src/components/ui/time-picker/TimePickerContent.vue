@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Period, TimePickerContentProps } from './types'
+
 import {
   computed,
   nextTick,
@@ -10,8 +12,6 @@ import {
 } from 'vue'
 
 import { cn } from '@/lib/utils'
-
-import type { Period, TimePickerContentProps } from './types'
 
 import { buttonVariants } from '../button'
 import PopoverContent from '../popover/PopoverContent.vue'

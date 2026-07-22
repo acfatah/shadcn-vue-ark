@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import type {
+  PrimitiveInputEmits,
+  PrimitiveInputProps,
+} from './types'
+
 import { reactiveOmit } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type {
-  PrimitiveInputEmits,
-  PrimitiveInputProps,
-} from './types'
 
 import PrimitiveInput from './PrimitiveInput.vue'
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { HoverCardRootEmits, HoverCardRootProps } from './types'
+
 import { HoverCard } from '@ark-ui/vue/hover-card'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { HoverCardRootEmits, HoverCardRootProps } from './types'
 
 interface Props extends HoverCardRootProps {
   align?: 'start' | 'center' | 'end'

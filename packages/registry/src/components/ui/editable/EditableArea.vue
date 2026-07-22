@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { EditableAreaProps } from './types'
 
 import { Editable } from '@ark-ui/vue/editable'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { EditableAreaProps } from './types'
 
 interface Props extends EditableAreaProps {
   class?: HTMLAttributes['class']

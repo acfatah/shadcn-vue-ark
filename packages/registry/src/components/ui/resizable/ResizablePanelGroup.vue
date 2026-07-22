@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { SplitterRootEmits, SplitterRootProps } from './types'
 
 import { Splitter } from '@ark-ui/vue/splitter'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { SplitterRootEmits, SplitterRootProps } from './types'
 
 interface Props extends SplitterRootProps {
   class?: HTMLAttributes['class']

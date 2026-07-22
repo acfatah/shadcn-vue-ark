@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { DataTable } from '@/components/ui/data-table'
-
 import type { Payment } from './payments'
+
+import { DataTable } from '@/components/ui/data-table'
 
 import { columns } from './payments'
 

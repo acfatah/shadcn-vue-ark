@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { SidebarProps } from './types'
+
 import { SheetContent, SheetRoot } from '@/components/ui/sheet'
 import SheetDescription from '@/components/ui/sheet/SheetDescription.vue'
 import SheetHeader from '@/components/ui/sheet/SheetHeader.vue'
 import SheetTitle from '@/components/ui/sheet/SheetTitle.vue'
 import { cn } from '@/lib/utils'
-
-import type { SidebarProps } from './types'
 
 import { SIDEBAR_WIDTH_MOBILE, useSidebar } from './utils'
 
@@ -33,7 +33,12 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
     <slot />
   </div>
 
-  <SheetRoot v-else-if="isMobile" :open="openMobile" v-bind="$attrs" @update:open="setOpenMobile">
+  <SheetRoot
+    v-else-if="isMobile"
+    :open="openMobile"
+    v-bind="$attrs"
+    @update:open="setOpenMobile"
+  >
     <SheetContent
       data-sidebar="sidebar"
       data-scope="sidebar"

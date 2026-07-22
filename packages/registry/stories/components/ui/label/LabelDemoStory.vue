@@ -6,6 +6,10 @@ import { Label } from '@/components/ui/label'
 <template>
   <div class="grid w-full max-w-sm items-center gap-1.5">
     <Label for="email">Email</Label>
-    <Input.Text id="email" type="email" placeholder="m@example.com" />
+    <Input.Text
+      id="email"
+      type="email"
+      placeholder="m@example.com"
+    />
   </div>
 </template>

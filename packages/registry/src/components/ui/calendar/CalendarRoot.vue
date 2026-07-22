@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
+import type { DatePickerRootEmits, DatePickerRootProps, LayoutTypes } from './types'
 
 import { DatePicker } from '@ark-ui/vue/date-picker'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { DatePickerRootEmits, DatePickerRootProps, LayoutTypes } from './types'
 
 import CalendarCell from './CalendarCell.vue'
 import CalendarCellTrigger from './CalendarCellTrigger.vue'
@@ -160,8 +159,16 @@ const forwardedProps = useForwardPropsEmits(delegatedProps, emit)
               </CalendarGridRow>
             </CalendarGridHead>
             <CalendarGridBody>
-              <CalendarGridRow v-for="(week, id) in api.weeks" :key="id" class="mt-2 w-full">
-                <CalendarCell v-for="(day, dayId) in week" :key="dayId" :value="day">
+              <CalendarGridRow
+                v-for="(week, id) in api.weeks"
+                :key="id"
+                class="mt-2 w-full"
+              >
+                <CalendarCell
+                  v-for="(day, dayId) in week"
+                  :key="dayId"
+                  :value="day"
+                >
                   <CalendarCellTrigger>
                     {{ day.day }}
                   </CalendarCellTrigger>

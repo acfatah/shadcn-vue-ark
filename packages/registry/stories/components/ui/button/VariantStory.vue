@@ -25,7 +25,11 @@ const variants = Object.keys(buttonVariants) as Array<keyof typeof buttonVariant
         {{ variant }}
       </Button>
 
-      <Button :variant="variant" size="icon" aria-label="Next">
+      <Button
+        :variant="variant"
+        size="icon"
+        aria-label="Next"
+      >
         <ChevronRightIcon data-part="icon" />
       </Button>
     </div>

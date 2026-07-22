@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PaginationEllipsisProps } from './types'
 
 import { Pagination } from '@ark-ui/vue/pagination'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { MoreHorizontal } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PaginationEllipsisProps } from './types'
 
 interface Props extends PaginationEllipsisProps {
   class?: HTMLAttributes['class']

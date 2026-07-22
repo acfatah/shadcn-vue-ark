@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ButtonVariants } from '@/components/ui/button'
+import type { PaginationNextTriggerProps } from './types'
 
 import { Pagination } from '@ark-ui/vue/pagination'
 import { reactiveOmit } from '@vueuse/core'
 import { ChevronRightIcon } from 'lucide-vue-next'
 import { computed } from 'vue'
 
-import type { ButtonVariants } from '@/components/ui/button'
-
 import { buttonVariants } from '@/components/ui/button'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PaginationNextTriggerProps } from './types'
 
 import { usePaginationOptions } from './context'
 

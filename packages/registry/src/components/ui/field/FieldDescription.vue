@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { FieldHelperTextProps } from './types'
 
 import { reactiveOmit } from '@vueuse/core'
 
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { FieldHelperTextProps } from './types'
 
 type Props = FieldHelperTextProps & {
   class?: HTMLAttributes['class']

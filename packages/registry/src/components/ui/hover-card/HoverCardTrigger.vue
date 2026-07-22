@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { HoverCardTriggerProps } from './types'
 
 import { HoverCard } from '@ark-ui/vue/hover-card'
 import { reactiveOmit } from '@vueuse/core'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { HoverCardTriggerProps } from './types'
 
 interface Props extends HoverCardTriggerProps {
   class?: HTMLAttributes['class']

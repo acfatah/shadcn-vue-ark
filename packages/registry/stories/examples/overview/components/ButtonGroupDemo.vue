@@ -22,7 +22,11 @@ const label = ref('personal')
 <template>
   <ButtonGroup.Root>
     <ButtonGroup.Root>
-      <Button variant="outline" size="icon-sm" aria-label="Go Back">
+      <Button
+        variant="outline"
+        size="icon-sm"
+        aria-label="Go Back"
+      >
         <ArrowLeftIcon />
       </Button>
     </ButtonGroup.Root>
@@ -42,7 +46,11 @@ const label = ref('personal')
       </Button>
       <DropdownMenu.Root align="end">
         <DropdownMenu.Trigger as-child>
-          <Button variant="outline" size="icon-sm" aria-label="More Options">
+          <Button
+            variant="outline"
+            size="icon-sm"
+            aria-label="More Options"
+          >
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenu.Trigger>

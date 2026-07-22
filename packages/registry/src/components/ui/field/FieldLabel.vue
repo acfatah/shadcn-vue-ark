@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { LabelProps } from '@/components/ui/label'
+import type { FieldLabelProps } from './types'
 
 import { Input } from '@/components/ui/input'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { FieldLabelProps } from './types'
 
 interface Props extends LabelProps, FieldLabelProps {}
 

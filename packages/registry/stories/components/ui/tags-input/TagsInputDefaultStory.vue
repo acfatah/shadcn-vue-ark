@@ -23,7 +23,11 @@ const modelValue = ref(['Apple', 'Banana'])
         <TagsInput.ItemInput />
       </TagsInput.Item>
 
-      <TagsInput.Input placeholder="Fruits..." aria-label="Fruits" class="basis-full" />
+      <TagsInput.Input
+        placeholder="Fruits..."
+        aria-label="Fruits"
+        class="basis-full"
+      />
     </TagsInput.Control>
   </TagsInput.Root>
 </template>

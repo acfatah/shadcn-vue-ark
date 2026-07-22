@@ -4,7 +4,11 @@ import { Spinner } from '@/components/ui/spinner'
 </script>
 
 <template>
-  <Button size="sm" variant="outline" disabled>
+  <Button
+    size="sm"
+    variant="outline"
+    disabled
+  >
     <Spinner class="animate-spin" />
     Submit
   </Button>

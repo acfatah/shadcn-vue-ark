@@ -19,7 +19,12 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center">
-    <Tooltip.Root :align="align" :align-offset="alignOffset" :side="side" :side-offset="sideOffset">
+    <Tooltip.Root
+      :align="align"
+      :align-offset="alignOffset"
+      :side="side"
+      :side-offset="sideOffset"
+    >
       <Tooltip.Trigger as-child>
         <Button variant="outline">
           Hover

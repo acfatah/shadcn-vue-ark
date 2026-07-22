@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
-
 import type { CarouselEmits, CarouselProps, WithClassAsProps } from './types'
+
+import { cn } from '@/lib/utils'
 
 import { useProvideCarousel } from './useCarousel'
 

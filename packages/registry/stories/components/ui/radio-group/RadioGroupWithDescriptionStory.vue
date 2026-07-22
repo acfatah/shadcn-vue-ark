@@ -46,7 +46,11 @@ const plans = [
     <RadioGroup.Label>Choose your plan</RadioGroup.Label>
     <RadioGroup.Description>You can change your plan at any time.</RadioGroup.Description>
     <RadioGroup.Items>
-      <RadioGroup.Item v-for="plan in plans" :key="plan.value" :value="plan.value">
+      <RadioGroup.Item
+        v-for="plan in plans"
+        :key="plan.value"
+        :value="plan.value"
+      >
         <RadioGroup.ItemControl />
         <RadioGroup.ItemContent>
           <RadioGroup.ItemText>{{ plan.title }}</RadioGroup.ItemText>

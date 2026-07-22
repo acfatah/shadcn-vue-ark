@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { ButtonVariants } from '@/components/ui/button'
+import type { PaginationRootEmits, PaginationRootProps } from './types'
 
 import { Pagination } from '@ark-ui/vue/pagination'
 import { reactiveOmit } from '@vueuse/core'
 import { computed } from 'vue'
 
-import type { ButtonVariants } from '@/components/ui/button'
-
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PaginationRootEmits, PaginationRootProps } from './types'
 
 import { PaginationOptionsProvider } from './context'
 

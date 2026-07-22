@@ -26,13 +26,21 @@ import { Input } from '@/components/ui/input'
             <Input.Label for="name-1">
               Name
             </Input.Label>
-            <Input.Text id="name-1" name="name" default-value="Pedro Duarte" />
+            <Input.Text
+              id="name-1"
+              name="name"
+              default-value="Pedro Duarte"
+            />
           </div>
           <div class="grid gap-3">
             <Input.Label for="username-1">
               Username
             </Input.Label>
-            <Input.Text id="username-1" name="username" default-value="@peduarte" />
+            <Input.Text
+              id="username-1"
+              name="username"
+              default-value="@peduarte"
+            />
           </div>
         </div>
 

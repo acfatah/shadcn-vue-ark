@@ -26,7 +26,11 @@ import { Tooltip } from '@/components/ui/tooltip'
       <InputGroup.Addon align="inline-end">
         <Tooltip.Root>
           <Tooltip.Trigger as-child>
-            <InputGroup.Button class="rounded-full" size="icon-xs" aria-label="More info">
+            <InputGroup.Button
+              class="rounded-full"
+              size="icon-xs"
+              aria-label="More info"
+            >
               <InfoIcon class="size-4" />
             </InputGroup.Button>
           </Tooltip.Trigger>

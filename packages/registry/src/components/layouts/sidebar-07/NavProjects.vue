@@ -34,7 +34,11 @@ defineProps<{
             <span>{{ item.name }}</span>
           </a>
         </Sidebar.MenuButton>
-        <DropdownMenu.Root side="bottom" align="start" :positioning="{ strategy: 'fixed' }">
+        <DropdownMenu.Root
+          side="bottom"
+          align="start"
+          :positioning="{ strategy: 'fixed' }"
+        >
           <DropdownMenu.Trigger as-child>
             <Sidebar.MenuAction show-on-hover class="hover:cursor-pointer">
               <EllipsisIcon />

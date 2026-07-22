@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PinInputSeparatorProps } from './types'
 
 import { ark } from '@ark-ui/vue'
 import { reactiveOmit } from '@vueuse/core'
@@ -7,8 +8,6 @@ import { Minus } from 'lucide-vue-next'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { PinInputSeparatorProps } from './types'
 
 interface Props extends PinInputSeparatorProps {
   class?: HTMLAttributes['class']

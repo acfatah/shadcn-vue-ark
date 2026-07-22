@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { EditableLabelProps } from './types'
 
 import { Editable } from '@ark-ui/vue/editable'
 import { reactiveOmit } from '@vueuse/core'
 
 import { Label } from '@/components/ui/label'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { EditableLabelProps } from './types'
 
 interface Props extends EditableLabelProps {
   class?: HTMLAttributes['class']

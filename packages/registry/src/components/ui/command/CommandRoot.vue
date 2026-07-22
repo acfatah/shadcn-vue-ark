@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { CommandItemData } from './context'
+import type { ListboxRootEmits, ListboxRootProps } from './types'
 
 import {
   createListCollection,
@@ -10,9 +12,6 @@ import { computed, ref } from 'vue'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { CommandItemData } from './context'
-import type { ListboxRootEmits, ListboxRootProps } from './types'
 
 import { CommandProvider } from './context'
 

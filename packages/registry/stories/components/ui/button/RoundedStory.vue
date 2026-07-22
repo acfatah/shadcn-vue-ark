@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/button'
 
 <template>
   <div class="flex flex-col gap-8">
-    <Button variant="outline" size="icon" aria-label="Scroll up" class="rounded-full">
+    <Button
+      variant="outline"
+      size="icon"
+      aria-label="Scroll up"
+      class="rounded-full"
+    >
       <ArrowUpIcon data-part="icon" />
     </Button>
   </div>

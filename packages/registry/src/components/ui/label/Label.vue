@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { LabelProps } from './types'
+
 import { reactiveOmit } from '@vueuse/core'
 
 import { Dynamic } from '@/composables/dynamic'
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
 import { cn } from '@/lib/utils'
-
-import type { LabelProps } from './types'
 
 const props = withDefaults(defineProps<LabelProps>(), {
   as: 'label',

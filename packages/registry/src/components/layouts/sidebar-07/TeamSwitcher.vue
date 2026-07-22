@@ -27,7 +27,12 @@ function setActiveTeam(team: Team) {
 <template>
   <Sidebar.Menu>
     <Sidebar.MenuItem>
-      <DropdownMenu.Root align="start" side="bottom" :side-offset="4" :positioning="{ strategy: 'fixed' }">
+      <DropdownMenu.Root
+        align="start"
+        side="bottom"
+        :side-offset="4"
+        :positioning="{ strategy: 'fixed' }"
+      >
         <DropdownMenu.Trigger class="hover:cursor-pointer" as-child>
           <Sidebar.MenuButton
             size="lg"

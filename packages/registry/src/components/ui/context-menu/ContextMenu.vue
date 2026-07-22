@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { MenuRootEmits, MenuRootProps } from './types'
 
 import { Menu } from '@ark-ui/vue/menu'
 
 import { useForwardPropsEmits } from '@/composables/useForwardPropsEmits'
-
-import type { MenuRootEmits, MenuRootProps } from './types'
 
 interface Props extends MenuRootProps {
   class?: HTMLAttributes['class']
