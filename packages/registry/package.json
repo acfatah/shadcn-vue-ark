@@ -91,7 +91,7 @@
     "playwright": "^1.61.1",
     "storybook": "^10.5.2",
     "storybook-vue3-router": "^7.0.0",
-    "typescript": "~7.0.2",
+    "typescript": "~6.0.3",
     "vite": "^8.1.5",
     "vite-svg-loader": "^5.1.1",
     "vitest": "^4.1.10",

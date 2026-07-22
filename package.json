@@ -30,7 +30,7 @@
     "simple-git-hooks": "^2.13.1"
   },
   "peerDependencies": {
-    "typescript": "^7.0.2"
+    "typescript": "~6.0.3"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
