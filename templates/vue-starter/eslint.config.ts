@@ -1,9 +1,8 @@
 import {
   betterTailwindcssPlugin,
   defineConfig,
-  markdown,
-  preset,
   tailwind,
+  typescript,
   vue,
 } from '@acfatah/eslint-preset'
 import pluginVitest from '@vitest/eslint-plugin'
@@ -21,17 +20,16 @@ export default defineConfig(
     ],
   },
 
+  typescript,
+  vue,
+  tailwind,
+
   {
     plugins: {
       ...betterTailwindcssPlugin,
     },
 
     rules: {
-      ...preset,
-      ...tailwind,
-      ...vue,
-      ...markdown,
-
       'vue/object-property-newline': ['error', {
         allowAllPropertiesOnSameLine: true,
       }],
