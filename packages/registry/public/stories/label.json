@@ -16,7 +16,7 @@
     },
     {
       "path": "LabelDemoStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Input } from '@/components/ui/input'\nimport { Label } from '@/components/ui/label'\n</script>\n\n<template>\n  <div class=\"grid w-full max-w-sm items-center gap-1.5\">\n    <Label for=\"email\">Email</Label>\n    <Input.Text id=\"email\" type=\"email\" placeholder=\"m@example.com\" />\n  </div>\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport { Input } from '@/components/ui/input'\nimport { Label } from '@/components/ui/label'\n</script>\n\n<template>\n  <div class=\"grid w-full max-w-sm items-center gap-1.5\">\n    <Label for=\"email\">Email</Label>\n    <Input.Text\n      id=\"email\"\n      type=\"email\"\n      placeholder=\"m@example.com\"\n    />\n  </div>\n</template>\n"
     }
   ]
 }

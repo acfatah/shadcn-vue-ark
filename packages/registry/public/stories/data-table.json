@@ -20,7 +20,7 @@
     },
     {
       "path": "DataTableEmptyStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport { DataTable } from '@/components/ui/data-table'\n\nimport type { Payment } from './payments'\n\nimport { columns } from './payments'\n\ndefineOptions({ inheritAttrs: false })\n\nconst empty: Payment[] = []\n</script>\n\n<template>\n  <DataTable :columns=\"columns\" :data=\"empty\" />\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport type { Payment } from './payments'\n\nimport { DataTable } from '@/components/ui/data-table'\n\nimport { columns } from './payments'\n\ndefineOptions({ inheritAttrs: false })\n\nconst empty: Payment[] = []\n</script>\n\n<template>\n  <DataTable :columns=\"columns\" :data=\"empty\" />\n</template>\n"
     },
     {
       "path": "payments.ts",

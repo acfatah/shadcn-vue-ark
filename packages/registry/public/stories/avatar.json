@@ -20,7 +20,7 @@
     },
     {
       "path": "AvatarSizesStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Avatar } from '@/components/ui/avatar'\n\nconst sizes = ['sm', 'md', 'lg', 'xl'] as const\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <Avatar.Root v-for=\"s in sizes\" :key=\"s\" :size=\"s\">\n      <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <Avatar.Fallback>CN</Avatar.Fallback>\n    </Avatar.Root>\n  </div>\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport { Avatar } from '@/components/ui/avatar'\n\nconst sizes = ['sm', 'md', 'lg', 'xl'] as const\n</script>\n\n<template>\n  <div class=\"flex items-center gap-4\">\n    <Avatar.Root\n      v-for=\"s in sizes\"\n      :key=\"s\"\n      :size=\"s\"\n    >\n      <Avatar.Image src=\"https://github.com/shadcn.png\" alt=\"@shadcn\" />\n      <Avatar.Fallback>CN</Avatar.Fallback>\n    </Avatar.Root>\n  </div>\n</template>\n"
     }
   ]
 }

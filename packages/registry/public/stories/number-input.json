@@ -20,7 +20,7 @@
     },
     {
       "path": "NumberInputDefaultStory.vue",
-      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root id=\"age\" default-value=\"18\" :min=\"0\">\n    <Label for=\"age\">Age</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
+      "content": "<script setup lang=\"ts\">\nimport { Label } from '@/components/ui/label'\nimport { NumberInput } from '@/components/ui/number-input'\n</script>\n\n<template>\n  <NumberInput.Root\n    id=\"age\"\n    default-value=\"18\"\n    :min=\"0\"\n  >\n    <Label for=\"age\">Age</Label>\n    <NumberInput.Control>\n      <NumberInput.Decrement />\n      <NumberInput.Input />\n      <NumberInput.Increment />\n    </NumberInput.Control>\n  </NumberInput.Root>\n</template>\n"
     },
     {
       "path": "NumberInputPercentageStory.vue",
