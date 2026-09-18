@@ -21,6 +21,20 @@ export const registryItem = {
     '@vueuse/core',
     'lucide-vue-next',
   ],
+
+  css: {
+    '@utility extend-touch-target': {
+      '@media (pointer: coarse)': {
+        'position': 'relative',
+        'touch-action': 'manipulation',
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          inset: 'calc(var(--spacing) * -2)',
+        },
+      },
+    },
+  },
 } satisfies RegistryItem
 
 export default registryItem

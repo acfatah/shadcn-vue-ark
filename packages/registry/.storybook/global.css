@@ -27,5 +27,26 @@
   }
 }
 
+/*
+  `extend-touch-target` is owned by `checkbox` (via its `_registry.ts` `css`
+  field) and shipped to consumers with that component. It is re-declared here
+  (Storybook-only) so the checkbox story renders it without re-adding it to the
+  shipped `src/styles/global.css`.
+*/
+@utility extend-touch-target {
+  @media (pointer: coarse) {
+    @apply relative touch-manipulation after:absolute after:-inset-2;
+  }
+}
+
+/*
+  `border-ghost` is a generic, documentation-flavored utility kept for a
+  Storybook demo only. It does NOT ship in the base `src/styles/global.css`;
+  its demo story lives under `stories/` (aspect-ratio ghost border).
+*/
+@utility border-ghost {
+  @apply after:border-border relative after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten;
+}
+
 @source '../src/**/*.{js,ts,vue}';
 @source '../stories/**/*.{html,js,ts,jsx,tsx,vue}';

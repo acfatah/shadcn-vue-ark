@@ -58,18 +58,18 @@ export const tailwindViewports = {
   '3xl': {
     name: '3xl',
     styles: {
-      // 100rem, 4:3 aspect ratio
-      width: '1600px',
-      height: '1200px',
+      // 102.5rem (matches --breakpoint-3xl), 4:3 aspect ratio
+      width: '1640px',
+      height: '1230px',
     },
     type: 'desktop',
   },
   '4xl': {
     name: '4xl',
     styles: {
-      // 125rem, 4:3 aspect ratio
-      width: '2000px',
-      height: '1500px',
+      // 120rem (matches --breakpoint-4xl), 4:3 aspect ratio
+      width: '1920px',
+      height: '1440px',
     },
     type: 'desktop',
   },
