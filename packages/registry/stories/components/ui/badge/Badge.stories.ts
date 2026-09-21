@@ -27,7 +27,10 @@ const meta = {
   },
 
   argTypes: {
-    variant: selectArg(['default', 'secondary', 'destructive', 'outline'], 'default'),
+    variant: selectArg(
+      ['default', 'secondary', 'destructive', 'success', 'info', 'warning', 'outline'],
+      'default',
+    ),
     asChild: boolArg('Render the child element as the badge (polymorphic).'),
     class: classArg(),
   },

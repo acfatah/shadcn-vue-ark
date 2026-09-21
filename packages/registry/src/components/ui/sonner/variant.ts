@@ -5,23 +5,27 @@ export const variant = {
     justify-start
     group-[.toaster]:rounded-sm!
   `,
-  success:
-    `
-      group-[.toaster]:border-success! group-[.toaster]:bg-success!
-      group-[.toaster]:text-success-foreground!
-    `,
-  error:
-    `
-      group-[.toaster]:border-error! group-[.toaster]:bg-error!
-      group-[.toaster]:text-error-foreground!
-    `,
-  warning:
-    `
-      group-[.toaster]:border-warning! group-[.toaster]:bg-warning!
-      group-[.toaster]:text-warning-foreground!
-    `,
-  info:
-    `group-[.toaster]:border-info! group-[.toaster]:bg-info! group-[.toaster]:text-info-foreground!`,
+  success: `
+    group-[.toaster]:border-success/30!
+    group-[.toaster]:bg-[color-mix(in_oklab,var(--color-success)_10%,var(--color-popover))]!
+    group-[.toaster]:text-success!
+  `,
+  error: `
+    group-[.toaster]:border-error/30!
+    group-[.toaster]:bg-[color-mix(in_oklab,var(--color-error)_10%,var(--color-popover))]!
+    group-[.toaster]:text-error!
+  `,
+  warning: `
+    group-[.toaster]:border-warning/40!
+    group-[.toaster]:bg-[color-mix(in_oklab,var(--color-warning)_15%,var(--color-popover))]!
+    group-[.toaster]:text-warning-foreground!
+    dark:group-[.toaster]:text-warning!
+  `,
+  info: `
+    group-[.toaster]:border-info/30!
+    group-[.toaster]:bg-[color-mix(in_oklab,var(--color-info)_10%,var(--color-popover))]!
+    group-[.toaster]:text-info!
+  `,
 }
 
 export const sonnerVariants = cva(

@@ -143,9 +143,10 @@ const delegatedProps = reactiveOmit(props, 'class')
 
 Examples: Sonner (wraps `vue-sonner`), DataTable (wraps `@tanstack/vue-table`)
 
-These wrap an external non-Ark library with project-consistent styling. They may
-include a `styles.css` for custom CSS properties or `@utility` definitions that
-Tailwind cannot express.
+These wrap an external non-Ark library with project-consistent styling. Color
+tokens they need belong in the theme (`src/styles/global.css`), not in a
+component-local CSS file; sonner's status variants use the theme's
+`success`/`info`/`warning`/`error` tokens.
 
 ```
 components/ui/sonner/
@@ -153,14 +154,11 @@ components/ui/sonner/
 ├── _registry.ts
 ├── index.ts
 ├── types.ts
-├── variant.ts
-└── styles.css        # custom CSS properties and @utility definitions
+└── variant.ts
 ```
 
 Key differences:
 - Import the third-party component, not Ark UI.
-- May need `styles.css` for CSS custom properties (colors, tokens) and
-  `@utility` rules that extend Tailwind.
 - `variant.ts` may export helper functions (e.g., `defaultToastClasses()`) in
   addition to the CVA definition.
 - Props extend the third-party library's type (e.g., `ToasterProps`).
@@ -238,31 +236,6 @@ import type { VariantProps } from 'class-variance-authority'
 import type { sonnerVariants } from './variant'
 
 export type SonnerVariants = VariantProps<typeof sonnerVariants>
-```
-
-`styles.css` example -- defines custom color tokens and `@utility` rules:
-
-```css
-@theme inline {
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-}
-
-@utility border-success {
-  border-color: var(--success-border);
-}
-
-:root {
-  --success: oklch(97.9% 0.022 160.2);
-  --success-foreground: oklch(55.2% 0.166 146.6);
-  --success-border: oklch(91.2% 0.043 159.1);
-}
-
-.dark {
-  --success: oklch(21.1% 0.05 157.4);
-  --success-foreground: oklch(86.4% 0.17 157.8);
-  --success-border: oklch(28.1% 0.065 157.6);
-}
 ```
 
 ---
@@ -679,18 +652,8 @@ No `files[]` and no `registryDependencies`: both are derived. Listing a
 `src/composables/*` or `src/lib/*` path in `files[]` **throws at build** -- they
 ship as their own registry items via auto-discovered `registryDependencies`.
 
-`files[]` is only for non-source assets the scanner can't see. The sole example
-today is `sonner`, which adds its `styles.css`:
-
-```ts
-  files: [
-    {
-      path: 'src/components/ui/sonner/styles.css',
-      type: 'registry:file',
-      target: 'src/components/ui/sonner/styles.css',
-    },
-  ],
-```
+`files[]` is only for non-source assets the scanner can't see. No component
+needs it today.
 
 Hand-list `registryDependencies` only when a dependency is composed at runtime
 rather than statically imported (e.g. `date-picker` lists
@@ -707,7 +670,7 @@ rather than statically imported (e.g. `date-picker` lists
 | `description` | Yes | Uses `html` tagged template from `common-tags`. Include links to Ark UI docs, shadcn/ui docs, or other references. |
 | `dependencies` | No | npm packages the scanner can't auto-add. Whitelisted imports (`@ark-ui/vue`, `@vueuse/core`, `lucide-vue-next`, `@tanstack/vue-table`, ...) and their peers merge in automatically; you only *need* off-whitelist packages (`tw-animate-css`, `@internationalized/date`, `@iconify/vue`, `class-variance-authority`). By convention authors still list the component's direct deps. |
 | `registryDependencies` | No | Auto-discovered from `@/` imports. Hand-list only runtime-composed deps the scanner can't infer (e.g. `date-picker` -> `['button', 'calendar', 'popover']`). Bare names normalize to `<namespace>/<name>`. |
-| `files` | No | Only for non-source assets the scanner can't see (today just `sonner/styles.css`). **Never** list `src/composables/*` or `src/lib/*` -- the build throws. |
+| `files` | No | Only for non-source assets the scanner can't see (none today). **Never** list `src/composables/*` or `src/lib/*` -- the build throws. |
 
 ---
 

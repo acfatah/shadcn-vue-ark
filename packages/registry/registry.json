@@ -3306,7 +3306,7 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "Sonner",
-      "description": "An opinionated toast notification component powered by <code>vue-sonner</code>.\n\n<h2>Manual CSS Import</h2>\n\nThis component requires an additional CSS import for toast variant styles\n(success, info, warning, error). Add the following to your main CSS file\n(e.g. <code>app.css</code> or <code>global.css</code>):\n\n<code>@import \"../components/ui/sonner/styles.css\";</code>\n\n<h2>References</h2>\n- vue-sonner: https://github.com/xiaoluoboding/vue-sonner\n- shadcn/ui: https://ui.shadcn.com/docs/components/sonner",
+      "description": "An opinionated toast notification component powered by <code>vue-sonner</code>.\n\n<h2>References</h2>\n- vue-sonner: https://github.com/xiaoluoboding/vue-sonner\n- shadcn/ui: https://ui.shadcn.com/docs/components/sonner",
       "dependencies": [
         "@vueuse/core",
         "class-variance-authority",
@@ -3326,15 +3326,6 @@
           "type": "registry:ui"
         },
         {
-          "path": "src/components/ui/sonner/styles.css",
-          "type": "registry:file",
-          "target": "src/components/ui/sonner/styles.css"
-        },
-        {
-          "path": "src/components/ui/sonner/styles.css",
-          "type": "registry:ui"
-        },
-        {
           "path": "src/components/ui/sonner/types.ts",
           "type": "registry:ui"
         },
@@ -3342,10 +3333,7 @@
           "path": "src/components/ui/sonner/variant.ts",
           "type": "registry:ui"
         }
-      ],
-      "css": {
-        "@import: \"../components/ui/sonner/styles.css\"": {}
-      }
+      ]
     },
     {
       "name": "spinner",

@@ -8,6 +8,26 @@ export const variant = {
       *:data-[part=description]:text-destructive/90
       [&>svg]:text-current
     `,
+  success:
+    `
+      bg-card text-success
+      *:data-[part=description]:text-success
+      [&>svg]:text-current
+    `,
+  info:
+    `
+      bg-card text-info
+      *:data-[part=description]:text-info
+      [&>svg]:text-current
+    `,
+  warning:
+    `
+      bg-card text-warning-foreground
+      *:data-[part=description]:text-warning-foreground
+      dark:text-warning
+      dark:*:data-[part=description]:text-warning
+      [&>svg]:text-current
+    `,
 }
 
 export const alertVariants = cva(

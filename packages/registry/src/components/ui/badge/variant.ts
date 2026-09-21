@@ -19,6 +19,29 @@ export const variant = {
       dark:focus-visible:ring-destructive/40
       [a&]:hover:bg-destructive/90
     `,
+  success:
+    `
+      border-transparent bg-success text-success-foreground
+      focus-visible:ring-success/20
+      dark:bg-success/60
+      dark:focus-visible:ring-success/40
+      [a&]:hover:bg-success/90
+    `,
+  info:
+    `
+      border-transparent bg-info text-info-foreground
+      focus-visible:ring-info/20
+      dark:bg-info/60
+      dark:focus-visible:ring-info/40
+      [a&]:hover:bg-info/90
+    `,
+  warning:
+    `
+      border-transparent bg-warning text-warning-foreground
+      focus-visible:ring-warning/20
+      dark:focus-visible:ring-warning/40
+      [a&]:hover:bg-warning/90
+    `,
   outline:
     `
       text-foreground

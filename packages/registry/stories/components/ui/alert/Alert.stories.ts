@@ -10,6 +10,8 @@ import AlertDefaultStory from './AlertDefaultStory.vue'
 import AlertDefaultSource from './AlertDefaultStory.vue?raw'
 import AlertDemoStory from './AlertDemoStory.vue'
 import AlertDemoSource from './AlertDemoStory.vue?raw'
+import AlertStatusStory from './AlertStatusStory.vue'
+import AlertStatusSource from './AlertStatusStory.vue?raw'
 
 const meta = {
   title: 'Components/UI/Alert',
@@ -26,7 +28,7 @@ const meta = {
   },
 
   argTypes: {
-    variant: selectArg(['default', 'destructive'], 'default'),
+    variant: selectArg(['default', 'destructive', 'success', 'info', 'warning'], 'default'),
     asChild: boolArg('Render the child element as the root (polymorphic).'),
     class: classArg(),
   },
@@ -47,6 +49,12 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   ...renderRaw(AlertDefaultStory, AlertDefaultSource),
+}
+
+export const Status: Story = {
+  ...renderRaw(AlertStatusStory, AlertStatusSource, {
+    parameters: { controls: { exclude: ['variant'] } },
+  }),
 }
 
 export const Demo: Story = {
